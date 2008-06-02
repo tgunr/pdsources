@@ -27,4 +27,5 @@
 - (IBAction)moveTo:(NSButton *)sender;
 - (IBAction)removeDisk:(NSButton *)sender;
 - (IBAction)resetBox:(NSButton *)sender;
+- (void)textDidChange:(NSNotification *)aNotification;
 @end

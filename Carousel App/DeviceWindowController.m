@@ -2,6 +2,13 @@
 
 @implementation DeviceWindowController
 
+- (void)selectDeviceIndex:(int)newBox {
+	currentIndex = newBox;
+	[deviceList selectItemAtIndex:(currentIndex)];
+	if(currentDevice != 0) [(id)currentDevice release];
+	currentDevice = (DACALDeviceRef)DACALCommandCopyUUID( currentIndex, NULL );
+}
+
 - (void)updateDeviceList {
 
 	int				index; 
@@ -21,9 +28,7 @@
 	[deviceList removeAllItems];
 	[deviceList addItemsWithObjectValues:ourArray];
 	if( haveAny ) {
-		currentIndex = 0;
-		[deviceList selectItemAtIndex:(currentIndex)];
-		currentDevice = (DACALDeviceRef)DACALCommandCopyUUID( currentIndex, NULL );
+		[self selectDeviceIndex:0];
 	} else {
 		currentIndex = 0;
 		currentDevice = 0;
@@ -48,8 +53,9 @@
 //	awakeFromNib
 // -------------------------------------------------------------------------------
 - (void)awakeFromNib {
+	currentIndex = 0;
+	currentDevice = 0;
 	[self updateDeviceList];
-
 }
 
 - (IBAction)addDisk:(NSButton *)sender {
@@ -57,8 +63,19 @@
 }
 
 - (IBAction)changeBox:(NSComboBox *)sender {
-    NSLogFunc;
+	int	newIndex = [sender indexOfSelectedItem];
+
+	if( newIndex == -1 ) {
+			// Should probably confirm this
+			DACALCommandSetName( currentDevice, (CFStringRef)[sender stringValue] );
+			[sender removeItemAtIndex: currentIndex];
+			[sender insertItemWithObjectValue: [sender stringValue] atIndex: currentIndex ];
+		}
+	else {
+		if( newIndex != currentIndex ) [self selectDeviceIndex: newIndex];
+	}
 }
+
 
 - (IBAction)closeDoor:(NSButton *)sender {
 	DACALCommandCloseDoor( currentDevice );
@@ -80,5 +97,9 @@
 
 - (IBAction)resetBox:(NSButton *)sender {
 	DACALCommandReset( currentDevice );
+}
+
+- (void)textDidChange:(NSNotification *)aNotification {
+	NSLogFunc;
 }
 @end
