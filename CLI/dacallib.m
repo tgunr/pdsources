@@ -243,7 +243,7 @@ DACALCount			dacalDeviceRefToDeviceIndex( DACALDeviceRef deviceID )
 {
 	if( gDACALBoxes.boxCount == 0 ) return( kDACALIllegalDevice );				// No Boxes
 	if( deviceID == kDACALDefaultDevice ) return( gDACALDefaultDevice - 1 );	// Default Box
-	if( 1 <= deviceID <= gDACALBoxes.boxCount ) return ( deviceID - 1 );		// Actual Device
+	if( (1 <= deviceID) & (deviceID <= gDACALBoxes.boxCount) ) return ( deviceID - 1 );		// Actual Device
 	
 	if( deviceID > kDACALIllegalDevice )										// UUID?
 	{
