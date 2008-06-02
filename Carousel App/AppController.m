@@ -1,5 +1,5 @@
 #import "AppController.h"
-#import "davec.h"
+#import "pms.h"
 
 @implementation AppController
 
@@ -72,6 +72,9 @@ NSString *const kExplainTitle = @"<html><center>Drag a folder to this area or cl
 	noDisc = [noDiscButton intValue];
 
 	[self updateSourceUI:FALSE];
+	
+	// *** new nib
+	[NSBundle loadNibNamed:@"Device" owner:[NSApplication sharedApplication]];
 }
 
 - (void) applicationDidFinishLaunching:(NSNotification *) aNotification {	

@@ -8,9 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
+		5C7D44160DF3D39B003E5083 /* DC300Black.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C7D44150DF3D39B003E5083 /* DC300Black.png */; };
+		5C7D44180DF3D3A7003E5083 /* Device.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C7D44170DF3D3A7003E5083 /* Device.xib */; };
+		5C7D45A50DF3D4D8003E5083 /* DeviceWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C7D45A40DF3D4D8003E5083 /* DeviceWindowController.m */; };
+		5CB163460DF3E1AB00440A75 /* DiscRecording.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CB163450DF3E1AB00440A75 /* DiscRecording.framework */; };
 		756837320DEB1C65001C6F01 /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 756837310DEB1C65001C6F01 /* AppController.m */; };
-		756837400DEB223B001C6F01 /* P10670A-1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7568373F0DEB223B001C6F01 /* P10670A-1.jpg */; };
-		756838410DEB6215001C6F01 /* DiscRecording.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 756838400DEB6215001C6F01 /* DiscRecording.framework */; };
 		75683A2D0DEC3F32001C6F01 /* dacallib.m in Sources */ = {isa = PBXBuildFile; fileRef = 75683A2C0DEC3F32001C6F01 /* dacallib.m */; };
 		75683A3D0DEC430B001C6F01 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75683A3C0DEC430B001C6F01 /* CoreServices.framework */; };
 		75683AF50DEC433C001C6F01 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75683AF40DEC433C001C6F01 /* IOKit.framework */; };
@@ -28,13 +30,16 @@
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		32CA4F630368D1EE00C91783 /* Carousel_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Carousel_Prefix.pch; sourceTree = "<group>"; };
+		5C7D44120DF3D32B003E5083 /* pms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pms.h; path = ../pms.h; sourceTree = SOURCE_ROOT; };
+		5C7D44150DF3D39B003E5083 /* DC300Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DC300Black.png; sourceTree = SOURCE_ROOT; };
+		5C7D44170DF3D3A7003E5083 /* Device.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Device.xib; sourceTree = "<group>"; };
+		5C7D45A30DF3D4D8003E5083 /* DeviceWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceWindowController.h; sourceTree = "<group>"; };
+		5C7D45A40DF3D4D8003E5083 /* DeviceWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceWindowController.m; sourceTree = "<group>"; };
+		5CB163450DF3E1AB00440A75 /* DiscRecording.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DiscRecording.framework; path = /System/Library/Frameworks/DiscRecording.framework; sourceTree = "<absolute>"; };
 		756837300DEB1C65001C6F01 /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppController.h; sourceTree = "<group>"; };
 		756837310DEB1C65001C6F01 /* AppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppController.m; sourceTree = "<group>"; };
-		7568373F0DEB223B001C6F01 /* P10670A-1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "P10670A-1.jpg"; sourceTree = "<group>"; };
-		756838400DEB6215001C6F01 /* DiscRecording.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DiscRecording.framework; sourceTree = "<group>"; };
-		756839950DEC2892001C6F01 /* davec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = davec.h; path = ../../usr/includes/davec.h; sourceTree = SOURCE_ROOT; };
-		75683A2B0DEC3F32001C6F01 /* dacallib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dacallib.h; path = ../PMTB/CLI/dacallib.h; sourceTree = SOURCE_ROOT; };
-		75683A2C0DEC3F32001C6F01 /* dacallib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = dacallib.m; path = ../PMTB/CLI/dacallib.m; sourceTree = SOURCE_ROOT; };
+		75683A2B0DEC3F32001C6F01 /* dacallib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dacallib.h; path = ../CLI/dacallib.h; sourceTree = SOURCE_ROOT; };
+		75683A2C0DEC3F32001C6F01 /* dacallib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = dacallib.m; path = ../CLI/dacallib.m; sourceTree = SOURCE_ROOT; };
 		75683A3C0DEC430B001C6F01 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = SDKs/MacOSX10.5.sdk/System/Library/Frameworks/CoreServices.framework; sourceTree = DEVELOPER_DIR; };
 		75683AF40DEC433C001C6F01 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = SDKs/MacOSX10.5.sdk/System/Library/Frameworks/IOKit.framework; sourceTree = DEVELOPER_DIR; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -47,9 +52,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
-				756838410DEB6215001C6F01 /* DiscRecording.framework in Frameworks */,
 				75683A3D0DEC430B001C6F01 /* CoreServices.framework in Frameworks */,
 				75683AF50DEC433C001C6F01 /* IOKit.framework in Frameworks */,
+				5CB163460DF3E1AB00440A75 /* DiscRecording.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +66,8 @@
 			children = (
 				756837300DEB1C65001C6F01 /* AppController.h */,
 				756837310DEB1C65001C6F01 /* AppController.m */,
+				5C7D45A30DF3D4D8003E5083 /* DeviceWindowController.h */,
+				5C7D45A40DF3D4D8003E5083 /* DeviceWindowController.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -69,6 +76,9 @@
 			isa = PBXGroup;
 			children = (
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
+				75683A3C0DEC430B001C6F01 /* CoreServices.framework */,
+				5CB163450DF3E1AB00440A75 /* DiscRecording.framework */,
+				75683AF40DEC433C001C6F01 /* IOKit.framework */,
 			);
 			name = "Linked Frameworks";
 			sourceTree = "<group>";
@@ -76,9 +86,6 @@
 		1058C7A2FEA54F0111CA2CBB /* Other Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				75683AF40DEC433C001C6F01 /* IOKit.framework */,
-				75683A3C0DEC430B001C6F01 /* CoreServices.framework */,
-				756838400DEB6215001C6F01 /* DiscRecording.framework */,
 				29B97324FDCFA39411CA2CEA /* AppKit.framework */,
 				13E42FB307B3F0F600E4EEF1 /* CoreData.framework */,
 				29B97325FDCFA39411CA2CEA /* Foundation.framework */,
@@ -97,7 +104,7 @@
 		29B97314FDCFA39411CA2CEA /* Carousel */ = {
 			isa = PBXGroup;
 			children = (
-				756839950DEC2892001C6F01 /* davec.h */,
+				5C7D44120DF3D32B003E5083 /* pms.h */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -121,10 +128,11 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				7568373F0DEB223B001C6F01 /* P10670A-1.jpg */,
+				5C7D44150DF3D39B003E5083 /* DC300Black.png */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				1DDD58140DA1D0A300B32029 /* MainMenu.xib */,
+				5C7D44170DF3D3A7003E5083 /* Device.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -164,7 +172,7 @@
 /* Begin PBXProject section */
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
-			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Carousel" */;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Carousel XC3.0" */;
 			compatibilityVersion = "Xcode 3.0";
 			hasScannedForEncodings = 1;
 			mainGroup = 29B97314FDCFA39411CA2CEA /* Carousel */;
@@ -183,7 +191,8 @@
 			files = (
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
 				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
-				756837400DEB223B001C6F01 /* P10670A-1.jpg in Resources */,
+				5C7D44160DF3D39B003E5083 /* DC300Black.png in Resources */,
+				5C7D44180DF3D3A7003E5083 /* Device.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,6 +206,7 @@
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				756837320DEB1C65001C6F01 /* AppController.m in Sources */,
 				75683A2D0DEC3F32001C6F01 /* dacallib.m in Sources */,
+				5C7D45A50DF3D4D8003E5083 /* DeviceWindowController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,7 +315,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Carousel" */ = {
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Carousel XC3.0" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,
