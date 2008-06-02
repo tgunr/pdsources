@@ -24,7 +24,6 @@
 		currentIndex = 0;
 		[deviceList selectItemAtIndex:(currentIndex)];
 		currentDevice = (DACALDeviceRef)DACALCommandCopyUUID( currentIndex, NULL );
-		currentDevice = 0;
 	} else {
 		currentIndex = 0;
 		currentDevice = 0;

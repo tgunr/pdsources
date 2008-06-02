@@ -9,13 +9,26 @@
 			8D1107260486CEB800E47090 /* Carousel */,
 		);
 		breakpoints = (
-			5C7D45EA0DF3DF05003E5083 /* dacallib.m:278 */,
 		);
 		codeSenseManager = 5C97B8320DF3B9760052BF75 /* Code sense */;
 		executables = (
 			5C97B8290DF3B9710052BF75 /* Carousel */,
 		);
 		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXBookmarksDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXBookmarksDataSource_NameID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					200,
+					200,
+					57.58349609375,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXBookmarksDataSource_LocationID,
+					PBXBookmarksDataSource_NameID,
+					PBXBookmarksDataSource_CommentsID,
+				);
+			};
 			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
 				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
 				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
@@ -29,6 +42,30 @@
 					20,
 				);
 				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXConfiguration.PBXFileTableDataSource3.XCSCMDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					20,
+					219,
+					20,
+					48.16259765625,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_SCM_ColumnID,
 					PBXFileDataSource_FiletypeID,
 					PBXFileDataSource_Filename_ColumnID,
 					PBXFileDataSource_Built_ColumnID,
@@ -60,8 +97,8 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 234086783;
-			PBXWorkspaceStateSaveDate = 234086783;
+			PBXPerProjectTemplateStateSaveDate = 234087726;
+			PBXWorkspaceStateSaveDate = 234087726;
 		};
 		sourceControlManager = 5C97B8310DF3B9760052BF75 /* Source Control */;
 		userBuildSettings = {
@@ -93,28 +130,11 @@
 	};
 	5C7D45A40DF3D4D8003E5083 /* DeviceWindowController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {813, 1204}}";
-			sepNavSelRange = "{853, 0}";
-			sepNavVisRange = "{104, 1286}";
+			sepNavIntBoundsRect = "{{0, 0}, {813, 1120}}";
+			sepNavSelRange = "{833, 0}";
+			sepNavVisRange = "{334, 1224}";
 			sepNavWindowFrame = "{{15, 137}, {872, 736}}";
 		};
-	};
-	5C7D45EA0DF3DF05003E5083 /* dacallib.m:278 */ = {
-		isa = PBXFileBreakpoint;
-		actions = (
-		);
-		breakpointStyle = 0;
-		continueAfterActions = 0;
-		countType = 0;
-		delayBeforeContinue = 0;
-		fileReference = 75683A2C0DEC3F32001C6F01 /* dacallib.m */;
-		functionName = "DACALCommandRequestNoResult()";
-		hitCount = 0;
-		ignoreCount = 0;
-		lineNumber = 278;
-		location = Carousel;
-		modificationTime = 234086150.515616;
-		state = 1;
 	};
 	5C97B8290DF3B9710052BF75 /* Carousel */ = {
 		isa = PBXExecutable;
@@ -138,6 +158,13 @@
 		libgmallocEnabled = 0;
 		name = Carousel;
 		savedGlobals = {
+			"/Volumes/Archive/svnsources/polymicro/PMTB/trunk/Carousel App/build/Debug/Carousel.app/Contents/MacOS/Carousel" = (
+				{
+					display = 1;
+					filename = "/Volumes/Archive/svnsources/polymicro/PMTB/trunk/Carousel App/../CLI/dacallib.m";
+					name = gDACALBoxes;
+				},
+			);
 		};
 		sourceDirectories = (
 		);
@@ -149,6 +176,7 @@
 		fallbackIsa = XCSourceControlManager;
 		isSCMEnabled = 0;
 		scmConfiguration = {
+			repositoryName = PMTB;
 		};
 	};
 	5C97B8320DF3B9760052BF75 /* Code sense */ = {
@@ -181,9 +209,10 @@
 	};
 	75683A2C0DEC3F32001C6F01 /* dacallib.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {968, 10976}}";
-			sepNavSelRange = "{9652, 0}";
-			sepNavVisRange = "{9301, 352}";
+			sepNavIntBoundsRect = "{{0, 0}, {968, 10696}}";
+			sepNavSelRange = "{8233, 27}";
+			sepNavVisRange = "{7688, 1727}";
+			sepNavWindowFrame = "{{15, 137}, {872, 736}}";
 		};
 	};
 	8D1107260486CEB800E47090 /* Carousel */ = {
