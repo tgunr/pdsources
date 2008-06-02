@@ -1,0 +1,19 @@
+//
+// Prefix header for all source files of the 'PMTB' target in the 'PMTB' project
+//
+
+#ifdef __OBJC__
+#import <Cocoa/Cocoa.h>
+#import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
+
+#include <IOKit/IOKitLib.h>
+#include <IOKit/IOCFPlugIn.h>
+#include <IOKit/hid/IOHIDLib.h>
+#include <IOKit/hid/IOHIDKeys.h>
+#include <IOKit/usb/IOUSBLib.h>
+
+#include <Carbon/Carbon.h>
+#include <Kernel/IOKit/hidsystem/IOHIDUsageTables.h>
+#import <MacFUSE/GMUserFileSystem.h>
+#endif
