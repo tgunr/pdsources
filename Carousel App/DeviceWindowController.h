@@ -1,6 +1,5 @@
-#import <Cocoa/Cocoa.h>
-#import "pms.h"
-#import "dacallib.h"
+
+void UserSystemBeep(void);
 
 @interface DeviceWindowController : NSObject {
     IBOutlet NSProgressIndicator *busyIndicator;
@@ -27,5 +26,4 @@
 - (IBAction)moveTo:(NSButton *)sender;
 - (IBAction)removeDisk:(NSButton *)sender;
 - (IBAction)resetBox:(NSButton *)sender;
-- (void)textDidChange:(NSNotification *)aNotification;
 @end

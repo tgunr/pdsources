@@ -1,6 +1,14 @@
 #import "DeviceWindowController.h"
 
+void UserSystemBeep(void) {
+	AlertSoundPlay();
+}
+
 @implementation DeviceWindowController
+
+- (NSString*)diskTitleForSlot:(int)theSlot {
+	return( (NSString*)NULL );
+}
 
 - (void)selectDeviceIndex:(int)newBox {
 	currentIndex = newBox;
@@ -20,7 +28,7 @@
 	
 	for( index=0; index<count; index++ ) {
 		workString = (NSString*)DACALCommandCopyName( index, NULL );
-		if( workString == NULL ) workString = [NSString stringWithFormat:defaultName, index];
+		if( workString == NULL ) workString = [NSString stringWithFormat:defaultName, index+1];
 		[ourArray addObject:workString];
 		[workString release];
 	}
@@ -60,6 +68,7 @@
 
 - (IBAction)addDisk:(NSButton *)sender {
 	NSLogFunc;
+	UserSystemBeep();
 }
 
 - (IBAction)changeBox:(NSComboBox *)sender {
@@ -67,11 +76,10 @@
 
 	if( newIndex == -1 ) {
 			// Should probably confirm this
-			DACALCommandSetName( currentDevice, (CFStringRef)[sender stringValue] );
+			DACALCommandSetName( currentDevice, (CFStringRef)[[sender stringValue] copy] );
 			[sender removeItemAtIndex: currentIndex];
-			[sender insertItemWithObjectValue: [sender stringValue] atIndex: currentIndex ];
-		}
-	else {
+			[sender insertItemWithObjectValue: [[sender stringValue] copy] atIndex: currentIndex ];
+	} else {
 		if( newIndex != currentIndex ) [self selectDeviceIndex: newIndex];
 	}
 }
@@ -83,6 +91,7 @@
 
 - (IBAction)diskInfo:(NSButton *)sender {
     NSLogFunc;
+	UserSystemBeep();
 }
 
 - (IBAction)moveTo:(NSButton *)sender {
@@ -93,13 +102,10 @@
 
 - (IBAction)removeDisk:(NSButton *)sender {
     NSLogFunc;
+	UserSystemBeep();
 }
 
 - (IBAction)resetBox:(NSButton *)sender {
 	DACALCommandReset( currentDevice );
-}
-
-- (void)textDidChange:(NSNotification *)aNotification {
-	NSLogFunc;
 }
 @end
