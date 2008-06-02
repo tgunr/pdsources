@@ -1,10 +1,8 @@
 // PMTBFileSystem.h
 
 #import <Cocoa/Cocoa.h>
+#import "LoopbackFS.h"
 
-@interface PMTBFileSystem : NSObject
-	NSString* rootPath_;   // The local file-system path to mount.
+@interface PMTBFS : LoopbackFS
 
-	- (id)initWithRootPath:(NSString *)rootPath;
-	- (void)dealloc;
 @end
