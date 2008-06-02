@@ -216,10 +216,10 @@
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>755D8D7A0DF2EB1C001EB047</string>
+						<string>7588A2150DF3B96A00B28BC4</string>
 						<key>history</key>
 						<array>
-							<string>755D8CF80DF1F70F001EB047</string>
+							<string>755D8D7A0DF2EB1C001EB047</string>
 						</array>
 					</dict>
 					<key>SplitCount</key>
@@ -249,6 +249,8 @@
 		<dict>
 			<key>ChosenToolbarItems</key>
 			<array>
+				<string>XCToolbarPerspectiveControl</string>
+				<string>NSToolbarSeparatorItem</string>
 				<string>active-target-popup</string>
 				<string>active-buildstyle-popup</string>
 				<string>action</string>
@@ -318,20 +320,19 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateExpansionKey</key>
 							<array>
 								<string>29B97314FDCFA39411CA2CEA</string>
-								<string>755D8BF30DF1C066001EB047</string>
 								<string>758C74630DE620E2002EBB07</string>
+								<string>75AEC6420DDE0C7D0090DE55</string>
 								<string>75AEC4320DDB91A10090DE55</string>
 								<string>75AEC42D0DDB91510090DE55</string>
 								<string>1C37FBAC04509CD000000102</string>
-								<string>755D8CCF0DF1EF59001EB047</string>
 								<string>1C37FAAC04509CD000000102</string>
 								<string>1C37FABC05509CD000000102</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>8</integer>
-									<integer>4</integer>
+									<integer>20</integer>
+									<integer>19</integer>
 									<integer>0</integer>
 								</array>
 							</array>
@@ -385,7 +386,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>755D8D790DF2EB1C001EB047</string>
+										<string>7588A2120DF3B96A00B28BC4</string>
 										<key>history</key>
 										<array>
 											<string>75FD8B620DB986D900237357</string>
@@ -422,7 +423,7 @@
 											<string>755D8CD10DF1EF59001EB047</string>
 											<string>755D8CED0DF1F70F001EB047</string>
 											<string>755D8CEF0DF1F70F001EB047</string>
-											<string>755D8CF00DF1F70F001EB047</string>
+											<string>7588A2110DF3B96A00B28BC4</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -454,10 +455,7 @@
 											<string>7568362B0DE8870B001C6F01</string>
 											<string>756836800DEA41F8001C6F01</string>
 											<string>755D8CD30DF1EF59001EB047</string>
-											<string>755D8CD40DF1EF59001EB047</string>
-											<string>755D8CF10DF1F70F001EB047</string>
 											<string>755D8CF20DF1F70F001EB047</string>
-											<string>755D8CF40DF1F70F001EB047</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -515,9 +513,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>755D8BDB0DF1C011001EB047</string>
+				<string>7588A2130DF3B96A00B28BC4</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>755D8BDC0DF1C011001EB047</string>
+				<string>7588A2140DF3B96A00B28BC4</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -674,10 +672,6 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>755D8CDF0DF1EF59001EB047</string>
-		<string>755D8CE00DF1EF59001EB047</string>
-		<string>1C78EAAD065D492600B07095</string>
-		<string>759BCA000DB4A8AC0039608A</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>755D8CF60DF1F70F001EB047</string>
 		<string>/Users/davec/Desktop/PMTB/PMTB.xcodeproj</string>
@@ -882,13 +876,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1CD10A99069EF8BA00B06720</string>
-				<string>755D8CD70DF1EF59001EB047</string>
+				<string>7588A2160DF3B96A00B28BC4</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>755D8CD80DF1EF59001EB047</string>
-				<string>755D8CD90DF1EF59001EB047</string>
-				<string>755D8CDA0DF1EF59001EB047</string>
-				<string>755D8CDB0DF1EF59001EB047</string>
-				<string>755D8CDC0DF1EF59001EB047</string>
+				<string>7588A2170DF3B96A00B28BC4</string>
+				<string>7588A2180DF3B96A00B28BC4</string>
+				<string>7588A2190DF3B96A00B28BC4</string>
+				<string>7588A21A0DF3B96A00B28BC4</string>
+				<string>7588A21B0DF3B96A00B28BC4</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>

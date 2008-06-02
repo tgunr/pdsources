@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 44;
+	objectVersion = 45;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -112,6 +112,7 @@
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = SDKs/MacOSX10.5.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		32CA4F630368D1EE00C91783 /* PMTB_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMTB_Prefix.pch; sourceTree = "<group>"; };
 		7550D6650DC27008008515EC /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = SDKs/MacOSX10.5.sdk/System/Library/Frameworks/IOKit.framework; sourceTree = DEVELOPER_DIR; };
+		7588A2100DF3B8E700B28BC4 /* carousel.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = carousel.sh; path = CLI/carousel.sh; sourceTree = "<group>"; };
 		758C74580DE61A16002EBB07 /* CarouselClass.xcclassmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcclassmodel; path = CarouselClass.xcclassmodel; sourceTree = "<group>"; };
 		758C74590DE61A16002EBB07 /* CarouselDataModel.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = CarouselDataModel.xcdatamodel; sourceTree = "<group>"; };
 		758C74660DE62368002EBB07 /* MacFUSE.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MacFUSE.framework; sourceTree = SOURCE_ROOT; };
@@ -435,6 +436,7 @@
 		75AEC42D0DDB91510090DE55 /* CLI */ = {
 			isa = PBXGroup;
 			children = (
+				7588A2100DF3B8E700B28BC4 /* carousel.sh */,
 				75AEC4310DDB91840090DE55 /* dacal.1 */,
 				75AEC42F0DDB916A0090DE55 /* dacal.c */,
 				75ECD0680DE385FD00AB2F3F /* dacallib.h */,
@@ -852,7 +854,7 @@
 				HEADER_SEARCH_PATHS = "";
 				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
-				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.5.sdk";
+				SDKROOT = macosx10.5;
 			};
 			name = Debug;
 		};
@@ -866,7 +868,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
-				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.5.sdk";
+				SDKROOT = macosx10.5;
 			};
 			name = Release;
 		};
