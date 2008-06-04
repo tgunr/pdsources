@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
+		5C49E0230DF61E9100F60306 /* carousel.sh in Resources */ = {isa = PBXBuildFile; fileRef = 5C49E0220DF61E9100F60306 /* carousel.sh */; };
 		5C7D44160DF3D39B003E5083 /* DC300Black.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C7D44150DF3D39B003E5083 /* DC300Black.png */; };
 		5C7D44180DF3D3A7003E5083 /* Device.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C7D44170DF3D3A7003E5083 /* Device.xib */; };
 		5C7D45A50DF3D4D8003E5083 /* DeviceWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C7D45A40DF3D4D8003E5083 /* DeviceWindowController.m */; };
@@ -30,6 +31,7 @@
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		32CA4F630368D1EE00C91783 /* Carousel_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Carousel_Prefix.pch; sourceTree = "<group>"; };
+		5C49E0220DF61E9100F60306 /* carousel.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = carousel.sh; path = ../CLI/carousel.sh; sourceTree = SOURCE_ROOT; };
 		5C7D44120DF3D32B003E5083 /* pms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pms.h; path = ../pms.h; sourceTree = SOURCE_ROOT; };
 		5C7D44150DF3D39B003E5083 /* DC300Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DC300Black.png; sourceTree = SOURCE_ROOT; };
 		5C7D44170DF3D3A7003E5083 /* Device.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Device.xib; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5C49E0220DF61E9100F60306 /* carousel.sh */,
 				5C7D44150DF3D39B003E5083 /* DC300Black.png */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
@@ -193,6 +196,7 @@
 				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
 				5C7D44160DF3D39B003E5083 /* DC300Black.png in Resources */,
 				5C7D44180DF3D3A7003E5083 /* Device.xib in Resources */,
+				5C49E0230DF61E9100F60306 /* carousel.sh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -247,6 +251,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Carousel_Prefix.pch;
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				PRODUCT_NAME = Carousel;

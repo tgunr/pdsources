@@ -267,12 +267,14 @@ Boolean carouselUIState = FALSE;
 
 - (void) newMediaDetected:(id)aNotification {
 	NSLogFunc;
-	NSArray *newMounts = [workSpace mountNewRemovableMedia];
-	NSString *lastMount = [newMounts lastObject];	
-	NSURL *discURL = [NSURL fileURLWithPath: lastMount];
-	[sourcePath setURL: discURL];
-	[self updateSourceUI:TRUE];	
-	
+	if( deviceWindow != NULL ) [deviceWindow newMediaDetected: aNotification];
+	else {
+		NSArray *newMounts = [workSpace mountNewRemovableMedia];
+		NSString *lastMount = [newMounts lastObject];	
+		NSURL *discURL = [NSURL fileURLWithPath: lastMount];
+		[sourcePath setURL: discURL];
+		[self updateSourceUI:TRUE];	
+	}
 }
 
 - (IBAction)sourcePathControlDoubleClick:(id)sender {
@@ -564,6 +566,13 @@ Boolean ledState = FALSE;
 	NSLogFunc;
 }
 
+- (void) setDeviceWindow:(DeviceWindowController*)window {
+	deviceWindow = window;
+}
+
+- (NSWorkspace*) workSpace {
+	return( workSpace );
+}
 
 @synthesize _title;
 @synthesize _slotNum;

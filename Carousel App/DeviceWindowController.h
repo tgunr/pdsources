@@ -14,10 +14,12 @@ void UserSystemBeep(void);
     IBOutlet NSComboBox *deviceList;
     IBOutlet NSTextField *diskTitle;
     IBOutlet NSTextField *slotText;
+	IBOutlet NSTextField *promptText;
 	
 	int				currentIndex;
 	DACALDeviceRef	currentDevice;
 	DACALSlotNum	currentSlot;
+	NSURL			*currentVolume;
 }
 - (IBAction)addDisk:(NSButton *)sender;
 - (IBAction)changeBox:(NSComboBox *)sender;
@@ -26,4 +28,10 @@ void UserSystemBeep(void);
 - (IBAction)moveTo:(NSButton *)sender;
 - (IBAction)removeDisk:(NSButton *)sender;
 - (IBAction)resetBox:(NSButton *)sender;
+- (IBAction)changeSlot:(NSTextField *)sender;
+- (IBAction)changeSlotDial:(NSSlider *)sender;
+
+- (void) newMediaDetected:(id)aNotification;
+- (void) setPrompt:(NSString*)newText;
+
 @end

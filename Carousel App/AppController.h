@@ -1,4 +1,5 @@
 #import <Cocoa/Cocoa.h>
+#import "DeviceWindowController.h"
 #import "dacallib.h"
 
 @interface AppController : NSObject {
@@ -39,6 +40,9 @@
 	IBOutlet NSWindow *appWindow;
 	IBOutlet NSImageView *windowIcon;
 	
+	// Driver Window
+	DeviceWindowController *deviceWindow;
+	
 	NSWorkspace *workSpace;
 	NSMutableArray*	deviceList;
 	
@@ -70,6 +74,8 @@
 - (void) updateExplainText:(NSPathControl *)pathControl withTextField:(NSTextField *)textField  withText:(NSString *)text;	
 - (void) updateSourceUI:(Boolean)enable;
 - (void) updateCarouselUI:(Boolean)enable ;
+- (void) setDeviceWindow:(DeviceWindowController*)window;
+- (NSWorkspace*) workSpace;
 
 @property (copy) NSString *_title;
 @property (copy) NSString *_slotNum;
