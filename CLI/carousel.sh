@@ -39,12 +39,12 @@ carousel [-h] [-v] [-c carousel] [-s slot] [-l level] [-x] [-n] [-t Title] [-d /
     -w Which title is at -c -s (which must be specified)
     -k Clear slot
 	-p Path to -c -s options
-	-N Next available slot, scans from 1 upward to first avaialable slot
+	-N Next available slot, scans -c from 1 upward to -s for first avaialable slot
 EOF
     exit 1
 }
 
-while getopts "hc:s:g:l:d:vt:nxzewkp" Option
+while getopts "hc:s:g:l:d:vt:nxzewkpN" Option
 do 
     case "$Option" in 
 	h ) usage ;;
@@ -63,6 +63,7 @@ do
 	w ) whichtitle=1 ;;
 	k ) clearslot=1 ;;
 	p ) pathtoslot=1 ;;
+	N ) nextslot=1 ;;
 	* ) echo "Unimplemented option chosen." 
 	    exit 1 ;;   # DEFAULT
     esac
@@ -71,6 +72,11 @@ shift $(($OPTIND - 1))
 
 carouselbase="$CAROUSELPATH/Carousel $carousel"
 carouselbaseslot="$carouselbase/Slot $slot"
+
+if [[ $debug == 1 ]] ; then
+	echo "$CMDNAME $@"
+	$DEBUGCMD=echo
+fi
 
 if [[ $whichtitle == 1 ]] ; then
 	if [[ -d "$carouselbaseslot" ]] ; then 
@@ -92,10 +98,22 @@ if [[ $pathtoslot == 1 ]] ; then
 	fi
 	exit 0
 fi
-	
-if [[ $debug == 1 ]] ; then
-	echo "$CMDNAME $@"
-	$DEBUGCMD=echo
+
+if [[ $nextslot == 1 ]] ; then
+	result=0
+	for (( i = 1; i < $slot; i++ )); do
+		if [[ ! -d "$carouselbase/Slot $i" ]] ; then
+			result=1
+			break
+		fi
+	done
+	if [[ $result == 1 ]] ; then
+		echo "$carouselbase/Slot $i"
+		exit 0
+	else
+		echo "$CMDNAME: No slot availiable up to slot $slot"
+		exit 1
+	fi
 fi
 
 if [[ ! "${volumename%\/*/}" =~ "/Volumes" ]] ; then
