@@ -36,13 +36,14 @@ carousel [-h] [-v] [-c carousel] [-s slot] [-l level] [-x] [-n] [-t Title] [-d /
     -g Get disc from carousel using path to carousel file/folder
     -z Show commands to execute but do not execute
     -e Eject volume on completion
-    -w Which title is -c -s (must be specified)
+    -w Which title is at -c -s (which must be specified)
     -k Clear slot
+	-p Path to -c -s options
 EOF
     exit 1
 }
 
-while getopts "hc:s:g:l:d:vt:nxzewk" Option
+while getopts "hc:s:g:l:d:vt:nxzewkp" Option
 do 
     case "$Option" in 
 	h ) usage ;;
@@ -60,6 +61,7 @@ do
 	e ) eject=1 ;;
 	w ) whichtitle=1 ;;
 	k ) clearslot=1 ;;
+	p ) pathtoslot=1 ;;
 	* ) echo "Unimplemented option chosen." 
 	    exit 1 ;;   # DEFAULT
     esac
@@ -67,12 +69,28 @@ done
 shift $(($OPTIND - 1))
 
 carouselbase="$CAROUSELPATH/Carousel $carousel"
+carouselbaseslot="$carouselbase/Slot $slot"
 
 if [[ $whichtitle == 1 ]] ; then
-	echo `basename "$carouselbase/Slot $slot/"*`
+	if [[ -d "$carouselbaseslot" ]] ; then 
+		ls -1 "$carouselbaseslot/"|head -1
+	else
+		echo "$CMDNAME: Error - carousel $carousel slot $slot not avaialable"
+		exit 1
+	fi
 	exit 0
 fi
 
+if [[ $pathtoslot == 1 ]] ; then
+	if [[ -d "$carouselbaseslot" ]] ; then 
+		echo "$carouselbaseslot"
+	else
+		echo "$CMDNAME: Error - carousel $carousel slot $slot not avaialable"
+		exit 1
+	fi
+	exit 0
+fi
+	
 if [[ $debug == 1 ]] ; then
 	echo "$CMDNAME $@"
 	$DEBUGCMD=echo
@@ -90,15 +108,22 @@ if [[ "$getfileslot" == "" ]] ; then
     fi
     
     echo "Creating $discname in Carousel $carousel Slot $slot"
-    carouselpathslot="$carouselbase/Slot $slot/$discname"
+    carouselpathslot="$carouselbase/Slot $slot/"
+    carouselpathslotdiscname="$carouselpathslot/$discname"
     
-    if [[ -d "$carouselbase/Slot $slot" ]] ; then 
-	/bin/rm -fr "$carouselbase/Slot $slot"
-	if [[ $clearslot == 1 ]] ; then # no need to continue
-	    exit 0 
-	fi
+    if [[ -d "$carouselpathslot" ]] ; then 
+		/bin/rm -fr "$carouselpathslot"
+		if [[ $clearslot == 1 ]] ; then # no need to continue
+			exit 0 
+		fi
     fi
-    
+
+    if [[ $nextincslot == 1 ]] ; then
+		for file in "$carouselpathslot" ; do
+		done
+		exit 0
+	fi
+	
     # no real disc, faking one from the a given -t title
     if [[ $nodisc == 1 ]] ; then
 	# has to be a -t title or can't proceed
@@ -106,11 +131,11 @@ if [[ "$getfileslot" == "" ]] ; then
 	    echo "No title! Use -t Tile when not labling from a disc"
 	    exit 1
 	fi
-	/bin/mkdir -p "$carouselpathslot"
-	$DEBUGCMD "$XATTRCMD" -w "com.polymicrosystems.carousel" $carousel  "$carouselpathslot"
-	$DEBUGCMD "$XATTRCMD" -w "com.polymicrosystems.carousel.slot" $slot "$carouselpathslot"
+	/bin/mkdir -p "$carouselpathslotdiscname"
+	$DEBUGCMD "$XATTRCMD" -w "com.polymicrosystems.carousel" $carousel  "$carouselpathslotdiscname"
+	$DEBUGCMD "$XATTRCMD" -w "com.polymicrosystems.carousel.slot" $slot "$carouselpathslotdiscname"
     else # real disc to index
-	$DEBUGCMD /bin/mkdir -p "$carouselpathslot"
+	$DEBUGCMD /bin/mkdir -p "$carouselpathslotdiscname"
 	
 	if [[ ! -d "$volumename" ]] ; then # oops, no disc name? whats this?
 	    echo "No volume named: $volumename"
@@ -122,23 +147,23 @@ if [[ "$getfileslot" == "" ]] ; then
 	fi
 	
 	if [[ "$verbose" != "" ]] ; then
-	    echo "Creating mirror folders in $carouselpathslot"
+	    echo "Creating mirror folders in $carouselpathslotdiscname"
 	fi
 
 	# make paths to folders in backend from disc accroding to desired level
-	$DEBUGCMD /usr/bin/find "$volumename" -type d $maxlevel -exec mkdir -p  "$carouselpathslot/{}" \;  $verbose
+	$DEBUGCMD /usr/bin/find "$volumename" -type d $maxlevel -exec mkdir -p  "$carouselpathslotdiscname/{}" \;  $verbose
 	
 	if [[ "$verbose" != "" ]] ; then
-	    echo "Creating mirror files in $carouselpathslot"
+	    echo "Creating mirror files in $carouselpathslotdiscname"
 	fi
 	
 	# create files for each folder we just created
-	$DEBUGCMD /usr/bin/find "$volumename" -type f $maxlevel -execdir touch -r {}  "$carouselpathslot/{}" \; $verbose
+	$DEBUGCMD /usr/bin/find "$volumename" -type f $maxlevel -execdir touch -r {}  "$carouselpathslotdiscname/{}" \; $verbose
 	
 	# set the attributes for each file
 	echo "Writing extended attributes, be patient"
-	$DEBUGCMD /usr/bin/find "$carouselpathslot" -print | awk  '{ printf "\"%s\"\n", $0 }' | xargs "$XATTRCMD" -w "com.polymicrosystems.carousel" $carousel
-	$DEBUGCMD /usr/bin/find "$carouselpathslot" -print | awk  '{ printf "\"%s\"\n", $0 }' | xargs "$XATTRCMD" -w "com.polymicrosystems.carousel.slot" $slot
+	$DEBUGCMD /usr/bin/find "$carouselpathslotdiscname" -print | awk  '{ printf "\"%s\"\n", $0 }' | xargs "$XATTRCMD" -w "com.polymicrosystems.carousel" $carousel
+	$DEBUGCMD /usr/bin/find "$carouselpathslotdiscname" -print | awk  '{ printf "\"%s\"\n", $0 }' | xargs "$XATTRCMD" -w "com.polymicrosystems.carousel.slot" $slot
 	
 	if [[ $eject == 1 ]] ; then
 	    $DEBUGCMD /usr/sbin/diskutil eject "$volumename"
