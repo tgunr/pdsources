@@ -84,51 +84,51 @@ if [[ $debug == 1 ]] ; then
 fi
 
 if [[ $whichtitle == 1 ]] ; then
-	if [[ -d "$carouselbaseslot" ]] ; then 
-		ls -1 "$carouselbaseslot/"|head -1
-		exit 0
-	else
-		echo "$CMDNAME: Error - carousel $carousel slot $slot not avaialable"
-		exit 1
-	fi
+    if [[ -d "$carouselbaseslot" ]] ; then 
+	ls -1 "$carouselbaseslot/"|head -1
 	exit 0
+    else
+	echo "$CMDNAME: Error - carousel $carousel slot $slot not avaialable"
+	exit 1
+    fi
+    exit 0
 fi
 
 if [[ $pathtoslot == 1 ]] ; then
-	if [[ -d "$carouselbaseslot" ]] ; then 
-		echo "$carouselbaseslot"
-	else
-		echo "$CMDNAME: Error - carousel $carousel slot $slot not avaialable"
-		exit 1
-	fi
-	exit 0
+    if [[ -d "$carouselbaseslot" ]] ; then 
+	echo "$carouselbaseslot"
+    else
+	echo "$CMDNAME: Error - carousel $carousel slot $slot not avaialable"
+	exit 1
+    fi
+    exit 0
 fi
 
 if [[ $nextslot == 1 ]] ; then
-	result=0
-	for (( i = 1; i < $slot; i++ )); do
-		if [[ ! -d "$carouselbase/Slot $i" ]] ; then
-			result=1
-			break
-		fi
-	done
-	if [[ $result == 1 ]] ; then
-		echo "$carouselbase/Slot $i"
-		exit 0
-	else
-		echo "$CMDNAME: No slot availiable up to slot $slot"
-		exit 1
+    result=0
+    for (( i = 1; i < $slot; i++ )); do
+	if [[ ! -d "$carouselbase/Slot $i" ]] ; then
+	    result=1
+	    break
 	fi
+    done
+    if [[ $result == 1 ]] ; then
+	echo "$carouselbase/Slot $i"
+	exit 0
+    else
+	echo "$CMDNAME: No slot availiable up to slot $slot"
+	exit 1
+    fi
 fi
 
 if [[ $clearslot == 1 ]] ; then 
     if [[ -d "$carouselbaseslot" ]] ; then 
-		/bin/rm -fr "$carouselbaseslot"
-	else
-		echo "$CMDNAME: No slot at slot $slot"
-		exit 1
-	fi
-	exit 0 
+	/bin/rm -fr "$carouselbaseslot"
+    else
+	echo "$CMDNAME: No slot at slot $slot"
+	exit 1
+    fi
+    exit 0 
 fi
 
 if [[ ! "${volumename%\/*/}" =~ "/Volumes" ]] ; then
@@ -139,18 +139,18 @@ fi
 # if not getting a slot, must be storing a slot
 if [[ "$getfileslot" == "" ]] ; then
     if [[ "$title" != "" ]] ; then 
-		discname="$title"
+	discname="$title"
     fi
     
-	if [[ $verbose == 1 ]] ; then
-	    echo "Creating $discname in Carousel $carousel Slot $slot"
-	fi
+    if [[ $verbose == 1 ]] ; then
+	echo "Creating $discname in Carousel $carousel Slot $slot"
+    fi
     carouselpathslotdiscname="$carouselbaseslot/$discname"
     
     if [[ -d "$carouselbaseslot" ]] ; then 
-		/bin/rm -fr "$carouselbaseslot"
+	/bin/rm -fr "$carouselbaseslot"
     fi
-
+    
     # no real disc, faking one from the a given -t title
     if [[ $nodisc == 1 ]] ; then
 	# has to be a -t title or can't proceed
@@ -176,7 +176,7 @@ if [[ "$getfileslot" == "" ]] ; then
 	if [[ "$verbose" != "" ]] ; then
 	    echo "Creating mirror folders in $carouselpathslotdiscname"
 	fi
-
+	
 	# make paths to folders in backend from disc accroding to desired level
 	$DEBUGCMD /usr/bin/find "$volumename" -type d $maxlevel -exec mkdir -p  "$carouselpathslotdiscname/{}" \;  $verbose
 	
@@ -188,7 +188,10 @@ if [[ "$getfileslot" == "" ]] ; then
 	$DEBUGCMD /usr/bin/find "$volumename" -type f $maxlevel -execdir touch -r {}  "$carouselpathslotdiscname/{}" \; $verbose
 	
 	# set the attributes for each file
-	echo "Writing extended attributes, be patient"
+	if [[ "$verbose" != "" ]] ; then
+		echo "Writing extended attributes, be patient"
+	fi
+	
 	$DEBUGCMD /usr/bin/find "$carouselpathslotdiscname" -print | awk  '{ printf "\"%s\"\n", $0 }' | xargs "$XATTRCMD" -w "com.polymicrosystems.carousel" $carousel
 	$DEBUGCMD /usr/bin/find "$carouselpathslotdiscname" -print | awk  '{ printf "\"%s\"\n", $0 }' | xargs "$XATTRCMD" -w "com.polymicrosystems.carousel.slot" $slot
 	
@@ -198,9 +201,9 @@ if [[ "$getfileslot" == "" ]] ; then
     fi
     
     if [[ $nomove == 0 ]] ; then
-		$DEBUGCMD "$DACALCMD" -s $slot
+	$DEBUGCMD "$DACALCMD" -s $slot
     fi
-
+    
     ((slot++))
     echo $slot > ~/.dacalslot
 else # get a disc from a slot
