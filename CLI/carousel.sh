@@ -1,4 +1,9 @@
 #!/bin/bash
+#  carouseltest
+#
+#  Created by Dave Carlton on 2008-05-31.
+#  Copyright (c) 2008 polyMicro Systems. All rights reserved.
+#
 CAROUSELPATH=${CAROUSELPATH:-"$HOME/Library/Carousels"}
 CMDPATH="`dirname $0`"
 CMDNAME="`basename $0`"
@@ -22,9 +27,8 @@ nodisc=0
 nomove=0
 eject=0
 
-function usage {
-    cat <<EOF
-carousel [-h] [-v] [-c carousel] [-s slot] [-l level] [-x] [-n] [-t Title] [-d /Volumes/disc] [-g Carousel/path]
+function usage () {
+echo "carousel usage
     -h Help
     -v Verbose
     -c Carousel number; default = 1
@@ -32,19 +36,19 @@ carousel [-h] [-v] [-c carousel] [-s slot] [-l level] [-x] [-n] [-t Title] [-d /
     -l Level to scan, 1 is default for top level, all for everything
     -x Do not issue move to slot command, useful if slot door is already down
     -n No disc, assumes -t, you are just specifying a title for the slot
-    -d Disc volume to scan, assumes /Volumes/disc, default is last mounted device e.g. DVD/CD you just mounted
-    -g Get disc from carousel using path to carousel file/folder
-    -z Show commands to execute but do not execute
+    -d Disc volume to scan i.e. /Volumes/disc
+    -g Get disc from carousel using path to carousel file|folder
+    -D Show commands to execute but do not execute
     -e Eject volume on completion
     -w Which title is at -c -s (which must be specified)
     -k Clear slot
-	-p Path to -c -s options
-	-N Next available slot, scans -c from 1 upward to -s for first avaialable slot
-EOF
-    exit 1
+    -p Path to -c -s options
+    -N Next available slot, scans -c from 1 upward to -s for first avaialable slot
+    -X Turn on bash debug flag"
+   exit 1
 }
 
-while getopts "hc:s:g:l:d:vt:nxzewkpN" Option
+while getopts "hc:s:g:l:d:vt:nxDewkpNX" Option
 do 
     case "$Option" in 
 	h ) usage ;;
@@ -58,12 +62,14 @@ do
 	d ) volumename="$OPTARG" 
 	    discname="`basename $volumename`";;
 	g ) getfileslot="$OPTARG" ;;
-	z ) ${DEBUGCMD-echo} ;;
+	D ) DEBUGCMD=echo 
+		debug=1 ;;
 	e ) eject=1 ;;
 	w ) whichtitle=1 ;;
 	k ) clearslot=1 ;;
 	p ) pathtoslot=1 ;;
 	N ) nextslot=1 ;;
+	X ) set -x;;
 	* ) echo "Unimplemented option chosen." 
 	    exit 1 ;;   # DEFAULT
     esac
@@ -75,7 +81,6 @@ carouselbaseslot="$carouselbase/Slot $slot"
 
 if [[ $debug == 1 ]] ; then
 	echo "$CMDNAME $@"
-	$DEBUGCMD=echo
 fi
 
 if [[ $whichtitle == 1 ]] ; then
@@ -116,6 +121,16 @@ if [[ $nextslot == 1 ]] ; then
 	fi
 fi
 
+if [[ $clearslot == 1 ]] ; then 
+    if [[ -d "$carouselbaseslot" ]] ; then 
+		/bin/rm -fr "$carouselbaseslot"
+	else
+		echo "$CMDNAME: No slot at slot $slot"
+		exit 1
+	fi
+	exit 0 
+fi
+
 if [[ ! "${volumename%\/*/}" =~ "/Volumes" ]] ; then
     echo "Source is not a volume: $volumename"
     echo 1
@@ -124,26 +139,18 @@ fi
 # if not getting a slot, must be storing a slot
 if [[ "$getfileslot" == "" ]] ; then
     if [[ "$title" != "" ]] ; then 
-	discname="$title"
+		discname="$title"
     fi
     
-    echo "Creating $discname in Carousel $carousel Slot $slot"
-    carouselpathslot="$carouselbase/Slot $slot/"
-    carouselpathslotdiscname="$carouselpathslot/$discname"
+	if [[ $verbose == 1 ]] ; then
+	    echo "Creating $discname in Carousel $carousel Slot $slot"
+	fi
+    carouselpathslotdiscname="$carouselbaseslot/$discname"
     
-    if [[ -d "$carouselpathslot" ]] ; then 
-		/bin/rm -fr "$carouselpathslot"
-		if [[ $clearslot == 1 ]] ; then # no need to continue
-			exit 0 
-		fi
+    if [[ -d "$carouselbaseslot" ]] ; then 
+		/bin/rm -fr "$carouselbaseslot"
     fi
 
-    if [[ $nextincslot == 1 ]] ; then
-		for file in "$carouselpathslot" ; do
-		done
-		exit 0
-	fi
-	
     # no real disc, faking one from the a given -t title
     if [[ $nodisc == 1 ]] ; then
 	# has to be a -t title or can't proceed
@@ -191,7 +198,7 @@ if [[ "$getfileslot" == "" ]] ; then
     fi
     
     if [[ $nomove == 0 ]] ; then
-	$DEBUGCMD "$DACALCMD" -s $slot
+		$DEBUGCMD "$DACALCMD" -s $slot
     fi
 
     ((slot++))
