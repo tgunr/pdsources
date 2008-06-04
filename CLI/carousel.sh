@@ -1,14 +1,13 @@
-#!/bin/bash
+#!/bin/bash -x
 CAROUSELPATH=${CAROUSELPATH:-"$HOME/Library/Carousels"}
 CMDPATH="`dirname $0`"
+CMDNAME="`basename $0`"
 DACALCMD="$CMDPATH/dacal" 
 # XATTRCMD="$CMDPATH/xattr"
 XATTRCMD="/usr/bin/xattr"
 
-echo "$@"
-
-volumename="/Volumes/Unititled"
-device="`df|tail -n 1|cut -c1-18`"
+# some assumptions
+volumename="/Volumes/Untitled"
 discname=`basename "$volumename"`
 
 if [[ ! -e ~/.dacalslot ]] ; then 
@@ -21,7 +20,6 @@ level=1
 carousel=1
 nodisc=0
 nomove=0
-debug=0
 eject=0
 
 function usage {
@@ -37,11 +35,14 @@ carousel [-h] [-v] [-c carousel] [-s slot] [-l level] [-x] [-n] [-t Title] [-d /
     -d Disc volume to scan, assumes /Volumes/disc, default is last mounted device e.g. DVD/CD you just mounted
     -g Get disc from carousel using path to carousel file/folder
     -z Show commands to execute but do not execute
+    -e Eject volume on completion
+    -w Which title is -c -s (must be specified)
+    -k Clear slot
 EOF
     exit 1
 }
 
-while getopts "hc:s:g:l:d:vt:nxze" Option
+while getopts "hc:s:g:l:d:vt:nxzewk" Option
 do 
     case "$Option" in 
 	h ) usage ;;
@@ -52,60 +53,70 @@ do
 	t ) title="$OPTARG" ;;
 	n ) nodisc=1 ;;
 	x ) nomove=1 ;;
-	d ) volumename="$OPTARG" ;;
+	d ) volumename="$OPTARG" 
+	    discname="`basename $volumename`";;
 	g ) getfileslot="$OPTARG" ;;
-	z ) debug=1 ;;
+	z ) ${DEBUGCMD-echo} ;;
 	e ) eject=1 ;;
+	w ) whichtitle=1 ;;
+	k ) clearslot=1 ;;
 	* ) echo "Unimplemented option chosen." 
 	    exit 1 ;;   # DEFAULT
     esac
 done
 shift $(($OPTIND - 1))
 
-if [[ ! "${volumename%\/*/}" =~ "/Volumes" ]] ; then
-    echo "Source is not a volume: $volumename"
-    exit 1
+carouselbase="$CAROUSELPATH/Carousel $carousel"
+
+if [[ $whichtitle == 1 ]] ; then
+	echo `basename "$carouselbase/Slot $slot/"*`
+	exit 0
 fi
 
+if [[ $debug == 1 ]] ; then
+	echo "$CMDNAME $@"
+	$DEBUGCMD=echo
+fi
+
+if [[ ! "${volumename%\/*/}" =~ "/Volumes" ]] ; then
+    echo "Source is not a volume: $volumename"
+    echo 1
+fi
+
+# if not getting a slot, must be storing a slot
 if [[ "$getfileslot" == "" ]] ; then
     if [[ "$title" != "" ]] ; then 
 	discname="$title"
     fi
-
-    echo "Creating $discname for Carousel $carousel Slot $slot"
-
-    carouselbase="$CAROUSELPATH/Carousel $carousel"
+    
+    echo "Creating $discname in Carousel $carousel Slot $slot"
     carouselpathslot="$carouselbase/Slot $slot/$discname"
-
+    
     if [[ -d "$carouselbase/Slot $slot" ]] ; then 
 	/bin/rm -fr "$carouselbase/Slot $slot"
+	if [[ $clearslot == 1 ]] ; then # no need to continue
+	    exit 0 
+	fi
     fi
-
-    if [[ $nodisc = 1 ]] ; then
+    
+    # no real disc, faking one from the a given -t title
+    if [[ $nodisc == 1 ]] ; then
+	# has to be a -t title or can't proceed
 	if [[ "$title" == "" ]] ; then
 	    echo "No title! Use -t Tile when not labling from a disc"
 	    exit 1
 	fi
-	if [[ $debug == 1 ]] ; then
-	    echo "/binmkdir -p $carouselpathslot"
-	    echo "$XATTRCMD -w com.polymicrosystems.carousel $carousel $carouselpathslot"
-	    echo "$XATTRCMD -w com.polymicrosystems.carousel.slot $slot $carouselpathslot"
-	else
-	    /bin/mkdir -p "$carouselpathslot"
-	    "$XATTRCMD" -w "com.polymicrosystems.carousel" $carousel  "$carouselpathslot"
-	    "$XATTRCMD" -w "com.polymicrosystems.carousel.slot" $slot "$carouselpathslot"
-	fi
-    else
-	if [[ $debug == 1 ]] ; then
-	    echo "/bin/mkdir -p $carouselpathslot"
-	else
-	    /bin/mkdir -p "$carouselpathslot"
-	fi
-	if [[ ! -d "$volumename" ]] ; then
+	/bin/mkdir -p "$carouselpathslot"
+	$DEBUGCMD "$XATTRCMD" -w "com.polymicrosystems.carousel" $carousel  "$carouselpathslot"
+	$DEBUGCMD "$XATTRCMD" -w "com.polymicrosystems.carousel.slot" $slot "$carouselpathslot"
+    else # real disc to index
+	$DEBUGCMD /bin/mkdir -p "$carouselpathslot"
+	
+	if [[ ! -d "$volumename" ]] ; then # oops, no disc name? whats this?
 	    echo "No volume named: $volumename"
 	    exit 1
 	fi
-		
+	
 	if [[ "$level" != "all" ]] ; then
 	    maxlevel="-maxdepth $level"
 	fi
@@ -114,55 +125,35 @@ if [[ "$getfileslot" == "" ]] ; then
 	    echo "Creating mirror folders in $carouselpathslot"
 	fi
 
-	if [[ $debug == 1 ]] ; then
-	    echo "/usr/bin/find $volumename -type d $maxlevel -exec mkdir -p  $carouselpathslot/{} \;  $verbose"
-	else
-	    /usr/bin/find "$volumename" -type d $maxlevel -exec mkdir -p  "$carouselpathslot/{}" \;  $verbose
-	fi
+	# make paths to folders in backend from disc accroding to desired level
+	$DEBUGCMD /usr/bin/find "$volumename" -type d $maxlevel -exec mkdir -p  "$carouselpathslot/{}" \;  $verbose
+	
 	if [[ "$verbose" != "" ]] ; then
 	    echo "Creating mirror files in $carouselpathslot"
 	fi
-
-	if [[ $debug == 1 ]] ; then
-	    echo "/usr/bin/find . -type f $maxlevel -exec touch -r {}  $carouselpathslot/{} \; $verbose"
-	else
-	    /usr/bin/find "$volumename" -type f $maxlevel -execdir touch -r {}  "$carouselpathslot/{}" \; $verbose
-	fi
-		
+	
+	# create files for each folder we just created
+	$DEBUGCMD /usr/bin/find "$volumename" -type f $maxlevel -execdir touch -r {}  "$carouselpathslot/{}" \; $verbose
+	
+	# set the attributes for each file
 	echo "Writing extended attributes, be patient"
-	if [[ $debug == 1 ]] ; then
-	    echo "/usr/bin/find  $carouselpathslot -print | awk  '{ printf \"%s\"\n, $0 }' | xargs $XATTRCMD -w com.polymicrosystems.carousel $carousel"
-	    echo "/usr/bin/find  $carouselpathslot -print | awk  '{ printf \"%s\"\n, $0 }' | xargs $XATTRCMD -w com.polymicrosystems.carousel.slot $slot"
-	    if [[ $eject == 1 ]] ; then
-		echo "/usr/sbin/diskutil eject $volumename"
-	    fi
-	else
-	    /usr/bin/find "$carouselpathslot" -print | awk  '{ printf "\"%s\"\n", $0 }' | xargs "$XATTRCMD" -w "com.polymicrosystems.carousel" $carousel
-	    /usr/bin/find "$carouselpathslot" -print | awk  '{ printf "\"%s\"\n", $0 }' | xargs "$XATTRCMD" -w "com.polymicrosystems.carousel.slot" $slot
-	    if [[ $eject == 1 ]] ; then
-		/usr/sbin/diskutil eject "$volumename"
-	    fi
+	$DEBUGCMD /usr/bin/find "$carouselpathslot" -print | awk  '{ printf "\"%s\"\n", $0 }' | xargs "$XATTRCMD" -w "com.polymicrosystems.carousel" $carousel
+	$DEBUGCMD /usr/bin/find "$carouselpathslot" -print | awk  '{ printf "\"%s\"\n", $0 }' | xargs "$XATTRCMD" -w "com.polymicrosystems.carousel.slot" $slot
+	
+	if [[ $eject == 1 ]] ; then
+	    $DEBUGCMD /usr/sbin/diskutil eject "$volumename"
 	fi
     fi
     
     if [[ $nomove == 0 ]] ; then
-	if [[ $debug == 1 ]] ; then
-	    echo "$DACALCMD -s $slot"
-	else
-	    "$DACALCMD" -s $slot
-	fi
+	$DEBUGCMD "$DACALCMD" -s $slot
     fi
 
     ((slot++))
     echo $slot > ~/.dacalslot
-else
-    set -x
+else # get a disc from a slot
     carousel = `"$XATTRCMD" -p com.polymicrosystems.carousel  "$getfileslot"`
     slot = `"$XATTRCMD" -p com.polymicrosystems.carousel.slot  "$getfileslot"`
-    if [[ $debug == 1 ]] ; then
-	echo "$DACALCMD -s $getslotnum"
-    else
-	"$DACALCMD" -c $carousel -s $slot
-    fi
+    $DEBUGCMD "$DACALCMD" -c $carousel -s $slot
 fi
 exit 0

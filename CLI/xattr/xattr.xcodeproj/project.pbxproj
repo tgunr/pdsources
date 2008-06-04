@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0F0401830D48E7310083A596 /* support.c in Sources */ = {isa = PBXBuildFile; fileRef = 0F0401820D48E7310083A596 /* support.c */; };
 		0F459DBB0D4647D10058DF34 /* xattrfunctions.c in Sources */ = {isa = PBXBuildFile; fileRef = 0F459DB90D4647D10058DF34 /* xattrfunctions.c */; };
 		8DD76FAC0486AB0100D96B5E /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 08FB7796FE84155DC02AAC07 /* main.c */; settings = {ATTRIBUTES = (); }; };
 		8DD76FB00486AB0100D96B5E /* xattr.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6A0FF2C0290799A04C91782 /* xattr.1 */; };
@@ -28,8 +27,6 @@
 
 /* Begin PBXFileReference section */
 		08FB7796FE84155DC02AAC07 /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
-		0F0401810D48E7310083A596 /* support.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = support.h; sourceTree = "<group>"; };
-		0F0401820D48E7310083A596 /* support.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = support.c; sourceTree = "<group>"; };
 		0F459DB90D4647D10058DF34 /* xattrfunctions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = xattrfunctions.c; sourceTree = "<group>"; };
 		0F459DBA0D4647D10058DF34 /* xattrfunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xattrfunctions.h; sourceTree = "<group>"; };
 		0FB4FCB30D5214F2001A8CC7 /* COPYING.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = COPYING.txt; sourceTree = "<group>"; };
@@ -63,8 +60,6 @@
 			children = (
 				0F459DB90D4647D10058DF34 /* xattrfunctions.c */,
 				0F459DBA0D4647D10058DF34 /* xattrfunctions.h */,
-				0F0401810D48E7310083A596 /* support.h */,
-				0F0401820D48E7310083A596 /* support.c */,
 				08FB7796FE84155DC02AAC07 /* main.c */,
 			);
 			name = Source;
@@ -132,7 +127,6 @@
 			files = (
 				8DD76FAC0486AB0100D96B5E /* main.c in Sources */,
 				0F459DBB0D4647D10058DF34 /* xattrfunctions.c in Sources */,
-				0F0401830D48E7310083A596 /* support.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
