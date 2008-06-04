@@ -39,6 +39,7 @@ carousel [-h] [-v] [-c carousel] [-s slot] [-l level] [-x] [-n] [-t Title] [-d /
     -w Which title is at -c -s (which must be specified)
     -k Clear slot
 	-p Path to -c -s options
+	-N Next available slot, scans from 1 upward to first avaialable slot
 EOF
     exit 1
 }
@@ -74,6 +75,7 @@ carouselbaseslot="$carouselbase/Slot $slot"
 if [[ $whichtitle == 1 ]] ; then
 	if [[ -d "$carouselbaseslot" ]] ; then 
 		ls -1 "$carouselbaseslot/"|head -1
+		exit 0
 	else
 		echo "$CMDNAME: Error - carousel $carousel slot $slot not avaialable"
 		exit 1
