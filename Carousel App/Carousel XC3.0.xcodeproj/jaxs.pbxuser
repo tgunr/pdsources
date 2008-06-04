@@ -113,8 +113,8 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 234252578;
-			PBXWorkspaceStateSaveDate = 234252578;
+			PBXPerProjectTemplateStateSaveDate = 234283280;
+			PBXWorkspaceStateSaveDate = 234283280;
 		};
 		sourceControlManager = 5C97B8310DF3B9760052BF75 /* Source Control */;
 		userBuildSettings = {
@@ -138,9 +138,9 @@
 	};
 	5C49E0220DF61E9100F60306 /* carousel.sh */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1072, 2240}}";
-			sepNavSelRange = "{1881, 0}";
-			sepNavVisRange = "{1407, 930}";
+			sepNavIntBoundsRect = "{{0, 0}, {1072, 2870}}";
+			sepNavSelRange = "{3533, 0}";
+			sepNavVisRange = "{2049, 900}";
 			sepNavWindowFrame = "{{61, 94}, {1131, 737}}";
 		};
 	};
@@ -154,17 +154,17 @@
 	};
 	5C7D45A30DF3D4D8003E5083 /* DeviceWindowController.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {813, 608}}";
-			sepNavSelRange = "{687, 0}";
-			sepNavVisRange = "{0, 1162}";
+			sepNavIntBoundsRect = "{{0, 0}, {813, 658}}";
+			sepNavSelRange = "{78, 0}";
+			sepNavVisRange = "{0, 1344}";
 			sepNavWindowFrame = "{{514, 40}, {872, 736}}";
 		};
 	};
 	5C7D45A40DF3D4D8003E5083 /* DeviceWindowController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {813, 3514}}";
-			sepNavSelRange = "{90, 19}";
-			sepNavVisRange = "{218, 1320}";
+			sepNavIntBoundsRect = "{{0, 0}, {860, 3836}}";
+			sepNavSelRange = "{6826, 41}";
+			sepNavVisRange = "{6532, 1021}";
 			sepNavWindowFrame = "{{113, 64}, {872, 736}}";
 		};
 	};
@@ -212,32 +212,32 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {813, 1176}}";
 			sepNavSelRange = "{2435, 0}";
-			sepNavVisRange = "{1227, 1293}";
+			sepNavVisRange = "{0, 1321}";
 			sepNavWindowFrame = "{{435, 72}, {872, 736}}";
 		};
 	};
 	756837310DEB1C65001C6F01 /* AppController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {722, 8274}}";
-			sepNavSelRange = "{3018, 48}";
-			sepNavVisRange = "{2588, 945}";
+			sepNavIntBoundsRect = "{{0, 0}, {932, 8484}}";
+			sepNavSelRange = "{1818, 50}";
+			sepNavVisRange = "{1285, 998}";
 			sepNavWindowFrame = "{{153, 30}, {872, 736}}";
 		};
 	};
 	75683A2B0DEC3F32001C6F01 /* dacallib.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1072, 1092}}";
-			sepNavSelRange = "{2484, 0}";
-			sepNavVisRange = "{0, 1072}";
+			sepNavIntBoundsRect = "{{0, 0}, {1072, 1106}}";
+			sepNavSelRange = "{2671, 0}";
+			sepNavVisRange = "{778, 2494}";
 			sepNavWindowFrame = "{{84, 73}, {1131, 737}}";
 		};
 	};
 	75683A2C0DEC3F32001C6F01 /* dacallib.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1046, 13426}}";
-			sepNavSelRange = "{21052, 0}";
-			sepNavVisRange = "{20434, 1146}";
-			sepNavWindowFrame = "{{1, 31}, {1105, 831}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1046, 13132}}";
+			sepNavSelRange = "{7039, 0}";
+			sepNavVisRange = "{6094, 1511}";
+			sepNavWindowFrame = "{{26, 14}, {1105, 831}}";
 		};
 	};
 	8D1107260486CEB800E47090 /* Carousel */ = {

@@ -1,8 +1,23 @@
 #import "DeviceWindowController.h"
 #import "AppController.h"
 
-void UserSystemBeep(void) {
-	AlertSoundPlay();
+Boolean prefAutoEject = TRUE;
+Boolean prefPlaySound = TRUE;
+
+enum {
+	kSoundAlert = 0,
+	kSoundError = 11,
+	kSoundTrash = 13,
+	kSoundHappy = 22
+};
+
+void PrefPlaySound(int theSound) {
+	if( !prefPlaySound ) return;
+
+	if( theSound == kSoundAlert ) AlertSoundPlay();
+	else AlertSoundPlayCustomSound( (SystemSoundActionID)theSound );
+
+	return;
 }
 
 @implementation DeviceWindowController
@@ -17,25 +32,7 @@ void UserSystemBeep(void) {
 	CFRelease( uuidString );
 }
 
-
-- (NSString*)diskTitleForSlot:(int)theSlot {
-	return( (NSString*)NULL );
-}
-
-- (void)selectDeviceIndex:(int)newBox {
-
-	currentIndex = newBox;
-	[deviceList selectItemAtIndex:(currentIndex)];
-	if(currentDevice != 0) CFRelease( (void*)currentDevice );
-	currentDevice = (DACALDeviceRef)DACALCommandCopyUUID( currentIndex+1, NULL );
-	
-	[self setPrompt:NULL];
-	[self logReport:@"Selection Changed. "];
-	
-}
-
 - (void) updateSourceUI:(BOOL)enable {
-	NSLogFunc;
 	if((enable) && (currentVolume != NULL)) {
 			NSString * sTitle = [currentVolume path];
 			NSArray *pathComponents = [sTitle pathComponents];
@@ -60,6 +57,23 @@ void UserSystemBeep(void) {
 	[buttonSlotDial setIntValue:currentSlot];
 }
 
+- (void)selectDeviceIndex:(int)newBox {
+	currentIndex = newBox;
+	[deviceList selectItemAtIndex:(currentIndex)];
+	if(currentDevice != 0) CFRelease( (void*)currentDevice );
+	currentDevice = (DACALDeviceRef)DACALCommandCopyUUID( currentIndex+1, NULL );
+	
+	if(currentDevice != 0) {
+		[buttonSlotDial setMaxValue:DACALCommandGetSlotCount( currentDevice )];
+		[slotText setIntValue: [buttonSlotDial intValue]];
+		[self updateCurrentSlot];
+	}
+	
+	[self setPrompt:NULL];
+	[self logReport:@"Selection Changed. "];
+	
+}
+
 - (void) setPrompt:(NSString*)newText {
 
 	if( newText == NULL ) {
@@ -67,6 +81,7 @@ void UserSystemBeep(void) {
 		newText = [NSString stringWithFormat:@"%i carousel%@ found.", count, (count==1) ? @"" : @"s"];
 	}
 	[promptText setStringValue:newText];
+	[promptText setNeedsDisplay];
 }
 
 - (void)updateDeviceList {
@@ -132,7 +147,6 @@ void UserSystemBeep(void) {
 }
 
 - (void) newMediaDetected:(id)aNotification {
-	NSLogFunc;
 	NSArray *newMounts = [[((AppController*)[[NSApplication sharedApplication] delegate]) workSpace] mountNewRemovableMedia];
 	NSString *lastMount = [newMounts lastObject];	
 	currentVolume = [[NSURL fileURLWithPath: lastMount] retain];
@@ -142,34 +156,34 @@ void UserSystemBeep(void) {
 
 - (IBAction)addDisk:(NSButton *)sender {
 
-	DACALCount	indexLevel = 1;
-	DACALResult	indexResult;
+	DACALCount		indexLevel = 1;
+	DACALResult		indexResult;
+	DACALSlotNum	indexSlot = [slotText intValue];
 
-	NSLogFunc;
-	
 	[busyIndicator setHidden:FALSE];
 	[busyIndicator startAnimation:self];
 	[self setPrompt:@"Indexing source disk..."];
 
-	indexResult = DACALSlotCreateIndex( currentDevice, [slotText intValue], (CFStringRef)[diskTitle stringValue], indexLevel, (CFURLRef)currentVolume );
-	// !!!:davec:20080531 Need alert here if bad result
+	indexResult = DACALSlotCreateIndex( currentDevice, indexSlot, (CFStringRef)[diskTitle stringValue], indexLevel, (CFURLRef)currentVolume );
 	if( indexResult == 0 ) {
 		[self moveTo:sender];
-		[slotText setIntValue:[slotText intValue] + 1];
-		// !!!:jaxs:20080603 Need to check slot # bounds
-		[buttonSlotDial setIntValue:[slotText intValue]];
+		indexSlot++;											// Ideally this would find the next *empty* slot.
+		if( indexSlot > DACALCommandGetSlotCount(currentDevice) ) indexSlot = 1;
+		[slotText setIntValue:indexSlot];	
+		[buttonSlotDial setIntValue:indexSlot];
 		[self updateCurrentSlot];
 
-		//if autoeject!
-		if( currentVolume != NULL ) {
+		if( (prefAutoEject) && (currentVolume != NULL) ) {
 			[[((AppController*)[[NSApplication sharedApplication] delegate]) workSpace] unmountAndEjectDeviceAtPath: [currentVolume path]];
 			currentVolume = NULL;
 			[self updateSourceUI:FALSE];
 		}
 		
 		[self setPrompt:@"Disk index saved."];
+		PrefPlaySound( kSoundHappy );
 	} else {
-		[self setPrompt:@"Error: Disk index was not saved."];	
+		[self setPrompt:@"Error: Disk index was not saved."];
+		PrefPlaySound( kSoundError );	
 	}
 	
 	[busyIndicator setHidden:TRUE];
@@ -204,7 +218,7 @@ void UserSystemBeep(void) {
 
 - (IBAction)diskInfo:(NSButton *)sender {
     NSLogFunc;
-	UserSystemBeep();
+	PrefPlaySound( kSoundAlert );
 	[self setPrompt:@"Unimplemented Function!"];
 }
 
@@ -223,6 +237,9 @@ void UserSystemBeep(void) {
 	[self logReport:@"Command: Delete Slot "];
 	
 	DACALSlotDeleteIndex( currentDevice, currentSlot );
+
+	PrefPlaySound( kSoundTrash );	
+
 	[self updateCurrentSlot];
 	[self setPrompt:@"Slot cleared."];
 }

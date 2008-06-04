@@ -1,5 +1,10 @@
+#ifndef __DEVICEWINDOWCONTROLLER__
+#define __DEVICEWINDOWCONTROLLER__
 
-void UserSystemBeep(void);
+extern void PrefPlaySound(int theSound);
+
+extern Boolean prefAutoEject;
+extern Boolean prefPlaySound;
 
 @interface DeviceWindowController : NSObject {
     IBOutlet NSProgressIndicator *busyIndicator;
@@ -35,3 +40,7 @@ void UserSystemBeep(void);
 - (void) setPrompt:(NSString*)newText;
 
 @end
+
+#endif //__DEVICEWINDOWCONTROLLER__
+
+
