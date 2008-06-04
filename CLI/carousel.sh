@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash
 CAROUSELPATH=${CAROUSELPATH:-"$HOME/Library/Carousels"}
 CMDPATH="`dirname $0`"
 CMDNAME="`basename $0`"
