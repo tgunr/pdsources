@@ -60,6 +60,10 @@ extern DACALSlotNum		DACALCommandDVDGetSlot( DACALDeviceRef deviceID, DACALResul
 extern DACALResult		DACALCommandDVDMoveTo( DACALDeviceRef deviceID, DACALSlotNum newSlot );
 extern DACALResult		DACALCommandDVDEject( DACALDeviceRef deviceID );
 
+extern DACALResult		DACALSlotCreateIndex( DACALDeviceRef deviceID, DACALSlotNum slotNum, CFStringRef slotTitle, DACALCount indexLevel, CFURLRef sourcePath );
+extern DACALResult		DACALSlotDeleteIndex( DACALDeviceRef deviceID, DACALSlotNum slotNum );
+extern CFStringRef		DACALSlotCopyTitle( DACALDeviceRef deviceID, DACALSlotNum slotNum, DACALResult* outError );
+
 extern DACALResult		DACALDevicesInitialize( void );
 extern DACALResult		DACALDevicesFinalize( void );
 extern DACALCount		DACALDevicesGetCount( void );
