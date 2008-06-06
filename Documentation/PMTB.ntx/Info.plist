@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>coverPage</key>
+	<false/>
+	<key>currentSearchSite</key>
+	<string>Google</string>
+	<key>drawerContentSize</key>
+	<string>170.000000 685.000000</string>
+	<key>drawerIsOpen</key>
+	<true/>
+	<key>drawerViewHeights</key>
+	<dict>
+		<key>archivedObject</key>
+		<array>
+			<real>209</real>
+			<real>331</real>
+			<real>94</real>
+			<real>0.0</real>
+			<real>0.0</real>
+			<real>0.0</real>
+			<real>0.0</real>
+			<real>0.0</real>
+		</array>
+		<key>objectId</key>
+		<integer>1</integer>
+	</dict>
+	<key>expandedContentsRows</key>
+	<dict>
+		<key>archivedObject</key>
+		<array>
+			<integer>0</integer>
+			<integer>1</integer>
+		</array>
+		<key>objectId</key>
+		<integer>0</integer>
+	</dict>
+	<key>pageId</key>
+	<integer>7</integer>
+	<key>recentSearches</key>
+	<dict>
+		<key>archivedObject</key>
+		<array/>
+		<key>objectId</key>
+		<integer>2</integer>
+	</dict>
+	<key>rulerVisible</key>
+	<false/>
+	<key>slideViewZoom</key>
+	<integer>100</integer>
+	<key>toolBarVisible</key>
+	<true/>
+	<key>viewZoom</key>
+	<integer>100</integer>
+	<key>windowRect</key>
+	<string>1422.000000 639.000000 668.000000 714.000000</string>
+</dict>
+</plist>
