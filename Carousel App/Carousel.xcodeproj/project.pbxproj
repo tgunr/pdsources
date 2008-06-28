@@ -12,7 +12,7 @@
 		755D89D50DF0B6CB001EB047 /* xattr in Resources */ = {isa = PBXBuildFile; fileRef = 755D89D40DF0B6CB001EB047 /* xattr */; };
 		755D8AB80DF185A7001EB047 /* DC300Beige.icns in Resources */ = {isa = PBXBuildFile; fileRef = 755D8AB70DF185A7001EB047 /* DC300Beige.icns */; };
 		755D8ABA0DF185FA001EB047 /* DC300Black.icns in Resources */ = {isa = PBXBuildFile; fileRef = 755D8AB90DF185FA001EB047 /* DC300Black.icns */; };
-		755D8D720DF236C1001EB047 /* carousel in Resources */ = {isa = PBXBuildFile; fileRef = 755D8D710DF236C1001EB047 /* carousel */; };
+		755D8D720DF236C1001EB047 /* carousel.sh in Resources */ = {isa = PBXBuildFile; fileRef = 755D8D710DF236C1001EB047 /* carousel.sh */; };
 		756837320DEB1C65001C6F01 /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 756837310DEB1C65001C6F01 /* AppController.m */; };
 		756837400DEB223B001C6F01 /* P10670A-1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7568373F0DEB223B001C6F01 /* P10670A-1.jpg */; };
 		756838410DEB6215001C6F01 /* DiscRecording.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 756838400DEB6215001C6F01 /* DiscRecording.framework */; };
@@ -33,11 +33,12 @@
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		32CA4F630368D1EE00C91783 /* Carousel_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Carousel_Prefix.pch; sourceTree = "<group>"; };
+		752567B90E1565E8008C463D /* pms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pms.h; path = ../pms.h; sourceTree = SOURCE_ROOT; };
 		755D89A80DF0ABFD001EB047 /* dacal */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = dacal; sourceTree = "<group>"; };
 		755D89D40DF0B6CB001EB047 /* xattr */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = xattr; sourceTree = "<group>"; };
 		755D8AB70DF185A7001EB047 /* DC300Beige.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = DC300Beige.icns; sourceTree = "<group>"; };
 		755D8AB90DF185FA001EB047 /* DC300Black.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = DC300Black.icns; sourceTree = "<group>"; };
-		755D8D710DF236C1001EB047 /* carousel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = carousel; path = ../CLI/carousel; sourceTree = SOURCE_ROOT; };
+		755D8D710DF236C1001EB047 /* carousel.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = carousel.sh; path = ../CLI/carousel.sh; sourceTree = SOURCE_ROOT; };
 		756837300DEB1C65001C6F01 /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppController.h; sourceTree = "<group>"; };
 		756837310DEB1C65001C6F01 /* AppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppController.m; sourceTree = "<group>"; };
 		7568373F0DEB223B001C6F01 /* P10670A-1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "P10670A-1.jpg"; sourceTree = "<group>"; };
@@ -120,7 +121,8 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
-				755D8D710DF236C1001EB047 /* carousel */,
+				752567B90E1565E8008C463D /* pms.h */,
+				755D8D710DF236C1001EB047 /* carousel.sh */,
 				75683A2B0DEC3F32001C6F01 /* dacallib.h */,
 				75683A2C0DEC3F32001C6F01 /* dacallib.m */,
 				32CA4F630368D1EE00C91783 /* Carousel_Prefix.pch */,
@@ -203,7 +205,7 @@
 				755D89D50DF0B6CB001EB047 /* xattr in Resources */,
 				755D8AB80DF185A7001EB047 /* DC300Beige.icns in Resources */,
 				755D8ABA0DF185FA001EB047 /* DC300Black.icns in Resources */,
-				755D8D720DF236C1001EB047 /* carousel in Resources */,
+				755D8D720DF236C1001EB047 /* carousel.sh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
