@@ -7,54 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		758C745A0DE61A16002EBB07 /* CarouselClass.xcclassmodel in Resources */ = {isa = PBXBuildFile; fileRef = 758C74580DE61A16002EBB07 /* CarouselClass.xcclassmodel */; };
-		758C745B0DE61A16002EBB07 /* CarouselDataModel.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 758C74590DE61A16002EBB07 /* CarouselDataModel.xcdatamodel */; };
-		758C74670DE62368002EBB07 /* MacFUSE.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 758C74660DE62368002EBB07 /* MacFUSE.framework */; };
-		758C76D40DE62503002EBB07 /* NSError+POSIX.m in Sources */ = {isa = PBXBuildFile; fileRef = 758C76D30DE62503002EBB07 /* NSError+POSIX.m */; };
-		758C76F60DE62580002EBB07 /* p4667 2.icns in Resources */ = {isa = PBXBuildFile; fileRef = 758C76D60DE62580002EBB07 /* p4667 2.icns */; };
-		758C76F70DE62580002EBB07 /* p4667-1-1 2.icns in Resources */ = {isa = PBXBuildFile; fileRef = 758C76D70DE62580002EBB07 /* p4667-1-1 2.icns */; };
-		758C76F80DE62580002EBB07 /* p4667-1-1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 758C76D80DE62580002EBB07 /* p4667-1-1.jpg */; };
-		758C76F90DE62580002EBB07 /* p4667-1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 758C76D90DE62580002EBB07 /* p4667-1.jpg */; };
-		758C76FA0DE62580002EBB07 /* p4667-2 2.icns in Resources */ = {isa = PBXBuildFile; fileRef = 758C76DA0DE62580002EBB07 /* p4667-2 2.icns */; };
-		758C76FB0DE62580002EBB07 /* p4667-2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 758C76DB0DE62580002EBB07 /* p4667-2.jpg */; };
-		758C76FC0DE62580002EBB07 /* p4667-3 2.icns in Resources */ = {isa = PBXBuildFile; fileRef = 758C76DC0DE62580002EBB07 /* p4667-3 2.icns */; };
-		758C76FD0DE62580002EBB07 /* p4667-3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 758C76DD0DE62580002EBB07 /* p4667-3.jpg */; };
-		758C76FE0DE62580002EBB07 /* p4667.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 758C76DE0DE62580002EBB07 /* p4667.jpg */; };
-		758C76FF0DE62580002EBB07 /* P4667A 2.icns in Resources */ = {isa = PBXBuildFile; fileRef = 758C76DF0DE62580002EBB07 /* P4667A 2.icns */; };
-		758C77000DE62580002EBB07 /* p4667a-2 2.icns in Resources */ = {isa = PBXBuildFile; fileRef = 758C76E00DE62580002EBB07 /* p4667a-2 2.icns */; };
-		758C77010DE62580002EBB07 /* p4667a-2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 758C76E10DE62580002EBB07 /* p4667a-2.jpg */; };
-		758C77020DE62580002EBB07 /* p4667a-3 2.icns in Resources */ = {isa = PBXBuildFile; fileRef = 758C76E20DE62580002EBB07 /* p4667a-3 2.icns */; };
-		758C77030DE62580002EBB07 /* p4667a-3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 758C76E30DE62580002EBB07 /* p4667a-3.jpg */; };
-		758C77040DE62580002EBB07 /* P4667A.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 758C76E40DE62580002EBB07 /* P4667A.jpg */; };
-		758C77050DE62580002EBB07 /* p10670-4 2.icns in Resources */ = {isa = PBXBuildFile; fileRef = 758C76E50DE62580002EBB07 /* p10670-4 2.icns */; };
-		758C77060DE62580002EBB07 /* p10670-4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 758C76E60DE62580002EBB07 /* p10670-4.jpg */; };
-		758C77070DE62580002EBB07 /* p10670-6 2.icns in Resources */ = {isa = PBXBuildFile; fileRef = 758C76E70DE62580002EBB07 /* p10670-6 2.icns */; };
-		758C77080DE62580002EBB07 /* p10670-6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 758C76E80DE62580002EBB07 /* p10670-6.jpg */; };
-		758C77090DE62580002EBB07 /* P10670A-1 2.icns in Resources */ = {isa = PBXBuildFile; fileRef = 758C76E90DE62580002EBB07 /* P10670A-1 2.icns */; };
-		758C770A0DE62580002EBB07 /* p10670a-1-1 2.icns in Resources */ = {isa = PBXBuildFile; fileRef = 758C76EA0DE62580002EBB07 /* p10670a-1-1 2.icns */; };
-		758C770B0DE62580002EBB07 /* p10670a-1-1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 758C76EB0DE62580002EBB07 /* p10670a-1-1.jpg */; };
-		758C770C0DE62580002EBB07 /* P10670A-1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 758C76EC0DE62580002EBB07 /* P10670A-1.jpg */; };
-		758C770D0DE62580002EBB07 /* p10670a-2 2.icns in Resources */ = {isa = PBXBuildFile; fileRef = 758C76ED0DE62580002EBB07 /* p10670a-2 2.icns */; };
-		758C770E0DE62580002EBB07 /* p10670a-2-1 2.icns in Resources */ = {isa = PBXBuildFile; fileRef = 758C76EE0DE62580002EBB07 /* p10670a-2-1 2.icns */; };
-		758C770F0DE62580002EBB07 /* p10670a-2-1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 758C76EF0DE62580002EBB07 /* p10670a-2-1.jpg */; };
-		758C77100DE62580002EBB07 /* p10670a-2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 758C76F00DE62580002EBB07 /* p10670a-2.jpg */; };
-		758C77110DE62580002EBB07 /* p10670a-3 2.icns in Resources */ = {isa = PBXBuildFile; fileRef = 758C76F10DE62580002EBB07 /* p10670a-3 2.icns */; };
-		758C77120DE62580002EBB07 /* p10670a-3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 758C76F20DE62580002EBB07 /* p10670a-3.jpg */; };
-		758C77130DE62580002EBB07 /* p10670a-5 2.icns in Resources */ = {isa = PBXBuildFile; fileRef = 758C76F30DE62580002EBB07 /* p10670a-5 2.icns */; };
-		758C77140DE62580002EBB07 /* p10670a-5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 758C76F40DE62580002EBB07 /* p10670a-5.jpg */; };
-		758C77150DE62580002EBB07 /* P10670A.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 758C76F50DE62580002EBB07 /* P10670A.jpg */; };
-		758C77460DE629E7002EBB07 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
-		758C77540DE62D4E002EBB07 /* MacFUSE.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 758C74660DE62368002EBB07 /* MacFUSE.framework */; };
-		759BC9E40DB4A0BC0039608A /* PMTB.m in Sources */ = {isa = PBXBuildFile; fileRef = 759BC9E30DB4A0BC0039608A /* PMTB.m */; };
-		759BCA0A0DB4A8BE0039608A /* pmtbfs.icns in Resources */ = {isa = PBXBuildFile; fileRef = 759BCA090DB4A8BE0039608A /* pmtbfs.icns */; };
-		759BCBB40DB536930039608A /* GenericFolderFlat.png in Resources */ = {isa = PBXBuildFile; fileRef = 759BCBB30DB536920039608A /* GenericFolderFlat.png */; };
-		759BCBB70DB5375C0039608A /* MB-folder-offline.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 759BCBB50DB5375B0039608A /* MB-folder-offline.tiff */; };
-		759BCBB80DB5375C0039608A /* MB-folder.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 759BCBB60DB5375B0039608A /* MB-folder.tiff */; };
-		759BCC300DB58F0B0039608A /* PMTBFileSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 759BCC2F0DB58F0B0039608A /* PMTBFileSystem.m */; };
-		75AEBF920DD917BC0090DE55 /* PMTB_AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C8280C06725ACE000B614F /* PMTB_AppDelegate.m */; };
-		75AEC17B0DDA070A0090DE55 /* PMTBMainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 75AEC1790DDA070A0090DE55 /* PMTBMainMenu.nib */; };
-		75AEC1BB0DDA08DC0090DE55 /* StorageWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AEC1BA0DDA08DC0090DE55 /* StorageWindowController.m */; };
-		75AEC1FE0DDA0B3E0090DE55 /* PMTBDocument.nib in Resources */ = {isa = PBXBuildFile; fileRef = 75AEC1FC0DDA0B3E0090DE55 /* PMTBDocument.nib */; };
 		75AEC3370DDB898E0090DE55 /* DACALSpecificDriver in Resources */ = {isa = PBXBuildFile; fileRef = 75AEC3360DDB898E0090DE55 /* DACALSpecificDriver */; };
 		75AEC33A0DDB899D0090DE55 /* DACALDriver-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 75AEC3390DDB899D0090DE55 /* DACALDriver-Info.plist */; };
 		75AEC4090DDB8B460090DE55 /* VendorSpecificDriver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 75AEC4070DDB8B460090DE55 /* VendorSpecificDriver.cpp */; };
@@ -63,33 +15,46 @@
 		75AEC4340DDB91FB0090DE55 /* dacal.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 75AEC4310DDB91840090DE55 /* dacal.1 */; };
 		75AEC4370DDB92250090DE55 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75AEC4360DDB92250090DE55 /* CoreFoundation.framework */; };
 		75AEC4810DDB9D1E0090DE55 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7550D6650DC27008008515EC /* IOKit.framework */; };
-		75AEC6270DDE0A160090DE55 /* CarouselDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75AEC6230DDE0A160090DE55 /* CarouselDocument.xib */; };
-		75AEC6280DDE0A160090DE55 /* CarouselMainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75AEC6250DDE0A160090DE55 /* CarouselMainMenu.xib */; };
-		75AEC6290DDE0A170090DE55 /* CarouselDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75AEC6230DDE0A160090DE55 /* CarouselDocument.xib */; };
-		75AEC62A0DDE0A170090DE55 /* CarouselMainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75AEC6250DDE0A160090DE55 /* CarouselMainMenu.xib */; };
-		75AEC62B0DDE0AAD0090DE55 /* CarouselDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AEC6090DDE08320090DE55 /* CarouselDocument.m */; };
-		75AEC62D0DDE0B460090DE55 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
-		75AEC64A0DDE0DFC0090DE55 /* Carousel-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 75AEC61F0DDE09F20090DE55 /* Carousel-Info.plist */; };
-		75AEC6CE0DDE129D0090DE55 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
-		75AEC7420DDE2EA10090DE55 /* MediaController.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AEC7400DDE2EA10090DE55 /* MediaController.m */; };
-		75AEC7430DDE2EA20090DE55 /* MediaController.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AEC7400DDE2EA10090DE55 /* MediaController.m */; };
-		75AEC7700DDE32960090DE55 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75AEC76F0DDE32960090DE55 /* CoreServices.framework */; };
-		75AEC7710DDE32970090DE55 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75AEC76F0DDE32960090DE55 /* CoreServices.framework */; };
-		75AEC7780DDE33140090DE55 /* DiscRecording.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75AEC7760DDE33130090DE55 /* DiscRecording.framework */; };
-		75AEC7790DDE33150090DE55 /* DiscRecordingUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75AEC7770DDE33130090DE55 /* DiscRecordingUI.framework */; };
-		75AEC77A0DDE33150090DE55 /* DiscRecording.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75AEC7760DDE33130090DE55 /* DiscRecording.framework */; };
-		75AEC77B0DDE33150090DE55 /* DiscRecordingUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75AEC7770DDE33130090DE55 /* DiscRecordingUI.framework */; };
-		75AEC79D0DDE34430090DE55 /* StorageWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AEC1BA0DDA08DC0090DE55 /* StorageWindowController.m */; };
-		75AEC8080DDE52E70090DE55 /* DataStoreController.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AEC8070DDE52E70090DE55 /* DataStoreController.m */; };
-		75ECCF560DE363D200AB2F3F /* MediaDiscMO.m in Sources */ = {isa = PBXBuildFile; fileRef = 75ECCF550DE363D200AB2F3F /* MediaDiscMO.m */; };
-		75ECCF570DE363D200AB2F3F /* MediaDiscMO.m in Sources */ = {isa = PBXBuildFile; fileRef = 75ECCF550DE363D200AB2F3F /* MediaDiscMO.m */; };
-		75ECD06F0DE387CB00AB2F3F /* dacallib.m in Sources */ = {isa = PBXBuildFile; fileRef = 75ECD0690DE385FD00AB2F3F /* dacallib.m */; };
-		75ECD0730DE3890400AB2F3F /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7550D6650DC27008008515EC /* IOKit.framework */; };
 		75ECD0750DE3896B00AB2F3F /* dacallib.m in Sources */ = {isa = PBXBuildFile; fileRef = 75ECD0690DE385FD00AB2F3F /* dacallib.m */; };
-		8D11072B0486CEB800E47090 /* PMTBApp-InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* PMTBApp-InfoPlist.strings */; };
-		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
-		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7578C30C0E15D348009E9674 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7578C3040E15D347009E9674 /* JukeBytes.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8D15AC370486D014006FF6A4 /* JukeBytes.app */;
+			remoteInfo = JukeBytes;
+		};
+		7578C30E0E15D348009E9674 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7578C3040E15D347009E9674 /* JukeBytes.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 514E9DF9081EBF9C009B8CD9 /* JukeBytes.mdimporter */;
+			remoteInfo = "JukeBytes Spotlight Importer";
+		};
+		7578C33D0E15D4FD009E9674 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7578C3350E15D4FD009E9674 /* JukeBytesLite.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8D1107320486CEB800E47090 /* Carousel.app */;
+			remoteInfo = Carousel;
+		};
+		7578C3810E15D80A009E9674 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7578C3790E15D80A009E9674 /* DacAByteFS.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8D15AC370486D014006FF6A4 /* PMTBFS.app */;
+			remoteInfo = PMTBFS;
+		};
+		7578C3830E15D80A009E9674 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7578C3790E15D80A009E9674 /* DacAByteFS.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 514E9DF9081EBF9C009B8CD9 /* PMTBFS.mdimporter */;
+			remoteInfo = "PMTBFS Spotlight Importer";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		75AEC4350DDB921B0090DE55 /* CopyFiles */ = {
@@ -105,65 +70,17 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = "PMTBApp/PMTBApp-InfoPlist.strings"; sourceTree = "<group>"; };
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = SDKs/MacOSX10.5.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = SDKs/MacOSX10.5.sdk/System/Library/Frameworks/AppKit.framework; sourceTree = DEVELOPER_DIR; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = SDKs/MacOSX10.5.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		32CA4F630368D1EE00C91783 /* PMTB_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMTB_Prefix.pch; sourceTree = "<group>"; };
 		7550D6650DC27008008515EC /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = SDKs/MacOSX10.5.sdk/System/Library/Frameworks/IOKit.framework; sourceTree = DEVELOPER_DIR; };
+		7578C3040E15D347009E9674 /* JukeBytes.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = JukeBytes.xcodeproj; path = JukeBytes/JukeBytes.xcodeproj; sourceTree = "<group>"; };
+		7578C3350E15D4FD009E9674 /* JukeBytesLite.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = JukeBytesLite.xcodeproj; path = "Carousel App/Carousel.xcodeproj"; sourceTree = "<group>"; };
+		7578C3790E15D80A009E9674 /* DacAByteFS.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = DacAByteFS.xcodeproj; path = ../branches/davec/PMTBFS/PMTBFS.xcodeproj; sourceTree = SOURCE_ROOT; };
 		7588A2100DF3B8E700B28BC4 /* carousel.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = carousel.sh; path = CLI/carousel.sh; sourceTree = "<group>"; };
-		758C74580DE61A16002EBB07 /* CarouselClass.xcclassmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcclassmodel; path = CarouselClass.xcclassmodel; sourceTree = "<group>"; };
-		758C74590DE61A16002EBB07 /* CarouselDataModel.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = CarouselDataModel.xcdatamodel; sourceTree = "<group>"; };
 		758C74660DE62368002EBB07 /* MacFUSE.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MacFUSE.framework; sourceTree = SOURCE_ROOT; };
-		758C76D20DE62503002EBB07 /* NSError+POSIX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSError+POSIX.h"; path = "PMTBFS/NSError+POSIX.h"; sourceTree = "<group>"; };
-		758C76D30DE62503002EBB07 /* NSError+POSIX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSError+POSIX.m"; path = "PMTBFS/NSError+POSIX.m"; sourceTree = "<group>"; };
-		758C76D60DE62580002EBB07 /* p4667 2.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = "p4667 2.icns"; path = "Carousel/Resources/p4667 2.icns"; sourceTree = "<group>"; };
-		758C76D70DE62580002EBB07 /* p4667-1-1 2.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = "p4667-1-1 2.icns"; path = "Carousel/Resources/p4667-1-1 2.icns"; sourceTree = "<group>"; };
-		758C76D80DE62580002EBB07 /* p4667-1-1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "p4667-1-1.jpg"; path = "Carousel/Resources/p4667-1-1.jpg"; sourceTree = "<group>"; };
-		758C76D90DE62580002EBB07 /* p4667-1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "p4667-1.jpg"; path = "Carousel/Resources/p4667-1.jpg"; sourceTree = "<group>"; };
-		758C76DA0DE62580002EBB07 /* p4667-2 2.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = "p4667-2 2.icns"; path = "Carousel/Resources/p4667-2 2.icns"; sourceTree = "<group>"; };
-		758C76DB0DE62580002EBB07 /* p4667-2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "p4667-2.jpg"; path = "Carousel/Resources/p4667-2.jpg"; sourceTree = "<group>"; };
-		758C76DC0DE62580002EBB07 /* p4667-3 2.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = "p4667-3 2.icns"; path = "Carousel/Resources/p4667-3 2.icns"; sourceTree = "<group>"; };
-		758C76DD0DE62580002EBB07 /* p4667-3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "p4667-3.jpg"; path = "Carousel/Resources/p4667-3.jpg"; sourceTree = "<group>"; };
-		758C76DE0DE62580002EBB07 /* p4667.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = p4667.jpg; path = Carousel/Resources/p4667.jpg; sourceTree = "<group>"; };
-		758C76DF0DE62580002EBB07 /* P4667A 2.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = "P4667A 2.icns"; path = "Carousel/Resources/P4667A 2.icns"; sourceTree = "<group>"; };
-		758C76E00DE62580002EBB07 /* p4667a-2 2.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = "p4667a-2 2.icns"; path = "Carousel/Resources/p4667a-2 2.icns"; sourceTree = "<group>"; };
-		758C76E10DE62580002EBB07 /* p4667a-2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "p4667a-2.jpg"; path = "Carousel/Resources/p4667a-2.jpg"; sourceTree = "<group>"; };
-		758C76E20DE62580002EBB07 /* p4667a-3 2.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = "p4667a-3 2.icns"; path = "Carousel/Resources/p4667a-3 2.icns"; sourceTree = "<group>"; };
-		758C76E30DE62580002EBB07 /* p4667a-3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "p4667a-3.jpg"; path = "Carousel/Resources/p4667a-3.jpg"; sourceTree = "<group>"; };
-		758C76E40DE62580002EBB07 /* P4667A.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = P4667A.jpg; path = Carousel/Resources/P4667A.jpg; sourceTree = "<group>"; };
-		758C76E50DE62580002EBB07 /* p10670-4 2.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = "p10670-4 2.icns"; path = "Carousel/Resources/p10670-4 2.icns"; sourceTree = "<group>"; };
-		758C76E60DE62580002EBB07 /* p10670-4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "p10670-4.jpg"; path = "Carousel/Resources/p10670-4.jpg"; sourceTree = "<group>"; };
-		758C76E70DE62580002EBB07 /* p10670-6 2.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = "p10670-6 2.icns"; path = "Carousel/Resources/p10670-6 2.icns"; sourceTree = "<group>"; };
-		758C76E80DE62580002EBB07 /* p10670-6.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "p10670-6.jpg"; path = "Carousel/Resources/p10670-6.jpg"; sourceTree = "<group>"; };
-		758C76E90DE62580002EBB07 /* P10670A-1 2.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = "P10670A-1 2.icns"; path = "Carousel/Resources/P10670A-1 2.icns"; sourceTree = "<group>"; };
-		758C76EA0DE62580002EBB07 /* p10670a-1-1 2.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = "p10670a-1-1 2.icns"; path = "Carousel/Resources/p10670a-1-1 2.icns"; sourceTree = "<group>"; };
-		758C76EB0DE62580002EBB07 /* p10670a-1-1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "p10670a-1-1.jpg"; path = "Carousel/Resources/p10670a-1-1.jpg"; sourceTree = "<group>"; };
-		758C76EC0DE62580002EBB07 /* P10670A-1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "P10670A-1.jpg"; path = "Carousel/Resources/P10670A-1.jpg"; sourceTree = "<group>"; };
-		758C76ED0DE62580002EBB07 /* p10670a-2 2.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = "p10670a-2 2.icns"; path = "Carousel/Resources/p10670a-2 2.icns"; sourceTree = "<group>"; };
-		758C76EE0DE62580002EBB07 /* p10670a-2-1 2.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = "p10670a-2-1 2.icns"; path = "Carousel/Resources/p10670a-2-1 2.icns"; sourceTree = "<group>"; };
-		758C76EF0DE62580002EBB07 /* p10670a-2-1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "p10670a-2-1.jpg"; path = "Carousel/Resources/p10670a-2-1.jpg"; sourceTree = "<group>"; };
-		758C76F00DE62580002EBB07 /* p10670a-2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "p10670a-2.jpg"; path = "Carousel/Resources/p10670a-2.jpg"; sourceTree = "<group>"; };
-		758C76F10DE62580002EBB07 /* p10670a-3 2.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = "p10670a-3 2.icns"; path = "Carousel/Resources/p10670a-3 2.icns"; sourceTree = "<group>"; };
-		758C76F20DE62580002EBB07 /* p10670a-3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "p10670a-3.jpg"; path = "Carousel/Resources/p10670a-3.jpg"; sourceTree = "<group>"; };
-		758C76F30DE62580002EBB07 /* p10670a-5 2.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = "p10670a-5 2.icns"; path = "Carousel/Resources/p10670a-5 2.icns"; sourceTree = "<group>"; };
-		758C76F40DE62580002EBB07 /* p10670a-5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "p10670a-5.jpg"; path = "Carousel/Resources/p10670a-5.jpg"; sourceTree = "<group>"; };
-		758C76F50DE62580002EBB07 /* P10670A.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = P10670A.jpg; path = Carousel/Resources/P10670A.jpg; sourceTree = "<group>"; };
-		759BC9E20DB4A0BC0039608A /* PMTB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMTB.h; path = PMTBApp/PMTB.h; sourceTree = "<group>"; };
-		759BC9E30DB4A0BC0039608A /* PMTB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMTB.m; path = PMTBApp/PMTB.m; sourceTree = "<group>"; };
-		759BCA090DB4A8BE0039608A /* pmtbfs.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = pmtbfs.icns; path = PMTBFS/Resources/pmtbfs.icns; sourceTree = "<group>"; };
-		759BCBB30DB536920039608A /* GenericFolderFlat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = GenericFolderFlat.png; path = PMTBFS/Resources/GenericFolderFlat.png; sourceTree = "<group>"; };
-		759BCBB50DB5375B0039608A /* MB-folder-offline.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = "MB-folder-offline.tiff"; path = "PMTBFS/Resources/MB-folder-offline.tiff"; sourceTree = "<group>"; };
-		759BCBB60DB5375B0039608A /* MB-folder.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = "MB-folder.tiff"; path = "PMTBFS/Resources/MB-folder.tiff"; sourceTree = "<group>"; };
-		759BCC2E0DB58F0B0039608A /* PMTBFileSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMTBFileSystem.h; path = PMTBFS/PMTBFileSystem.h; sourceTree = "<group>"; };
-		759BCC2F0DB58F0B0039608A /* PMTBFileSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMTBFileSystem.m; path = PMTBFS/PMTBFileSystem.m; sourceTree = "<group>"; };
-		75AEC1510DD9FD050090DE55 /* PMTBDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMTBDocument.h; path = PMTBApp/PMTBDocument.h; sourceTree = "<group>"; };
-		75AEC1520DD9FD050090DE55 /* PMTBDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMTBDocument.m; path = PMTBApp/PMTBDocument.m; sourceTree = "<group>"; };
-		75AEC17A0DDA070A0090DE55 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/PMTBMainMenu.nib; sourceTree = "<group>"; };
-		75AEC1B90DDA08DC0090DE55 /* StorageWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StorageWindowController.h; path = Carousel/StorageWindowController.h; sourceTree = "<group>"; };
-		75AEC1BA0DDA08DC0090DE55 /* StorageWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StorageWindowController.m; path = Carousel/StorageWindowController.m; sourceTree = "<group>"; };
-		75AEC1FD0DDA0B3E0090DE55 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/PMTBDocument.nib; sourceTree = "<group>"; };
 		75AEC32F0DDB87F80090DE55 /* DACALDriver.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DACALDriver.kext; sourceTree = BUILT_PRODUCTS_DIR; };
 		75AEC3360DDB898E0090DE55 /* DACALSpecificDriver */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = DACALSpecificDriver; path = DACALDriver/DACALSpecificDriver; sourceTree = "<group>"; };
 		75AEC3390DDB899D0090DE55 /* DACALDriver-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "DACALDriver-Info.plist"; path = "DACALDriver/DACALDriver-Info.plist"; sourceTree = "<group>"; };
@@ -173,31 +90,12 @@
 		75AEC42F0DDB916A0090DE55 /* dacal.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = dacal.c; path = CLI/dacal.c; sourceTree = "<group>"; };
 		75AEC4310DDB91840090DE55 /* dacal.1 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.man; name = dacal.1; path = CLI/dacal.1; sourceTree = "<group>"; };
 		75AEC4360DDB92250090DE55 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = SDKs/MacOSX10.5.sdk/System/Library/Frameworks/CoreFoundation.framework; sourceTree = DEVELOPER_DIR; };
-		75AEC4650DDB9A370090DE55 /* PMTBFS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PMTBFS.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		75AEC4670DDB9A380090DE55 /* PMTBFS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "PMTBFS-Info.plist"; path = "PMTBFS/PMTBFS-Info.plist"; sourceTree = "<group>"; };
-		75AEC6080DDE08320090DE55 /* CarouselDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CarouselDocument.h; path = Carousel/CarouselDocument.h; sourceTree = "<group>"; };
-		75AEC6090DDE08320090DE55 /* CarouselDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CarouselDocument.m; path = Carousel/CarouselDocument.m; sourceTree = "<group>"; };
-		75AEC61D0DDE09F20090DE55 /* Carousel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Carousel.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		75AEC61F0DDE09F20090DE55 /* Carousel-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Carousel-Info.plist"; path = "Carousel/Carousel-Info.plist"; sourceTree = "<group>"; };
-		75AEC6240DDE0A160090DE55 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/CarouselDocument.xib; sourceTree = "<group>"; };
-		75AEC6260DDE0A160090DE55 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/CarouselMainMenu.xib; sourceTree = "<group>"; };
-		75AEC7400DDE2EA10090DE55 /* MediaController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MediaController.m; path = Carousel/MediaController.m; sourceTree = "<group>"; };
-		75AEC7410DDE2EA10090DE55 /* MediaController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MediaController.h; path = Carousel/MediaController.h; sourceTree = "<group>"; };
 		75AEC76F0DDE32960090DE55 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = SDKs/MacOSX10.5.sdk/System/Library/Frameworks/CoreServices.framework; sourceTree = DEVELOPER_DIR; };
 		75AEC7760DDE33130090DE55 /* DiscRecording.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DiscRecording.framework; path = SDKs/MacOSX10.5.sdk/System/Library/Frameworks/DiscRecording.framework; sourceTree = DEVELOPER_DIR; };
 		75AEC7770DDE33130090DE55 /* DiscRecordingUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DiscRecordingUI.framework; path = SDKs/MacOSX10.5.sdk/System/Library/Frameworks/DiscRecordingUI.framework; sourceTree = DEVELOPER_DIR; };
-		75AEC8060DDE52E70090DE55 /* DataStoreController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataStoreController.h; path = Carousel/DataStoreController.h; sourceTree = "<group>"; };
-		75AEC8070DDE52E70090DE55 /* DataStoreController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataStoreController.m; path = Carousel/DataStoreController.m; sourceTree = "<group>"; };
-		75ECCF540DE363D200AB2F3F /* MediaDiscMO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MediaDiscMO.h; path = Carousel/MediaDiscMO.h; sourceTree = "<group>"; };
-		75ECCF550DE363D200AB2F3F /* MediaDiscMO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MediaDiscMO.m; path = Carousel/MediaDiscMO.m; sourceTree = "<group>"; };
 		75ECD0680DE385FD00AB2F3F /* dacallib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dacallib.h; path = CLI/dacallib.h; sourceTree = "<group>"; };
 		75ECD0690DE385FD00AB2F3F /* dacallib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = dacallib.m; path = CLI/dacallib.m; sourceTree = "<group>"; };
-		75FD87EF0DB6AFBB00237357 /* MainWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainWindowController.m; path = PMTBApp/MainWindowController.m; sourceTree = "<group>"; };
-		75FD87F00DB6AFBB00237357 /* MainWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainWindowController.h; path = PMTBApp/MainWindowController.h; sourceTree = "<group>"; };
 		77C82804067257F0000B614F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = SDKs/MacOSX10.5.sdk/System/Library/Frameworks/CoreData.framework; sourceTree = DEVELOPER_DIR; };
-		77C8280B06725ACE000B614F /* PMTB_AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMTB_AppDelegate.h; path = PMTBApp/PMTB_AppDelegate.h; sourceTree = "<group>"; };
-		77C8280C06725ACE000B614F /* PMTB_AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMTB_AppDelegate.m; path = PMTBApp/PMTB_AppDelegate.m; sourceTree = "<group>"; };
-		8D1107320486CEB800E47090 /* PMTB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PMTB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -217,57 +115,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		75AEC4630DDB9A370090DE55 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				758C74670DE62368002EBB07 /* MacFUSE.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		75AEC61B0DDE09F20090DE55 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				75AEC6CE0DDE129D0090DE55 /* Cocoa.framework in Frameworks */,
-				75AEC7710DDE32970090DE55 /* CoreServices.framework in Frameworks */,
-				75AEC77A0DDE33150090DE55 /* DiscRecording.framework in Frameworks */,
-				75AEC77B0DDE33150090DE55 /* DiscRecordingUI.framework in Frameworks */,
-				75ECD0730DE3890400AB2F3F /* IOKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		8D11072E0486CEB800E47090 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
-				75AEC7700DDE32960090DE55 /* CoreServices.framework in Frameworks */,
-				75AEC7780DDE33140090DE55 /* DiscRecording.framework in Frameworks */,
-				75AEC7790DDE33150090DE55 /* DiscRecordingUI.framework in Frameworks */,
-				758C77540DE62D4E002EBB07 /* MacFUSE.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		080E96DDFE201D6D7F000001 /* PMTBApp */ = {
-			isa = PBXGroup;
-			children = (
-				758C774D0DE62B3D002EBB07 /* Resources */,
-				75AEC1510DD9FD050090DE55 /* PMTBDocument.h */,
-				75AEC1520DD9FD050090DE55 /* PMTBDocument.m */,
-				75FD87EF0DB6AFBB00237357 /* MainWindowController.m */,
-				75FD87F00DB6AFBB00237357 /* MainWindowController.h */,
-				77C8280B06725ACE000B614F /* PMTB_AppDelegate.h */,
-				77C8280C06725ACE000B614F /* PMTB_AppDelegate.m */,
-				759BC9E20DB4A0BC0039608A /* PMTB.h */,
-				759BC9E30DB4A0BC0039608A /* PMTB.m */,
-			);
-			name = PMTBApp;
-			sourceTree = "<group>";
-		};
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -295,11 +145,8 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8D1107320486CEB800E47090 /* PMTB.app */,
 				75AEC32F0DDB87F80090DE55 /* DACALDriver.kext */,
 				75AEC4290DDB91300090DE55 /* dacal */,
-				75AEC4650DDB9A370090DE55 /* PMTBFS.app */,
-				75AEC61D0DDE09F20090DE55 /* Carousel.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -307,12 +154,12 @@
 		29B97314FDCFA39411CA2CEA /* PMTB */ = {
 			isa = PBXGroup;
 			children = (
-				758C74630DE620E2002EBB07 /* PMTBFS */,
-				75AEC6420DDE0C7D0090DE55 /* Carousel */,
+				7578C3040E15D347009E9674 /* JukeBytes.xcodeproj */,
+				7578C3350E15D4FD009E9674 /* JukeBytesLite.xcodeproj */,
+				7578C3790E15D80A009E9674 /* DacAByteFS.xcodeproj */,
 				75AEC4320DDB91A10090DE55 /* Documentation */,
 				75AEC42D0DDB91510090DE55 /* CLI */,
 				75AEC3350DDB89730090DE55 /* DACALDriver */,
-				080E96DDFE201D6D7F000001 /* PMTBApp */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
@@ -338,88 +185,30 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		758C74630DE620E2002EBB07 /* PMTBFS */ = {
+		7578C3050E15D347009E9674 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				758C74650DE622CD002EBB07 /* Resources */,
-				759BCC2E0DB58F0B0039608A /* PMTBFileSystem.h */,
-				759BCC2F0DB58F0B0039608A /* PMTBFileSystem.m */,
-				758C76D20DE62503002EBB07 /* NSError+POSIX.h */,
-				758C76D30DE62503002EBB07 /* NSError+POSIX.m */,
+				7578C30D0E15D348009E9674 /* JukeBytes.app */,
+				7578C30F0E15D348009E9674 /* JukeBytes.mdimporter */,
 			);
-			name = PMTBFS;
+			name = Products;
 			sourceTree = "<group>";
 		};
-		758C74650DE622CD002EBB07 /* Resources */ = {
+		7578C3360E15D4FD009E9674 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				75AEC4670DDB9A380090DE55 /* PMTBFS-Info.plist */,
-				759BCBB50DB5375B0039608A /* MB-folder-offline.tiff */,
-				759BCBB60DB5375B0039608A /* MB-folder.tiff */,
-				759BCBB30DB536920039608A /* GenericFolderFlat.png */,
-				759BCA090DB4A8BE0039608A /* pmtbfs.icns */,
+				7578C33E0E15D4FD009E9674 /* Carousel.app */,
 			);
-			name = Resources;
+			name = Products;
 			sourceTree = "<group>";
 		};
-		758C76D50DE62550002EBB07 /* Resources */ = {
+		7578C37A0E15D80A009E9674 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				758C77160DE62590002EBB07 /* Images */,
-				75AEC61F0DDE09F20090DE55 /* Carousel-Info.plist */,
-				75AEC6230DDE0A160090DE55 /* CarouselDocument.xib */,
-				75AEC6250DDE0A160090DE55 /* CarouselMainMenu.xib */,
+				7578C3820E15D80A009E9674 /* PMTBFS.app */,
+				7578C3840E15D80A009E9674 /* PMTBFS.mdimporter */,
 			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
-		758C77160DE62590002EBB07 /* Images */ = {
-			isa = PBXGroup;
-			children = (
-				758C76D60DE62580002EBB07 /* p4667 2.icns */,
-				758C76D70DE62580002EBB07 /* p4667-1-1 2.icns */,
-				758C76D80DE62580002EBB07 /* p4667-1-1.jpg */,
-				758C76D90DE62580002EBB07 /* p4667-1.jpg */,
-				758C76DA0DE62580002EBB07 /* p4667-2 2.icns */,
-				758C76DB0DE62580002EBB07 /* p4667-2.jpg */,
-				758C76DC0DE62580002EBB07 /* p4667-3 2.icns */,
-				758C76DD0DE62580002EBB07 /* p4667-3.jpg */,
-				758C76DE0DE62580002EBB07 /* p4667.jpg */,
-				758C76DF0DE62580002EBB07 /* P4667A 2.icns */,
-				758C76E00DE62580002EBB07 /* p4667a-2 2.icns */,
-				758C76E10DE62580002EBB07 /* p4667a-2.jpg */,
-				758C76E20DE62580002EBB07 /* p4667a-3 2.icns */,
-				758C76E30DE62580002EBB07 /* p4667a-3.jpg */,
-				758C76E40DE62580002EBB07 /* P4667A.jpg */,
-				758C76E50DE62580002EBB07 /* p10670-4 2.icns */,
-				758C76E60DE62580002EBB07 /* p10670-4.jpg */,
-				758C76E70DE62580002EBB07 /* p10670-6 2.icns */,
-				758C76E80DE62580002EBB07 /* p10670-6.jpg */,
-				758C76E90DE62580002EBB07 /* P10670A-1 2.icns */,
-				758C76EA0DE62580002EBB07 /* p10670a-1-1 2.icns */,
-				758C76EB0DE62580002EBB07 /* p10670a-1-1.jpg */,
-				758C76EC0DE62580002EBB07 /* P10670A-1.jpg */,
-				758C76ED0DE62580002EBB07 /* p10670a-2 2.icns */,
-				758C76EE0DE62580002EBB07 /* p10670a-2-1 2.icns */,
-				758C76EF0DE62580002EBB07 /* p10670a-2-1.jpg */,
-				758C76F00DE62580002EBB07 /* p10670a-2.jpg */,
-				758C76F10DE62580002EBB07 /* p10670a-3 2.icns */,
-				758C76F20DE62580002EBB07 /* p10670a-3.jpg */,
-				758C76F30DE62580002EBB07 /* p10670a-5 2.icns */,
-				758C76F40DE62580002EBB07 /* p10670a-5.jpg */,
-				758C76F50DE62580002EBB07 /* P10670A.jpg */,
-			);
-			name = Images;
-			sourceTree = "<group>";
-		};
-		758C774D0DE62B3D002EBB07 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				089C165CFE840E0CC02AAC07 /* PMTBApp-InfoPlist.strings */,
-				75AEC1FC0DDA0B3E0090DE55 /* PMTBDocument.nib */,
-				75AEC1790DDA070A0090DE55 /* PMTBMainMenu.nib */,
-			);
-			name = Resources;
+			name = Products;
 			sourceTree = "<group>";
 		};
 		75AEC3350DDB89730090DE55 /* DACALDriver */ = {
@@ -450,34 +239,6 @@
 			children = (
 			);
 			name = Documentation;
-			sourceTree = "<group>";
-		};
-		75AEC6420DDE0C7D0090DE55 /* Carousel */ = {
-			isa = PBXGroup;
-			children = (
-				758C76D50DE62550002EBB07 /* Resources */,
-				7756732906782D8800D1FEB8 /* Models */,
-				75AEC6080DDE08320090DE55 /* CarouselDocument.h */,
-				75AEC6090DDE08320090DE55 /* CarouselDocument.m */,
-				75AEC1B90DDA08DC0090DE55 /* StorageWindowController.h */,
-				75AEC1BA0DDA08DC0090DE55 /* StorageWindowController.m */,
-				75AEC8060DDE52E70090DE55 /* DataStoreController.h */,
-				75AEC8070DDE52E70090DE55 /* DataStoreController.m */,
-				75AEC7400DDE2EA10090DE55 /* MediaController.m */,
-				75AEC7410DDE2EA10090DE55 /* MediaController.h */,
-			);
-			name = Carousel;
-			sourceTree = "<group>";
-		};
-		7756732906782D8800D1FEB8 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				758C74580DE61A16002EBB07 /* CarouselClass.xcclassmodel */,
-				758C74590DE61A16002EBB07 /* CarouselDataModel.xcdatamodel */,
-				75ECCF540DE363D200AB2F3F /* MediaDiscMO.h */,
-				75ECCF550DE363D200AB2F3F /* MediaDiscMO.m */,
-			);
-			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -530,58 +291,6 @@
 			productReference = 75AEC4290DDB91300090DE55 /* dacal */;
 			productType = "com.apple.product-type.tool";
 		};
-		75AEC4640DDB9A370090DE55 /* PMTBFS */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 75AEC46A0DDB9A3B0090DE55 /* Build configuration list for PBXNativeTarget "PMTBFS" */;
-			buildPhases = (
-				75AEC4610DDB9A370090DE55 /* Resources */,
-				75AEC4620DDB9A370090DE55 /* Sources */,
-				75AEC4630DDB9A370090DE55 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = PMTBFS;
-			productName = PMTBFS;
-			productReference = 75AEC4650DDB9A370090DE55 /* PMTBFS.app */;
-			productType = "com.apple.product-type.application";
-		};
-		75AEC61C0DDE09F20090DE55 /* Carousel */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 75AEC6220DDE09F50090DE55 /* Build configuration list for PBXNativeTarget "Carousel" */;
-			buildPhases = (
-				75AEC6190DDE09F20090DE55 /* Resources */,
-				75AEC61A0DDE09F20090DE55 /* Sources */,
-				75AEC61B0DDE09F20090DE55 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = Carousel;
-			productName = Carousel;
-			productReference = 75AEC61D0DDE09F20090DE55 /* Carousel.app */;
-			productType = "com.apple.product-type.application";
-		};
-		8D1107260486CEB800E47090 /* PMTBApp */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 26FC0A840875C7B200E6366F /* Build configuration list for PBXNativeTarget "PMTBApp" */;
-			buildPhases = (
-				8D1107290486CEB800E47090 /* Resources */,
-				8D11072C0486CEB800E47090 /* Sources */,
-				8D11072E0486CEB800E47090 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = PMTBApp;
-			productInstallPath = "$(HOME)/Applications";
-			productName = PMTB;
-			productReference = 8D1107320486CEB800E47090 /* PMTB.app */;
-			productType = "com.apple.product-type.application";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -592,16 +301,65 @@
 			hasScannedForEncodings = 1;
 			mainGroup = 29B97314FDCFA39411CA2CEA /* PMTB */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 7578C37A0E15D80A009E9674 /* Products */;
+					ProjectRef = 7578C3790E15D80A009E9674 /* DacAByteFS.xcodeproj */;
+				},
+				{
+					ProductGroup = 7578C3050E15D347009E9674 /* Products */;
+					ProjectRef = 7578C3040E15D347009E9674 /* JukeBytes.xcodeproj */;
+				},
+				{
+					ProductGroup = 7578C3360E15D4FD009E9674 /* Products */;
+					ProjectRef = 7578C3350E15D4FD009E9674 /* JukeBytesLite.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
-				8D1107260486CEB800E47090 /* PMTBApp */,
 				75AEC32E0DDB87F80090DE55 /* DACALDriver */,
 				75AEC4280DDB91300090DE55 /* dacal */,
-				75AEC4640DDB9A370090DE55 /* PMTBFS */,
-				75AEC61C0DDE09F20090DE55 /* Carousel */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		7578C30D0E15D348009E9674 /* JukeBytes.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = JukeBytes.app;
+			remoteRef = 7578C30C0E15D348009E9674 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		7578C30F0E15D348009E9674 /* JukeBytes.mdimporter */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = JukeBytes.mdimporter;
+			remoteRef = 7578C30E0E15D348009E9674 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		7578C33E0E15D4FD009E9674 /* Carousel.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = Carousel.app;
+			remoteRef = 7578C33D0E15D4FD009E9674 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		7578C3820E15D80A009E9674 /* PMTBFS.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = PMTBFS.app;
+			remoteRef = 7578C3810E15D80A009E9674 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		7578C3840E15D80A009E9674 /* PMTBFS.mdimporter */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = PMTBFS.mdimporter;
+			remoteRef = 7578C3830E15D80A009E9674 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		75AEC32C0DDB87F80090DE55 /* Resources */ = {
@@ -610,72 +368,6 @@
 			files = (
 				75AEC3370DDB898E0090DE55 /* DACALSpecificDriver in Resources */,
 				75AEC33A0DDB899D0090DE55 /* DACALDriver-Info.plist in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		75AEC4610DDB9A370090DE55 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		75AEC6190DDE09F20090DE55 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				75AEC6290DDE0A170090DE55 /* CarouselDocument.xib in Resources */,
-				75AEC62A0DDE0A170090DE55 /* CarouselMainMenu.xib in Resources */,
-				75AEC64A0DDE0DFC0090DE55 /* Carousel-Info.plist in Resources */,
-				758C745A0DE61A16002EBB07 /* CarouselClass.xcclassmodel in Resources */,
-				758C76F60DE62580002EBB07 /* p4667 2.icns in Resources */,
-				758C76F70DE62580002EBB07 /* p4667-1-1 2.icns in Resources */,
-				758C76F80DE62580002EBB07 /* p4667-1-1.jpg in Resources */,
-				758C76F90DE62580002EBB07 /* p4667-1.jpg in Resources */,
-				758C76FA0DE62580002EBB07 /* p4667-2 2.icns in Resources */,
-				758C76FB0DE62580002EBB07 /* p4667-2.jpg in Resources */,
-				758C76FC0DE62580002EBB07 /* p4667-3 2.icns in Resources */,
-				758C76FD0DE62580002EBB07 /* p4667-3.jpg in Resources */,
-				758C76FE0DE62580002EBB07 /* p4667.jpg in Resources */,
-				758C76FF0DE62580002EBB07 /* P4667A 2.icns in Resources */,
-				758C77000DE62580002EBB07 /* p4667a-2 2.icns in Resources */,
-				758C77010DE62580002EBB07 /* p4667a-2.jpg in Resources */,
-				758C77020DE62580002EBB07 /* p4667a-3 2.icns in Resources */,
-				758C77030DE62580002EBB07 /* p4667a-3.jpg in Resources */,
-				758C77040DE62580002EBB07 /* P4667A.jpg in Resources */,
-				758C77050DE62580002EBB07 /* p10670-4 2.icns in Resources */,
-				758C77060DE62580002EBB07 /* p10670-4.jpg in Resources */,
-				758C77070DE62580002EBB07 /* p10670-6 2.icns in Resources */,
-				758C77080DE62580002EBB07 /* p10670-6.jpg in Resources */,
-				758C77090DE62580002EBB07 /* P10670A-1 2.icns in Resources */,
-				758C770A0DE62580002EBB07 /* p10670a-1-1 2.icns in Resources */,
-				758C770B0DE62580002EBB07 /* p10670a-1-1.jpg in Resources */,
-				758C770C0DE62580002EBB07 /* P10670A-1.jpg in Resources */,
-				758C770D0DE62580002EBB07 /* p10670a-2 2.icns in Resources */,
-				758C770E0DE62580002EBB07 /* p10670a-2-1 2.icns in Resources */,
-				758C770F0DE62580002EBB07 /* p10670a-2-1.jpg in Resources */,
-				758C77100DE62580002EBB07 /* p10670a-2.jpg in Resources */,
-				758C77110DE62580002EBB07 /* p10670a-3 2.icns in Resources */,
-				758C77120DE62580002EBB07 /* p10670a-3.jpg in Resources */,
-				758C77130DE62580002EBB07 /* p10670a-5 2.icns in Resources */,
-				758C77140DE62580002EBB07 /* p10670a-5.jpg in Resources */,
-				758C77150DE62580002EBB07 /* P10670A.jpg in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		8D1107290486CEB800E47090 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8D11072B0486CEB800E47090 /* PMTBApp-InfoPlist.strings in Resources */,
-				759BCA0A0DB4A8BE0039608A /* pmtbfs.icns in Resources */,
-				759BCBB40DB536930039608A /* GenericFolderFlat.png in Resources */,
-				759BCBB70DB5375C0039608A /* MB-folder-offline.tiff in Resources */,
-				759BCBB80DB5375C0039608A /* MB-folder.tiff in Resources */,
-				75AEC17B0DDA070A0090DE55 /* PMTBMainMenu.nib in Resources */,
-				75AEC1FE0DDA0B3E0090DE55 /* PMTBDocument.nib in Resources */,
-				75AEC6270DDE0A160090DE55 /* CarouselDocument.xib in Resources */,
-				75AEC6280DDE0A160090DE55 /* CarouselMainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -715,131 +407,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		75AEC4620DDB9A370090DE55 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				758C76D40DE62503002EBB07 /* NSError+POSIX.m in Sources */,
-				758C77460DE629E7002EBB07 /* main.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		75AEC61A0DDE09F20090DE55 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				75AEC62B0DDE0AAD0090DE55 /* CarouselDocument.m in Sources */,
-				75AEC62D0DDE0B460090DE55 /* main.m in Sources */,
-				75AEC7430DDE2EA20090DE55 /* MediaController.m in Sources */,
-				75AEC79D0DDE34430090DE55 /* StorageWindowController.m in Sources */,
-				75AEC8080DDE52E70090DE55 /* DataStoreController.m in Sources */,
-				75ECCF560DE363D200AB2F3F /* MediaDiscMO.m in Sources */,
-				75ECD06F0DE387CB00AB2F3F /* dacallib.m in Sources */,
-				758C745B0DE61A16002EBB07 /* CarouselDataModel.xcdatamodel in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		8D11072C0486CEB800E47090 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8D11072D0486CEB800E47090 /* main.m in Sources */,
-				759BC9E40DB4A0BC0039608A /* PMTB.m in Sources */,
-				759BCC300DB58F0B0039608A /* PMTBFileSystem.m in Sources */,
-				75AEBF920DD917BC0090DE55 /* PMTB_AppDelegate.m in Sources */,
-				75AEC1BB0DDA08DC0090DE55 /* StorageWindowController.m in Sources */,
-				75AEC7420DDE2EA10090DE55 /* MediaController.m in Sources */,
-				75ECCF570DE363D200AB2F3F /* MediaDiscMO.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXVariantGroup section */
-		089C165CFE840E0CC02AAC07 /* PMTBApp-InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				089C165DFE840E0CC02AAC07 /* English */,
-			);
-			name = "PMTBApp-InfoPlist.strings";
-			sourceTree = "<group>";
-		};
-		75AEC1790DDA070A0090DE55 /* PMTBMainMenu.nib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				75AEC17A0DDA070A0090DE55 /* English */,
-			);
-			name = PMTBMainMenu.nib;
-			sourceTree = "<group>";
-		};
-		75AEC1FC0DDA0B3E0090DE55 /* PMTBDocument.nib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				75AEC1FD0DDA0B3E0090DE55 /* English */,
-			);
-			name = PMTBDocument.nib;
-			sourceTree = "<group>";
-		};
-		75AEC6230DDE0A160090DE55 /* CarouselDocument.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				75AEC6240DDE0A160090DE55 /* English */,
-			);
-			name = CarouselDocument.xib;
-			sourceTree = "<group>";
-		};
-		75AEC6250DDE0A160090DE55 /* CarouselMainMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				75AEC6260DDE0A160090DE55 /* English */,
-			);
-			name = CarouselMainMenu.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
-		26FC0A850875C7B200E6366F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				FRAMEWORK_SEARCH_PATHS = "MacFUSE.framework/**";
-				GCC_DYNAMIC_NO_PIC = YES;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
-				GCC_MODEL_TUNING = G5;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = PMTB_Prefix.pch;
-				INFOPLIST_FILE = "PMTBApp/PMTBApp-Info.plist";
-				INSTALL_PATH = "$(HOME)/Applications";
-				PRODUCT_NAME = PMTB;
-				WRAPPER_EXTENSION = app;
-				ZERO_LINK = YES;
-			};
-			name = Debug;
-		};
-		26FC0A860875C7B200E6366F /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				FRAMEWORK_SEARCH_PATHS = "MacFUSE.framework/**";
-				GCC_DYNAMIC_NO_PIC = YES;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
-				GCC_MODEL_TUNING = G5;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = PMTB_Prefix.pch;
-				INFOPLIST_FILE = "PMTBApp/PMTBApp-Info.plist";
-				INSTALL_PATH = "$(HOME)/Applications";
-				PRODUCT_NAME = PMTB;
-				WRAPPER_EXTENSION = app;
-			};
-			name = Release;
-		};
 		26FC0A890875C7B200E6366F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -956,125 +526,9 @@
 			};
 			name = Release;
 		};
-		75AEC4680DDB9A390090DE55 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SRCROOT)/../MacFuse/trunk/core/sdk-objc/build/Debug/MacFUSE.framework\"/**",
-					"\"$(SRCROOT)\"",
-				);
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
-				GCC_MODEL_TUNING = G5;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
-				INFOPLIST_FILE = "PMTBFS/PMTBFS-Info.plist";
-				INSTALL_PATH = "$(HOME)/Applications";
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					AppKit,
-				);
-				PREBINDING = NO;
-				PRODUCT_NAME = PMTBFS;
-			};
-			name = Debug;
-		};
-		75AEC4690DDB9A390090DE55 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)\"",
-				);
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
-				GCC_MODEL_TUNING = G5;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
-				INFOPLIST_FILE = "PMTBFS/PMTBFS-Info.plist";
-				INSTALL_PATH = "$(HOME)/Applications";
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					AppKit,
-				);
-				PREBINDING = NO;
-				PRODUCT_NAME = PMTBFS;
-				ZERO_LINK = NO;
-			};
-			name = Release;
-		};
-		75AEC6200DDE09F40090DE55 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
-				GCC_MODEL_TUNING = G5;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
-				INFOPLIST_FILE = "Carousel/Carousel-Info.plist";
-				INSTALL_PATH = "$(HOME)/Applications";
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					AppKit,
-				);
-				PREBINDING = NO;
-				PRODUCT_NAME = Carousel;
-			};
-			name = Debug;
-		};
-		75AEC6210DDE09F40090DE55 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				GCC_MODEL_TUNING = G5;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
-				INFOPLIST_FILE = "Carousel/Carousel-Info.plist";
-				INSTALL_PATH = "$(HOME)/Applications";
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					AppKit,
-				);
-				PREBINDING = NO;
-				PRODUCT_NAME = Carousel;
-				ZERO_LINK = NO;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		26FC0A840875C7B200E6366F /* Build configuration list for PBXNativeTarget "PMTBApp" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				26FC0A850875C7B200E6366F /* Debug */,
-				26FC0A860875C7B200E6366F /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		26FC0A880875C7B200E6366F /* Build configuration list for PBXProject "PMTB" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1098,24 +552,6 @@
 			buildConfigurations = (
 				75AEC42B0DDB91320090DE55 /* Debug */,
 				75AEC42C0DDB91320090DE55 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		75AEC46A0DDB9A3B0090DE55 /* Build configuration list for PBXNativeTarget "PMTBFS" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				75AEC4680DDB9A390090DE55 /* Debug */,
-				75AEC4690DDB9A390090DE55 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		75AEC6220DDE09F50090DE55 /* Build configuration list for PBXNativeTarget "Carousel" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				75AEC6200DDE09F40090DE55 /* Debug */,
-				75AEC6210DDE09F40090DE55 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

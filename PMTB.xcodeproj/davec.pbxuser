@@ -1,19 +1,10 @@
 // !$*UTF8*$!
 {
-	089C165DFE840E0CC02AAC07 /* English */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {827, 915}}";
-			sepNavSelRange = "{67, 0}";
-			sepNavVisRange = "{0, 125}";
-			sepNavWindowFrame = "{{15, 545}, {886, 1028}}";
-		};
-	};
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
 		activeBuildConfigurationName = Release;
-		activeExecutable = 75AEC61E0DDE09F20090DE55 /* Carousel */;
-		activeTarget = 75AEC61C0DDE09F20090DE55 /* Carousel */;
+		activeExecutable = 75AEC42A0DDB91310090DE55 /* dacal */;
+		activeTarget = 75AEC32E0DDB87F80090DE55 /* DACALDriver */;
 		addToTargets = (
-			75AEC4280DDB91300090DE55 /* dacal */,
 		);
 		breakpoints = (
 			75ECCFBB0DE3728D00AB2F3F /* StorageWindowController.m:76 */,
@@ -32,10 +23,7 @@
 		);
 		codeSenseManager = 759BC9B50DB496500039608A /* Code sense */;
 		executables = (
-			759BC9AC0DB496330039608A /* PMTBApp */,
 			75AEC42A0DDB91310090DE55 /* dacal */,
-			75AEC4660DDB9A370090DE55 /* PMTBFS */,
-			75AEC61E0DDE09F20090DE55 /* Carousel */,
 		);
 		ignoreBreakpointsInProjectsDict = {
 			Carousel = Ignored;
@@ -176,8 +164,8 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 236308321;
-			PBXWorkspaceStateSaveDate = 236308321;
+			PBXPerProjectTemplateStateSaveDate = 236311300;
+			PBXWorkspaceStateSaveDate = 236311300;
 		};
 		perUserProjectItems = {
 			7521EDDA0DD5303700C1C0C8 /* PBXTextBookmark */ = 7521EDDA0DD5303700C1C0C8 /* PBXTextBookmark */;
@@ -188,17 +176,16 @@
 			7550D7620DC398A9008515EC /* PBXTextBookmark */ = 7550D7620DC398A9008515EC /* PBXTextBookmark */;
 			7550D76F0DC398A9008515EC /* PBXTextBookmark */ = 7550D76F0DC398A9008515EC /* PBXTextBookmark */;
 			755D8CD30DF1EF59001EB047 /* PBXTextBookmark */ = 755D8CD30DF1EF59001EB047 /* PBXTextBookmark */;
-			755D8CED0DF1F70F001EB047 /* PBXTextBookmark */ = 755D8CED0DF1F70F001EB047 /* PBXTextBookmark */;
 			755D8CF20DF1F70F001EB047 /* PBXTextBookmark */ = 755D8CF20DF1F70F001EB047 /* PBXTextBookmark */;
 			7568362B0DE8870B001C6F01 /* XDModelBookmark */ = 7568362B0DE8870B001C6F01 /* XDModelBookmark */;
 			7568367C0DEA41F8001C6F01 /* PBXTextBookmark */ = 7568367C0DEA41F8001C6F01 /* PBXTextBookmark */;
 			756836800DEA41F8001C6F01 /* PBXTextBookmark */ = 756836800DEA41F8001C6F01 /* PBXTextBookmark */;
+			7578C3C40E15D9A4009E9674 /* PBXTextBookmark */ = 7578C3C40E15D9A4009E9674 /* PBXTextBookmark */;
 			759BCA150DB4A9880039608A /* PBXTextBookmark */ = 759BCA150DB4A9880039608A /* PBXTextBookmark */;
 			759BCA190DB4A9880039608A /* PBXTextBookmark */ = 759BCA190DB4A9880039608A /* PBXTextBookmark */;
 			759BCBDC0DB5408B0039608A /* PBXBookmark */ = 759BCBDC0DB5408B0039608A /* PBXBookmark */;
 			759BCC3F0DB592560039608A /* PBXTextBookmark */ = 759BCC3F0DB592560039608A /* PBXTextBookmark */;
 			759BCC400DB592560039608A /* PBXTextBookmark */ = 759BCC400DB592560039608A /* PBXTextBookmark */;
-			75A711560DD7B3BC0091E901 /* PBXTextBookmark */ = 75A711560DD7B3BC0091E901 /* PBXTextBookmark */;
 			75AEC0800DD954230090DE55 /* PBXTextBookmark */ = 75AEC0800DD954230090DE55 /* PBXTextBookmark */;
 			75AEC0F20DD95FA00090DE55 /* PBXTextBookmark */ = 75AEC0F20DD95FA00090DE55 /* PBXTextBookmark */;
 			75AEC1CC0DDA0B150090DE55 /* PBXTextBookmark */ = 75AEC1CC0DDA0B150090DE55 /* PBXTextBookmark */;
@@ -226,7 +213,6 @@
 			75ECD0BF0DE3AB8300AB2F3F /* PBXTextBookmark */ = 75ECD0BF0DE3AB8300AB2F3F /* PBXTextBookmark */;
 			75ECD1930DE4FFD500AB2F3F /* PBXTextBookmark */ = 75ECD1930DE4FFD500AB2F3F /* PBXTextBookmark */;
 			75ECD2AA0DE509A700AB2F3F /* PBXTextBookmark */ = 75ECD2AA0DE509A700AB2F3F /* PBXTextBookmark */;
-			75EF513A0DD9109000D463DE /* PBXTextBookmark */ = 75EF513A0DD9109000D463DE /* PBXTextBookmark */;
 			75F2BBC60DF00F0A00BEC5A4 /* PlistBookmark */ = 75F2BBC60DF00F0A00BEC5A4 /* PlistBookmark */;
 			75F2BBCC0DF01E4F00BEC5A4 /* PBXTextBookmark */ = 75F2BBCC0DF01E4F00BEC5A4 /* PBXTextBookmark */;
 			75F2BBCE0DF01E4F00BEC5A4 /* PBXTextBookmark */ = 75F2BBCE0DF01E4F00BEC5A4 /* PBXTextBookmark */;
@@ -368,23 +354,6 @@
 		vrLen = 1862;
 		vrLoc = 449;
 	};
-	755D8CED0DF1F70F001EB047 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 755D8CEE0DF1F70F001EB047 /* LoopbackController.h */;
-		name = "LoopbackController.h: 1";
-		rLen = 0;
-		rLoc = 0;
-		rType = 0;
-		vrLen = 981;
-		vrLoc = 0;
-	};
-	755D8CEE0DF1F70F001EB047 /* LoopbackController.h */ = {
-		isa = PBXFileReference;
-		lastKnownFileType = sourcecode.c.h;
-		name = LoopbackController.h;
-		path = "/Users/davec/Sources/XCode/Projects/PMTB/MacFuse/trunk/filesystems-objc/LoopbackFS/LoopbackController.h";
-		sourceTree = "<absolute>";
-	};
 	755D8CF20DF1F70F001EB047 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 755D8CF30DF1F70F001EB047 /* LoopbackController.h */;
@@ -401,6 +370,11 @@
 		name = LoopbackController.h;
 		path = "/Users/davec/Sources/XCode/Projects/PMTB/MacFuse/trunk/filesystems-objc/LoopbackFS/LoopbackController.h";
 		sourceTree = "<absolute>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {672, 858}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 981}";
+		};
 	};
 	7568362B0DE8870B001C6F01 /* XDModelBookmark */ = {
 		isa = XDModelBookmark;
@@ -420,7 +394,7 @@
 		hitCount = 0;
 		ignoreCount = 0;
 		lineNumber = 53;
-		modificationTime = 233961750.558269;
+		modificationTime = 236311926.596118;
 		state = 1;
 	};
 	756836430DE8B1BF001C6F01 /* MediaController.m:66 */ = {
@@ -436,7 +410,7 @@
 		hitCount = 0;
 		ignoreCount = 0;
 		lineNumber = 66;
-		modificationTime = 233961750.558331;
+		modificationTime = 236311926.596111;
 		state = 1;
 	};
 	756836450DE8B1C4001C6F01 /* MediaController.m:98 */ = {
@@ -452,7 +426,7 @@
 		hitCount = 0;
 		ignoreCount = 0;
 		lineNumber = 98;
-		modificationTime = 233961750.558301;
+		modificationTime = 236311926.596124;
 		state = 1;
 	};
 	756836470DE8B1E3001C6F01 /* StorageWindowController.m:30 */ = {
@@ -468,7 +442,7 @@
 		hitCount = 0;
 		ignoreCount = 0;
 		lineNumber = 30;
-		modificationTime = 233961750.558248;
+		modificationTime = 236311926.5961;
 		state = 1;
 	};
 	756836490DE8B1F0001C6F01 /* CarouselDocument.m:50 */ = {
@@ -484,7 +458,7 @@
 		hitCount = 0;
 		ignoreCount = 0;
 		lineNumber = 50;
-		modificationTime = 233961750.558259;
+		modificationTime = 236311926.596144;
 		state = 1;
 	};
 	756836530DE8B3A9001C6F01 /* _NSControllerObjectProxy */ = {
@@ -497,7 +471,7 @@
 		delayBeforeContinue = 0;
 		hitCount = 0;
 		ignoreCount = 0;
-		modificationTime = 233959252.646871;
+		modificationTime = 236311921.401474;
 		state = 2;
 		symbolName = _NSControllerObjectProxy;
 	};
@@ -511,7 +485,7 @@
 		delayBeforeContinue = 0;
 		hitCount = 0;
 		ignoreCount = 0;
-		modificationTime = 233959252.64688;
+		modificationTime = 236311921.40148;
 		state = 2;
 		symbolName = mach_msg_trap;
 	};
@@ -526,7 +500,7 @@
 		hitCount = 0;
 		ignoreCount = 0;
 		location = AppKit;
-		modificationTime = 233959252.646921;
+		modificationTime = 236311921.401485;
 		state = 1;
 		symbolName = "-[_NSControllerObjectProxy _invokeSelector:withArguments:onKeyPath:]";
 	};
@@ -541,7 +515,7 @@
 		hitCount = 0;
 		ignoreCount = 0;
 		location = AppKit;
-		modificationTime = 233959252.646927;
+		modificationTime = 236311921.401489;
 		state = 1;
 		symbolName = "-[_NSControllerObjectProxy initWithController:]";
 	};
@@ -556,7 +530,7 @@
 		hitCount = 0;
 		ignoreCount = 0;
 		location = "";
-		modificationTime = 233959378.297879;
+		modificationTime = 236311926.596081;
 		state = 1;
 		symbolName = "[AppDelegate applicationDidFinishLaunching:]";
 	};
@@ -571,7 +545,7 @@
 		hitCount = 0;
 		ignoreCount = 0;
 		location = "";
-		modificationTime = 233959378.297872;
+		modificationTime = 236311926.596138;
 		state = 1;
 		symbolName = "[AppDelegate applicationDidFinishLaunching:]";
 	};
@@ -594,6 +568,22 @@
 		vrLen = 1088;
 		vrLoc = 0;
 	};
+	7578C3C40E15D9A4009E9674 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 7578C3C50E15D9A4009E9674 /* LoopbackController.h */;
+		name = "LoopbackController.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 981;
+		vrLoc = 0;
+	};
+	7578C3C50E15D9A4009E9674 /* LoopbackController.h */ = {
+		isa = PBXFileReference;
+		name = LoopbackController.h;
+		path = "/Users/davec/Sources/XCode/Projects/PMTB/MacFuse/trunk/filesystems-objc/LoopbackFS/LoopbackController.h";
+		sourceTree = "<absolute>";
+	};
 	7588A2100DF3B8E700B28BC4 /* carousel.sh */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {906, 2366}}";
@@ -602,6 +592,12 @@
 		};
 	};
 	758C74590DE61A16002EBB07 /* CarouselDataModel.xcdatamodel */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = wrapper.xcdatamodel;
+		name = CarouselDataModel.xcdatamodel;
+		path = /Users/davec/Desktop/PMTB/trunk/CarouselDataModel.xcdatamodel;
+		sourceTree = "<absolute>";
 		uiCtxt = {
 			"Xdesign Model Editor Bookmark Key" = {
 				UIContextForDetailArea = {
@@ -759,42 +755,6 @@
 			};
 		};
 	};
-	758C76D20DE62503002EBB07 /* NSError+POSIX.h */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {672, 736}}";
-			sepNavSelRange = "{0, 0}";
-			sepNavVisRange = "{0, 950}";
-		};
-	};
-	759BC9AC0DB496330039608A /* PMTBApp */ = {
-		isa = PBXExecutable;
-		activeArgIndices = (
-		);
-		argumentStrings = (
-		);
-		autoAttachOnCrash = 1;
-		breakpointsEnabled = 0;
-		configStateDict = {
-		};
-		customDataFormattersEnabled = 1;
-		debuggerPlugin = GDBDebugging;
-		disassemblyDisplayState = 0;
-		dylibVariantSuffix = "";
-		enableDebugStr = 1;
-		environmentEntries = (
-		);
-		executableSystemSymbolLevel = 0;
-		executableUserSymbolLevel = 0;
-		libgmallocEnabled = 0;
-		name = PMTBApp;
-		savedGlobals = {
-		};
-		sourceDirectories = (
-		);
-		variableFormatDictionary = {
-			"_code-NSInteger--[PMTBDocument initWithType:error:]" = 1;
-		};
-	};
 	759BC9B40DB496500039608A /* Source Control */ = {
 		isa = PBXSourceControlManager;
 		fallbackIsa = XCSourceControlManager;
@@ -808,19 +768,17 @@
 		indexTemplatePath = "";
 	};
 	759BC9E20DB4A0BC0039608A /* PMTB.h */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.c.h;
+		name = PMTB.h;
+		path = /Users/davec/Desktop/PMTB/trunk/PMTBApp/PMTB.h;
+		sourceTree = "<absolute>";
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {775, 1362}}";
 			sepNavSelRange = "{496, 0}";
 			sepNavVisRange = "{0, 600}";
 			sepNavWindowFrame = "{{480, 182}, {639, 872}}";
-		};
-	};
-	759BC9E30DB4A0BC0039608A /* PMTB.m */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {775, 3402}}";
-			sepNavSelRange = "{325, 0}";
-			sepNavVisRange = "{0, 1991}";
-			sepNavWindowFrame = "{{268, 109}, {845, 1233}}";
 		};
 	};
 	759BCA150DB4A9880039608A /* PBXTextBookmark */ = {
@@ -867,11 +825,38 @@
 		vrLen = 3165;
 		vrLoc = 0;
 	};
+	759BCBB30DB536920039608A /* GenericFolderFlat.png */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = image.png;
+		name = GenericFolderFlat.png;
+		path = /Users/davec/Desktop/PMTB/trunk/PMTBFS/Resources/GenericFolderFlat.png;
+		sourceTree = "<absolute>";
+	};
+	759BCBB50DB5375B0039608A /* MB-folder-offline.tiff */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = image.tiff;
+		name = "MB-folder-offline.tiff";
+		path = "/Users/davec/Desktop/PMTB/trunk/PMTBFS/Resources/MB-folder-offline.tiff";
+		sourceTree = "<absolute>";
+	};
+	759BCBB60DB5375B0039608A /* MB-folder.tiff */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = image.tiff;
+		name = "MB-folder.tiff";
+		path = "/Users/davec/Desktop/PMTB/trunk/PMTBFS/Resources/MB-folder.tiff";
+		sourceTree = "<absolute>";
+	};
 	759BCBDC0DB5408B0039608A /* PBXBookmark */ = {
 		isa = PBXBookmark;
 		fRef = 759BCBB30DB536920039608A /* GenericFolderFlat.png */;
 	};
 	759BCC2E0DB58F0B0039608A /* PMTBFileSystem.h */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.c.h;
+		name = PMTBFileSystem.h;
+		path = /Users/davec/Desktop/PMTB/trunk/PMTBFS/Sources/PMTBFileSystem.h;
+		sourceTree = "<absolute>";
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {780, 877}}";
 			sepNavSelRange = "{3, 0}";
@@ -880,6 +865,12 @@
 		};
 	};
 	759BCC2F0DB58F0B0039608A /* PMTBFileSystem.m */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.c.objc;
+		name = PMTBFileSystem.m;
+		path = /Users/davec/Desktop/PMTB/trunk/PMTBFS/Sources/PMTBFileSystem.m;
+		sourceTree = "<absolute>";
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {672, 2604}}";
 			sepNavSelRange = "{194, 0}";
@@ -906,16 +897,6 @@
 		vrLen = 88;
 		vrLoc = 0;
 	};
-	75A711560DD7B3BC0091E901 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 759BC9E30DB4A0BC0039608A /* PMTB.m */;
-		name = "PMTB.m: 10";
-		rLen = 0;
-		rLoc = 147;
-		rType = 0;
-		vrLen = 1538;
-		vrLoc = 0;
-	};
 	75AEC0800DD954230090DE55 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 77C8280B06725ACE000B614F /* PMTB_AppDelegate.h */;
@@ -937,6 +918,12 @@
 		vrLoc = 0;
 	};
 	75AEC1510DD9FD050090DE55 /* PMTBDocument.h */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.c.h;
+		name = PMTBDocument.h;
+		path = /Users/davec/Desktop/PMTB/trunk/PMTBApp/PMTBDocument.h;
+		sourceTree = "<absolute>";
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {672, 891}}";
 			sepNavSelRange = "{61, 49}";
@@ -945,21 +932,25 @@
 		};
 	};
 	75AEC1520DD9FD050090DE55 /* PMTBDocument.m */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.c.objc;
+		name = PMTBDocument.m;
+		path = /Users/davec/Desktop/PMTB/trunk/PMTBApp/PMTBDocument.m;
+		sourceTree = "<absolute>";
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {672, 1456}}";
 			sepNavSelRange = "{176, 1330}";
 			sepNavVisRange = "{1506, 2382}";
 		};
 	};
-	75AEC1B90DDA08DC0090DE55 /* StorageWindowController.h */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {672, 751}}";
-			sepNavSelRange = "{275, 81}";
-			sepNavVisRange = "{0, 865}";
-			sepNavWindowFrame = "{{84, 482}, {886, 1028}}";
-		};
-	};
 	75AEC1BA0DDA08DC0090DE55 /* StorageWindowController.m */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.c.objc;
+		name = StorageWindowController.m;
+		path = /Users/davec/Desktop/PMTB/trunk/Carousel/StorageWindowController.m;
+		sourceTree = "<absolute>";
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {672, 3710}}";
 			sepNavSelRange = "{759, 0}";
@@ -1177,37 +1168,12 @@
 		path = /Xcode3.1/SDKs/MacOSX10.5.sdk/System/Library/Frameworks/CoreFoundation.framework/Versions/A/Headers/CoreFoundation.h;
 		sourceTree = "<absolute>";
 	};
-	75AEC4640DDB9A370090DE55 /* PMTBFS */ = {
-		activeExec = 0;
-		executables = (
-			75AEC4660DDB9A370090DE55 /* PMTBFS */,
-		);
-	};
-	75AEC4660DDB9A370090DE55 /* PMTBFS */ = {
-		isa = PBXExecutable;
-		activeArgIndices = (
-		);
-		argumentStrings = (
-		);
-		autoAttachOnCrash = 1;
-		breakpointsEnabled = 1;
-		configStateDict = {
-		};
-		customDataFormattersEnabled = 1;
-		debuggerPlugin = GDBDebugging;
-		disassemblyDisplayState = 0;
-		dylibVariantSuffix = "";
-		enableDebugStr = 1;
-		environmentEntries = (
-		);
-		executableSystemSymbolLevel = 0;
-		executableUserSymbolLevel = 0;
-		libgmallocEnabled = 0;
-		name = PMTBFS;
-		savedGlobals = {
-		};
-		sourceDirectories = (
-		);
+	75AEC4670DDB9A380090DE55 /* PMTBFS-Info.plist */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = text.plist.xml;
+		name = "PMTBFS-Info.plist";
+		path = "/Users/davec/Desktop/PMTB/trunk/PMTBFS/Sources/PMTBFS-Info.plist";
+		sourceTree = "<absolute>";
 	};
 	75AEC4920DDBA13C0090DE55 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -1312,57 +1278,17 @@
 		vrLen = 1989;
 		vrLoc = 976;
 	};
-	75AEC6080DDE08320090DE55 /* CarouselDocument.h */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {672, 751}}";
-			sepNavSelRange = "{199, 0}";
-			sepNavVisRange = "{0, 233}";
-		};
-	};
 	75AEC6090DDE08320090DE55 /* CarouselDocument.m */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.c.objc;
+		name = CarouselDocument.m;
+		path = /Users/davec/Desktop/PMTB/trunk/Carousel/CarouselDocument.m;
+		sourceTree = "<absolute>";
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {672, 854}}";
 			sepNavSelRange = "{1741, 78}";
 			sepNavVisRange = "{146, 1781}";
-		};
-	};
-	75AEC61C0DDE09F20090DE55 /* Carousel */ = {
-		activeExec = 0;
-		executables = (
-			75AEC61E0DDE09F20090DE55 /* Carousel */,
-		);
-	};
-	75AEC61E0DDE09F20090DE55 /* Carousel */ = {
-		isa = PBXExecutable;
-		activeArgIndices = (
-		);
-		argumentStrings = (
-		);
-		autoAttachOnCrash = 1;
-		breakpointsEnabled = 1;
-		configStateDict = {
-		};
-		customDataFormattersEnabled = 1;
-		debuggerPlugin = GDBDebugging;
-		disassemblyDisplayState = 0;
-		dylibVariantSuffix = "";
-		enableDebugStr = 1;
-		environmentEntries = (
-		);
-		executableSystemSymbolLevel = 0;
-		executableUserSymbolLevel = 0;
-		libgmallocEnabled = 0;
-		name = Carousel;
-		savedGlobals = {
-		};
-		sourceDirectories = (
-		);
-		variableFormatDictionary = {
-		};
-	};
-	75AEC61F0DDE09F20090DE55 /* Carousel-Info.plist */ = {
-		uiCtxt = {
-			sepNavWindowFrame = "{{1340, 82}, {886, 1028}}";
 		};
 	};
 	75AEC6530DDE0E040090DE55 /* PBXTextBookmark */ = {
@@ -1384,32 +1310,16 @@
 		fRef = 759BCBB60DB5375B0039608A /* MB-folder.tiff */;
 	};
 	75AEC7400DDE2EA10090DE55 /* MediaController.m */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.c.objc;
+		name = MediaController.m;
+		path = /Users/davec/Desktop/PMTB/trunk/Carousel/MediaController.m;
+		sourceTree = "<absolute>";
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {672, 1890}}";
 			sepNavSelRange = "{2876, 71}";
 			sepNavVisRange = "{4044, 1631}";
-		};
-	};
-	75AEC7410DDE2EA10090DE55 /* MediaController.h */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {672, 798}}";
-			sepNavSelRange = "{2852, 32}";
-			sepNavVisRange = "{0, 2935}";
-			sepNavWindowFrame = "{{406, 188}, {886, 1028}}";
-		};
-	};
-	75AEC8060DDE52E70090DE55 /* DataStoreController.h */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {672, 808}}";
-			sepNavSelRange = "{253, 0}";
-			sepNavVisRange = "{0, 253}";
-		};
-	};
-	75AEC8070DDE52E70090DE55 /* DataStoreController.m */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {672, 751}}";
-			sepNavSelRange = "{98, 5}";
-			sepNavVisRange = "{0, 189}";
 		};
 	};
 	75BF466D0DEDEBA500A80BD1 /* PBXTextBookmark */ = {
@@ -1422,14 +1332,13 @@
 		vrLen = 1306;
 		vrLoc = 490;
 	};
-	75ECCF540DE363D200AB2F3F /* MediaDiscMO.h */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {672, 751}}";
-			sepNavSelRange = "{203, 0}";
-			sepNavVisRange = "{0, 215}";
-		};
-	};
 	75ECCF550DE363D200AB2F3F /* MediaDiscMO.m */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.c.objc;
+		name = MediaDiscMO.m;
+		path = /Users/davec/Desktop/PMTB/trunk/Carousel/MediaDiscMO.m;
+		sourceTree = "<absolute>";
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {790, 710}}";
 			sepNavSelRange = "{476, 0}";
@@ -1449,7 +1358,7 @@
 		hitCount = 0;
 		ignoreCount = 0;
 		lineNumber = 76;
-		modificationTime = 233961750.558318;
+		modificationTime = 236311926.59615;
 		state = 1;
 	};
 	75ECCFEC0DE3752A00AB2F3F /* PBXTextBookmark */ = {
@@ -1499,7 +1408,7 @@
 		hitCount = 0;
 		ignoreCount = 0;
 		lineNumber = 15;
-		modificationTime = 233961750.5582799;
+		modificationTime = 236311926.596155;
 		state = 1;
 	};
 	75ECD0680DE385FD00AB2F3F /* dacallib.h */ = {
@@ -1547,16 +1456,6 @@
 		vrLen = 2382;
 		vrLoc = 1506;
 	};
-	75EF513A0DD9109000D463DE /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 759BC9E30DB4A0BC0039608A /* PMTB.m */;
-		name = "PMTB.m: 19";
-		rLen = 0;
-		rLoc = 325;
-		rType = 0;
-		vrLen = 1991;
-		vrLoc = 0;
-	};
 	75F2BBC60DF00F0A00BEC5A4 /* PlistBookmark */ = {
 		isa = PlistBookmark;
 		fRef = 75AEC3390DDB899D0090DE55 /* DACALDriver-Info.plist */;
@@ -1594,21 +1493,6 @@
 		path = /Developer/SDKs/MacOSX10.5.sdk/System/Library/Frameworks/Kernel.framework/Versions/A/Headers/mach/i386/vm_types.h;
 		sourceTree = "<absolute>";
 	};
-	75FD87EF0DB6AFBB00237357 /* MainWindowController.m */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {672, 3724}}";
-			sepNavSelRange = "{73, 9061}";
-			sepNavVisRange = "{0, 0}";
-			sepNavWindowFrame = "{{186, 235}, {744, 1314}}";
-		};
-	};
-	75FD87F00DB6AFBB00237357 /* MainWindowController.h */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {696, 879}}";
-			sepNavSelRange = "{615, 0}";
-			sepNavVisRange = "{0, 615}";
-		};
-	};
 	75FD89520DB6B1FE00237357 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 29B97316FDCFA39411CA2CEA /* main.m */;
@@ -1637,6 +1521,12 @@
 		sourceTree = "<absolute>";
 	};
 	77C8280B06725ACE000B614F /* PMTB_AppDelegate.h */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.c.h;
+		name = PMTB_AppDelegate.h;
+		path = /Users/davec/Desktop/PMTB/trunk/PMTBApp/PMTB_AppDelegate.h;
+		sourceTree = "<absolute>";
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {790, 784}}";
 			sepNavSelRange = "{167, 36}";
@@ -1645,17 +1535,17 @@
 		};
 	};
 	77C8280C06725ACE000B614F /* PMTB_AppDelegate.m */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.c.objc;
+		name = PMTB_AppDelegate.m;
+		path = /Users/davec/Desktop/PMTB/trunk/PMTBApp/PMTB_AppDelegate.m;
+		sourceTree = "<absolute>";
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {838, 3990}}";
 			sepNavSelRange = "{236, 0}";
 			sepNavVisRange = "{0, 2669}";
 			sepNavWindowFrame = "{{107, 219}, {897, 1270}}";
 		};
-	};
-	8D1107260486CEB800E47090 /* PMTBApp */ = {
-		activeExec = 0;
-		executables = (
-			759BC9AC0DB496330039608A /* PMTBApp */,
-		);
 	};
 }
