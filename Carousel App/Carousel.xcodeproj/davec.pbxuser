@@ -101,8 +101,8 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 236282296;
-			PBXWorkspaceStateSaveDate = 236282296;
+			PBXPerProjectTemplateStateSaveDate = 236312940;
+			PBXWorkspaceStateSaveDate = 236312940;
 		};
 		perUserProjectItems = {
 			754A6B5C0DECF32A0003AE5B /* PBXTextBookmark */ = 754A6B5C0DECF32A0003AE5B /* PBXTextBookmark */;
@@ -250,6 +250,7 @@
 		fallbackIsa = XCSourceControlManager;
 		isSCMEnabled = 0;
 		scmConfiguration = {
+			repositoryName = PMS;
 		};
 	};
 	756836BA0DEA5B32001C6F01 /* Code sense */ = {
