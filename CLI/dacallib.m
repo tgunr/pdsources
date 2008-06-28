@@ -562,10 +562,10 @@ DACALResult		DACALSlotCreateIndex( DACALDeviceRef deviceID, DACALSlotNum slotNum
 	doCFCommand = CFStringCreateWithFormat(	gDACALDefaultCFAllocator, NULL,
 											CFSTR("\"%@\" -x -c %i -s %i -t \"%@\" -l %i%@"), 
 											commandURL, indexID+1, slotNum, slotTitle, indexLevel, sourceType );
-	if( doCFCommand == NULL ) return( paramErr );
+	if( doCFCommand == NULL ) return( kIOReturnBadArgument );
 
 	doCommand = CFStringCreateCString( doCFCommand, kCFStringEncodingUTF8 );	
-	if( doCommand == NULL ) return( paramErr );
+	if( doCommand == NULL ) return( kIOReturnBadArgument );
 
 	outResult = system( doCommand );
 
@@ -588,10 +588,10 @@ DACALResult		DACALSlotDeleteIndex( DACALDeviceRef deviceID, DACALSlotNum slotNum
 	doCFCommand = CFStringCreateWithFormat(	gDACALDefaultCFAllocator, NULL,
 											CFSTR("\"%@\" -c %i -s %i -k"), 
 											commandURL, indexID+1, slotNum );
-	if( doCFCommand == NULL ) return( paramErr );
+	if( doCFCommand == NULL ) return( kIOReturnBadArgument );
 
 	doCommand = CFStringCreateCString( doCFCommand, kCFStringEncodingUTF8 );	
-	if( doCommand == NULL ) return( paramErr );
+	if( doCommand == NULL ) return( kIOReturnBadArgument );
 
 	outResult = system( doCommand );
 
@@ -622,19 +622,19 @@ CFStringRef		DACALSlotCopyTitle( DACALDeviceRef deviceID, DACALSlotNum slotNum, 
 											CFSTR("\"%@\" -c %i -s %i -w"), 
 											commandURL, indexID+1, slotNum );
 	if( doCFCommand == NULL ) {
-		outResult = paramErr;
+		outResult = kIOReturnBadArgument;
 		goto BAIL;
 	}
 
 	doCommand = CFStringCreateCString( doCFCommand, kCFStringEncodingUTF8 );	
 	if( doCommand == NULL ) {
-		outResult = paramErr;
+		outResult = kIOReturnBadArgument;
 		goto BAIL;
 	}
 
 	utf8Name = (char*)calloc(1, 1024);
 	if( doCommand == NULL ) {
-		outResult = paramErr;
+		outResult = kIOReturnBadArgument;
 		goto BAIL;
 	}
 
@@ -650,7 +650,7 @@ CFStringRef		DACALSlotCopyTitle( DACALDeviceRef deviceID, DACALSlotNum slotNum, 
 		outTitle = CFStringCreateWithCString( gDACALDefaultCFAllocator, utf8Name, kCFStringEncodingUTF8 );
 		outResult = noErr;
 	} else {
-		outResult = paramErr;
+		outResult = kIOReturnBadArgument;
 		goto BAIL;
 	}
 	
