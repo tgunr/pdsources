@@ -10,8 +10,10 @@ CMDNAME="`basename $0`"
 DACALCMD="$CMDPATH/dacal" 
 # XATTRCMD="$CMDPATH/xattr"
 XATTRCMD="/usr/bin/xattr"
-xattrcarousel="com.polymicrosystems.carousel"
+xattrbase="com.polymicrosystems.pickadisc"
+xattrcarousel="$xattrbase.carousel"
 xattrslot=$xattrcarousel".slot"
+xattrkind="$xattrbase.kind"
 
 # some assumptions
 volumename="/Volumes/Untitled"
@@ -28,6 +30,7 @@ carousel=1
 nodisc=0
 nomove=0
 eject=0
+kind="data"
 
 function usage () {
 echo "carousel usage
@@ -47,11 +50,12 @@ echo "carousel usage
     -k Clear slot
     -p Path to -c -s options
     -N Next available slot, scans -c from 1 upward to -s for first avaialable slot
-    -X Turn on bash debug flag"
+    -X Turn on bash debug flag
+    -K Specify kind of slot folder data (default = data)"
    exit 1
 }
 
-while getopts "hc:s:g:l:d:vt:nxDewkpNX" Option
+while getopts "hc:s:g:l:d:vt:nxDewkpNXK:" Option
 do 
     case "$Option" in 
 	h ) usage ;;
@@ -73,6 +77,7 @@ do
 	p ) pathtoslot=1 ;;
 	N ) nextslot=1 ;;
 	X ) set -x;;
+	K ) kind="$OPTARG";;
 	* ) echo "Unimplemented option chosen." 
 	    exit 1 ;;   # DEFAULT
     esac
@@ -165,6 +170,7 @@ if [[ "$getfileslot" == "" ]] ; then
 		$DEBUGCMD "$XATTRCMD" -w "$xattrcarousel" $carousel  "$carouselbase"
 		$DEBUGCMD "$XATTRCMD" -w "$xattrcarousel" $carousel  "$carouselbaseslot"
 		$DEBUGCMD "$XATTRCMD" -w "$xattrslot" $slot "$carouselbaseslot"
+		$DEBUGCMD "$XATTRCMD" -w "$xattrkind" "$kind" "$carouselbaseslot"
 		$DEBUGCMD "$XATTRCMD" -w "$xattrcarousel" $carousel  "$carouselpathslotdiscname"
 		$DEBUGCMD "$XATTRCMD" -w "$xattrslot" $slot "$carouselpathslotdiscname"
     else # real disc to index
@@ -172,6 +178,7 @@ if [[ "$getfileslot" == "" ]] ; then
 		$DEBUGCMD "$XATTRCMD" -w "$xattrcarousel" $carousel  "$carouselbase"
 		$DEBUGCMD "$XATTRCMD" -w "$xattrcarousel" $carousel  "$carouselbaseslot"
 		$DEBUGCMD "$XATTRCMD" -w "$xattrslot" $slot "$carouselbaseslot"
+		$DEBUGCMD "$XATTRCMD" -w "$xattrkind" "$kind" "$carouselbaseslot"
 		$DEBUGCMD "$XATTRCMD" -w "$xattrcarousel" $carousel  "$carouselpathslotdiscname"
 		$DEBUGCMD "$XATTRCMD" -w "$xattrslot" $slot "$carouselpathslotdiscname"
 		
