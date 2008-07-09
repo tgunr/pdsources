@@ -29,6 +29,8 @@ typedef	UInt16			DACALSlotNum;
 typedef	vm_offset_t		DACALDeviceRef;
 typedef	UInt16			DACALCount;
 typedef kern_return_t	DACALResult;
+typedef u_long			DACALOptionBits;
+typedef	DACALDeviceRef	DACALDeviceNode;
 
 extern CFStringRef		DACALDC300CFName;
 extern CFStringRef		DACALDC016RWCFName;
@@ -42,11 +44,24 @@ extern const DACALDeviceRef	kDACALDevicesMaxCount;
 extern const DACALResult	kDACALOK;
 extern const DACALResult	kDACALBusy;
 extern const DACALResult	kDACALError;
+extern const DACALResult	kDACALInvalidParameter;
+
+const enum {
+	kDACALOptionMoveDefault		= 0x00,		// regular MoveToSlot:  close, move, open
+	kDACALOptionMoveOnce		= 0x01,		// only moves if slot wasn't the last one opened.
+	kDACALOptionMoveOpenSlot	= 0x02		// skips initial close and opens slot.
+} DACALMoveOption;
+
+const enum {								// This constant can be used with FSFindFolder()
+	kDACALCarouselsFolderType	= 'Crsl',	// to locate the Carousels folder.
+	kDACALCreatorType = 'PADr'
+} DACALEnumType;
 
 // Public Functions
 
 extern CFStringRef		DACALCommandCopyName( DACALDeviceRef deviceID, DACALResult* outError );
 extern DACALResult		DACALCommandSetName( DACALDeviceRef deviceID, CFStringRef deviceName );
+extern DACALDeviceNode	DACALCommandCopyNode( DACALDeviceRef deviceID, DACALResult* outError );
 extern DACALSlotNum		DACALCommandGetSlotCount( DACALDeviceRef deviceID );
 
 extern CFStringRef		DACALCommandCopyStatus( DACALDeviceRef deviceID, DACALResult* outError );
@@ -56,6 +71,7 @@ extern DACALResult		DACALCommandReset( DACALDeviceRef deviceID );
 extern DACALResult		DACALCommandCloseDoor( DACALDeviceRef deviceID );
 extern DACALResult		DACALCommandSetLED( DACALDeviceRef deviceID, Boolean isVisible );
 extern DACALResult		DACALCommandMoveToSlot( DACALDeviceRef deviceID, DACALSlotNum newSlot );
+extern DACALResult		DACALCommandMoveToSlotWithOptions( DACALDeviceRef deviceID, DACALSlotNum newSlot, DACALOptionBits moveOptions );
 extern DACALSlotNum		DACALCommandDVDGetSlot( DACALDeviceRef deviceID, DACALResult* outError );
 extern DACALResult		DACALCommandDVDMoveTo( DACALDeviceRef deviceID, DACALSlotNum newSlot );
 extern DACALResult		DACALCommandDVDEject( DACALDeviceRef deviceID );
@@ -63,6 +79,8 @@ extern DACALResult		DACALCommandDVDEject( DACALDeviceRef deviceID );
 extern DACALResult		DACALSlotCreateIndex( DACALDeviceRef deviceID, DACALSlotNum slotNum, CFStringRef slotTitle, DACALCount indexLevel, CFURLRef sourcePath );
 extern DACALResult		DACALSlotDeleteIndex( DACALDeviceRef deviceID, DACALSlotNum slotNum );
 extern CFStringRef		DACALSlotCopyTitle( DACALDeviceRef deviceID, DACALSlotNum slotNum, DACALResult* outError );
+extern CFURLRef			DACALSlotCopyPath( DACALDeviceRef deviceID, DACALSlotNum slotNum, DACALResult* outError );
+extern DACALSlotNum		DACALSlotNextFreeNumber( DACALDeviceRef deviceID, DACALSlotNum lowestSlot, DACALSlotNum highestSlot, DACALResult* outError );
 
 extern DACALResult		DACALDevicesInitialize( void );
 extern DACALResult		DACALDevicesFinalize( void );
