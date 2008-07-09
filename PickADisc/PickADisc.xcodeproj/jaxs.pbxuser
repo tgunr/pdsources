@@ -1,0 +1,364 @@
+// !$*UTF8*$!
+{
+	02AAE104FF38CCE111CA0E35 /* ImageAndTextCell.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1196, 2478}}";
+			sepNavSelRange = "{4374, 0}";
+			sepNavVisRange = "{1943, 1518}";
+			sepNavWindowFrame = "{{61, 55}, {1147, 776}}";
+		};
+	};
+	02AAE106FF38CD0811CA0E35 /* ImageAndTextCell.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1088, 648}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 259}";
+			sepNavWindowFrame = "{{84, 34}, {1147, 776}}";
+		};
+	};
+	0405E529FF13D2D511CA0E35 /* InitInfo.dict */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1088, 1008}}";
+			sepNavSelRange = "{604, 0}";
+			sepNavVisRange = "{209, 887}";
+			sepNavWindowFrame = "{{316, 94}, {1147, 776}}";
+		};
+	};
+	06AA3D12FF0C15B911CA0E35 /* NSOutlineView_Extensions.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1088, 648}}";
+			sepNavSelRange = "{134, 13}";
+			sepNavVisRange = "{0, 457}";
+			sepNavWindowFrame = "{{209, 52}, {1147, 776}}";
+		};
+	};
+	06AA3D13FF0C15B911CA0E35 /* NSOutlineView_Extensions.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1892, 1316}}";
+			sepNavSelRange = "{2554, 0}";
+			sepNavVisRange = "{122, 2640}";
+			sepNavWindowFrame = "{{84, 34}, {1147, 776}}";
+		};
+	};
+	089C165DFE840E0CC02AAC07 /* English */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1088, 648}}";
+			sepNavSelRange = "{70, 0}";
+			sepNavVisRange = "{0, 73}";
+			sepNavWindowFrame = "{{38, 76}, {1147, 776}}";
+		};
+	};
+	08DC403BFF0C20FA11CA0E35 /* TreeNode.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1088, 686}}";
+			sepNavSelRange = "{105, 17}";
+			sepNavVisRange = "{0, 1451}";
+			sepNavWindowFrame = "{{682, -27}, {1147, 776}}";
+		};
+	};
+	08DC403CFF0C20FA11CA0E35 /* TreeNode.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {2114, 2814}}";
+			sepNavSelRange = "{3247, 0}";
+			sepNavVisRange = "{2342, 1782}";
+			sepNavWindowFrame = "{{212, 48}, {1147, 776}}";
+		};
+	};
+	08DC4041FF0C22D111CA0E35 /* SimpleTreeNode.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1088, 1428}}";
+			sepNavSelRange = "{338, 17}";
+			sepNavVisRange = "{0, 1354}";
+			sepNavWindowFrame = "{{401, 93}, {1147, 776}}";
+		};
+	};
+	08DC4042FF0C22D111CA0E35 /* SimpleTreeNode.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1057, 7168}}";
+			sepNavSelRange = "{6641, 86}";
+			sepNavVisRange = "{6431, 406}";
+			sepNavWindowFrame = "{{298, 61}, {1147, 776}}";
+		};
+	};
+	08DC4048FF0C3BD211CA0E35 /* NSArray_Extensions.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1088, 648}}";
+			sepNavSelRange = "{160, 74}";
+			sepNavVisRange = "{0, 240}";
+			sepNavWindowFrame = "{{15, 97}, {1147, 776}}";
+		};
+	};
+	08DC4049FF0C3BD211CA0E35 /* NSArray_Extensions.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1088, 938}}";
+			sepNavSelRange = "{2836, 76}";
+			sepNavVisRange = "{825, 2282}";
+			sepNavWindowFrame = "{{61, 55}, {1147, 776}}";
+		};
+	};
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeArchitecture = i386;
+		activeBuildConfigurationName = Deployment;
+		activeExecutable = 5CDEBFB00E15BBA800732C82 /* PickADisc */;
+		activeTarget = 735CC299049A7E2A00C919A3 /* PickADisc */;
+		addToTargets = (
+			735CC299049A7E2A00C919A3 /* PickADisc */,
+		);
+		breakpoints = (
+		);
+		codeSenseManager = 5CDEBFC10E15BBB700732C82 /* Code sense */;
+		executables = (
+			5CDEBFB00E15BBA800732C82 /* PickADisc */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					258,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXConfiguration.PBXTargetDataSource.PBXTargetDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					218,
+					60,
+					20,
+					48,
+					43,
+					43,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXTargetDataSource_PrimaryAttribute,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 237277034;
+			PBXWorkspaceStateSaveDate = 237277034;
+		};
+		sourceControlManager = 5CDEBFC00E15BBB700732C82 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	29B97316FDCFA39411CA2CEA /* main.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1088, 625}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 110}";
+			sepNavWindowFrame = "{{84, 34}, {1147, 776}}";
+		};
+	};
+	5C4E17E10E2166FA0091DD7D /* pms.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1088, 648}}";
+			sepNavSelRange = "{339, 33}";
+			sepNavVisRange = "{0, 428}";
+			sepNavWindowFrame = "{{84, 34}, {1147, 776}}";
+		};
+	};
+	5C4E17EB0E2167580091DD7D /* carousel.sh */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1088, 3304}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1169}";
+			sepNavWindowFrame = "{{15, 97}, {1147, 776}}";
+		};
+	};
+	5C4E17ED0E2167740091DD7D /* dacallib.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1088, 15568}}";
+			sepNavSelRange = "{2552, 0}";
+			sepNavVisRange = "{2140, 2287}";
+			sepNavWindowFrame = "{{136, 63}, {1147, 776}}";
+		};
+	};
+	5C4E17EE0E2167740091DD7D /* dacallib.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1088, 1344}}";
+			sepNavSelRange = "{1628, 0}";
+			sepNavVisRange = "{0, 1195}";
+			sepNavWindowFrame = "{{294, 44}, {1147, 776}}";
+		};
+	};
+	5C6C12E80E240BEA0097CC7A /* AppController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1088, 648}}";
+			sepNavSelRange = "{122, 0}";
+			sepNavVisRange = "{0, 122}";
+			sepNavWindowFrame = "{{38, 76}, {1147, 776}}";
+		};
+	};
+	5C6C12E90E240BEA0097CC7A /* AppController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1088, 1554}}";
+			sepNavSelRange = "{4161, 0}";
+			sepNavVisRange = "{1632, 2354}";
+			sepNavWindowFrame = "{{61, 55}, {1147, 776}}";
+		};
+	};
+	5C6C12EA0E240BEA0097CC7A /* DACALTreeDataSource.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1088, 648}}";
+			sepNavSelRange = "{182, 0}";
+			sepNavVisRange = "{0, 523}";
+			sepNavWindowFrame = "{{84, 34}, {1147, 776}}";
+		};
+	};
+	5C6C12EB0E240BEA0097CC7A /* DACALTreeDataSource.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1088, 3262}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{6838, 1257}";
+			sepNavWindowFrame = "{{107, 13}, {1147, 776}}";
+		};
+	};
+	5C6C12EC0E240BEA0097CC7A /* PADAddVolumeController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1088, 648}}";
+			sepNavSelRange = "{182, 0}";
+			sepNavVisRange = "{0, 986}";
+			sepNavWindowFrame = "{{15, 97}, {1147, 776}}";
+		};
+	};
+	5C6C12ED0E240BEA0097CC7A /* PADAddVolumeController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1088, 1372}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1048}";
+			sepNavWindowFrame = "{{38, 76}, {1147, 776}}";
+		};
+	};
+	5C6C12EE0E240BEA0097CC7A /* PADIndexToolbarController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1088, 686}}";
+			sepNavSelRange = "{185, 0}";
+			sepNavVisRange = "{0, 1147}";
+			sepNavWindowFrame = "{{61, 55}, {1147, 776}}";
+		};
+	};
+	5C6C12EF0E240BEA0097CC7A /* PADIndexToolbarController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1088, 2632}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1236}";
+			sepNavWindowFrame = "{{84, 34}, {1147, 776}}";
+		};
+	};
+	5C6C12F00E240BEA0097CC7A /* TreeController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1088, 1428}}";
+			sepNavSelRange = "{300, 0}";
+			sepNavVisRange = "{0, 1163}";
+			sepNavWindowFrame = "{{107, 13}, {1147, 776}}";
+		};
+	};
+	5C6C12F10E240BEA0097CC7A /* TreeController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1088, 9772}}";
+			sepNavSelRange = "{179, 0}";
+			sepNavVisRange = "{0, 1005}";
+			sepNavWindowFrame = "{{15, 97}, {1147, 776}}";
+		};
+	};
+	5C9293A80E1EBF7100835A1F /* BTHIconResources.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1088, 1022}}";
+			sepNavSelRange = "{2926, 0}";
+			sepNavVisRange = "{0, 2175}";
+			sepNavWindowFrame = "{{19, 37}, {1147, 776}}";
+		};
+	};
+	5C9293A90E1EBF7100835A1F /* BTHIconResources.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1088, 4326}}";
+			sepNavSelRange = "{5228, 40}";
+			sepNavVisRange = "{0, 1517}";
+			sepNavWindowFrame = "{{38, 76}, {1147, 776}}";
+		};
+	};
+	5CDEBFB00E15BBA800732C82 /* PickADisc */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = PickADisc;
+		savedGlobals = {
+		};
+		sourceDirectories = (
+		);
+		variableFormatDictionary = {
+			"theIconCreator-OSType-DACALGetIconImageForType" = 5;
+			"theIconType-OSType-DACALRegisterIconResource" = 5;
+		};
+	};
+	5CDEBFC00E15BBB700732C82 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+		};
+	};
+	5CDEBFC10E15BBB700732C82 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	735CC297049A7E1F00C919A3 /* Prefix.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1088, 648}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 688}";
+			sepNavWindowFrame = "{{370, 10}, {1147, 776}}";
+		};
+	};
+	735CC299049A7E2A00C919A3 /* PickADisc */ = {
+		activeExec = 0;
+		executables = (
+			5CDEBFB00E15BBA800732C82 /* PickADisc */,
+		);
+	};
+	735CC2C0049A7E2A00C919A3 /* Info-PickADisc.plist */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1088, 798}}";
+			sepNavSelRange = "{817, 0}";
+			sepNavVisRange = "{0, 1307}";
+			sepNavWindowFrame = "{{61, 55}, {1147, 776}}";
+		};
+	};
+}
