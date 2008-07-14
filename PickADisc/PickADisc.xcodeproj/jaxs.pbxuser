@@ -140,6 +140,30 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
+			PBXConfiguration.PBXFileTableDataSource3.XCSCMDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					20,
+					284,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_SCM_ColumnID,
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
 			PBXConfiguration.PBXTargetDataSource.PBXTargetDataSource = {
 				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
 				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
@@ -182,6 +206,7 @@
 			5CD883350E2BB42D004481FB /* PlistBookmark */ = 5CD883350E2BB42D004481FB /* PlistBookmark */;
 			5CD8833C0E2BB4EF004481FB /* PlistBookmark */ = 5CD8833C0E2BB4EF004481FB /* PlistBookmark */;
 			5CD8833D0E2BB555004481FB /* PlistBookmark */ = 5CD8833D0E2BB555004481FB /* PlistBookmark */;
+			5CD883490E2BB8BA004481FB /* PlistBookmark */ = 5CD883490E2BB8BA004481FB /* PlistBookmark */;
 		};
 		sourceControlManager = 5CDEBFC00E15BBB700732C82 /* Source Control */;
 		userBuildSettings = {
@@ -657,6 +682,18 @@
 		rLoc = 2147483647;
 	};
 	5CD8833D0E2BB555004481FB /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 735CC2C0049A7E2A00C919A3 /* Info-PickADisc.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+			CFBundleURLTypes,
+		);
+		name = "/Volumes/Archive/svnsources/polymicro/PMTB/branches/jaxs/PickADisc/Info-PickADisc.plist";
+		rLen = 0;
+		rLoc = 2147483647;
+	};
+	5CD883490E2BB8BA004481FB /* PlistBookmark */ = {
 		isa = PlistBookmark;
 		fRef = 735CC2C0049A7E2A00C919A3 /* Info-PickADisc.plist */;
 		fallbackIsa = PBXBookmark;
