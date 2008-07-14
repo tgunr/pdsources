@@ -20,13 +20,14 @@
 	int					index, slotindex, slotcount;
 	int					count = DACALDevicesGetCount();
 	NSString*			boxName;
-	NSString*			boxDirName;
+//	NSString*			boxDirName;
 	CFStringRef			theSlotTitle;
 	CFStringRef			theSlotName;
 	CFURLRef			dataURL = NULL; 
 	CFURLRef			boxURL = NULL;
 	CFURLRef			slotURL = NULL;
 	DACALDeviceRef		theBoxRef = (DACALDeviceRef)NULL;
+	DACALDeviceNode		theBoxNode = 0;
 	DACALSlotNum		slotNum = 0;
 	OSType				slotIconType = kGenericCDROMIcon;
 	OSType				compareIconType = 0;
@@ -46,22 +47,25 @@
 	NSDictionary *initData = [NSDictionary dictionaryWithContentsOfFile: [[NSBundle mainBundle] pathForResource:@"InitInfo" ofType: @"dict"]];
 	if( initData != nil ) theOutputTree = [SimpleTreeNode treeFromDictionary: initData];	
 	
-	theWorkNode = (SimpleTreeNode*)[theOutputTree childAtIndex:1];
-	
+	#warning Index 1 should not be hard coded!
+	theWorkNode = (SimpleTreeNode*)[theOutputTree childAtIndex:1];											
+	[[theWorkNode nodeData] setItemType: kPADTypeGroupDevices];
+
 	for( index=0; index < count; index++ )
 	{
-		boxName = (NSString*)DACALCommandCopyName(index+1, NULL);											// Create a leaf in the Carousels group for the device
-		if( boxName == NULL ) boxName = [NSString stringWithFormat:@"Carousel %i", index+1];
+		theBoxNode = index+1;
+		boxName = (NSString*)DACALCommandCopyName( theBoxNode, NULL );										// Create a leaf in the Carousels group for the device
+		if( boxName == NULL ) boxName = [NSString stringWithFormat:@"Carousel %i", theBoxNode];				// This should not ever happen anymore.
 		theChildNode = [[[SimpleTreeNode alloc] initWithData:[SimpleNodeData leafDataWithName:boxName] parent:nil children:[NSArray array]] autorelease];
 
-		boxDirName = [NSString stringWithFormat:@"Carousel %i.carousel", index+1];							// Create a url to the device folder
-		if( dataURL ) boxURL = CFURLCreateCopyAppendingPathComponent(NULL, dataURL, (CFStringRef) boxDirName, TRUE);
-
-		[[theChildNode nodeData] setIconRep:DACALGetIconImageForType( kDACALCarouselsFolderType )];			// Use the box icon
+		//boxDirName = [NSString stringWithFormat:@"Carousel %i.carousel", theBoxNode];						// Create a url to the device folder
+		//if( dataURL ) boxURL = CFURLCreateCopyAppendingPathComponent(NULL, dataURL, (CFStringRef) boxDirName, TRUE);
+		boxURL = DACALCommandCopyPath( theBoxNode, NULL );
 		if( boxURL ) [[theChildNode nodeData] setLocation: (NSURL*)boxURL];
-		
-		[[theChildNode nodeData] setItemType: kPADTypeIndexDevice];											// Set device
-		theBoxRef = (DACALDeviceRef)DACALCommandCopyUUID( index+1, NULL );									// Save UUID
+
+		[[theChildNode nodeData] setIconRep:DACALGetIconImageForType( kDACALCarouselsFolderType )];			// Use the box icon		
+		[[theChildNode nodeData] setItemType: kPADTypeIndexDevice];											// Set device type
+		theBoxRef = (DACALDeviceRef)DACALCommandCopyUUID( theBoxNode, NULL );								// Save UUID
 		[[theChildNode nodeData] setItemDevice:theBoxRef];
 
 		//Create subtree root
@@ -94,8 +98,10 @@
 
 		[theWorkNode insertChild:theChildNode atIndex:index];
 	}
-		
 	
+	#warning Index 2 should not be hard coded!	
+	[[[theOutputTree childAtIndex:2] nodeData] setItemType: kPADTypeGroupFavorites];
+
 /*
 	theErr = FSFindFolder( kUserDomain, kDACALCarouselsFolderType, TRUE, &userLibraryFolder );
 	if( theErr != 0 ) printf( "Could not find user library! Error:%i\n", theErr );
@@ -165,7 +171,8 @@
 
 	[theData setName:theName];
 	
-	if( (theType == kPADTypeIndexDevice) & (theDevice != (DACALDeviceRef)NULL) ) DACALCommandSetName( theDevice, (CFStringRef)theName );
+	if( (theType == kPADTypeIndexDevice) & (theDevice != (DACALDeviceRef)NULL) )
+		DACALCommandSetName( theDevice, (CFStringRef)theName );
 	return;
 }
 
@@ -187,18 +194,35 @@
 	return theOutputTree;
 }
 
+- (void)updatePrompt
+{
+	NSArray *selectedNodes = [treeControl selectedNodes];
+
+	int			index = 0;
+	int			count = [selectedNodes count];
+	NSString*	promptData;
+	
+	index = [[treeControl outlineView] numberOfRows];
+		
+	if( count ) promptData = [NSString stringWithFormat:@"%i of %i selected", (int)count, (int)index];
+	else		promptData = [NSString stringWithFormat:@"%i item%@", (int)index, ((index==1) ? @"" : @"s")];
+
+	[promptText setStringValue: promptData];
+}
+
 - (void)outlineViewAction:(id)tree
 {
-	NSArray *selectedNodes = [tree selectedNodes];
+	NSArray *selectedNodes = [treeControl selectedNodes];
 	NSMutableArray *selectedSlots = [NSMutableArray arrayWithCapacity:0];
 	SimpleNodeData *data;
 	int		index = 0;
 	int		count = [selectedNodes count];
-	NSString*	promptData;
+
 	//	NSURL*	theURL;
 	DACALSlotNum theSlot;
 	PADIndexToolbarController* toolControl = (PADIndexToolbarController*)[self toolbarControl];
 	NSNumber*	slotNumber;
+	
 	
 	for( index=0; index<count; index++ )
 	{
@@ -210,15 +234,9 @@
 				[selectedSlots addObject:slotNumber];
 		}
     }
-
 	if( toolControl ) [toolControl setSelectedSlots:(NSArray*)selectedSlots];
 
-	index = [[tree outlineView] numberOfRows];
-		
-	if( count ) promptData = [NSString stringWithFormat:@"%i of %i selected", (int)count, (int)index];
-	else		promptData = [NSString stringWithFormat:@"%i item%@", (int)index, ((index==1) ? @"" : @"s")];
-
-	[promptText setStringValue: promptData];
+	[self updatePrompt];
 
 	return;
 }

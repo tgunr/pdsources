@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C0884420E26CFCA0052D931 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C0884410E26CFCA0052D931 /* AudioToolbox.framework */; };
+		5C2741770E27686A00A32C40 /* DiscRecording.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C2741760E27686A00A32C40 /* DiscRecording.framework */; };
+		5C2EBE930E29719B009BAF4C /* update.icns in Resources */ = {isa = PBXBuildFile; fileRef = 5C2EBE920E29719B009BAF4C /* update.icns */; };
+		5C2EBE960E2979B3009BAF4C /* sidebarpref.icns in Resources */ = {isa = PBXBuildFile; fileRef = 5C2EBE950E2979B3009BAF4C /* sidebarpref.icns */; };
+		5C2EBE9C0E2991BF009BAF4C /* PADPrefsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C2EBE9A0E2991BF009BAF4C /* PADPrefsController.m */; };
 		5C4E17EC0E2167580091DD7D /* carousel.sh in Resources */ = {isa = PBXBuildFile; fileRef = 5C4E17EB0E2167580091DD7D /* carousel.sh */; };
 		5C4E17EF0E2167740091DD7D /* dacallib.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4E17ED0E2167740091DD7D /* dacallib.m */; };
 		5C4E17FD0E216A2D0091DD7D /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C4E17FC0E216A2D0091DD7D /* IOKit.framework */; };
@@ -26,6 +31,7 @@
 		5C6C12F70E240BEA0097CC7A /* PADAddVolumeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6C12ED0E240BEA0097CC7A /* PADAddVolumeController.m */; };
 		5C6C12F90E240BEA0097CC7A /* PADIndexToolbarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6C12EF0E240BEA0097CC7A /* PADIndexToolbarController.m */; };
 		5C6C12FB0E240BEA0097CC7A /* TreeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6C12F10E240BEA0097CC7A /* TreeController.m */; };
+		5C6C14DF0E2B9FE60081A7B1 /* NSApplication_Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6C14DD0E2B9FE60081A7B1 /* NSApplication_Extensions.m */; };
 		735CC2A3049A7E2A00C919A3 /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 29B97318FDCFA39411CA2CEA /* MainMenu.nib */; };
 		735CC2A4049A7E2A00C919A3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		735CC2A5049A7E2A00C919A3 /* InitInfo.dict in Resources */ = {isa = PBXBuildFile; fileRef = 0405E529FF13D2D511CA0E35 /* InitInfo.dict */; };
@@ -67,6 +73,12 @@
 		08DC4049FF0C3BD211CA0E35 /* NSArray_Extensions.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = NSArray_Extensions.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Sources/main.m; sourceTree = SOURCE_ROOT; };
 		29B97319FDCFA39411CA2CEA /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/MainMenu.nib; sourceTree = "<group>"; };
+		5C0884410E26CFCA0052D931 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = /System/Library/Frameworks/AudioToolbox.framework; sourceTree = "<absolute>"; };
+		5C2741760E27686A00A32C40 /* DiscRecording.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DiscRecording.framework; path = /System/Library/Frameworks/DiscRecording.framework; sourceTree = "<absolute>"; };
+		5C2EBE920E29719B009BAF4C /* update.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = update.icns; sourceTree = "<group>"; };
+		5C2EBE950E2979B3009BAF4C /* sidebarpref.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = sidebarpref.icns; sourceTree = "<group>"; };
+		5C2EBE990E2991BF009BAF4C /* PADPrefsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PADPrefsController.h; sourceTree = "<group>"; };
+		5C2EBE9A0E2991BF009BAF4C /* PADPrefsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PADPrefsController.m; sourceTree = "<group>"; };
 		5C4E17E10E2166FA0091DD7D /* pms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pms.h; path = ../pms.h; sourceTree = SOURCE_ROOT; };
 		5C4E17EB0E2167580091DD7D /* carousel.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = carousel.sh; path = ../CLI/carousel.sh; sourceTree = SOURCE_ROOT; };
 		5C4E17ED0E2167740091DD7D /* dacallib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = dacallib.m; path = ../CLI/dacallib.m; sourceTree = SOURCE_ROOT; };
@@ -93,6 +105,8 @@
 		5C6C12EF0E240BEA0097CC7A /* PADIndexToolbarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PADIndexToolbarController.m; sourceTree = "<group>"; };
 		5C6C12F00E240BEA0097CC7A /* TreeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreeController.h; sourceTree = "<group>"; };
 		5C6C12F10E240BEA0097CC7A /* TreeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TreeController.m; sourceTree = "<group>"; };
+		5C6C14DC0E2B9FE60081A7B1 /* NSApplication_Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSApplication_Extensions.h; sourceTree = "<group>"; };
+		5C6C14DD0E2B9FE60081A7B1 /* NSApplication_Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSApplication_Extensions.m; sourceTree = "<group>"; };
 		5C9293A80E1EBF7100835A1F /* BTHIconResources.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTHIconResources.h; sourceTree = "<group>"; };
 		5C9293A90E1EBF7100835A1F /* BTHIconResources.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTHIconResources.m; sourceTree = "<group>"; };
 		735CC297049A7E1F00C919A3 /* Prefix.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Prefix.h; path = Sources/Prefix.h; sourceTree = SOURCE_ROOT; };
@@ -107,6 +121,8 @@
 			files = (
 				735CC2BD049A7E2A00C919A3 /* Cocoa.framework in Frameworks */,
 				5C4E17FD0E216A2D0091DD7D /* IOKit.framework in Frameworks */,
+				5C0884420E26CFCA0052D931 /* AudioToolbox.framework in Frameworks */,
+				5C2741770E27686A00A32C40 /* DiscRecording.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,6 +144,8 @@
 		01518911FF1B822411CA0E35 /* Cocoa Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				5C6C14DC0E2B9FE60081A7B1 /* NSApplication_Extensions.h */,
+				5C6C14DD0E2B9FE60081A7B1 /* NSApplication_Extensions.m */,
 				5C9293A80E1EBF7100835A1F /* BTHIconResources.h */,
 				5C9293A90E1EBF7100835A1F /* BTHIconResources.m */,
 				02AAE106FF38CD0811CA0E35 /* ImageAndTextCell.h */,
@@ -156,6 +174,8 @@
 			children = (
 				011669A0FFC1E3D311CA0E35 /* Cocoa.framework */,
 				5C4E17FC0E216A2D0091DD7D /* IOKit.framework */,
+				5C0884410E26CFCA0052D931 /* AudioToolbox.framework */,
+				5C2741760E27686A00A32C40 /* DiscRecording.framework */,
 			);
 			name = "Linked Frameworks";
 			sourceTree = "<group>";
@@ -227,6 +247,8 @@
 		5C6C12D20E240AAC0097CC7A /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				5C2EBE950E2979B3009BAF4C /* sidebarpref.icns */,
+				5C2EBE920E29719B009BAF4C /* update.icns */,
 				5C6C12D30E240AAC0097CC7A /* advancedpref.icns */,
 				5C6C12D40E240AAC0097CC7A /* CD.icns */,
 				5C6C12D50E240AAC0097CC7A /* CDAudio.icns */,
@@ -253,6 +275,8 @@
 				5C6C12ED0E240BEA0097CC7A /* PADAddVolumeController.m */,
 				5C6C12EE0E240BEA0097CC7A /* PADIndexToolbarController.h */,
 				5C6C12EF0E240BEA0097CC7A /* PADIndexToolbarController.m */,
+				5C2EBE990E2991BF009BAF4C /* PADPrefsController.h */,
+				5C2EBE9A0E2991BF009BAF4C /* PADPrefsController.m */,
 				5C6C12F00E240BEA0097CC7A /* TreeController.h */,
 				5C6C12F10E240BEA0097CC7A /* TreeController.m */,
 			);
@@ -331,6 +355,8 @@
 				5C6C12E40E240AAC0097CC7A /* minus.icns in Resources */,
 				5C6C12E50E240AAC0097CC7A /* plus.icns in Resources */,
 				5C6C12E60E240AAC0097CC7A /* SmartFolder.icns in Resources */,
+				5C2EBE930E29719B009BAF4C /* update.icns in Resources */,
+				5C2EBE960E2979B3009BAF4C /* sidebarpref.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,6 +389,8 @@
 				5C6C12F70E240BEA0097CC7A /* PADAddVolumeController.m in Sources */,
 				5C6C12F90E240BEA0097CC7A /* PADIndexToolbarController.m in Sources */,
 				5C6C12FB0E240BEA0097CC7A /* TreeController.m in Sources */,
+				5C2EBE9C0E2991BF009BAF4C /* PADPrefsController.m in Sources */,
+				5C6C14DF0E2B9FE60081A7B1 /* NSApplication_Extensions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -410,7 +438,6 @@
 				INFOPLIST_FILE = "Info-PickADisc.plist";
 				INSTALL_PATH = "";
 				LIBRARY_SEARCH_PATHS = "";
-				OPTIMIZATION_CFLAGS = "-O0";
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = PickADisc;

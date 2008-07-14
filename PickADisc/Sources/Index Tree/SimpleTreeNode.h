@@ -4,16 +4,22 @@
 #import "TreeNode.h"
 
 NSImage*	DACALGetIconImageForType( int	theType );
+CFStringRef	CFURLCopyDisplayName( CFAllocatorRef allocator, CFURLRef url, OSStatus* outError );
 
 const enum {
 	kPADTypeUnknown				= 0,
-	kPADTypeIndexCollection		= 1,
-	kPADTypeIndexDevice			= 2,
-	kPADTypeIndexSavedSearch	= 3,
-	kPADTypeDataSlot			= 4,
-	kPADTypeDataFiles			= 5,
-	kPADTypeDataMovie			= 6,
-	kPADTypeDataMuisc			= 7,
+	kPADTypeGroupLibrary,
+	kPADTypeGroupDevices,
+	kPADTypeGroupFavorites,
+	kPADTypeGroupSearches,
+	kPADTypeIndexCollection,
+	kPADTypeIndexDevice,
+	kPADTypeIndexSavedSearch,
+	kPADTypeIndexFavorites,
+	kPADTypeDataSlot,
+	kPADTypeDataFiles,
+	kPADTypeDataMovie,
+	kPADTypeDataMuisc
 } PADNodeTypes;
 
 @interface SimpleTreeNode : TreeNode {

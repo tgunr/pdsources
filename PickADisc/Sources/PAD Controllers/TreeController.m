@@ -113,6 +113,8 @@
     [outlineView reloadData];
 }
 
+- (id)dataSource { return dataSource; }
+
 - (NSOutlineView*)outlineView { return outlineView; }
 - (void)setOutlineView:(NSOutlineView*)view
 {
@@ -438,10 +440,16 @@ NSFileHandle *NewFileHandleForWritingFile(NSString *dirpath, NSString *basename,
 	// Check to make sure we don't allow a node to be inserted into one of its descendants!
 	if (targetNodeIsValid && ([info draggingSource]==outlineView) && [[info draggingPasteboard] availableTypeFromArray:[NSArray arrayWithObject: DragDropSimplePboardType]] != nil) {
 	    NSArray *_draggedNodes = [[[info draggingSource] dataSource] draggedNodes];
+		//SimpleTreeNode *targetParent = (SimpleTreeNode*)[targetNode nodeParent];
 	    targetNodeIsValid = ![targetNode isDescendantOfNodeInArray: _draggedNodes];
+		if( targetNodeIsValid ) targetNodeIsValid = [targetNode isParentOfNodesInArray: draggedNodes];
 	}
     }
     
+	if (targetNodeIsValid && !([info draggingSource]==outlineView))
+		if( [[targetNode nodeData] itemType] == kPADTypeGroupFavorites ) return NSDragOperationCopy;
+		else targetNodeIsValid = NO;
+	
     // Set the item and child index in case we computed a retargeted one.
     [outlineView setDropItem:targetNode dropChildIndex:childIndex];
     
@@ -505,6 +513,20 @@ NSFileHandle *NewFileHandleForWritingFile(NSString *dirpath, NSString *basename,
     }
     
     [self _performDropOperation:info onNode:node atIndex:childIndex];
+	
+	if( [data itemType] == kPADTypeGroupDevices ) {
+//		SimpleTreeNode *parent = (SimpleTreeNode*)[item nodeParent];
+		DACALDeviceRef boxRef;
+		DACALResult theErr = 0;
+	    NSObject *entry = nil;
+		NSEnumerator *enumerator = [[item children] objectEnumerator];
+		while ((entry=[enumerator nextObject])) {
+			boxRef = [[(SimpleTreeNode *)entry nodeData] itemDevice];
+			// if( boxRef ) theErr= DACALCommandSetNode( boxRef, [item indexOfChildIdenticalTo:(TreeNode*)entry]+1 );
+			NSLog( @"DACALCommandSetNode( %@, %i ): %i", (NSURL*)boxRef, [item indexOfChildIdenticalTo:(TreeNode*)entry]+1, theErr );
+		}
+    }
+
         
     return YES;
 }

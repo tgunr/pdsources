@@ -21,7 +21,12 @@
 	IBOutlet	NSTextField		*slotNumber;
 	IBOutlet	NSSlider		*slotDial;
 	IBOutlet	NSSlider		*depthLevel;
-		
+	
+	DACALDeviceRef				currentDevice;
+	NSMutableArray				*pendingVolumes;
+	BOOL						isPending;
+	NSString					*pendingTitle;
+	NSURL						*pendingURL;
 }
 
 -(IBAction) clickCancel:(id)sender;
@@ -33,7 +38,17 @@
 -(IBAction) slotDialChanged:(id)sender;
 -(IBAction) carouselChanged:(id)sender;
 
+-(NSString*) pendingTitle;
+-(void)setPendingTitle:(NSString*)inTitle;
+-(NSURL*) pendingURL;
+-(void)setPendingURL:(NSURL*)inPath;
+-(NSInteger) pendingCount;
+
 - (void)awakeFromNib;
-- (void)windowWillBeginSheet:(NSNotification *)notification;
  
+- (void)deviceSelectionChanged:(NSArray *)newSet;
+- (void)startSheet:(id)sender;
+- (void)windowWillBeginSheet:(NSNotification *)notification;
+- (void)detectedMounts:(NSArray *)newMounts;
+
 @end

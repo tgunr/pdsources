@@ -33,6 +33,13 @@
 		<dict>
 			<key>Entries</key>
 			<array>
+			</array>
+			<key>Group</key>
+			<string>DISCMARKS</string>
+		</dict>
+		<dict>
+			<key>Entries</key>
+			<array>
 				<array>
 					<string>Today</string>
 					<string>clck</string>

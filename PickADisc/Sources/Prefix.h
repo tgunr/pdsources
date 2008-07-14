@@ -3,6 +3,8 @@
     #import <AppKit/AppKit.h>
 	#import "pms.h"
 	#import "dacallib.h"
+	#import "NSApplication_Extensions.h"
+	#import "AppController.h"
 	
 	#if MAC_OS_X_VERSION_MIN_REQUIRED < MAC_OS_X_VERSION_10_5
 		typedef float CGFloat;
@@ -27,4 +29,10 @@
 		#endif
 	#endif
 	
+	#define kASSystemSoundDoink		1
+	#define kASSystemSoundShred		13
+	#define kASSystemSoundPoof		15
+	#define kASSystemSoundTrash		16
+	#define kASSystemSoundSuccess	22
+
 #endif

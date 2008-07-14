@@ -46,6 +46,8 @@
 - (void)setTreeRoot:(SimpleTreeNode*)root;
 - (void)addTreeRoot:(SimpleTreeNode*)newChild;
 
+- (id)dataSource;
+
 - (NSOutlineView*)outlineView;
 - (void)setOutlineView:(NSOutlineView*)view;
 

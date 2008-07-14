@@ -25,4 +25,6 @@
 	IBOutlet	NSTextField		*promptText;
 }
 
+- (void)updatePrompt;
+
 @end

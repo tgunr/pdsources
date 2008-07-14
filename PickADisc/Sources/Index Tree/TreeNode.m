@@ -176,6 +176,24 @@
     return NO;
 }
 
+- (BOOL)isParentOfNode:(TreeNode *)node {
+    // returns YES if 'node' is the parent.
+	if( [node nodeParent] == self ) return YES;
+	return NO;
+}
+
+- (BOOL)isParentOfNodesInArray:(NSArray *)nodes {
+    // returns YES if every 'node' in the array 'nodes' is an parent of ours.
+    // For each node in nodes, if node is the not parent return NO.  If every none
+    // in the array is a child, return YES.
+    NSEnumerator *nodeEnum = [nodes objectEnumerator];
+    TreeNode *node = nil;
+    while ((node = [nodeEnum nextObject])) {
+        if (![self isParentOfNode:node]) return NO;
+    }
+    return YES;
+}
+
 - (void)recursiveSortChildren {
     [nodeChildren sortUsingSelector:@selector(compare:)];
     [nodeChildren makeObjectsPerformSelector:@selector(recursiveSortChildren)];

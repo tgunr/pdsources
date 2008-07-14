@@ -37,6 +37,12 @@
 // returns YES if any 'node' in the array 'nodes' is an ancestor of ours.
 - (BOOL)isDescendantOfNodeInArray:(NSArray *)nodes;
 
+// returns YES if 'node' is the parent.
+- (BOOL)isParentOfNode:(TreeNode *)node;
+
+// returns YES if every 'node' in the array 'nodes' is an child of ours.
+- (BOOL)isParentOfNodesInArray:(NSArray *)nodes;
+
 // sort children using the compare: method in nodeData
 - (void)recursiveSortChildren;
 

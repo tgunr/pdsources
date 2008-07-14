@@ -8,6 +8,8 @@
 
 #import <Cocoa/Cocoa.h>
 #import "TreeController.h"
+#import "DACALTreeDataSource.h"
+#import "PADAddVolumeController.h"
 
 @interface PADIndexToolbarController : NSObject {
 	
@@ -22,8 +24,7 @@
 	
 	IBOutlet	id			indexController;
 	IBOutlet	id			dataController;
-	
-	IBOutlet	NSWindow	*addVolumeSheet;
+	IBOutlet	id			addVolumeController;
 	
 	NSArray					*selectedDevices;
 	NSArray					*selectedSlots;

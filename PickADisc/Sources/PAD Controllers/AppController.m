@@ -22,7 +22,7 @@
  redistribute this Apple software.
  
  In consideration of your agreement to abide by the following terms, and subject to these 
- terms, Apple grants you a personal, non-exclusive license, under AppleÕs copyrights in 
+ terms, Apple grants you a personal, non-exclusive license, under Appleâ€™s copyrights in 
  this original Apple software (the "Apple Software"), to use, reproduce, modify and 
  redistribute the Apple Software, with or without modifications, in source and/or binary 
  forms; provided that if you redistribute the Apple Software in its entirety and without 
@@ -48,6 +48,8 @@
 */
 
 #import "AppController.h"
+#import <DiscRecording/DiscRecording.h>
+#import <AudioToolbox/AudioToolbox.h>
 #import <fcntl.h>
 
 #import <CoreFoundation/CoreFoundation.h>
@@ -102,8 +104,64 @@ void DACALSetup( void )
 }
 
 - (void)awakeFromNib {
+
+	NSNotificationCenter *noteCenter;
+	
+	// Assume -observerMethod:(id)aNotification exists
+	noteCenter = [[NSWorkspace sharedWorkspace] notificationCenter];
+	[noteCenter addObserver:self selector:@selector(newMediaDetected:)
+					  name:@"NSWorkspaceDidMountNotification" object:nil]; // Register for all mount notifications
+
+	// Register for 'GURL' Apple Event to handle URL opening
+	[[NSAppleEventManager sharedAppleEventManager] setEventHandler:self andSelector:@selector(handleOpenLocationAppleEvent:withReplyEvent:) forEventClass:kInternetEventClass andEventID:kAEGetURL];
+	
 	// *** new nib
 	[NSBundle loadNibNamed:@"CarouselIndex" owner:[NSApplication sharedApplication]];
+
+}
+
+- (void) newMediaDetected:(id)aNotification {
+	
+	NSArray*		newMounts = [[NSWorkspace sharedWorkspace] mountNewRemovableMedia];
+	NSInteger		mountCount = [newMounts count];
+	NSInteger		index = 0;
+	NSMutableArray*	urlMounts = [NSMutableArray arrayWithCapacity:mountCount];
+//	NSURL*			discURL = nil; //
+	
+	for( index=0; index < mountCount; index++ )
+		[urlMounts addObject:[NSURL fileURLWithPath:[newMounts objectAtIndex:index]]];
+
+	NSLog(@"Detected Mounts: %@", urlMounts);	
+
+	//if( addVolumeController ) [addVolumeController detectedMounts:urlMounts];
+	//id controllerThing = [[NSApplication sharedApplication] addVolumeController];
+	[[[NSApplication sharedApplication] addVolumeController] detectedMounts:urlMounts];
+//	[urlMounts release];
+	
+	NSLogFunc;
+}
+
+- (void)handleOpenLocationAppleEvent:(NSAppleEventDescriptor *)event withReplyEvent:(NSAppleEventDescriptor *)reply {
+
+    NSAppleEventDescriptor *directObjectDescriptor = [event paramDescriptorForKeyword:keyDirectObject];
+	NSString *urlString;
+	NSURL *objectURL;
+	
+    if ( directObjectDescriptor ) {
+		urlString = [directObjectDescriptor stringValue];
+        if ( urlString ) {			
+			objectURL = [[NSURL alloc] initWithString: urlString];
+            if ( objectURL ) {
+				NSLog(@"Open URL: %@", objectURL);
+				[objectURL release];
+			}
+        }
+    }
+}
+
++ (void)playUISound:(NSInteger)theSound {
+		
+	if( [[NSUserDefaults standardUserDefaults] boolForKey:@"PADPlaySounds"] == TRUE ) AudioServicesPlaySystemSound( (SystemSoundID)theSound );
 
 }
 

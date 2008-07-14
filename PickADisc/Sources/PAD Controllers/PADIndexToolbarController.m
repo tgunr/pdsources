@@ -30,6 +30,8 @@
 	if( playButton )		[playButton setEnabled:anySlot];
 	if( checkOutButton )	[checkOutButton setEnabled:anySlot];
 	if( unassignButton )	[unassignButton setEnabled:anySlot];
+	
+	if( dataController )	[[dataController dataSource] updatePrompt];
 }
 
 - (IBAction)clickReset:(id)sender
@@ -81,39 +83,42 @@
 	}
 }
 
+// this is not used
 - (void)assignSheetDidEnd:(NSWindow *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo
-{
+{	
 	[sheet orderOut:self];
 }
 
-- (IBAction)clickAssign:(id)sender
-{
-	if( addVolumeSheet )
-		[NSApp	beginSheet: addVolumeSheet
-				modalForWindow: [assignButton window]
-				modalDelegate: self
-				didEndSelector: @selector(assignSheetDidEnd:returnCode:contextInfo:)
-				contextInfo: nil];
-}
+- (IBAction)clickAssign:(id)sender { if( addVolumeController ) [addVolumeController startSheet:[assignButton window]]; }
 
-
-- (void)unassignAlertDidEnd:(NSAlert *)alert returnCode:(int)returnCode contextInfo:(void *)contextInfo
+- (void)unassignAlertDidEnd:(NSAlert *)alert returnCode:(int)rc contextInfo:(void *)ci
 {
-	NSArray*	slotArray = [self selectedSlots];
+	NSArray*	slotArray;
+	NSInteger	buttonPushed = rc;
 	NSInteger	index;
 	DACALDeviceRef	aBox;
 	DACALSlotNum	aSlot;
 
+	const int	kDeleteButton = 0;
+	const int	kCancelButton = 1;
+
+	slotArray = [self selectedSlots];
 	aBox = (DACALDeviceRef)[[self selectedDevices] objectAtIndex:0];
 
-    if (returnCode == NO) {
-		for( index=0; index < [slotArray count]; index++ ) {
+    if ( buttonPushed == kDeleteButton)
+	{
+		for( index=0; index < [slotArray count]; index++ )
+		{
 			aSlot = (DACALSlotNum)[[slotArray objectAtIndex:index] longValue];
 			DACALSlotDeleteIndex( aBox, aSlot );
 		}
 
 		if( dataController ) [(TreeController*)dataController deleteSelections:self];
+		[self setSelectedSlots:nil];
     }
+	
+	if ( buttonPushed == kCancelButton) { }
+	
 }
 
 - (IBAction)clickUnassign:(id)sender
@@ -126,6 +131,13 @@
 
 	if( [self selectedSlots] ) slotCount = [[self selectedSlots] count];
 	if( !slotCount ) return;
+
+	// Allow power users to skip dialig with option key
+
+	if( [[[NSApplication sharedApplication] currentEvent] modifierFlags] & NSAlternateKeyMask ) {
+		[self unassignAlertDidEnd:nil returnCode:NO contextInfo:nil];
+		return;
+	}
 
 	// You are sure you want to delete selectedSlots?
 
@@ -151,6 +163,7 @@
 	[selectedDevices release];
 	selectedDevices = [deviceList retain];
     }
+	[addVolumeController deviceSelectionChanged:deviceList];
 	[self adoptSelection];
 }
 
