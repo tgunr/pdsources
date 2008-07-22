@@ -101,16 +101,18 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 236313147;
-			PBXWorkspaceStateSaveDate = 236313147;
+			PBXPerProjectTemplateStateSaveDate = 238440997;
+			PBXWorkspaceStateSaveDate = 238440997;
 		};
 		perUserProjectItems = {
+			752399200E2159A000E45D1D /* PBXTextBookmark */ = 752399200E2159A000E45D1D /* PBXTextBookmark */;
 			754A6B5C0DECF32A0003AE5B /* PBXTextBookmark */ = 754A6B5C0DECF32A0003AE5B /* PBXTextBookmark */;
 			754D16C40DEDA634000DD6F5 /* PBXTextBookmark */ = 754D16C40DEDA634000DD6F5 /* PBXTextBookmark */;
 			756836CC0DEA6553001C6F01 /* PBXTextBookmark */ = 756836CC0DEA6553001C6F01 /* PBXTextBookmark */;
 			756836F00DEA66B3001C6F01 /* PBXTextBookmark */ = 756836F00DEA66B3001C6F01 /* PBXTextBookmark */;
 			7568378C0DEB3B8B001C6F01 /* PBXBookmark */ = 7568378C0DEB3B8B001C6F01 /* PBXBookmark */;
 			75EAE5150DECC1FD00A15F44 /* PBXTextBookmark */ = 75EAE5150DECC1FD00A15F44 /* PBXTextBookmark */;
+			75EC52C20E36525800CE35A9 /* PBXTextBookmark */ = 75EC52C20E36525800CE35A9 /* PBXTextBookmark */;
 		};
 		sourceControlManager = 756836B90DEA5B32001C6F01 /* Source Control */;
 		userBookmarkGroup = 755D8BF90DF1C0A4001EB047 /* PBXBookmarkGroup */;
@@ -130,6 +132,16 @@
 			sepNavSelRange = "{140, 41}";
 			sepNavVisRange = "{0, 188}";
 		};
+	};
+	752399200E2159A000E45D1D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 755D8D710DF236C1001EB047 /* carousel.sh */;
+		name = "carousel.sh: 179";
+		rLen = 0;
+		rLoc = 4851;
+		rType = 0;
+		vrLen = 3176;
+		vrLoc = 3083;
 	};
 	754A6B5C0DECF32A0003AE5B /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -209,9 +221,9 @@
 	};
 	755D8D710DF236C1001EB047 /* carousel.sh */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {906, 2338}}";
-			sepNavSelRange = "{5029, 0}";
-			sepNavVisRange = "{2934, 2078}";
+			sepNavIntBoundsRect = "{{0, 0}, {811, 3654}}";
+			sepNavSelRange = "{4851, 0}";
+			sepNavVisRange = "{3436, 2891}";
 		};
 	};
 	756836AE0DEA5B13001C6F01 /* Carousel */ = {
@@ -337,6 +349,16 @@
 		rType = 0;
 		vrLen = 855;
 		vrLoc = 0;
+	};
+	75EC52C20E36525800CE35A9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 755D8D710DF236C1001EB047 /* carousel.sh */;
+		name = "carousel.sh: 188";
+		rLen = 0;
+		rLoc = 4851;
+		rType = 0;
+		vrLen = 2891;
+		vrLoc = 3436;
 	};
 	8D1107260486CEB800E47090 /* Carousel */ = {
 		activeExec = 0;

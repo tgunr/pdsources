@@ -236,8 +236,6 @@
 			<key>Layout</key>
 			<array>
 				<dict>
-					<key>BecomeActive</key>
-					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -286,6 +284,8 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
+									<integer>7</integer>
+									<integer>5</integer>
 									<integer>0</integer>
 								</array>
 							</array>
@@ -322,12 +322,14 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>AppController.m</string>
+								<string>carousel.sh</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -335,11 +337,16 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>AppController.m</string>
+										<string>carousel.sh</string>
+										<key>_historyCapacity</key>
+										<integer>0</integer>
+										<key>bookmark</key>
+										<string>75EC52C20E36525800CE35A9</string>
 										<key>history</key>
 										<array>
 											<string>754A6B5C0DECF32A0003AE5B</string>
 											<string>754D16C40DEDA634000DD6F5</string>
+											<string>752399200E2159A000E45D1D</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -404,9 +411,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>758DF35C0E15DA3C002AB11C</string>
+				<string>75EC52B80E36523600CE35A9</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>758DF35D0E15DA3C002AB11C</string>
+				<string>75EC52B90E36523600CE35A9</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -542,7 +549,9 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>1C78EAAD065D492600B07095</string>
 		<string>1CD10A99069EF8BA00B06720</string>
+		<string>7568379B0DEB3B8B001C6F01</string>
 		<string>/Users/davec/Desktop/PMTB/trunk/JukebytesLite/Carousel.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
@@ -587,7 +596,7 @@
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXBuildLogShowsTranscriptDefaultKey</key>
-								<string>{{0, 95}, {915, 415}}</string>
+								<string>{{0, 5}, {915, 505}}</string>
 								<key>PBXProjectModuleGUID</key>
 								<string>XCMainBuildResultsModuleGUID</string>
 								<key>PBXProjectModuleLabel</key>
@@ -625,7 +634,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>7568379B0DEB3B8B001C6F01</string>
-				<string>7578C3450E15D50F009E9674</string>
+				<string>75EC52BA0E36523600CE35A9</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -745,13 +754,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1CD10A99069EF8BA00B06720</string>
-				<string>758DF35E0E15DA3C002AB11C</string>
+				<string>75EC52BB0E36523600CE35A9</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>758DF35F0E15DA3C002AB11C</string>
-				<string>758DF3600E15DA3C002AB11C</string>
-				<string>758DF3610E15DA3C002AB11C</string>
-				<string>758DF3620E15DA3C002AB11C</string>
-				<string>758DF3630E15DA3C002AB11C</string>
+				<string>75EC52BC0E36523600CE35A9</string>
+				<string>75EC52BD0E36523600CE35A9</string>
+				<string>75EC52BE0E36523600CE35A9</string>
+				<string>75EC52BF0E36523600CE35A9</string>
+				<string>75EC52C00E36523600CE35A9</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
@@ -760,7 +769,7 @@
 			<key>WindowToolGUID</key>
 			<string>1CD10A99069EF8BA00B06720</string>
 			<key>WindowToolIsVisible</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>FirstTimeWindowDisplayed</key>
@@ -905,7 +914,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C78EAAD065D492600B07095</string>
-				<string>7578C34C0E15D50F009E9674</string>
+				<string>75EC52C10E36523600CE35A9</string>
 				<string>1C78EAAC065D492600B07095</string>
 			</array>
 			<key>ToolbarConfiguration</key>
