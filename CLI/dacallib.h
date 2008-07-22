@@ -11,6 +11,7 @@
 #define __dacallib__
 
 #include <stdio.h>
+#include <sys/xattr.h>
 #include <mach/mach.h>
 #include <IOKit/IOKitLib.h>
 #include <IOKit/IOCFPlugIn.h>
@@ -62,7 +63,10 @@ const enum {								// This constant can be used with FSFindFolder()
 extern CFStringRef		DACALCommandCopyName( DACALDeviceRef deviceID, DACALResult* outError );
 extern DACALResult		DACALCommandSetName( DACALDeviceRef deviceID, CFStringRef deviceName );
 extern DACALDeviceNode	DACALCommandCopyNode( DACALDeviceRef deviceID, DACALResult* outError );
+//extern DACALResult		DACALCommandSetNode( DACALDeviceRef deviceID, DACALDeviceNode deviceNode );
+extern CFStringRef CAROUSELGetSlotPaths( DACALDeviceRef deviceID, DACALResult* outError ) ;
 extern DACALSlotNum		DACALCommandGetSlotCount( DACALDeviceRef deviceID );
+extern CFURLRef			DACALCommandCopyPath( DACALDeviceRef deviceID, DACALResult* outError );
 
 extern CFStringRef		DACALCommandCopyStatus( DACALDeviceRef deviceID, DACALResult* outError );
 extern CFUUIDRef		DACALCommandCopyUUID( DACALDeviceRef deviceID, DACALResult* outError );
