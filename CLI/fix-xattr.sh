@@ -1,5 +1,5 @@
 #!/bin/bash
-#  fix-xattr
+#  $Id$
 #
 #  Created by Dave Carlton on 2008-06-01.
 #  Copyright (c) 2008 polyMicro Systems. All rights reserved.

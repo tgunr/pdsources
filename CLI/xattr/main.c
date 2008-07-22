@@ -172,7 +172,8 @@ int main (int argc, const char * argv[]) {
 	while ( n<argc ) {												// The value of 'n' is retained from previous loop.
 		
 		
-		if ( command == LISTER ) result = result | displayXattrKeys(argv[n], options);
+		if ( command == LISTER ) 
+			result = displayXattrKeys(argv[n], options);
 		else if (keyPosition == 0) keyPosition=n;
 		else switch (command) {
 			case GETTER:
