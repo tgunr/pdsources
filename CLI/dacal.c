@@ -39,16 +39,9 @@ void CFStringPrint( CFStringRef inString, Boolean releaseInString )		//	Outputs 
 }
 
 void usage() {
-	printf("dacal [--reset] [--close] [--led 0|1] [--model] [-uid] [--devices]  \n");
-	printf("      [-r]      [-c]      [-l 0|1]    [-m]      [-u]   [-d]         \n");
-	printf("\n");
-	printf("      [--slot number] [--status] [--reference number] [--verbose] \n");
-	printf("      [-s number]     [-i]       [-f number]          [-b]        \n");
-	printf("\n");
-	printf("      [--get-slot] [--dvd number] [--eject] \n");
-	printf("      [-g]         [-v number]    [-e] \n");
-	printf("\n");
-
+	printf("dacal [--reset] [--close|-k] [--led 0|1] [--model] [-uid] [--devices]  \n");
+	printf("      [--slot number] [--status|-i] [--reference|-c number] [--verbose|-b] \n");
+	printf("      [--get-slot] [--dvd|-v number] [--eject] \n");
 	exit(1);
 }
 
@@ -58,7 +51,7 @@ int main (int argc, const char * argv[]) {
 	struct option longopts[] = {
 		{ "help",				no_argument,            NULL,				'h'	},
 		{ "reset",				no_argument,            NULL,				'r'	},
-		{ "close",				no_argument,            NULL,				'c'	},
+		{ "close",				no_argument,            NULL,				'k'	},
 		{ "led",				required_argument,      NULL,				'l'	},
 		{ "model",				no_argument,            NULL,				'm'	},
 		{ "uid",				no_argument,            NULL,				'u'	},
@@ -67,7 +60,7 @@ int main (int argc, const char * argv[]) {
 		{ "get-slot",			no_argument,            NULL,				'g'	},
 		{ "status",				no_argument,            NULL,				'i'	},
 		{ "verbose",			no_argument,            NULL,				'b'	},
-		{ "reference",			required_argument,      NULL,				'f'	},
+		{ "reference",			required_argument,      NULL,				'c'	},
 		{ "dvd",				required_argument,      NULL,				'v'	},
 		{ "eject",				no_argument,            NULL,				'e'	},
 		{ NULL,         0,								NULL,				0	}
@@ -94,7 +87,7 @@ int main (int argc, const char * argv[]) {
 			printf("dacal: device error %x", err);
 			return 1;
 		}
-		ch = getopt_long(argc, (char * const *)argv, "hrcl:mus:dgirbfve", longopts, &option_index);
+		ch = getopt_long(argc, (char * const *)argv, "hrkl:muds:ic:bgve", longopts, &option_index);
 		if (ch == -1)
 			break;
 		switch (ch) {
@@ -124,7 +117,7 @@ int main (int argc, const char * argv[]) {
 				break;
 			}
 																		// close
-			case 'c': {
+			case 'k': {
 				err = DACALCommandCloseDoor( workDevice );				
 				break;
 			}
@@ -172,7 +165,7 @@ int main (int argc, const char * argv[]) {
 				break;
 			}
 																		// reference
-			case 'f': {
+			case 'c': {
 				workDevice = atoi(optarg);
 				break;
 			}
