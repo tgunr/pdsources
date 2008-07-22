@@ -4,6 +4,7 @@
 #  Created by Dave Carlton on 2008-05-31.
 #  Copyright (c) 2008 polyMicro Systems. All rights reserved.
 #
+USER_INTERRUPT=13
 CAROUSELPATH=${CAROUSELPATH:-"$HOME/Library/Carousels"}
 CMDPATH="`dirname $0`"
 CMDNAME="`basename $0`"
@@ -18,49 +19,57 @@ xattrkind="$xattrbase.kind"
 # some assumptions
 volumename="/Volumes/Untitled"
 discname=`basename "$volumename"`
+slotfile="$CAROUSELPATH/.dacalslot"
 
-if [[ ! -e ~/.dacalslot ]] ; then 
-    echo "1" > ~/.dacalslot
+if [[ ! -e $slotfile ]] ; then 
+    echo "1" > $slotfile
 fi
 
-slot=`cat ~/.dacalslot`
+slot=`cat "$slotfile"`
 getslot=""
 level=1
+minslot=1
 carousel=1
 nodisc=0
 nomove=0
 eject=0
 kind="data"
+DEBUGCMD=
 
 function usage () {
 echo "carousel usage
     -h Help
     -v Verbose
     -c Carousel number; default = 1
+    -m Minimum slot number; optional with -N; default = 1
     -s Slot number; subsequent calls will increment from this value
     -l Level to scan, 1 is default for top level, all for everything
     -t Title
     -x Do not issue move to slot command, useful if slot door is already down
-    -n No disc, assumes -t is being used, you are just specifying a title for the slot
+    -n No disc, assumes -t is being used, 
+          you are just specifying a title for the slot
     -d Disc volume to scan i.e. /Volumes/disc
     -g Get disc from carousel using path to carousel file|folder
-    -D Show commands to execute but do not execute
+    -D Show commands to execute but do not execute, use echo or logger as argument
     -e Eject volume on completion
     -w Which title is at -c -s (which must be specified)
     -k Clear slot
     -p Path to -c -s options
-    -N Next available slot, scans -c from 1 upward to -s for first avaialable slot
+    -N Next available slot, 
+          scans -c from -m upward to -s for first avaialable slot
     -X Turn on bash debug flag
-    -K Specify kind of slot folder data (default = data)"
+    -K Specify kind of slot folder data (default = data)
+	-L List all slots paths for -c"
    exit 1
 }
 
-while getopts "hc:s:g:l:d:vt:nxDewkpNXK:" Option
+while getopts "hc:m:s:g:l:d:vt:nxD:ewkpNXK:L" Option
 do 
     case "$Option" in 
 	h ) usage ;;
 	v ) verbose="-print" ;;
 	c ) carousel="$OPTARG" ;;
+	m ) minslot="$OPTARG" ;;
 	s ) slot="$OPTARG" ;;
 	l ) level="$OPTARG" ;;
 	t ) title="$OPTARG" ;;
@@ -69,8 +78,7 @@ do
 	d ) volumename="$OPTARG" 
 	    discname="`basename $volumename`";;
 	g ) getfileslot="$OPTARG" ;;
-	D ) DEBUGCMD=echo 
-		debug=1 ;;
+	D ) DEBUGCMD="$OPTARG" ;; 
 	e ) eject=1 ;;
 	w ) whichtitle=1 ;;
 	k ) clearslot=1 ;;
@@ -78,17 +86,23 @@ do
 	N ) nextslot=1 ;;
 	X ) set -x;;
 	K ) kind="$OPTARG";;
+	L ) listslots=1;;
 	* ) echo "Unimplemented option chosen." 
 	    exit 1 ;;   # DEFAULT
     esac
 done
 shift $(($OPTIND - 1))
 
-carouselbase="$CAROUSELPATH/Carousel $carousel.carousel"
+carouselbase="$CAROUSELPATH/$carousel.carousel"
 carouselbaseslot="$carouselbase/Slot $slot"
 
-if [[ $debug == 1 ]] ; then
-	echo "$CMDNAME $@"
+if [[ $listslots == 1 ]] ; then 
+	if [[ -d "$carouselbase" ]] ; then
+		cd "$carouselbase"
+		find . -type d -maxdepth 2 -depth 2
+		exit 0
+fi
+	exit 1
 fi
 
 if [[ $whichtitle == 1 ]] ; then
@@ -96,7 +110,7 @@ if [[ $whichtitle == 1 ]] ; then
 	ls -1 "$carouselbaseslot/"|head -1
 	exit 0
     else
-	echo "$CMDNAME: Error - carousel $carousel slot $slot not avaialable"
+	$DEBUGCMD "$CMDNAME: Error - carousel $carousel slot $slot not avaialable"
 	exit 1
     fi
     exit 0
@@ -104,9 +118,9 @@ fi
 
 if [[ $pathtoslot == 1 ]] ; then
     if [[ -d "$carouselbaseslot" ]] ; then 
-	echo "$carouselbaseslot"
+	$DEBUGCMD "$carouselbaseslot"
     else
-	echo "$CMDNAME: Error - carousel $carousel slot $slot not avaialable"
+	$DEBUGCMD "$CMDNAME: Error - carousel $carousel slot $slot not avaialable"
 	exit 1
     fi
     exit 0
@@ -114,17 +128,17 @@ fi
 
 if [[ $nextslot == 1 ]] ; then
     result=0
-    for (( i = 1; i < $slot; i++ )); do
+    for (( i = minslot; i < $slot; i++ )); do
 	if [[ ! -d "$carouselbase/Slot $i" ]] ; then
 	    result=1
 	    break
 	fi
     done
     if [[ $result == 1 ]] ; then
-	echo "$carouselbase/Slot $i"
+	$DEBUGCMD "$carouselbase/Slot $i"
 	exit 0
     else
-	echo "$CMDNAME: No slot availiable up to slot $slot"
+	$DEBUGCMD "$CMDNAME: No slot availiable up to slot $slot"
 	exit 1
     fi
 fi
@@ -133,15 +147,15 @@ if [[ $clearslot == 1 ]] ; then
     if [[ -d "$carouselbaseslot" ]] ; then 
 	/bin/rm -fr "$carouselbaseslot"
     else
-	echo "$CMDNAME: No slot at slot $slot"
+	$DEBUGCMD "$CMDNAME: No slot at slot $slot"
 	exit 1
     fi
     exit 0 
 fi
 
 if [[ ! "${volumename%\/*/}" =~ "/Volumes" ]] ; then
-    echo "Source is not a volume: $volumename"
-    echo 1
+    $DEBUGCMD "Source is not a volume: $volumename"
+    exit 1
 fi
 
 # if not getting a slot, must be storing a slot
@@ -151,7 +165,7 @@ if [[ "$getfileslot" == "" ]] ; then
     fi
     
     if [[ $verbose == 1 ]] ; then
-	echo "Creating $discname in Carousel $carousel Slot $slot"
+	$DEBUGCMD "Creating $discname in Carousel $carousel Slot $slot"
     fi
     carouselpathslotdiscname="$carouselbaseslot/$discname"
     
@@ -163,10 +177,11 @@ if [[ "$getfileslot" == "" ]] ; then
     if [[ $nodisc == 1 ]] ; then
 		# has to be a -t title or can't proceed
 		if [[ "$title" == "" ]] ; then
-			echo "No title! Use -t Title when not labling from a disc"
+			$DEBUGCMD "No title! Use -t Title when not labling from a disc"
 			exit 1
 		fi
 		/bin/mkdir -p "$carouselpathslotdiscname"
+		trap 'rm -f $carouselpathslotdiscname; exit $USER_INTERRUPT' TERM INT
 		$DEBUGCMD "$XATTRCMD" -w "$xattrcarousel" $carousel  "$carouselbase"
 		$DEBUGCMD "$XATTRCMD" -w "$xattrcarousel" $carousel  "$carouselbaseslot"
 		$DEBUGCMD "$XATTRCMD" -w "$xattrslot" $slot "$carouselbaseslot"
@@ -175,6 +190,7 @@ if [[ "$getfileslot" == "" ]] ; then
 		$DEBUGCMD "$XATTRCMD" -w "$xattrslot" $slot "$carouselpathslotdiscname"
     else # real disc to index
 		$DEBUGCMD /bin/mkdir -p "$carouselpathslotdiscname"
+		trap 'rm -f $carouselpathslotdiscname; exit $USER_INTERRUPT' TERM INT
 		$DEBUGCMD "$XATTRCMD" -w "$xattrcarousel" $carousel  "$carouselbase"
 		$DEBUGCMD "$XATTRCMD" -w "$xattrcarousel" $carousel  "$carouselbaseslot"
 		$DEBUGCMD "$XATTRCMD" -w "$xattrslot" $slot "$carouselbaseslot"
@@ -183,23 +199,27 @@ if [[ "$getfileslot" == "" ]] ; then
 		$DEBUGCMD "$XATTRCMD" -w "$xattrslot" $slot "$carouselpathslotdiscname"
 		
 		if [[ ! -d "$volumename" ]] ; then # oops, no disc name? whats this?
-			echo "No volume named: $volumename"
+			$DEBUGCMD "No volume named: $volumename"
 			exit 1
 		fi
 		
-		if [[ "$level" != "all" ]] ; then
-			maxlevel="-maxdepth $level"
+		if [[ "$level" != "1" ]] ; then
+			if [[ "$level" == "0" ]] ; then
+				maxlevel=""
+			else
+				maxlevel="-maxdepth $level"
+			fi
 		fi
 		
 		if [[ "$verbose" != "" ]] ; then
-			echo "Creating mirror folders in $carouselpathslotdiscname"
+			$DEBUGCMD "Creating mirror folders in $carouselpathslotdiscname"
 		fi
 		
 		# make paths to folders in backend from disc accroding to desired level
 		$DEBUGCMD /usr/bin/find "$volumename" -type d $maxlevel -execdir mkdir -p  "$carouselpathslotdiscname/{}" \;  $verbose
 		
 		if [[ "$verbose" != "" ]] ; then
-			echo "Creating mirror files in $carouselpathslotdiscname"
+			$DEBUGCMD "Creating mirror files in $carouselpathslotdiscname"
 		fi
 		
 		# create files for each folder we just created
@@ -207,7 +227,7 @@ if [[ "$getfileslot" == "" ]] ; then
 		
 		# set the attributes for each file
 		if [[ "$verbose" != "" ]] ; then
-			echo "Writing extended attributes, be patient"
+			$DEBUGCMD "Writing extended attributes, be patient"
 		fi
 		
 		$DEBUGCMD /usr/bin/find "$carouselpathslotdiscname" -print | awk  '{ printf "\"%s\"\n", $0 }' | xargs "$XATTRCMD" -w "$xattrcarousel" $carousel
@@ -223,7 +243,7 @@ if [[ "$getfileslot" == "" ]] ; then
     fi
     
     ((slot++))
-    echo $slot > ~/.dacalslot
+    $DEBUGCMD $slot > "$slotfile"
 else # get a disc from a slot
     carousel = `"$XATTRCMD" -p $xattrcarousel  "$getfileslot"`
     slot = `"$XATTRCMD" -p $xattrslot  "$getfileslot"`
