@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>entryList</key>
+	<dict>
+		<key>archivedObject</key>
+		<array/>
+		<key>objectId</key>
+		<integer>0</integer>
+	</dict>
+	<key>pageId</key>
+	<integer>17</integer>
+	<key>pageTitle</key>
+	<string>New Pge</string>
+	<key>sectionTitle</key>
+	<string>Design</string>
+</dict>
+</plist>
