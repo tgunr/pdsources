@@ -7,16 +7,16 @@
 	<key>currentSearchSite</key>
 	<string>Google</string>
 	<key>drawerContentSize</key>
-	<string>170.000000 685.000000</string>
+	<string>170.000000 692.000000</string>
 	<key>drawerIsOpen</key>
 	<true/>
 	<key>drawerViewHeights</key>
 	<dict>
 		<key>archivedObject</key>
 		<array>
-			<real>211</real>
-			<real>336</real>
-			<real>87</real>
+			<real>216</real>
+			<real>345</real>
+			<real>80</real>
 			<real>0.0</real>
 			<real>0.0</real>
 			<real>0.0</real>
@@ -36,8 +36,10 @@
 		<key>objectId</key>
 		<integer>0</integer>
 	</dict>
+	<key>lastSpacePrivate</key>
+	<false/>
 	<key>pageId</key>
-	<integer>14</integer>
+	<integer>20</integer>
 	<key>recentSearches</key>
 	<dict>
 		<key>archivedObject</key>
@@ -54,6 +56,6 @@
 	<key>viewZoom</key>
 	<integer>100</integer>
 	<key>windowRect</key>
-	<string>1422.000000 639.000000 668.000000 714.000000</string>
+	<string>1426.000000 639.000000 668.000000 714.000000</string>
 </dict>
 </plist>
