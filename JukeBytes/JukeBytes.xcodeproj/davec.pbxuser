@@ -55,8 +55,8 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 236311377;
-			PBXWorkspaceStateSaveDate = 236311377;
+			PBXPerProjectTemplateStateSaveDate = 238455224;
+			PBXWorkspaceStateSaveDate = 238455224;
 		};
 		sourceControlManager = 75BCAA8B0E15C0B200DB7E48 /* Source Control */;
 		userBuildSettings = {
@@ -78,6 +78,7 @@
 		customDataFormattersEnabled = 1;
 		debuggerPlugin = GDBDebugging;
 		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
 		enableDebugStr = 1;
 		environmentEntries = (
 		);
@@ -85,6 +86,8 @@
 		executableUserSymbolLevel = 0;
 		libgmallocEnabled = 0;
 		name = JukeBytes;
+		savedGlobals = {
+		};
 		sourceDirectories = (
 		);
 	};
@@ -93,6 +96,7 @@
 		fallbackIsa = XCSourceControlManager;
 		isSCMEnabled = 0;
 		scmConfiguration = {
+			repositoryName = PMS;
 		};
 	};
 	75BCAA8C0E15C0B200DB7E48 /* Code sense */ = {
