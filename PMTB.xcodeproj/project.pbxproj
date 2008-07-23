@@ -23,35 +23,35 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 7578C3040E15D347009E9674 /* JukeBytes.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 8D15AC370486D014006FF6A4 /* JukeBytes.app */;
+			remoteGlobalIDString = 8D15AC370486D014006FF6A4;
 			remoteInfo = JukeBytes;
 		};
 		7578C30E0E15D348009E9674 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7578C3040E15D347009E9674 /* JukeBytes.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 514E9DF9081EBF9C009B8CD9 /* JukeBytes.mdimporter */;
+			remoteGlobalIDString = 514E9DF9081EBF9C009B8CD9;
 			remoteInfo = "JukeBytes Spotlight Importer";
 		};
 		7578C33D0E15D4FD009E9674 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7578C3350E15D4FD009E9674 /* JukeBytesLite.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 8D1107320486CEB800E47090 /* Carousel.app */;
+			remoteGlobalIDString = 8D1107320486CEB800E47090;
 			remoteInfo = Carousel;
 		};
 		7578C3810E15D80A009E9674 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7578C3790E15D80A009E9674 /* DacAByteFS.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 8D15AC370486D014006FF6A4 /* PMTBFS.app */;
+			remoteGlobalIDString = 8D15AC370486D014006FF6A4;
 			remoteInfo = PMTBFS;
 		};
 		7578C3830E15D80A009E9674 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7578C3790E15D80A009E9674 /* DacAByteFS.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 514E9DF9081EBF9C009B8CD9 /* PMTBFS.mdimporter */;
+			remoteGlobalIDString = 514E9DF9081EBF9C009B8CD9;
 			remoteInfo = "PMTBFS Spotlight Importer";
 		};
 /* End PBXContainerItemProxy section */
@@ -297,7 +297,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			buildConfigurationList = 26FC0A880875C7B200E6366F /* Build configuration list for PBXProject "PMTB" */;
-			compatibilityVersion = "Xcode 3.0";
+			compatibilityVersion = "Xcode 3.1";
 			hasScannedForEncodings = 1;
 			mainGroup = 29B97314FDCFA39411CA2CEA /* PMTB */;
 			projectDirPath = "";
