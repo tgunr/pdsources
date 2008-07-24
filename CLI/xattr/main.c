@@ -1,6 +1,7 @@
 #include <malloc/malloc.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 #include "xattrfunctions.h"
 
 
@@ -12,7 +13,7 @@
 #define HELP 4
 #define VERSION 5
 
-#define VERSION_NUMBER "0.32"
+#define VERSION_NUMBER "0.33"
 
 /*	GENERAL FLOW MODEL:
  
@@ -24,19 +25,20 @@
  
  */
 void version() {
-	printf("xattr (Leopardly) version %s is written by Matt Lye, released under the MIT liscense.\n", VERSION_NUMBER);
+	printf("xattr version %s, released under the MIT liscense.\n", VERSION_NUMBER);
 }
 void usage()	{
 	
-	printf("usage:   xattr    [-sl] file [file ...]\n");
-	printf("         xattr -p [-sl] attr_name file [file...]\n");
-	printf("         xattr -w [-slRC] attr_name attr_value file [file...]\n");
-	printf("         xattr -d [-sl] attr_name file [file...]\n");
-	printf("         xattr	  [-vh]\n\n");
-	printf("The first form lists the name of all the extended attributes of the given file(s).\n");
-	printf("The second form displays the value of the attribute 'attr_name' of the given file(s).\n");
-	printf("The third form sets the value of the attribute 'attr_name' to 'attr_value' for the given file(s).\n");
-	printf("The fourth form deletes the attribute 'attr_name' of the given file(s).\n\n");
+	printf("xattr [-p|-w|-d] [-s] [-l] [-R] [-C] [-v] [-h] file [file ...]\n");
+	printf("Examples:\n");
+	printf("xattr file [file ...]\n");
+	printf("\tLists the name of all the extended attributes of the given file(s).\n");
+	printf("xattr -p [-sl] attr_name file [file...]\n");
+	printf("\tDisplays the value of the attribute 'attr_name' of the given file(s).\n");
+	printf("xattr -w [-slRC] attr_name attr_value file [file...]\n");
+	printf("\tSets the value of the attribute 'attr_name' to 'attr_value' for the given file(s).\n");
+	printf("xattr -d [-sl] attr_name file [file...]\n");
+	printf("\tDeletes the attribute 'attr_name' of the given file(s).\n\n");
 	printf("options:  -s:  do not follow symbolic links.\n");
 	printf("          -l:  long format (verbose) output in a key=value format.\n");
 	printf("          -R:  replace existing values only.\n");
@@ -59,149 +61,107 @@ int main (int argc, const char * argv[]) {
 	 */
 	
 	int command=LISTER;												//	The command flag default is to list attributes.
+	char options='\0';												// A 'char' representing options as 1-bit flags.
+	int ch;
 	
-	
-	if ( argc > 1 && argv[1][0]=='-') {								//	Ensuring there is a flag argument.
-		
-		switch (argv[1][1]){										
-				
-				
-			case 'd':												
-				
+	while ((ch = getopt(argc, argv, "dpwhvlsRC")) != -1) {
+		switch (ch) {
+			case 'd':
 				command = DELETE;
 				break;
-				
-			case 'p':												
-				
+			case 'p':
 				command = GETTER;
 				break;
-				
 			case 'w':												
-				
 				command = SETTER;
 				break;
-				
 			case 'h':												
-				
 				usage();											// ..the program terminates here.
 				return -1;											
-				
 			case 'v':												
-				
+			case '?':
 				version();											// ..the program terminates here.
 				return -1;				
+				/*	OPTIONS FLAGS:
+				 All option flags currently MUST preceed all value arguments, for simplicity of design.
+				 
+				 Valid options are:
+				 
+				 l:	Display result in 'long' format.
+				 s:	Do NOT follow symbolic links.
+				 R:	ONLY re-write existing attributes.
+				 C:	ONLY create new attributes.
+				 
+				 */ 
 				
-			default:
-				
+			case 'l':												
+				options = options | VERBOSE;				
+				break;	
+			case 's':												
+				options = options | SYMBOLIC;
 				break;
-				
+			case 'R':												
+				options = options | REPLACE;
+				break;
+			case 'C':												
+				options = options | CREATE;
+				break;
+			default:
+				usage();
 		}
 	}
-	
-	
-	int n=1;														// A counter for the 'argv' arguments.	
-	int m=1;														// A counter for the characters in argv[n].
-	char options='\0';												// A 'char' representing options as 1-bit flags.
-	
-	
-	
-	/*	OPTIONS FLAGS:
-	 All option flags currently MUST preceed all value arguments, for simplicity of design.
-	 
-	 Valid options are:
-	 
-	 l:	Display result in 'long' format.
-	 s:	Do NOT follow symbolic links.
-	 R:	ONLY re-write existing attributes.
-	 C:	ONLY create new attributes.
-	 
-	 */ 
-	
-	
-	while (n<argc && argv[n][0]=='-') {								// for as long as flags are encountered...
-		
-		m=1;
-		
-		while (argv[n][m]!='\0') {									// and until the end of this argv string...
-			
-			switch (argv[n][m]) {
-					
-					
-				case 'l':												
-					
-					options = options | VERBOSE;				
-					break;	
-					
-				case 's':												
-					
-					options = options | SYMBOLIC;
-					break;
-					
-				case 'R':												
-					
-					options = options | REPLACE;
-					break;
-					
-				case 'C':												
-					
-					options = options | CREATE;
-					break;
-					
-				default:
-					
-					// An unknown command or option results in help display.
-					if (command == LISTER || n>1 ) usage();
-					break;
-					
-			}														// the end of the switch between option flags.
-			
-			m++;
-			
-		}															// the character loop ('m' counter) closes.
-		
-		n++;
-		
-	}																// the argv loop ('n' counter) closes.
-	
-	
-	int keyPosition=0;
-	int valPosition=0;
+	argc -= optind;
+	argv += optind;
+
+//	if (command == LISTER || n>1 ) usage();
+//	break;
+//	
+	const char *key;
+	const char *value;
 	int result=0;
-	
-	
-	while ( n<argc ) {												// The value of 'n' is retained from previous loop.
-		
-		
-		if ( command == LISTER ) 
-			result = displayXattrKeys(argv[n], options);
-		else if (keyPosition == 0) keyPosition=n;
-		else switch (command) {
+
+	switch (command) {
+		case GETTER:
+			key = argv[0];
+			argc -= 1;
+			argv += 1;
+			break;
+		case SETTER:
+			key = argv[0];
+			value = argv[1];
+			argc -= 2;
+			argv += 2;
+			break;
+		case DELETE:
+			key = argv[0];
+			argc -= 1;
+			argv += 1;
+			break;
+	}
+
+	while ( argc ) { // remaining args are paths
+		switch (command) {
+			case LISTER:
+				result = displayXattrKeys(argv[0], options);
+				break;
 			case GETTER:
-				result=result | displayXattrValue(argv[n], argv[keyPosition], options);
+				result=result | displayXattrValue(argv[0], key, options);
 				break;
 			case SETTER:
-				result=result | setXattrValue(argv[n], argv[keyPosition], argv[valPosition], options);
+				result=result | setXattrValue(argv[0], key, value, options);
 				break;
 			case DELETE:
-				result=result | deleteXattr(argv[n], argv[keyPosition], options);
+				result=result | deleteXattr(argv[0], key, options);
 				break;
 			default:
 				break;
 		}
-		
-		
-		n++;	
-		
-	}																	// the argv loop ('n' counter) closes.
-	
-	
-	if (result<0 && command!=HELP) {									// if a problem has arisen...
-		
-//		giveHelp();				
-		return -1;														// ..the program terminates here.
-		
+		argc -= 1;
+		argv += 1;
+		if (result < 0) {									// if a problem has arisen...
+			printf("xattr: error at %s", argv[0]);
+			return -1;										// ..the program terminates here.
+		}
 	}
-	
 	return 0;
-	
 }
