@@ -167,7 +167,7 @@ if [[ "$getfileslot" == "" ]] ; then
     if [[ $verbose == 1 ]] ; then
 	$DEBUGCMD "Creating $discname in Carousel $carousel Slot $slot"
     fi
-    carouselpathslotdiscname="$carouselbaseslot/$discname"
+    carouselpathslotdiscname="$carouselbaseslot"
     
     if [[ -d "$carouselbaseslot" ]] ; then 
 	/bin/rm -fr "$carouselbaseslot"
@@ -216,14 +216,17 @@ if [[ "$getfileslot" == "" ]] ; then
 		fi
 		
 		# make paths to folders in backend from disc accroding to desired level
-		$DEBUGCMD /usr/bin/find "$volumename" -type d $maxlevel -execdir mkdir -p  "$carouselpathslotdiscname/{}" \;  $verbose
+		$DEBUGCMD /usr/bin/find "$volumename" -type d $maxlevel -print 2> /dev/null |sed -e 's/\/Volumes\///' |xargs -I % mkdir -p "$carouselpathslotdiscname/"%
+		
 		
 		if [[ "$verbose" != "" ]] ; then
 			$DEBUGCMD "Creating mirror files in $carouselpathslotdiscname"
 		fi
 		
 		# create files for each folder we just created
-		$DEBUGCMD /usr/bin/find "$volumename" -type f $maxlevel -execdir touch -r {}  "$carouselpathslotdiscname/{}" \; $verbose
+		pushd "$carouselpathslotdiscname/"
+		$DEBUGCMD /usr/bin/find "$volumename" -type f $maxlevel -print 2> /dev/null |sed -e 's/\/Volumes\///' |xargs -I % touch -r "`dirname $volumename`"/% %
+		popd
 		
 		# set the attributes for each file
 		if [[ "$verbose" != "" ]] ; then
