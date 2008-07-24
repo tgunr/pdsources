@@ -38,7 +38,7 @@ int displayXattrKeys(const char *path, const char options) {
 //	ssize_t listxattr(const char *path, char *namebuff, size_t size, int options);
 	size_t bufferSize=listxattr(path, NULL, 0, options);						// find out the buffer size.
 	
-	if (bufferSize < 0 ) { 
+	if (bufferSize < 0 || bufferSize == -1 ) { 
 		perror(NULL); 
 		return errno; 
 	}
