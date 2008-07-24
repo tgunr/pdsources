@@ -160,14 +160,9 @@ fi
 
 # if not getting a slot, must be storing a slot
 if [[ "$getfileslot" == "" ]] ; then
-    if [[ "$title" != "" ]] ; then 
-	discname="$title"
-    fi
-    
     if [[ $verbose == 1 ]] ; then
 	$DEBUGCMD "Creating $discname in Carousel $carousel Slot $slot"
     fi
-    carouselpathslotdiscname="$carouselbaseslot"
     
     if [[ -d "$carouselbaseslot" ]] ; then 
 	/bin/rm -fr "$carouselbaseslot"
@@ -179,24 +174,28 @@ if [[ "$getfileslot" == "" ]] ; then
 		if [[ "$title" == "" ]] ; then
 			$DEBUGCMD "No title! Use -t Title when not labling from a disc"
 			exit 1
+		else
+			discname="$title"
 		fi
-		/bin/mkdir -p "$carouselpathslotdiscname"
-		trap 'rm -fr "$carouselpathslotdiscname"; exit $USER_INTERRUPT' TERM INT
+		$DEBUGCMD /bin/mkdir -p "$carouselbaseslot/$discname"
+		trap 'rm -fr "$carouselbaseslot"; exit $USER_INTERRUPT' TERM INT
 		$DEBUGCMD "$XATTRCMD" -w "$xattrcarousel" $carousel  "$carouselbase"
 		$DEBUGCMD "$XATTRCMD" -w "$xattrcarousel" $carousel  "$carouselbaseslot"
+		$DEBUGCMD "$XATTRCMD" -w "$xattrcarousel" $carousel  "$carouselbaseslot/$discname"
 		$DEBUGCMD "$XATTRCMD" -w "$xattrslot" $slot "$carouselbaseslot"
+		$DEBUGCMD "$XATTRCMD" -w "$xattrslot" $slot "$carouselbaseslot/$discname"
 		$DEBUGCMD "$XATTRCMD" -w "$xattrkind" "$kind" "$carouselbaseslot"
-		$DEBUGCMD "$XATTRCMD" -w "$xattrcarousel" $carousel  "$carouselpathslotdiscname"
-		$DEBUGCMD "$XATTRCMD" -w "$xattrslot" $slot "$carouselpathslotdiscname"
+		$DEBUGCMD "$XATTRCMD" -w "$xattrkind" "$kind" "$carouselbaseslot/$discname"
     else # real disc to index
-		$DEBUGCMD /bin/mkdir -p "$carouselpathslotdiscname"
-		trap 'rm -fr "$carouselpathslotdiscname"; exit $USER_INTERRUPT' TERM INT
+		$DEBUGCMD /bin/mkdir -p "$carouselbaseslot/$discname"
+		trap 'rm -fr "$carouselbaseslot"; exit $USER_INTERRUPT' TERM INT
 		$DEBUGCMD "$XATTRCMD" -w "$xattrcarousel" $carousel  "$carouselbase"
 		$DEBUGCMD "$XATTRCMD" -w "$xattrcarousel" $carousel  "$carouselbaseslot"
+		$DEBUGCMD "$XATTRCMD" -w "$xattrcarousel" $carousel  "$carouselbaseslot/$discname"
 		$DEBUGCMD "$XATTRCMD" -w "$xattrslot" $slot "$carouselbaseslot"
+		$DEBUGCMD "$XATTRCMD" -w "$xattrslot" $slot "$carouselbaseslot/$discname"
 		$DEBUGCMD "$XATTRCMD" -w "$xattrkind" "$kind" "$carouselbaseslot"
-		$DEBUGCMD "$XATTRCMD" -w "$xattrcarousel" $carousel  "$carouselpathslotdiscname"
-		$DEBUGCMD "$XATTRCMD" -w "$xattrslot" $slot "$carouselpathslotdiscname"
+		$DEBUGCMD "$XATTRCMD" -w "$xattrkind" "$kind" "$carouselbaseslot/$discname"
 		
 		if [[ ! -d "$volumename" ]] ; then # oops, no disc name? whats this?
 			$DEBUGCMD "No volume named: $volumename"
@@ -212,30 +211,33 @@ if [[ "$getfileslot" == "" ]] ; then
 		fi
 		
 		if [[ "$verbose" != "" ]] ; then
-			$DEBUGCMD "Creating mirror folders in $carouselpathslotdiscname"
+			$DEBUGCMD "Creating mirror folders in $carouselbaseslot"
 		fi
 		
 		# make paths to folders in backend from disc accroding to desired level
-		$DEBUGCMD /usr/bin/find "$volumename" -type d $maxlevel -print 2> /dev/null |sed -e 's/\/Volumes\///' |xargs -I % mkdir -p "$carouselpathslotdiscname/"%
+		$DEBUGCMD /usr/bin/find "$volumename" -type d $maxlevel -print 2> /dev/null |sed -e 's/\/Volumes\///' |xargs -I % mkdir -p "$carouselbaseslot/"%
 		
 		
 		if [[ "$verbose" != "" ]] ; then
-			$DEBUGCMD "Creating mirror files in $carouselpathslotdiscname"
+			$DEBUGCMD "Creating mirror files in $carouselbaseslot"
 		fi
 		
 		# create files for each folder we just created
-		pushd "$carouselpathslotdiscname/"
+		pushd "$carouselbaseslot/" > /dev/null
 		$DEBUGCMD /usr/bin/find "$volumename" -type f $maxlevel -print 2> /dev/null |sed -e 's/\/Volumes\///' |xargs -I % touch -r "`dirname $volumename`"/% %
-		popd
+		if [[ "$title" != "" ]] ; then # need to override the discname with title
+			mv "$discname" "$title"
+		fi
+		popd > /dev/null
 		
 		# set the attributes for each file
 		if [[ "$verbose" != "" ]] ; then
 			$DEBUGCMD "Writing extended attributes, be patient"
 		fi
 		
-		$DEBUGCMD /usr/bin/find "$carouselpathslotdiscname" -print | awk  '{ printf "\"%s\"\n", $0 }' | xargs "$XATTRCMD" -w "$xattrcarousel" $carousel
-		$DEBUGCMD /usr/bin/find "$carouselpathslotdiscname" -print | awk  '{ printf "\"%s\"\n", $0 }' | xargs "$XATTRCMD" -w "$xattrslot" $slot
-		# $DEBUGCMD /usr/bin/find "$carouselpathslotdiscname" -print | awk  '{ printf "\"%s\"\n", $0 }' | xargs "$XATTRCMD" -w "$xattrkind" $kind
+		$DEBUGCMD /usr/bin/find "$carouselbaseslot" -print | awk  '{ printf "\"%s\"\n", $0 }' | xargs "$XATTRCMD" -w "$xattrcarousel" $carousel
+		$DEBUGCMD /usr/bin/find "$carouselbaseslot" -print | awk  '{ printf "\"%s\"\n", $0 }' | xargs "$XATTRCMD" -w "$xattrslot" $slot
+		# $DEBUGCMD /usr/bin/find "$carouselbaseslot" -print | awk  '{ printf "\"%s\"\n", $0 }' | xargs "$XATTRCMD" -w "$xattrkind" $kind
 		
 		if [[ $eject == 1 ]] ; then
 			$DEBUGCMD /usr/sbin/diskutil eject "$volumename"
@@ -247,10 +249,10 @@ if [[ "$getfileslot" == "" ]] ; then
     fi
     
     ((slot++))
-    $DEBUGCMD $slot > "$slotfile"
+    echo $slot > "$slotfile"
 else # get a disc from a slot
-    carousel="`$XATTRCMD -p $xattrcarousel  $getfileslot`"
-    slot="`$XATTRCMD -p $xattrslot  $getfileslot`"
+    carousel=`"$XATTRCMD" -p "$xattrcarousel"  "$getfileslot"`
+    slot=`"$XATTRCMD" -p "$xattrslot"  "$getfileslot"`
     $DEBUGCMD "$DACALCMD" -c $carousel -s $slot
 fi
 exit 0
