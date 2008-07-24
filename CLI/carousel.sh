@@ -10,7 +10,7 @@ CMDPATH="`dirname $0`"
 CMDNAME="`basename $0`"
 DACALCMD="$CMDPATH/dacal" 
 # XATTRCMD="$CMDPATH/xattr"
-XATTRCMD="/usr/bin/xattr"
+XATTRCMD="$HOME/bin/xattr"
 xattrbase="com.polymicrosystems.pickadisc"
 xattrcarousel="$xattrbase.carousel"
 xattrslot=$xattrcarousel".slot"
@@ -181,7 +181,7 @@ if [[ "$getfileslot" == "" ]] ; then
 			exit 1
 		fi
 		/bin/mkdir -p "$carouselpathslotdiscname"
-		trap 'rm -f $carouselpathslotdiscname; exit $USER_INTERRUPT' TERM INT
+		trap 'rm -fr "$carouselpathslotdiscname"; exit $USER_INTERRUPT' TERM INT
 		$DEBUGCMD "$XATTRCMD" -w "$xattrcarousel" $carousel  "$carouselbase"
 		$DEBUGCMD "$XATTRCMD" -w "$xattrcarousel" $carousel  "$carouselbaseslot"
 		$DEBUGCMD "$XATTRCMD" -w "$xattrslot" $slot "$carouselbaseslot"
@@ -190,7 +190,7 @@ if [[ "$getfileslot" == "" ]] ; then
 		$DEBUGCMD "$XATTRCMD" -w "$xattrslot" $slot "$carouselpathslotdiscname"
     else # real disc to index
 		$DEBUGCMD /bin/mkdir -p "$carouselpathslotdiscname"
-		trap 'rm -f $carouselpathslotdiscname; exit $USER_INTERRUPT' TERM INT
+		trap 'rm -fr "$carouselpathslotdiscname"; exit $USER_INTERRUPT' TERM INT
 		$DEBUGCMD "$XATTRCMD" -w "$xattrcarousel" $carousel  "$carouselbase"
 		$DEBUGCMD "$XATTRCMD" -w "$xattrcarousel" $carousel  "$carouselbaseslot"
 		$DEBUGCMD "$XATTRCMD" -w "$xattrslot" $slot "$carouselbaseslot"
