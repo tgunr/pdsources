@@ -1,5 +1,5 @@
 #!/bin/bash
-#  carousel.sh
+#  $Id$
 #
 #  Created by Dave Carlton on 2008-05-31.
 #  Copyright (c) 2008 polyMicro Systems. All rights reserved.
@@ -235,6 +235,7 @@ if [[ "$getfileslot" == "" ]] ; then
 		
 		$DEBUGCMD /usr/bin/find "$carouselpathslotdiscname" -print | awk  '{ printf "\"%s\"\n", $0 }' | xargs "$XATTRCMD" -w "$xattrcarousel" $carousel
 		$DEBUGCMD /usr/bin/find "$carouselpathslotdiscname" -print | awk  '{ printf "\"%s\"\n", $0 }' | xargs "$XATTRCMD" -w "$xattrslot" $slot
+		# $DEBUGCMD /usr/bin/find "$carouselpathslotdiscname" -print | awk  '{ printf "\"%s\"\n", $0 }' | xargs "$XATTRCMD" -w "$xattrkind" $kind
 		
 		if [[ $eject == 1 ]] ; then
 			$DEBUGCMD /usr/sbin/diskutil eject "$volumename"
@@ -248,8 +249,8 @@ if [[ "$getfileslot" == "" ]] ; then
     ((slot++))
     $DEBUGCMD $slot > "$slotfile"
 else # get a disc from a slot
-    carousel = `"$XATTRCMD" -p $xattrcarousel  "$getfileslot"`
-    slot = `"$XATTRCMD" -p $xattrslot  "$getfileslot"`
+    carousel="`$XATTRCMD -p $xattrcarousel  $getfileslot`"
+    slot="`$XATTRCMD -p $xattrslot  $getfileslot`"
     $DEBUGCMD "$DACALCMD" -c $carousel -s $slot
 fi
 exit 0
