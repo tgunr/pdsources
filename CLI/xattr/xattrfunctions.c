@@ -35,9 +35,13 @@ int displayXattrKeys(const char *path, const char options) {
 		The xattr functions return a size value if called with a null buffer.
 	 */
 	
+//	ssize_t listxattr(const char *path, char *namebuff, size_t size, int options);
 	size_t bufferSize=listxattr(path, NULL, 0, options);						// find out the buffer size.
 	
-	if (bufferSize < 0 ) { perror(NULL); return errno; }
+	if (bufferSize < 0 ) { 
+		perror(NULL); 
+		return errno; 
+	}
 	
 		/*	LISTXATTR:
 			The listxattr function fills the allocated text buffer with a list of attribute names,
@@ -45,29 +49,33 @@ int displayXattrKeys(const char *path, const char options) {
 			The function returns the number of attributes.  
 		 */
 		
-		char *listBuffer=malloc(bufferSize);
-		if (listBuffer == NULL) { perror(NULL); return errno; }				// return NOMEM on malloc fail.
+	char *listBuffer=malloc(bufferSize);
+	if (listBuffer == NULL) { 
+		perror(NULL); 
+		return errno; 
+	}	// return NOMEM on malloc fail.
 		
-		int listLength=listxattr(path, listBuffer, bufferSize, options);	
+	int listLength=listxattr(path, listBuffer, bufferSize, options);	
 
-		int n=0;															// a character scanner counter.
-		int nameStart=0;													// the index position of each name.
+	int n=0;															// a character scanner counter.
+	int nameStart=0;													// the index position of each name.
+	
+	for (n=0; n < listLength; n++) {
 		
-		for (n=0; n < listLength; n++) {
+		if ( listBuffer[n]=='\0' ) {									// at a null termination in the buffer...
+
+			char *item=&listBuffer[nameStart];							// return a pointer to the name...
+			nameStart=n+1;												// and move to the next name.
 			
-			if ( listBuffer[n]=='\0' ) {									// at a null termination in the buffer...
-
-				char *item=&listBuffer[nameStart];							// return a pointer to the name...
-				nameStart=n+1;												// and move to the next name.
-				
-				if ( VERBOSE & options)		result=result | displayXattrValue(path,item,options);
-				else						printf("%s\n",item);
-				
-			}
+			if ( VERBOSE & options)		
+				result=result | displayXattrValue(path,item,options);
+			else
+				printf("%s: %s\n",path, item);
 		}
-		
-		free(listBuffer);
-		return result;
+	}
+	
+	free(listBuffer);
+	return result;
 		
 }
 
@@ -88,24 +96,32 @@ int displayXattrValue(const char *path, const char *key, const char options) {
 	
 	size_t bufferSize=getxattr(path, key, NULL, 0, 0,options);					// check the buffer size.
 	//printf("buffer size:  %i\n", bufferSize);
-	if (bufferSize < 0 ) { perror(NULL); return errno; }						// return NOMEM on malloc fail.
+	if (bufferSize < 0 ) { 
+		perror(NULL); 
+		return errno; 
+	}						// return NOMEM on malloc fail.
 
 	char *valueBuffer=malloc(bufferSize + 1);								// returns without nullterm, make room...
-		if (valueBuffer == NULL) { perror(NULL); return errno; }
+	if (valueBuffer == NULL) { 
+		perror(NULL); 
+		return errno; 
+	}
 	
-		valueBuffer[bufferSize]='\0';										// ...add nullterm.
+	valueBuffer[bufferSize]='\0';										// ...add nullterm.
 	
-		int valueLength=getxattr(path, key, valueBuffer, bufferSize, 0,options);
-		if (valueLength < 0) { perror(NULL); return errno; }
-															
-		if ( VERBOSE & options )	printf("%s=",key);						// prepend the attribute name.
+	int valueLength=getxattr(path, key, valueBuffer, bufferSize, 0,options);
+	if (valueLength < 0) { 
+		perror(NULL); 
+		return errno; 
+	}
+														
+	printf("%s: ", path);	
+	if ( VERBOSE & options )	
+		printf("%s: ", key);						// prepend the attribute name.
 
-		fprintf(stdout,"%s\n",valueBuffer);
-				
-		free(valueBuffer);
-		return 0;
-		
-
+	fprintf(stdout,"%s\n",valueBuffer);
+	free(valueBuffer);
+	return 0;
 }
 
 /*	Set Xattr Value:
@@ -115,12 +131,14 @@ int displayXattrValue(const char *path, const char *key, const char options) {
  */
 
 int setXattrValue(const char *path, const char *key, const char *value, const char options) {
-
+	int result;
 	int valueSize=0;														// the size of the value to be assigned.
 	for (valueSize=0; value[valueSize]!='\0';valueSize++);					// Does argv[] assure NULL term?
 
-	if ( setxattr(path,key,value, valueSize,0, options) < 0) { perror(NULL); return errno; }
-	if ( VERBOSE & options ) displayXattrValue(path, key, options);	
+	result = setxattr(path,key,value, valueSize,0, options);
+	if ( result < 0) { perror(NULL); return errno; }
+	if ( VERBOSE & options ) 
+		displayXattrValue(path, key, options);	
 	
 	return 0;
 	
