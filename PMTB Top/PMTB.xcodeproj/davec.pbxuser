@@ -1,10 +1,10 @@
 // !$*UTF8*$!
 {
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
-		activeBuildConfigurationName = Release;
-		activeExecutable = 75AEC42A0DDB91310090DE55 /* dacal */;
-		activeTarget = 75AEC32E0DDB87F80090DE55 /* DACALDriver */;
+		activeBuildConfigurationName = Debug;
+		activeTarget = 7543D4E20E3BBB83009A8AF3 /* PAD */;
 		addToTargets = (
+			7543D4E20E3BBB83009A8AF3 /* PAD */,
 		);
 		breakpoints = (
 			75ECCFBB0DE3728D00AB2F3F /* StorageWindowController.m:76 */,
@@ -22,9 +22,6 @@
 			756836720DE8BA65001C6F01 /* [AppDelegate applicationDidFinishLaunching:] */,
 		);
 		codeSenseManager = 759BC9B50DB496500039608A /* Code sense */;
-		executables = (
-			75AEC42A0DDB91310090DE55 /* dacal */,
-		);
 		ignoreBreakpointsInProjectsDict = {
 			Carousel = Ignored;
 			EventManager = Ignored;
@@ -164,8 +161,8 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 238455133;
-			PBXWorkspaceStateSaveDate = 238455133;
+			PBXPerProjectTemplateStateSaveDate = 238795555;
+			PBXWorkspaceStateSaveDate = 238795555;
 		};
 		perUserProjectItems = {
 			7521EDDA0DD5303700C1C0C8 /* PBXTextBookmark */ = 7521EDDA0DD5303700C1C0C8 /* PBXTextBookmark */;
@@ -175,32 +172,13 @@
 			7550D7600DC398A9008515EC /* PBXTextBookmark */ = 7550D7600DC398A9008515EC /* PBXTextBookmark */;
 			7550D7620DC398A9008515EC /* PBXTextBookmark */ = 7550D7620DC398A9008515EC /* PBXTextBookmark */;
 			7550D76F0DC398A9008515EC /* PBXTextBookmark */ = 7550D76F0DC398A9008515EC /* PBXTextBookmark */;
-			755D8CD30DF1EF59001EB047 /* PBXTextBookmark */ = 755D8CD30DF1EF59001EB047 /* PBXTextBookmark */;
-			7568362B0DE8870B001C6F01 /* XDModelBookmark */ = 7568362B0DE8870B001C6F01 /* XDModelBookmark */;
-			7568367C0DEA41F8001C6F01 /* PBXTextBookmark */ = 7568367C0DEA41F8001C6F01 /* PBXTextBookmark */;
 			756836800DEA41F8001C6F01 /* PBXTextBookmark */ = 756836800DEA41F8001C6F01 /* PBXTextBookmark */;
-			759BCA150DB4A9880039608A /* PBXTextBookmark */ = 759BCA150DB4A9880039608A /* PBXTextBookmark */;
-			759BCA190DB4A9880039608A /* PBXTextBookmark */ = 759BCA190DB4A9880039608A /* PBXTextBookmark */;
 			759BCBDC0DB5408B0039608A /* PBXBookmark */ = 759BCBDC0DB5408B0039608A /* PBXBookmark */;
-			75AEC0800DD954230090DE55 /* PBXTextBookmark */ = 75AEC0800DD954230090DE55 /* PBXTextBookmark */;
-			75AEC0F20DD95FA00090DE55 /* PBXTextBookmark */ = 75AEC0F20DD95FA00090DE55 /* PBXTextBookmark */;
-			75AEC1CC0DDA0B150090DE55 /* PBXTextBookmark */ = 75AEC1CC0DDA0B150090DE55 /* PBXTextBookmark */;
-			75AEC1CD0DDA0B150090DE55 /* PBXTextBookmark */ = 75AEC1CD0DDA0B150090DE55 /* PBXTextBookmark */;
-			75AEC1CE0DDA0B150090DE55 /* PBXTextBookmark */ = 75AEC1CE0DDA0B150090DE55 /* PBXTextBookmark */;
-			75AEC4120DDB8C880090DE55 /* PBXTextBookmark */ = 75AEC4120DDB8C880090DE55 /* PBXTextBookmark */;
-			75AEC4130DDB8C880090DE55 /* PBXTextBookmark */ = 75AEC4130DDB8C880090DE55 /* PBXTextBookmark */;
-			75AEC4570DDB97080090DE55 /* PBXTextBookmark */ = 75AEC4570DDB97080090DE55 /* PBXTextBookmark */;
 			75AEC5280DDCC3BA0090DE55 /* PBXBookmark */ = 75AEC5280DDCC3BA0090DE55 /* PBXBookmark */;
-			75AEC6530DDE0E040090DE55 /* PBXTextBookmark */ = 75AEC6530DDE0E040090DE55 /* PBXTextBookmark */;
 			75AEC65B0DDE0E040090DE55 /* PBXBookmark */ = 75AEC65B0DDE0E040090DE55 /* PBXBookmark */;
 			75AEC65C0DDE0E040090DE55 /* PBXBookmark */ = 75AEC65C0DDE0E040090DE55 /* PBXBookmark */;
-			75BF466D0DEDEBA500A80BD1 /* PBXTextBookmark */ = 75BF466D0DEDEBA500A80BD1 /* PBXTextBookmark */;
-			75ECD1930DE4FFD500AB2F3F /* PBXTextBookmark */ = 75ECD1930DE4FFD500AB2F3F /* PBXTextBookmark */;
-			75ECD2AA0DE509A700AB2F3F /* PBXTextBookmark */ = 75ECD2AA0DE509A700AB2F3F /* PBXTextBookmark */;
-			75F2BBC60DF00F0A00BEC5A4 /* PlistBookmark */ = 75F2BBC60DF00F0A00BEC5A4 /* PlistBookmark */;
 			75F2BBCC0DF01E4F00BEC5A4 /* PBXTextBookmark */ = 75F2BBCC0DF01E4F00BEC5A4 /* PBXTextBookmark */;
 			75F2BBCE0DF01E4F00BEC5A4 /* PBXTextBookmark */ = 75F2BBCE0DF01E4F00BEC5A4 /* PBXTextBookmark */;
-			75FD89520DB6B1FE00237357 /* PBXTextBookmark */ = 75FD89520DB6B1FE00237357 /* PBXTextBookmark */;
 			75FD8B620DB986D900237357 /* PBXTextBookmark */ = 75FD8B620DB986D900237357 /* PBXTextBookmark */;
 		};
 		sourceControlManager = 759BC9B40DB496500039608A /* Source Control */;
@@ -208,14 +186,13 @@
 		userBuildSettings = {
 		};
 	};
-	29B97316FDCFA39411CA2CEA /* main.m */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {672, 736}}";
-			sepNavSelRange = "{251, 0}";
-			sepNavVisRange = "{0, 251}";
-		};
-	};
 	32CA4F630368D1EE00C91783 /* PMTB_Prefix.pch */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.c.h;
+		name = PMTB_Prefix.pch;
+		path = "/Users/davec/Desktop/PMTB/trunk/PMTB Top/PMTB_Prefix.pch";
+		sourceTree = "<absolute>";
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {672, 891}}";
 			sepNavSelRange = "{193, 155}";
@@ -249,6 +226,9 @@
 		rType = 0;
 		vrLen = 1024;
 		vrLoc = 0;
+	};
+	7543D4E20E3BBB83009A8AF3 /* PAD */ = {
+		activeExec = 0;
 	};
 	7550D75C0DC398A9008515EC /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -327,21 +307,6 @@
 		rType = 0;
 		vrLen = 139;
 		vrLoc = 0;
-	};
-	755D8CD30DF1EF59001EB047 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 75AEC42F0DDB916A0090DE55 /* dacal.c */;
-		name = "dacal.c: 1";
-		rLen = 0;
-		rLoc = 13;
-		rType = 0;
-		vrLen = 1862;
-		vrLoc = 449;
-	};
-	7568362B0DE8870B001C6F01 /* XDModelBookmark */ = {
-		isa = XDModelBookmark;
-		fRef = 758C74590DE61A16002EBB07 /* CarouselDataModel.xcdatamodel */;
-		fallbackIsa = PBXBookmark;
 	};
 	756836410DE8B1BC001C6F01 /* MediaController.m:53 */ = {
 		isa = PBXFileBreakpoint;
@@ -511,16 +476,6 @@
 		state = 1;
 		symbolName = "[AppDelegate applicationDidFinishLaunching:]";
 	};
-	7568367C0DEA41F8001C6F01 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 75AEC4310DDB91840090DE55 /* dacal.1 */;
-		name = "dacal.1: 1";
-		rLen = 0;
-		rLoc = 0;
-		rType = 0;
-		vrLen = 2132;
-		vrLoc = 0;
-	};
 	756836800DEA41F8001C6F01 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		name = "carousel: 21";
@@ -530,60 +485,17 @@
 		vrLen = 1088;
 		vrLoc = 0;
 	};
-	7588A2100DF3B8E700B28BC4 /* carousel.sh */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {906, 2366}}";
-			sepNavSelRange = "{0, 0}";
-			sepNavVisRange = "{3104, 1925}";
-		};
-	};
-	758C74590DE61A16002EBB07 /* CarouselDataModel.xcdatamodel */ = {
-		isa = PBXFileReference;
-		fileEncoding = 4;
-		lastKnownFileType = wrapper.xcdatamodel;
-		name = CarouselDataModel.xcdatamodel;
-		path = /Users/davec/Desktop/PMTB/trunk/CarouselDataModel.xcdatamodel;
-		sourceTree = "<absolute>";
-	};
 	759BC9B40DB496500039608A /* Source Control */ = {
 		isa = PBXSourceControlManager;
 		fallbackIsa = XCSourceControlManager;
 		isSCMEnabled = 0;
 		scmConfiguration = {
-			repositoryName = "";
+			repositoryName = PMS;
 		};
 	};
 	759BC9B50DB496500039608A /* Code sense */ = {
 		isa = PBXCodeSenseManager;
 		indexTemplatePath = "";
-	};
-	759BC9E20DB4A0BC0039608A /* PMTB.h */ = {
-		isa = PBXFileReference;
-		fileEncoding = 4;
-		lastKnownFileType = sourcecode.c.h;
-		name = PMTB.h;
-		path = /Users/davec/Desktop/PMTB/trunk/PMTBApp/PMTB.h;
-		sourceTree = "<absolute>";
-	};
-	759BCA150DB4A9880039608A /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 759BC9E20DB4A0BC0039608A /* PMTB.h */;
-		name = "PMTB.h: 1";
-		rLen = 0;
-		rLoc = 0;
-		rType = 0;
-		vrLen = 194;
-		vrLoc = 0;
-	};
-	759BCA190DB4A9880039608A /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 77C8280B06725ACE000B614F /* PMTB_AppDelegate.h */;
-		name = "PMTB_AppDelegate.h: 1";
-		rLen = 0;
-		rLoc = 0;
-		rType = 0;
-		vrLen = 834;
-		vrLoc = 0;
 	};
 	759BCA280DB4AD6A0039608A /* PBXBookmarkGroup */ = {
 		isa = PBXBookmarkGroup;
@@ -634,42 +546,6 @@
 		isa = PBXBookmark;
 		fRef = 759BCBB30DB536920039608A /* GenericFolderFlat.png */;
 	};
-	75AEC0800DD954230090DE55 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 77C8280B06725ACE000B614F /* PMTB_AppDelegate.h */;
-		name = "PMTB_AppDelegate.h: 15";
-		rLen = 16;
-		rLoc = 273;
-		rType = 0;
-		vrLen = 910;
-		vrLoc = 0;
-	};
-	75AEC0F20DD95FA00090DE55 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 759BC9E20DB4A0BC0039608A /* PMTB.h */;
-		name = "PMTB.h: 25";
-		rLen = 0;
-		rLoc = 496;
-		rType = 0;
-		vrLen = 600;
-		vrLoc = 0;
-	};
-	75AEC1510DD9FD050090DE55 /* PMTBDocument.h */ = {
-		isa = PBXFileReference;
-		fileEncoding = 4;
-		lastKnownFileType = sourcecode.c.h;
-		name = PMTBDocument.h;
-		path = /Users/davec/Desktop/PMTB/trunk/PMTBApp/PMTBDocument.h;
-		sourceTree = "<absolute>";
-	};
-	75AEC1520DD9FD050090DE55 /* PMTBDocument.m */ = {
-		isa = PBXFileReference;
-		fileEncoding = 4;
-		lastKnownFileType = sourcecode.c.objc;
-		name = PMTBDocument.m;
-		path = /Users/davec/Desktop/PMTB/trunk/PMTBApp/PMTBDocument.m;
-		sourceTree = "<absolute>";
-	};
 	75AEC1BA0DDA08DC0090DE55 /* StorageWindowController.m */ = {
 		isa = PBXFileReference;
 		fileEncoding = 4;
@@ -677,175 +553,6 @@
 		name = StorageWindowController.m;
 		path = /Users/davec/Desktop/PMTB/trunk/Carousel/StorageWindowController.m;
 		sourceTree = "<absolute>";
-	};
-	75AEC1CC0DDA0B150090DE55 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 77C8280C06725ACE000B614F /* PMTB_AppDelegate.m */;
-		name = "PMTB_AppDelegate.m: 171";
-		rLen = 0;
-		rLoc = 5601;
-		rType = 0;
-		vrLen = 2189;
-		vrLoc = 3752;
-	};
-	75AEC1CD0DDA0B150090DE55 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 75AEC1520DD9FD050090DE55 /* PMTBDocument.m */;
-		name = "PMTBDocument.m: 1";
-		rLen = 0;
-		rLoc = 0;
-		rType = 0;
-		vrLen = 61;
-		vrLoc = 0;
-	};
-	75AEC1CE0DDA0B150090DE55 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 75AEC1510DD9FD050090DE55 /* PMTBDocument.h */;
-		name = "PMTBDocument.h: 3";
-		rLen = 0;
-		rLoc = 87;
-		rType = 0;
-		vrLen = 106;
-		vrLoc = 0;
-	};
-	75AEC32E0DDB87F80090DE55 /* DACALDriver */ = {
-		activeExec = 0;
-	};
-	75AEC3360DDB898E0090DE55 /* DACALSpecificDriver */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {672, 938}}";
-			sepNavSelRange = "{0, 0}";
-			sepNavVisRange = "{490, 1306}";
-		};
-	};
-	75AEC3390DDB899D0090DE55 /* DACALDriver-Info.plist */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {780, 1128}}";
-			sepNavSelRange = "{74, 0}";
-			sepNavVisRange = "{0, 75}";
-			sepNavWindowFrame = "{{15, 249}, {855, 1324}}";
-		};
-	};
-	75AEC4120DDB8C880090DE55 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 75AEC3360DDB898E0090DE55 /* DACALSpecificDriver */;
-		name = "DACALSpecificDriver: 1";
-		rLen = 0;
-		rLoc = 0;
-		rType = 0;
-		vrLen = 1796;
-		vrLoc = 0;
-	};
-	75AEC4130DDB8C880090DE55 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 75AEC3390DDB899D0090DE55 /* DACALDriver-Info.plist */;
-		name = "InfoPlist.strings: 4";
-		rLen = 0;
-		rLoc = 75;
-		rType = 0;
-		vrLen = 83;
-		vrLoc = 0;
-	};
-	75AEC4280DDB91300090DE55 /* dacal */ = {
-		activeExec = 0;
-		executables = (
-			75AEC42A0DDB91310090DE55 /* dacal */,
-		);
-	};
-	75AEC42A0DDB91310090DE55 /* dacal */ = {
-		isa = PBXExecutable;
-		activeArgIndices = (
-			NO,
-			NO,
-			NO,
-			NO,
-			NO,
-			NO,
-			NO,
-			NO,
-			YES,
-			NO,
-			NO,
-			NO,
-			YES,
-			YES,
-			NO,
-			NO,
-			NO,
-			YES,
-			NO,
-			NO,
-			NO,
-		);
-		argumentStrings = (
-			"-g",
-			"--get-slot",
-			"-r",
-			"-c",
-			"-l 1",
-			"-l 0",
-			"-m",
-			"-u",
-			"-s 1",
-			"-d",
-			"--reset",
-			"--close",
-			"--led 0",
-			"--led 1",
-			"--model",
-			"--uid",
-			"--slot 1",
-			"--slot 100",
-			"--devices -d",
-			"--help",
-			"-h",
-		);
-		autoAttachOnCrash = 1;
-		breakpointsEnabled = 0;
-		configStateDict = {
-		};
-		customDataFormattersEnabled = 1;
-		debuggerPlugin = GDBDebugging;
-		disassemblyDisplayState = 0;
-		dylibVariantSuffix = "";
-		enableDebugStr = 1;
-		environmentEntries = (
-		);
-		executableSystemSymbolLevel = 0;
-		executableUserSymbolLevel = 0;
-		libgmallocEnabled = 0;
-		name = dacal;
-		savedGlobals = {
-		};
-		sourceDirectories = (
-		);
-		variableFormatDictionary = {
-		};
-	};
-	75AEC42F0DDB916A0090DE55 /* dacal.c */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {810, 3528}}";
-			sepNavSelRange = "{13, 0}";
-			sepNavVisRange = "{449, 1862}";
-			sepNavWindowFrame = "{{15, 249}, {855, 1324}}";
-		};
-	};
-	75AEC4310DDB91840090DE55 /* dacal.1 */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {672, 1106}}";
-			sepNavSelRange = "{0, 0}";
-			sepNavVisRange = "{0, 2132}";
-		};
-	};
-	75AEC4570DDB97080090DE55 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 75AEC4310DDB91840090DE55 /* dacal.1 */;
-		name = "dacal.1: 1";
-		rLen = 0;
-		rLoc = 0;
-		rType = 0;
-		vrLen = 3039;
-		vrLoc = 0;
 	};
 	75AEC4670DDB9A380090DE55 /* PMTBFS-Info.plist */ = {
 		isa = PBXFileReference;
@@ -867,16 +574,6 @@
 		path = /Users/davec/Desktop/PMTB/trunk/Carousel/CarouselDocument.m;
 		sourceTree = "<absolute>";
 	};
-	75AEC6530DDE0E040090DE55 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 77C8280C06725ACE000B614F /* PMTB_AppDelegate.m */;
-		name = "PMTB_AppDelegate.m: 172";
-		rLen = 2;
-		rLoc = 5603;
-		rType = 0;
-		vrLen = 1768;
-		vrLoc = 0;
-	};
 	75AEC65B0DDE0E040090DE55 /* PBXBookmark */ = {
 		isa = PBXBookmark;
 		fRef = 759BCBB50DB5375B0039608A /* MB-folder-offline.tiff */;
@@ -892,16 +589,6 @@
 		name = MediaController.m;
 		path = /Users/davec/Desktop/PMTB/trunk/Carousel/MediaController.m;
 		sourceTree = "<absolute>";
-	};
-	75BF466D0DEDEBA500A80BD1 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 75AEC3360DDB898E0090DE55 /* DACALSpecificDriver */;
-		name = "DACALSpecificDriver: 1";
-		rLen = 0;
-		rLoc = 0;
-		rType = 0;
-		vrLen = 1306;
-		vrLoc = 490;
 	};
 	75ECCF550DE363D200AB2F3F /* MediaDiscMO.m */ = {
 		isa = PBXFileReference;
@@ -943,52 +630,6 @@
 		modificationTime = 236311926.596155;
 		state = 1;
 	};
-	75ECD0680DE385FD00AB2F3F /* dacallib.h */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {672, 1064}}";
-			sepNavSelRange = "{606, 11}";
-			sepNavVisRange = "{251, 2312}";
-			sepNavWindowFrame = "{{38, 228}, {855, 1324}}";
-		};
-	};
-	75ECD0690DE385FD00AB2F3F /* dacallib.m */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {912, 11452}}";
-			sepNavSelRange = "{17256, 14}";
-			sepNavVisRange = "{17054, 1428}";
-		};
-	};
-	75ECD1930DE4FFD500AB2F3F /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 75AEC1510DD9FD050090DE55 /* PMTBDocument.h */;
-		name = "PMTBDocument.h: 4";
-		rLen = 49;
-		rLoc = 61;
-		rType = 0;
-		vrLen = 117;
-		vrLoc = 0;
-	};
-	75ECD2AA0DE509A700AB2F3F /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 75AEC1520DD9FD050090DE55 /* PMTBDocument.m */;
-		name = "PMTBDocument.m: 15";
-		rLen = 1330;
-		rLoc = 176;
-		rType = 0;
-		vrLen = 2382;
-		vrLoc = 1506;
-	};
-	75F2BBC60DF00F0A00BEC5A4 /* PlistBookmark */ = {
-		isa = PlistBookmark;
-		fRef = 75AEC3390DDB899D0090DE55 /* DACALDriver-Info.plist */;
-		fallbackIsa = PBXBookmark;
-		isK = 0;
-		kPath = (
-		);
-		name = "/Users/davec/Desktop/PMTB/DACALDriver/DACALDriver-Info.plist";
-		rLen = 0;
-		rLoc = 2147483647;
-	};
 	75F2BBCC0DF01E4F00BEC5A4 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		name = "carousel: 86";
@@ -1015,16 +656,6 @@
 		path = /Developer/SDKs/MacOSX10.5.sdk/System/Library/Frameworks/Kernel.framework/Versions/A/Headers/mach/i386/vm_types.h;
 		sourceTree = "<absolute>";
 	};
-	75FD89520DB6B1FE00237357 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 29B97316FDCFA39411CA2CEA /* main.m */;
-		name = "main.m: 1";
-		rLen = 0;
-		rLoc = 0;
-		rType = 0;
-		vrLen = 251;
-		vrLoc = 0;
-	};
 	75FD8B620DB986D900237357 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 75FD8B630DB986D900237357 /* NSPathControl.h */;
@@ -1040,22 +671,6 @@
 		lastKnownFileType = sourcecode.c.h;
 		name = NSPathControl.h;
 		path = /Developer/SDKs/MacOSX10.5.sdk/System/Library/Frameworks/AppKit.framework/Versions/C/Headers/NSPathControl.h;
-		sourceTree = "<absolute>";
-	};
-	77C8280B06725ACE000B614F /* PMTB_AppDelegate.h */ = {
-		isa = PBXFileReference;
-		fileEncoding = 4;
-		lastKnownFileType = sourcecode.c.h;
-		name = PMTB_AppDelegate.h;
-		path = /Users/davec/Desktop/PMTB/trunk/PMTBApp/PMTB_AppDelegate.h;
-		sourceTree = "<absolute>";
-	};
-	77C8280C06725ACE000B614F /* PMTB_AppDelegate.m */ = {
-		isa = PBXFileReference;
-		fileEncoding = 4;
-		lastKnownFileType = sourcecode.c.objc;
-		name = PMTB_AppDelegate.m;
-		path = /Users/davec/Desktop/PMTB/trunk/PMTBApp/PMTB_AppDelegate.m;
 		sourceTree = "<absolute>";
 	};
 }
