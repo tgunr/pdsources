@@ -329,6 +329,7 @@
 			buildPhases = (
 				751FB9F90E39046200D64628 /* Sources */,
 				751FB9FA0E39046200D64628 /* Frameworks */,
+				7543D6C90E3CFCA0009A8AF3 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -442,6 +443,22 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7543D6C90E3CFCA0009A8AF3 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [[ \"$BUILD_STYLE\" == \"Deploy\" ]] ; then\n\techo \"Installing ${BUILT_PRODUCTS_DIR}/${FULL_PRODUCT_NAME}\"\n\tif [[ -e \"${BUILT_PRODUCTS_DIR}/${FULL_PRODUCT_NAME}\" ]] ; then\n\t\tpushd \"${BUILT_PRODUCTS_DIR}\"\n\t\tsudo find \"${FULL_PRODUCT_NAME}\" -exec chown -R root:wheel {} \\;\n\t\tsudo find \"${FULL_PRODUCT_NAME}\" -type d -exec chmod -R 755 {} \\;\n\t\tsudo find \"${FULL_PRODUCT_NAME}\" -type f -exec chmod -R 644 {} \\;\n\t\tls -lR \"${FULL_PRODUCT_NAME}\"\n\t\tpushd \"$INSTALL_PATH\"\n\t\tif [[ -e \"${FULL_PRODUCT_NAME}\" ]] ; then\n\t\t\tsudo kextunload ${FULL_PRODUCT_NAME}\n\t\tfi\n\t\tsudo rm -fr \"${FULL_PRODUCT_NAME}\"\n\t\tsudo cp -Rf \"${BUILT_PRODUCTS_DIR}/${FULL_PRODUCT_NAME}\" \"$INSTALL_PATH/\"\n\t\tsudo kextload -t ${FULL_PRODUCT_NAME}\n\t\tpopd\n\t\tsudo find \"${FULL_PRODUCT_NAME}\" -exec chown -R ${USER}:${GROUP} {} \\;\n\t\tpopd\n\tfi\nfi";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		751FB9F90E39046200D64628 /* Sources */ = {
