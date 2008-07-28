@@ -13,9 +13,13 @@
 	<key>CFBundlePackageType</key>
 	<string>KEXT</string>
 	<key>CFBundleSignature</key>
-	<string>????</string>
+	<string>PADr</string>
 	<key>CFBundleVersion</key>
-	<string>1.0.0d1</string>
+	<string>100</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0.0</string>
+	<key>NSHumanReadableCopyright</key>
+	<string>© 2008, polyMicro Systems</string>
 	<key>IOKitPersonalities</key>
 	<dict>
 		<key>InterfaceDriver</key>

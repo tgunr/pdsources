@@ -17,7 +17,6 @@
 		7543D51E0E3BBDFE009A8AF3 /* VendorSpecificDriver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VendorSpecificDriver.h; sourceTree = "<group>"; };
 		7543D51F0E3BBDFE009A8AF3 /* VendorSpecificDriver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VendorSpecificDriver.cpp; sourceTree = "<group>"; };
 		7543D5230E3BBE60009A8AF3 /* DACALSpecificDriver */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = DACALSpecificDriver; sourceTree = "<group>"; };
-		7543D5930E3BD674009A8AF3 /* DACALDriver-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "DACALDriver-Info.plist"; sourceTree = "<group>"; };
 		7543D5960E3BD6A3009A8AF3 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8DA8362C06AD9B9200E5AC22 /* Kernel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kernel.framework; path = /System/Library/Frameworks/Kernel.framework; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
@@ -48,7 +47,6 @@
 			isa = PBXGroup;
 			children = (
 				7543D5960E3BD6A3009A8AF3 /* Info.plist */,
-				7543D5930E3BD674009A8AF3 /* DACALDriver-Info.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -198,17 +196,20 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CURRENT_PROJECT_VERSION = 1.0.0d1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				CURRENT_PROJECT_VERSION = 100;
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				GCC_MODEL_TUNING = G5;
 				INFOPLIST_FILE = Info.plist;
 				INFOPLIST_PREPROCESS = YES;
 				INSTALL_PATH = "$(SYSTEM_LIBRARY_DIR)/Extensions";
-				MODULE_NAME = com.yourcompany.driver.DACALDriver;
-				MODULE_VERSION = 1.0.0d1;
+				MODULE_NAME = com.polymicrosystems.driver.DACALDriver;
+				MODULE_VERSION = 1.0.0;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = DACALDriver;
 				SDKROOT = macosx10.4;
+				SKIP_INSTALL = NO;
+				STRIP_INSTALLED_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
 				WRAPPER_EXTENSION = kext;
 			};
 			name = Release;
