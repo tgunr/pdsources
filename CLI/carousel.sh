@@ -255,6 +255,6 @@ if [[ "$getfileslot" == "" ]] ; then
 else # get a disc from a slot
     carousel=`"$XATTRCMD" -p "$xattrcarousel"  "$getfileslot"`
     slot=`"$XATTRCMD" -p "$xattrslot"  "$getfileslot"`
-    $DEBUGCMD "$DACALCMD" -c $carousel -s $slot
+    $DEBUGCMD "$DACALCMD" -c "${carousel#*: }" -s "${slot#*: }"
 fi
 exit 0
