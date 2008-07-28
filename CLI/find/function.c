@@ -39,9 +39,9 @@
 static const char sccsid[] = "@(#)function.c	8.10 (Berkeley) 5/4/95";
 #endif
 #endif /* not lint */
-
+#define _DARWIN_USE_64_BIT_INODE
 #include <sys/cdefs.h>
-__FBSDID("$FreeBSD: src/usr.bin/find/function.c,v 1.58 2006/05/27 18:27:41 krion Exp $");
+//__FBSDID("$FreeBSD: src/usr.bin/find/function.c,v 1.58 2006/05/27 18:27:41 krion Exp $");
 
 #include <sys/param.h>
 #include <sys/ucred.h>
