@@ -103,17 +103,17 @@ if [[ $listslots == 1 ]] ; then
 		cd "$carouselbase"
 		find . -type d -maxdepth 2 -depth 2
 		exit 0
-fi
+	fi
 	exit 1
 fi
 
 if [[ $whichtitle == 1 ]] ; then
     if [[ -d "$carouselbaseslot" ]] ; then 
-	ls -1 "$carouselbaseslot/"|head -1
-	exit 0
+		ls -1 "$carouselbaseslot/"|head -1
+		exit 0
     else
-	$DEBUGCMD "$CMDNAME: Error - carousel $carousel slot $slot not avaialable"
-	exit 1
+		echo "$CMDNAME: Error - carousel $carousel slot $slot not avaialable"
+		exit 1
     fi
     exit 0
 fi
