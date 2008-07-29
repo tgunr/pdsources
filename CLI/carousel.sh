@@ -120,9 +120,9 @@ fi
 
 if [[ $pathtoslot == 1 ]] ; then
     if [[ -d "$carouselbaseslot" ]] ; then 
-	$DEBUGCMD "$carouselbaseslot"
+	echo "$carouselbaseslot"
     else
-	$DEBUGCMD "$CMDNAME: Error - carousel $carousel slot $slot not avaialable"
+	echo "$CMDNAME: Error - carousel $carousel slot $slot not avaialable"
 	exit 1
     fi
     exit 0
@@ -137,10 +137,10 @@ if [[ $nextslot == 1 ]] ; then
 	fi
     done
     if [[ $result == 1 ]] ; then
-	$DEBUGCMD "$carouselbase/Slot $i"
+	echo "$carouselbase/Slot $i"
 	exit 0
     else
-	$DEBUGCMD "$CMDNAME: No slot availiable up to slot $slot"
+	echo "$CMDNAME: No slot availiable up to slot $slot"
 	exit 1
     fi
 fi
@@ -149,14 +149,14 @@ if [[ $clearslot == 1 ]] ; then
     if [[ -d "$carouselbaseslot" ]] ; then 
 	/bin/rm -fr "$carouselbaseslot"
     else
-	$DEBUGCMD "$CMDNAME: No slot at slot $slot"
+	echo "$CMDNAME: No slot at slot $slot"
 	exit 1
     fi
     exit 0 
 fi
 
 if [[ ! "${volumepath%\/*/}" =~ "/Volumes" ]] ; then
-    $DEBUGCMD "Source is not a volume: $volumepath"
+    echo "Source is not a volume: $volumepath"
     exit 1
 fi
 
@@ -174,7 +174,7 @@ if [[ "$getfileslot" == "" ]] ; then
     if [[ $nodisc == 1 ]] ; then
 		# has to be a -t title or can't proceed
 		if [[ "$title" == "" ]] ; then
-			$DEBUGCMD "No title! Use -t Title when not labling from a disc"
+			echo "No title! Use -t Title when not labling from a disc"
 			exit 1
 		else
 			volumename="$title"
@@ -200,7 +200,7 @@ if [[ "$getfileslot" == "" ]] ; then
 		$DEBUGCMD "$XATTRCMD" -w "$xattrkind" "$kind" "$carouselbaseslot/$volumename"
 
 		if [[ ! -d "$volumepath" ]] ; then # oops, no disc name? whats this?
-			$DEBUGCMD "No volume named: $volumepath"
+			echo "No volume named: $volumepath"
 			exit 1
 		fi
 		
