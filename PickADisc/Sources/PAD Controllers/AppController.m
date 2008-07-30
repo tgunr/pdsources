@@ -1,75 +1,22 @@
-/*
-    AppController.m
-    Copyright (c) 2001-2006, Apple Computer, Inc., all rights reserved.
-    Original Author: Chuck Pisula
+//
+//  AppDelegate.m
+//  Async Downloader
+//
+//  Created by Matt Long on 2/16/08.
+//  Copyright 2008 Cocoa Is My Girlfriend. All rights reserved.
+//
 
-    Milestones:
-    * 03-01-2001 - Chuck Pisula: Initial creation
-    * 11-17-2005 - Corbin Dunn: Cleaned up the code, fixed IBOutlets, and added contextual menu support.
-    * 02-17-2006 - Corbin Dunn: Fixed the ability to drop on a leaf and make it a parent. 
-                    Added support for making rows selectable or not via a checkbox. 
-                    Removed some uses of macros to make the code easier to read and understand.
-    * 05-08-2006 - Corbin Dunn: Added group row style.
-
-    Application Controller object, and NSOutlineView datasource/delegate.
-*/
-
-/*
- IMPORTANT:  This Apple software is supplied to you by Apple Computer, Inc. ("Apple") in
- consideration of your agreement to the following terms, and your use, installation, 
- modification or redistribution of this Apple software constitutes acceptance of these 
- terms.  If you do not agree with these terms, please do not use, install, modify or 
- redistribute this Apple software.
- 
- In consideration of your agreement to abide by the following terms, and subject to these 
- terms, Apple grants you a personal, non-exclusive license, under Apple’s copyrights in 
- this original Apple software (the "Apple Software"), to use, reproduce, modify and 
- redistribute the Apple Software, with or without modifications, in source and/or binary 
- forms; provided that if you redistribute the Apple Software in its entirety and without 
- modifications, you must retain this notice and the following text and disclaimers in all 
- such redistributions of the Apple Software.  Neither the name, trademarks, service marks 
- or logos of Apple Computer, Inc. may be used to endorse or promote products derived from 
- the Apple Software without specific prior written permission from Apple. Except as expressly
- stated in this notice, no other rights or licenses, express or implied, are granted by Apple
- herein, including but not limited to any patent rights that may be infringed by your 
- derivative works or by other works in which the Apple Software may be incorporated.
- 
- The Apple Software is provided by Apple on an "AS IS" basis.  APPLE MAKES NO WARRANTIES, 
- EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION THE IMPLIED WARRANTIES OF NON-INFRINGEMENT, 
- MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE, REGARDING THE APPLE SOFTWARE OR ITS 
- USE AND OPERATION ALONE OR IN COMBINATION WITH YOUR PRODUCTS.
- 
- IN NO EVENT SHALL APPLE BE LIABLE FOR ANY SPECIAL, INDIRECT, INCIDENTAL OR CONSEQUENTIAL 
- DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS 
- OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) ARISING IN ANY WAY OUT OF THE USE, 
- REPRODUCTION, MODIFICATION AND/OR DISTRIBUTION OF THE APPLE SOFTWARE, HOWEVER CAUSED AND 
- WHETHER UNDER THEORY OF CONTRACT, TORT (INCLUDING NEGLIGENCE), STRICT LIABILITY OR 
- OTHERWISE, EVEN IF APPLE HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*/
 
 #import "AppController.h"
 #import <DiscRecording/DiscRecording.h>
 #import <AudioToolbox/AudioToolbox.h>
 #import <fcntl.h>
 
-#import <CoreFoundation/CoreFoundation.h>
+//#import <CoreFoundation/CoreFoundation.h>
+#import "pmsCFUtility.h"
+#import "pmsDACALUtility.h"
 
-OSStatus DACALRegisterIconResource( CFStringRef theIconFile, OSType theIconType );
-OSStatus DACALRegisterIconResource( CFStringRef theIconFile, OSType theIconType )
-{
-	CFURLRef	anIconURL = CFBundleCopyResourceURL( CFBundleGetMainBundle(), theIconFile, CFSTR("icns"), NULL );
-	FSRef		anIconFS;
-	Boolean		anIconFound = CFURLGetFSRef( anIconURL, &anIconFS );
-	IconRef		anIconRef;
-	OSStatus	anIconErr = -1;
-
-	if( anIconFound ) anIconErr = RegisterIconRefFromFSRef( kDACALCreatorType, theIconType, &anIconFS, &anIconRef );
-
-	if( anIconErr == 0 ) AcquireIconRef( anIconRef );
-	if( anIconURL ) CFRelease( anIconURL );
-
-	return( anIconErr );
-}
+#define PAD_BUSYBODY_DELAY 0.1
 
 void DACALSetup( void )
 {
@@ -85,21 +32,42 @@ void DACALSetup( void )
 
 
 @implementation AppController
+static AppController *shared;
 
-- (id)init {
-    if (self = [super init]) {		
-	
-		// Initializtion 
+- (id)init
+{
+    if (shared) 
+	{
+        [self autorelease];
+        return shared;
+    }
+    if (self = [super init])
+	{	// Initializtion 
 		DACALSetup();
+
+		queue = [[NSOperationQueue alloc] init];
+		[queue setMaxConcurrentOperationCount:6];
 		
+		//busyBodies = [NSMutableDictionary dictionaryWithCapacity:1000];
+		//busyBodies = [NSMutableArray arrayWithCapacity:0];
+		busyBodies = [[NSMutableArray alloc] initWithCapacity:8192];
+		busyBusy = NO;
+		jPADBusyBodyBeat = 0;
+		
+		shared = self;
 	}
     return self; 
 }
 
-- (void)dealloc {
+- (void)queueOperation:(NSOperation*)op { [queue addOperation:op]; }
 
+- (void)dealloc
+{
+	[queue release], queue = nil;
+	[busyBodies release], busyBodies = nil;
+	
 	DACALDevicesFinalize();
-
+	
     [super dealloc];
 }
 
@@ -115,9 +83,12 @@ void DACALSetup( void )
 	// Register for 'GURL' Apple Event to handle URL opening
 	[[NSAppleEventManager sharedAppleEventManager] setEventHandler:self andSelector:@selector(handleOpenLocationAppleEvent:withReplyEvent:) forEventClass:kInternetEventClass andEventID:kAEGetURL];
 	
-	// *** new nib
+	// *** new nibs
 	[NSBundle loadNibNamed:@"CarouselIndex" owner:[NSApplication sharedApplication]];
+	[NSBundle loadNibNamed:@"CarouselProgress" owner:[NSApplication sharedApplication]];
 
+	// Add busy body heartbeat
+	[NSTimer scheduledTimerWithTimeInterval:PAD_BUSYBODY_DELAY target:self selector:@selector(doBusyWork:) userInfo:nil repeats:YES];
 }
 
 - (void) newMediaDetected:(id)aNotification {
@@ -161,8 +132,108 @@ void DACALSetup( void )
 
 + (void)playUISound:(NSInteger)theSound {
 		
-	if( [[NSUserDefaults standardUserDefaults] boolForKey:@"PADPlaySounds"] == TRUE ) AudioServicesPlaySystemSound( (SystemSoundID)theSound );
+	if( [[NSUserDefaults standardUserDefaults] boolForKey:@"PADPlaySounds"] == YES ) AudioServicesPlaySystemSound( (SystemSoundID)theSound );
 
 }
 
++ (id)shared
+{
+    if (!shared) {
+        [[AppController alloc] init];
+    }
+    return shared;
+}
+
+- (void)setDataView:(TreeController*)tc { dataView = tc; }
+
+- (void)addBusyBody:(id)item ofView:(id)view 
+{
+	[self addBusyBody:item];
+}
+
+- (void)addBusyBody:(id)item
+{
+	busyBusy = YES;
+	//[busyBodies setObject:view forKey:item]; 
+	if( ![busyBodies containsObject:item] )
+		[busyBodies addObject:item];
+	//NSLog( @"Added %@ <%@>\n\tBodies: %@", [item description], item, [busyBodies description] );
+	busyBusy = NO;
+}
+
+- (void)scheduleAddBusyBody:(id)item
+{
+	[NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(scheduledAddBusyBody:) userInfo:item repeats:YES];	
+}
+
+- (void)scheduledAddBusyBody:(NSTimer*)busyTimer
+{ 
+	if( busyBusy == YES ) return;
+	
+	[self addBusyBody:[busyTimer userInfo] ofView:nil];
+	[busyTimer invalidate];
+}
+
+- (void)removeBusyBody:(id)item
+{
+	NSOutlineView* theTable = nil;
+
+	busyBusy = YES;
+	//[busyBodies removeObjectForKey:item]; 
+	//NSLog( @"Bodies: %@", [busyBodies description] );
+	//if( [busyBodies count] > 0 ) [busyBodies removeObject:item];
+	[busyBodies removeObject:item];
+	//NSLog( @"Removed %@ <%@>\n\tBodies: %@", [item description], item, [busyBodies description] );
+
+	theTable = [dataView outlineView];
+	if(theTable != nil)
+		[theTable reloadItem:(id)item reloadChildren:NO];
+	
+	busyBusy = NO;
+}
+
+- (void)scheduleRemoveBusyBody:(id)item
+{
+	[NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(scheduledRemoveBusyBody:) userInfo:item repeats:YES];	
+}
+
+- (void)scheduledRemoveBusyBody:(NSTimer*)busyTimer
+{ 
+	if( busyBusy == YES ) return;
+
+	[self removeBusyBody:[busyTimer userInfo]];
+	[busyTimer invalidate];
+}
+
+- (NSMutableArray*)busyBodies
+{
+	return( busyBodies ); 
+}
+
+- (void)doBusyWork:(NSTimer*)busyTimer
+{ 
+	NSOutlineView* theTable = nil;
+	
+	if( busyBusy == YES ) return;
+	if( [busyBodies count] == 0 ) return;
+	
+	busyBusy = YES;	
+    NSObject *entry = nil;
+    NSEnumerator *enumerator = [busyBodies objectEnumerator];
+    while ((entry=[enumerator nextObject])) {
+		theTable = [dataView outlineView];
+		if(theTable != nil)
+			//[entry setBusyCount:[entry busyCount]+1];
+			[theTable reloadItem:(id)entry reloadChildren:YES];
+			//NSLog( @"Got Busy: %@ <%@>\n\tBodies: %@", [entry description], entry, [busyBodies description] );
+		theTable = nil;
+	}
+	
+	jPADBusyBodyBeat++;
+	if( jPADBusyBodyBeat > 11 ) jPADBusyBodyBeat = 0;
+		
+	busyBusy = NO;
+}
 @end
+
+

@@ -16,7 +16,13 @@
 
 	IBOutlet	NSTextField		*promptText;
 	IBOutlet	id				secondaryController;
+	
 }
+
++ (id)shared;
+
+- (SimpleTreeNode*)findTreeNodeForDevice:(DACALDeviceRef)theBoxRef;
+- (void)slotAddedToDevice:(DACALDeviceRef)theBoxRef forSlot:(DACALSlotNum)newSlot;
 
 @end
 

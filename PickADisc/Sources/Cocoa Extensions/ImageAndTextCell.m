@@ -1,4 +1,10 @@
 /*
+ *  ImageAndTextCell.m
+ *  PickADisc
+ *
+ *  Created by Dave Carlton on 05/27/08.
+ *  Copyright 2008 Polymicro Systems. All rights reserved.
+ *
     ImageAndTextCell.m
     Copyright (c) 2001-2006, Apple Computer, Inc., all rights reserved.
     Author: Chuck Pisula
@@ -52,6 +58,7 @@
     if (self = [super init]) {
         [self setLineBreakMode:NSLineBreakByTruncatingTail];
         [self setSelectable:YES];
+		busyCount = 0;
     }
     return self;
 }
@@ -107,6 +114,27 @@
     return result;
 }
 
+// Returns the progress indicator rectangle best suited for the incoming rectangle
+- (NSRect)spinnerRectForBounds:(NSRect)cellFrame {
+
+    NSRect result;
+
+	CGFloat spinSize = 16.0;		// Should probably not be hard coded...
+	CGFloat spinXInset = 8.0;
+	CGFloat spinYInset = 0.0;
+	CGFloat cellWidth = cellFrame.size.width;
+	CGFloat cellHeight = cellFrame.size.height;
+	
+	result = cellFrame; 
+	
+	result.origin.x += (cellWidth - spinSize) - spinXInset;
+	result.origin.y += (cellHeight - spinSize) - spinYInset;
+	result.size.width = spinSize;
+	result.size.height = spinSize;
+
+    return result;
+}
+
 
 - (void)editWithFrame:(NSRect)aRect inView:(NSView *)controlView editor:(NSText *)textObj delegate:(id)anObject event:(NSEvent *)theEvent {
     NSRect textFrame, imageFrame;
@@ -124,7 +152,6 @@
     if (image != nil) {
         NSRect	imageFrame;
         NSSize imageSize = [image size];
-//        NSSize imageSize = NSMakeSize( 16.0, 16.0 );
 		NSDivideRect(cellFrame, &imageFrame, &cellFrame, 3 + imageSize.width, NSMinXEdge);
         if ([self drawsBackground]) {
             [[self backgroundColor] set];
@@ -140,6 +167,20 @@
 
         [image compositeToPoint:imageFrame.origin operation:NSCompositeSourceOver];
     }
+	
+	if( busy == YES )									// If the node is busy, draw a chasing arrows in the corner.
+	{													// Overshadow spinnerRectForBounds: to control the box
+		HIThemeChasingArrowsDrawInfo arrowInfo;
+		NSRect	spinRect = [self spinnerRectForBounds:cellFrame];
+		HIRect	arrowFrame = CGRectMake( spinRect.origin.x, spinRect.origin.y, spinRect.size.width, spinRect.size.height);
+		
+		arrowInfo.version = 0;
+		arrowInfo.state = kThemeStateActive;
+		arrowInfo.index = jPADBusyBodyBeat;				// There is only one busy counter, so we're all spinning together.
+
+		HIThemeDrawChasingArrows( &arrowFrame, &arrowInfo, [[NSGraphicsContext currentContext] graphicsPort], kHIThemeOrientationInverted );
+	}
+	
     [super drawWithFrame:cellFrame inView:controlView];
 }
 
@@ -171,6 +212,20 @@
     return [super hitTestForEvent:event inRect:cellFrame ofView:controlView];    
 }
 
+- (void)setBusy:(BOOL)spin 
+{ 
+	if( busy == spin ) return;
+	busy = spin;
+}
+
+- (BOOL)busy
+	{ return busy; }
+
+- (NSInteger)busyCount
+	{ return busyCount; }
+
+- (void)setBusyCount:(NSInteger)count
+	{ busyCount = count; }
 
 @end
 

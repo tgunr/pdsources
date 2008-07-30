@@ -7,8 +7,30 @@
 //
 
 #import "DACALTreeDataSource.h"
+#import "pmsDACALUtility.h"
+
+// Index group names
+
+#define		PADINDEX_GROUPTITLE_LIBRARY		@"LIBRARY"
+#define		PADINDEX_GROUPTITLE_DEVICES		@"CAROUSELS"
+#define		PADINDEX_GROUPTITLE_FAVORITES	@"DISCMARKS"
+#define		PADINDEX_GROUPTITLE_SEARHCES	@"SEARCH FOR"
 
 @implementation DACALTreeDataSource
+static DACALTreeDataSource *DACALTreeDataSource_shared;
+
+- (id)init
+{
+    if (DACALTreeDataSource_shared) 
+	{
+        [self autorelease];
+        return DACALTreeDataSource_shared;
+    }
+	if (![super init]) return nil;
+	
+	DACALTreeDataSource_shared = self;
+	return self;
+}
 
 - (SimpleTreeNode*)createInitialTree:(id)tree
 {
@@ -22,10 +44,11 @@
 	NSString*			boxName;
 //	NSString*			boxDirName;
 	CFStringRef			theSlotTitle;
-	CFStringRef			theSlotName;
+//	CFStringRef			theSlotName;
 	CFURLRef			dataURL = NULL; 
 	CFURLRef			boxURL = NULL;
 	CFURLRef			slotURL = NULL;
+	NSArray*			slotFolders = nil;
 	DACALDeviceRef		theBoxRef = (DACALDeviceRef)NULL;
 	DACALDeviceNode		theBoxNode = 0;
 	DACALSlotNum		slotNum = 0;
@@ -47,8 +70,9 @@
 	NSDictionary *initData = [NSDictionary dictionaryWithContentsOfFile: [[NSBundle mainBundle] pathForResource:@"InitInfo" ofType: @"dict"]];
 	if( initData != nil ) theOutputTree = [SimpleTreeNode treeFromDictionary: initData];	
 	
-	#warning Index 1 should not be hard coded!
-	theWorkNode = (SimpleTreeNode*)[theOutputTree childAtIndex:1];											
+//	#warning Index 1 should not be hard coded!
+//	theWorkNode = (SimpleTreeNode*)[theOutputTree childAtIndex:1];											
+	theWorkNode = (SimpleTreeNode*)[theOutputTree childWithName:PADINDEX_GROUPTITLE_DEVICES];											
 	[[theWorkNode nodeData] setItemType: kPADTypeGroupDevices];
 
 	for( index=0; index < count; index++ )
@@ -70,20 +94,24 @@
 
 		//Create subtree root
 		theSubtreeNode = [[[SimpleTreeNode alloc] initWithData:[SimpleNodeData groupDataWithName:boxName] parent:nil children:[NSArray array]] autorelease];
-		slotcount = DACALCommandGetSlotCount( theBoxRef );
+		slotFolders = (NSArray*)DACALCommandCopyAllSlotPaths( theBoxRef, NULL );
+		//		slotcount = DACALCommandGetSlotCount( theBoxRef );
+		slotcount = [slotFolders count];
 		for( slotindex = 1; slotindex <= slotcount; slotindex++ ) {	
-			slotNum = slotindex;
+			slotNum = CFURLGetSlotNumber( (CFURLRef)[slotFolders objectAtIndex:slotindex-1], FALSE );
 			theSlotTitle = DACALSlotCopyTitle( theBoxRef, slotNum, NULL );
 			if( theSlotTitle != NULL ) {																	// Create a url to the slot
-				theSlotName		= CFStringCreateWithFormat( NULL, NULL, CFSTR("Slot %i/%@"), slotNum, theSlotTitle );
-				slotURL = CFURLCreateCopyAppendingPathComponent( NULL, boxURL, (CFStringRef) theSlotName, TRUE );
-			
-				theSubtreeChild = [SimpleTreeNode treeFromLocation:(NSURL*)slotURL];
-				[theSubtreeChild setDataDevice:theBoxRef slot:slotNum];
+				//theSlotName		= CFStringCreateWithFormat( NULL, NULL, CFSTR("Slot %i/%@"), slotNum, theSlotTitle );
+				//slotURL = CFURLCreateCopyAppendingPathComponent( NULL, boxURL, (CFStringRef) theSlotName, TRUE );
+				//slotURL = (CFURLRef)[slotFolders objectAtIndex:slotindex-1];
+				slotURL = CFURLCreateCopyAppendingPathComponent( NULL, (CFURLRef)[slotFolders objectAtIndex:slotindex-1], (CFStringRef) theSlotTitle, TRUE );
+				
+				theSubtreeChild = [SimpleTreeNode treeOperationFromLocation:(NSURL*)slotURL];
+				// [theSubtreeChild setDataDevice:theBoxRef slot:slotNum];
 				compareIconType = [[theSubtreeChild nodeData] itemType];
-					if		( compareIconType == kPADTypeDataMuisc ) slotIconType = 'cdda';				// CDAudioVolume
-					else if	( compareIconType == kPADTypeDataMovie ) slotIconType = 'dvd ';				// public.dvd-media
-					else											 slotIconType = kGenericCDROMIcon;  // public.cd-media
+				if		( compareIconType == kPADTypeDataMuisc ) slotIconType = 'cdda';				// CDAudioVolume
+				else if	( compareIconType == kPADTypeDataMovie ) slotIconType = 'dvd ';				// public.dvd-media
+				else											 slotIconType = kGenericCDROMIcon;  // public.cd-media
 				[[theSubtreeChild nodeData] setIconRep:DACALGetIconImageForType(slotIconType)];
 				
 				[theSubtreeNode insertChild:theSubtreeChild atIndex:[theSubtreeNode numberOfChildren]];
@@ -99,8 +127,9 @@
 		[theWorkNode insertChild:theChildNode atIndex:index];
 	}
 	
-	#warning Index 2 should not be hard coded!	
-	[[[theOutputTree childAtIndex:2] nodeData] setItemType: kPADTypeGroupFavorites];
+//	#warning Index 2 should not be hard coded!	
+//	[[[theOutputTree childAtIndex:2] nodeData] setItemType: kPADTypeGroupFavorites];
+	[[[theOutputTree childWithName:PADINDEX_GROUPTITLE_FAVORITES] nodeData] setItemType: kPADTypeGroupFavorites];
 
 /*
 	theErr = FSFindFolder( kUserDomain, kDACALCarouselsFolderType, TRUE, &userLibraryFolder );
@@ -183,14 +212,74 @@
 	return NO;
 }
 
+
+- (SimpleTreeNode*)findTreeNodeForDevice:(DACALDeviceRef)theBoxRef
+	{ return [[[[self treeControl] treeRoot] childWithItemType:kPADTypeGroupDevices] childWithDevice:theBoxRef]; }
+
+
+- (void)slotAddedToDevice:(DACALDeviceRef)theBoxRef forSlot:(DACALSlotNum)newSlot
+{
+	NSURL*				theSlotPath = (NSURL*)DACALSlotCopyPath( theBoxRef, newSlot, NULL );
+	NSString*			theSlotTitle = (NSString*)DACALSlotCopyTitle( theBoxRef, newSlot, NULL );
+	NSURL*				theSlotContentPath = (NSURL*)CFURLCreateCopyAppendingPathComponent( NULL, (CFURLRef)theSlotPath, (CFStringRef)theSlotTitle, TRUE );
+	SimpleTreeNode*		theSubtreeNode = nil;
+//	SimpleTreeNode*		theOthertTreeNode = [[secondaryController treeControl] treeRoot];
+	SimpleTreeNode*		theSubtreeChild = nil;
+	OSType				slotIconType = kGenericCDROMIcon;
+	OSType				compareIconType = 0;
+	
+	// Find box
+	
+	theSubtreeNode = [[[self findTreeNodeForDevice:theBoxRef] nodeData] subTree];
+	
+	if( theSlotContentPath != nil )
+	{
+		theSubtreeChild = [SimpleTreeNode treeOperationFromLocation:(NSURL*)theSlotContentPath];
+
+		[(SimpleNodeData*)[theSubtreeChild nodeData] setName: theSlotTitle];
+		//[[theSubtreeChild nodeData] setLocation:theSlotContentPath];
+
+		compareIconType = [[theSubtreeChild nodeData] itemType];
+		if		( compareIconType == kPADTypeDataMuisc ) slotIconType = 'cdda';				// CDAudioVolume
+		else if	( compareIconType == kPADTypeDataMovie ) slotIconType = 'dvd ';				// public.dvd-media
+		else											 slotIconType = kGenericCDROMIcon;  // public.cd-media
+		[[theSubtreeChild nodeData] setIconRep:DACALGetIconImageForType(slotIconType)];
+		
+		[theSubtreeNode insertChild:theSubtreeChild atIndex:[theSubtreeNode numberOfChildren]];
+		//[theOthertTreeNode insertChild:theSubtreeChild atIndex:[theOthertTreeNode numberOfChildren]];
+
+		//CFRelease( theSlotContentPath );
+		//CFRelease( theSlotTitle );
+		//CFRelease( theSlotPath );
+	}
+	
+	[self outlineViewAction:[[self treeControl] outlineView]];
+	[[secondaryController treeControl] reloadData];
+}
+
+
++ (id)shared;
+{
+    if (!DACALTreeDataSource_shared) {
+        [[DACALTreeDataSource alloc] init];
+    }
+    return DACALTreeDataSource_shared;
+}
+
+
 @end	// DACALTreeDataSource
 
 
 @implementation DACALViewDataSource
 
+- (void)awakeFromNib 
+{
+	[[AppController shared] setDataView: treeControl];
+}
+
 - (SimpleTreeNode*)createInitialTree:(id)tree
 {
-	SimpleTreeNode*		theOutputTree = nil;
+	SimpleTreeNode*		theOutputTree = nil;	
 	return theOutputTree;
 }
 

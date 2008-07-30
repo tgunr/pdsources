@@ -8,6 +8,8 @@
 
 #import <Cocoa/Cocoa.h>
 #import "SimpleTreeNode.h"
+#import "PADIndexProgressController.h"
+#import "DACALTreeDataSource.h"
 
 @interface PADAddVolumeController : NSObject {
 
@@ -21,6 +23,8 @@
 	IBOutlet	NSTextField		*slotNumber;
 	IBOutlet	NSSlider		*slotDial;
 	IBOutlet	NSSlider		*depthLevel;
+	
+	IBOutlet	NSWindow		*parentWindow;
 	
 	DACALDeviceRef				currentDevice;
 	NSMutableArray				*pendingVolumes;
@@ -50,5 +54,8 @@
 - (void)startSheet:(id)sender;
 - (void)windowWillBeginSheet:(NSNotification *)notification;
 - (void)detectedMounts:(NSArray *)newMounts;
+
+-(void) indexProgressComplete:(PADIndexProgressController*)progress;
+-(void) startIndexProgress:(NSTimer*)timer;
 
 @end

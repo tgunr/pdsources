@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 #  fixxattr
 #
 #  Created by Dave Carlton on 2008-07-09.
@@ -6,7 +6,7 @@
 #
 XATTRCMD="/usr/bin/xattr"
 
-cd "$HOME/Library/Carousels"
+cd "$HOME/Library/Carousels.1"
 for carousel in *.carousel ; do
 	echo "Fixing $carousel"
 	carouseluuid=${carousel%.carousel}
@@ -21,7 +21,7 @@ for carousel in *.carousel ; do
 		$XATTRCMD -w com.polymicrosystems.pickadisc.carousel.slot $slotnum "$slot"
 		$XATTRCMD -w com.polymicrosystems.pickadisc.kind folder "$slot"
 		pushd "$slot"
-		find . -exec $XATTRCMD -w com.polymicrosystems.pickadisc.carousel $carouseluuid {} \; \
+		find . -maxdepth 1 -exec $XATTRCMD -w com.polymicrosystems.pickadisc.carousel $carouseluuid {} \; \
 		-exec $XATTRCMD -w com.polymicrosystems.pickadisc.carousel.slot $slotnum {} \; \
 		-exec $XATTRCMD -w com.polymicrosystems.pickadisc.kind data {} \;
 		popd 

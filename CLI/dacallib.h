@@ -20,6 +20,7 @@
 #include <IOKit/usb/IOUSBLib.h>
 
 #include <CoreFoundation/CoreFoundation.h>
+#include "../PMS Source/utility/pmsCFUtility.h"
 
 extern const SInt32		kDACALVendorID;
 extern const SInt32		kDACALProductID;
@@ -37,6 +38,21 @@ extern CFStringRef		DACALDC300CFName;
 extern CFStringRef		DACALDC016RWCFName;
 
 extern Boolean			gDACALVerbose;
+
+extern CFStringRef		kDACALPreferencesID;
+extern CFStringRef		kDACALCarouselDocumentExtension;
+extern CFStringRef		kDACALCarouselDocumentDotExtension;
+extern CFStringRef		kDACALCarouselDocumentInfoFile;
+
+extern CFStringRef		kDACALCarouselDocumentDisplayNameFormat;
+extern CFStringRef		kDACALCarouselDocumentInfoKeyName;
+extern CFStringRef		kDACALCarouselDocumentInfoKeyUUID;
+
+extern CFStringRef		kDACALCarouselDocumentXAttrCarousel;
+extern CFStringRef		kDACALCarouselDocumentXAttrSlot;
+extern CFStringRef		kDACALCarouselDocumentXAttrSlotKind;
+
+
 
 extern const DACALDeviceRef	kDACALDefaultDevice;
 extern const DACALDeviceRef	kDACALIllegalDevice;
@@ -64,9 +80,9 @@ extern CFStringRef		DACALCommandCopyName( DACALDeviceRef deviceID, DACALResult* 
 extern DACALResult		DACALCommandSetName( DACALDeviceRef deviceID, CFStringRef deviceName );
 extern DACALDeviceNode	DACALCommandCopyNode( DACALDeviceRef deviceID, DACALResult* outError );
 //extern DACALResult		DACALCommandSetNode( DACALDeviceRef deviceID, DACALDeviceNode deviceNode );
-extern CFStringRef CAROUSELGetSlotPaths( DACALDeviceRef deviceID, DACALResult* outError ) ;
 extern DACALSlotNum		DACALCommandGetSlotCount( DACALDeviceRef deviceID );
 extern CFURLRef			DACALCommandCopyPath( DACALDeviceRef deviceID, DACALResult* outError );
+extern CFMutableArrayRef	DACALCommandCopyAllSlotPaths( DACALDeviceRef deviceID, DACALResult* outError );
 
 extern CFStringRef		DACALCommandCopyStatus( DACALDeviceRef deviceID, DACALResult* outError );
 extern CFUUIDRef		DACALCommandCopyUUID( DACALDeviceRef deviceID, DACALResult* outError );

@@ -89,7 +89,10 @@
 	[sheet orderOut:self];
 }
 
-- (IBAction)clickAssign:(id)sender { if( addVolumeController ) [addVolumeController startSheet:[assignButton window]]; }
+- (IBAction)clickAssign:(id)sender { 
+	if( addVolumeController ) 
+		[addVolumeController startSheet:[assignButton window]]; 
+}
 
 - (void)unassignAlertDidEnd:(NSAlert *)alert returnCode:(int)rc contextInfo:(void *)ci
 {
@@ -115,9 +118,12 @@
 
 		if( dataController ) [(TreeController*)dataController deleteSelections:self];
 		[self setSelectedSlots:nil];
+		
+		[AppController playUISound:kASSystemSoundShred];
     }
 	
-	if ( buttonPushed == kCancelButton) { }
+	if ( buttonPushed == kCancelButton)
+		[AppController playUISound:kASSystemSoundDoink];
 	
 }
 

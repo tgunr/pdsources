@@ -13,7 +13,6 @@
 		5C2EBE960E2979B3009BAF4C /* sidebarpref.icns in Resources */ = {isa = PBXBuildFile; fileRef = 5C2EBE950E2979B3009BAF4C /* sidebarpref.icns */; };
 		5C2EBE9C0E2991BF009BAF4C /* PADPrefsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C2EBE9A0E2991BF009BAF4C /* PADPrefsController.m */; };
 		5C4E17EC0E2167580091DD7D /* carousel.sh in Resources */ = {isa = PBXBuildFile; fileRef = 5C4E17EB0E2167580091DD7D /* carousel.sh */; };
-		5C4E17EF0E2167740091DD7D /* dacallib.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4E17ED0E2167740091DD7D /* dacallib.m */; };
 		5C4E17FD0E216A2D0091DD7D /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C4E17FC0E216A2D0091DD7D /* IOKit.framework */; };
 		5C62ACB90E20B00900A26788 /* CarouselIndex.nib in Resources */ = {isa = PBXBuildFile; fileRef = 5C62ACB80E20B00900A26788 /* CarouselIndex.nib */; };
 		5C6C12DD0E240AAC0097CC7A /* advancedpref.icns in Resources */ = {isa = PBXBuildFile; fileRef = 5C6C12D30E240AAC0097CC7A /* advancedpref.icns */; };
@@ -45,6 +44,14 @@
 		7543D62C0E3BDFF0009A8AF3 /* dacal in Resources */ = {isa = PBXBuildFile; fileRef = 7543D6210E3BDFE7009A8AF3 /* dacal */; };
 		7543D62D0E3BDFF5009A8AF3 /* xattr in Resources */ = {isa = PBXBuildFile; fileRef = 7543D6290E3BDFE7009A8AF3 /* xattr */; };
 		7543D6340E3BE028009A8AF3 /* DACALDriver.kext in Resources */ = {isa = PBXBuildFile; fileRef = 7543D6330E3BE022009A8AF3 /* DACALDriver.kext */; };
+		754A9EC20E4001880071FC95 /* PADIndexProgressController.h in Headers */ = {isa = PBXBuildFile; fileRef = 754A9EC00E4001880071FC95 /* PADIndexProgressController.h */; };
+		754A9EC30E4001880071FC95 /* PADIndexProgressController.m in Sources */ = {isa = PBXBuildFile; fileRef = 754A9EC10E4001880071FC95 /* PADIndexProgressController.m */; };
+		754A9EDC0E4003300071FC95 /* pmsCFUtility.c in Sources */ = {isa = PBXBuildFile; fileRef = 754A9ED70E4003300071FC95 /* pmsCFUtility.c */; };
+		754A9EDF0E4003300071FC95 /* pmsDACALUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 754A9EDA0E4003300071FC95 /* pmsDACALUtility.m */; };
+		754A9EE20E4003610071FC95 /* dacallib.m in Sources */ = {isa = PBXBuildFile; fileRef = 754A9EE00E4003610071FC95 /* dacallib.m */; };
+		754A9F030E40071E0071FC95 /* PADIndexOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 754A9F010E40071E0071FC95 /* PADIndexOperation.h */; };
+		754A9F040E40071E0071FC95 /* PADIndexOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 754A9F020E40071E0071FC95 /* PADIndexOperation.m */; };
+		754A9F0A0E4007A10071FC95 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 754A9F090E4007A10071FC95 /* Carbon.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -112,21 +119,21 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 7543D62E0E3BE022009A8AF3 /* DACALDriver.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = 32D94FC30562CBF700B6AF17 /* DACALDriver */;
+			remoteGlobalIDString = 32D94FC30562CBF700B6AF17;
 			remoteInfo = DACALDriver;
 		};
 		7543D68B0E3CECB0009A8AF3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7543D6160E3BDFE7009A8AF3 /* CLI.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = 751FB9FB0E39046200D64628 /* dacal */;
+			remoteGlobalIDString = 751FB9FB0E39046200D64628;
 			remoteInfo = dacal;
 		};
 		7543D68D0E3CECBB009A8AF3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7543D6160E3BDFE7009A8AF3 /* CLI.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = 751FBA420E39063900D64628 /* xattr */;
+			remoteGlobalIDString = 751FBA420E39063900D64628;
 			remoteInfo = xattr;
 		};
 /* End PBXContainerItemProxy section */
@@ -155,10 +162,7 @@
 		5C2EBE950E2979B3009BAF4C /* sidebarpref.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = sidebarpref.icns; sourceTree = "<group>"; };
 		5C2EBE990E2991BF009BAF4C /* PADPrefsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PADPrefsController.h; sourceTree = "<group>"; };
 		5C2EBE9A0E2991BF009BAF4C /* PADPrefsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PADPrefsController.m; sourceTree = "<group>"; };
-		5C4E17E10E2166FA0091DD7D /* pms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pms.h; path = "../PMS Source/utility/pms.h"; sourceTree = SOURCE_ROOT; };
 		5C4E17EB0E2167580091DD7D /* carousel.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = carousel.sh; path = ../CLI/carousel.sh; sourceTree = SOURCE_ROOT; };
-		5C4E17ED0E2167740091DD7D /* dacallib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = dacallib.m; path = ../CLI/dacallib.m; sourceTree = SOURCE_ROOT; };
-		5C4E17EE0E2167740091DD7D /* dacallib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dacallib.h; path = ../CLI/dacallib.h; sourceTree = SOURCE_ROOT; };
 		5C4E17FC0E216A2D0091DD7D /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = SDKs/MacOSX10.5.sdk/System/Library/Frameworks/IOKit.framework; sourceTree = SYSTEM_DEVELOPER_DIR; };
 		5C62ACB80E20B00900A26788 /* CarouselIndex.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; path = CarouselIndex.nib; sourceTree = "<group>"; };
 		5C6C12D30E240AAC0097CC7A /* advancedpref.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = advancedpref.icns; path = Resources/Icons/advancedpref.icns; sourceTree = SOURCE_ROOT; };
@@ -190,6 +194,18 @@
 		735CC2C1049A7E2A00C919A3 /* PickADisc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PickADisc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7543D6160E3BDFE7009A8AF3 /* CLI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CLI.xcodeproj; path = ../CLI/CLI.xcodeproj; sourceTree = SOURCE_ROOT; };
 		7543D62E0E3BE022009A8AF3 /* DACALDriver.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = DACALDriver.xcodeproj; path = ../DACALDriver/DACALDriver.xcodeproj; sourceTree = SOURCE_ROOT; };
+		754A9EC00E4001880071FC95 /* PADIndexProgressController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PADIndexProgressController.h; sourceTree = "<group>"; };
+		754A9EC10E4001880071FC95 /* PADIndexProgressController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PADIndexProgressController.m; sourceTree = "<group>"; };
+		754A9ED60E4003300071FC95 /* pms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pms.h; sourceTree = "<group>"; };
+		754A9ED70E4003300071FC95 /* pmsCFUtility.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pmsCFUtility.c; sourceTree = "<group>"; };
+		754A9ED80E4003300071FC95 /* pmsCFUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pmsCFUtility.h; path = "../PMS Source/utility/pmsCFUtility.h"; sourceTree = SOURCE_ROOT; };
+		754A9ED90E4003300071FC95 /* pmsDACALUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pmsDACALUtility.h; sourceTree = "<group>"; };
+		754A9EDA0E4003300071FC95 /* pmsDACALUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = pmsDACALUtility.m; sourceTree = "<group>"; };
+		754A9EE00E4003610071FC95 /* dacallib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = dacallib.m; path = ../CLI/dacallib.m; sourceTree = SOURCE_ROOT; };
+		754A9EE10E4003610071FC95 /* dacallib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dacallib.h; path = ../CLI/dacallib.h; sourceTree = SOURCE_ROOT; };
+		754A9F010E40071E0071FC95 /* PADIndexOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PADIndexOperation.h; sourceTree = "<group>"; };
+		754A9F020E40071E0071FC95 /* PADIndexOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PADIndexOperation.m; sourceTree = "<group>"; };
+		754A9F090E4007A10071FC95 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,6 +217,7 @@
 				5C4E17FD0E216A2D0091DD7D /* IOKit.framework in Frameworks */,
 				5C0884420E26CFCA0052D931 /* AudioToolbox.framework in Frameworks */,
 				5C2741770E27686A00A32C40 /* DiscRecording.framework in Frameworks */,
+				754A9F0A0E4007A10071FC95 /* Carbon.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,6 +267,7 @@
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				754A9F090E4007A10071FC95 /* Carbon.framework */,
 				011669A0FFC1E3D311CA0E35 /* Cocoa.framework */,
 				5C4E17FC0E216A2D0091DD7D /* IOKit.framework */,
 				5C0884410E26CFCA0052D931 /* AudioToolbox.framework */,
@@ -290,9 +308,9 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
-				5C4E17EE0E2167740091DD7D /* dacallib.h */,
-				5C4E17ED0E2167740091DD7D /* dacallib.m */,
-				5C4E17E10E2166FA0091DD7D /* pms.h */,
+				754A9EE00E4003610071FC95 /* dacallib.m */,
+				754A9EE10E4003610071FC95 /* dacallib.h */,
+				754A9ED50E4003300071FC95 /* utility */,
 				735CC297049A7E1F00C919A3 /* Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
 			);
@@ -347,6 +365,8 @@
 		5C6C12E70E240BEA0097CC7A /* PAD Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				754A9F010E40071E0071FC95 /* PADIndexOperation.h */,
+				754A9F020E40071E0071FC95 /* PADIndexOperation.m */,
 				5C6C12E80E240BEA0097CC7A /* AppController.h */,
 				5C6C12E90E240BEA0097CC7A /* AppController.m */,
 				5C6C12EA0E240BEA0097CC7A /* DACALTreeDataSource.h */,
@@ -357,6 +377,8 @@
 				5C6C12EF0E240BEA0097CC7A /* PADIndexToolbarController.m */,
 				5C2EBE990E2991BF009BAF4C /* PADPrefsController.h */,
 				5C2EBE9A0E2991BF009BAF4C /* PADPrefsController.m */,
+				754A9EC00E4001880071FC95 /* PADIndexProgressController.h */,
+				754A9EC10E4001880071FC95 /* PADIndexProgressController.m */,
 				5C6C12F00E240BEA0097CC7A /* TreeController.h */,
 				5C6C12F10E240BEA0097CC7A /* TreeController.m */,
 			);
@@ -385,6 +407,19 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		754A9ED50E4003300071FC95 /* utility */ = {
+			isa = PBXGroup;
+			children = (
+				754A9ED60E4003300071FC95 /* pms.h */,
+				754A9ED70E4003300071FC95 /* pmsCFUtility.c */,
+				754A9ED80E4003300071FC95 /* pmsCFUtility.h */,
+				754A9ED90E4003300071FC95 /* pmsDACALUtility.h */,
+				754A9EDA0E4003300071FC95 /* pmsDACALUtility.m */,
+			);
+			name = utility;
+			path = "../PMS Source/utility";
+			sourceTree = SOURCE_ROOT;
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -392,6 +427,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				754A9EC20E4001880071FC95 /* PADIndexProgressController.h in Headers */,
+				754A9F030E40071E0071FC95 /* PADIndexOperation.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -552,7 +589,6 @@
 				735CC2B8049A7E2A00C919A3 /* NSArray_Extensions.m in Sources */,
 				735CC2B9049A7E2A00C919A3 /* TreeNode.m in Sources */,
 				735CC2BA049A7E2A00C919A3 /* ImageAndTextCell.m in Sources */,
-				5C4E17EF0E2167740091DD7D /* dacallib.m in Sources */,
 				5C6C12F30E240BEA0097CC7A /* AppController.m in Sources */,
 				5C6C12F50E240BEA0097CC7A /* DACALTreeDataSource.m in Sources */,
 				5C6C12F70E240BEA0097CC7A /* PADAddVolumeController.m in Sources */,
@@ -560,6 +596,11 @@
 				5C6C12FB0E240BEA0097CC7A /* TreeController.m in Sources */,
 				5C2EBE9C0E2991BF009BAF4C /* PADPrefsController.m in Sources */,
 				5C6C14DF0E2B9FE60081A7B1 /* NSApplication_Extensions.m in Sources */,
+				754A9F040E40071E0071FC95 /* PADIndexOperation.m in Sources */,
+				754A9EE20E4003610071FC95 /* dacallib.m in Sources */,
+				754A9EDC0E4003300071FC95 /* pmsCFUtility.c in Sources */,
+				754A9EDF0E4003300071FC95 /* pmsDACALUtility.m in Sources */,
+				754A9EC30E4001880071FC95 /* PADIndexProgressController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

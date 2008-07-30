@@ -29,91 +29,91 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 7543D4E60E3BBBFC009A8AF3 /* CLI.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 751FB9FC0E39046200D64628 /* dacal */;
+			remoteGlobalIDString = 751FB9FC0E39046200D64628;
 			remoteInfo = dacal;
 		};
 		7543D4F20E3BBBFC009A8AF3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7543D4E60E3BBBFC009A8AF3 /* CLI.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 751FBA060E3904AB00D64628 /* dacallib.dylib */;
+			remoteGlobalIDString = 751FBA060E3904AB00D64628;
 			remoteInfo = dacallib;
 		};
 		7543D4F40E3BBBFC009A8AF3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7543D4E60E3BBBFC009A8AF3 /* CLI.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 751FBA0E0E39054600D64628 /* fabricate */;
+			remoteGlobalIDString = 751FBA0E0E39054600D64628;
 			remoteInfo = fabricate;
 		};
 		7543D4F60E3BBBFC009A8AF3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7543D4E60E3BBBFC009A8AF3 /* CLI.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 751FBA170E39057100D64628 /* find */;
+			remoteGlobalIDString = 751FBA170E39057100D64628;
 			remoteInfo = find;
 		};
 		7543D4F80E3BBBFC009A8AF3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7543D4E60E3BBBFC009A8AF3 /* CLI.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 751FBA430E39063900D64628 /* xattr */;
+			remoteGlobalIDString = 751FBA430E39063900D64628;
 			remoteInfo = xattr;
 		};
 		7543D4FA0E3BBBFC009A8AF3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7543D4E60E3BBBFC009A8AF3 /* CLI.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 751FBC9E0E393EDE00D64628 /* xargs */;
+			remoteGlobalIDString = 751FBC9E0E393EDE00D64628;
 			remoteInfo = xargs;
 		};
 		7543D58B0E3BD53C009A8AF3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7543D5870E3BD53C009A8AF3 /* DACALDriver.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 32D94FD00562CBF700B6AF17 /* DACALDriver.kext */;
+			remoteGlobalIDString = 32D94FD00562CBF700B6AF17;
 			remoteInfo = DACALDriver;
 		};
 		7543D5C90E3BDB17009A8AF3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7543D5C10E3BDB17009A8AF3 /* PickADisc.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 735CC2C1049A7E2A00C919A3 /* PickADisc.app */;
+			remoteGlobalIDString = 735CC2C1049A7E2A00C919A3;
 			remoteInfo = PickADisc;
 		};
 		7543D5CB0E3BDB40009A8AF3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7543D5870E3BD53C009A8AF3 /* DACALDriver.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = 32D94FC30562CBF700B6AF17 /* DACALDriver */;
+			remoteGlobalIDString = 32D94FC30562CBF700B6AF17;
 			remoteInfo = DACALDriver;
 		};
 		7543D5CD0E3BDB4D009A8AF3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7543D4E60E3BBBFC009A8AF3 /* CLI.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = 751FBA050E3904AB00D64628 /* dacallib */;
+			remoteGlobalIDString = 751FBA050E3904AB00D64628;
 			remoteInfo = dacallib;
 		};
 		7543D5CF0E3BDB56009A8AF3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7543D4E60E3BBBFC009A8AF3 /* CLI.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = 751FB9FB0E39046200D64628 /* dacal */;
+			remoteGlobalIDString = 751FB9FB0E39046200D64628;
 			remoteInfo = dacal;
 		};
 		7543D5D10E3BDB5E009A8AF3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7543D4E60E3BBBFC009A8AF3 /* CLI.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = 751FBA420E39063900D64628 /* xattr */;
+			remoteGlobalIDString = 751FBA420E39063900D64628;
 			remoteInfo = xattr;
 		};
 		7543D5D30E3BDB81009A8AF3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7543D5C10E3BDB17009A8AF3 /* PickADisc.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = 735CC299049A7E2A00C919A3 /* PickADisc */;
+			remoteGlobalIDString = 735CC299049A7E2A00C919A3;
 			remoteInfo = PickADisc;
 		};
 /* End PBXContainerItemProxy section */

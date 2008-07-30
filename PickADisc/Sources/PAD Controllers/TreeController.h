@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-#import "AppController.h"
+//#import "AppController.h"
 #import "SimpleTreeNode.h"
 
 #import "ImageAndTextCell.h"

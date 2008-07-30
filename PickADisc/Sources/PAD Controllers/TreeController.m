@@ -202,9 +202,10 @@
     
     // The return value from this method is used to configure the state of the items cell via setObjectValue:
     if ((tableColumn == nil) || [[tableColumn identifier] isEqualToString:COLUMNID_NAME]) {
-	objectValue = [data name];
+		objectValue = [data name];
+		[item setBusy: [data busy]];
     } else if ([[tableColumn identifier] isEqualToString:COLUMNID_SLOT]) {
-	objectValue = [NSString stringWithFormat:@"%i", [data itemSlot]];
+		objectValue = [NSString stringWithFormat:@"%i", [data itemSlot]];
 	}
 /*  
  *	These are additional column data suppliers from the original example:
@@ -253,14 +254,20 @@
 
 // We can return a different cell for each row, if we want
 - (NSCell *)outlineView:(NSOutlineView *)ov dataCellForTableColumn:(NSTableColumn *)tableColumn item:(id)item {
-    // If we return a cell for the 'nil' tableColumn, it will be used as a "full width" cell and span all the columns
+    ImageAndTextCell* outCell = [tableColumn dataCell];
+	// If we return a cell for the 'nil' tableColumn, it will be used as a "full width" cell and span all the columns
     if ([self allowGroupRowLook] && (tableColumn == nil)) {
         if ([[item nodeData] isGroup]) {
             // We want to use the cell for the name column, but we could construct a new cell if we wanted to, or return a different cell for each row.
             return [[outlineView tableColumnWithIdentifier:COLUMNID_NAME] dataCell];
         }
     }
-    return [tableColumn dataCell];
+	
+	// If the item is a new cell, startup busy if necessary
+	if ((tableColumn == nil) || [[tableColumn identifier] isEqualToString:COLUMNID_NAME])
+		[outCell setBusy: [item busy]];
+	
+    return outCell;
 }
 
 // To get the "group row" look, we implement this method.

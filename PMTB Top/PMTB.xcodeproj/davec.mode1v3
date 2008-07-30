@@ -280,13 +280,13 @@
 								<string>7543D4E60E3BBBFC009A8AF3</string>
 								<string>7543D5C10E3BDB17009A8AF3</string>
 								<string>1C37FBAC04509CD000000102</string>
-								<string>7543D63D0E3BE09B009A8AF3</string>
+								<string>754003000E3E3C5D0043D098</string>
 								<string>1C37FABC05509CD000000102</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>10</integer>
+									<integer>3</integer>
 									<integer>0</integer>
 								</array>
 							</array>
@@ -312,7 +312,7 @@
 							<real>237</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>1222 414 1014 1164 0 0 2560 1578 </string>
+						<string>977 394 1014 1164 0 0 2560 1578 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -351,7 +351,6 @@
 										<key>prevStack</key>
 										<array>
 											<string>759BCBDC0DB5408B0039608A</string>
-											<string>7550D76F0DC398A9008515EC</string>
 											<string>7521EDE00DD5303700C1C0C8</string>
 											<string>75AEC5280DDCC3BA0090DE55</string>
 											<string>75AEC65B0DDE0E040090DE55</string>
@@ -370,7 +369,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {733, 0}}</string>
 								<key>RubberWindowFrame</key>
-								<string>1222 414 1014 1164 0 0 2560 1578 </string>
+								<string>977 394 1014 1164 0 0 2560 1578 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -406,7 +405,6 @@
 										<key>prevStack</key>
 										<array>
 											<string>759BCBDC0DB5408B0039608A</string>
-											<string>7550D76F0DC398A9008515EC</string>
 											<string>7521EDE00DD5303700C1C0C8</string>
 											<string>75AEC5280DDCC3BA0090DE55</string>
 											<string>75AEC65B0DDE0E040090DE55</string>
@@ -424,7 +422,7 @@
 								<key>Frame</key>
 								<string>{{0, 5}, {733, 885}}</string>
 								<key>RubberWindowFrame</key>
-								<string>1222 414 1014 1164 0 0 2560 1578 </string>
+								<string>977 394 1014 1164 0 0 2560 1578 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -444,7 +442,7 @@
 								<key>Frame</key>
 								<string>{{0, 895}, {733, 207}}</string>
 								<key>RubberWindowFrame</key>
-								<string>1222 414 1014 1164 0 0 2560 1578 </string>
+								<string>977 394 1014 1164 0 0 2560 1578 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
@@ -469,9 +467,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>7543D5660E3BD0F4009A8AF3</string>
+				<string>754003150E3E5D020043D098</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>7543D5670E3BD0F4009A8AF3</string>
+				<string>754003160E3E5D020043D098</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
@@ -635,7 +633,7 @@
 		<string>/Users/davec/Desktop/PMTB/trunk/PMTB Top/PMTB.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>1222 414 1014 1164 0 0 2560 1578 </string>
+	<string>977 394 1014 1164 0 0 2560 1578 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
@@ -678,7 +676,7 @@
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXBuildLogShowsTranscriptDefaultKey</key>
-								<string>{{0, 288}, {851, 879}}</string>
+								<string>{{0, 212}, {851, 955}}</string>
 								<key>PBXProjectModuleGUID</key>
 								<string>XCMainBuildResultsModuleGUID</string>
 								<key>PBXProjectModuleLabel</key>
@@ -716,7 +714,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>759BCA000DB4A8AC0039608A</string>
-				<string>7543D5680E3BD0F4009A8AF3</string>
+				<string>754003170E3E5D020043D098</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
