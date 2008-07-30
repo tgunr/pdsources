@@ -62,10 +62,11 @@ echo "carousel usage
     -X Turn on bash debug flag
     -K Specify kind of slot folder data (default = data)
 	-L List all slots paths for -c"
+	-f Find all slots containing the given wildcard string
    exit 1
 }
 
-while getopts "hc:m:s:g:l:d:vt:nxD:ewkpNXK:L" Option
+while getopts "hc:m:s:g:l:d:vt:nxD:ewkpNXK:Lf:" Option
 do 
     case "$Option" in 
 	h ) usage ;;
@@ -89,6 +90,7 @@ do
 	X ) set -x;;
 	K ) kind="$OPTARG";;
 	L ) listslots=1;;
+	f ) findslot="$OPTARG";;
 	* ) echo "Unimplemented option chosen." 
 	    exit 1 ;;   # DEFAULT
     esac
@@ -116,6 +118,11 @@ if [[ $whichtitle == 1 ]] ; then
 		exit 1
     fi
     exit 0
+fi
+
+if [[ "$findslot" != "" ]] ; then
+	find "$CAROUSELPATH" -iname "$findslot" -type d
+	exit 0
 fi
 
 if [[ $pathtoslot == 1 ]] ; then
