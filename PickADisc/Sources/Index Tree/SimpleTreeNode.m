@@ -43,156 +43,9 @@
 */
 
 #import "SimpleTreeNode.h"
-
-Boolean	CFURLIsCarousel( CFURLRef url );
-Boolean	CFURLIsCarousel( CFURLRef url )
-{
-	CFStringRef		itemName = CFURLCopyLastPathComponent( url );
-	CFRange			foundRange = CFStringFind( itemName, CFSTR("Carousel "), 0 );
-	
-	CFRelease( itemName );
-	return( foundRange.length != 0 );
-}
-
-Boolean	CFURLIsSlot( CFURLRef url );
-Boolean	CFURLIsSlot( CFURLRef url )
-{
-	CFStringRef		itemName = CFURLCopyLastPathComponent( url );
-	CFRange			foundRange = CFStringFind( itemName, CFSTR("Slot "), 0 );
-	
-	CFRelease( itemName );
-	return( foundRange.length != 0 );
-}
-
-
-
-IconRef	CFURLGetIcon( CFAllocatorRef allocator, CFURLRef url, OSStatus* outError );
-IconRef	CFURLGetIcon( CFAllocatorRef allocator, CFURLRef url, OSStatus* outError )
-{
-	FSRef			theFileRef;
-	Boolean			isGoodFile = FALSE;
-	OSStatus		outResult = paramErr;
-	FSCatalogInfo	theCatInfo;
-	HFSUniStr255	theFileName;
-	SInt16			theFileLabel;
-	
-	IconRef			theOutputIcon = NULL;
-	
-	if( CFURLIsCarousel(url) ) {
-		outResult = GetIconRef( kOnSystemDisk, 'DACi', 'Crsl', &theOutputIcon );
-		if( outResult != 0 ) printf( "GetIconRef: %d\n", (int)outResult );
-		AcquireIconRef(theOutputIcon);
-		goto BAIL;
-	}
-	
-	isGoodFile = CFURLGetFSRef( url, &theFileRef );
-	if( !isGoodFile ) goto BAIL;	
-	outResult = FSGetCatalogInfo(&theFileRef, kIconServicesCatalogInfoMask, &theCatInfo, &theFileName, NULL, NULL);
-	if( outResult != 0 ) goto BAIL;
-	outResult = GetIconRefFromFileInfo(&theFileRef, theFileName.length, (const UniChar*)&theFileName.unicode,
-										kIconServicesCatalogInfoMask, &theCatInfo, kIconServicesNormalUsageFlag, 
-										&theOutputIcon, &theFileLabel);
-	
-BAIL:
-	if( outError != NULL ) *outError = outResult;
-	return( theOutputIcon );
-}
-
-NSImage*	CFURLGetIconAsNSImage( CFAllocatorRef allocator, CFURLRef url, OSStatus* outError );
-NSImage*	CFURLGetIconAsNSImage( CFAllocatorRef allocator, CFURLRef url, OSStatus* outError )
-{
-	IconRef	theItemIcon = CFURLGetIcon(allocator, url, outError);
-	NSImage*	theItemImage = NULL;
-	
-	if( theItemIcon != NULL ) theItemImage = [[NSImage alloc]initWithIconRef:theItemIcon];
-	if( theItemImage != NULL ) {
-		[theItemImage setScalesWhenResized:YES];
-		[theItemImage setSize:NSMakeSize( 16.0, 16.0 )];
-		}
-	
-	return( theItemImage );
-}
-
-CFStringRef	CFURLCopyDisplayName( CFAllocatorRef allocator, CFURLRef url, OSStatus* outError )
-{
-	CFStringRef		theOutputName = NULL;
-	OSStatus		theOutResult;
-	
-	theOutResult = 	LSCopyDisplayNameForURL(url, &theOutputName);
-
-	if( outError != NULL ) *outError = theOutResult;
-	return( theOutputName );
-}	
-
-/*	
-{
-	FSRef			theFileRef;
-	Boolean			isGoodFile = FALSE;
-	OSStatus		outResult = paramErr;
-	FSCatalogInfo	theCatInfo;
-	HFSUniStr255	theFileName;
-	
-	CFStringRef		theOutputName = NULL;
-	
-	isGoodFile = CFURLGetFSRef( url, &theFileRef );
-	if( !isGoodFile ) goto BAIL;	
-	outResult = FSGetCatalogInfo(&theFileRef, kFSCatInfoNone, &theCatInfo, &theFileName, NULL, NULL);
-	if( outResult != 0 ) goto BAIL;
-
-	theOutputName = CFStringCreateWithCharacters(allocator, (const UniChar*)&theFileName.unicode, theFileName.length);
-		
-BAIL:
-	if( outError != NULL ) *outError = outResult;
-	return( theOutputName );
-}
-*/
-
-
-Boolean	CFURLIsVisible( CFURLRef url );
-Boolean	CFURLIsVisible( CFURLRef url )
-{
-	Boolean				isURLVisible = FALSE;
-	FSRef				theFileRef;
-	Boolean				isGoodFile = FALSE;
-	OSStatus			outResult;
-	LSItemInfoRecord	theFileInfo;
-		
-	isGoodFile = CFURLGetFSRef( url, &theFileRef );
-	if( !isGoodFile ) goto BAIL;	
-	
-	outResult = LSCopyItemInfoForRef( &theFileRef, kLSRequestBasicFlagsOnly, &theFileInfo );
-	if( outResult == noErr ) isURLVisible = ((theFileInfo.flags & kLSItemInfoIsInvisible) == 0);
-			
-BAIL:
-	return( isURLVisible );
-}
-
-
-NSImage*	DACALGetIconImageForType( int	theType )
-{
-	OSStatus		outResult = paramErr;
-	IconRef			theOutputIcon = NULL;
-	NSImage*		theOutputImage = NULL;
-	
-//	OSType			theIconCreator = 'DACi';
-//	OSType			theIconType = 'Crsl';
-	
-	if( theType == 0 ) goto BAIL;
-	
-	outResult = GetIconRef( kOnSystemDisk, kDACALCreatorType, theType, &theOutputIcon );
-	if( outResult != 0 ) outResult = GetIconRef( kOnSystemDisk, kSystemIconsCreator, theType, &theOutputIcon );
-
-	if( theOutputIcon != NULL ) theOutputImage = [[NSImage alloc]initWithIconRef:theOutputIcon];
-	if( theOutputImage != NULL ) {
-		[theOutputImage setScalesWhenResized:YES];
-		[theOutputImage setSize:NSMakeSize( 16.0, 16.0 )];
-	}
-
-BAIL:
-	return( theOutputImage );
-}
-
-
+#import "PADIndexOperation.h"
+#import "DACALTreeDataSource.h"
+#import "pmsDACALUtility.h"
 
 #define KEY_GROUPNAME	@"Group"
 #define KEY_ENTRIES	@"Entries"
@@ -226,8 +79,8 @@ BAIL:
         isExpandable = isAFolder;
         isSelectable = YES;    
 		itemType = 0;
-		itemDevice = (DACALDeviceRef)NULL;
-		itemSlot = 0;
+		itemDevice = CFURLCopyCarouselUUID( (CFURLRef)loc );
+		itemSlot = CFURLGetSlotNumber( (CFURLRef)loc, FALSE );
     }
     return self;
 }
@@ -242,8 +95,8 @@ BAIL:
         isExpandable = !leaf;
         isSelectable = YES;    
  		itemType = 0;
-		itemDevice = (DACALDeviceRef)NULL;
-		itemSlot = 0;
+		itemDevice = CFURLCopyCarouselUUID( (CFURLRef)loc );
+		itemSlot = CFURLGetSlotNumber( (CFURLRef)loc, FALSE );
    }
     return self;
 }
@@ -383,9 +236,19 @@ BAIL:
 
 - (SimpleTreeNode*)subTree { return subTree; }
 
+- (BOOL)busy { return isBusy; }
+- (void)setBusy:(BOOL)value { isBusy = value; }
+
 @end
 
 @implementation SimpleTreeNode
+
+- (id)init
+{
+	if (![super init]) return nil;
+
+	return self;
+}
 
 - (id)initFromDictionary:(NSDictionary*)dict {
     // This is a convenience init method to return a tree root of a tree derived from an input dictionary.
@@ -417,9 +280,61 @@ BAIL:
     return self;
 }
 
-- (id)initFromLocation:(NSURL*)loc {
-    // This is a convenience init method to return a tree root of a tree derived from an input dictionary.
-    // The input dictionary for this example app is InitInfo.dict.  Look at that file to understand the format.
+- (id)initFromLocation:(NSURL*)loc
+{
+    // This is a convenience init method to return a tree root of a tree derived from a filesystem URL.
+    // This version uses treeFromLocation and is called from the Indexing NSOperation for speedy collections in most cases. 
+    SimpleNodeData *data = [SimpleNodeData nodeDataWithURL:loc];
+	
+	CFDictionaryRef		dataDict = NULL;
+	CFArrayRef			dataProps = CFArrayCreate(NULL, (const void**)&kCFURLFileDirectoryContents, 1, &kCFTypeArrayCallBacks);
+	CFArrayRef			folderList = NULL;
+	Boolean				wasFound = FALSE;
+	Boolean				isSlot = CFURLIsSlot( (CFURLRef)loc );
+	
+	wasFound = CFURLCreateDataAndPropertiesFromResource(NULL, (CFURLRef)loc, NULL, &dataDict, dataProps, NULL);
+	if( wasFound ) {
+		folderList = (CFArrayRef)CFDictionaryGetValue( dataDict, kCFURLFileDirectoryContents );
+		if( folderList == NULL ) 
+			  CFShow(CFSTR("No Folder List!"));
+		else {
+			// CFShow( folderList );
+			CFRetain( folderList );
+			if( isSlot ) {
+				if( CFArrayGetCount(folderList) > 0 ) {
+					NSEnumerator *entryEnum = [(NSArray*)folderList objectEnumerator];
+					CFRelease( folderList );
+
+					id entry;
+					SimpleTreeNode *child = nil;
+					data = [self nodeData];
+
+					if( [self nodeData] == nil ) 
+						self = [super initWithData:data parent:nil children:[NSArray array]];
+					if (self != nil) {
+						while ((entry = [entryEnum nextObject])) {
+							if( CFURLIsVisible((CFURLRef)entry) ) {
+								if (CFURLHasDirectoryPath((CFURLRef)entry))
+									child = [SimpleTreeNode treeFromLocation:entry];
+								else 
+									child = [[[SimpleTreeNode alloc] initWithData:[SimpleNodeData nodeDataWithURL:entry] parent:nil children:[NSArray array]] autorelease];
+								[self insertChild: child atIndex: [self numberOfChildren]];
+							}
+						}
+					}
+				}
+			}
+			
+		}
+		CFRelease( dataDict );
+	}
+    return self;
+}
+
+- (id)initOperationFromLocation:(NSURL*)loc
+{
+    // This is a convenience init method to return a tree root of a tree derived from a filesystem URL.
+    // This version uses treeOperationFromLocation and is therefore very unsuitable for recursive filesets
     SimpleNodeData *data = [SimpleNodeData nodeDataWithURL:loc];
 	
 	CFDictionaryRef		dataDict = NULL;
@@ -441,7 +356,7 @@ BAIL:
 
 	if( isSlot ) {
 		if( CFArrayGetCount(folderList) > 0 ) {
-			data = [SimpleNodeData nodeDataWithURL:(NSURL*)CFArrayGetValueAtIndex(folderList, (CFArrayGetCount(folderList)-1))];
+			data = [self nodeData];
 			CFRelease( folderList );
 			wasFound = CFURLCreateDataAndPropertiesFromResource(NULL, (CFURLRef)loc, NULL, &dataDict, dataProps, NULL);
 			if( wasFound ) {
@@ -460,12 +375,12 @@ BAIL:
     id entry;
     SimpleTreeNode *child = nil;
     
-    self = [super initWithData:data parent:nil children:[NSArray array]];
+    if( [self nodeData] == nil ) self = [super initWithData:data parent:nil children:[NSArray array]];
     if (self != nil) {
         while ((entry = [entryEnum nextObject])) {
 			if( CFURLIsVisible((CFURLRef)entry) ) {
 				if (CFURLHasDirectoryPath((CFURLRef)entry))
-					child = [SimpleTreeNode treeFromLocation:entry];
+					child = [SimpleTreeNode treeOperationFromLocation:entry];
 				else 
 					child = [[[SimpleTreeNode alloc] initWithData:[SimpleNodeData nodeDataWithURL:entry] parent:nil children:[NSArray array]] autorelease];
 				[self insertChild: child atIndex: [self numberOfChildren]];
@@ -476,6 +391,10 @@ BAIL:
     return self;
 }
 
++ (id)nodeDataWithURL:(NSURL*)loc {
+    // Convenience method to return a leaf node with its location set.
+	return [[[SimpleTreeNode alloc] initWithData:[SimpleNodeData nodeDataWithURL:loc] parent:nil children:[NSArray array]] autorelease];
+}
 
 
 + (id)treeFromDictionary:(NSDictionary *)dict {
@@ -485,6 +404,20 @@ BAIL:
 + (id)treeFromLocation:(NSURL *)loc {
     return [[[SimpleTreeNode alloc] initFromLocation:loc] autorelease];
 }
+
++ (id)treeOperationFromLocation:(NSURL *)loc
+{
+	SimpleTreeNode*		ourNode = [SimpleTreeNode nodeDataWithURL:loc];
+
+	self = ourNode;	
+
+	PADIndexOperation *indexOp = [[PADIndexOperation alloc] initWithLocation:loc forChild:ourNode];
+	[[AppController shared] queueOperation:indexOp];
+	[indexOp release];
+	
+    return self;
+}
+
 
 - (void)setDataDeviceAndSlotFromData:(id)data
 {
@@ -502,6 +435,116 @@ BAIL:
 	[[self nodeData] setItemSlot:inSlot];
 	
 	[[self children] makeObjectsPerformSelector:@selector(setDataDeviceAndSlotFromData:) withObject:[self nodeData]];
+}
+
+- (BOOL)busy 
+{
+	return [[self nodeData] busy]; 
+}
+
+- (void)setBusy:(BOOL)value 
+{ 
+	BOOL	isBusy = [[self nodeData] busy];
+	if( isBusy == value ) return;
+	
+	[[self nodeData] setBusy:value];
+	isBusy = value;
+	
+	if( isBusy == YES )
+	{	//NSLog(@"%@:Got Busy",self);
+		[[AppController shared]	performSelectorOnMainThread:@selector(scheduleAddBusyBody:)
+												 withObject:self
+											  waitUntilDone:NO];
+	} else {
+		//NSLog(@"%@:Not Busy",self);
+		[[AppController shared]	performSelectorOnMainThread:@selector(scheduleRemoveBusyBody:)
+												 withObject:self
+											  waitUntilDone:NO];		
+	}
+}
+
+- (SimpleTreeNode*)childWithName:(NSString*)theName
+{
+	SimpleTreeNode*		outFoundNode = nil;
+	SimpleTreeNode*		testChildNode = nil;
+	UInt32	headCount = [self numberOfChildren];
+	UInt32	childIndex = 0;
+	
+	for( childIndex=0; childIndex < headCount; childIndex++ )
+	{
+		testChildNode = (SimpleTreeNode*)[self childAtIndex:childIndex];
+		if( CFEqual((CFStringRef)[[testChildNode nodeData] name], (CFStringRef)theName) )
+		{
+			outFoundNode = testChildNode;
+			goto FOUND;
+		}
+	}
+	
+FOUND:
+	return( outFoundNode );
+}
+
+- (SimpleTreeNode*)childWithDevice:(DACALDeviceRef)theBoxRef
+{
+	SimpleTreeNode*		outFoundNode = nil;
+	SimpleTreeNode*		testChildNode = nil;
+	UInt32	headCount = [self numberOfChildren];
+	UInt32	childIndex = 0;
+	
+	for( childIndex=0; childIndex < headCount; childIndex++ )
+	{
+		testChildNode = (SimpleTreeNode*)[self childAtIndex:childIndex];
+		if( CFEqual((CFUUIDRef)[[testChildNode nodeData] itemDevice], (CFUUIDRef)theBoxRef) )
+		{
+			outFoundNode = testChildNode;
+			goto FOUND;
+		}
+	}
+	
+FOUND:
+	return( outFoundNode );
+}
+
+- (SimpleTreeNode*)childWithSlotNum:(DACALSlotNum)theSlotNum
+{
+	SimpleTreeNode*		outFoundNode = nil;
+	SimpleTreeNode*		testChildNode = nil;
+	UInt32	headCount = [self numberOfChildren];
+	UInt32	childIndex = 0;
+	
+	for( childIndex=0; childIndex < headCount; childIndex++ )
+	{
+		testChildNode = (SimpleTreeNode*)[self childAtIndex:childIndex];
+		if( [[testChildNode nodeData] itemSlot] == theSlotNum ) 
+		{
+			outFoundNode = testChildNode;
+			goto FOUND;
+		}
+	}
+	
+FOUND:
+	return( outFoundNode );
+}
+
+- (SimpleTreeNode*)childWithItemType:(NSInteger)theItemType
+{
+	SimpleTreeNode*		outFoundNode = nil;
+	SimpleTreeNode*		testChildNode = nil;
+	UInt32	headCount = [self numberOfChildren];
+	UInt32	childIndex = 0;
+	
+	for( childIndex=0; childIndex < headCount; childIndex++ )
+	{
+		testChildNode = (SimpleTreeNode*)[self childAtIndex:childIndex];
+		if( [[testChildNode nodeData] itemType] == theItemType ) 
+		{
+			outFoundNode = testChildNode;
+			goto FOUND;
+		}
+	}
+	
+FOUND:
+	return( outFoundNode );
 }
 
 @end
