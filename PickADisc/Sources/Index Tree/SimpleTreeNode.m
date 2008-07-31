@@ -295,41 +295,88 @@
 	wasFound = CFURLCreateDataAndPropertiesFromResource(NULL, (CFURLRef)loc, NULL, &dataDict, dataProps, NULL);
 	if( wasFound ) {
 		folderList = (CFArrayRef)CFDictionaryGetValue( dataDict, kCFURLFileDirectoryContents );
-		if( folderList == NULL ) 
-			  CFShow(CFSTR("No Folder List!"));
+		if( folderList == NULL ) CFShow(CFSTR("No Folder List!"));
 		else {
 			// CFShow( folderList );
 			CFRetain( folderList );
-			if( isSlot ) {
-				if( CFArrayGetCount(folderList) > 0 ) {
-					NSEnumerator *entryEnum = [(NSArray*)folderList objectEnumerator];
-					CFRelease( folderList );
-
-					id entry;
-					SimpleTreeNode *child = nil;
-					data = [self nodeData];
-
-					if( [self nodeData] == nil ) 
-						self = [super initWithData:data parent:nil children:[NSArray array]];
-					if (self != nil) {
-						while ((entry = [entryEnum nextObject])) {
-							if( CFURLIsVisible((CFURLRef)entry) ) {
-								if (CFURLHasDirectoryPath((CFURLRef)entry))
-									child = [SimpleTreeNode treeFromLocation:entry];
-								else 
-									child = [[[SimpleTreeNode alloc] initWithData:[SimpleNodeData nodeDataWithURL:entry] parent:nil children:[NSArray array]] autorelease];
-								[self insertChild: child atIndex: [self numberOfChildren]];
-							}
-						}
-					}
-				}
-			}
-			
 		}
 		CFRelease( dataDict );
 	}
+	
+	if( isSlot ) {
+		if( CFArrayGetCount(folderList) > 0 ) {
+			data = [SimpleNodeData nodeDataWithURL:(NSURL*)CFArrayGetValueAtIndex(folderList, (CFArrayGetCount(folderList)-1))];
+			CFRelease( folderList );
+			wasFound = CFURLCreateDataAndPropertiesFromResource(NULL, (CFURLRef)loc, NULL, &dataDict, dataProps, NULL);
+			if( wasFound ) {
+				folderList = (CFArrayRef)CFDictionaryGetValue( dataDict, kCFURLFileDirectoryContents );
+				if( folderList == NULL ) CFShow(CFSTR("No Folder List!"));
+				else {
+					// CFShow( folderList );
+					CFRetain( folderList );
+				}
+				CFRelease( dataDict );
+			}
+		}
+	}
+	
+    NSEnumerator *entryEnum = [(NSArray*)folderList objectEnumerator];
+    id entry;
+    SimpleTreeNode *child = nil;
+    
+    self = [super initWithData:data parent:nil children:[NSArray array]];
+    if (self != nil) {
+        while ((entry = [entryEnum nextObject])) {
+			if( CFURLIsVisible((CFURLRef)entry) ) {
+				if (CFURLHasDirectoryPath((CFURLRef)entry))
+					child = [SimpleTreeNode treeFromLocation:entry];
+				else 
+					child = [[[SimpleTreeNode alloc] initWithData:[SimpleNodeData nodeDataWithURL:entry] parent:nil children:[NSArray array]] autorelease];
+				[self insertChild: child atIndex: [self numberOfChildren]];
+			}
+        }
+    }
+    
     return self;
 }
+//wasFound = CFURLCreateDataAndPropertiesFromResource(NULL, (CFURLRef)loc, NULL, &dataDict, dataProps, NULL);
+//	if( wasFound ) {
+//		folderList = (CFArrayRef)CFDictionaryGetValue( dataDict, kCFURLFileDirectoryContents );
+//		if( folderList == NULL ) 
+//			  CFShow(CFSTR("No Folder List!"));
+//		else {
+//			// CFShow( folderList );
+//			CFRetain( folderList );
+//			if( isSlot ) {
+//				if( CFArrayGetCount(folderList) > 0 ) {
+//					NSEnumerator *entryEnum = [(NSArray*)folderList objectEnumerator];
+//					CFRelease( folderList );
+//
+//					id entry;
+//					SimpleTreeNode *child = nil;
+//					data = [self nodeData];
+//
+//					if( [self nodeData] == nil ) 
+//						self = [super initWithData:data parent:nil children:[NSArray array]];
+//					if (self != nil) {
+//						while ((entry = [entryEnum nextObject])) {
+//							if( CFURLIsVisible((CFURLRef)entry) ) {
+//								if (CFURLHasDirectoryPath((CFURLRef)entry))
+//									child = [SimpleTreeNode treeFromLocation:entry];
+//								else 
+//									child = [[[SimpleTreeNode alloc] initWithData:[SimpleNodeData nodeDataWithURL:entry] parent:nil children:[NSArray array]] autorelease];
+//								[self insertChild: child atIndex: [self numberOfChildren]];
+//							}
+//						}
+//					}
+//				}
+//			}
+//			
+//		}
+//		CFRelease( dataDict );
+//	}
+//    return self;
+//}
 
 - (id)initOperationFromLocation:(NSURL*)loc
 {
