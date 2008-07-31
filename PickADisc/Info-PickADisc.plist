@@ -19,20 +19,20 @@
 			<string>Editor</string>
 			<key>LSItemContentTypes</key>
 			<array>
-				<string>com.polymicrosystems.pickadisc.documents.carousel</string>
+				<string>com.polymicrosystems.pickadisk.documents.carousel</string>
 			</array>
 			<key>LSTypeIsPackage</key>
 			<true/>
 		</dict>
 	</array>
 	<key>CFBundleExecutable</key>
-	<string>PickADisc</string>
+	<string>PickADisk</string>
 	<key>CFBundleGetInfoString</key>
-	<string>Info string</string>
+	<string></string>
 	<key>CFBundleIconFile</key>
-	<string>PAD4.icns</string>
+	<string>PAD4</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.polymicrosystems.pickadisc</string>
+	<string>com.polymicrosystems.pickadisk</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -40,18 +40,18 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>001</string>
+	<string></string>
 	<key>CFBundleSignature</key>
 	<string>PADA</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
-			<key>CFBundleURLName</key>
-			<string>Carousel URL</string>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLIconFile</key>
 			<string></string>
+			<key>CFBundleURLName</key>
+			<string>Carousel URL</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>carousel</string>
@@ -59,10 +59,14 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>0.1</string>
+	<string>0.1a</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>SUCheckAtStartup</key>
+	<false/>
+	<key>SUFeedURL</key>
+	<string>http://updates.downtowncode.com/pad/updates.xml</string>
 </dict>
 </plist>
