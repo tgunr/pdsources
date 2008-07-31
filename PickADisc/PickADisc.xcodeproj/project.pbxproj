@@ -52,6 +52,10 @@
 		754A9F030E40071E0071FC95 /* PADIndexOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 754A9F010E40071E0071FC95 /* PADIndexOperation.h */; };
 		754A9F040E40071E0071FC95 /* PADIndexOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 754A9F020E40071E0071FC95 /* PADIndexOperation.m */; };
 		754A9F0A0E4007A10071FC95 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 754A9F090E4007A10071FC95 /* Carbon.framework */; };
+		754AA02C0E40B69F0071FC95 /* CarouselProgress.nib in Resources */ = {isa = PBXBuildFile; fileRef = 754AA02B0E40B69F0071FC95 /* CarouselProgress.nib */; };
+		754AA0350E4105430071FC95 /* PAD1.icns in Resources */ = {isa = PBXBuildFile; fileRef = 754AA0330E4105430071FC95 /* PAD1.icns */; };
+		754AA0360E4105430071FC95 /* PAD2.icns in Resources */ = {isa = PBXBuildFile; fileRef = 754AA0340E4105430071FC95 /* PAD2.icns */; };
+		754AA04D0E411EFE0071FC95 /* PAD4.icns in Resources */ = {isa = PBXBuildFile; fileRef = 754AA04C0E411EFE0071FC95 /* PAD4.icns */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -206,6 +210,10 @@
 		754A9F010E40071E0071FC95 /* PADIndexOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PADIndexOperation.h; sourceTree = "<group>"; };
 		754A9F020E40071E0071FC95 /* PADIndexOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PADIndexOperation.m; sourceTree = "<group>"; };
 		754A9F090E4007A10071FC95 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
+		754AA02B0E40B69F0071FC95 /* CarouselProgress.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; path = CarouselProgress.nib; sourceTree = "<group>"; };
+		754AA0330E4105430071FC95 /* PAD1.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = PAD1.icns; sourceTree = "<group>"; };
+		754AA0340E4105430071FC95 /* PAD2.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = PAD2.icns; sourceTree = "<group>"; };
+		754AA04C0E411EFE0071FC95 /* PAD4.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = PAD4.icns; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -324,6 +332,7 @@
 				7543D6160E3BDFE7009A8AF3 /* CLI.xcodeproj */,
 				5C4E17EB0E2167580091DD7D /* carousel.sh */,
 				5C62ACB80E20B00900A26788 /* CarouselIndex.nib */,
+				754AA02B0E40B69F0071FC95 /* CarouselProgress.nib */,
 				29B97318FDCFA39411CA2CEA /* MainMenu.nib */,
 				5C6C12D20E240AAC0097CC7A /* Icons */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
@@ -345,6 +354,9 @@
 		5C6C12D20E240AAC0097CC7A /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				754AA04C0E411EFE0071FC95 /* PAD4.icns */,
+				754AA0330E4105430071FC95 /* PAD1.icns */,
+				754AA0340E4105430071FC95 /* PAD2.icns */,
 				5C2EBE950E2979B3009BAF4C /* sidebarpref.icns */,
 				5C2EBE920E29719B009BAF4C /* update.icns */,
 				5C6C12D30E240AAC0097CC7A /* advancedpref.icns */,
@@ -563,6 +575,10 @@
 				7543D62C0E3BDFF0009A8AF3 /* dacal in Resources */,
 				7543D62D0E3BDFF5009A8AF3 /* xattr in Resources */,
 				7543D6340E3BE028009A8AF3 /* DACALDriver.kext in Resources */,
+				754AA02C0E40B69F0071FC95 /* CarouselProgress.nib in Resources */,
+				754AA0350E4105430071FC95 /* PAD1.icns in Resources */,
+				754AA0360E4105430071FC95 /* PAD2.icns in Resources */,
+				754AA04D0E411EFE0071FC95 /* PAD4.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

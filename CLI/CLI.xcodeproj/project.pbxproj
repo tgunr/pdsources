@@ -25,6 +25,12 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		751047C00E41422E009AFDB4 /* pmsCFUtility.c in Sources */ = {isa = PBXBuildFile; fileRef = 751047BE0E41422E009AFDB4 /* pmsCFUtility.c */; };
+		751047FA0E41430C009AFDB4 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09AB6884FE841BABC02AAC07 /* CoreFoundation.framework */; };
+		751047FF0E41435B009AFDB4 /* pmsDACALUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 751047C80E4142A8009AFDB4 /* pmsDACALUtility.m */; };
+		751048000E414362009AFDB4 /* pmsCFUtility.h in Headers */ = {isa = PBXBuildFile; fileRef = 751047BF0E41422E009AFDB4 /* pmsCFUtility.h */; };
+		751048010E414363009AFDB4 /* pmsDACALUtility.h in Headers */ = {isa = PBXBuildFile; fileRef = 751047C70E4142A8009AFDB4 /* pmsDACALUtility.h */; };
+		751048060E4143A8009AFDB4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 751048050E4143A8009AFDB4 /* Cocoa.framework */; };
 		751FBA2A0E39059100D64628 /* find.c in Sources */ = {isa = PBXBuildFile; fileRef = 751FBA200E39059000D64628 /* find.c */; };
 		751FBA2B0E39059100D64628 /* function.c in Sources */ = {isa = PBXBuildFile; fileRef = 751FBA220E39059000D64628 /* function.c */; };
 		751FBA2C0E39059100D64628 /* getdate.y in Sources */ = {isa = PBXBuildFile; fileRef = 751FBA230E39059100D64628 /* getdate.y */; };
@@ -47,6 +53,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		751048570E414580009AFDB4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 08FB7793FE84155DC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 751FBA050E3904AB00D64628 /* dacallib */;
+			remoteInfo = dacallib;
+		};
 		751FBCD40E3A2C2900D64628 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 08FB7793FE84155DC02AAC07 /* Project object */;
@@ -87,6 +100,11 @@
 /* Begin PBXFileReference section */
 		08FB7796FE84155DC02AAC07 /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		09AB6884FE841BABC02AAC07 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = /System/Library/Frameworks/CoreFoundation.framework; sourceTree = "<absolute>"; };
+		751047BE0E41422E009AFDB4 /* pmsCFUtility.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = pmsCFUtility.c; path = "../PMS Source/utility/pmsCFUtility.c"; sourceTree = SOURCE_ROOT; };
+		751047BF0E41422E009AFDB4 /* pmsCFUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pmsCFUtility.h; path = "../PMS Source/utility/pmsCFUtility.h"; sourceTree = SOURCE_ROOT; };
+		751047C70E4142A8009AFDB4 /* pmsDACALUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pmsDACALUtility.h; path = "../PMS Source/utility/pmsDACALUtility.h"; sourceTree = SOURCE_ROOT; };
+		751047C80E4142A8009AFDB4 /* pmsDACALUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = pmsDACALUtility.m; path = "../PMS Source/utility/pmsDACALUtility.m"; sourceTree = SOURCE_ROOT; };
+		751048050E4143A8009AFDB4 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		751FB9FC0E39046200D64628 /* dacal */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = dacal; sourceTree = BUILT_PRODUCTS_DIR; };
 		751FBA060E3904AB00D64628 /* dacallib.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = dacallib.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		751FBA0E0E39054600D64628 /* fabricate */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = fabricate; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -140,7 +158,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				751047FA0E41430C009AFDB4 /* CoreFoundation.framework in Frameworks */,
 				751FBCE10E3A340900D64628 /* IOKit.framework in Frameworks */,
+				751048060E4143A8009AFDB4 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -190,11 +210,9 @@
 			isa = PBXGroup;
 			children = (
 				751FBCA20E393EEC00D64628 /* xargs */,
-				751FBC9A0E393EBE00D64628 /* New Group */,
 				751FBA470E39065200D64628 /* xattr */,
 				751FBA350E3905C300D64628 /* fabricate */,
 				751FBA340E3905B300D64628 /* dacal */,
-				751FBA330E3905A700D64628 /* dacal */,
 				751FBA1D0E39059000D64628 /* find */,
 				08FB7796FE84155DC02AAC07 /* main.c */,
 			);
@@ -204,6 +222,7 @@
 		08FB779DFE84155DC02AAC07 /* External Frameworks and Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				751048050E4143A8009AFDB4 /* Cocoa.framework */,
 				7543C8430E3A37CC009A8AF3 /* Kernel.framework */,
 				751FBCE00E3A340900D64628 /* IOKit.framework */,
 				09AB6884FE841BABC02AAC07 /* CoreFoundation.framework */,
@@ -244,18 +263,15 @@
 			path = find;
 			sourceTree = "<group>";
 		};
-		751FBA330E3905A700D64628 /* dacal */ = {
-			isa = PBXGroup;
-			children = (
-				751FBA3D0E39060A00D64628 /* dacal.c */,
-				751FBA3E0E39060A00D64628 /* dacal.1 */,
-			);
-			name = dacal;
-			sourceTree = "<group>";
-		};
 		751FBA340E3905B300D64628 /* dacal */ = {
 			isa = PBXGroup;
 			children = (
+				751047C70E4142A8009AFDB4 /* pmsDACALUtility.h */,
+				751047C80E4142A8009AFDB4 /* pmsDACALUtility.m */,
+				751047BE0E41422E009AFDB4 /* pmsCFUtility.c */,
+				751047BF0E41422E009AFDB4 /* pmsCFUtility.h */,
+				751FBA3E0E39060A00D64628 /* dacal.1 */,
+				751FBA3D0E39060A00D64628 /* dacal.c */,
 				751FBA390E3905F900D64628 /* dacallib.m */,
 				751FBA3A0E3905F900D64628 /* dacallib.h */,
 			);
@@ -280,13 +296,6 @@
 				751FBA720E39065200D64628 /* xattrfunctions.h */,
 			);
 			path = xattr;
-			sourceTree = "<group>";
-		};
-		751FBC9A0E393EBE00D64628 /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "New Group";
 			sourceTree = "<group>";
 		};
 		751FBCA20E393EEC00D64628 /* xargs */ = {
@@ -317,6 +326,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				751FBA3C0E3905F900D64628 /* dacallib.h in Headers */,
+				751048000E414362009AFDB4 /* pmsCFUtility.h in Headers */,
+				751048010E414363009AFDB4 /* pmsDACALUtility.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,6 +345,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				751048580E414580009AFDB4 /* PBXTargetDependency */,
 			);
 			name = dacal;
 			productName = dacal;
@@ -474,6 +486,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				751FBA3B0E3905F900D64628 /* dacallib.m in Sources */,
+				751047C00E41422E009AFDB4 /* pmsCFUtility.c in Sources */,
+				751047FF0E41435B009AFDB4 /* pmsDACALUtility.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -521,6 +535,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		751048580E414580009AFDB4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 751FBA050E3904AB00D64628 /* dacallib */;
+			targetProxy = 751048570E414580009AFDB4 /* PBXContainerItemProxy */;
+		};
 		751FBCD50E3A2C2900D64628 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 751FB9FB0E39046200D64628 /* dacal */;
@@ -629,14 +648,9 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				GCC_PREFIX_HEADER = "";
 				INSTALL_PATH = /usr/local/lib;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					AppKit,
-				);
+				OTHER_LDFLAGS = "";
 				PREBINDING = NO;
 				PRODUCT_NAME = dacallib;
 			};
