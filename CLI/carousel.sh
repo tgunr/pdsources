@@ -98,7 +98,7 @@ do
 	K ) kind="$OPTARG";;
 	L ) listslots=1;;
 	f ) findslot="$OPTARG";;
-	V ) echo "$Id$"
+	V ) echo '$Id$'
 		exit 0;;
 	* ) echo "Unimplemented option chosen." 
 	    exit 1 ;;   # DEFAULT
