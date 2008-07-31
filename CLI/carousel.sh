@@ -25,7 +25,7 @@ if [[ ! -e $slotfile ]] ; then
     echo "1" > $slotfile
 fi
 
-if [[ ! -e "$CAROUSELPATH"]] ; then
+if [[ ! -e "$CAROUSELPATH" ]] ; then
 	mkdir -p "$CAROUSELPATH"
 	chmod 755 "$CAROUSELPATH"
 fi
@@ -98,7 +98,7 @@ do
 	K ) kind="$OPTARG";;
 	L ) listslots=1;;
 	f ) findslot="$OPTARG";;
-	V ) echo "$Date$ $Revision"
+	V ) echo "$Id$"
 		exit 0;;
 	* ) echo "Unimplemented option chosen." 
 	    exit 1 ;;   # DEFAULT
