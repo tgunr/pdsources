@@ -41,20 +41,20 @@
 		735CC2B9049A7E2A00C919A3 /* TreeNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 08DC403CFF0C20FA11CA0E35 /* TreeNode.m */; settings = {ATTRIBUTES = (); }; };
 		735CC2BA049A7E2A00C919A3 /* ImageAndTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 02AAE104FF38CCE111CA0E35 /* ImageAndTextCell.m */; settings = {ATTRIBUTES = (); }; };
 		735CC2BD049A7E2A00C919A3 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 011669A0FFC1E3D311CA0E35 /* Cocoa.framework */; };
+		75104AEC0E423BF1009AFDB4 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75104AEA0E423BF1009AFDB4 /* Sparkle.framework */; };
+		75104DFE0E42500D009AFDB4 /* Info-PickADisc.plist in Resources */ = {isa = PBXBuildFile; fileRef = 735CC2C0049A7E2A00C919A3 /* Info-PickADisc.plist */; };
+		75104E020E425073009AFDB4 /* Info-PickADisk.plist in Resources */ = {isa = PBXBuildFile; fileRef = 75104E010E425073009AFDB4 /* Info-PickADisk.plist */; };
+		75104E2E0E42549D009AFDB4 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 75104AEA0E423BF1009AFDB4 /* Sparkle.framework */; };
 		7543D62C0E3BDFF0009A8AF3 /* dacal in Resources */ = {isa = PBXBuildFile; fileRef = 7543D6210E3BDFE7009A8AF3 /* dacal */; };
 		7543D62D0E3BDFF5009A8AF3 /* xattr in Resources */ = {isa = PBXBuildFile; fileRef = 7543D6290E3BDFE7009A8AF3 /* xattr */; };
 		7543D6340E3BE028009A8AF3 /* DACALDriver.kext in Resources */ = {isa = PBXBuildFile; fileRef = 7543D6330E3BE022009A8AF3 /* DACALDriver.kext */; };
-		754A9EC20E4001880071FC95 /* PADIndexProgressController.h in Headers */ = {isa = PBXBuildFile; fileRef = 754A9EC00E4001880071FC95 /* PADIndexProgressController.h */; };
 		754A9EC30E4001880071FC95 /* PADIndexProgressController.m in Sources */ = {isa = PBXBuildFile; fileRef = 754A9EC10E4001880071FC95 /* PADIndexProgressController.m */; };
 		754A9EDC0E4003300071FC95 /* pmsCFUtility.c in Sources */ = {isa = PBXBuildFile; fileRef = 754A9ED70E4003300071FC95 /* pmsCFUtility.c */; };
 		754A9EDF0E4003300071FC95 /* pmsDACALUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 754A9EDA0E4003300071FC95 /* pmsDACALUtility.m */; };
 		754A9EE20E4003610071FC95 /* dacallib.m in Sources */ = {isa = PBXBuildFile; fileRef = 754A9EE00E4003610071FC95 /* dacallib.m */; };
-		754A9F030E40071E0071FC95 /* PADIndexOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 754A9F010E40071E0071FC95 /* PADIndexOperation.h */; };
 		754A9F040E40071E0071FC95 /* PADIndexOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 754A9F020E40071E0071FC95 /* PADIndexOperation.m */; };
 		754A9F0A0E4007A10071FC95 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 754A9F090E4007A10071FC95 /* Carbon.framework */; };
 		754AA02C0E40B69F0071FC95 /* CarouselProgress.nib in Resources */ = {isa = PBXBuildFile; fileRef = 754AA02B0E40B69F0071FC95 /* CarouselProgress.nib */; };
-		754AA0350E4105430071FC95 /* PAD1.icns in Resources */ = {isa = PBXBuildFile; fileRef = 754AA0330E4105430071FC95 /* PAD1.icns */; };
-		754AA0360E4105430071FC95 /* PAD2.icns in Resources */ = {isa = PBXBuildFile; fileRef = 754AA0340E4105430071FC95 /* PAD2.icns */; };
 		754AA04D0E411EFE0071FC95 /* PAD4.icns in Resources */ = {isa = PBXBuildFile; fileRef = 754AA04C0E411EFE0071FC95 /* PAD4.icns */; };
 /* End PBXBuildFile section */
 
@@ -142,6 +142,19 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		75104E320E4254BB009AFDB4 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+				75104E2E0E42549D009AFDB4 /* Sparkle.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		011669A0FFC1E3D311CA0E35 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		0247A8BD007179D411CA0E35 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
@@ -167,7 +180,7 @@
 		5C2EBE990E2991BF009BAF4C /* PADPrefsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PADPrefsController.h; sourceTree = "<group>"; };
 		5C2EBE9A0E2991BF009BAF4C /* PADPrefsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PADPrefsController.m; sourceTree = "<group>"; };
 		5C4E17EB0E2167580091DD7D /* carousel.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = carousel.sh; path = ../CLI/carousel.sh; sourceTree = SOURCE_ROOT; };
-		5C4E17FC0E216A2D0091DD7D /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = SDKs/MacOSX10.5.sdk/System/Library/Frameworks/IOKit.framework; sourceTree = SYSTEM_DEVELOPER_DIR; };
+		5C4E17FC0E216A2D0091DD7D /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		5C62ACB80E20B00900A26788 /* CarouselIndex.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; path = CarouselIndex.nib; sourceTree = "<group>"; };
 		5C6C12D30E240AAC0097CC7A /* advancedpref.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = advancedpref.icns; path = Resources/Icons/advancedpref.icns; sourceTree = SOURCE_ROOT; };
 		5C6C12D40E240AAC0097CC7A /* CD.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = CD.icns; path = Resources/Icons/CD.icns; sourceTree = SOURCE_ROOT; };
@@ -196,13 +209,16 @@
 		735CC297049A7E1F00C919A3 /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Prefix.pch; path = Sources/Prefix.pch; sourceTree = "<group>"; };
 		735CC2C0049A7E2A00C919A3 /* Info-PickADisc.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-PickADisc.plist"; sourceTree = SOURCE_ROOT; };
 		735CC2C1049A7E2A00C919A3 /* PickADisc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PickADisc.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		75104AE90E423BF1009AFDB4 /* DiscID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DiscID.framework; path = Frameworks/DiscID.framework; sourceTree = "<group>"; };
+		75104AEA0E423BF1009AFDB4 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Frameworks/Sparkle.framework; sourceTree = SOURCE_ROOT; };
+		75104E010E425073009AFDB4 /* Info-PickADisk.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-PickADisk.plist"; sourceTree = SOURCE_ROOT; };
 		7543D6160E3BDFE7009A8AF3 /* CLI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CLI.xcodeproj; path = ../CLI/CLI.xcodeproj; sourceTree = SOURCE_ROOT; };
 		7543D62E0E3BE022009A8AF3 /* DACALDriver.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = DACALDriver.xcodeproj; path = ../DACALDriver/DACALDriver.xcodeproj; sourceTree = SOURCE_ROOT; };
 		754A9EC00E4001880071FC95 /* PADIndexProgressController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PADIndexProgressController.h; sourceTree = "<group>"; };
 		754A9EC10E4001880071FC95 /* PADIndexProgressController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PADIndexProgressController.m; sourceTree = "<group>"; };
 		754A9ED60E4003300071FC95 /* pms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pms.h; sourceTree = "<group>"; };
 		754A9ED70E4003300071FC95 /* pmsCFUtility.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pmsCFUtility.c; sourceTree = "<group>"; };
-		754A9ED80E4003300071FC95 /* pmsCFUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pmsCFUtility.h; path = "../PMS Source/utility/pmsCFUtility.h"; sourceTree = SOURCE_ROOT; };
+		754A9ED80E4003300071FC95 /* pmsCFUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pmsCFUtility.h; sourceTree = "<group>"; };
 		754A9ED90E4003300071FC95 /* pmsDACALUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pmsDACALUtility.h; sourceTree = "<group>"; };
 		754A9EDA0E4003300071FC95 /* pmsDACALUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = pmsDACALUtility.m; sourceTree = "<group>"; };
 		754A9EE00E4003610071FC95 /* dacallib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = dacallib.m; path = ../CLI/dacallib.m; sourceTree = SOURCE_ROOT; };
@@ -211,8 +227,6 @@
 		754A9F020E40071E0071FC95 /* PADIndexOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PADIndexOperation.m; sourceTree = "<group>"; };
 		754A9F090E4007A10071FC95 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
 		754AA02B0E40B69F0071FC95 /* CarouselProgress.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; path = CarouselProgress.nib; sourceTree = "<group>"; };
-		754AA0330E4105430071FC95 /* PAD1.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = PAD1.icns; sourceTree = "<group>"; };
-		754AA0340E4105430071FC95 /* PAD2.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = PAD2.icns; sourceTree = "<group>"; };
 		754AA04C0E411EFE0071FC95 /* PAD4.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = PAD4.icns; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -226,6 +240,7 @@
 				5C0884420E26CFCA0052D931 /* AudioToolbox.framework in Frameworks */,
 				5C2741770E27686A00A32C40 /* DiscRecording.framework in Frameworks */,
 				754A9F0A0E4007A10071FC95 /* Carbon.framework in Frameworks */,
+				75104AEC0E423BF1009AFDB4 /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,27 +287,6 @@
 			name = Classes;
 			sourceTree = "<group>";
 		};
-		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				754A9F090E4007A10071FC95 /* Carbon.framework */,
-				011669A0FFC1E3D311CA0E35 /* Cocoa.framework */,
-				5C4E17FC0E216A2D0091DD7D /* IOKit.framework */,
-				5C0884410E26CFCA0052D931 /* AudioToolbox.framework */,
-				5C2741760E27686A00A32C40 /* DiscRecording.framework */,
-			);
-			name = "Linked Frameworks";
-			sourceTree = "<group>";
-		};
-		1058C7A2FEA54F0111CA2CBB /* Other Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				0247A8BD007179D411CA0E35 /* AppKit.framework */,
-				0247A8BE007179D411CA0E35 /* Foundation.framework */,
-			);
-			name = "Other Frameworks";
-			sourceTree = "<group>";
-		};
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -328,6 +322,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				75104E010E425073009AFDB4 /* Info-PickADisk.plist */,
 				7543D62E0E3BE022009A8AF3 /* DACALDriver.xcodeproj */,
 				7543D6160E3BDFE7009A8AF3 /* CLI.xcodeproj */,
 				5C4E17EB0E2167580091DD7D /* carousel.sh */,
@@ -345,8 +340,15 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
-				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
+				75104AE90E423BF1009AFDB4 /* DiscID.framework */,
+				75104AEA0E423BF1009AFDB4 /* Sparkle.framework */,
+				0247A8BE007179D411CA0E35 /* Foundation.framework */,
+				0247A8BD007179D411CA0E35 /* AppKit.framework */,
+				754A9F090E4007A10071FC95 /* Carbon.framework */,
+				011669A0FFC1E3D311CA0E35 /* Cocoa.framework */,
+				5C4E17FC0E216A2D0091DD7D /* IOKit.framework */,
+				5C0884410E26CFCA0052D931 /* AudioToolbox.framework */,
+				5C2741760E27686A00A32C40 /* DiscRecording.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -355,8 +357,6 @@
 			isa = PBXGroup;
 			children = (
 				754AA04C0E411EFE0071FC95 /* PAD4.icns */,
-				754AA0330E4105430071FC95 /* PAD1.icns */,
-				754AA0340E4105430071FC95 /* PAD2.icns */,
 				5C2EBE950E2979B3009BAF4C /* sidebarpref.icns */,
 				5C2EBE920E29719B009BAF4C /* update.icns */,
 				5C6C12D30E240AAC0097CC7A /* advancedpref.icns */,
@@ -434,28 +434,16 @@
 		};
 /* End PBXGroup section */
 
-/* Begin PBXHeadersBuildPhase section */
-		735CC29A049A7E2A00C919A3 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				754A9EC20E4001880071FC95 /* PADIndexProgressController.h in Headers */,
-				754A9F030E40071E0071FC95 /* PADIndexOperation.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
-
 /* Begin PBXNativeTarget section */
-		735CC299049A7E2A00C919A3 /* PickADisc */ = {
+		735CC299049A7E2A00C919A3 /* PickADisk */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B69BDD9408A2EC26008AC9B5 /* Build configuration list for PBXNativeTarget "PickADisc" */;
+			buildConfigurationList = B69BDD9408A2EC26008AC9B5 /* Build configuration list for PBXNativeTarget "PickADisk" */;
 			buildPhases = (
-				735CC29A049A7E2A00C919A3 /* Headers */,
 				735CC2A2049A7E2A00C919A3 /* Resources */,
 				735CC2B4049A7E2A00C919A3 /* Sources */,
 				735CC2BC049A7E2A00C919A3 /* Frameworks */,
 				735CC2BE049A7E2A00C919A3 /* Rez */,
+				75104E320E4254BB009AFDB4 /* CopyFiles */,
 			);
 			buildRules = (
 				734E63B1049E6C2800C919A3 /* PBXBuildRule */,
@@ -465,7 +453,7 @@
 				7543D68C0E3CECB0009A8AF3 /* PBXTargetDependency */,
 				7543D68E0E3CECBB009A8AF3 /* PBXTargetDependency */,
 			);
-			name = PickADisc;
+			name = PickADisk;
 			productInstallPath = "$(LOCAL_DEVELOPER_DIR)/Demos";
 			productName = DragNDropOLV;
 			productReference = 735CC2C1049A7E2A00C919A3 /* PickADisc.app */;
@@ -493,7 +481,7 @@
 			);
 			projectRoot = "";
 			targets = (
-				735CC299049A7E2A00C919A3 /* PickADisc */,
+				735CC299049A7E2A00C919A3 /* PickADisk */,
 			);
 		};
 /* End PBXProject section */
@@ -576,9 +564,9 @@
 				7543D62D0E3BDFF5009A8AF3 /* xattr in Resources */,
 				7543D6340E3BE028009A8AF3 /* DACALDriver.kext in Resources */,
 				754AA02C0E40B69F0071FC95 /* CarouselProgress.nib in Resources */,
-				754AA0350E4105430071FC95 /* PAD1.icns in Resources */,
-				754AA0360E4105430071FC95 /* PAD2.icns in Resources */,
 				754AA04D0E411EFE0071FC95 /* PAD4.icns in Resources */,
+				75104DFE0E42500D009AFDB4 /* Info-PickADisc.plist in Resources */,
+				75104E020E425073009AFDB4 /* Info-PickADisk.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -660,7 +648,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		7543D6A80E3CF7F9009A8AF3 /* Release */ = {
+		75104D7E0E4245D8009AFDB4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = (
@@ -674,7 +662,7 @@
 			};
 			name = Release;
 		};
-		7543D6A90E3CF7F9009A8AF3 /* Release */ = {
+		75104D7F0E4245D8009AFDB4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(NATIVE_ARCH)";
@@ -682,8 +670,10 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(DEVELOPER_DIR)/SDKs/MacOSX10.5.sdk/System/Library/Frameworks\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/Frameworks\"";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
@@ -696,7 +686,7 @@
 				INFOPLIST_FILE = "Info-PickADisc.plist";
 				INSTALL_PATH = "";
 				LIBRARY_SEARCH_PATHS = "";
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = PickADisc;
@@ -712,10 +702,7 @@
 			buildSettings = {
 				ARCHS = "$(NATIVE_ARCH)";
 				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/Frameworks\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(DEVELOPER_DIR)/SDKs/MacOSX10.5.sdk/System/Library/Frameworks\"";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
@@ -726,13 +713,13 @@
 				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
 				GCC_WARN_UNKNOWN_PRAGMAS = NO;
 				HEADER_SEARCH_PATHS = "";
-				INFOPLIST_FILE = "Info-PickADisc.plist";
+				INFOPLIST_FILE = "Info-PickADisk.plist";
 				INSTALL_PATH = "";
 				LIBRARY_SEARCH_PATHS = "";
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = PickADisc;
+				PRODUCT_NAME = PickADisk;
 				SECTORDER_FLAGS = "";
 				WARNING_CFLAGS = "-Wmost";
 				WRAPPER_EXTENSION = app;
@@ -749,8 +736,10 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(DEVELOPER_DIR)/SDKs/MacOSX10.5.sdk/System/Library/Frameworks\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/Frameworks\"";
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Sources/Prefix.pch;
@@ -804,25 +793,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B69BDD9408A2EC26008AC9B5 /* Build configuration list for PBXNativeTarget "PickADisc" */ = {
+		B69BDD9408A2EC26008AC9B5 /* Build configuration list for PBXNativeTarget "PickADisk" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B69BDD9508A2EC26008AC9B5 /* Debug */,
-				7543D6A90E3CF7F9009A8AF3 /* Release */,
+				75104D7F0E4245D8009AFDB4 /* Release */,
 				B69BDD9608A2EC26008AC9B5 /* Deploy */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		B69BDD9808A2EC26008AC9B5 /* Build configuration list for PBXProject "PickADisc" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B69BDD9908A2EC26008AC9B5 /* Debug */,
-				7543D6A80E3CF7F9009A8AF3 /* Release */,
+				75104D7E0E4245D8009AFDB4 /* Release */,
 				B69BDD9A08A2EC26008AC9B5 /* Deploy */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
