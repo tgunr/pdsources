@@ -1,0 +1,923 @@
+<?xml version="1.0"?>
+<!DOCTYPE database SYSTEM "file:///System/Library/DTDs/CoreData.dtd">
+
+<database>
+    <databaseInfo>
+        <version>134481920</version>
+        <UUID>5FEFBE85-FD28-4561-8A03-E53DC6FF873D</UUID>
+        <nextObjectID>206</nextObjectID>
+        <metadata>
+            <plist version="1.0">
+                <dict>
+                    <key>NSPersistenceFrameworkVersion</key>
+                    <integer>186</integer>
+                    <key>NSStoreModelVersionHashes</key>
+                    <dict>
+                        <key>AbstractMediaContainer</key>
+                        <data>
+		RLmcXncz6uyMd/WDhG4OhxkIFhjXDrfJP0X+Oo4rnQE=
+		</data>
+                        <key>AbstractMediaFile</key>
+                        <data>
+		6uDedOnIS0Gr1JCKGGevwY9zP2qC1P+U5i+GwOhbxeo=
+		</data>
+                        <key>ExternalMediaFile</key>
+                        <data>
+		xCgh4ulSZ2bN1/ivM+TYfs2RxOdoisLMneKV1B2sXvU=
+		</data>
+                        <key>GraphicalText</key>
+                        <data>
+		Q3wXp3GnIdd7Ys+pUSQqJHAO0aI3Of24wnYIDu4mdpU=
+		</data>
+                        <key>InDocumentMediaFile</key>
+                        <data>
+		WP86TWfc3NBsnvfKccbVPbQdq3zOYNVsIty0dY2Oxa8=
+		</data>
+                        <key>MediaContainer</key>
+                        <data>
+		xmbezJ9rLZCJzlZmDJiwobuvk+RNWjoBuVUi+0xO9Vw=
+		</data>
+                        <key>MediaFileUpload</key>
+                        <data>
+		wllghM6aOzzYZWYSibcfwtN5cAL3kdcwFCFUMK+uGio=
+		</data>
+                        <key>NamedScaledImageContainer</key>
+                        <data>
+		mQGNWxnyYFzinHVqVGCvY6zKHySZjtzLaxEzw7vLDRA=
+		</data>
+                        <key>ScaledImageContainer</key>
+                        <data>
+		GHvN73JBKdOC5rmgOn4QOxDubhnuAFYGyEAoQpE4jaI=
+		</data>
+                        <key>ScaledImageProperties</key>
+                        <data>
+		tLeYDTvThotsHkq4mPQ2UlyViBa29dVVbMNHYgEOGRk=
+		</data>
+                        <key>SimpleScaledImageContainer</key>
+                        <data>
+		C91HVexWv44JTAvgZ2Jdd2IjITWpJQuWmGfvNxFKG18=
+		</data>
+                    </dict>
+                    <key>NSStoreModelVersionHashesVersion</key>
+                    <integer>3</integer>
+                    <key>NSStoreModelVersionIdentifiers</key>
+                    <array></array>
+                </dict>
+            </plist>
+        </metadata>
+    </databaseInfo>
+    <object type="MEDIACONTAINER" id="z102">
+        <attribute name="identifier" type="string">B0233521-FF91-421A-99A4-F636BB4586EC</attribute>
+        <relationship name="file" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z108"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGECONTAINER" idrefs="z111"></relationship>
+    </object>
+    <object type="INDOCUMENTMEDIAFILE" id="z103">
+        <attribute name="sourcefilename" type="string">pastedImage.jpeg</attribute>
+        <attribute name="filename" type="string">pastedImage.jpeg</attribute>
+        <attribute name="digest" type="string">037bacbbd15a2322ac0155a9ef6f8c213413f9a7-1a7c7</attribute>
+        <attribute name="uniqueid" type="string">5A0FA2E5-ACC5-45E3-BA44-C4DE00C5771C</attribute>
+        <attribute name="filetype" type="string">public.jpeg</attribute>
+        <relationship name="containers" type="0/0" destination="ABSTRACTMEDIACONTAINER" idrefs="z160 z199 z187 z113"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGEPROPERTIES"></relationship>
+        <relationship name="uploads" type="0/0" destination="MEDIAFILEUPLOAD"></relationship>
+        <relationship name="scalingproperties" type="0/0" destination="SCALEDIMAGEPROPERTIES"></relationship>
+    </object>
+    <object type="INDOCUMENTMEDIAFILE" id="z104">
+        <attribute name="sourcefilename" type="string">32favicon.png</attribute>
+        <attribute name="filename" type="string">32favicon.png</attribute>
+        <attribute name="digest" type="string">0ef2352c70d6ae7fab821dc65e50b3b52bfaa4c8-f9b</attribute>
+        <attribute name="uniqueid" type="string">DE060A9D-DF0A-4B98-B7CC-36311887EDA1</attribute>
+        <attribute name="hasalphacomponent" type="bool">1</attribute>
+        <attribute name="filetype" type="string">public.png</attribute>
+        <relationship name="containers" type="0/0" destination="ABSTRACTMEDIACONTAINER" idrefs="z107"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGEPROPERTIES" idrefs="z105"></relationship>
+        <relationship name="uploads" type="0/0" destination="MEDIAFILEUPLOAD"></relationship>
+        <relationship name="scalingproperties" type="0/0" destination="SCALEDIMAGEPROPERTIES"></relationship>
+    </object>
+    <object type="SCALEDIMAGEPROPERTIES" id="z105">
+        <attribute name="sharpeningfactor" type="float">0.300000011920929</attribute>
+        <attribute name="scalingbehaviordata" type="binary">YnBsaXN0MDDUAQIDBAUGCQpYJHZlcnNpb25UJHRvcFkkYXJjaGl2ZXJYJG9iamVjdHMSAAGGoNEH
+CFRyb290gAFfEA9OU0tleWVkQXJjaGl2ZXKkCwwXGFUkbnVsbNUNDg8QERITFBUWViRjbGFzc1lhbGlnbm1lbnRYYmVoYXZpb3JVc2NhbGVUc2l6ZYADEAEQAiI/gAAAgAJYezMyLCAzMn3SGRobHFgkY2xhc3Nlc1okY2xhc3NuYW1lohwdXxAWS1RJbWFnZVNjYWxpbmdTZXR0aW5nc1hOU09iamVjdAgRGh8pMjc6P0FTWF5pcHqDiY6QkpSZm6Spsr3A2QAAAAAAAAEBAAAAAAAAAB4AAAAAAAAAAAAAAAAAAADi
+</attribute>
+        <attribute name="compression" type="float">0.699999988079071</attribute>
+        <relationship name="destinationfile" type="1/1" destination="INDOCUMENTMEDIAFILE" idrefs="z106"></relationship>
+        <relationship name="sourcefile" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z104"></relationship>
+        <relationship name="containers" type="0/0" destination="SCALEDIMAGECONTAINER" idrefs="z109"></relationship>
+    </object>
+    <object type="INDOCUMENTMEDIAFILE" id="z106">
+        <attribute name="sourcefilename" type="string">32favicon.ico</attribute>
+        <attribute name="filename" type="string">32favicon.ico</attribute>
+        <attribute name="digest" type="string">bdc42a8ee3414ba4cc653818def0692c784d89b6-436</attribute>
+        <attribute name="uniqueid" type="string">00F23563-612B-4C6D-80B3-A54050169FE4</attribute>
+        <attribute name="filetype" type="string">com.microsoft.ico</attribute>
+        <relationship name="containers" type="0/0" destination="ABSTRACTMEDIACONTAINER" idrefs="z109"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGEPROPERTIES"></relationship>
+        <relationship name="uploads" type="0/0" destination="MEDIAFILEUPLOAD" idrefs="z206"></relationship>
+        <relationship name="scalingproperties" type="0/0" destination="SCALEDIMAGEPROPERTIES" idrefs="z105"></relationship>
+    </object>
+    <object type="MEDIACONTAINER" id="z107">
+        <attribute name="sourcealiasdata" type="binary">AAAAAAGSAAIAAAdsZW9wYXJkAAAAAAAAAAAAAAAAAAAAAAAAAADD/CSTSCsAAACQSyUNMzJmYXZp
+Y29uLnBuZwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJBLKMSmapMAAAAAAAAAAP////8AAAkgAAAAAAAAAAAAAAAAAAAACVJlc291cmNlcwAAEAAIAADD/IcDAAAAEQAIAADEps0DAAAAAQAQAJBLJQCQPfQAkD3yAAAAfwACAEFsZW9wYXJkOkFwcGxpY2F0aW9uczpTYW5kdm94LmFwcDpDb250ZW50czpSZXNvdXJjZXM6MzJmYXZpY29uLnBuZwAADgAcAA0AMwAyAGYAYQB2AGkAYwBvAG4ALgBwAG4AZwAPABAABwBsAGUAbwBwAGEAcgBkABIAOUFwcGxpY2F0aW9ucy9TYW5kdm94LmFwcC9Db250ZW50cy9SZXNvdXJjZXMvMzJmYXZpY29uLnBuZwAAEwABLwD//wAA
+</attribute>
+        <attribute name="identifier" type="string">A64B33D1-9B97-4008-A3B9-BD589D7AC6A8</attribute>
+        <relationship name="file" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z104"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGECONTAINER" idrefs="z109"></relationship>
+    </object>
+    <object type="INDOCUMENTMEDIAFILE" id="z108">
+        <attribute name="sourcefilename" type="string">pastedImage.jpeg</attribute>
+        <attribute name="filename" type="string">pastedImage-2.jpeg</attribute>
+        <attribute name="digest" type="string">452909d739d272c26d3afa490d3ccc54100b92ec-15b68</attribute>
+        <attribute name="width" type="int32">640</attribute>
+        <attribute name="uniqueid" type="string">F50B461D-B840-47A5-B107-1BB1D6EAFD68</attribute>
+        <attribute name="height" type="int32">423</attribute>
+        <attribute name="hasalphacomponent" type="bool">0</attribute>
+        <attribute name="filetype" type="string">public.jpeg</attribute>
+        <relationship name="containers" type="0/0" destination="ABSTRACTMEDIACONTAINER" idrefs="z102 z159 z161"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGEPROPERTIES" idrefs="z110"></relationship>
+        <relationship name="uploads" type="0/0" destination="MEDIAFILEUPLOAD"></relationship>
+        <relationship name="scalingproperties" type="0/0" destination="SCALEDIMAGEPROPERTIES"></relationship>
+    </object>
+    <object type="SIMPLESCALEDIMAGECONTAINER" id="z109">
+        <attribute name="scalingbehaviordata" type="binary">YnBsaXN0MDDUAQIDBAUGCQpYJHZlcnNpb25UJHRvcFkkYXJjaGl2ZXJYJG9iamVjdHMSAAGGoNEH
+CFRyb290gAFfEA9OU0tleWVkQXJjaGl2ZXKkCwwXGFUkbnVsbNUNDg8QERITFBUWViRjbGFzc1lhbGlnbm1lbnRYYmVoYXZpb3JVc2NhbGVUc2l6ZYADEAEQAiI/gAAAgAJYezMyLCAzMn3SGRobHFgkY2xhc3Nlc1okY2xhc3NuYW1lohwdXxAWS1RJbWFnZVNjYWxpbmdTZXR0aW5nc1hOU09iamVjdAgRGh8pMjc6P0FTWF5pcHqDiY6QkpSZm6Spsr3A2QAAAAAAAAEBAAAAAAAAAB4AAAAAAAAAAAAAAAAAAADi
+</attribute>
+        <attribute name="filetype" type="string">com.microsoft.ico</attribute>
+        <attribute name="identifier" type="string">E4317AFE-8841-419D-A160-F759EEEE72C4</attribute>
+        <relationship name="file" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z106"></relationship>
+        <relationship name="generatedproperties" type="1/1" destination="SCALEDIMAGEPROPERTIES" idrefs="z105"></relationship>
+        <relationship name="sourcemedia" type="1/1" destination="MEDIACONTAINER" idrefs="z107"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGECONTAINER"></relationship>
+    </object>
+    <object type="SCALEDIMAGEPROPERTIES" id="z110">
+        <attribute name="sharpeningfactor" type="float">0.300000011920929</attribute>
+        <attribute name="scalingbehaviordata" type="binary">YnBsaXN0MDDUAQIDBAUGCQpYJHZlcnNpb25UJHRvcFkkYXJjaGl2ZXJYJG9iamVjdHMSAAGGoNEH
+CFRyb290gAFfEA9OU0tleWVkQXJjaGl2ZXKkCwwXGFUkbnVsbNUNDg8QERITFBUWViRjbGFzc1lhbGlnbm1lbnRYYmVoYXZpb3JVc2NhbGVUc2l6ZYADEAAQAyI/gAAAgAJaezIwMCwgMTMyfdIZGhscWCRjbGFzc2VzWiRjbGFzc25hbWWiHB1fEBZLVEltYWdlU2NhbGluZ1NldHRpbmdzWE5TT2JqZWN0CBEaHykyNzo/QVNYXmlweoOJjpCSlJmbpqu0v8LbAAAAAAAAAQEAAAAAAAAAHgAAAAAAAAAAAAAAAAAAAOQ=
+</attribute>
+        <attribute name="compression" type="float">0.699999988079071</attribute>
+        <relationship name="destinationfile" type="1/1" destination="INDOCUMENTMEDIAFILE" idrefs="z112"></relationship>
+        <relationship name="sourcefile" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z108"></relationship>
+        <relationship name="containers" type="0/0" destination="SCALEDIMAGECONTAINER" idrefs="z111"></relationship>
+    </object>
+    <object type="SIMPLESCALEDIMAGECONTAINER" id="z111">
+        <attribute name="scalingbehaviordata" type="binary">YnBsaXN0MDDUAQIDBAUGCQpYJHZlcnNpb25UJHRvcFkkYXJjaGl2ZXJYJG9iamVjdHMSAAGGoNEH
+CFRyb290gAFfEA9OU0tleWVkQXJjaGl2ZXKkCwwXGFUkbnVsbNUNDg8QERITFBUWViRjbGFzc1lhbGlnbm1lbnRYYmVoYXZpb3JVc2NhbGVUc2l6ZYADEAAQASI/gAAAgAJaezIwMCwgNTAwfdIZGhscWCRjbGFzc2VzWiRjbGFzc25hbWWiHB1fEBZLVEltYWdlU2NhbGluZ1NldHRpbmdzWE5TT2JqZWN0CBEaHykyNzo/QVNYXmlweoOJjpCSlJmbpqu0v8LbAAAAAAAAAQEAAAAAAAAAHgAAAAAAAAAAAAAAAAAAAOQ=
+</attribute>
+        <attribute name="identifier" type="string">D59FE172-93ED-415F-99D6-170E0C57E6B7</attribute>
+        <relationship name="file" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z112"></relationship>
+        <relationship name="generatedproperties" type="1/1" destination="SCALEDIMAGEPROPERTIES" idrefs="z110"></relationship>
+        <relationship name="sourcemedia" type="1/1" destination="MEDIACONTAINER" idrefs="z102"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGECONTAINER"></relationship>
+    </object>
+    <object type="INDOCUMENTMEDIAFILE" id="z112">
+        <attribute name="sourcefilename" type="string">pastedImage.jpeg</attribute>
+        <attribute name="filename" type="string">pastedImage-3.jpeg</attribute>
+        <attribute name="digest" type="string">20ec10aeddb36ef6ae3af509c6a54e62bb20799e-3b57</attribute>
+        <attribute name="width" type="int32">200</attribute>
+        <attribute name="uniqueid" type="string">F1389167-4842-4EE8-9C48-94B4B2002867</attribute>
+        <attribute name="height" type="int32">132</attribute>
+        <attribute name="filetype" type="string">public.jpeg</attribute>
+        <relationship name="containers" type="0/0" destination="ABSTRACTMEDIACONTAINER" idrefs="z111"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGEPROPERTIES"></relationship>
+        <relationship name="uploads" type="0/0" destination="MEDIAFILEUPLOAD"></relationship>
+        <relationship name="scalingproperties" type="0/0" destination="SCALEDIMAGEPROPERTIES" idrefs="z110"></relationship>
+    </object>
+    <object type="MEDIACONTAINER" id="z113">
+        <attribute name="identifier" type="string">2706E967-22E5-40B1-A619-AFAC62CF3FD3</attribute>
+        <relationship name="file" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z103"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGECONTAINER"></relationship>
+    </object>
+    <object type="INDOCUMENTMEDIAFILE" id="z114">
+        <attribute name="sourcefilename" type="string">PAD4.jpeg</attribute>
+        <attribute name="filename" type="string">PAD4.jpeg</attribute>
+        <attribute name="digest" type="string">93909e07dfa53d356f066bca8e2795fe12553879-3ab3</attribute>
+        <attribute name="uniqueid" type="string">C4B687EB-487E-43F2-85B0-6B8D656F7DFC</attribute>
+        <attribute name="filetype" type="string">public.jpeg</attribute>
+        <relationship name="containers" type="0/0" destination="ABSTRACTMEDIACONTAINER"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGEPROPERTIES"></relationship>
+        <relationship name="uploads" type="0/0" destination="MEDIAFILEUPLOAD"></relationship>
+        <relationship name="scalingproperties" type="0/0" destination="SCALEDIMAGEPROPERTIES" idrefs="z120"></relationship>
+    </object>
+    <object type="SCALEDIMAGEPROPERTIES" id="z115">
+        <attribute name="sharpeningfactor" type="float">0.3</attribute>
+        <attribute name="scalingbehaviordata" type="binary">YnBsaXN0MDDUAQIDBAUGCQpYJHZlcnNpb25UJHRvcFkkYXJjaGl2ZXJYJG9iamVjdHMSAAGGoNEH
+CFRyb290gAFfEA9OU0tleWVkQXJjaGl2ZXKkCwwXGFUkbnVsbNUNDg8QERITFBUWViRjbGFzc1lhbGlnbm1lbnRYYmVoYXZpb3JVc2NhbGVUc2l6ZYADEAAQAyI/gAAAgAJaezIwMCwgMjAwfdIZGhscWCRjbGFzc2VzWiRjbGFzc25hbWWiHB1fEBZLVEltYWdlU2NhbGluZ1NldHRpbmdzWE5TT2JqZWN0CBEaHykyNzo/QVNYXmlweoOJjpCSlJmbpqu0v8LbAAAAAAAAAQEAAAAAAAAAHgAAAAAAAAAAAAAAAAAAAOQ=
+</attribute>
+        <attribute name="compression" type="float">0.7</attribute>
+        <relationship name="destinationfile" type="1/1" destination="INDOCUMENTMEDIAFILE" idrefs="z118"></relationship>
+        <relationship name="sourcefile" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z116"></relationship>
+        <relationship name="containers" type="0/0" destination="SCALEDIMAGECONTAINER" idrefs="z117"></relationship>
+    </object>
+    <object type="INDOCUMENTMEDIAFILE" id="z116">
+        <attribute name="sourcefilename" type="string">PAD4.png</attribute>
+        <attribute name="filename" type="string">PAD4.png</attribute>
+        <attribute name="digest" type="string">f3f7a35605443f2cb5174ca9bc023b453d2bab85-30705</attribute>
+        <attribute name="width" type="int32">512</attribute>
+        <attribute name="uniqueid" type="string">50086B0F-2967-4DF6-A4E9-DD1A08112054</attribute>
+        <attribute name="height" type="int32">512</attribute>
+        <attribute name="hasalphacomponent" type="bool">1</attribute>
+        <attribute name="filetype" type="string">public.png</attribute>
+        <relationship name="containers" type="0/0" destination="ABSTRACTMEDIACONTAINER" idrefs="z119"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGEPROPERTIES" idrefs="z115 z120"></relationship>
+        <relationship name="uploads" type="0/0" destination="MEDIAFILEUPLOAD"></relationship>
+        <relationship name="scalingproperties" type="0/0" destination="SCALEDIMAGEPROPERTIES"></relationship>
+    </object>
+    <object type="SIMPLESCALEDIMAGECONTAINER" id="z117">
+        <attribute name="scalingbehaviordata" type="binary">YnBsaXN0MDDUAQIDBAUGCQpYJHZlcnNpb25UJHRvcFkkYXJjaGl2ZXJYJG9iamVjdHMSAAGGoNEH
+CFRyb290gAFfEA9OU0tleWVkQXJjaGl2ZXKkCwwXGFUkbnVsbNUNDg8QERITFBUWViRjbGFzc1lhbGlnbm1lbnRYYmVoYXZpb3JVc2NhbGVUc2l6ZYADEAAQASI/gAAAgAJaezIwMCwgNTAwfdIZGhscWCRjbGFzc2VzWiRjbGFzc25hbWWiHB1fEBZLVEltYWdlU2NhbGluZ1NldHRpbmdzWE5TT2JqZWN0CBEaHykyNzo/QVNYXmlweoOJjpCSlJmbpqu0v8LbAAAAAAAAAQEAAAAAAAAAHgAAAAAAAAAAAAAAAAAAAOQ=
+</attribute>
+        <attribute name="identifier" type="string">4C7D3E3D-ACD1-4F74-9181-32C876DCCFDA</attribute>
+        <relationship name="file" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z118"></relationship>
+        <relationship name="generatedproperties" type="1/1" destination="SCALEDIMAGEPROPERTIES" idrefs="z115"></relationship>
+        <relationship name="sourcemedia" type="1/1" destination="MEDIACONTAINER" idrefs="z119"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGECONTAINER"></relationship>
+    </object>
+    <object type="INDOCUMENTMEDIAFILE" id="z118">
+        <attribute name="sourcefilename" type="string">PAD4.png</attribute>
+        <attribute name="filename" type="string">PAD4-2.png</attribute>
+        <attribute name="digest" type="string">629e32748d7f5743d4b1d2b5a6ffad942180f942-d2a6</attribute>
+        <attribute name="width" type="int32">200</attribute>
+        <attribute name="uniqueid" type="string">C579E06F-937C-4DD3-BCAD-0D59DF1564CE</attribute>
+        <attribute name="height" type="int32">200</attribute>
+        <attribute name="filetype" type="string">public.png</attribute>
+        <relationship name="containers" type="0/0" destination="ABSTRACTMEDIACONTAINER" idrefs="z117"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGEPROPERTIES"></relationship>
+        <relationship name="uploads" type="0/0" destination="MEDIAFILEUPLOAD" idrefs="z205"></relationship>
+        <relationship name="scalingproperties" type="0/0" destination="SCALEDIMAGEPROPERTIES" idrefs="z115"></relationship>
+    </object>
+    <object type="MEDIACONTAINER" id="z119">
+        <attribute name="sourcealiasdata" type="binary">AAAAAAGqAAIAAAdsZW9wYXJkAAAAAAAAAAAAAAAAAAAAAAAAAADD/CSTSCsAAACQWGgIUEFENC5w
+bmcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI+9a8S2MywAAAAAUFhNVP////8AAAkgAAAAAAAAAAAAAAAAAAAABkltYWdlcwAQAAgAAMP8hwMAAAARAAgAAMS2lZwAAAABACAAkFhoAJBYUAB8M3UAP49kAD+PUwAKqxYACqsBAAB63AACAEpsZW9wYXJkOlVzZXJzOmRhdmVjOkRlc2t0b3A6UE1UQjp0cnVuazpQaWNrQURpc2M6TWFya2V0aW5nOkltYWdlczpQQUQ0LnBuZwAOABIACABQAEEARAA0AC4AcABuAGcADwAQAAcAbABlAG8AcABhAHIAZAASAEJVc2Vycy9kYXZlYy9EZXNrdG9wL1BNVEIvdHJ1bmsvUGlja0FEaXNjL01hcmtldGluZy9JbWFnZXMvUEFENC5wbmcAEwABLwAAFQACAAz//wAA
+</attribute>
+        <attribute name="identifier" type="string">E465B693-2A77-4442-B97A-0D77E1524F6B</attribute>
+        <relationship name="file" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z116"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGECONTAINER" idrefs="z117"></relationship>
+    </object>
+    <object type="SCALEDIMAGEPROPERTIES" id="z120">
+        <attribute name="sharpeningfactor" type="float">0.3</attribute>
+        <attribute name="scalingbehaviordata" type="binary">YnBsaXN0MDDUAQIDBAUGCQpYJHZlcnNpb25UJHRvcFkkYXJjaGl2ZXJYJG9iamVjdHMSAAGGoNEH
+CFRyb290gAFfEA9OU0tleWVkQXJjaGl2ZXKkCwwXGFUkbnVsbNUNDg8QERITFBUWViRjbGFzc1lhbGlnbm1lbnRYYmVoYXZpb3JVc2NhbGVUc2l6ZYADEAAQAyI/gAAAgAJaezIwMCwgMjAwfdIZGhscWCRjbGFzc2VzWiRjbGFzc25hbWWiHB1fEBZLVEltYWdlU2NhbGluZ1NldHRpbmdzWE5TT2JqZWN0CBEaHykyNzo/QVNYXmlweoOJjpCSlJmbpqu0v8LbAAAAAAAAAQEAAAAAAAAAHgAAAAAAAAAAAAAAAAAAAOQ=
+</attribute>
+        <attribute name="compression" type="float">0.7</attribute>
+        <relationship name="destinationfile" type="1/1" destination="INDOCUMENTMEDIAFILE" idrefs="z114"></relationship>
+        <relationship name="sourcefile" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z116"></relationship>
+        <relationship name="containers" type="0/0" destination="SCALEDIMAGECONTAINER"></relationship>
+    </object>
+    <object type="INDOCUMENTMEDIAFILE" id="z121">
+        <attribute name="sourcefilename" type="string">pastedImage.jpeg</attribute>
+        <attribute name="filename" type="string">pastedImage-5.jpeg</attribute>
+        <attribute name="digest" type="string">d903211bd4ff83ca1e3427ae373bfd1c01455099-3bdb</attribute>
+        <attribute name="width" type="int32">200</attribute>
+        <attribute name="uniqueid" type="string">CF7E1AEE-0F4D-4F7F-A034-A6188D26AFC3</attribute>
+        <attribute name="height" type="int32">150</attribute>
+        <attribute name="filetype" type="string">public.jpeg</attribute>
+        <relationship name="containers" type="0/0" destination="ABSTRACTMEDIACONTAINER" idrefs="z139 z127 z122 z128"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGEPROPERTIES"></relationship>
+        <relationship name="uploads" type="0/0" destination="MEDIAFILEUPLOAD"></relationship>
+        <relationship name="scalingproperties" type="0/0" destination="SCALEDIMAGEPROPERTIES" idrefs="z125"></relationship>
+    </object>
+    <object type="SIMPLESCALEDIMAGECONTAINER" id="z122">
+        <attribute name="scalingbehaviordata" type="binary">YnBsaXN0MDDUAQIDBAUGCQpYJHZlcnNpb25UJHRvcFkkYXJjaGl2ZXJYJG9iamVjdHMSAAGGoNEH
+CFRyb290gAFfEA9OU0tleWVkQXJjaGl2ZXKkCwwXGFUkbnVsbNUNDg8QERITFBUWViRjbGFzc1lhbGlnbm1lbnRYYmVoYXZpb3JVc2NhbGVUc2l6ZYADEAAQASI/gAAAgAJaezIwMCwgNTAwfdIZGhscWCRjbGFzc2VzWiRjbGFzc25hbWWiHB1fEBZLVEltYWdlU2NhbGluZ1NldHRpbmdzWE5TT2JqZWN0CBEaHykyNzo/QVNYXmlweoOJjpCSlJmbpqu0v8LbAAAAAAAAAQEAAAAAAAAAHgAAAAAAAAAAAAAAAAAAAOQ=
+</attribute>
+        <attribute name="identifier" type="string">E96B865E-CED4-4F35-8A35-A5B08E489116</attribute>
+        <relationship name="file" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z121"></relationship>
+        <relationship name="generatedproperties" type="1/1" destination="SCALEDIMAGEPROPERTIES" idrefs="z125"></relationship>
+        <relationship name="sourcemedia" type="1/1" destination="MEDIACONTAINER" idrefs="z123"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGECONTAINER"></relationship>
+    </object>
+    <object type="MEDIACONTAINER" id="z123">
+        <attribute name="identifier" type="string">C0AF13C9-372B-4A7F-A3DB-B0808451ED0F</attribute>
+        <relationship name="file" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z124"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGECONTAINER" idrefs="z122"></relationship>
+    </object>
+    <object type="INDOCUMENTMEDIAFILE" id="z124">
+        <attribute name="sourcefilename" type="string">pastedImage.jpeg</attribute>
+        <attribute name="filename" type="string">pastedImage-4.jpeg</attribute>
+        <attribute name="digest" type="string">810a1702eba1a8486348169047a5c4a878be29b1-12cc3</attribute>
+        <attribute name="width" type="int32">640</attribute>
+        <attribute name="uniqueid" type="string">704AC2E5-29E5-4F6F-ADC6-1ED2575F9C9C</attribute>
+        <attribute name="height" type="int32">480</attribute>
+        <attribute name="hasalphacomponent" type="bool">0</attribute>
+        <attribute name="filetype" type="string">public.jpeg</attribute>
+        <relationship name="containers" type="0/0" destination="ABSTRACTMEDIACONTAINER" idrefs="z171 z186 z174 z170 z183 z123 z184 z181 z158 z129 z204 z138 z188 z196 z189 z126 z167 z153 z185 z165 z172 z168 z166"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGEPROPERTIES" idrefs="z125"></relationship>
+        <relationship name="uploads" type="0/0" destination="MEDIAFILEUPLOAD"></relationship>
+        <relationship name="scalingproperties" type="0/0" destination="SCALEDIMAGEPROPERTIES"></relationship>
+    </object>
+    <object type="SCALEDIMAGEPROPERTIES" id="z125">
+        <attribute name="sharpeningfactor" type="float">0.3</attribute>
+        <attribute name="scalingbehaviordata" type="binary">YnBsaXN0MDDUAQIDBAUGCQpYJHZlcnNpb25UJHRvcFkkYXJjaGl2ZXJYJG9iamVjdHMSAAGGoNEH
+CFRyb290gAFfEA9OU0tleWVkQXJjaGl2ZXKkCwwXGFUkbnVsbNUNDg8QERITFBUWViRjbGFzc1lhbGlnbm1lbnRYYmVoYXZpb3JVc2NhbGVUc2l6ZYADEAAQAyI/gAAAgAJaezIwMCwgMTUwfdIZGhscWCRjbGFzc2VzWiRjbGFzc25hbWWiHB1fEBZLVEltYWdlU2NhbGluZ1NldHRpbmdzWE5TT2JqZWN0CBEaHykyNzo/QVNYXmlweoOJjpCSlJmbpqu0v8LbAAAAAAAAAQEAAAAAAAAAHgAAAAAAAAAAAAAAAAAAAOQ=
+</attribute>
+        <attribute name="compression" type="float">0.7</attribute>
+        <relationship name="destinationfile" type="1/1" destination="INDOCUMENTMEDIAFILE" idrefs="z121"></relationship>
+        <relationship name="sourcefile" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z124"></relationship>
+        <relationship name="containers" type="0/0" destination="SCALEDIMAGECONTAINER" idrefs="z139 z127 z122 z128"></relationship>
+    </object>
+    <object type="MEDIACONTAINER" id="z126">
+        <attribute name="identifier" type="string">78A15DFC-87D0-4DE6-97B4-6EAE43136F1D</attribute>
+        <relationship name="file" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z124"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGECONTAINER" idrefs="z127"></relationship>
+    </object>
+    <object type="SIMPLESCALEDIMAGECONTAINER" id="z127">
+        <attribute name="scalingbehaviordata" type="binary">YnBsaXN0MDDUAQIDBAUGCQpYJHZlcnNpb25UJHRvcFkkYXJjaGl2ZXJYJG9iamVjdHMSAAGGoNEH
+CFRyb290gAFfEA9OU0tleWVkQXJjaGl2ZXKkCwwXGFUkbnVsbNUNDg8QERITFBUWViRjbGFzc1lhbGlnbm1lbnRYYmVoYXZpb3JVc2NhbGVUc2l6ZYADEAAQASI/gAAAgAJaezIwMCwgNTAwfdIZGhscWCRjbGFzc2VzWiRjbGFzc25hbWWiHB1fEBZLVEltYWdlU2NhbGluZ1NldHRpbmdzWE5TT2JqZWN0CBEaHykyNzo/QVNYXmlweoOJjpCSlJmbpqu0v8LbAAAAAAAAAQEAAAAAAAAAHgAAAAAAAAAAAAAAAAAAAOQ=
+</attribute>
+        <attribute name="identifier" type="string">E07508A5-D0A1-48F9-AC27-D5C2D5FF2F22</attribute>
+        <relationship name="file" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z121"></relationship>
+        <relationship name="generatedproperties" type="1/1" destination="SCALEDIMAGEPROPERTIES" idrefs="z125"></relationship>
+        <relationship name="sourcemedia" type="1/1" destination="MEDIACONTAINER" idrefs="z126"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGECONTAINER"></relationship>
+    </object>
+    <object type="SIMPLESCALEDIMAGECONTAINER" id="z128">
+        <attribute name="scalingbehaviordata" type="binary">YnBsaXN0MDDUAQIDBAUGCQpYJHZlcnNpb25UJHRvcFkkYXJjaGl2ZXJYJG9iamVjdHMSAAGGoNEH
+CFRyb290gAFfEA9OU0tleWVkQXJjaGl2ZXKkCwwXGFUkbnVsbNUNDg8QERITFBUWViRjbGFzc1lhbGlnbm1lbnRYYmVoYXZpb3JVc2NhbGVUc2l6ZYADEAAQASI/gAAAgAJaezIwMCwgNTAwfdIZGhscWCRjbGFzc2VzWiRjbGFzc25hbWWiHB1fEBZLVEltYWdlU2NhbGluZ1NldHRpbmdzWE5TT2JqZWN0CBEaHykyNzo/QVNYXmlweoOJjpCSlJmbpqu0v8LbAAAAAAAAAQEAAAAAAAAAHgAAAAAAAAAAAAAAAAAAAOQ=
+</attribute>
+        <attribute name="identifier" type="string">150F35AD-1F9E-4E48-BC32-CC9A3F25999C</attribute>
+        <relationship name="file" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z121"></relationship>
+        <relationship name="generatedproperties" type="1/1" destination="SCALEDIMAGEPROPERTIES" idrefs="z125"></relationship>
+        <relationship name="sourcemedia" type="1/1" destination="MEDIACONTAINER" idrefs="z129"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGECONTAINER"></relationship>
+    </object>
+    <object type="MEDIACONTAINER" id="z129">
+        <attribute name="identifier" type="string">AB8049E9-8105-498E-8CD8-353C5EE829AC</attribute>
+        <relationship name="file" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z124"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGECONTAINER" idrefs="z128"></relationship>
+    </object>
+    <object type="MEDIACONTAINER" id="z130">
+        <attribute name="identifier" type="string">55D17FB8-63BC-4AB1-806D-909F8085C04B</attribute>
+        <relationship name="file" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z131"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGECONTAINER" idrefs="z132"></relationship>
+    </object>
+    <object type="INDOCUMENTMEDIAFILE" id="z131">
+        <attribute name="sourcefilename" type="string">pastedImage.jpeg</attribute>
+        <attribute name="filename" type="string">pastedImage-6.jpeg</attribute>
+        <attribute name="digest" type="string">0f960710faa9a8085d41d911344a080d97864887-3b3e</attribute>
+        <attribute name="width" type="int32">153</attribute>
+        <attribute name="uniqueid" type="string">4AAB1F3A-BC20-4F9D-ACA9-F2DD7B622B66</attribute>
+        <attribute name="height" type="int32">115</attribute>
+        <attribute name="filetype" type="string">public.jpeg</attribute>
+        <relationship name="containers" type="0/0" destination="ABSTRACTMEDIACONTAINER" idrefs="z193 z132 z130"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGEPROPERTIES"></relationship>
+        <relationship name="uploads" type="0/0" destination="MEDIAFILEUPLOAD"></relationship>
+        <relationship name="scalingproperties" type="0/0" destination="SCALEDIMAGEPROPERTIES"></relationship>
+    </object>
+    <object type="SIMPLESCALEDIMAGECONTAINER" id="z132">
+        <attribute name="scalingbehaviordata" type="binary">YnBsaXN0MDDUAQIDBAUGCQpYJHZlcnNpb25UJHRvcFkkYXJjaGl2ZXJYJG9iamVjdHMSAAGGoNEH
+CFRyb290gAFfEA9OU0tleWVkQXJjaGl2ZXKkCwwXGFUkbnVsbNUNDg8QERITFBUWViRjbGFzc1lhbGlnbm1lbnRYYmVoYXZpb3JVc2NhbGVUc2l6ZYADEAAQASI/gAAAgAJaezIwMCwgNTAwfdIZGhscWCRjbGFzc2VzWiRjbGFzc25hbWWiHB1fEBZLVEltYWdlU2NhbGluZ1NldHRpbmdzWE5TT2JqZWN0CBEaHykyNzo/QVNYXmlweoOJjpCSlJmbpqu0v8LbAAAAAAAAAQEAAAAAAAAAHgAAAAAAAAAAAAAAAAAAAOQ=
+</attribute>
+        <attribute name="identifier" type="string">5F921B4D-041D-4C44-B294-3B8CE5000728</attribute>
+        <relationship name="file" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z131"></relationship>
+        <relationship name="generatedproperties" type="1/1" destination="SCALEDIMAGEPROPERTIES"></relationship>
+        <relationship name="sourcemedia" type="1/1" destination="MEDIACONTAINER" idrefs="z130"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGECONTAINER"></relationship>
+    </object>
+    <object type="SCALEDIMAGEPROPERTIES" id="z133">
+        <attribute name="sharpeningfactor" type="float">0.3</attribute>
+        <attribute name="scalingbehaviordata" type="binary">YnBsaXN0MDDUAQIDBAUGCQpYJHZlcnNpb25UJHRvcFkkYXJjaGl2ZXJYJG9iamVjdHMSAAGGoNEH
+CFRyb290gAFfEA9OU0tleWVkQXJjaGl2ZXKkCwwXGFUkbnVsbNUNDg8QERITFBUWViRjbGFzc1lhbGlnbm1lbnRYYmVoYXZpb3JVc2NhbGVUc2l6ZYADEAAQAyI/gAAAgAJaezIwMCwgMjYxfdIZGhscWCRjbGFzc2VzWiRjbGFzc25hbWWiHB1fEBZLVEltYWdlU2NhbGluZ1NldHRpbmdzWE5TT2JqZWN0CBEaHykyNzo/QVNYXmlweoOJjpCSlJmbpqu0v8LbAAAAAAAAAQEAAAAAAAAAHgAAAAAAAAAAAAAAAAAAAOQ=
+</attribute>
+        <attribute name="compression" type="float">0.7</attribute>
+        <relationship name="destinationfile" type="1/1" destination="INDOCUMENTMEDIAFILE" idrefs="z135"></relationship>
+        <relationship name="sourcefile" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z137"></relationship>
+        <relationship name="containers" type="0/0" destination="SCALEDIMAGECONTAINER" idrefs="z134 z143"></relationship>
+    </object>
+    <object type="SIMPLESCALEDIMAGECONTAINER" id="z134">
+        <attribute name="scalingbehaviordata" type="binary">YnBsaXN0MDDUAQIDBAUGCQpYJHZlcnNpb25UJHRvcFkkYXJjaGl2ZXJYJG9iamVjdHMSAAGGoNEH
+CFRyb290gAFfEA9OU0tleWVkQXJjaGl2ZXKkCwwXGFUkbnVsbNUNDg8QERITFBUWViRjbGFzc1lhbGlnbm1lbnRYYmVoYXZpb3JVc2NhbGVUc2l6ZYADEAAQASI/gAAAgAJaezIwMCwgNTAwfdIZGhscWCRjbGFzc2VzWiRjbGFzc25hbWWiHB1fEBZLVEltYWdlU2NhbGluZ1NldHRpbmdzWE5TT2JqZWN0CBEaHykyNzo/QVNYXmlweoOJjpCSlJmbpqu0v8LbAAAAAAAAAQEAAAAAAAAAHgAAAAAAAAAAAAAAAAAAAOQ=
+</attribute>
+        <attribute name="identifier" type="string">08FF8010-4479-4064-A21E-AA87E1D4972C</attribute>
+        <relationship name="file" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z135"></relationship>
+        <relationship name="generatedproperties" type="1/1" destination="SCALEDIMAGEPROPERTIES" idrefs="z133"></relationship>
+        <relationship name="sourcemedia" type="1/1" destination="MEDIACONTAINER" idrefs="z136"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGECONTAINER"></relationship>
+    </object>
+    <object type="INDOCUMENTMEDIAFILE" id="z135">
+        <attribute name="sourcefilename" type="string">pastedImage.jpeg</attribute>
+        <attribute name="filename" type="string">pastedImage-8.jpeg</attribute>
+        <attribute name="digest" type="string">22c837eb2ce899969a0dc1567c8baad1a14fab89-8129</attribute>
+        <attribute name="width" type="int32">200</attribute>
+        <attribute name="uniqueid" type="string">9F188228-44C5-42D6-8933-739F1C7558E8</attribute>
+        <attribute name="height" type="int32">261</attribute>
+        <attribute name="filetype" type="string">public.jpeg</attribute>
+        <relationship name="containers" type="0/0" destination="ABSTRACTMEDIACONTAINER" idrefs="z134 z143"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGEPROPERTIES"></relationship>
+        <relationship name="uploads" type="0/0" destination="MEDIAFILEUPLOAD"></relationship>
+        <relationship name="scalingproperties" type="0/0" destination="SCALEDIMAGEPROPERTIES" idrefs="z133"></relationship>
+    </object>
+    <object type="MEDIACONTAINER" id="z136">
+        <attribute name="identifier" type="string">2C5AA9BD-8C7B-4C85-A8A1-9A39F14B4382</attribute>
+        <relationship name="file" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z137"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGECONTAINER" idrefs="z134"></relationship>
+    </object>
+    <object type="INDOCUMENTMEDIAFILE" id="z137">
+        <attribute name="sourcefilename" type="string">pastedImage.jpeg</attribute>
+        <attribute name="filename" type="string">pastedImage-7.jpeg</attribute>
+        <attribute name="digest" type="string">2225b440bfdff90ca137cc9e3455f17a63c1402c-284e8</attribute>
+        <attribute name="width" type="int32">490</attribute>
+        <attribute name="uniqueid" type="string">D782DF2E-F719-43F6-9F05-2E4CC2F00942</attribute>
+        <attribute name="height" type="int32">640</attribute>
+        <attribute name="hasalphacomponent" type="bool">0</attribute>
+        <attribute name="filetype" type="string">public.jpeg</attribute>
+        <relationship name="containers" type="0/0" destination="ABSTRACTMEDIACONTAINER" idrefs="z136 z191 z142"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGEPROPERTIES" idrefs="z133"></relationship>
+        <relationship name="uploads" type="0/0" destination="MEDIAFILEUPLOAD"></relationship>
+        <relationship name="scalingproperties" type="0/0" destination="SCALEDIMAGEPROPERTIES"></relationship>
+    </object>
+    <object type="MEDIACONTAINER" id="z138">
+        <attribute name="identifier" type="string">351C7029-A3C2-4351-8EF1-1119377C9C84</attribute>
+        <relationship name="file" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z124"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGECONTAINER" idrefs="z139"></relationship>
+    </object>
+    <object type="SIMPLESCALEDIMAGECONTAINER" id="z139">
+        <attribute name="scalingbehaviordata" type="binary">YnBsaXN0MDDUAQIDBAUGCQpYJHZlcnNpb25UJHRvcFkkYXJjaGl2ZXJYJG9iamVjdHMSAAGGoNEH
+CFRyb290gAFfEA9OU0tleWVkQXJjaGl2ZXKkCwwXGFUkbnVsbNUNDg8QERITFBUWViRjbGFzc1lhbGlnbm1lbnRYYmVoYXZpb3JVc2NhbGVUc2l6ZYADEAAQASI/gAAAgAJaezIwMCwgNTAwfdIZGhscWCRjbGFzc2VzWiRjbGFzc25hbWWiHB1fEBZLVEltYWdlU2NhbGluZ1NldHRpbmdzWE5TT2JqZWN0CBEaHykyNzo/QVNYXmlweoOJjpCSlJmbpqu0v8LbAAAAAAAAAQEAAAAAAAAAHgAAAAAAAAAAAAAAAAAAAOQ=
+</attribute>
+        <attribute name="identifier" type="string">0B97FF24-01E7-467F-A303-D72463915942</attribute>
+        <relationship name="file" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z121"></relationship>
+        <relationship name="generatedproperties" type="1/1" destination="SCALEDIMAGEPROPERTIES" idrefs="z125"></relationship>
+        <relationship name="sourcemedia" type="1/1" destination="MEDIACONTAINER" idrefs="z138"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGECONTAINER"></relationship>
+    </object>
+    <object type="INDOCUMENTMEDIAFILE" id="z140">
+        <attribute name="sourcefilename" type="string">pastedImage.png</attribute>
+        <attribute name="filename" type="string">pastedImage.png</attribute>
+        <attribute name="digest" type="string">690f31e61480e2cb58c43b1aafd0b87a43641872-489e</attribute>
+        <attribute name="width" type="int32">350</attribute>
+        <attribute name="uniqueid" type="string">1F28468A-26A9-4B6F-A7EC-070BCE899B1F</attribute>
+        <attribute name="height" type="int32">81</attribute>
+        <attribute name="filetype" type="string">public.png</attribute>
+        <relationship name="containers" type="0/0" destination="ABSTRACTMEDIACONTAINER" idrefs="z141"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGEPROPERTIES"></relationship>
+        <relationship name="uploads" type="0/0" destination="MEDIAFILEUPLOAD"></relationship>
+        <relationship name="scalingproperties" type="0/0" destination="SCALEDIMAGEPROPERTIES"></relationship>
+    </object>
+    <object type="GRAPHICALTEXT" id="z141">
+        <attribute name="textsize" type="float">0.5</attribute>
+        <attribute name="text" type="string">PickADisk</attribute>
+        <attribute name="imagereplacementcode" type="string">h1h</attribute>
+        <attribute name="designidentifier" type="string">sandvox.Trippy Bubbles</attribute>
+        <attribute name="identifier" type="string">45132399-CEA8-404B-8E53-E10AB2DE060F</attribute>
+        <relationship name="file" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z140"></relationship>
+    </object>
+    <object type="MEDIACONTAINER" id="z142">
+        <attribute name="identifier" type="string">6C514CA2-2422-4BD4-8603-57DF8E1CFFA1</attribute>
+        <relationship name="file" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z137"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGECONTAINER" idrefs="z143"></relationship>
+    </object>
+    <object type="SIMPLESCALEDIMAGECONTAINER" id="z143">
+        <attribute name="scalingbehaviordata" type="binary">YnBsaXN0MDDUAQIDBAUGCQpYJHZlcnNpb25UJHRvcFkkYXJjaGl2ZXJYJG9iamVjdHMSAAGGoNEH
+CFRyb290gAFfEA9OU0tleWVkQXJjaGl2ZXKkCwwXGFUkbnVsbNUNDg8QERITFBUWViRjbGFzc1lhbGlnbm1lbnRYYmVoYXZpb3JVc2NhbGVUc2l6ZYADEAAQASI/gAAAgAJaezIwMCwgNTAwfdIZGhscWCRjbGFzc2VzWiRjbGFzc25hbWWiHB1fEBZLVEltYWdlU2NhbGluZ1NldHRpbmdzWE5TT2JqZWN0CBEaHykyNzo/QVNYXmlweoOJjpCSlJmbpqu0v8LbAAAAAAAAAQEAAAAAAAAAHgAAAAAAAAAAAAAAAAAAAOQ=
+</attribute>
+        <attribute name="identifier" type="string">94A2F07C-B57A-4CDB-A765-03F02EC14D75</attribute>
+        <relationship name="file" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z135"></relationship>
+        <relationship name="generatedproperties" type="1/1" destination="SCALEDIMAGEPROPERTIES" idrefs="z133"></relationship>
+        <relationship name="sourcemedia" type="1/1" destination="MEDIACONTAINER" idrefs="z142"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGECONTAINER"></relationship>
+    </object>
+    <object type="INDOCUMENTMEDIAFILE" id="z144">
+        <attribute name="sourcefilename" type="string">pastedImage.jpeg</attribute>
+        <attribute name="filename" type="string">pastedImage-9.jpeg</attribute>
+        <attribute name="digest" type="string">5cc4061a779a7c96270e753cec1b4fd8c76a6ec0-c49e</attribute>
+        <attribute name="width" type="int32">640</attribute>
+        <attribute name="uniqueid" type="string">6507458D-2736-468A-8C8C-79DD69FB0273</attribute>
+        <attribute name="height" type="int32">480</attribute>
+        <attribute name="hasalphacomponent" type="bool">0</attribute>
+        <attribute name="filetype" type="string">public.jpeg</attribute>
+        <relationship name="containers" type="0/0" destination="ABSTRACTMEDIACONTAINER" idrefs="z145 z190"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGEPROPERTIES" idrefs="z146"></relationship>
+        <relationship name="uploads" type="0/0" destination="MEDIAFILEUPLOAD"></relationship>
+        <relationship name="scalingproperties" type="0/0" destination="SCALEDIMAGEPROPERTIES"></relationship>
+    </object>
+    <object type="MEDIACONTAINER" id="z145">
+        <attribute name="identifier" type="string">433AE032-0880-431B-903A-363CD159C42D</attribute>
+        <relationship name="file" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z144"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGECONTAINER" idrefs="z147"></relationship>
+    </object>
+    <object type="SCALEDIMAGEPROPERTIES" id="z146">
+        <attribute name="sharpeningfactor" type="float">0.3</attribute>
+        <attribute name="scalingbehaviordata" type="binary">YnBsaXN0MDDUAQIDBAUGCQpYJHZlcnNpb25UJHRvcFkkYXJjaGl2ZXJYJG9iamVjdHMSAAGGoNEH
+CFRyb290gAFfEA9OU0tleWVkQXJjaGl2ZXKkCwwXGFUkbnVsbNUNDg8QERITFBUWViRjbGFzc1lhbGlnbm1lbnRYYmVoYXZpb3JVc2NhbGVUc2l6ZYADEAAQAyI/gAAAgAJaezIwMCwgMTUwfdIZGhscWCRjbGFzc2VzWiRjbGFzc25hbWWiHB1fEBZLVEltYWdlU2NhbGluZ1NldHRpbmdzWE5TT2JqZWN0CBEaHykyNzo/QVNYXmlweoOJjpCSlJmbpqu0v8LbAAAAAAAAAQEAAAAAAAAAHgAAAAAAAAAAAAAAAAAAAOQ=
+</attribute>
+        <attribute name="compression" type="float">0.7</attribute>
+        <relationship name="destinationfile" type="1/1" destination="INDOCUMENTMEDIAFILE" idrefs="z148"></relationship>
+        <relationship name="sourcefile" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z144"></relationship>
+        <relationship name="containers" type="0/0" destination="SCALEDIMAGECONTAINER" idrefs="z147"></relationship>
+    </object>
+    <object type="SIMPLESCALEDIMAGECONTAINER" id="z147">
+        <attribute name="scalingbehaviordata" type="binary">YnBsaXN0MDDUAQIDBAUGCQpYJHZlcnNpb25UJHRvcFkkYXJjaGl2ZXJYJG9iamVjdHMSAAGGoNEH
+CFRyb290gAFfEA9OU0tleWVkQXJjaGl2ZXKkCwwXGFUkbnVsbNUNDg8QERITFBUWViRjbGFzc1lhbGlnbm1lbnRYYmVoYXZpb3JVc2NhbGVUc2l6ZYADEAAQASI/gAAAgAJaezIwMCwgNTAwfdIZGhscWCRjbGFzc2VzWiRjbGFzc25hbWWiHB1fEBZLVEltYWdlU2NhbGluZ1NldHRpbmdzWE5TT2JqZWN0CBEaHykyNzo/QVNYXmlweoOJjpCSlJmbpqu0v8LbAAAAAAAAAQEAAAAAAAAAHgAAAAAAAAAAAAAAAAAAAOQ=
+</attribute>
+        <attribute name="identifier" type="string">28F78002-325A-4E98-A76A-682BC00939C1</attribute>
+        <relationship name="file" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z148"></relationship>
+        <relationship name="generatedproperties" type="1/1" destination="SCALEDIMAGEPROPERTIES" idrefs="z146"></relationship>
+        <relationship name="sourcemedia" type="1/1" destination="MEDIACONTAINER" idrefs="z145"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGECONTAINER"></relationship>
+    </object>
+    <object type="INDOCUMENTMEDIAFILE" id="z148">
+        <attribute name="sourcefilename" type="string">pastedImage.jpeg</attribute>
+        <attribute name="filename" type="string">pastedImage-10.jpeg</attribute>
+        <attribute name="digest" type="string">1141d01072dd7562b0f59e66ddc8bbfe07a22965-2602</attribute>
+        <attribute name="width" type="int32">200</attribute>
+        <attribute name="uniqueid" type="string">EE025469-39A3-4794-AC6B-A72E88162F66</attribute>
+        <attribute name="height" type="int32">150</attribute>
+        <attribute name="filetype" type="string">public.jpeg</attribute>
+        <relationship name="containers" type="0/0" destination="ABSTRACTMEDIACONTAINER" idrefs="z147"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGEPROPERTIES"></relationship>
+        <relationship name="uploads" type="0/0" destination="MEDIAFILEUPLOAD"></relationship>
+        <relationship name="scalingproperties" type="0/0" destination="SCALEDIMAGEPROPERTIES" idrefs="z146"></relationship>
+    </object>
+    <object type="INDOCUMENTMEDIAFILE" id="z149">
+        <attribute name="sourcefilename" type="string">pastedImage.jpeg</attribute>
+        <attribute name="filename" type="string">pastedImage-11.jpeg</attribute>
+        <attribute name="digest" type="string">953a9f49bb77f83f529870ae356419a57e8f69f7-ae5d</attribute>
+        <attribute name="uniqueid" type="string">A657F775-7133-4664-9AB4-259B99255D17</attribute>
+        <attribute name="filetype" type="string">public.jpeg</attribute>
+        <relationship name="containers" type="0/0" destination="ABSTRACTMEDIACONTAINER" idrefs="z195 z150"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGEPROPERTIES"></relationship>
+        <relationship name="uploads" type="0/0" destination="MEDIAFILEUPLOAD"></relationship>
+        <relationship name="scalingproperties" type="0/0" destination="SCALEDIMAGEPROPERTIES"></relationship>
+    </object>
+    <object type="MEDIACONTAINER" id="z150">
+        <attribute name="identifier" type="string">0F8C33F2-5E9B-4AFF-B6A6-F8E5F163C06C</attribute>
+        <relationship name="file" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z149"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGECONTAINER"></relationship>
+    </object>
+    <object type="INDOCUMENTMEDIAFILE" id="z151">
+        <attribute name="sourcefilename" type="string">pastedImage.jpeg</attribute>
+        <attribute name="filename" type="string">pastedImage-12.jpeg</attribute>
+        <attribute name="digest" type="string">3dc37c4d747229e10c5afa73b549686d3d38caa2-19605</attribute>
+        <attribute name="uniqueid" type="string">50DAB6F1-16FD-429D-8549-20C0351E029D</attribute>
+        <attribute name="filetype" type="string">public.jpeg</attribute>
+        <relationship name="containers" type="0/0" destination="ABSTRACTMEDIACONTAINER" idrefs="z169 z152"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGEPROPERTIES"></relationship>
+        <relationship name="uploads" type="0/0" destination="MEDIAFILEUPLOAD"></relationship>
+        <relationship name="scalingproperties" type="0/0" destination="SCALEDIMAGEPROPERTIES"></relationship>
+    </object>
+    <object type="MEDIACONTAINER" id="z152">
+        <attribute name="identifier" type="string">B067F6C3-3A95-40E9-9F76-39705C1C4B1A</attribute>
+        <relationship name="file" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z151"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGECONTAINER"></relationship>
+    </object>
+    <object type="MEDIACONTAINER" id="z153">
+        <attribute name="identifier" type="string">8CA2A59C-46F8-4B31-B450-230FD25E16B3</attribute>
+        <relationship name="file" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z124"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGECONTAINER"></relationship>
+    </object>
+    <object type="INDOCUMENTMEDIAFILE" id="z154">
+        <attribute name="sourcefilename" type="string">pastedImage.png</attribute>
+        <attribute name="filename" type="string">pastedImage-2.png</attribute>
+        <attribute name="digest" type="string">16bd9711ec4af4ca4abb29a4e8b8b3783c3e4de8-198ef</attribute>
+        <attribute name="uniqueid" type="string">40C98F3D-4850-4A52-BDAA-748D3B1B4BA3</attribute>
+        <attribute name="filetype" type="string">public.png</attribute>
+        <relationship name="containers" type="0/0" destination="ABSTRACTMEDIACONTAINER" idrefs="z162 z155"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGEPROPERTIES"></relationship>
+        <relationship name="uploads" type="0/0" destination="MEDIAFILEUPLOAD"></relationship>
+        <relationship name="scalingproperties" type="0/0" destination="SCALEDIMAGEPROPERTIES"></relationship>
+    </object>
+    <object type="MEDIACONTAINER" id="z155">
+        <attribute name="identifier" type="string">9BF0E000-1875-42C9-AB5D-68FBEB2DC1BA</attribute>
+        <relationship name="file" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z154"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGECONTAINER"></relationship>
+    </object>
+    <object type="MEDIACONTAINER" id="z156">
+        <attribute name="identifier" type="string">8BF949C6-E720-4551-AFA2-CB43691CFF60</attribute>
+        <relationship name="file" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z157"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGECONTAINER"></relationship>
+    </object>
+    <object type="INDOCUMENTMEDIAFILE" id="z157">
+        <attribute name="sourcefilename" type="string">pastedImage.png</attribute>
+        <attribute name="filename" type="string">pastedImage-3.png</attribute>
+        <attribute name="digest" type="string">30d4dc6921405a310ba5cc55849d7e26d08a45ad-1c31a</attribute>
+        <attribute name="uniqueid" type="string">625837D9-0A88-4E91-8563-BD13D84F5E89</attribute>
+        <attribute name="filetype" type="string">public.png</attribute>
+        <relationship name="containers" type="0/0" destination="ABSTRACTMEDIACONTAINER" idrefs="z156"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGEPROPERTIES"></relationship>
+        <relationship name="uploads" type="0/0" destination="MEDIAFILEUPLOAD"></relationship>
+        <relationship name="scalingproperties" type="0/0" destination="SCALEDIMAGEPROPERTIES"></relationship>
+    </object>
+    <object type="MEDIACONTAINER" id="z158">
+        <attribute name="identifier" type="string">E2A7A8E1-4079-4C78-BFA6-3D06CE4AAACC</attribute>
+        <relationship name="file" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z124"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGECONTAINER"></relationship>
+    </object>
+    <object type="MEDIACONTAINER" id="z159">
+        <attribute name="identifier" type="string">5904764C-7D8E-48F6-B98F-6A96C5A00340</attribute>
+        <relationship name="file" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z108"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGECONTAINER"></relationship>
+    </object>
+    <object type="MEDIACONTAINER" id="z160">
+        <attribute name="identifier" type="string">233E5E44-4824-47C9-B5B6-E3D62B82EC01</attribute>
+        <relationship name="file" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z103"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGECONTAINER"></relationship>
+    </object>
+    <object type="MEDIACONTAINER" id="z161">
+        <attribute name="identifier" type="string">4DB37796-8A0B-4B01-B1B9-27DFBEC86DC4</attribute>
+        <relationship name="file" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z108"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGECONTAINER"></relationship>
+    </object>
+    <object type="MEDIACONTAINER" id="z162">
+        <attribute name="identifier" type="string">99943E3F-1CFF-41B7-8CEE-D8FD557D4E40</attribute>
+        <relationship name="file" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z154"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGECONTAINER"></relationship>
+    </object>
+    <object type="INDOCUMENTMEDIAFILE" id="z163">
+        <attribute name="sourcefilename" type="string">pastedImage.png</attribute>
+        <attribute name="filename" type="string">pastedImage-4.png</attribute>
+        <attribute name="digest" type="string">2dee3138e04cc94bdfe9e774f1b48b550f1f9ac3-3cd4</attribute>
+        <attribute name="width" type="int32">256</attribute>
+        <attribute name="uniqueid" type="string">07A9A1F6-DAB3-4D3B-BECA-07F4856E94F1</attribute>
+        <attribute name="height" type="int32">85</attribute>
+        <attribute name="filetype" type="string">public.png</attribute>
+        <relationship name="containers" type="0/0" destination="ABSTRACTMEDIACONTAINER" idrefs="z164"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGEPROPERTIES"></relationship>
+        <relationship name="uploads" type="0/0" destination="MEDIAFILEUPLOAD"></relationship>
+        <relationship name="scalingproperties" type="0/0" destination="SCALEDIMAGEPROPERTIES"></relationship>
+    </object>
+    <object type="GRAPHICALTEXT" id="z164">
+        <attribute name="textsize" type="float">0.5</attribute>
+        <attribute name="text" type="string">PickADisk</attribute>
+        <attribute name="imagereplacementcode" type="string">h1h</attribute>
+        <attribute name="designidentifier" type="string">sandvox.Erratic</attribute>
+        <attribute name="identifier" type="string">A8E025C8-488B-457F-8DEF-B2EC7C52C6A3</attribute>
+        <relationship name="file" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z163"></relationship>
+    </object>
+    <object type="MEDIACONTAINER" id="z165">
+        <attribute name="identifier" type="string">3C49B4C6-D8D2-402D-B6DD-EF80671075F6</attribute>
+        <relationship name="file" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z124"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGECONTAINER"></relationship>
+    </object>
+    <object type="MEDIACONTAINER" id="z166">
+        <attribute name="identifier" type="string">B30BC772-E944-4A3F-99F8-8A00189526F1</attribute>
+        <relationship name="file" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z124"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGECONTAINER"></relationship>
+    </object>
+    <object type="MEDIACONTAINER" id="z167">
+        <attribute name="identifier" type="string">05D214C3-4925-483F-B708-103CC051B386</attribute>
+        <relationship name="file" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z124"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGECONTAINER"></relationship>
+    </object>
+    <object type="MEDIACONTAINER" id="z168">
+        <attribute name="identifier" type="string">E3BAFF78-46DB-4CCB-A7BA-BD2C2B96A9A3</attribute>
+        <relationship name="file" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z124"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGECONTAINER"></relationship>
+    </object>
+    <object type="MEDIACONTAINER" id="z169">
+        <attribute name="identifier" type="string">6185E0AA-DAFF-4EBA-9E39-326553EA1599</attribute>
+        <relationship name="file" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z151"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGECONTAINER"></relationship>
+    </object>
+    <object type="MEDIACONTAINER" id="z170">
+        <attribute name="identifier" type="string">DA5DB9EE-9138-4E97-9A70-3EB35E0C6674</attribute>
+        <relationship name="file" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z124"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGECONTAINER"></relationship>
+    </object>
+    <object type="MEDIACONTAINER" id="z171">
+        <attribute name="identifier" type="string">C80A9C3D-E9DF-4C95-96ED-AF471CA39447</attribute>
+        <relationship name="file" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z124"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGECONTAINER"></relationship>
+    </object>
+    <object type="MEDIACONTAINER" id="z172">
+        <attribute name="identifier" type="string">1E06E48B-94CB-4DBC-A502-1F56C7573224</attribute>
+        <relationship name="file" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z124"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGECONTAINER"></relationship>
+    </object>
+    <object type="INDOCUMENTMEDIAFILE" id="z173">
+        <attribute name="sourcefilename" type="string">pastedImage.png</attribute>
+        <attribute name="filename" type="string">pastedImage-5.png</attribute>
+        <attribute name="digest" type="string">99020f0c3546401f6b95d106b56f31484a256201-5e47</attribute>
+        <attribute name="width" type="int32">512</attribute>
+        <attribute name="uniqueid" type="string">3565CDF3-82FC-4B53-BC94-FD6B8780DCEC</attribute>
+        <attribute name="height" type="int32">89</attribute>
+        <attribute name="filetype" type="string">public.png</attribute>
+        <relationship name="containers" type="0/0" destination="ABSTRACTMEDIACONTAINER" idrefs="z178"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGEPROPERTIES"></relationship>
+        <relationship name="uploads" type="0/0" destination="MEDIAFILEUPLOAD"></relationship>
+        <relationship name="scalingproperties" type="0/0" destination="SCALEDIMAGEPROPERTIES"></relationship>
+    </object>
+    <object type="MEDIACONTAINER" id="z174">
+        <attribute name="identifier" type="string">7C46895C-3E35-48AE-BDE6-AF3926149BEF</attribute>
+        <relationship name="file" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z124"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGECONTAINER"></relationship>
+    </object>
+    <object type="INDOCUMENTMEDIAFILE" id="z175">
+        <attribute name="sourcefilename" type="string">pastedImage.jpeg</attribute>
+        <attribute name="filename" type="string">pastedImage-13.jpeg</attribute>
+        <attribute name="digest" type="string">e2d5daa55bab46473ea57cc57613e7175414840b-3433</attribute>
+        <attribute name="uniqueid" type="string">A74CFFE4-C656-4F42-A116-59F3B73CD02B</attribute>
+        <attribute name="filetype" type="string">public.jpeg</attribute>
+        <relationship name="containers" type="0/0" destination="ABSTRACTMEDIACONTAINER" idrefs="z179"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGEPROPERTIES"></relationship>
+        <relationship name="uploads" type="0/0" destination="MEDIAFILEUPLOAD"></relationship>
+        <relationship name="scalingproperties" type="0/0" destination="SCALEDIMAGEPROPERTIES"></relationship>
+    </object>
+    <object type="GRAPHICALTEXT" id="z176">
+        <attribute name="textsize" type="float">0.5</attribute>
+        <attribute name="text" type="string">PickADisk</attribute>
+        <attribute name="imagereplacementcode" type="string">h1h</attribute>
+        <attribute name="designidentifier" type="string">sandvox.Reflections</attribute>
+        <attribute name="identifier" type="string">601725AD-2E27-4A84-9720-6E3EFC73ECBB</attribute>
+        <relationship name="file" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z177"></relationship>
+    </object>
+    <object type="INDOCUMENTMEDIAFILE" id="z177">
+        <attribute name="sourcefilename" type="string">pastedImage.png</attribute>
+        <attribute name="filename" type="string">pastedImage-6.png</attribute>
+        <attribute name="digest" type="string">c4d1fb3f1974cf1c9316dcb313b7aa081db752e2-1fc4</attribute>
+        <attribute name="width" type="int32">732</attribute>
+        <attribute name="uniqueid" type="string">0691C758-A947-459D-99F0-2979DB9139C6</attribute>
+        <attribute name="height" type="int32">77</attribute>
+        <attribute name="filetype" type="string">public.png</attribute>
+        <relationship name="containers" type="0/0" destination="ABSTRACTMEDIACONTAINER" idrefs="z176"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGEPROPERTIES"></relationship>
+        <relationship name="uploads" type="0/0" destination="MEDIAFILEUPLOAD"></relationship>
+        <relationship name="scalingproperties" type="0/0" destination="SCALEDIMAGEPROPERTIES"></relationship>
+    </object>
+    <object type="GRAPHICALTEXT" id="z178">
+        <attribute name="textsize" type="float">0.5</attribute>
+        <attribute name="text" type="string">PickADisk</attribute>
+        <attribute name="imagereplacementcode" type="string">h1h</attribute>
+        <attribute name="designidentifier" type="string">sandvox.No Parking Anytime</attribute>
+        <attribute name="identifier" type="string">D161653B-AC96-4265-BA68-864F41872576</attribute>
+        <relationship name="file" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z173"></relationship>
+    </object>
+    <object type="MEDIACONTAINER" id="z179">
+        <attribute name="identifier" type="string">35FBBE45-CE3B-4278-8F9A-21AF65C830E3</attribute>
+        <relationship name="file" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z175"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGECONTAINER"></relationship>
+    </object>
+    <object type="GRAPHICALTEXT" id="z180">
+        <attribute name="textsize" type="float">0.5</attribute>
+        <attribute name="text" type="string">PickADisk</attribute>
+        <attribute name="imagereplacementcode" type="string">h1h</attribute>
+        <attribute name="designidentifier" type="string">sandvox.Open All Night</attribute>
+        <attribute name="identifier" type="string">C0C7112D-6525-4694-9590-F9C429765CA8</attribute>
+        <relationship name="file" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z182"></relationship>
+    </object>
+    <object type="MEDIACONTAINER" id="z181">
+        <attribute name="identifier" type="string">5DC5E7BE-AE1D-4E6B-BB02-19981742E5FF</attribute>
+        <relationship name="file" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z124"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGECONTAINER"></relationship>
+    </object>
+    <object type="INDOCUMENTMEDIAFILE" id="z182">
+        <attribute name="sourcefilename" type="string">pastedImage.png</attribute>
+        <attribute name="filename" type="string">pastedImage-7.png</attribute>
+        <attribute name="digest" type="string">1530f2269ecc2b7b16a0ba635914667236725784-42f2</attribute>
+        <attribute name="width" type="int32">450</attribute>
+        <attribute name="uniqueid" type="string">373ED225-2CEA-4E08-BA58-6892A98C3C6F</attribute>
+        <attribute name="height" type="int32">49</attribute>
+        <attribute name="filetype" type="string">public.png</attribute>
+        <relationship name="containers" type="0/0" destination="ABSTRACTMEDIACONTAINER" idrefs="z180"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGEPROPERTIES"></relationship>
+        <relationship name="uploads" type="0/0" destination="MEDIAFILEUPLOAD"></relationship>
+        <relationship name="scalingproperties" type="0/0" destination="SCALEDIMAGEPROPERTIES"></relationship>
+    </object>
+    <object type="MEDIACONTAINER" id="z183">
+        <attribute name="identifier" type="string">655CD718-7DDF-4927-AC01-6A77EB3A4F78</attribute>
+        <relationship name="file" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z124"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGECONTAINER"></relationship>
+    </object>
+    <object type="MEDIACONTAINER" id="z184">
+        <attribute name="identifier" type="string">7D4C8578-5A92-44E2-9F0E-DBB97A86A6D9</attribute>
+        <relationship name="file" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z124"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGECONTAINER"></relationship>
+    </object>
+    <object type="MEDIACONTAINER" id="z185">
+        <attribute name="identifier" type="string">2C3AC5D6-B1C0-46C5-91C8-02407F9AD0A8</attribute>
+        <relationship name="file" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z124"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGECONTAINER"></relationship>
+    </object>
+    <object type="MEDIACONTAINER" id="z186">
+        <attribute name="identifier" type="string">6E8EFF1F-1B22-4370-ABD4-93C9F54D9FFC</attribute>
+        <relationship name="file" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z124"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGECONTAINER"></relationship>
+    </object>
+    <object type="MEDIACONTAINER" id="z187">
+        <attribute name="identifier" type="string">3F17A81C-05C9-4D5D-971C-B81FF98FC4F5</attribute>
+        <relationship name="file" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z103"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGECONTAINER"></relationship>
+    </object>
+    <object type="MEDIACONTAINER" id="z188">
+        <attribute name="identifier" type="string">6C3A2D90-BB45-4C2B-A142-02F477140FB3</attribute>
+        <relationship name="file" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z124"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGECONTAINER"></relationship>
+    </object>
+    <object type="MEDIACONTAINER" id="z189">
+        <attribute name="identifier" type="string">E6DCBE11-A484-4499-9CBB-C5DD26063F1D</attribute>
+        <relationship name="file" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z124"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGECONTAINER"></relationship>
+    </object>
+    <object type="MEDIACONTAINER" id="z190">
+        <attribute name="identifier" type="string">EE184D3A-6198-418D-925D-C1497CE1EECF</attribute>
+        <relationship name="file" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z144"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGECONTAINER"></relationship>
+    </object>
+    <object type="MEDIACONTAINER" id="z191">
+        <attribute name="identifier" type="string">6AE30A99-5B98-4E18-AAD9-26C48B487E41</attribute>
+        <relationship name="file" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z137"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGECONTAINER"></relationship>
+    </object>
+    <object type="MEDIACONTAINER" id="z192">
+        <attribute name="identifier" type="string">FE116A56-0939-4859-9E44-1DD787EDDE6F</attribute>
+        <relationship name="file" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z194"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGECONTAINER"></relationship>
+    </object>
+    <object type="MEDIACONTAINER" id="z193">
+        <attribute name="identifier" type="string">678FC655-3D88-4FAA-8C1E-BF1B8A65287A</attribute>
+        <relationship name="file" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z131"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGECONTAINER"></relationship>
+    </object>
+    <object type="INDOCUMENTMEDIAFILE" id="z194">
+        <attribute name="sourcefilename" type="string">pastedImage.jpeg</attribute>
+        <attribute name="filename" type="string">pastedImage-14.jpeg</attribute>
+        <attribute name="digest" type="string">d2dd294b817cbb1e23e9f55ebd10b6e797782a45-9098</attribute>
+        <attribute name="uniqueid" type="string">84840B25-D2DF-402B-9A9C-7B5FCD4884EF</attribute>
+        <attribute name="filetype" type="string">public.jpeg</attribute>
+        <relationship name="containers" type="0/0" destination="ABSTRACTMEDIACONTAINER" idrefs="z192"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGEPROPERTIES"></relationship>
+        <relationship name="uploads" type="0/0" destination="MEDIAFILEUPLOAD"></relationship>
+        <relationship name="scalingproperties" type="0/0" destination="SCALEDIMAGEPROPERTIES"></relationship>
+    </object>
+    <object type="MEDIACONTAINER" id="z195">
+        <attribute name="identifier" type="string">D17CFC67-141E-4F53-8DE7-37D88F7E4A71</attribute>
+        <relationship name="file" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z149"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGECONTAINER"></relationship>
+    </object>
+    <object type="MEDIACONTAINER" id="z196">
+        <attribute name="identifier" type="string">447A388B-ED7B-4631-82CD-EAE8AE76A1FC</attribute>
+        <relationship name="file" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z124"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGECONTAINER"></relationship>
+    </object>
+    <object type="MEDIACONTAINER" id="z197">
+        <attribute name="identifier" type="string">A4EEDBA3-DFA5-4264-95C5-8491F6DD4B7C</attribute>
+        <relationship name="file" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z198"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGECONTAINER"></relationship>
+    </object>
+    <object type="INDOCUMENTMEDIAFILE" id="z198">
+        <attribute name="sourcefilename" type="string">pastedImage.jpeg</attribute>
+        <attribute name="filename" type="string">pastedImage-15.jpeg</attribute>
+        <attribute name="digest" type="string">bd4b4d1547431f237b7f9cb5832ed8906fefa333-10205</attribute>
+        <attribute name="uniqueid" type="string">66571DF5-D36D-4E79-B9C6-27DE7C5CB7AC</attribute>
+        <attribute name="filetype" type="string">public.jpeg</attribute>
+        <relationship name="containers" type="0/0" destination="ABSTRACTMEDIACONTAINER" idrefs="z197"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGEPROPERTIES"></relationship>
+        <relationship name="uploads" type="0/0" destination="MEDIAFILEUPLOAD"></relationship>
+        <relationship name="scalingproperties" type="0/0" destination="SCALEDIMAGEPROPERTIES"></relationship>
+    </object>
+    <object type="MEDIACONTAINER" id="z199">
+        <attribute name="identifier" type="string">8CD31EF5-3713-4993-B3BC-1556AF1968DD</attribute>
+        <relationship name="file" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z103"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGECONTAINER"></relationship>
+    </object>
+    <object type="GRAPHICALTEXT" id="z200">
+        <attribute name="textsize" type="float">0.5</attribute>
+        <attribute name="text" type="string">PickADisk</attribute>
+        <attribute name="imagereplacementcode" type="string">h1h</attribute>
+        <attribute name="designidentifier" type="string">sandvox.Black and White</attribute>
+        <attribute name="identifier" type="string">4B97EA05-8A90-4145-BCEF-2D01F1E7EA51</attribute>
+        <relationship name="file" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z202"></relationship>
+    </object>
+    <object type="MEDIACONTAINER" id="z201">
+        <attribute name="identifier" type="string">595098BD-A627-441A-9361-8ADF385B2FC9</attribute>
+        <relationship name="file" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z203"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGECONTAINER"></relationship>
+    </object>
+    <object type="INDOCUMENTMEDIAFILE" id="z202">
+        <attribute name="sourcefilename" type="string">pastedImage.jpeg</attribute>
+        <attribute name="filename" type="string">pastedImage-17.jpeg</attribute>
+        <attribute name="digest" type="string">239095efba86c171b35de408d485daa8b8db6173-181a</attribute>
+        <attribute name="width" type="int32">40</attribute>
+        <attribute name="uniqueid" type="string">487D5400-4F64-41C4-BD61-BC41BFB02603</attribute>
+        <attribute name="height" type="int32">1024</attribute>
+        <attribute name="filetype" type="string">public.jpeg</attribute>
+        <relationship name="containers" type="0/0" destination="ABSTRACTMEDIACONTAINER" idrefs="z200"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGEPROPERTIES"></relationship>
+        <relationship name="uploads" type="0/0" destination="MEDIAFILEUPLOAD"></relationship>
+        <relationship name="scalingproperties" type="0/0" destination="SCALEDIMAGEPROPERTIES"></relationship>
+    </object>
+    <object type="INDOCUMENTMEDIAFILE" id="z203">
+        <attribute name="sourcefilename" type="string">pastedImage.jpeg</attribute>
+        <attribute name="filename" type="string">pastedImage-16.jpeg</attribute>
+        <attribute name="digest" type="string">6b6bbd1c77735aed81d9ddd2a6078e2723a0a001-1791e</attribute>
+        <attribute name="uniqueid" type="string">324EA054-0677-4665-A68A-DE130D7CC2FF</attribute>
+        <attribute name="filetype" type="string">public.jpeg</attribute>
+        <relationship name="containers" type="0/0" destination="ABSTRACTMEDIACONTAINER" idrefs="z201"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGEPROPERTIES"></relationship>
+        <relationship name="uploads" type="0/0" destination="MEDIAFILEUPLOAD"></relationship>
+        <relationship name="scalingproperties" type="0/0" destination="SCALEDIMAGEPROPERTIES"></relationship>
+    </object>
+    <object type="MEDIACONTAINER" id="z204">
+        <attribute name="identifier" type="string">669B5508-5B66-4222-BA16-AD143E145643</attribute>
+        <relationship name="file" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z124"></relationship>
+        <relationship name="scaledimages" type="0/0" destination="SCALEDIMAGECONTAINER"></relationship>
+    </object>
+    <object type="MEDIAFILEUPLOAD" id="z205">
+        <attribute name="pathrelativetosite" type="string">_Media/pad4.png</attribute>
+        <attribute name="isstale" type="bool">0</attribute>
+        <relationship name="file" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z118"></relationship>
+    </object>
+    <object type="MEDIAFILEUPLOAD" id="z206">
+        <attribute name="pathrelativetosite" type="string">_Media/32favicon.ico</attribute>
+        <attribute name="isstale" type="bool">0</attribute>
+        <relationship name="file" type="1/1" destination="ABSTRACTMEDIAFILE" idrefs="z106"></relationship>
+    </object>
+</database>
