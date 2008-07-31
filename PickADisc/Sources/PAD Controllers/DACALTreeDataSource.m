@@ -151,6 +151,14 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 	return theOutputTree;
 }
 
+- (void)outlineViewInit
+{
+	[super outlineViewInit];
+	
+	[[[self treeControl] outlineView] expandItem:nil expandChildren:YES];
+}
+
+
 - (void)outlineViewAction:(id)tree
 {
 	NSArray *selectedNodes = [tree selectedNodes];
@@ -163,13 +171,15 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 	PADIndexToolbarController* toolControl = (PADIndexToolbarController*)[self toolbarControl];
 	
 	[secondaryController setTreeRoot:nil];
+	//[secondaryController removeAllChildren];
 	
 	for( index=0; index<[selectedNodes count]; index++ )
 	{
 		data = [[selectedNodes objectAtIndex:index] nodeData];
 		subTree = [data subTree];
-		if( subTree != nil) [secondaryController addTreeRoot:subTree];
-
+		if( subTree != nil)	[secondaryController addTreeRoot:subTree];
+			//[secondaryController addDataToTree:subTree startEdit:NO];
+		
 		//if( [data location] != nil) 
 		//{
 			//if( index != 0 ) theURL = (NSURL*)CFURLCreateCopyDeletingLastPathComponent(NULL, (CFURLRef)[data location]);
@@ -230,13 +240,18 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 	
 	// Find box
 	
-	theSubtreeNode = [[[self findTreeNodeForDevice:theBoxRef] nodeData] subTree];
+	// theSubtreeNode = [[[self findTreeNodeForDevice:theBoxRef] nodeData] subTree];
+	theSubtreeNode = [secondaryController treeRoot];
 	
 	if( theSlotContentPath != nil )
 	{
-		theSubtreeChild = [SimpleTreeNode treeOperationFromLocation:(NSURL*)theSlotContentPath];
+//		theSubtreeChild = [SimpleTreeNode treeOperationFromLocation:(NSURL*)theSlotContentPath];
+		theSubtreeChild = [SimpleTreeNode treeFromLocation:(NSURL*)theSlotContentPath];
+//		theSubtreeChild = [SimpleTreeNode treeOperationFromLocation:(NSURL*)theSlotContentPath];
 
 		[(SimpleNodeData*)[theSubtreeChild nodeData] setName: theSlotTitle];
+		[(SimpleNodeData*)[theSubtreeChild nodeData] setItemSlot: newSlot];
+		[(SimpleNodeData*)[theSubtreeChild nodeData] setItemDevice: theBoxRef];
 		//[[theSubtreeChild nodeData] setLocation:theSlotContentPath];
 
 		compareIconType = [[theSubtreeChild nodeData] itemType];
@@ -245,7 +260,11 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 		else											 slotIconType = kGenericCDROMIcon;  // public.cd-media
 		[[theSubtreeChild nodeData] setIconRep:DACALGetIconImageForType(slotIconType)];
 		
-		[theSubtreeNode insertChild:theSubtreeChild atIndex:[theSubtreeNode numberOfChildren]];
+
+
+		[secondaryController addDataToTree:theSubtreeChild startEdit:NO];
+		
+		//		[theSubtreeNode insertChild:theSubtreeChild atIndex:[theSubtreeNode numberOfChildren]];
 		//[theOthertTreeNode insertChild:theSubtreeChild atIndex:[theOthertTreeNode numberOfChildren]];
 
 		//CFRelease( theSlotContentPath );
@@ -253,8 +272,8 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 		//CFRelease( theSlotPath );
 	}
 	
-	[self outlineViewAction:[[self treeControl] outlineView]];
-	[[secondaryController treeControl] reloadData];
+	//[self outlineViewAction:[[self treeControl] outlineView]];
+	//[[secondaryController treeControl] reloadData];
 }
 
 
@@ -275,6 +294,15 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 - (void)awakeFromNib 
 {
 	[[AppController shared] setDataView: treeControl];
+
+	NSTableColumn*		nameCol = [[treeControl outlineView] tableColumnWithIdentifier:COLUMNID_NAME];
+	NSTableColumn*		slotCol = [[treeControl outlineView] tableColumnWithIdentifier:COLUMNID_SLOT];
+	
+//	NSSortDescriptor*	nameSort = [[[NSSortDescriptor alloc] initWithKey:@"nodeData" ascending:YES selector:@selector(compareDataNames:)] autorelease];
+	NSSortDescriptor*	slotSort = [[[NSSortDescriptor alloc] initWithKey:@"nodeData" ascending:YES selector:@selector(compareDataSlots:)] autorelease];
+	
+//	[nameCol setSortDescriptorPrototype:nameSort];
+	[slotCol setSortDescriptorPrototype:slotSort];
 }
 
 - (SimpleTreeNode*)createInitialTree:(id)tree
@@ -323,15 +351,34 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 				[selectedSlots addObject:slotNumber];
 		}
     }
-	if( toolControl ) [toolControl setSelectedSlots:(NSArray*)selectedSlots];
+	if( toolControl ) {
+		[toolControl setSelectedSlots:(NSArray*)selectedSlots];
+		[toolControl setSelectedNodes:selectedNodes];
+	}
 
 	[self updatePrompt];
 
 	return;
 }
 
+- (void)nodeSlotChanged:(SimpleTreeNode*)node toSlot:(NSString*)slotString
+{
+	DACALSlotNum	oldSlot = [[node nodeData] itemSlot];
+	DACALSlotNum	newSlot = [slotString intValue];
+	
+	if( oldSlot == newSlot ) return;
+	
+	NSString*		theString = nil;
+
+	theString = [NSString stringWithFormat:@"Change from slot %i to slot %i.", oldSlot, newSlot];
+
+	NSLog( theString );
+	CFStringSpeak( (CFStringRef)theString, FALSE, NULL );
+}
+
 - (NSInteger)shouldEditTableColumn:(NSTableColumn *)tc item:(id)item
 {
+	if([[tc identifier] compare:COLUMNID_SLOT] == NSOrderedSame) return YES;
 	return NO;
 }
 

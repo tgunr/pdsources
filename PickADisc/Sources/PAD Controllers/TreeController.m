@@ -19,11 +19,6 @@
 // ================================================================
 
 #define DragDropSimplePboardType 	@"MyCustomOutlineViewPboardType"
-#define COLUMNID_NAME				@"NameColumn"
-#define COLUMNID_SLOT				@"SlotColumn"
-//#define COLUMNID_NODE_KIND		@"NodeKindColumn"
-//#define COLUMNID_IS_EXPANDABLE	@"IsExpandableColumn"
-//#define COLUMID_IS_SELECTABLE		@"IsSelectableColumn"
 
 
 @implementation TreeController
@@ -48,11 +43,8 @@
 	// Install Data for Tree
 	if( dataSource != nil ) [self setTreeRoot:[dataSource performSelector:@selector(createInitialTree:) withObject:self]];
 
-    // Register to get our custom type, strings, and filenames. Try dragging each into the view!
-    [outlineView registerForDraggedTypes:[NSArray arrayWithObjects:DragDropSimplePboardType, NSStringPboardType, NSFilenamesPboardType, nil]];
-    [outlineView setDraggingSourceOperationMask:NSDragOperationEvery forLocal:YES];
-    [outlineView setDraggingSourceOperationMask:NSDragOperationEvery forLocal:NO];
-    //[outlineView setAutoresizesOutlineColumn:NO];
+	// Initialize the View
+	if( dataSource != nil ) [dataSource performSelector:@selector(outlineViewInit)];
 }
 
 - (NSArray *)draggedNodes { 
@@ -137,6 +129,39 @@
     // Adds a new leaf entry to the current selection, by inserting a new leaf node.
     [self _addNewDataToSelection:[SimpleTreeNode treeNodeWithData: [SimpleNodeData leafDataWithName:@"New Leaf"]]];
 }
+
+- (void)addDataToTree:(SimpleTreeNode*)newChild startEdit:(BOOL)doEdit
+{
+	NSInteger childIndex = 0, newRow = 0;
+//		NSArray *selectedNodes = [self selectedNodes];
+//		SimpleTreeNode *selectedNode = ([selectedNodes count] ? [selectedNodes objectAtIndex:0] : treeData);
+//		SimpleTreeNode *selectedNode = treeData;
+//		TreeNode *parentNode = nil;
+		
+/*		if ([[selectedNode nodeData] isGroup]) { 
+			parentNode = selectedNode; 
+			childIndex = 0; 
+		}
+		else { 
+			parentNode = [selectedNode nodeParent]; 
+			childIndex = [treeData numberOfChildren];// [parentNode indexOfChildIdenticalTo:selectedNode]+1; 
+		}
+		
+		[parentNode insertChild: newChild atIndex: childIndex];
+*/
+	
+	
+	
+	childIndex = [treeData numberOfChildren];
+	[treeData insertChild:newChild atIndex:childIndex];
+	[outlineView reloadData];
+		
+	newRow = [outlineView rowForItem: newChild];
+	if (newRow>=0) [outlineView selectRow: newRow byExtendingSelection: NO];
+	if( (doEdit==YES) && (newRow>=0))
+		[outlineView editColumn:0 row:newRow withEvent:nil select:YES];		
+}
+
 
 - (void)outlineViewAction:(id)olv {
     // This message is sent from the outlineView as it's action (see the connection in IB).
@@ -228,10 +253,16 @@
 - (void)outlineView:(NSOutlineView *)ov setObjectValue:(id)object forTableColumn:(NSTableColumn *)tableColumn byItem:(id)item  {
     SimpleNodeData *data = [item nodeData];
     
-    // Here, we manipulate the data stored in the node.
+    // Here, we manipulate the name data stored in the node.
     if ((tableColumn == nil) || [[tableColumn identifier] isEqualToString:COLUMNID_NAME]) {
 		if( dataSource != nil ) [dataSource performSelector:@selector(nodeNameChanged:toName:) withObject:(SimpleTreeNode*)item withObject:(NSString*)object];
 		else [data setName:object];
+	}
+
+    // Here, we manipulate the slot data stored in the node.
+    if ((tableColumn == nil) || [[tableColumn identifier] isEqualToString:COLUMNID_SLOT]) {
+		if( dataSource != nil ) [dataSource performSelector:@selector(nodeSlotChanged:toSlot:) withObject:(SimpleTreeNode*)item withObject:(NSString*)object];
+		else [data setItemSlot:(DACALSlotNum)[object intValue]];
 	}
 }
 
@@ -307,6 +338,13 @@
 {
 	if( dataSource != nil )
 		if( [dataSource performSelector:@selector(shouldEditTableColumn:item:) withObject:tc withObject:item] == 0 ) return NO;
+	return YES;
+}
+
+- (BOOL)outlineView:(NSTableView *)outView shouldSelectTableColumn:(NSTableColumn *)tc
+{
+	if( dataSource != nil )
+		if( [dataSource performSelector:@selector(shouldSelectColumn:) withObject:tc] == 0 ) return NO;
 	return YES;
 }
 
@@ -463,6 +501,12 @@ NSFileHandle *NewFileHandleForWritingFile(NSString *dirpath, NSString *basename,
     return targetNodeIsValid ? NSDragOperationGeneric : NSDragOperationNone;
 }
 
+- (void)tableView:(NSTableView *)tableView sortDescriptorsDidChange:(NSArray *)oldDescriptors
+{
+    //[myTableDataArray sortUsingDescriptors:[tableView sortDescriptors]];
+    [tableView reloadData];
+}
+
 - (void)_performDropOperation:(id <NSDraggingInfo>)info onNode:(TreeNode *)parentNode atIndex:(NSInteger)childIndex {
     // Helper method to insert dropped data into the model. 
     NSPasteboard *pboard = [info draggingPasteboard];
@@ -599,6 +643,12 @@ NSFileHandle *NewFileHandleForWritingFile(NSString *dirpath, NSString *basename,
 	treeControl = tree;
 }
 
+- (void)removeAllChildren
+{
+	[[[[self treeControl] treeRoot] children] makeObjectsPerformSelector:@selector(removeFromParent)];
+	[[[self treeControl] outlineView] reloadData];
+}
+
 - (id)toolbarControl { return toolbarControl; }
 - (void)setToolbarControl:(id)tbar
 {
@@ -618,6 +668,17 @@ NSFileHandle *NewFileHandleForWritingFile(NSString *dirpath, NSString *basename,
 	if( initData != nil ) theOutputTree = [SimpleTreeNode treeFromDictionary: initData];	
 	
 	return theOutputTree;
+}
+
+- (void)outlineViewInit
+{
+	NSOutlineView* outlineView = [[self treeControl] outlineView];
+	
+    // Register to get our custom type, strings, and filenames. Try dragging each into the view!
+    [outlineView registerForDraggedTypes:[NSArray arrayWithObjects:DragDropSimplePboardType, NSStringPboardType, NSFilenamesPboardType, nil]];
+    [outlineView setDraggingSourceOperationMask:NSDragOperationEvery forLocal:YES];
+    [outlineView setDraggingSourceOperationMask:NSDragOperationEvery forLocal:NO];
+    //[outlineView setAutoresizesOutlineColumn:NO];
 }
 
 - (void)outlineViewAction:(id)tree
@@ -694,6 +755,11 @@ NSFileHandle *NewFileHandleForWritingFile(NSString *dirpath, NSString *basename,
 - (NSInteger)shouldEditTableColumn:(NSTableColumn *)tc item:(id)item
 {
 	return YES;
+}
+
+- (NSInteger)shouldSelectColumn:(NSTableColumn *)tc
+{
+	return NO;
 }
 
 @end	// TreeControllerDataSource

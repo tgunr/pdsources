@@ -22,12 +22,15 @@
 	IBOutlet	NSButton	*assignButton;
 	IBOutlet	NSButton	*unassignButton;
 	
+	IBOutlet	NSSearchField	*searchField;
+	
 	IBOutlet	id			indexController;
 	IBOutlet	id			dataController;
 	IBOutlet	id			addVolumeController;
 	
 	NSArray					*selectedDevices;
 	NSArray					*selectedSlots;
+	NSArray					*selectedNodes;
 
 }
 
@@ -37,6 +40,7 @@
 - (IBAction)clickCloseDoor:(id)sender;
 - (IBAction)clickAssign:(id)sender;
 - (IBAction)clickUnassign:(id)sender;
+- (IBAction)searchAction:(id)sender;
 
 - (void)setSelectedDevices: (NSArray*)deviceList;
 - (void)setSelectedDevice: (DACALDeviceRef)theDevice;
@@ -45,5 +49,9 @@
 - (void)setSelectedSlots: (NSArray*)slotList;
 - (void)setSelectedSlot: (DACALSlotNum)theSlot;
 - (NSArray*)selectedSlots;
+
+- (void)setSelectedNodes: (NSArray*)nodeList;
+- (void)setSelectedNode: (SimpleTreeNode*)theNode;
+- (NSArray*)selectedNodes;
 
 @end

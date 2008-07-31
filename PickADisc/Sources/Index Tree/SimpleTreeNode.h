@@ -51,6 +51,9 @@ const enum {
 - (SimpleTreeNode*)childWithSlotNum:(DACALSlotNum)theSlotNum;
 - (SimpleTreeNode*)childWithItemType:(NSInteger)theItemType;
 
+//-(NSString*)name;
+//-(NSNumber*)slotNSNumber;
+
 @end	// <<Simple Tree Node>>
 
 @interface SimpleNodeData : NSObject {
@@ -121,6 +124,9 @@ const enum {
 
 - (BOOL)busy;
 - (void)setBusy:(BOOL)value;
+
+- (NSComparisonResult)compareDataNames:(id)otherData;
+- (NSComparisonResult)compareDataSlots:(id)otherData;
 
 @end
 

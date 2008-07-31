@@ -15,6 +15,15 @@
 #import "NSArray_Extensions.h"
 #import "NSOutlineView_Extensions.h"
 
+// ================================================================
+// Useful Macros
+// ================================================================
+
+#define DragDropSimplePboardType 	@"MyCustomOutlineViewPboardType"
+#define COLUMNID_NAME				@"NameColumn"
+#define COLUMNID_SLOT				@"SlotColumn"
+//#define COLUMNID_NODE_KIND		@"NodeKindColumn"
+
 @class SimpleTreeNode;
 @class PADIndexToolbarController;
 
@@ -45,6 +54,7 @@
 - (SimpleTreeNode*)treeRoot ;
 - (void)setTreeRoot:(SimpleTreeNode*)root;
 - (void)addTreeRoot:(SimpleTreeNode*)newChild;
+- (void)addDataToTree:(SimpleTreeNode*)newChild startEdit:(BOOL)doEdit;
 
 - (id)dataSource;
 
@@ -84,10 +94,13 @@
 - (id)treeControl;
 - (void)setTreeControl:(id)tree;
 
+- (void)removeAllChildren;
+
 - (id)toolbarControl;
 - (void)setToolbarControl:(id)tbar;
 
 - (SimpleTreeNode*)createInitialTree:(id)tree;
+- (void)outlineViewInit;
 - (void)outlineViewAction:(id)tree;
 - (void)menuNeedsUpdate:(NSMenu*)menu;
 - (void)menuNeedsUpdate:(NSMenu*)menu fromTree:(id)tree;

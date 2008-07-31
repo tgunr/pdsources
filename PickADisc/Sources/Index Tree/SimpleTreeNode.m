@@ -192,8 +192,9 @@
 
 - (void)setLocation:(NSURL *)loc {
     if (!location || ![location isEqual:loc]) {
+		[loc retain];
 	[location release];
-	location = [loc retain];
+		location = loc;
     }
 }
 - (NSURL *)location {
@@ -238,6 +239,24 @@
 
 - (BOOL)busy { return isBusy; }
 - (void)setBusy:(BOOL)value { isBusy = value; }
+
+
+-(NSComparisonResult)compareDataNames:(id)other
+{
+	NSLog(@"COMPARE NAME");
+	return( [[self name] localizedCaseInsensitiveCompare:(NSString*)[other name]] );
+}
+
+-(NSComparisonResult)compareDataSlots:(id)other
+{
+	DACALSlotNum	thisSlot = [self itemSlot];
+	DACALSlotNum	thatSlot = [other itemSlot];
+	
+	NSLog(@"COMPARE SLOT");
+	if( thisSlot == thatSlot ) return NSOrderedSame;
+	if( thisSlot < thatSlot ) return NSOrderedAscending;
+	return NSOrderedDescending;
+}
 
 @end
 
@@ -284,7 +303,7 @@
 {
     // This is a convenience init method to return a tree root of a tree derived from a filesystem URL.
     // This version uses treeFromLocation and is called from the Indexing NSOperation for speedy collections in most cases. 
-    SimpleNodeData *data = [SimpleNodeData nodeDataWithURL:loc];
+    //SimpleNodeData *data = [SimpleNodeData nodeDataWithURL:loc];
 	
 	CFDictionaryRef		dataDict = NULL;
 	CFArrayRef			dataProps = CFArrayCreate(NULL, (const void**)&kCFURLFileDirectoryContents, 1, &kCFTypeArrayCallBacks);
@@ -304,8 +323,8 @@
 	}
 	
 	if( isSlot ) {
-		if( CFArrayGetCount(folderList) > 0 ) {
-			data = [SimpleNodeData nodeDataWithURL:(NSURL*)CFArrayGetValueAtIndex(folderList, (CFArrayGetCount(folderList)-1))];
+		if( (folderList != NULL ) && (CFArrayGetCount(folderList) > 0) ) {
+			//data = [self nodeData];
 			CFRelease( folderList );
 			wasFound = CFURLCreateDataAndPropertiesFromResource(NULL, (CFURLRef)loc, NULL, &dataDict, dataProps, NULL);
 			if( wasFound ) {
@@ -324,7 +343,7 @@
     id entry;
     SimpleTreeNode *child = nil;
     
-    self = [super initWithData:data parent:nil children:[NSArray array]];
+    if( [self nodeData] == nil ) self = [super initWithData:[SimpleNodeData nodeDataWithURL:loc] parent:nil children:[NSArray array]]; // [super initWithData:data parent:nil children:[NSArray array]];
     if (self != nil) {
         while ((entry = [entryEnum nextObject])) {
 			if( CFURLIsVisible((CFURLRef)entry) ) {
@@ -337,52 +356,17 @@
         }
     }
     
+	CFRelease( dataProps );
+	if( folderList != NULL ) CFRelease( folderList );
+	
     return self;
 }
-//wasFound = CFURLCreateDataAndPropertiesFromResource(NULL, (CFURLRef)loc, NULL, &dataDict, dataProps, NULL);
-//	if( wasFound ) {
-//		folderList = (CFArrayRef)CFDictionaryGetValue( dataDict, kCFURLFileDirectoryContents );
-//		if( folderList == NULL ) 
-//			  CFShow(CFSTR("No Folder List!"));
-//		else {
-//			// CFShow( folderList );
-//			CFRetain( folderList );
-//			if( isSlot ) {
-//				if( CFArrayGetCount(folderList) > 0 ) {
-//					NSEnumerator *entryEnum = [(NSArray*)folderList objectEnumerator];
-//					CFRelease( folderList );
-//
-//					id entry;
-//					SimpleTreeNode *child = nil;
-//					data = [self nodeData];
-//
-//					if( [self nodeData] == nil ) 
-//						self = [super initWithData:data parent:nil children:[NSArray array]];
-//					if (self != nil) {
-//						while ((entry = [entryEnum nextObject])) {
-//							if( CFURLIsVisible((CFURLRef)entry) ) {
-//								if (CFURLHasDirectoryPath((CFURLRef)entry))
-//									child = [SimpleTreeNode treeFromLocation:entry];
-//								else 
-//									child = [[[SimpleTreeNode alloc] initWithData:[SimpleNodeData nodeDataWithURL:entry] parent:nil children:[NSArray array]] autorelease];
-//								[self insertChild: child atIndex: [self numberOfChildren]];
-//							}
-//						}
-//					}
-//				}
-//			}
-//			
-//		}
-//		CFRelease( dataDict );
-//	}
-//    return self;
-//}
 
 - (id)initOperationFromLocation:(NSURL*)loc
 {
     // This is a convenience init method to return a tree root of a tree derived from a filesystem URL.
     // This version uses treeOperationFromLocation and is therefore very unsuitable for recursive filesets
-    SimpleNodeData *data = [SimpleNodeData nodeDataWithURL:loc];
+   // SimpleNodeData *data = nil;
 	
 	CFDictionaryRef		dataDict = NULL;
 	CFArrayRef			dataProps = CFArrayCreate(NULL, (const void**)&kCFURLFileDirectoryContents, 1, &kCFTypeArrayCallBacks);
@@ -403,7 +387,7 @@
 
 	if( isSlot ) {
 		if( CFArrayGetCount(folderList) > 0 ) {
-			data = [self nodeData];
+			//data = [self nodeData];
 			CFRelease( folderList );
 			wasFound = CFURLCreateDataAndPropertiesFromResource(NULL, (CFURLRef)loc, NULL, &dataDict, dataProps, NULL);
 			if( wasFound ) {
@@ -416,13 +400,13 @@
 				CFRelease( dataDict );
 			}
 		}
-	}
+	} //else data = [SimpleNodeData nodeDataWithURL:loc];
 	
     NSEnumerator *entryEnum = [(NSArray*)folderList objectEnumerator];
     id entry;
     SimpleTreeNode *child = nil;
     
-    if( [self nodeData] == nil ) self = [super initWithData:data parent:nil children:[NSArray array]];
+    if( [self nodeData] == nil ) self = [super initWithData:[SimpleNodeData nodeDataWithURL:loc] parent:nil children:[NSArray array]];
     if (self != nil) {
         while ((entry = [entryEnum nextObject])) {
 			if( CFURLIsVisible((CFURLRef)entry) ) {
@@ -435,6 +419,9 @@
         }
     }
     
+	CFRelease( dataProps );
+	CFRelease( folderList );
+	
     return self;
 }
 
@@ -454,7 +441,7 @@
 
 + (id)treeOperationFromLocation:(NSURL *)loc
 {
-	SimpleTreeNode*		ourNode = [SimpleTreeNode nodeDataWithURL:loc];
+	SimpleTreeNode*		ourNode = [[SimpleTreeNode alloc] initWithData:[SimpleNodeData nodeDataWithURL:loc] parent:nil children:[NSArray array]];// [SimpleTreeNode nodeDataWithURL:loc];
 
 	self = ourNode;	
 
@@ -593,6 +580,8 @@ FOUND:
 FOUND:
 	return( outFoundNode );
 }
+
+
 
 @end
 

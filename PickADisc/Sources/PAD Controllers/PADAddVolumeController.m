@@ -54,6 +54,44 @@
 	if( theCount > 0 ) {
 		[self setPendingURL:[pendingVolumes objectAtIndex:0]];
 		[self setPendingTitle: (NSString*)CFURLCopyDisplayName( NULL, (CFURLRef)[self pendingURL], NULL)];
+		
+/*
+		if( [[self pendingTitle] compare:@"Audio CD"] == NSOrderedSame )
+		{
+			FSRef			theRef;
+			FSCatalogInfo	theInfo;
+			FSVolumeRefNum	theVRef;
+			CFStringRef		diskIDRef;
+			CFStringRef		diskPath;
+			const char*		diskIDStr = NULL;
+			OSStatus		theErr;
+			
+			DiscId*			disc = discid_new();
+			
+			theErr = CFURLGetFSRef((CFURLRef)[self pendingURL], &theRef );
+			theErr = FSGetCatalogInfo( &theRef, kFSCatInfoVolume, &theInfo, NULL, NULL, NULL );
+			theVRef = theInfo.volume;
+					
+			theErr = FSCopyDiskIDForVolume( theVRef, &diskIDRef );
+			diskPath = CFStringCreateWithFormat( kCFAllocatorDefault, NULL, CFSTR("/dev/r%@"), diskIDRef );
+			diskIDStr = CFStringCreateCString( diskPath, kCFStringEncodingUTF8 );
+			
+			fprintf(stderr, "Default Device: %s\n", discid_get_default_device() );
+			
+			if ( discid_read(disc, diskIDStr) == 0 ) {
+				fprintf(stderr, "Error: %s\n", discid_get_error_msg(disc));
+			} else {
+				fprintf(stderr, "DiscID        : %s\n", discid_get_id(disc));
+				fprintf(stderr, "Submit via    : %s\n", discid_get_submission_url(disc));
+			}
+
+			discid_free(disc); 
+			free( (void*)diskIDStr );
+			CFRelease( diskIDRef );
+			CFRelease( diskPath );
+		}
+		
+*/		
 		isPending = YES;
 	} else {
 		[self setPendingURL: nil];
@@ -131,7 +169,7 @@
 	[doArgs addObject:doPath];
 	
 //	[doArgs addObject:@"-X"];
-//	NSLog(@"Task Call: %@\n\t%@", doCmd, [doArgs description]);
+	NSLog(@"Task Call: %@\n\t%@", doCmd, [doArgs description]);
 	
 	progressController = [PADIndexProgressController runProgressDialogForCommand:doCmd
 																	   arguments:doArgs
@@ -188,7 +226,90 @@
 	else						[cdIcon setImage: DACALGetIconImageForType('Dcd ')];
 }
 
--(IBAction) clickChoose:(id)sender { }
+-(void) chooseVolumeCancel
+{
+	NSLog(@"Cancel Volume");
+}
+
+-(void) chooseVolumeAccept:(NSURL*)newVolume
+{
+	NSLog(@"Got Volume: %@", newVolume);
+	//[retain newVolume];
+	
+	NSArray*	aList = [NSArray arrayWithObject:newVolume];
+
+	[self detectedMounts:aList];
+}
+
+void MyNavEventProc (NavEventCallbackMessage callBackSelector, NavCBRecPtr callBackParms, void * callBackUD)
+{	
+	PADAddVolumeController*		me = (PADAddVolumeController*)callBackUD;
+	NavReplyRecord				theReply;
+	Boolean						fileRefValid = FALSE;
+	FSRef						fileRef;
+	CFURLRef					fileURL = NULL;
+	OSStatus					result;
+	
+	switch( callBackSelector )
+	{
+		case kNavCBStart:
+			result = NavCustomControl( callBackParms->context, kNavCtlShowDesktop, NULL );
+			break;
+			
+		case kNavCBCancel: 
+			[me chooseVolumeCancel];
+			break;
+			
+		case kNavCBAccept:
+			NavDialogGetReply( callBackParms->context, &theReply );
+
+			if (theReply.validRecord)
+			{
+				AEKeyword	keyword;
+				DescType	type;
+				Size		actualSize;
+				
+				result = AEGetNthPtr(&theReply.selection, 1, typeFSRef, &keyword, &type, &fileRef, sizeof(FSRef), &actualSize);
+				if (result == noErr)
+				{
+					fileRefValid = true;
+					fileURL = CFURLCreateFromFSRef( kCFAllocatorDefault, &fileRef );
+				}
+				else
+				{
+					bzero(&fileRef, sizeof(FSRef));
+				}
+			}
+			
+			if( fileURL != NULL ) [me chooseVolumeAccept:(NSURL*)fileURL];
+			if( fileURL != NULL ) CFRelease( fileURL );
+			break;
+	}
+
+
+}
+
+-(IBAction) clickChoose:(id)sender { 
+
+	NavDialogCreationOptions	theNavOpts;
+	NavDialogRef				theNavRef;
+	OSStatus					theErr;
+	
+	theErr = NavGetDefaultDialogCreationOptions( &theNavOpts );
+
+	theNavOpts.windowTitle = CFSTR("PickADisk Choose A Disc");
+	
+	theErr = NavCreateChooseVolumeDialog( &theNavOpts, &MyNavEventProc, NULL, (void*)self, &theNavRef );
+	if( theErr != noErr ) goto NAVERR;
+	
+	theErr = NavDialogRun( theNavRef );
+	
+	
+	
+NAVERR:
+	
+	return;
+}
 -(IBAction) slotChanged:(id)sender 
 {
 	CFStringRef		existingSlotName = DACALSlotCopyTitle( [carouselList indexOfSelectedItem]+1, [slotNumber intValue], NULL );
@@ -275,11 +396,8 @@
 	NSInteger	node = DACALCommandCopyNode( currentDevice, NULL );
 	
 	[carouselList removeAllItems];
-	for( index=1; index <= count; index++ ) {
-		NSString *title = (NSString *)DACALCommandCopyName( index, NULL );
-		if (title)
-			[carouselList addItemWithTitle:title];	
-	}
+	for( index=1; index <= count; index++ )
+		[carouselList addItemWithTitle:(NSString*)DACALCommandCopyName( index, NULL )];
 	
 	if( node == 0 ) node = 1;
 	[carouselList selectItemAtIndex:node-1];

@@ -10,6 +10,7 @@
 #import "SimpleTreeNode.h"
 #import "PADIndexProgressController.h"
 #import "DACALTreeDataSource.h"
+//#import <DiscID/DiscID.h>
 
 @interface PADAddVolumeController : NSObject {
 
