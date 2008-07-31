@@ -67,6 +67,6 @@
 	<key>SUCheckAtStartup</key>
 	<false/>
 	<key>SUFeedURL</key>
-	<string>http://updates.downtowncode.com/pad/updates.xml</string>
+	<string>http://updates.pickadisk.com/updates.xml</string>
 </dict>
 </plist>
