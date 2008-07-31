@@ -96,4 +96,82 @@ char*			CFStringCreateCString( CFStringRef theString, CFStringEncoding theEncodi
 	return( cstring );
 }
 
+static SpeechChannel g_CFUTILS_SYSTEM_SPEECHCHANNEL;
 
+OSErr			CFStringSpeak( CFStringRef theWords, Boolean interrupt, SpeechChannel onChannel )
+{
+	if( g_CFUTILS_SYSTEM_SPEECHCHANNEL == NULL ) NewSpeechChannel( NULL, &g_CFUTILS_SYSTEM_SPEECHCHANNEL );
+	if( g_CFUTILS_SYSTEM_SPEECHCHANNEL == NULL ) return( memFullErr );
+	
+	if( onChannel == NULL ) onChannel = g_CFUTILS_SYSTEM_SPEECHCHANNEL;
+	
+	OSErr				theErr;
+	SInt32				theFlags = (interrupt) ? 0 : kNoSpeechInterrupt;
+	char*				theText = NULL;
+	unsigned long		theLength = 0;
+	
+	if( theWords != NULL ) {
+		theText = CFStringCreateCString( theWords, kCFStringEncodingUTF8 );
+		theLength = strlen( theText );
+	}
+	
+	theErr = SpeakBuffer( onChannel, (const void*)theText, theLength, theFlags );
+	//if(theErr != noErr) fprintf( stderr, "CFStringSpeak Error: %i", theErr );
+	
+	return theErr;
+}
+
+CFStringRef		CFStringCreateFromCommandPipe( CFAllocatorRef inAllocator, CFURLRef inCommandURL, CFStringRef inCommandArgs, OSStatus* outError )
+{
+	OSStatus		outResult = kIOReturnBadArgument;
+	CFStringRef		outCFText = NULL;
+	//	CFStringRef		theCommand = CFSTR("carousel");
+	//	CFStringRef		errUnknown = CFSTR("carousel.sh:");
+	//	CFURLRef		commandURL = CFBundleCopyResourceURL( CFBundleGetMainBundle(), theCommand, CFSTR("sh"), NULL );
+	CFStringRef		doCFCommand;
+	char*			doCommand = NULL;
+	char*			utf8Name = NULL;
+	FILE*			pipe;
+	int				pipeSize = 8192;
+	
+	
+	if( inAllocator == NULL ) inAllocator = kCFAllocatorDefault;
+	
+	doCFCommand = CFStringCreateWithFormat(	inAllocator, NULL, CFSTR("\"%@\" %@"), inCommandURL, inCommandArgs );
+	if( doCFCommand == NULL ) goto BAIL;
+	
+	//	NSLog( (NSString*)doCFCommand );
+	
+	doCommand = CFStringCreateCString( doCFCommand, kCFStringEncodingUTF8 );	
+	if( doCommand == NULL ) goto BAIL;
+	
+	//	printf("Carousel command: %s", doCommand);
+	
+	utf8Name = (char*)calloc(1, pipeSize);
+	if( doCommand == NULL ) goto BAIL;
+	
+	pipe = popen( doCommand, "r" );
+	if ( pipe ) {
+		pipeSize = fread( utf8Name, 1, pipeSize, pipe );
+		outResult = pclose( pipe );
+	}
+	
+	if( pipeSize > 2 ) {
+		utf8Name[pipeSize-1] = 0;
+		outCFText = CFStringCreateWithCString( inAllocator, utf8Name, kCFStringEncodingUTF8 );
+		
+		//		if( CFStringHasPrefix( outCFText, errUnknown ) == TRUE ) {
+		//			CFRelease( outCFText );
+		//			outCFText = (CFStringRef)NULL;
+		//		}
+	} 
+	
+BAIL:
+	if( outError ) *outError = outResult;
+	if( utf8Name ) free( utf8Name );
+	if( doCFCommand ) CFRelease( doCFCommand );
+	//	if( commandURL ) CFRelease( commandURL );
+	//	if( commandPathURL ) CFRelease( commandPathURL );
+	if( doCommand ) free( doCommand );
+	return( outCFText );
+}
