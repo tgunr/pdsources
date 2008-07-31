@@ -25,6 +25,11 @@ if [[ ! -e $slotfile ]] ; then
     echo "1" > $slotfile
 fi
 
+if [[ ! -e "$CAROUSELPATH"]] ; then
+	mkdir -p "$CAROUSELPATH"
+	chmod 755 "$CAROUSELPATH"
+fi
+
 slot=`cat "$slotfile"`
 getslot=""
 level=1
@@ -61,12 +66,14 @@ echo "carousel usage
           scans -c from -m upward to -s for first avaialable slot
     -X Turn on bash debug flag
     -K Specify kind of slot folder data (default = data)
-	-L List all slots paths for -c"
+	-L List all slots paths for -c
 	-f Find all slots containing the given wildcard string
+	-V Version
+	"
    exit 1
 }
 
-while getopts "hc:m:s:g:l:d:vt:nxD:ewkpNXK:Lf:" Option
+while getopts "hc:m:s:g:l:d:vt:nxD:ewkpNXK:Lf:V" Option
 do 
     case "$Option" in 
 	h ) usage ;;
@@ -91,6 +98,8 @@ do
 	K ) kind="$OPTARG";;
 	L ) listslots=1;;
 	f ) findslot="$OPTARG";;
+	V ) echo "$Date$ $Revision"
+		exit 0;;
 	* ) echo "Unimplemented option chosen." 
 	    exit 1 ;;   # DEFAULT
     esac
