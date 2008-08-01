@@ -464,7 +464,7 @@
 /* Begin PBXProject section */
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
-			buildConfigurationList = B69BDD9808A2EC26008AC9B5 /* Build configuration list for PBXProject "PickADisc" */;
+			buildConfigurationList = B69BDD9808A2EC26008AC9B5 /* Build configuration list for PBXProject "PickADisk" */;
 			compatibilityVersion = "Xcode 2.4";
 			hasScannedForEncodings = 1;
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CocoaApp */;
@@ -803,7 +803,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		B69BDD9808A2EC26008AC9B5 /* Build configuration list for PBXProject "PickADisc" */ = {
+		B69BDD9808A2EC26008AC9B5 /* Build configuration list for PBXProject "PickADisk" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B69BDD9908A2EC26008AC9B5 /* Debug */,
