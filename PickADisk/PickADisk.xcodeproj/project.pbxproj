@@ -208,7 +208,7 @@
 		5C9293A90E1EBF7100835A1F /* BTHIconResources.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTHIconResources.m; sourceTree = "<group>"; };
 		735CC297049A7E1F00C919A3 /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Prefix.pch; path = Sources/Prefix.pch; sourceTree = "<group>"; };
 		735CC2C0049A7E2A00C919A3 /* Info-PickADisc.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-PickADisc.plist"; sourceTree = SOURCE_ROOT; };
-		735CC2C1049A7E2A00C919A3 /* PickADisc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PickADisc.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		735CC2C1049A7E2A00C919A3 /* PickADisk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PickADisk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75104AE90E423BF1009AFDB4 /* DiscID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DiscID.framework; path = Frameworks/DiscID.framework; sourceTree = "<group>"; };
 		75104AEA0E423BF1009AFDB4 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Frameworks/Sparkle.framework; sourceTree = SOURCE_ROOT; };
 		75104E010E425073009AFDB4 /* Info-PickADisk.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-PickADisk.plist"; sourceTree = SOURCE_ROOT; };
@@ -290,7 +290,7 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				735CC2C1049A7E2A00C919A3 /* PickADisc.app */,
+				735CC2C1049A7E2A00C919A3 /* PickADisk.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -456,7 +456,7 @@
 			name = PickADisk;
 			productInstallPath = "$(LOCAL_DEVELOPER_DIR)/Demos";
 			productName = DragNDropOLV;
-			productReference = 735CC2C1049A7E2A00C919A3 /* PickADisc.app */;
+			productReference = 735CC2C1049A7E2A00C919A3 /* PickADisk.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
