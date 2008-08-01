@@ -5,16 +5,16 @@
 #  Copyright (c) 2008 polyMicro Systems. All rights reserved.
 #
 USER_INTERRUPT=13
-CAROUSELPATH=${CAROUSELPATH:-"$HOME/Library/Carousels"}
+CAROUSELPATH=${CAROUSELPATH:-"$HOME/Library/PickADisk"}
 CMDPATH="`dirname $0`"
 CMDNAME="`basename $0`"
 DACALCMD="$CMDPATH/dacal" 
 XATTRCMD="$CMDPATH/xattr"
 #XATTRCMD="/usr/bin/xattr"
-xattrbase="com.polymicrosystems.pickadisc"
-xattrcarousel="$xattrbase.carousel"
+xattrbase="com.polymicrosystems.pickadisk"
+xattrcarousel="$xattrbase.device"
 xattrslot=$xattrcarousel".slot"
-xattrkind="$xattrbase.kind"
+xattrkind=$xattrslot".kind"
 
 # some assumptions
 volumepath="/Volumes/Untitled"
