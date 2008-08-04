@@ -60,7 +60,7 @@
 								<object class="NSMenuItem" id="590726063">
 									<reference key="NSMenu" ref="1046993664"/>
 									<bool key="NSIsDisabled">YES</bool>
-									<string key="NSTitle">Check for Updates...</string>
+									<string key="NSTitle">Check for Update...</string>
 									<string key="NSKeyEquiv"/>
 									<int key="NSMnemonicLoc">2147483647</int>
 									<reference key="NSOnImage" ref="987034195"/>
@@ -200,7 +200,7 @@
 								<bool key="EncodedWithXMLCoder">YES</bool>
 								<object class="NSMenuItem" id="354538829">
 									<reference key="NSMenu" ref="684628940"/>
-									<string key="NSTitle">Assign Slot</string>
+									<string key="NSTitle">Add Slot</string>
 									<string key="NSKeyEquiv">n</string>
 									<int key="NSKeyEquivModMask">1048576</int>
 									<int key="NSMnemonicLoc">2147483647</int>
@@ -264,7 +264,7 @@
 								</object>
 								<object class="NSMenuItem" id="802551005">
 									<reference key="NSMenu" ref="684628940"/>
-									<string key="NSTitle">Unassign Slot</string>
+									<string key="NSTitle">Delete Slot</string>
 									<string key="NSKeyEquiv"/>
 									<int key="NSMnemonicLoc">2147483647</int>
 									<reference key="NSOnImage" ref="987034195"/>
@@ -1770,7 +1770,7 @@
 															<object class="NSTextField" id="293582673">
 																<reference key="NSNextResponder" ref="782567302"/>
 																<int key="NSvFlags">268</int>
-																<string key="NSFrame">{{12, 152}, {383, 14}}</string>
+																<string key="NSFrame">{{11, 152}, {383, 14}}</string>
 																<reference key="NSSuperview" ref="782567302"/>
 																<bool key="NSEnabled">YES</bool>
 																<object class="NSTextFieldCell" key="NSCell" id="809889966">
@@ -2710,14 +2710,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
-						<string key="label">checkForUpdatesAndRefreshDate:</string>
-						<reference key="source" ref="887774783"/>
-						<reference key="destination" ref="240176618"/>
-					</object>
-					<int key="connectionID">1074</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
 						<string key="label">provideFeedback:</string>
 						<reference key="source" ref="887774783"/>
 						<reference key="destination" ref="604013474"/>
@@ -2726,11 +2718,75 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
-						<string key="label">checkForUpdatesAndRefreshDate:</string>
-						<reference key="source" ref="887774783"/>
+						<string key="label">runPageLayout:</string>
+						<reference key="source" ref="496970805"/>
+						<reference key="destination" ref="399078573"/>
+					</object>
+					<int key="connectionID">1083</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">checkForUpdates:</string>
+						<reference key="source" ref="170026377"/>
 						<reference key="destination" ref="590726063"/>
 					</object>
-					<int key="connectionID">1082</int>
+					<int key="connectionID">1084</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">checkForUpdates:</string>
+						<reference key="source" ref="170026377"/>
+						<reference key="destination" ref="501378760"/>
+					</object>
+					<int key="connectionID">1085</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">value: values.SUSendProfileInfo</string>
+						<reference key="source" ref="450722495"/>
+						<reference key="destination" ref="285879715"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="450722495"/>
+							<reference key="NSDestination" ref="285879715"/>
+							<string key="NSLabel">value: values.SUSendProfileInfo</string>
+							<string key="NSBinding">value</string>
+							<string key="NSKeyPath">values.SUSendProfileInfo</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">1088</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">delegate</string>
+						<reference key="source" ref="170026377"/>
+						<reference key="destination" ref="249871190"/>
+					</object>
+					<int key="connectionID">1089</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">delete:</string>
+						<reference key="source" ref="300271785"/>
+						<reference key="destination" ref="802551005"/>
+					</object>
+					<int key="connectionID">1092</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">orderOut:</string>
+						<reference key="source" ref="300271785"/>
+						<reference key="destination" ref="301172418"/>
+					</object>
+					<int key="connectionID">1108</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">printReport:</string>
+						<reference key="source" ref="249871190"/>
+						<reference key="destination" ref="108706358"/>
+					</object>
+					<int key="connectionID">1109</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -3301,11 +3357,11 @@
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="765024285"/>
-							<reference ref="293582673"/>
 							<reference ref="329758632"/>
 							<reference ref="501378760"/>
 							<reference ref="93578187"/>
 							<reference ref="450722495"/>
+							<reference ref="293582673"/>
 						</object>
 						<reference key="parent" ref="307449676"/>
 					</object>
@@ -4534,7 +4590,7 @@
 					<reference ref="9"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<reference ref="9"/>
-					<string>{{223, 730}, {200, 73}}</string>
+					<string>{{249, 754}, {200, 73}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<reference ref="9"/>
 					<string>{{187, 752}, {200, 73}}</string>
@@ -4575,7 +4631,7 @@
 					<reference ref="9"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<reference ref="9"/>
-					<string>{{179, 560}, {253, 243}}</string>
+					<string>{{205, 584}, {253, 243}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<reference ref="9"/>
 					<string>{{143, 582}, {253, 243}}</string>
@@ -4646,12 +4702,12 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{296, 740}, {146, 23}}</string>
+					<string>{{334, 764}, {146, 23}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{83, 112}, {434, 316}}</string>
+					<string>{{74, 161}, {434, 316}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{83, 112}, {434, 316}}</string>
+					<string>{{74, 161}, {434, 316}}</string>
 					<integer value="0"/>
 					<string>{3.40282e+38, 3.40282e+38}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -4797,7 +4853,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">1082</int>
+			<int key="maxID">1109</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -4805,6 +4861,10 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">AppController</string>
 					<string key="superclassName">NSObject</string>
+					<object class="NSMutableDictionary" key="actions">
+						<string key="NS.key.0">printReport:</string>
+						<string key="NS.object.0">id</string>
+					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">Sources/PAD Controllers/AppController.h</string>
@@ -4847,14 +4907,12 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSMutableArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>checkForUpdatesAndRefreshDate:</string>
 							<string>clickTool:</string>
 							<string>provideFeedback:</string>
 							<string>refreshUpdateDate:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>id</string>
 							<string>NSToolbarItem</string>
 							<string>id</string>
 							<string>id</string>
@@ -4887,6 +4945,29 @@
 						<string key="majorKey">IBUserSource</string>
 						<string key="minorKey"/>
 					</object>
+				</object>
+			</object>
+			<object class="NSMutableArray" key="referencedPartialClassDescriptionsV3.1+">
+				<bool key="EncodedWithXMLCoder">YES</bool>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSObject</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier" id="679022627">
+						<string key="majorKey">IBDocumentRelativeSource</string>
+						<string key="minorKey">../../Frameworks/Sparkle.framework/Versions/A/Headers/SUUpdater.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">SUUpdater</string>
+					<string key="superclassName">NSObject</string>
+					<object class="NSMutableDictionary" key="actions">
+						<string key="NS.key.0">checkForUpdates:</string>
+						<string key="NS.object.0">id</string>
+					</object>
+					<object class="NSMutableDictionary" key="outlets">
+						<string key="NS.key.0">delegate</string>
+						<string key="NS.object.0">id</string>
+					</object>
+					<reference key="sourceIdentifier" ref="679022627"/>
 				</object>
 			</object>
 		</object>

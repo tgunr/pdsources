@@ -28,7 +28,7 @@
 	<key>CFBundleExecutable</key>
 	<string>PickADisk</string>
 	<key>CFBundleGetInfoString</key>
-	<string></string>
+	<string>PickADisk, ©2008 polyMicro Systems</string>
 	<key>CFBundleIconFile</key>
 	<string>PAD4</string>
 	<key>CFBundleIdentifier</key>
@@ -40,7 +40,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string></string>
+	<string>1.0.0a</string>
 	<key>CFBundleSignature</key>
 	<string>PADA</string>
 	<key>CFBundleURLTypes</key>
@@ -59,14 +59,40 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>0.1a</string>
+	<string>1006</string>
+	<key>NSHumanReadableCopyright</key>
+	<string>Copyright © 2008, polyMicro Systems</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
 	<key>SUCheckAtStartup</key>
 	<false/>
+	<key>SUEnableSystemProfiling</key>
+	<true/>
 	<key>SUFeedURL</key>
-	<string>http://updates.downtowncode.com/pad/updates.xml</string>
+	<string>http://updates.pickadisk.com/trunk/updateInfo.php</string>
+	<key>UTExportedTypeDeclarations</key>
+	<array>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>com.apple.package</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>PickADisk Carousel Device</string>
+			<key>UTTypeIconFile</key>
+			<string>DC300Black.icns</string>
+			<key>UTTypeIdentifier</key>
+			<string>com.polymicrosystems.pickadisk.documents.carousel</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>carousel</string>
+				</array>
+			</dict>
+		</dict>
+	</array>
 </dict>
 </plist>

@@ -180,6 +180,7 @@
     return name; 
 }
 
+/*
 - (NSComparisonResult)compare:(id)other {
     // We want the data to be sorted by name, so we compare [self name] to [other name]
     if ([other isKindOfClass:[SimpleNodeData class]]) {
@@ -189,6 +190,7 @@
         return NSOrderedAscending;
     }
 }
+*/
 
 - (void)setLocation:(NSURL *)loc {
     if (!location || ![location isEqual:loc]) {
@@ -241,21 +243,35 @@
 - (void)setBusy:(BOOL)value { isBusy = value; }
 
 
--(NSComparisonResult)compareDataNames:(id)other
+-(NSComparisonResult)compareDataNames:(SimpleNodeData *)other
 {
 	NSLog(@"COMPARE NAME");
 	return( [[self name] localizedCaseInsensitiveCompare:(NSString*)[other name]] );
 }
 
--(NSComparisonResult)compareDataSlots:(id)other
+-(NSComparisonResult)compareDataSlots:(SimpleNodeData *)other
 {
 	DACALSlotNum	thisSlot = [self itemSlot];
 	DACALSlotNum	thatSlot = [other itemSlot];
 	
-	NSLog(@"COMPARE SLOT");
+//	NSLog(@"COMPARE SLOT");
 	if( thisSlot == thatSlot ) return NSOrderedSame;
 	if( thisSlot < thatSlot ) return NSOrderedAscending;
 	return NSOrderedDescending;
+}
+
+- (NSComparisonResult)compare:(id)otherData
+{ 
+	NSComparisonResult		slotResult = NSOrderedAscending;
+	
+	if ([otherData isKindOfClass:[SimpleNodeData class]]) {
+		SimpleNodeData *other = (SimpleNodeData *)otherData;
+		slotResult = [self compareDataSlots:other]; 
+		if(slotResult == NSOrderedSame)
+			slotResult = [name compare:[other name] options:NSNumericSearch+NSCaseInsensitiveSearch];; // [self compareDataNames:other];
+	}
+	
+	return slotResult;
 }
 
 @end

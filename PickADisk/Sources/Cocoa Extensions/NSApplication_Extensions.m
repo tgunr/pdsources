@@ -8,15 +8,17 @@
 
 #import "NSApplication_Extensions.h"
 
-
+/*
 @implementation NSApplication(MyExtensions)
 
 - (id)addVolumeController { return addVolumeController; }
 - (void)setAddVolumeController:(id)inAVC
 {
-    if (!addVolumeController || ![addVolumeController isEqual:inAVC]) {
-		[addVolumeController release];
 		addVolumeController = [inAVC retain];
+//    if (!addVolumeController || ![addVolumeController isEqual:inAVC]) {
+//		[addVolumeController release];
+//		addVolumeController = [inAVC retain];
+//    }
     }
-}
 @end
+*/

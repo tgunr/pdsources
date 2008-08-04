@@ -5,7 +5,7 @@
  *  Created by Dave Carlton on 05/27/08.
  *  Copyright 2008 Polymicro Systems. All rights reserved.
  *
-*/
+ */
 
 #import "ImageAndTextCell.h"
 #import <AppKit/NSCell.h>

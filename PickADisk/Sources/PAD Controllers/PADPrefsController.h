@@ -9,7 +9,7 @@
 }
 
 - (IBAction)clickTool:(NSToolbarItem*)sender;
-- (IBAction)checkForUpdatesAndRefreshDate:(id)sender;
+//- (IBAction)checkForUpdatesAndRefreshDate:(id)sender;
 - (IBAction)refreshUpdateDate:(id)sender;
 - (IBAction)provideFeedback:(id)sender;
 

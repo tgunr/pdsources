@@ -20,18 +20,19 @@
 	IBOutlet	NSImageView		*cdIcon;
 	IBOutlet	NSPopUpButton	*carouselList;
 	IBOutlet	NSPopUpButton	*slotTypeList;
-	IBOutlet	NSTextField		*slotTitle;
+	IBOutlet	NSComboBox		*slotTitle;
 	IBOutlet	NSTextField		*slotNumber;
 	IBOutlet	NSSlider		*slotDial;
 	IBOutlet	NSSlider		*depthLevel;
 	
 	IBOutlet	NSWindow		*parentWindow;
+	IBOutlet	PADIndexProgressController *progressController;
 	
 	DACALDeviceRef				currentDevice;
 	NSMutableArray				*pendingVolumes;
-	BOOL						isPending;
-	NSString					*pendingTitle;
-	NSURL						*pendingURL;
+//	BOOL						isPending;
+//	NSString					*pendingTitle;
+//	NSURL						*pendingURL;
 }
 
 -(IBAction) clickCancel:(id)sender;
@@ -41,12 +42,13 @@
 -(IBAction) slotChanged:(id)sender;
 -(IBAction) slotTitleChanged:(id)sender;
 -(IBAction) slotDialChanged:(id)sender;
+-(IBAction) slotNameChanged:(id)sender;
 -(IBAction) carouselChanged:(id)sender;
 
 -(NSString*) pendingTitle;
--(void)setPendingTitle:(NSString*)inTitle;
+//-(void)setPendingTitle:(NSString*)inTitle;
 -(NSURL*) pendingURL;
--(void)setPendingURL:(NSURL*)inPath;
+//-(void)setPendingURL:(NSURL*)inPath;
 -(NSInteger) pendingCount;
 
 - (void)awakeFromNib;
@@ -54,7 +56,9 @@
 - (void)deviceSelectionChanged:(NSArray *)newSet;
 - (void)startSheet:(id)sender;
 - (void)windowWillBeginSheet:(NSNotification *)notification;
+- (void)syncMediaTitles;
 - (void)detectedMounts:(NSArray *)newMounts;
+- (void)ejectedMounts:(NSArray*)oldMounts;
 
 -(void) indexProgressComplete:(PADIndexProgressController*)progress;
 -(void) startIndexProgress:(NSTimer*)timer;

@@ -43,6 +43,15 @@ static AppController *shared;
     }
     if (self = [super init])
 	{	// Initializtion 
+		
+#if PADBOX_EXPIRE_CHECK != 0
+		[PADBOXController	performSelectorOnMainThread:@selector(startBOXWithToken:)
+											withObject:[NSNumber numberWithDouble:PADBOX_EXPIRE_DATE]
+										waitUntilDone:YES];
+#endif		
+
+		PADBOX_VALID_BEGIN
+		
 		DACALSetup();
 
 		queue = [[NSOperationQueue alloc] init];
@@ -53,6 +62,8 @@ static AppController *shared;
 		busyBodies = [[NSMutableArray alloc] initWithCapacity:8192];
 		busyBusy = NO;
 		jPADBusyBodyBeat = 0;
+		
+		PADBOX_VALID_END
 		
 		shared = self;
 	}
@@ -73,22 +84,30 @@ static AppController *shared;
 
 - (void)awakeFromNib {
 
+	PADBOX_VALID_BEGIN
+
 	NSNotificationCenter *noteCenter;
 	
 	// Assume -observerMethod:(id)aNotification exists
 	noteCenter = [[NSWorkspace sharedWorkspace] notificationCenter];
 	[noteCenter addObserver:self selector:@selector(newMediaDetected:)
 					  name:@"NSWorkspaceDidMountNotification" object:nil]; // Register for all mount notifications
+	[noteCenter addObserver:self selector:@selector(existingMediaRemoved:)
+					  name:@"NSWorkspaceWillUnmountNotification" object:nil]; // Register for all unmount notifications
 
 	// Register for 'GURL' Apple Event to handle URL opening
 	[[NSAppleEventManager sharedAppleEventManager] setEventHandler:self andSelector:@selector(handleOpenLocationAppleEvent:withReplyEvent:) forEventClass:kInternetEventClass andEventID:kAEGetURL];
 	
 	// *** new nibs
 	[NSBundle loadNibNamed:@"CarouselIndex" owner:[NSApplication sharedApplication]];
-	[NSBundle loadNibNamed:@"CarouselProgress" owner:[NSApplication sharedApplication]];
+	//[NSBundle loadNibNamed:@"CarouselProgress" owner:[NSApplication sharedApplication]];
 
 	// Add busy body heartbeat
 	[NSTimer scheduledTimerWithTimeInterval:PAD_BUSYBODY_DELAY target:self selector:@selector(doBusyWork:) userInfo:nil repeats:YES];
+	
+	PADBOX_VALID_END
+	
+	if( !PADBOX_VALIDATED ) NSLog(@"PickADisk has expired.");
 }
 
 - (void) newMediaDetected:(id)aNotification {
@@ -106,10 +125,19 @@ static AppController *shared;
 
 	//if( addVolumeController ) [addVolumeController detectedMounts:urlMounts];
 	//id controllerThing = [[NSApplication sharedApplication] addVolumeController];
-	[[[NSApplication sharedApplication] addVolumeController] detectedMounts:urlMounts];
+	[addVolumeController detectedMounts:urlMounts];
 //	[urlMounts release];
 	
 	NSLogFunc;
+}
+
+- (void) existingMediaRemoved:(id)aNotification {
+	NSArray*	oldMounts = (NSArray*)[NSArray arrayWithObject:[NSURL fileURLWithPath:[[aNotification userInfo] valueForKey:@"NSDevicePath"]]];
+	
+	NSLog(@"Detected Unmounts: %@", oldMounts);	
+
+	[addVolumeController ejectedMounts:oldMounts];
+	
 }
 
 - (void)handleOpenLocationAppleEvent:(NSAppleEventDescriptor *)event withReplyEvent:(NSAppleEventDescriptor *)reply {
@@ -130,6 +158,33 @@ static AppController *shared;
     }
 }
 
+
+- (NSArray*)feedParametersForHostBundle:(NSBundle*)hostBundle sendingSystemProfile:(BOOL)isSending
+{
+	NSMutableArray*		outArray = [NSMutableArray arrayWithCapacity:4];
+	NSArray*			profileDictKeys = [NSArray arrayWithObjects:@"key", @"visibleKey", @"value", @"visibleValue", nil];
+	DACALCount			boxCount = DACALDevicesGetCount();
+	DACALCount			count101 = DACALDevicesGetCountForModel( DACALDC101CFName );
+	DACALCount			count300 = DACALDevicesGetCountForModel( DACALDC300CFName );
+	DACALCount			count016 = DACALDevicesGetCountForModel( DACALDC016RWCFName );
+	
+	if( isSending == YES )
+	{
+		[outArray addObject:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"countTotal", @"Carousel Count", [NSNumber numberWithInt:boxCount], [NSNumber numberWithInt:boxCount], nil] forKeys:profileDictKeys]];
+		
+		if( count101 )
+			[outArray addObject:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"countDC101", @"DC-101 Count", [NSNumber numberWithInt:count101], [NSNumber numberWithInt:count101], nil] forKeys:profileDictKeys]];
+		if( count300 )
+			[outArray addObject:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"countDC300", @"DC-300 Count", [NSNumber numberWithInt:count300], [NSNumber numberWithInt:count300], nil] forKeys:profileDictKeys]];
+		if( count016 )
+			[outArray addObject:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"countDC016RW", @"DC016RW Count", [NSNumber numberWithInt:count016], [NSNumber numberWithInt:count016], nil] forKeys:profileDictKeys]];
+	}
+	
+	return( (NSArray*)outArray );
+}
+
+
+
 + (void)playUISound:(NSInteger)theSound {
 		
 	if( [[NSUserDefaults standardUserDefaults] boolForKey:@"PADPlaySounds"] == YES ) AudioServicesPlaySystemSound( (SystemSoundID)theSound );
@@ -145,6 +200,26 @@ static AppController *shared;
 }
 
 - (void)setDataView:(TreeController*)tc { dataView = tc; }
+
+- (void)setToolbarController:(PADIndexToolbarController*)tb { toolbarController = tb; }
+
+- (IBAction)printReport:(id)sender
+{
+	NSArray*	theBoxes = [toolbarController selectedDevices];
+	
+	if( [theBoxes count] > 0 )
+		[[PADLayoutView printReportForDevice:(DACALDeviceRef)[theBoxes objectAtIndex:0] forSender:sender] autorelease];
+}
+
+- (PADAddVolumeController*)addVolumeController { return addVolumeController; }
+- (void)setAddVolumeController:(PADAddVolumeController*)inAVC
+{
+	addVolumeController = [inAVC retain];
+	//    if (!addVolumeController || ![addVolumeController isEqual:inAVC]) {
+	//		[addVolumeController release];
+	//		addVolumeController = [inAVC retain];
+	//    }
+}
 
 - (void)addBusyBody:(id)item ofView:(id)view 
 {

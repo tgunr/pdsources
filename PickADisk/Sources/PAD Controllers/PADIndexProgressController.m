@@ -1,22 +1,22 @@
 #import "PADIndexProgressController.h"
 
 @implementation PADIndexProgressController
-static PADIndexProgressController* PADIndexProgressController_shared;
+//static PADIndexProgressController* PADIndexProgressController_shared;
 
 - (id)init
 {
-	if (PADIndexProgressController_shared) 
-	{
-        [self autorelease];
-        return PADIndexProgressController_shared;
-    }
+//	if (PADIndexProgressController_shared) 
+//	{
+//        [self autorelease];
+//        return PADIndexProgressController_shared;
+//    }
     if (self = [super init])
 	{	
 		[[NSNotificationCenter defaultCenter] addObserver:self
 												 selector:@selector(taskDidEnd:)
 													 name:NSTaskDidTerminateNotification
 												   object:nil];
-		PADIndexProgressController_shared = self;
+//		PADIndexProgressController_shared = self;
 	}
     return self; 
 }
@@ -34,6 +34,7 @@ static PADIndexProgressController* PADIndexProgressController_shared;
 	//[super awakeFromNib];
 }
 
+/*
 + (id)shared
 {
     if (!PADIndexProgressController_shared) {
@@ -41,6 +42,7 @@ static PADIndexProgressController* PADIndexProgressController_shared;
     }
     return PADIndexProgressController_shared;
 }
+*/
 
 - (IBAction)cancel:(id)sender
 {
@@ -129,18 +131,18 @@ static PADIndexProgressController* PADIndexProgressController_shared;
 																	withTask:task] autorelease];
 }
 
-+ (id)runProgressDialogForCommand:(NSString*)path arguments:(NSArray*)args forTarget:(id)target finishSelector:(SEL)callback modalForWindow:(NSWindow*)parent
+- (id)runProgressDialogForCommand:(NSString*)path arguments:(NSArray*)args forTarget:(id)target finishSelector:(SEL)callback modalForWindow:(NSWindow*)parent
 {
-	PADIndexProgressController*	doDialog = [PADIndexProgressController shared];
+//	PADIndexProgressController*	doDialog = [PADIndexProgressController shared];
 	NSTask*						doTask = [[[NSTask alloc] init] autorelease];
 	
-	if( !doDialog ) return( doDialog );
-	self = doDialog;
+//	if( !doDialog ) return( doDialog );
+//	self = doDialog;
 	
 	[doTask setLaunchPath:path];
 	[doTask setArguments:args];
 	
-	return [doDialog startProgressDialogForTarget:target finishSelector:callback finishData:nil modalForWindow:parent withTask:doTask];
+	return [self startProgressDialogForTarget:target finishSelector:callback finishData:nil modalForWindow:parent withTask:doTask];
 }
 
 

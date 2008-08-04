@@ -29,7 +29,7 @@
 
 -(void)startSearch
 {
-	NSTask*		workTask =nil;	
+//	NSTask*		workTask =nil;	
 }
 
 	

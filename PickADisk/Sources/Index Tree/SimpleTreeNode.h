@@ -125,8 +125,10 @@ const enum {
 - (BOOL)busy;
 - (void)setBusy:(BOOL)value;
 
-- (NSComparisonResult)compareDataNames:(id)otherData;
-- (NSComparisonResult)compareDataSlots:(id)otherData;
+- (NSComparisonResult)compareDataNames:(SimpleNodeData *)otherData;
+- (NSComparisonResult)compareDataSlots:(SimpleNodeData *)otherData;
+
+- (NSComparisonResult)compare:(id)otherData;
 
 @end
 

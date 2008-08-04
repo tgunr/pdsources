@@ -11,6 +11,12 @@
 
 @implementation PADIndexToolbarController
 
+- (void)awakeFromNib 
+{
+	
+	[[AppController shared] setToolbarController:self];
+}
+
 -(void)adoptSelection
 {
 	NSInteger	boxCount = 0;
@@ -96,7 +102,11 @@
 	[sheet orderOut:self];
 }
 
-- (IBAction)clickAssign:(id)sender { if( addVolumeController ) [addVolumeController startSheet:[assignButton window]]; }
+- (IBAction)clickAssign:(id)sender { 
+	//if( addVolumeController ) [addVolumeController startSheet:[assignButton window]];
+	PADAddVolumeController* pvc = [[AppController shared] addVolumeController];
+	[pvc startSheet:[assignButton window]];
+}
 
 - (void)unassignAlertDidEnd:(NSAlert *)alert returnCode:(int)rc contextInfo:(void *)ci
 {

@@ -15,7 +15,7 @@
 	int	taskResult;
 }
 
-+ (id)shared;
+//+ (id)shared;
 
 - (IBAction)cancel:(id)sender;
 
@@ -34,7 +34,7 @@
 						  finishData:(id)data
 					  modalForWindow:(NSWindow*)parent;
 
-+ (id)runProgressDialogForCommand:(NSString*)path
+- (id)runProgressDialogForCommand:(NSString*)path
 						arguments:(NSArray*)args
 						forTarget:(id)target
 				   finishSelector:(SEL)callback

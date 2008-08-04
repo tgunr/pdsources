@@ -13,7 +13,7 @@
 
 #define		PADINDEX_GROUPTITLE_LIBRARY		@"LIBRARY"
 #define		PADINDEX_GROUPTITLE_DEVICES		@"CAROUSELS"
-#define		PADINDEX_GROUPTITLE_FAVORITES	@"DISCMARKS"
+#define		PADINDEX_GROUPTITLE_FAVORITES	@"BOOKMARKS"
 #define		PADINDEX_GROUPTITLE_SEARHCES	@"SEARCH FOR"
 
 @implementation DACALTreeDataSource
@@ -61,6 +61,8 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 	[tree setAllowGroupRowLook:YES];
 	[tree setAllowBetweenDrop:YES];
 
+	PADBOX_VALID_BEGIN
+	
 	theErr = FSFindFolder( kUserDomain, kDACALCarouselsFolderType, TRUE, &userLibraryFolder );
 	if( theErr != 0 ) printf( "Could not find user library! Error:%i\n", theErr );
 	else dataURL = CFURLCreateFromFSRef(NULL, &userLibraryFolder);
@@ -122,6 +124,8 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 			}
 		}
 		
+		[theSubtreeNode recursiveSortChildren];						// Sort by slot!
+		
 		[[theChildNode nodeData] setSubTree:theSubtreeNode];
 
 		[theWorkNode insertChild:theChildNode atIndex:index];
@@ -148,6 +152,8 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 	}
 */
 
+	PADBOX_VALID_END
+	
 	return theOutputTree;
 }
 
@@ -194,9 +200,12 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 			if(![selectedBoxes containsObject:(id)theDevice])
 				[selectedBoxes addObject:(id)theDevice];
     }
-	[secondaryController outlineViewAction:secondaryController];
+
 
 	if( toolControl ) [toolControl setSelectedDevices:(NSArray*)selectedBoxes];
+	
+	[secondaryController outlineViewAction:secondaryController];
+
 	
 //	[selectedBoxes release];	
 	return;
@@ -293,9 +302,11 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 
 - (void)awakeFromNib 
 {
+	if( !PADBOX_VALIDATED ) [[[treeControl outlineView] window] orderOut:self];
+	
 	[[AppController shared] setDataView: treeControl];
 
-	NSTableColumn*		nameCol = [[treeControl outlineView] tableColumnWithIdentifier:COLUMNID_NAME];
+//	NSTableColumn*		nameCol = [[treeControl outlineView] tableColumnWithIdentifier:COLUMNID_NAME];
 	NSTableColumn*		slotCol = [[treeControl outlineView] tableColumnWithIdentifier:COLUMNID_SLOT];
 	
 //	NSSortDescriptor*	nameSort = [[[NSSortDescriptor alloc] initWithKey:@"nodeData" ascending:YES selector:@selector(compareDataNames:)] autorelease];

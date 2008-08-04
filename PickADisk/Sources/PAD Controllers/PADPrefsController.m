@@ -7,9 +7,27 @@
 	
 	if( tabToolbar ) [tabToolbar setSelectedItemIdentifier:[[[tabToolbar items] objectAtIndex:0] itemIdentifier]];
 		
-	
+	[[NSUserDefaultsController sharedUserDefaultsController] addObserver:self forKeyPath:@"values.SULastCheckTime" options:0 context:NULL];
+
 }
 
+- (void)dealloc
+{
+	[[NSUserDefaultsController sharedUserDefaultsController] removeObserver:self forKeyPath:@"values.SULastCheckTime"];
+	[super dealloc];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+	if (object == [NSUserDefaultsController sharedUserDefaultsController] && ([keyPath hasSuffix:@"SULastCheckTime"]))
+	{
+		[self refreshUpdateDate:self];
+	}
+	else
+	{
+		[super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+	}
+}
 
 - (NSArray *)toolbarSelectableItemIdentifiers:(NSToolbar *)toolbar {
 	
@@ -40,36 +58,41 @@
 - (IBAction)refreshUpdateDate:(id)sender
 {
 	NSDate*		theDate = [[NSUserDefaults standardUserDefaults] objectForKey:@"SULastCheckTime"];
+	NSString*	theLastCheckFormat = @"Last Check: %@";
 	NSString*	theUpdateString = (NSString*)CFSTR("Never checked for an update.");
 	
 	CFLocaleRef			thisLocale = CFLocaleCopyCurrent();
 	CFDateFormatterRef	thisFormat = CFDateFormatterCreate( kCFAllocatorDefault, thisLocale, kCFDateFormatterFullStyle, kCFDateFormatterFullStyle );
+	CFStringRef			thisDate = NULL;
 	
-	if( theDate )
-		theUpdateString = (NSString*)CFDateFormatterCreateStringWithDate( kCFAllocatorDefault, thisFormat, (CFDateRef)theDate );
+	if( theDate ) {
+		thisDate = CFDateFormatterCreateStringWithDate( kCFAllocatorDefault, thisFormat, (CFDateRef)theDate );
+		theUpdateString = [NSString stringWithFormat:theLastCheckFormat, (NSString*)thisDate];
+		CFRelease( thisDate );
+	}
 	
 	if( updateText ) [updateText setStringValue:theUpdateString];
 	
-	CFRelease( theUpdateString );
 	CFRelease( thisFormat );
 	CFRelease( thisLocale );	
 }
 
--(void) refreshUpdateTimer:(NSTimer*)timer
-	{ [self refreshUpdateDate:[timer userInfo]]; }
+/*
+//-(void) refreshUpdateTimer:(NSTimer*)timer
+//	{ [self refreshUpdateDate:[timer userInfo]]; }
 
 
 - (IBAction)checkForUpdatesAndRefreshDate:(id)sender
 {
 	[[SUUpdater sharedUpdater] checkForUpdates:sender];
 	
-	[NSTimer scheduledTimerWithTimeInterval:3.0
-									 target:self
-								   selector:@selector(refreshUpdateTimer:)
-								   userInfo:sender
-									repeats:NO];
+//	[NSTimer scheduledTimerWithTimeInterval:3.0
+//									 target:self
+//								   selector:@selector(refreshUpdateTimer:)
+//								   userInfo:sender
+//									repeats:NO];
 }
-
+*/
 - (IBAction)provideFeedback:(id)sender
 {
 	CFURLRef	feedbackURL = CFURLCreateWithString( kCFAllocatorDefault, CFSTR("mailto:feedback@pickadisk.com?subject=PickADisk%20Feedback"), NULL );

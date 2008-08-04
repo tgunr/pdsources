@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-
+/*
 @interface NSApplication(MyExtensions)
 
 IBOutlet id addVolumeController;
@@ -17,3 +17,4 @@ IBOutlet id addVolumeController;
 - (void)setAddVolumeController:(id)inAVC;
 
 @end
+*/

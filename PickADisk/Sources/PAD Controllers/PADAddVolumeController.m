@@ -14,7 +14,8 @@
 
 - (id)init {
     if (self = [super init]) {
-		isPending = NO;
+		//isPending = NO;
+		pendingVolumes = [[NSMutableArray arrayWithCapacity:100] retain];
 	}
 	
     return self; 
@@ -29,24 +30,25 @@
 
 - (void)awakeFromNib
 {
-	[[NSApplication sharedApplication] setAddVolumeController:self];
-	
+	[[AppController shared] setAddVolumeController:self];
+	//pendingVolumes = [NSMutableArray arrayWithCapacity:0];
+	pendingVolumes = [[NSMutableArray arrayWithCapacity:100] retain];
 	//if( cdIcon ) [cdIcon setAlphaValue: 0.22];
-	
+	[self syncMediaTitles];
 }
 
 -(NSInteger) pendingCount
 {
 	NSInteger	theCount = 0;
 	
-	if( pendingVolumes == NULL ) theCount = 0;
+	if( pendingVolumes == NULL ) theCount = 0;					// Paranoid?
 	else if( pendingVolumes == nil ) theCount = 0;
 
 	else theCount = [pendingVolumes count];
 	
 	return theCount;
 }	
-
+/*
 - (void)pushPending
 {
 	NSInteger	theCount = [self pendingCount];
@@ -55,7 +57,9 @@
 		[self setPendingURL:[pendingVolumes objectAtIndex:0]];
 		[self setPendingTitle: (NSString*)CFURLCopyDisplayName( NULL, (CFURLRef)[self pendingURL], NULL)];
 		
-/*
+
+// DISK ID STUFF
+// 
 		if( [[self pendingTitle] compare:@"Audio CD"] == NSOrderedSame )
 		{
 			FSRef			theRef;
@@ -90,8 +94,9 @@
 			CFRelease( diskIDRef );
 			CFRelease( diskPath );
 		}
+//
+// END DISK ID STUFF
 		
-*/		
 		isPending = YES;
 	} else {
 		[self setPendingURL: nil];
@@ -100,6 +105,7 @@
 	}
 	[self carouselChanged:self];
 }
+
 
 - (void)popPending
 {	
@@ -112,7 +118,7 @@
 	}
 	[self pushPending];
 }
-
+*/
 
 -(IBAction) clickCancel:(id)sender 
 {
@@ -130,18 +136,18 @@
 	if( result != 0 )
 		sound = kASSystemSoundDoink;
 
-	[AppController playUISound: sound];
-	
 	if( result == 0 )
 	{
+		[[DACALTreeDataSource shared] slotAddedToDevice: currentBox forSlot: currentSlot];
+
 		if( ([[NSUserDefaults standardUserDefaults] boolForKey:@"PADEjectOnIndex"] == YES ) && (currentVolume != nil) )
 			[[NSWorkspace sharedWorkspace] unmountAndEjectDeviceAtPath: [currentVolume path]];
 		if( [[NSUserDefaults standardUserDefaults] boolForKey:@"PADCheckInOnIndex"] == YES )
 			DACALCommandMoveToSlotWithOptions( currentBox, currentSlot, kDACALOptionMoveDefault );
-		
-		[[DACALTreeDataSource shared] slotAddedToDevice: currentBox forSlot: currentSlot];
 	}
-}
+		
+	[AppController playUISound: sound];
+	}
 
 -(void) startIndexProgress:(NSTimer*)timer
 {
@@ -155,12 +161,13 @@
 	NSString*		doCmd = [[NSBundle mainBundle] pathForResource:@"carousel" ofType:@"sh"];
 	NSMutableArray*	doArgs = [NSMutableArray arrayWithCapacity:6];
 	
-	int				doLevel = 0;
-	PADIndexProgressController*	progressController = nil;
+	int				doLevel = 4;													// Should use user defaults!
+//	PADIndexProgressController*	progressController = nil;
 	
 	if( newPath != nil )
 		doPath = [NSString stringWithFormat:@"-d%@", [newPath path]];
 	
+//	if( !([[NSUserDefaults standardUserDefaults] boolForKey:@"PADEjectOnIndex"] == YES ) && !([self pendingURL] != nil) )
 	[doArgs addObject:@"-x"];
 	[doArgs addObject:[NSString stringWithFormat:@"-c%@", deviceUUIDString]];
 	[doArgs addObject:[NSString stringWithFormat:@"-s%i", nextSlot]];
@@ -171,13 +178,17 @@
 //	[doArgs addObject:@"-X"];
 	NSLog(@"Task Call: %@\n\t%@", doCmd, [doArgs description]);
 	
-	progressController = [PADIndexProgressController runProgressDialogForCommand:doCmd
+	progressController = nil;
+	[NSBundle loadNibNamed:@"CarouselProgress" owner:self];
+
+	if( progressController != nil )
+	{
+	[progressController runProgressDialogForCommand:doCmd
 																	   arguments:doArgs
 																	   forTarget:self
 																  finishSelector:@selector(indexProgressComplete:)
 																  modalForWindow:parentWindow];
-	if( progressController != nil )
-	{
+	
 		[progressController setPrimaryPromptString:[NSString stringWithFormat:@"Indexing “%@”...", newTitle]];
 		[progressController setSecondaryPromptString:[NSString stringWithFormat:@"Assigning to slot %i", (int)nextSlot]];
 	}
@@ -314,11 +325,15 @@ NAVERR:
 {
 	CFStringRef		existingSlotName = DACALSlotCopyTitle( [carouselList indexOfSelectedItem]+1, [slotNumber intValue], NULL );
 	CFStringRef		blankSlotName = (CFStringRef)[self pendingTitle];
+	BOOL			isBlankBlank = FALSE;
+	
+	if( blankSlotName == NULL ) blankSlotName = CFSTR("");
 	
 	 if( existingSlotName ) [slotTitle setStringValue:(NSString*)existingSlotName];
 	 else [slotTitle setStringValue: (NSString*)blankSlotName];
 	 
-	 [okButton setEnabled: (!existingSlotName) ? YES : NO];
+	if( [[slotTitle stringValue] compare:@""] == NSOrderedSame ) isBlankBlank = TRUE;
+	 [okButton setEnabled: !isBlankBlank];
 	 [slotTitle setEnabled: (!existingSlotName) ? YES : NO];
 }
 
@@ -334,6 +349,16 @@ NAVERR:
 	[self slotChanged:sender];
 }
 
+-(IBAction) slotNameChanged:(id)sender
+{
+	BOOL			isBlankBlank = FALSE;
+
+	//[self slotChanged:sender];
+	
+	if( [[slotTitle stringValue] compare:@""] == NSOrderedSame ) isBlankBlank = TRUE;
+	[okButton setEnabled: !isBlankBlank];
+}
+
 -(IBAction) carouselChanged:(id)sender
 {
 	DACALDeviceRef	deviceID = (DACALDeviceRef)[carouselList indexOfSelectedItem]+1;
@@ -347,9 +372,16 @@ NAVERR:
 
 -(NSString*) pendingTitle
 {
-	if( !pendingTitle ) return @"";
-	return pendingTitle;
+	NSString*	newTitle = nil;
+	NSURL*		theURL = [self pendingURL];
+	
+	if( theURL != nil )
+		newTitle = (NSString*)CFURLCopyDisplayName( NULL, (CFURLRef)theURL, NULL);
+	
+	return newTitle;
 }
+
+/*
 -(void)setPendingTitle:(NSString*)inTitle
 {
     if (!pendingTitle || ![pendingTitle isEqual:inTitle]) {
@@ -357,8 +389,21 @@ NAVERR:
 		pendingTitle = [inTitle retain];
     }
 }
+*/
 
--(NSURL*) pendingURL { return pendingURL; }
+-(NSURL*) pendingURL 
+{ 
+	NSURL*	currentURL = nil;
+	int		selectedIndex = [slotTitle indexOfSelectedItem];
+	
+	if( selectedIndex != -1 )
+		currentURL = [pendingVolumes objectAtIndex:selectedIndex];
+	
+	return currentURL; 
+}
+
+
+/*
 -(void)setPendingURL:(NSURL*)inPath
 {
     if (!pendingURL || ![pendingURL isEqual:inPath]) {
@@ -366,6 +411,7 @@ NAVERR:
 		pendingURL = [inPath retain];
     }
 }
+*/
 
 - (void)windowWillBeginSheet:(NSNotification *)notification
 {
@@ -389,19 +435,68 @@ NAVERR:
 	[sheet orderOut:self];
 }
 
+- (void)syncMediaTitles
+{
+	NSArray*	mediaPaths = [[NSWorkspace sharedWorkspace] mountedRemovableMedia];
+	int			mediaCount = [mediaPaths count];
+	int			mediaIndex;
+	NSString*		selectedMedia = nil;
+	int				selectedIndex;
+	Boolean		isBlankBlank = FALSE;
+	
+	//pendingVolumes = [[NSMutableArray arrayWithCapacity:100] retain];
+	
+	
+	
+	selectedMedia = (NSString*)[slotTitle objectValueOfSelectedItem];
+	selectedIndex = [slotTitle indexOfSelectedItem];
+	
+	[slotTitle removeAllItems];
+
+	if( mediaCount == 0 ) [pendingVolumes removeAllObjects];
+	else {
+		//if( pendingVolumes == nil ) pendingVolumes = [NSMutableArray arrayWithCapacity:10];
+		for( mediaIndex=0; mediaIndex < mediaCount; mediaIndex++ )	{										// This list should be filtered to remove known discs!
+			[pendingVolumes addObject:[NSURL fileURLWithPath:[mediaPaths objectAtIndex:mediaIndex]]];
+			[slotTitle addItemWithObjectValue:(id)CFURLCopyDisplayName( kCFAllocatorDefault, (CFURLRef)[pendingVolumes objectAtIndex:mediaIndex], NULL )];
+		}
+	}
+		
+	NSLog(@"index = %i",[slotTitle indexOfItemWithObjectValue:selectedMedia]);
+	
+	if( selectedMedia != nil ) {
+		if( [slotTitle indexOfItemWithObjectValue:selectedMedia] != INT32_MAX )
+			[slotTitle selectItemWithObjectValue:selectedMedia];
+		else
+			[slotTitle setStringValue:@""];
+	}
+	
+	//[self slotChanged:self];
+	if( [[slotTitle stringValue] compare:@""] == NSOrderedSame ) isBlankBlank = TRUE;
+	[okButton setEnabled: !isBlankBlank];
+
+}
+
 - (void)startSheet:(id)sender
 {
-	NSInteger	index;
-	NSInteger	count = DACALDevicesGetCount();
+//	NSInteger	index;
+//	NSInteger	count = DACALDevicesGetCount();
 	NSInteger	node = DACALCommandCopyNode( currentDevice, NULL );
 	
+	// Do Carousels
+	
 	[carouselList removeAllItems];
-	for( index=1; index <= count; index++ )
-		[carouselList addItemWithTitle:(NSString*)DACALCommandCopyName( index, NULL )];
+	[carouselList addItemsWithTitles:(NSArray*)DACALDevicesCopyAllNames()];
+	//for( index=1; index <= count; index++ )
+	//	[carouselList addItemWithTitle:(NSString*)DACALCommandCopyName( index, NULL )];
 	
 	if( node == 0 ) node = 1;
 	[carouselList selectItemAtIndex:node-1];
 	
+	// Do Media
+	//[self syncMediaTitles];
+	
+	// Be Changed
 	[self carouselChanged:self];
 	
 	parentWindow = (NSWindow*)sender;
@@ -416,8 +511,81 @@ NAVERR:
 
 - (void)detectedMounts:(NSArray *)newMounts
 {
+	int			mediaIndex;
+	int			lastIndex = [pendingVolumes count];
+
+	if( [sheetWindow isVisible] == NO ) return;
+
+	[pendingVolumes addObjectsFromArray:newMounts];
+	for( mediaIndex=0; mediaIndex < [newMounts count]; mediaIndex++ )											// This list should be filtered to remove known discs!
+		[slotTitle addItemWithObjectValue:(id)CFURLCopyDisplayName( kCFAllocatorDefault, (CFURLRef)[newMounts objectAtIndex:mediaIndex], NULL )];
+				
+	if( [newMounts count] > 0 ) {
+
+		[slotTitle selectItemAtIndex:lastIndex];
+		[slotTitle setStringValue:[slotTitle objectValueOfSelectedItem]];
+		
+		// DO DISK ID HERE!!
+		
+//		[self setPendingURL:[pendingVolumes objectAtIndex:0]];
+//		[self setPendingTitle: (NSString*)CFURLCopyDisplayName( NULL, (CFURLRef)[self pendingURL], NULL)];
+//		[self setPendingTitle: (NSString*)CFURLCopyDisplayName( NULL, (CFURLRef)[pendingVolumes objectAtIndex:0], NULL)];
+//		isPending = YES;
+	} else {
+//		[self setPendingURL: nil];
+//		[self setPendingTitle: nil];
+//		isPending = NO;
+		
+		[self syncMediaTitles];
+		
+	}
+	[self carouselChanged:self];
+
+/*	
 	if( pendingVolumes == NULL ) pendingVolumes = [NSMutableArray arrayWithCapacity:[newMounts count]+10];
 	[pendingVolumes addObjectsFromArray:newMounts];
 	[self pushPending];
+*/
 }
+
+- (void)ejectedMounts:(NSArray*)oldMounts
+{
+	int				mountIndex;
+	NSUInteger		foundIndex;
+	int				mountCount = [oldMounts count];
+	Boolean			isBlankBlank = FALSE;
+	
+	for( mountIndex=0; mountIndex < mountCount; mountIndex++ )
+	{
+		foundIndex = [pendingVolumes indexOfObject:[oldMounts objectAtIndex:mountIndex]];
+		if( foundIndex != NSNotFound )
+		{
+			[pendingVolumes removeObjectAtIndex:foundIndex];
+			if( [slotTitle indexOfSelectedItem] == foundIndex ) {
+				[slotTitle deselectItemAtIndex:foundIndex];
+				[slotTitle setStringValue:@""];
+			}
+			[slotTitle removeItemAtIndex:foundIndex];
+		}
+		
+	}
+	
+	if( [[slotTitle stringValue] compare:@""] == NSOrderedSame ) isBlankBlank = TRUE;
+	[okButton setEnabled: !isBlankBlank];
+
+}
+
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
