@@ -51,6 +51,8 @@
 		5C90847E0E2D748800162C13 /* PADIndexOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C90847C0E2D748800162C13 /* PADIndexOperation.m */; };
 		5CA07A710E2E274900F71FA7 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CA07A700E2E274900F71FA7 /* Carbon.framework */; };
 		5CAFCCAC0E2EB77300A7BEA4 /* dacallib.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CAFCCA60E2EB77300A7BEA4 /* dacallib.m */; };
+		5CAFCCEF0E2EC1E900A7BEA4 /* pmsCFUtility.c in Sources */ = {isa = PBXBuildFile; fileRef = 5CAFCCED0E2EC1E900A7BEA4 /* pmsCFUtility.c */; };
+		5CAFCD1D0E2ED18200A7BEA4 /* pmsDACALUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CAFCD1B0E2ED18200A7BEA4 /* pmsDACALUtility.m */; };
 		735CC2A3049A7E2A00C919A3 /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 29B97318FDCFA39411CA2CEA /* MainMenu.nib */; };
 		735CC2A4049A7E2A00C919A3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		735CC2A5049A7E2A00C919A3 /* InitInfo.dict in Resources */ = {isa = PBXBuildFile; fileRef = 0405E529FF13D2D511CA0E35 /* InitInfo.dict */; };
@@ -61,7 +63,6 @@
 		735CC2B9049A7E2A00C919A3 /* TreeNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 08DC403CFF0C20FA11CA0E35 /* TreeNode.m */; settings = {ATTRIBUTES = (); }; };
 		735CC2BA049A7E2A00C919A3 /* ImageAndTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 02AAE104FF38CCE111CA0E35 /* ImageAndTextCell.m */; settings = {ATTRIBUTES = (); }; };
 		735CC2BD049A7E2A00C919A3 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 011669A0FFC1E3D311CA0E35 /* Cocoa.framework */; };
-		75A5639F0E47AB3700F74256 /* Prefix.h in Headers */ = {isa = PBXBuildFile; fileRef = 75A5639E0E47AB3700F74256 /* Prefix.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -123,10 +124,10 @@
 		5C48B4260E444E27005795F7 /* PADLayoutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PADLayoutView.m; sourceTree = "<group>"; };
 		5C48B6920E453D98005795F7 /* PADLifecycleController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PADLifecycleController.h; sourceTree = "<group>"; };
 		5C48B6930E453D98005795F7 /* PADLifecycleController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PADLifecycleController.m; sourceTree = "<group>"; };
-		5C4E17EB0E2167580091DD7D /* carousel.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = carousel.sh; path = ../CLI/carousel.sh; sourceTree = SOURCE_ROOT; };
+		5C4E17EB0E2167580091DD7D /* carousel.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = carousel.sh; path = ../pmssource/carlib/carousel.sh; sourceTree = SOURCE_ROOT; };
 		5C4E17FC0E216A2D0091DD7D /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = SDKs/MacOSX10.5.sdk/System/Library/Frameworks/IOKit.framework; sourceTree = SYSTEM_DEVELOPER_DIR; };
 		5C62ACB80E20B00900A26788 /* CarouselIndex.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; path = CarouselIndex.nib; sourceTree = "<group>"; };
-		5C6657010E3822D400414ECB /* xattr */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = xattr; path = ../CLI/build/Release/xattr; sourceTree = SOURCE_ROOT; };
+		5C6657010E3822D400414ECB /* xattr */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = xattr; path = ../pmssource/carlib/xattr; sourceTree = SOURCE_ROOT; };
 		5C6C12D30E240AAC0097CC7A /* advancedpref.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = advancedpref.icns; path = Resources/Icons/advancedpref.icns; sourceTree = SOURCE_ROOT; };
 		5C6C12D40E240AAC0097CC7A /* CD.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = CD.icns; path = Resources/Icons/CD.icns; sourceTree = SOURCE_ROOT; };
 		5C6C12D50E240AAC0097CC7A /* CDAudio.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = CDAudio.icns; path = Resources/Icons/CDAudio.icns; sourceTree = SOURCE_ROOT; };
@@ -162,12 +163,16 @@
 		5C9293A80E1EBF7100835A1F /* BTHIconResources.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTHIconResources.h; sourceTree = "<group>"; };
 		5C9293A90E1EBF7100835A1F /* BTHIconResources.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTHIconResources.m; sourceTree = "<group>"; };
 		5CA07A700E2E274900F71FA7 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
-		5CAFCCA50E2EB77300A7BEA4 /* dacallib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dacallib.h; path = ../CLI/dacallib.h; sourceTree = SOURCE_ROOT; };
-		5CAFCCA60E2EB77300A7BEA4 /* dacallib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = dacallib.m; path = ../CLI/dacallib.m; sourceTree = SOURCE_ROOT; };
-		735CC297049A7E1F00C919A3 /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Prefix.pch; path = Sources/Prefix.pch; sourceTree = "<group>"; };
+		5CAFCCA50E2EB77300A7BEA4 /* dacallib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dacallib.h; path = ../pmssource/carlib/dacallib.h; sourceTree = SOURCE_ROOT; };
+		5CAFCCA60E2EB77300A7BEA4 /* dacallib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = dacallib.m; path = ../pmssource/carlib/dacallib.m; sourceTree = SOURCE_ROOT; };
+		5CAFCCA80E2EB77300A7BEA4 /* pms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pms.h; path = ../pmssource/pms.h; sourceTree = SOURCE_ROOT; };
+		5CAFCCEC0E2EC1E900A7BEA4 /* pmsCFUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pmsCFUtility.h; path = pmsutility/pmsCFUtility.h; sourceTree = "<group>"; };
+		5CAFCCED0E2EC1E900A7BEA4 /* pmsCFUtility.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = pmsCFUtility.c; path = pmsutility/pmsCFUtility.c; sourceTree = "<group>"; };
+		5CAFCD1A0E2ED18200A7BEA4 /* pmsDACALUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pmsDACALUtility.h; path = pmsutility/pmsDACALUtility.h; sourceTree = "<group>"; };
+		5CAFCD1B0E2ED18200A7BEA4 /* pmsDACALUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = pmsDACALUtility.m; path = pmsutility/pmsDACALUtility.m; sourceTree = "<group>"; };
+		735CC297049A7E1F00C919A3 /* Prefix.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = Prefix.h; sourceTree = "<group>"; };
 		735CC2C0049A7E2A00C919A3 /* Info-PickADisk.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-PickADisk.plist"; sourceTree = SOURCE_ROOT; };
-		735CC2C1049A7E2A00C919A3 /* DragNDropOutlineView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DragNDropOutlineView.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		75A5639E0E47AB3700F74256 /* Prefix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefix.h; sourceTree = "<group>"; };
+		735CC2C1049A7E2A00C919A3 /* PickADisk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PickADisk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -253,7 +258,7 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				735CC2C1049A7E2A00C919A3 /* DragNDropOutlineView.app */,
+				735CC2C1049A7E2A00C919A3 /* PickADisk.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -273,9 +278,8 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
-				75A5639E0E47AB3700F74256 /* Prefix.h */,
-				5CAFCCA30E2EB77300A7BEA4 /* CLI */,
-				735CC297049A7E1F00C919A3 /* Prefix.pch */,
+				5CAFCCA20E2EB77300A7BEA4 /* pmssource */,
+				735CC297049A7E1F00C919A3 /* Prefix.h */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
 			);
 			name = "Other Sources";
@@ -372,15 +376,37 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
-		5CAFCCA30E2EB77300A7BEA4 /* CLI */ = {
+		5CAFCCA20E2EB77300A7BEA4 /* pmssource */ = {
+			isa = PBXGroup;
+			children = (
+				5CAFCCA30E2EB77300A7BEA4 /* carlib */,
+				5CAFCCA80E2EB77300A7BEA4 /* pms.h */,
+				5CAFCCA90E2EB77300A7BEA4 /* pmssource */,
+			);
+			name = pmssource;
+			path = ../pmssource;
+			sourceTree = SOURCE_ROOT;
+		};
+		5CAFCCA30E2EB77300A7BEA4 /* carlib */ = {
 			isa = PBXGroup;
 			children = (
 				5CAFCCA50E2EB77300A7BEA4 /* dacallib.h */,
 				5CAFCCA60E2EB77300A7BEA4 /* dacallib.m */,
 			);
-			name = CLI;
-			path = ../CLI;
+			name = carlib;
+			path = ../pmssource/carlib;
 			sourceTree = SOURCE_ROOT;
+		};
+		5CAFCCA90E2EB77300A7BEA4 /* pmssource */ = {
+			isa = PBXGroup;
+			children = (
+				5CAFCD1A0E2ED18200A7BEA4 /* pmsDACALUtility.h */,
+				5CAFCD1B0E2ED18200A7BEA4 /* pmsDACALUtility.m */,
+				5CAFCCEC0E2EC1E900A7BEA4 /* pmsCFUtility.h */,
+				5CAFCCED0E2EC1E900A7BEA4 /* pmsCFUtility.c */,
+			);
+			name = pmssource;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -392,7 +418,6 @@
 				5C48B4270E444E27005795F7 /* PADLayoutView.h in Headers */,
 				5C48B6940E453D98005795F7 /* PADLifecycleController.h in Headers */,
 				5C829C760E46AC730069483D /* PADLifecycleSetup.h in Headers */,
-				75A5639F0E47AB3700F74256 /* Prefix.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -418,7 +443,7 @@
 			name = PickADisk;
 			productInstallPath = "$(LOCAL_DEVELOPER_DIR)/Demos";
 			productName = DragNDropOLV;
-			productReference = 735CC2C1049A7E2A00C919A3 /* DragNDropOutlineView.app */;
+			productReference = 735CC2C1049A7E2A00C919A3 /* PickADisk.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -502,6 +527,8 @@
 				5C6C14DF0E2B9FE60081A7B1 /* NSApplication_Extensions.m in Sources */,
 				5C90847E0E2D748800162C13 /* PADIndexOperation.m in Sources */,
 				5CAFCCAC0E2EB77300A7BEA4 /* dacallib.m in Sources */,
+				5CAFCCEF0E2EC1E900A7BEA4 /* pmsCFUtility.c in Sources */,
+				5CAFCD1D0E2ED18200A7BEA4 /* pmsDACALUtility.m in Sources */,
 				5C2D25F50E304B1C005F9FB5 /* PADIndexProgressController.m in Sources */,
 				5C8B8BB60E3FCCFA007A1505 /* PADCarouselOperation.m in Sources */,
 				5C1ECC100E4120050091B446 /* PADSearchRequest.m in Sources */,
@@ -558,7 +585,7 @@
 				GCC_PREFIX_HEADER = Sources/Prefix.h;
 				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
 				GCC_WARN_UNKNOWN_PRAGMAS = NO;
-				HEADER_SEARCH_PATHS = "";
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/../pmssource/**";
 				INFOPLIST_FILE = "Info-PickADisk.plist";
 				INSTALL_PATH = "";
 				LIBRARY_SEARCH_PATHS = "";

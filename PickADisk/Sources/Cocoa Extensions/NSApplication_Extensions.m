@@ -14,11 +14,11 @@
 - (id)addVolumeController { return addVolumeController; }
 - (void)setAddVolumeController:(id)inAVC
 {
-		addVolumeController = [inAVC retain];
+	addVolumeController = [inAVC retain];
 //    if (!addVolumeController || ![addVolumeController isEqual:inAVC]) {
 //		[addVolumeController release];
 //		addVolumeController = [inAVC retain];
 //    }
-    }
+}
 @end
 */

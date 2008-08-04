@@ -20,7 +20,7 @@
 #include <IOKit/usb/IOUSBLib.h>
 
 #include <CoreFoundation/CoreFoundation.h>
-#include "../PMS Source/utility/pmsCFUtility.h"
+#include "../pmsutility/pmsCFUtility.h"
 
 extern const SInt32		kDACALVendorID;
 extern const SInt32		kDACALProductID;
@@ -106,6 +106,7 @@ extern DACALSlotNum		DACALSlotNextFreeNumber( DACALDeviceRef deviceID, DACALSlot
 extern DACALResult		DACALDevicesInitialize( void );
 extern DACALResult		DACALDevicesFinalize( void );
 extern DACALCount		DACALDevicesGetCount( void );
+extern CFArrayRef		DACALDevicesCopyAllNames( void );
 extern DACALCount		DACALDevicesGetCountForModel( CFStringRef aDeviceType );
 extern DACALSlotNum		DACALDevicesGetSlotCount( CFStringRef aDeviceType );
 extern DACALDeviceRef	DACALDevicesGetDefaultDevice( void );

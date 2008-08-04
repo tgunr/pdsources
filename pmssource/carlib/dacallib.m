@@ -8,7 +8,7 @@
  */
 
 #include "dacallib.h"
-#include "../PMS Source/utility/pmsDACALUtility.h"
+#include "../pmsutility/pmsDACALUtility.h"
 
 //#define __DCDEBUG												// define this in your pch to go verbose debug
 
@@ -1297,6 +1297,26 @@ DACALSlotNum		DACALDevicesGetSlotCount( CFStringRef aDeviceType )
 DACALCount	DACALDevicesGetCount( void )
 {
 	return( gDACALBoxes.boxCount );
+}
+
+CFArrayRef	DACALDevicesCopyAllNames( void )
+{
+	DACALCount		boxIndex = 0;
+	DACALCount		boxCount = DACALDevicesGetCount();	
+	CFStringRef*	boxNames;
+	CFArrayRef		boxArray;
+	
+	if( boxCount == 0 ) return( CFArrayCreate( gDACALDefaultCFAllocator, NULL, 0, &kCFTypeArrayCallBacks ) );
+	
+	boxNames = (CFStringRef*)malloc( sizeof(CFStringRef)*boxCount );
+	
+	for( boxIndex=0; boxIndex < boxCount; boxIndex++ )
+		boxNames[boxIndex] = CFStringCreateCopy(gDACALDefaultCFAllocator, DACAL_BOX_NAME(boxIndex));
+	
+	boxArray = CFArrayCreate( gDACALDefaultCFAllocator, (const void**)boxNames, boxCount, &kCFTypeArrayCallBacks );
+
+	free( boxNames );
+	return( boxArray );
 }
 
 DACALResult		DACALDeviceClose( DACALDeviceRef deviceID )

@@ -13,7 +13,7 @@
 
 #define		PADINDEX_GROUPTITLE_LIBRARY		@"LIBRARY"
 #define		PADINDEX_GROUPTITLE_DEVICES		@"CAROUSELS"
-#define		PADINDEX_GROUPTITLE_FAVORITES	@"BOOKMARKS"
+#define		PADINDEX_GROUPTITLE_FAVORITES	@"DISCMARKS"
 #define		PADINDEX_GROUPTITLE_SEARHCES	@"SEARCH FOR"
 
 @implementation DACALTreeDataSource
@@ -200,7 +200,7 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 			if(![selectedBoxes containsObject:(id)theDevice])
 				[selectedBoxes addObject:(id)theDevice];
     }
-
+	
 
 	if( toolControl ) [toolControl setSelectedDevices:(NSArray*)selectedBoxes];
 	
@@ -270,9 +270,9 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 		[[theSubtreeChild nodeData] setIconRep:DACALGetIconImageForType(slotIconType)];
 		
 
-
-		[secondaryController addDataToTree:theSubtreeChild startEdit:NO];
 		
+		[secondaryController addDataToTree:theSubtreeChild startEdit:NO];
+
 		//		[theSubtreeNode insertChild:theSubtreeChild atIndex:[theSubtreeNode numberOfChildren]];
 		//[theOthertTreeNode insertChild:theSubtreeChild atIndex:[theOthertTreeNode numberOfChildren]];
 

@@ -145,9 +145,9 @@
 		if( [[NSUserDefaults standardUserDefaults] boolForKey:@"PADCheckInOnIndex"] == YES )
 			DACALCommandMoveToSlotWithOptions( currentBox, currentSlot, kDACALOptionMoveDefault );
 	}
-		
+
 	[AppController playUISound: sound];
-	}
+}
 
 -(void) startIndexProgress:(NSTimer*)timer
 {
@@ -168,7 +168,7 @@
 		doPath = [NSString stringWithFormat:@"-d%@", [newPath path]];
 	
 //	if( !([[NSUserDefaults standardUserDefaults] boolForKey:@"PADEjectOnIndex"] == YES ) && !([self pendingURL] != nil) )
-	[doArgs addObject:@"-x"];
+		[doArgs addObject:@"-x"];
 	[doArgs addObject:[NSString stringWithFormat:@"-c%@", deviceUUIDString]];
 	[doArgs addObject:[NSString stringWithFormat:@"-s%i", nextSlot]];
 	[doArgs addObject:[NSString stringWithFormat:@"-t%@", newTitle]];
@@ -184,10 +184,10 @@
 	if( progressController != nil )
 	{
 	[progressController runProgressDialogForCommand:doCmd
-																	   arguments:doArgs
-																	   forTarget:self
-																  finishSelector:@selector(indexProgressComplete:)
-																  modalForWindow:parentWindow];
+										  arguments:doArgs
+										  forTarget:self
+									 finishSelector:@selector(indexProgressComplete:)
+									 modalForWindow:parentWindow];
 	
 		[progressController setPrimaryPromptString:[NSString stringWithFormat:@"Indexing “%@”...", newTitle]];
 		[progressController setSecondaryPromptString:[NSString stringWithFormat:@"Assigning to slot %i", (int)nextSlot]];
@@ -404,7 +404,7 @@ NAVERR:
 
 
 /*
--(void)setPendingURL:(NSURL*)inPath
+ -(void)setPendingURL:(NSURL*)inPath
 {
     if (!pendingURL || ![pendingURL isEqual:inPath]) {
 		[pendingURL release];
@@ -546,7 +546,7 @@ NAVERR:
 	[pendingVolumes addObjectsFromArray:newMounts];
 	[self pushPending];
 */
-}
+ }
 
 - (void)ejectedMounts:(NSArray*)oldMounts
 {

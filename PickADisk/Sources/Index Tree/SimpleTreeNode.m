@@ -17,7 +17,7 @@
  redistribute this Apple software.
  
  In consideration of your agreement to abide by the following terms, and subject to these 
- terms, Apple grants you a personal, non-exclusive license, under AppleÕs copyrights in 
+ terms, Apple grants you a personal, non-exclusive license, under Appleâ€™s copyrights in 
  this original Apple software (the "Apple Software"), to use, reproduce, modify and 
  redistribute the Apple Software, with or without modifications, in source and/or binary 
  forms; provided that if you redistribute the Apple Software in its entirety and without 
@@ -48,7 +48,7 @@
 #import "pmsDACALUtility.h"
 
 #define KEY_GROUPNAME	@"Group"
-#define KEY_ENTRIES	@"Entries"
+#define KEY_ENTRIES		@"Entries"
 
 @implementation SimpleNodeData
 
@@ -195,7 +195,7 @@
 - (void)setLocation:(NSURL *)loc {
     if (!location || ![location isEqual:loc]) {
 		[loc retain];
-	[location release];
+		[location release];
 		location = loc;
     }
 }
@@ -337,7 +337,7 @@
 		}
 		CFRelease( dataDict );
 	}
-	
+
 	if( isSlot ) {
 		if( (folderList != NULL ) && (CFArrayGetCount(folderList) > 0) ) {
 			//data = [self nodeData];
@@ -400,7 +400,7 @@
 		}
 		CFRelease( dataDict );
 	}
-
+	
 	if( isSlot ) {
 		if( CFArrayGetCount(folderList) > 0 ) {
 			//data = [self nodeData];
@@ -434,7 +434,7 @@
 			}
         }
     }
-    
+
 	CFRelease( dataProps );
 	CFRelease( folderList );
 	

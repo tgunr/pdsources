@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "../../PMS Source/utility/pmsDACALUtility.h"
+#import "pmsDACALUtility.h"
 
 @interface PADLayoutView : NSView {
 
