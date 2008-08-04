@@ -11,4 +11,4 @@ if [[ $# != 2 ]] ; then
 	exit 1
 fi
 
-rsync -auv --exclude=".*" "$1" "$2"
+rsync -av --exclude=".*" "$1" "$2"
