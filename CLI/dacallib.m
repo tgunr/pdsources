@@ -87,8 +87,10 @@ CFStringRef dacalBUSY = CFSTR("Busy");
 CFStringRef dacalERROR = CFSTR("ERROR");
 CFStringRef dacalNUMBER = CFSTR("numbers");
 CFStringRef dacalNAN = CFSTR("1234567");
+CFStringRef dacalDC101 = CFSTR("DC101");
 CFStringRef dacalDC300 = CFSTR("1234567");
 CFStringRef dacalDC016RW = CFSTR("DC016RW");
+CFStringRef DACALDC101CFName = CFSTR("DC-101");
 CFStringRef DACALDC300CFName = CFSTR("DC-300");
 CFStringRef DACALDC016RWCFName = CFSTR("DC-016RW");
 
@@ -103,11 +105,11 @@ CFStringRef			kDACALCarouselDocumentInfoKeyName			=CFSTR("Name");
 CFStringRef			kDACALCarouselDocumentInfoKeyUUID			=CFSTR("UUID");
 //CFStringRef			kDACALCarouselDocumentInfoKeyNode			=CFSTR("Node")
 
-CFStringRef			kDACALCarouselDocumentXAttrCarousel		=CFSTR("com.polymicrosystems.pickadisc.carousel");
-CFStringRef			kDACALCarouselDocumentXAttrSlot			=CFSTR("com.polymicrosystems.pickadisc.carousel.slot");
-CFStringRef			kDACALCarouselDocumentXAttrSlotKind		=CFSTR("com.polymicrosystems.pickadisc.kind");
+CFStringRef			kDACALCarouselDocumentXAttrCarousel		=CFSTR("com.polymicrosystems.pickadisk.device");
+CFStringRef			kDACALCarouselDocumentXAttrSlot			=CFSTR("com.polymicrosystems.pickadisk.device.slot");
+CFStringRef			kDACALCarouselDocumentXAttrSlotKind		=CFSTR("com.polymicrosystems.pickadisk.device.slot.kind");
 
-#define DACAL_CAROUSEL_FOLDERNAME_PSTRING	"\pCarousels"		// used to register the folder location with the OS for use in FSFindFolder
+#define DACAL_CAROUSEL_FOLDERNAME_PSTRING	"\pPickADisk"		// used to register the folder location with the OS for use in FSFindFolder
 
 const DACALDeviceRef	kDACALDefaultDevice = 0;
 const DACALDeviceRef	kDACALIllegalDevice = DACAL_MAXDEVICE_COUNT+1;
@@ -477,7 +479,7 @@ CFStringRef		CFStringCreateFromDacalPipe( CFAllocatorRef inAllocator, CFStringRe
 	char*			doCommand = NULL;
 	char*			utf8Name = NULL;
 	FILE*			pipe;
-	int				pipeSize = 32768;
+	int				pipeSize = 8192;
 	
 	
 	if( inAllocator == NULL ) inAllocator = gDACALDefaultCFAllocator;
@@ -515,6 +517,8 @@ BAIL:
 	if( outError ) *outError = outResult;
 	if( utf8Name ) free( utf8Name );
 	if( doCFCommand ) CFRelease( doCFCommand );
+//	if( commandURL ) CFRelease( commandURL );
+//	if( commandPathURL ) CFRelease( commandPathURL );
 	if( doCommand ) free( doCommand );
 	return( outCFText );
 }
@@ -1276,6 +1280,7 @@ DACALCount	DACALDevicesGetCountForModel( CFStringRef aDeviceType )
 DACALSlotNum		DACALDevicesGetSlotCount( CFStringRef aDeviceType )
 {
 	DACALSlotNum	badSlotCount = 0;
+	DACALSlotNum	dc101SlotCount = 150;
 	DACALSlotNum	dc300SlotCount = 150;
 	DACALSlotNum	dc016SlotCount = 100;
 
@@ -1284,6 +1289,7 @@ DACALSlotNum		DACALDevicesGetSlotCount( CFStringRef aDeviceType )
 	
 	if( CFStringCompare( aDeviceType, dacalDC300, 0 ) )		return( dc300SlotCount );
 	if( CFStringCompare( aDeviceType, dacalDC016RW, 0 ) )	return( dc016SlotCount );
+	if( CFStringCompare( aDeviceType, dacalDC101, 0 ) )		return( dc101SlotCount );
 	
 	return( badSlotCount );
 }
@@ -1463,6 +1469,11 @@ DACALResult		DACALDevicesInitialize( void )
     io_iterator_t			devIter = 0;
     io_service_t			ioDeviceObj;
 	
+	//FSCatalogInfo			permCatInfo;
+	//FSPermissionInfo		permInfo;
+	FSRef					topFolder;
+	OSErr					ffErr;
+	
 	gDACALBoxes.boxCount = 0;							// start fresh
 	
 	DACALDevicesSetCFAllocator( kCFAllocatorDefault );	// initialize with default allocator
@@ -1472,6 +1483,26 @@ DACALResult		DACALDevicesInitialize( void )
 							kRelativeFolder, kDomainLibraryFolderType, 0, 0, 
 							DACAL_CAROUSEL_FOLDERNAME_PSTRING, TRUE );
 
+	
+	ffErr = FSFindFolder( kOnAppropriateDisk, kDACALCarouselsFolderType, TRUE, &topFolder );
+/*
+	if( ffErr == afpAccessDenied ) {
+		
+		CFURLRef thePAD = CFURLCreateFromFSRef( kCFAllocatorDefault, &topFolder );
+		CFURLRef	theCMD = CFURLCreateWithString(kCFAllocatorDefault, CFSTR("/bin/chmod"), NULL );
+		CFStringRef		thePADMOD = CFStringCreateWithFormat( kCFAllocatorDefault, NULL, CFSTR("+r \"%@\""), thePAD );
+		
+		CFShow( CFStringCreateFromCommandPipe(kCFAllocatorDefault, theCMD, thePADMOD, NULL) );
+		
+		//permInfo.mode = 755;
+		//perCatInfo.permissions = permInfo;
+		
+		permCatInfo.permissions[3] = 755;
+		ffErr = FSSetCatalogInfo( &topFolder, kFSCatInfoPermissions, &permCatInfo );
+		fprintf( stderr, "FSSetCatalogInfo: %i\n", ffErr );
+	}	
+*/	
+	
 														// Find USB Interface
     err = IOMasterPort(MACH_PORT_NULL, &masterPort);				
     if (err) {

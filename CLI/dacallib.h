@@ -34,6 +34,7 @@ typedef kern_return_t	DACALResult;
 typedef u_long			DACALOptionBits;
 typedef	DACALDeviceRef	DACALDeviceNode;
 
+extern CFStringRef		DACALDC101CFName;
 extern CFStringRef		DACALDC300CFName;
 extern CFStringRef		DACALDC016RWCFName;
 
