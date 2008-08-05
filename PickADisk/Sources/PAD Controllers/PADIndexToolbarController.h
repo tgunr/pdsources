@@ -32,6 +32,8 @@
 	NSArray					*selectedSlots;
 	NSArray					*selectedNodes;
 
+	NSIndexSet				*savedSelection;
+	
 }
 
 - (IBAction)clickReset:(id)sender;

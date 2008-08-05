@@ -194,10 +194,12 @@
 	SimpleTreeNode*	newNode = NULL;
 	int				resultIndex;
 		
-	[[indexController outlineView] deselectAll:self]; 
-	[dataController setTreeRoot:nil];
-	
 	if( [theText length] != 0 ) {
+		if( savedSelection == nil) {
+			if( [[indexController outlineView] numberOfSelectedRows] > 0 ) savedSelection = [[[indexController outlineView] selectedRowIndexes] retain]; 
+			[[indexController outlineView] deselectAll:self]; 
+		}
+		[dataController setTreeRoot:nil];
 		
 		theErr = FSFindFolder( kUserDomain, kDACALCarouselsFolderType, TRUE, &userLibraryFolder );
 		if( theErr != 0 ) printf( "Could not find user library! Error:%i\n", theErr );
@@ -229,9 +231,15 @@
 				[dataController setTreeRoot:newRoot];
 			}
 		}
+		[[dataController dataSource] updatePrompt];
+	} else {
+		if( savedSelection != nil ) {
+			[[indexController outlineView] selectRowIndexes:savedSelection byExtendingSelection:NO]; 
+			[indexController outlineViewAction:self]; 
+			[savedSelection release];
+			savedSelection = nil;
+		}
 	}
-	
-	[[dataController dataSource] updatePrompt];
 }
 
 
