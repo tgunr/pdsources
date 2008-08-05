@@ -18,9 +18,7 @@
 		5C2EBE930E29719B009BAF4C /* update.icns in Resources */ = {isa = PBXBuildFile; fileRef = 5C2EBE920E29719B009BAF4C /* update.icns */; };
 		5C2EBE960E2979B3009BAF4C /* sidebarpref.icns in Resources */ = {isa = PBXBuildFile; fileRef = 5C2EBE950E2979B3009BAF4C /* sidebarpref.icns */; };
 		5C2EBE9C0E2991BF009BAF4C /* PADPrefsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C2EBE9A0E2991BF009BAF4C /* PADPrefsController.m */; };
-		5C48B4270E444E27005795F7 /* PADLayoutView.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C48B4250E444E27005795F7 /* PADLayoutView.h */; };
 		5C48B4280E444E27005795F7 /* PADLayoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C48B4260E444E27005795F7 /* PADLayoutView.m */; };
-		5C48B6940E453D98005795F7 /* PADLifecycleController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C48B6920E453D98005795F7 /* PADLifecycleController.h */; };
 		5C48B6950E453D98005795F7 /* PADLifecycleController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C48B6930E453D98005795F7 /* PADLifecycleController.m */; };
 		5C4E17FD0E216A2D0091DD7D /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C4E17FC0E216A2D0091DD7D /* IOKit.framework */; };
 		5C62ACB90E20B00900A26788 /* CarouselIndex.nib in Resources */ = {isa = PBXBuildFile; fileRef = 5C62ACB80E20B00900A26788 /* CarouselIndex.nib */; };
@@ -46,7 +44,6 @@
 		5C7C50290E3DA51C00FCEBD8 /* blueplate.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C7C50280E3DA51C00FCEBD8 /* blueplate.png */; };
 		5C7C51130E3DEC4D00FCEBD8 /* carousel.sh in Resources */ = {isa = PBXBuildFile; fileRef = 5C4E17EB0E2167580091DD7D /* carousel.sh */; };
 		5C7C51140E3DEC4D00FCEBD8 /* xattr in Resources */ = {isa = PBXBuildFile; fileRef = 5C6657010E3822D400414ECB /* xattr */; };
-		5C829C760E46AC730069483D /* PADLifecycleSetup.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C829C750E46AC730069483D /* PADLifecycleSetup.h */; };
 		5C8B8BB60E3FCCFA007A1505 /* PADCarouselOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8B8BB40E3FCCF9007A1505 /* PADCarouselOperation.m */; };
 		5C90847E0E2D748800162C13 /* PADIndexOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C90847C0E2D748800162C13 /* PADIndexOperation.m */; };
 		5CA07A710E2E274900F71FA7 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CA07A700E2E274900F71FA7 /* Carbon.framework */; };
@@ -415,9 +412,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C48B4270E444E27005795F7 /* PADLayoutView.h in Headers */,
-				5C48B6940E453D98005795F7 /* PADLifecycleController.h in Headers */,
-				5C829C760E46AC730069483D /* PADLifecycleSetup.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

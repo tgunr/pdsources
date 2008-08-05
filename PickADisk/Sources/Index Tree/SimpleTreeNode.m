@@ -330,11 +330,7 @@
 	wasFound = CFURLCreateDataAndPropertiesFromResource(NULL, (CFURLRef)loc, NULL, &dataDict, dataProps, NULL);
 	if( wasFound ) {
 		folderList = (CFArrayRef)CFDictionaryGetValue( dataDict, kCFURLFileDirectoryContents );
-		if( folderList == NULL ) CFShow(CFSTR("No Folder List!"));
-		else {
-			// CFShow( folderList );
-			CFRetain( folderList );
-		}
+		if( folderList != NULL ) CFRetain( folderList );
 		CFRelease( dataDict );
 	}
 
@@ -345,11 +341,7 @@
 			wasFound = CFURLCreateDataAndPropertiesFromResource(NULL, (CFURLRef)loc, NULL, &dataDict, dataProps, NULL);
 			if( wasFound ) {
 				folderList = (CFArrayRef)CFDictionaryGetValue( dataDict, kCFURLFileDirectoryContents );
-				if( folderList == NULL ) CFShow(CFSTR("No Folder List!"));
-				else {
-					// CFShow( folderList );
-					CFRetain( folderList );
-				}
+				if( folderList != NULL ) CFRetain( folderList );
 				CFRelease( dataDict );
 			}
 		}
@@ -393,11 +385,7 @@
 	wasFound = CFURLCreateDataAndPropertiesFromResource(NULL, (CFURLRef)loc, NULL, &dataDict, dataProps, NULL);
 	if( wasFound ) {
 		folderList = (CFArrayRef)CFDictionaryGetValue( dataDict, kCFURLFileDirectoryContents );
-		if( folderList == NULL ) CFShow(CFSTR("No Folder List!"));
-		else {
-			// CFShow( folderList );
-			CFRetain( folderList );
-		}
+		if( folderList != NULL ) CFRetain( folderList );
 		CFRelease( dataDict );
 	}
 	
@@ -408,11 +396,7 @@
 			wasFound = CFURLCreateDataAndPropertiesFromResource(NULL, (CFURLRef)loc, NULL, &dataDict, dataProps, NULL);
 			if( wasFound ) {
 				folderList = (CFArrayRef)CFDictionaryGetValue( dataDict, kCFURLFileDirectoryContents );
-				if( folderList == NULL ) CFShow(CFSTR("No Folder List!"));
-				else {
-					// CFShow( folderList );
-					CFRetain( folderList );
-				}
+				if( folderList != NULL ) CFRetain( folderList );
 				CFRelease( dataDict );
 			}
 		}

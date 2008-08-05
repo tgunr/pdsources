@@ -231,8 +231,6 @@
 			<key>Layout</key>
 			<array>
 				<dict>
-					<key>BecomeActive</key>
-					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -274,10 +272,12 @@
 								<string>080E96DDFE201D6D7F000001</string>
 								<string>19C28FACFE9D520D11CA2CBB</string>
 								<string>1C37FBAC04509CD000000102</string>
+								<string>5CE3B5CF0E481C2300989971</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
+									<integer>2</integer>
 									<integer>1</integer>
 									<integer>0</integer>
 								</array>
@@ -353,6 +353,8 @@
 							<string>0pt</string>
 						</dict>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -389,9 +391,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>5C9214520E47395000E1A0DF</string>
+				<string>5CE3B5D00E481C2300989971</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>5C9214530E47395000E1A0DF</string>
+				<string>5CE3B5D10E481C2300989971</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -528,7 +530,7 @@
 		<string>1C78EAAD065D492600B07095</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>5CDEBFB70E15BBB700732C82</string>
-		<string>/Volumes/Archive/svnsources/polymicro/PMTB/branches/jaxs/PickADisk/PickADisk.xcodeproj</string>
+		<string>/Volumes/Archive/svnsources/polymicro/PMTB/trunk/PickADisk/PickADisk.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
 	<string>412 258 767 498 0 0 1440 878 </string>
@@ -608,7 +610,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>5CDEBFB70E15BBB700732C82</string>
-				<string>5C92144A0E47394A00E1A0DF</string>
+				<string>5CE3B5C70E481C2200989971</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -728,13 +730,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1CD10A99069EF8BA00B06720</string>
-				<string>5C92144B0E47394A00E1A0DF</string>
+				<string>5CE3B5C80E481C2200989971</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>5C92144C0E47394A00E1A0DF</string>
-				<string>5C92144D0E47394A00E1A0DF</string>
-				<string>5C92144E0E47394A00E1A0DF</string>
-				<string>5C92144F0E47394A00E1A0DF</string>
-				<string>5C9214500E47394A00E1A0DF</string>
+				<string>5CE3B5C90E481C2200989971</string>
+				<string>5CE3B5CA0E481C2200989971</string>
+				<string>5CE3B5CB0E481C2200989971</string>
+				<string>5CE3B5CC0E481C2200989971</string>
+				<string>5CE3B5CD0E481C2200989971</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
@@ -888,7 +890,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C78EAAD065D492600B07095</string>
-				<string>5C9214510E47394A00E1A0DF</string>
+				<string>5CE3B5CE0E481C2200989971</string>
 				<string>1C78EAAC065D492600B07095</string>
 			</array>
 			<key>ToolbarConfiguration</key>

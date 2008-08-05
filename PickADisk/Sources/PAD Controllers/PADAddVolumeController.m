@@ -462,7 +462,7 @@ NAVERR:
 		}
 	}
 		
-	NSLog(@"index = %i",[slotTitle indexOfItemWithObjectValue:selectedMedia]);
+	//NSLog(@"index = %i",[slotTitle indexOfItemWithObjectValue:selectedMedia]);
 	
 	if( selectedMedia != nil ) {
 		if( [slotTitle indexOfItemWithObjectValue:selectedMedia] != INT32_MAX )

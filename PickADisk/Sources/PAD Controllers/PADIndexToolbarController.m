@@ -218,9 +218,12 @@
 				{
 					CFStringRef	tempPathName = (CFStringRef)CFArrayGetValueAtIndex( outList, resultIndex);
 					foundPath = CFURLCreateWithFileSystemPath( NULL, tempPathName, kCFURLPOSIXPathStyle, FALSE );
-					newNode = [SimpleTreeNode treeFromLocation:(NSURL*)CFRetain(foundPath)];
 					
-					[newRoot insertChild:newNode atIndex:[newRoot numberOfChildren]];
+					if( CFURLGetSlotNumber( foundPath, FALSE ) != 0 )
+					{
+						newNode = [SimpleTreeNode treeFromLocation:(NSURL*)CFRetain(foundPath)];
+						[newRoot insertChild:newNode atIndex:[newRoot numberOfChildren]];
+					}
 				}
 				
 				[dataController setTreeRoot:newRoot];
