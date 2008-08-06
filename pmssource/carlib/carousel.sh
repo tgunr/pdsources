@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 #  $Id$
 #
 #  Created by Dave Carlton on 2008-05-31.
@@ -69,11 +69,12 @@ echo "carousel usage
 	-L List all slots paths for -c
 	-f Find all slots containing the given wildcard string
 	-V Version
+	-R Rename
 	"
    exit 1
 }
 
-while getopts "hc:m:s:g:l:d:vt:nxD:ewkpNXK:Lf:V" Option
+while getopts "hc:m:s:g:l:d:vt:nxD:ewkpNXK:Lf:VR:" Option
 do 
     case "$Option" in 
 	h ) usage ;;
@@ -100,6 +101,7 @@ do
 	f ) findslot="$OPTARG";;
 	V ) echo '$Id$'
 		exit 0;;
+	R ) rename="$OPTARG" ;;
 	* ) echo "Unimplemented option chosen." 
 	    exit 1 ;;   # DEFAULT
     esac
@@ -109,6 +111,15 @@ shift $(($OPTIND - 1))
 carouselbase="$CAROUSELPATH/$carousel.carousel"
 carouselbaseslot="$carouselbase/Slot $slot"
 
+set -x
+if [[ "$rename" != "" ]] ; then
+	pushd "$carouselbaseslot"
+	oldname="`ls |head -n 1`"
+	$DEBUGCMD mv "$oldname" "$rename"
+	popd
+	exit 0
+fi
+	
 if [[ $listslots == 1 ]] ; then 
 	if [[ -d "$carouselbase" ]] ; then
 		cd "$carouselbase"
