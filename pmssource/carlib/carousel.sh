@@ -15,6 +15,7 @@ xattrbase="com.polymicrosystems.pickadisk"
 xattrcarousel="$xattrbase.device"
 xattrslot=$xattrcarousel".slot"
 xattrkind=$xattrslot".kind"
+xattrvolname="$xattrslot.volname"
 
 # some assumptions
 volumepath="/Volumes/Untitled"
@@ -225,6 +226,8 @@ if [[ "$getfileslot" == "" ]] ; then
 		$DEBUGCMD "$XATTRCMD" -w "$xattrslot" $slot "$carouselbaseslot/$volumename"
 		$DEBUGCMD "$XATTRCMD" -w "$xattrkind" "$kind" "$carouselbaseslot"
 		$DEBUGCMD "$XATTRCMD" -w "$xattrkind" "$kind" "$carouselbaseslot/$volumename"
+		$DEBUGCMD "$XATTRCMD" -w "$xattrvolname" "$volumename" "$carouselbaseslot"
+		$DEBUGCMD "$XATTRCMD" -w "$xattrvolname" "$volumename" "$carouselbaseslot/$volumename"
 
 		if [[ ! -d "$volumepath" ]] ; then # oops, no disc name? whats this?
 			echo "No volume named: $volumepath"
