@@ -26,11 +26,11 @@
 				<string key="NSClassName">NSApplication</string>
 			</object>
 			<object class="NSWindowTemplate" id="251585239">
-				<int key="NSWindowStyleMask">271</int>
+				<int key="NSWindowStyleMask">269</int>
 				<int key="NSWindowBacking">2</int>
-				<string key="NSWindowRect">{{242, 394}, {612, 365}}</string>
-				<int key="NSWTFlags">813178880</int>
-				<string type="base64-UTF8" key="NSWindowTitle">UGlja+KAokHigKJEaXNrA</string>
+				<string key="NSWindowRect">{{48, 1100}, {600, 400}}</string>
+				<int key="NSWTFlags">807936000</int>
+				<string key="NSWindowTitle">PickADisk</string>
 				<object class="NSMutableString" key="NSWindowClass">
 					<characters key="NS.bytes">NSWindow</characters>
 				</object>
@@ -781,7 +781,7 @@ ELIAAAAAAAgACAAIAAgAAQABAAEAAQ</bytes>
 														<object class="NSOutlineView" id="800879139">
 															<reference key="NSNextResponder" ref="168235971"/>
 															<int key="NSvFlags">4370</int>
-															<string key="NSFrameSize">{173, 341}</string>
+															<string key="NSFrameSize">{170, 376}</string>
 															<reference key="NSSuperview" ref="168235971"/>
 															<bool key="NSEnabled">YES</bool>
 															<object class="_NSCornerView" key="NSCornerView">
@@ -793,7 +793,7 @@ ELIAAAAAAAgACAAIAAgAAQABAAEAAQ</bytes>
 																<bool key="EncodedWithXMLCoder">YES</bool>
 																<object class="NSTableColumn" id="38886659">
 																	<string key="NSIdentifier">NameColumn</string>
-																	<double key="NSWidth">1.700000e+02</double>
+																	<double key="NSWidth">1.670000e+02</double>
 																	<double key="NSMinWidth">1.600000e+01</double>
 																	<double key="NSMaxWidth">1.000000e+03</double>
 																	<object class="NSTableHeaderCell" key="NSHeaderCell">
@@ -869,7 +869,7 @@ ELIAAAAAAAgACAAIAAgAAQABAAEAAQ</bytes>
 															<float key="NSOutlineViewIndentationPerLevelKey">1.200000e+01</float>
 														</object>
 													</object>
-													<string key="NSFrame">{{1, 1}, {173, 341}}</string>
+													<string key="NSFrame">{{1, 1}, {170, 376}}</string>
 													<reference key="NSSuperview" ref="413350330"/>
 													<reference key="NSNextKeyView" ref="800879139"/>
 													<reference key="NSDocView" ref="800879139"/>
@@ -897,7 +897,7 @@ ELIAAAAAAAgACAAIAAgAAQABAAEAAQ</bytes>
 													<double key="NSPercent">5.714286e-01</double>
 												</object>
 											</object>
-											<string key="NSFrame">{{-1, 0}, {175, 343}}</string>
+											<string key="NSFrame">{{-1, 0}, {172, 378}}</string>
 											<reference key="NSSuperview" ref="343571003"/>
 											<reference key="NSNextKeyView" ref="168235971"/>
 											<int key="NSsFlags">530</int>
@@ -907,7 +907,7 @@ ELIAAAAAAAgACAAIAAgAAQABAAEAAQ</bytes>
 											<bytes key="NSScrollAmts">QSAAAEEgAABBoAAAQaAAAA</bytes>
 										</object>
 									</object>
-									<string key="NSFrameSize">{174, 342}</string>
+									<string key="NSFrameSize">{171, 377}</string>
 									<reference key="NSSuperview" ref="528438884"/>
 									<string key="NSClassName">NSView</string>
 								</object>
@@ -929,13 +929,13 @@ ELIAAAAAAAgACAAIAAgAAQABAAEAAQ</bytes>
 														<object class="NSOutlineView" id="589173348">
 															<reference key="NSNextResponder" ref="862184346"/>
 															<int key="NSvFlags">4370</int>
-															<string key="NSFrameSize">{442, 324}</string>
+															<string key="NSFrameSize">{433, 359}</string>
 															<reference key="NSSuperview" ref="862184346"/>
 															<bool key="NSEnabled">YES</bool>
 															<object class="NSTableHeaderView" key="NSHeaderView" id="647408740">
 																<reference key="NSNextResponder" ref="595458703"/>
 																<int key="NSvFlags">256</int>
-																<string key="NSFrameSize">{442, 17}</string>
+																<string key="NSFrameSize">{433, 17}</string>
 																<reference key="NSSuperview" ref="595458703"/>
 																<reference key="NSTableView" ref="589173348"/>
 															</object>
@@ -949,7 +949,7 @@ ELIAAAAAAAgACAAIAAgAAQABAAEAAQ</bytes>
 																<bool key="EncodedWithXMLCoder">YES</bool>
 																<object class="NSTableColumn" id="787282738">
 																	<string key="NSIdentifier">NameColumn</string>
-																	<double key="NSWidth">3.960000e+02</double>
+																	<double key="NSWidth">3.870000e+02</double>
 																	<double key="NSMinWidth">1.000000e+02</double>
 																	<double key="NSMaxWidth">1.000000e+03</double>
 																	<object class="NSTableHeaderCell" key="NSHeaderCell">
@@ -1026,7 +1026,7 @@ ELIAAAAAAAgACAAIAAgAAQABAAEAAQ</bytes>
 															<float key="NSOutlineViewIndentationPerLevelKey">2.200000e+01</float>
 														</object>
 													</object>
-													<string key="NSFrame">{{1, 17}, {442, 324}}</string>
+													<string key="NSFrame">{{1, 17}, {433, 359}}</string>
 													<reference key="NSSuperview" ref="731857042"/>
 													<reference key="NSNextKeyView" ref="589173348"/>
 													<reference key="NSDocView" ref="589173348"/>
@@ -1059,7 +1059,7 @@ ELIAAAAAAAgACAAIAAgAAQABAAEAAQ</bytes>
 														<bool key="EncodedWithXMLCoder">YES</bool>
 														<reference ref="647408740"/>
 													</object>
-													<string key="NSFrame">{{1, 0}, {442, 17}}</string>
+													<string key="NSFrame">{{1, 0}, {433, 17}}</string>
 													<reference key="NSSuperview" ref="731857042"/>
 													<reference key="NSNextKeyView" ref="647408740"/>
 													<reference key="NSDocView" ref="647408740"/>
@@ -1068,7 +1068,7 @@ ELIAAAAAAAgACAAIAAgAAQABAAEAAQ</bytes>
 												</object>
 												<reference ref="532965370"/>
 											</object>
-											<string key="NSFrame">{{-5, 0}, {444, 342}}</string>
+											<string key="NSFrame">{{-5, 0}, {435, 377}}</string>
 											<reference key="NSSuperview" ref="270717077"/>
 											<reference key="NSNextKeyView" ref="862184346"/>
 											<int key="NSsFlags">530</int>
@@ -1080,12 +1080,12 @@ ELIAAAAAAAgACAAIAAgAAQABAAEAAQ</bytes>
 											<bytes key="NSScrollAmts">QSAAAEEgAABBoAAAQaAAAA</bytes>
 										</object>
 									</object>
-									<string key="NSFrame">{{175, 0}, {439, 342}}</string>
+									<string key="NSFrame">{{172, 0}, {430, 377}}</string>
 									<reference key="NSSuperview" ref="528438884"/>
 									<string key="NSClassName">NSView</string>
 								</object>
 							</object>
-							<string key="NSFrame">{{0, 23}, {614, 342}}</string>
+							<string key="NSFrame">{{0, 23}, {602, 377}}</string>
 							<reference key="NSSuperview" ref="606929079"/>
 							<bool key="NSIsVertical">YES</bool>
 							<int key="NSDividerStyle">2</int>
@@ -1093,7 +1093,7 @@ ELIAAAAAAAgACAAIAAgAAQABAAEAAQ</bytes>
 						<object class="NSTextField" id="818963428">
 							<reference key="NSNextResponder" ref="606929079"/>
 							<int key="NSvFlags">290</int>
-							<string key="NSFrame">{{8, 4}, {587, 14}}</string>
+							<string key="NSFrame">{{8, 4}, {575, 14}}</string>
 							<reference key="NSSuperview" ref="606929079"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="177749509">
@@ -1112,12 +1112,12 @@ ELIAAAAAAAgACAAIAAgAAQABAAEAAQ</bytes>
 							</object>
 						</object>
 					</object>
-					<string key="NSFrameSize">{612, 365}</string>
+					<string key="NSFrameSize">{600, 400}</string>
 					<reference key="NSSuperview"/>
 				</object>
-				<string key="NSScreenRect">{{0, 0}, {1440, 878}}</string>
+				<string key="NSScreenRect">{{0, 0}, {2560, 1578}}</string>
 				<string key="NSMinSize">{213, 177}</string>
-				<string key="NSMaxSize">{800, 670}</string>
+				<string key="NSMaxSize">{10000, 10070}</string>
 				<string key="NSFrameAutosaveName">PickADisk</string>
 			</object>
 			<object class="NSMenu" id="406443088">
@@ -3364,15 +3364,15 @@ ELIAAAAAAAgACAAIAAgAAQABAAEAAQ</bytes>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{33, 257}, {612, 365}}</string>
+					<string>{{20, 1096}, {600, 400}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{33, 257}, {612, 365}}</string>
+					<string>{{20, 1096}, {600, 400}}</string>
 					<reference ref="9"/>
 					<reference ref="9"/>
 					<string>{{29, 439}, {612, 365}}</string>
+					<integer value="1"/>
 					<reference ref="9"/>
-					<reference ref="9"/>
-					<string>{800, 600}</string>
+					<string>{10000, 10000}</string>
 					<string>{213, 107}</string>
 					<object class="NSMutableDictionary">
 						<string key="NS.key.0">ToolTip</string>
@@ -3483,7 +3483,7 @@ ELIAAAAAAAgACAAIAAgAAQABAAEAAQ</bytes>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<reference ref="9"/>
-					<string>{{31, 622}, {616, 0}}</string>
+					<string>{{13, 782}, {616, 0}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>{{27, 804}, {616, 0}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>

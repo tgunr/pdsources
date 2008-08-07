@@ -32,5 +32,6 @@
 }
 
 - (void)updatePrompt;
+- (void)doubleClickCellContent:(id)item;
 
 @end

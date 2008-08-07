@@ -131,6 +131,7 @@
 	int		sound = kASSystemSoundSuccess;
 	DACALDeviceRef  currentBox= (DACALDeviceRef)DACALCommandCopyUUID( [carouselList indexOfSelectedItem]+1, NULL );
 	DACALSlotNum	currentSlot =  (DACALSlotNum)[slotNumber intValue];
+	DACALResult		typeResult;
 	NSURL*			currentVolume = [self pendingURL];
 	
 	if( result != 0 )
@@ -138,6 +139,9 @@
 
 	if( result == 0 )
 	{
+		typeResult = DACALSlotSetType( currentBox, currentSlot, (CFStringRef)[slotTypeList stringValue] );
+		if( (typeResult != 0) && gDACALVerbose ) NSLog(@"DACALSlotSetType Err: %i", (int)typeResult);  
+		
 		[[DACALTreeDataSource shared] slotAddedToDevice: currentBox forSlot: currentSlot];
 
 		if( ([[NSUserDefaults standardUserDefaults] boolForKey:@"PADEjectOnIndex"] == YES ) && (currentVolume != nil) )

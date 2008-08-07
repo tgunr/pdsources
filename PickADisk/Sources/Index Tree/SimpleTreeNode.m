@@ -63,6 +63,7 @@
 		itemType = 0;
 		itemDevice = (DACALDeviceRef)NULL;
 		itemSlot = 0;
+		itemFlavor = nil;
     }
     return self;
 }
@@ -70,6 +71,7 @@
 - (id)initWithLocation:(NSURL *)loc {
 
 	BOOL	isAFolder = (CFURLHasDirectoryPath((CFURLRef)loc)) ? YES : NO;
+	BOOL	isASlot = (CFURLIsSlot((CFURLRef)loc)) ? YES : NO;
 
     if (self = [super init]) {
         location = [loc retain];
@@ -81,11 +83,19 @@
 		itemType = 0;
 		itemDevice = CFURLCopyCarouselUUID( (CFURLRef)loc );
 		itemSlot = CFURLGetSlotNumber( (CFURLRef)loc, FALSE );
+		
+		if(isASlot == YES){
+			itemType = kPADTypeDataSlot;
+			itemFlavor = (NSString*)DACALSlotCopyType( itemDevice, itemSlot, NULL );
+    }
+		if( itemFlavor == nil) itemFlavor = @"Files";
     }
     return self;
 }
 
 - (id)initWithLocation:(NSURL *)loc isLeaf:(BOOL)leaf {
+
+	BOOL	isASlot = (CFURLIsSlot((CFURLRef)loc)) ? YES : NO;
 
     if (self = [super init]) {
         location = [loc retain];
@@ -98,6 +108,14 @@
 		itemDevice = CFURLCopyCarouselUUID( (CFURLRef)loc );
 		itemSlot = CFURLGetSlotNumber( (CFURLRef)loc, FALSE );
    }
+
+	if(isASlot == YES){
+		itemType = kPADTypeDataSlot;
+		itemFlavor = (NSString*)DACALSlotCopyType( itemDevice, itemSlot, NULL );
+	}
+	if( itemFlavor == nil) itemFlavor = @"Files";
+	
+	
     return self;
 }
 
@@ -229,6 +247,15 @@
 
 - (void)setItemType:(NSInteger)type { itemType = type; }
 - (NSInteger)itemType { return itemType; }
+
+- (void)setItemFlavor:(NSString *)flavor
+{
+    if (!itemFlavor || ![itemFlavor isEqualToString:flavor]) {
+		[itemFlavor release]; 
+		itemFlavor = [flavor retain]; 
+    }
+}
+- (NSString *)itemFlavor { return itemFlavor; }
 
 - (void)setSubTree:(SimpleTreeNode*)tree {
     if (!subTree || ![location isEqual:tree]) {

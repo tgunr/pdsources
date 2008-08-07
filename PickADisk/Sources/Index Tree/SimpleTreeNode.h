@@ -61,6 +61,7 @@ const enum {
     NSString		*name;
     NSImage			*iconRep;
 	NSURL			*location;
+	NSString		*itemFlavor;
 	NSInteger		itemType;
 	DACALDeviceRef	itemDevice;
 	DACALSlotNum	itemSlot;
@@ -118,6 +119,10 @@ const enum {
 
 - (void)setItemSlot:(DACALSlotNum)slot;
 - (DACALSlotNum)itemSlot;
+
+// Set and get the flavor.
+- (void)setItemFlavor:(NSString *)name;
+- (NSString *)itemFlavor;
 
 - (void)setSubTree:(SimpleTreeNode*)tree;
 - (SimpleTreeNode*)subTree;

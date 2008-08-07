@@ -10,6 +10,11 @@
 #import <Cocoa/Cocoa.h>
 #import <Carbon/Carbon.h>
 
+enum {
+	// Our trackable icon in the cell
+	NSCellHitIconArea = 1 << 8,
+};
+
 @interface ImageAndTextCell : NSTextFieldCell {
 @private
     NSImage *image;

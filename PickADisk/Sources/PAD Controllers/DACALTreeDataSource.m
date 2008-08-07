@@ -372,6 +372,34 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 	return;
 }
 
+- (void)nodeNameChanged:(SimpleTreeNode*)theNode toName:(NSString*)theName
+{
+	SimpleNodeData	*theData = [theNode nodeData];
+	DACALDeviceRef	theBox = [theData itemDevice];
+	DACALSlotNum	theSlot = [theData itemSlot];
+//	CFURLRef		theURL = [theData location];
+	DACALResult		theErr;
+
+	if( [[theData name] compare:theName] == NSOrderedSame ) return;
+	
+	// This should not be possible since we checked already before we allowed editing.
+	// if( (theURL == NULL) || (CFURLIsSlot(theURL) != TRUE) ) return;
+	
+	theErr = DACALSlotSetTitle( theBox, theSlot, (CFStringRef)theName );
+	if( theErr != 0 ) goto SLOTNAMEFAILED;
+
+	[theData setName:theName];
+	if( [theNode nodeParent] ) [[theNode nodeParent] recursiveSortChildren]; 
+	
+	[AppController playUISound: kASSystemSoundSuccess];
+	return;
+	
+SLOTNAMEFAILED:
+	
+	[AppController playUISound: kASSystemSoundDoink];
+	return;
+}
+
 - (void)nodeSlotChanged:(SimpleTreeNode*)node toSlot:(NSString*)slotString
 {
 	DACALSlotNum	oldSlot = [[node nodeData] itemSlot];
@@ -389,8 +417,42 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 
 - (NSInteger)shouldEditTableColumn:(NSTableColumn *)tc item:(id)item
 {
-	if([[tc identifier] compare:COLUMNID_SLOT] == NSOrderedSame) return YES;
+	SimpleNodeData	*theData = [item nodeData];
+	CFURLRef		theURL = NULL;
+	
+	if([[tc identifier] compare:COLUMNID_SLOT] == NSOrderedSame) 
+		return NO;	// Currently unimplemented
+	
+	if([[tc identifier] compare:COLUMNID_NAME] == NSOrderedSame) {
+		theURL = (CFURLRef)[theData location];
+		if( theURL == NULL ) return NO;
+		if( CFURLIsSlot(theURL) == TRUE ) return YES;
 	return NO;
+}
+
+	return NO;
+}
+
+- (void)doubleClickImage:(id)item
+{
+	SimpleNodeData	*theData = [item nodeData];
+	DACALDeviceRef	theBox = [theData itemDevice];
+	DACALSlotNum	theSlot = [theData itemSlot];
+
+	DACALCommandMoveToSlotWithOptions( theBox, theSlot, kDACALOptionMoveToggle );
+}
+
+- (void)doubleClickCellContent:(id)item
+{
+	SimpleNodeData	*theData = [item nodeData];
+	NSOutlineView	*theView = [[self treeControl] outlineView];
+	
+	if([theData isExpandable] == YES ) 
+		if( [theView isItemExpanded:item] == YES ) {
+			[theView collapseItem:item];
+		} else {
+			[theView expandItem:item];
+		}
 }
 
 @end	// DACALViewDataSource

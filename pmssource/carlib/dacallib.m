@@ -108,6 +108,7 @@ CFStringRef			kDACALCarouselDocumentInfoKeyUUID			=CFSTR("UUID");
 CFStringRef			kDACALCarouselDocumentXAttrCarousel		=CFSTR("com.polymicrosystems.pickadisk.device");
 CFStringRef			kDACALCarouselDocumentXAttrSlot			=CFSTR("com.polymicrosystems.pickadisk.device.slot");
 CFStringRef			kDACALCarouselDocumentXAttrSlotKind		=CFSTR("com.polymicrosystems.pickadisk.device.slot.kind");
+CFStringRef			kDACALCarouselDocumentXAttrVolumeName	=CFSTR("com.polymicrosystems.pickadisk.device.volname");
 
 #define DACAL_CAROUSEL_FOLDERNAME_PSTRING	"\pPickADisk"		// used to register the folder location with the OS for use in FSFindFolder
 
@@ -808,24 +809,56 @@ DACALResult		DACALCommandMoveToSlotWithOptions( DACALDeviceRef deviceID, DACALSl
 	DACALResult		theErr;
 	dacalString		slotBuffer;
 	UInt16			result;
+	Boolean			moveOnce		= moveOptions == kDACALOptionMoveOnce;
+	Boolean			moveOpenSlot	= moveOptions == kDACALOptionMoveOpenSlot;
+	Boolean			moveToggle		= moveOptions == kDACALOptionMoveToggle;
+	Boolean			doClose			= !moveOpenSlot;
+	Boolean			doOpen			= TRUE;
+	
+	
 	DACALCount		indexID = dacalDeviceRefToDeviceIndex( deviceID );
+	DACALSlotNum	theLastSlot = DACAL_BOX_LASTSLOT(indexID);
+	time_t			theLastTime = DACAL_BOX_LASTSLOTTIME(indexID);
+	
 	
 	if( indexID == kDACALIllegalDevice ) return( kIOReturnNoDevice );
 	
-	if( moveOptions & kDACALOptionMoveOnce ) 
-		if( DACAL_BOX_LASTSLOT(indexID) == newSlot ) return( kDACALBusy );
-	
-	if( !(moveOptions & kDACALOptionMoveOpenSlot) )	{
-		theErr = DACALCommandCloseDoor( deviceID );
-		if( theErr ) return( theErr );
-//		DACAL_SHORT_SLEEP
+	if( moveToggle ) {
+		if( theLastSlot != newSlot ) {
+			doClose = TRUE;
+			doOpen = TRUE;
+		} else {
+			doClose = (theLastTime != -1);
+			doOpen = !doClose;
+		}
 	}
 	
+	if( moveOnce ) 
+		if( theLastSlot == newSlot ) return( kDACALBusy );
+	
+	if( doClose )	{
+		theErr = DACALCommandCloseDoor( deviceID );
+		if( theErr ) goto ERRORBAIL;
+	}
+	
+	if( doClose && doOpen ) DACAL_SHORT_SLEEP
+	
+	if( doOpen )	{
 	theErr = DACALCommandRequestNoResult( deviceID, cmdMoveToSlot );	
-	DACAL_SHORT_SLEEP
 	theErr = dacalGetDescriptor(gDACALBoxes.box[indexID].boxRef, 0x0409, kUSBStringDesc, newSlot, &slotBuffer, sizeof(slotBuffer), &result);
-	DACAL_SHORT_SLEEP
+	}
 
+ERRORBAIL:
+	if( (theErr == 0) && (moveToggle) ) 
+		if( theLastSlot == newSlot )
+		{
+			if( theLastTime == -1 ) 
+				DACAL_BOX_LASTSLOTTIME(indexID) = time(NULL);
+			if( theLastTime != -1 )
+				DACAL_BOX_LASTSLOTTIME(indexID) = -1;
+			return( theErr );
+		}
+		
 	if( theErr == 0 ) {
 		DACAL_BOX_LASTSLOT(indexID)		= newSlot;
 		DACAL_BOX_LASTSLOTTIME(indexID)	= time(NULL);
@@ -833,6 +866,7 @@ DACALResult		DACALCommandMoveToSlotWithOptions( DACALDeviceRef deviceID, DACALSl
 		DACAL_BOX_LASTSLOT(indexID)		= 0;
 		DACAL_BOX_LASTSLOTTIME(indexID)	= -1;
 	}
+	
 	return( theErr );
 }
 
@@ -1148,6 +1182,36 @@ BAIL:
 	return( outputString );
 }
 
+DACALResult		DACALSlotSetTitle( DACALDeviceRef deviceID, DACALSlotNum slotNum, CFStringRef slotTitle )
+{
+	DACALResult		outResult = kIOReturnBadArgument;
+	CFStringRef		doCFCommand;
+	CFStringRef		doCommand;
+	DACALCount		indexID = dacalDeviceRefToDeviceIndex( deviceID );
+	CFStringRef		boxUUID = CFUUIDCreateString( NULL, DACAL_BOX_UUID(indexID) );
+	
+	if( indexID == kDACALIllegalDevice ) return( kIOReturnNoDevice );
+		
+	doCFCommand = CFStringCreateWithFormat(	gDACALDefaultCFAllocator, NULL,
+										   CFSTR("-c %@ -s %i -R \"%@\""), 
+										   boxUUID, slotNum, slotTitle );
+	if( doCFCommand == NULL ) goto BAIL;
+	
+	if( gDACALVerbose )
+	{
+		CFShow(CFSTR("Driver call DACALSlotSetTitle:"));
+		CFShow( doCFCommand );
+	}
+	
+	doCommand = CFStringCreateFromDacalPipe( gDACALDefaultCFAllocator, doCFCommand, &outResult );	
+	if( doCommand != NULL ) CFRelease( doCommand );
+	
+BAIL:
+	if( doCFCommand )	CFRelease( doCFCommand );
+	if( boxUUID )		CFRelease( boxUUID );
+	return( outResult );
+}
+
 CFURLRef		DACALSlotCopyPath( DACALDeviceRef deviceID, DACALSlotNum slotNum, DACALResult* outError )
 {
 	DACALResult		outResult = kIOReturnBadArgument;
@@ -1162,7 +1226,6 @@ CFURLRef		DACALSlotCopyPath( DACALDeviceRef deviceID, DACALSlotNum slotNum, DACA
 		goto BAIL;
 	}
 	
-//	doCFCommand = CFStringCreateWithFormat(	gDACALDefaultCFAllocator, NULL, CFSTR("-c %i -s %i -w"), indexID + 1, slotNum );
 	doCFCommand = CFStringCreateWithFormat(	gDACALDefaultCFAllocator, NULL, CFSTR("-c %@ -s %i -w"), boxUUID, slotNum );
 	if( doCFCommand == NULL ) goto BAIL;
 
@@ -1177,6 +1240,56 @@ BAIL:
 	if( doCFCommand )	CFRelease( doCFCommand );
 	if( boxUUID )		CFRelease( boxUUID );	
 	return( outPathURL );
+}
+
+CFStringRef		DACALSlotCopyType( DACALDeviceRef deviceID, DACALSlotNum slotNum, DACALResult* outError )
+{
+	DACALResult		outResult = kIOReturnBadArgument;
+	CFStringRef		slotType = NULL;
+	CFURLRef		slotURL = DACALSlotCopyPath(deviceID, slotNum, &outResult );
+	
+	if( outResult != 0 ) goto BAIL;
+	if( slotURL == NULL ) {
+		outResult = kIOReturnBadArgument;
+		goto BAIL;
+	}
+	
+	slotType = CFURLCopyXattr( slotURL, kDACALCarouselDocumentXAttrSlotKind, (OSStatus*)&outResult );
+	
+BAIL:
+	if( outError ) *outError = outResult;
+	if( slotURL )	CFRelease( slotURL );
+	return( slotType );
+}
+
+DACALResult		DACALSlotSetType( DACALDeviceRef deviceID, DACALSlotNum slotNum, CFStringRef slotType )
+{
+	DACALResult		outResult = kIOReturnBadArgument;
+	CFStringRef		doCFCommand;
+	CFStringRef		doCommand;
+	DACALCount		indexID = dacalDeviceRefToDeviceIndex( deviceID );
+	CFStringRef		boxUUID = CFUUIDCreateString( NULL, DACAL_BOX_UUID(indexID) );
+	
+	if( indexID == kDACALIllegalDevice ) return( kIOReturnNoDevice );
+	
+	doCFCommand = CFStringCreateWithFormat(	gDACALDefaultCFAllocator, NULL,
+										   CFSTR("-c %@ -s %i -K \"%@\""), 
+										   boxUUID, slotNum, slotType );
+	if( doCFCommand == NULL ) goto BAIL;
+	
+	if( gDACALVerbose )
+	{
+		CFShow(CFSTR("Driver call DACALSlotSetType:"));
+		CFShow( doCFCommand );
+	}
+	
+	doCommand = CFStringCreateFromDacalPipe( gDACALDefaultCFAllocator, doCFCommand, &outResult );	
+	if( doCommand != NULL ) CFRelease( doCommand );
+	
+BAIL:
+	if( doCFCommand )	CFRelease( doCFCommand );
+	if( boxUUID )		CFRelease( boxUUID );
+	return( outResult );
 }
 
 DACALSlotNum	DACALSlotNextFreeNumber( DACALDeviceRef deviceID, DACALSlotNum lowestSlot, DACALSlotNum highestSlot, DACALResult* outError )

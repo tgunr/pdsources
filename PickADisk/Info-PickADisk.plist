@@ -40,7 +40,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0.0a</string>
+	<string>1.0.1a</string>
 	<key>CFBundleSignature</key>
 	<string>PADA</string>
 	<key>CFBundleURLTypes</key>
@@ -59,7 +59,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1008</string>
+	<string>1009</string>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2008, polyMicro Systems</string>
 	<key>NSMainNibFile</key>

@@ -52,7 +52,7 @@ extern CFStringRef		kDACALCarouselDocumentInfoKeyUUID;
 extern CFStringRef		kDACALCarouselDocumentXAttrCarousel;
 extern CFStringRef		kDACALCarouselDocumentXAttrSlot;
 extern CFStringRef		kDACALCarouselDocumentXAttrSlotKind;
-
+extern CFStringRef		kDACALCarouselDocumentXAttrVolumeName;
 
 
 extern const DACALDeviceRef	kDACALDefaultDevice;
@@ -67,7 +67,8 @@ extern const DACALResult	kDACALInvalidParameter;
 const enum {
 	kDACALOptionMoveDefault		= 0x00,		// regular MoveToSlot:  close, move, open
 	kDACALOptionMoveOnce		= 0x01,		// only moves if slot wasn't the last one opened.
-	kDACALOptionMoveOpenSlot	= 0x02		// skips initial close and opens slot.
+	kDACALOptionMoveOpenSlot	= 0x02,		// skips initial close and opens slot.
+	kDACALOptionMoveToggle		= 0x03,		// if slot is last slot then close & clear slot
 } DACALMoveOption;
 
 const enum {								// This constant can be used with FSFindFolder()
@@ -79,6 +80,8 @@ const enum {								// This constant can be used with FSFindFolder()
 
 extern CFStringRef		DACALCommandCopyName( DACALDeviceRef deviceID, DACALResult* outError );
 extern DACALResult		DACALCommandSetName( DACALDeviceRef deviceID, CFStringRef deviceName );
+extern CFStringRef		DACALSlotCopyType( DACALDeviceRef deviceID, DACALSlotNum slotNum, DACALResult* outError );
+extern DACALResult		DACALSlotSetType( DACALDeviceRef deviceID, DACALSlotNum slotNum, CFStringRef slotType );
 extern DACALDeviceNode	DACALCommandCopyNode( DACALDeviceRef deviceID, DACALResult* outError );
 //extern DACALResult		DACALCommandSetNode( DACALDeviceRef deviceID, DACALDeviceNode deviceNode );
 extern DACALSlotNum		DACALCommandGetSlotCount( DACALDeviceRef deviceID );
@@ -100,6 +103,7 @@ extern DACALResult		DACALCommandDVDEject( DACALDeviceRef deviceID );
 extern DACALResult		DACALSlotCreateIndex( DACALDeviceRef deviceID, DACALSlotNum slotNum, CFStringRef slotTitle, DACALCount indexLevel, CFURLRef sourcePath );
 extern DACALResult		DACALSlotDeleteIndex( DACALDeviceRef deviceID, DACALSlotNum slotNum );
 extern CFStringRef		DACALSlotCopyTitle( DACALDeviceRef deviceID, DACALSlotNum slotNum, DACALResult* outError );
+extern DACALResult		DACALSlotSetTitle( DACALDeviceRef deviceID, DACALSlotNum slotNum, CFStringRef slotTitle );
 extern CFURLRef			DACALSlotCopyPath( DACALDeviceRef deviceID, DACALSlotNum slotNum, DACALResult* outError );
 extern DACALSlotNum		DACALSlotNextFreeNumber( DACALDeviceRef deviceID, DACALSlotNum lowestSlot, DACALSlotNum highestSlot, DACALResult* outError );
 

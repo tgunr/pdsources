@@ -220,7 +220,6 @@
 				{
 					CFStringRef	tempPathName = (CFStringRef)CFArrayGetValueAtIndex( outList, resultIndex);
 					foundPath = CFURLCreateWithFileSystemPath( NULL, tempPathName, kCFURLPOSIXPathStyle, FALSE );
-					
 					if( CFURLGetSlotNumber( foundPath, FALSE ) != 0 )
 					{
 						newNode = [SimpleTreeNode treeFromLocation:(NSURL*)CFRetain(foundPath)];

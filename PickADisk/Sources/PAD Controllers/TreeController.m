@@ -45,6 +45,10 @@
 
 	// Initialize the View
 	if( dataSource != nil ) [dataSource performSelector:@selector(outlineViewInit)];
+	
+	// Setup doubles
+	[[self outlineView] setDoubleAction:@selector(outlineViewDoubleAction:)];
+	
 }
 
 - (NSArray *)draggedNodes { 
@@ -171,6 +175,13 @@
 
 }
 
+- (void)outlineViewDoubleAction:(id)olv {
+	// This message is sent from th outlineView as it's double-action (see awakeFromNib)
+
+	// Tell data source
+	if( dataSource != nil ) [dataSource performSelector:@selector(outlineViewDoubleAction:) withObject:self];
+}
+
 - (void)deleteSelections:(id)sender {
     NSArray *selection = [self selectedNodes];
     
@@ -286,6 +297,7 @@
 // We can return a different cell for each row, if we want
 - (NSCell *)outlineView:(NSOutlineView *)ov dataCellForTableColumn:(NSTableColumn *)tableColumn item:(id)item {
     ImageAndTextCell* outCell = [tableColumn dataCell];
+	[outCell setRepresentedObject:item];
 	// If we return a cell for the 'nil' tableColumn, it will be used as a "full width" cell and span all the columns
     if ([self allowGroupRowLook] && (tableColumn == nil)) {
         if ([[item nodeData] isGroup]) {
@@ -694,6 +706,46 @@ NSFileHandle *NewFileHandleForWritingFile(NSString *dirpath, NSString *basename,
         [selectionOutput setStringValue: @"Nothing Selected"];   
     }
 */
+}
+
+- (void)outlineViewDoubleAction:(id)tree
+{
+//	NSArray	*selectedNodes = [treeControl selectedNodes];
+//	NSInteger	indexCount = [[treeControl outlineView] clickedColumn];
+//	NSInteger	nodeCount = [selectedNodes count];
+	NSOutlineView	*theView	= [treeControl outlineView];
+	NSInteger		rowIndex	= [theView clickedRow];
+	NSInteger		colIndex	= [theView clickedColumn];
+	NSInteger		partHit		= NSCellHitNone;
+	NSRect			rowFrame	= [theView frameOfCellAtColumn:0 row:rowIndex];
+	SimpleTreeNode	*workNode	= nil;
+	NSCell			*workCell	= nil;
+	
+	//if( [[treeControl outlineView] clickedColumn] != -1 ) return;
+	
+	if( rowIndex == -1 ) return;		//  That is a double-click in a blank row.
+	
+	if( colIndex == [theView columnWithIdentifier:COLUMNID_NAME] )
+	{
+		workNode = [theView itemAtRow:rowIndex];
+		workCell = [theView preparedCellAtColumn:0 row:rowIndex];
+
+		partHit = [workCell hitTestForEvent:[[NSApplication sharedApplication]currentEvent] inRect:rowFrame ofView:theView];
+		
+		if( partHit == NSCellHitNone ) {
+			if([[workNode nodeData] isExpandable] == YES ) 
+				if( [theView isItemExpanded:workNode] == YES ) {
+					[theView collapseItem:workNode];
+				} else {
+					[theView expandItem:workNode];
+				}
+		} else if( partHit == NSCellHitIconArea ) {
+			if( [self respondsToSelector:@selector(doubleClickImage:)] == YES )
+				[self performSelector:@selector(doubleClickImage:) withObject:(id)workNode];
+		}
+	}
+	
+	return;
 }
 
 // On MacOS 10.5 and above, NSTableView and NSOutlineView have better contextual menu support. We now see a highlighted item for what was clicked on, and can access that item to do particular things (such as dynamically change the menu, as we do here!). Each of the contextual menus in the nib file have the delegate set to be the AppController instance. In menuNeedsUpdate, we dynamically update the menus based on the currently clicked upon row/column pair.

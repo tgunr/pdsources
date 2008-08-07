@@ -102,6 +102,7 @@
 - (SimpleTreeNode*)createInitialTree:(id)tree;
 - (void)outlineViewInit;
 - (void)outlineViewAction:(id)tree;
+- (void)outlineViewDoubleAction:(id)tree;
 - (void)menuNeedsUpdate:(NSMenu*)menu;
 - (void)menuNeedsUpdate:(NSMenu*)menu fromTree:(id)tree;
 - (void)nodeNameChanged:(SimpleTreeNode*)theNode toName:(NSString*)theName;
