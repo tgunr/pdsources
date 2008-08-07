@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash
 #  $Id$
 #
 #  Created by Dave Carlton on 2008-05-31.
