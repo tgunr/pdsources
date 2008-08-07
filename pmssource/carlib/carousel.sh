@@ -112,7 +112,6 @@ shift $(($OPTIND - 1))
 carouselbase="$CAROUSELPATH/$carousel.carousel"
 carouselbaseslot="$carouselbase/Slot $slot"
 
-set -x
 if [[ "$rename" != "" ]] ; then
 	pushd "$carouselbaseslot"
 	oldname="`ls |head -n 1`"
