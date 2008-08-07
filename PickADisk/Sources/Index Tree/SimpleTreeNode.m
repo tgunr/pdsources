@@ -87,7 +87,7 @@
 		if(isASlot == YES){
 			itemType = kPADTypeDataSlot;
 			itemFlavor = (NSString*)DACALSlotCopyType( itemDevice, itemSlot, NULL );
-    }
+		}
 		if( itemFlavor == nil) itemFlavor = @"Files";
     }
     return self;
@@ -116,7 +116,7 @@
 	if( itemFlavor == nil) itemFlavor = @"Files";
 	
 	
-    return self;
+	return self;
 }
 
 + (id)leafDataWithName:(NSString*)str {

@@ -427,9 +427,9 @@ SLOTNAMEFAILED:
 		theURL = (CFURLRef)[theData location];
 		if( theURL == NULL ) return NO;
 		if( CFURLIsSlot(theURL) == TRUE ) return YES;
-	return NO;
-}
-
+		return NO;
+	}
+	
 	return NO;
 }
 

@@ -1,5 +1,4 @@
-/*
- *  ImageAndTextCell.m
+/* *  ImageAndTextCell.m
  *  PickADisc
  *
  *  Created by Dave Carlton on 05/27/08.
@@ -174,8 +173,8 @@
 			
             outHit = NSCellHitIconArea;
 			goto BAIL;
-        }        
-    }
+        }
+	}
 	outHit = [super hitTestForEvent:event inRect:cellFrame ofView:controlView]; 
 
 //            } //else {
