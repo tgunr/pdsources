@@ -110,6 +110,7 @@ CFStringRef			kDACALCarouselDocumentXAttrSlot			=CFSTR("com.polymicrosystems.pic
 CFStringRef			kDACALCarouselDocumentXAttrSlotKind		=CFSTR("com.polymicrosystems.pickadisk.device.slot.kind");
 CFStringRef			kDACALCarouselDocumentXAttrVolumeName	=CFSTR("com.polymicrosystems.pickadisk.device.volname");
 
+#define DACAL_CAROUSEL_FOLDERNAME_CFSTRING	CFSTR("PickADisk")
 #define DACAL_CAROUSEL_FOLDERNAME_PSTRING	"\pPickADisk"		// used to register the folder location with the OS for use in FSFindFolder
 
 const DACALDeviceRef	kDACALDefaultDevice = 0;
@@ -192,7 +193,7 @@ void*			CarouselReadInfoFileKey( DACALDeviceRef deviceID, CFStringRef inKeyName,
 	
 BAIL:
 	if( infoText ) CFRelease( infoText );
-//	if( docURL ) CFRelease( docURL );
+	//	if( docURL ) CFRelease( docURL );
 	if( infoURL ) CFRelease( infoURL );
 	
 	if( outResult != NULL ) *outResult = returnResult;
@@ -232,13 +233,13 @@ DACALResult		CarouselWriteInfoFileKey( DACALDeviceRef inDevice, CFStringRef inKe
 	SInt32			saveErr;
 	
 	CFMutableDictionaryRef outDict = NULL;
-
+	
 	infoGood = CFURLCreateDataAndPropertiesFromResource( NULL, savePath, &boxXML, NULL, NULL, &saveErr );
 	if( !infoGood ) {
 		outDict = CFDictionaryCreateMutable( NULL, 1, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks );
 		goto HAVEDICT;
 	}
-		
+	
 	outDict = (CFMutableDictionaryRef)CFPropertyListCreateFromXMLData( NULL, boxXML, kCFPropertyListMutableContainersAndLeaves, NULL );
 	if( !outDict ) goto BAIL;
 	
@@ -248,7 +249,7 @@ DACALResult		CarouselWriteInfoFileKey( DACALDeviceRef inDevice, CFStringRef inKe
 	// Add Key
 HAVEDICT:
 	CFDictionarySetValue( outDict, (const void*)inKeyName, (const void*)inKeyValue );
-		
+	
 	// Save the file
 	
 	boxXML = CFPropertyListCreateXMLData( NULL, (CFPropertyListRef)outDict );
@@ -304,7 +305,7 @@ HAVEDICT:
 	CFDictionarySetValue( outDict, (const void*)kDACALCarouselDocumentInfoKeyUUID, (const void*)boxUUIDString );
 	
 	// Add Name
-
+	
 	// If the box doesn't already have a name, assign it one.
 	
 	if( DACAL_BOX_NAME(indexID) == NULL ) {
@@ -318,9 +319,9 @@ HAVEDICT:
 	CFDictionarySetValue( outDict, (const void*)kDACALCarouselDocumentInfoKeyName, (const void*)DACAL_BOX_NAME(indexID) );
 	
 	// Save the file
-
+	
 	//CFShow( outDict );
-
+	
 	boxXML = CFPropertyListCreateXMLData( NULL, (CFPropertyListRef)outDict );
 	if( boxXML == NULL ) goto BAIL;
 	
@@ -338,7 +339,7 @@ BAIL:
 	if( boxXML ) CFRelease( boxXML );
 	if( savePath ) CFRelease( savePath );
 	if( outDict ) CFRelease( outDict );
-		
+	
 	return outResult;
 }
 
@@ -354,7 +355,7 @@ DACALResult		CarouselEstablishInfoFile( CFUUIDRef boxUUID )
 	FSRef			fileFolder;
 	Boolean			fileFound = FALSE;
 	OSErr			theErr;
-
+	
 	theErr = FSFindFolder( kUserDomain, kDACALCarouselsFolderType, TRUE, &userLibraryFolder );
 	if( theErr != 0 ) printf( "CarouselEstablishInfoFile Could not find user library! Error:%i\n", theErr );
 	else dataURL = CFURLCreateFromFSRef(NULL, &userLibraryFolder);
@@ -378,10 +379,10 @@ DACALResult		CarouselEstablishInfoFile( CFUUIDRef boxUUID )
 		
 		theErr = CarouselWriteInfoFile( (DACALDeviceRef)boxUUID );
 	}
-
+	
 BAIL:
-
-//	if( fileURL ) CFRelease( fileURL );
+	
+	//	if( fileURL ) CFRelease( fileURL );
 	if( dataURL ) CFRelease( dataURL );
 	if( fileTitle ) CFRelease( fileTitle );
 	if( uuidString ) CFRelease( uuidString );
@@ -391,79 +392,79 @@ BAIL:
 }
 
 /*
-
-CFStringRef		CopyUSBProductData( DACALDeviceRef indexID, DACALDeviceNode* outNode )			//note this is really a UUID!
-{
-	CFStringRef		outName = NULL;
-	CFStringRef		uuidName = CFUUIDCreateString( gDACALDefaultCFAllocator, (CFUUIDRef)indexID ); // DACAL_BOX_UUID(indexID) );
-	CFStringRef		copyName = NULL;
-	CFArrayRef		entryArray = NULL;
-	CFNumberRef		copyNode = NULL;
-	int				outDeviceNode = 0;
-	
-	if( indexID == kDACALIllegalDevice ) return( outName );
-
-	entryArray = (CFArrayRef)CFPreferencesCopyValue( uuidName, kDACALPreferencesID, kCFPreferencesAnyUser, kCFPreferencesCurrentHost );
-	if( uuidName ) CFRelease( uuidName );
-
-	if( entryArray != NULL )
-	{
-		copyName = (CFStringRef)CFArrayGetValueAtIndex( entryArray, 0 );
-		if( copyName ) {
-			outName = CFStringCreateCopy(gDACALDefaultCFAllocator, copyName);
-			CFRelease( copyName );
-		}
-		copyNode = (CFNumberRef)CFArrayGetValueAtIndex( entryArray, 1 );
-		if( copyNode ) {
-			CFNumberGetValue( copyNode, kCFNumberIntType, &outDeviceNode );
-			CFRelease( copyNode );
-		}
-		CFRelease( entryArray );
-	}
-	
-	if( outNode != NULL ) *outNode = outDeviceNode;
-	return( outName );
-}
-
-DACALResult		SaveUSBProductData( DACALDeviceRef deviceID, CFStringRef inName, DACALDeviceNode inNode )
-{
-	DACALDeviceRef	indexID = dacalDeviceRefToDeviceIndex( deviceID );
-	CFStringRef		uuidName = CFUUIDCreateString( gDACALDefaultCFAllocator, DACAL_BOX_UUID(indexID) );
-	CFStringRef		copyName = NULL;
-	CFNumberRef		copyNode = NULL;
-	void*			valuePointers[2] = { NULL, NULL };
-	CFArrayRef		dataValues = NULL;
-	Boolean			prefSaved = FALSE;
-	
-	if( indexID == kDACALIllegalDevice ) return( kIOReturnNoDevice );
-
-	if( inName == NULL ) inName = DACAL_BOX_NAME(indexID);
-	if( inName ) copyName = CFStringCreateCopy( gDACALDefaultCFAllocator, inName );
-	
-	if( inNode == 0 ) inNode = DACAL_BOX_NODE(indexID);
-	copyNode = CFNumberCreate( NULL, kCFNumberIntType, &inNode );
-	
-	valuePointers[0] = (void*)copyName;
-	valuePointers[1] = (void*)copyNode;
-
-	dataValues = CFArrayCreate( NULL, (const void**)&valuePointers, 2, &kCFTypeArrayCallBacks );
-
-	CFShow( uuidName );
-	CFShow( dataValues );
-
-	CFPreferencesSetValue( uuidName, dataValues, kDACALPreferencesID, kCFPreferencesAnyUser, kCFPreferencesCurrentHost );
-	prefSaved = CFPreferencesAppSynchronize( kDACALPreferencesID );
-
-	CFShow( prefSaved ? CFSTR("Synced") : CFSTR("Error") );
-
-	if( dataValues ) CFRelease( dataValues );
-	if( copyNode ) CFRelease( copyNode );
-	if( copyName ) CFRelease( copyName );
-	if( uuidName ) CFRelease( uuidName );	
-	return( (prefSaved == FALSE) );
-}
-
-*/
+ 
+ CFStringRef		CopyUSBProductData( DACALDeviceRef indexID, DACALDeviceNode* outNode )			//note this is really a UUID!
+ {
+ CFStringRef		outName = NULL;
+ CFStringRef		uuidName = CFUUIDCreateString( gDACALDefaultCFAllocator, (CFUUIDRef)indexID ); // DACAL_BOX_UUID(indexID) );
+ CFStringRef		copyName = NULL;
+ CFArrayRef		entryArray = NULL;
+ CFNumberRef		copyNode = NULL;
+ int				outDeviceNode = 0;
+ 
+ if( indexID == kDACALIllegalDevice ) return( outName );
+ 
+ entryArray = (CFArrayRef)CFPreferencesCopyValue( uuidName, kDACALPreferencesID, kCFPreferencesAnyUser, kCFPreferencesCurrentHost );
+ if( uuidName ) CFRelease( uuidName );
+ 
+ if( entryArray != NULL )
+ {
+ copyName = (CFStringRef)CFArrayGetValueAtIndex( entryArray, 0 );
+ if( copyName ) {
+ outName = CFStringCreateCopy(gDACALDefaultCFAllocator, copyName);
+ CFRelease( copyName );
+ }
+ copyNode = (CFNumberRef)CFArrayGetValueAtIndex( entryArray, 1 );
+ if( copyNode ) {
+ CFNumberGetValue( copyNode, kCFNumberIntType, &outDeviceNode );
+ CFRelease( copyNode );
+ }
+ CFRelease( entryArray );
+ }
+ 
+ if( outNode != NULL ) *outNode = outDeviceNode;
+ return( outName );
+ }
+ 
+ DACALResult		SaveUSBProductData( DACALDeviceRef deviceID, CFStringRef inName, DACALDeviceNode inNode )
+ {
+ DACALDeviceRef	indexID = dacalDeviceRefToDeviceIndex( deviceID );
+ CFStringRef		uuidName = CFUUIDCreateString( gDACALDefaultCFAllocator, DACAL_BOX_UUID(indexID) );
+ CFStringRef		copyName = NULL;
+ CFNumberRef		copyNode = NULL;
+ void*			valuePointers[2] = { NULL, NULL };
+ CFArrayRef		dataValues = NULL;
+ Boolean			prefSaved = FALSE;
+ 
+ if( indexID == kDACALIllegalDevice ) return( kIOReturnNoDevice );
+ 
+ if( inName == NULL ) inName = DACAL_BOX_NAME(indexID);
+ if( inName ) copyName = CFStringCreateCopy( gDACALDefaultCFAllocator, inName );
+ 
+ if( inNode == 0 ) inNode = DACAL_BOX_NODE(indexID);
+ copyNode = CFNumberCreate( NULL, kCFNumberIntType, &inNode );
+ 
+ valuePointers[0] = (void*)copyName;
+ valuePointers[1] = (void*)copyNode;
+ 
+ dataValues = CFArrayCreate( NULL, (const void**)&valuePointers, 2, &kCFTypeArrayCallBacks );
+ 
+ CFShow( uuidName );
+ CFShow( dataValues );
+ 
+ CFPreferencesSetValue( uuidName, dataValues, kDACALPreferencesID, kCFPreferencesAnyUser, kCFPreferencesCurrentHost );
+ prefSaved = CFPreferencesAppSynchronize( kDACALPreferencesID );
+ 
+ CFShow( prefSaved ? CFSTR("Synced") : CFSTR("Error") );
+ 
+ if( dataValues ) CFRelease( dataValues );
+ if( copyNode ) CFRelease( copyNode );
+ if( copyName ) CFRelease( copyName );
+ if( uuidName ) CFRelease( uuidName );	
+ return( (prefSaved == FALSE) );
+ }
+ 
+ */
 
 CFStringRef		CFStringCreateFromDacalString( dacalString* deviceBlock ) {
 	return( CFStringCreateWithCharacters( gDACALDefaultCFAllocator, (UniChar*)&deviceBlock->uniString, deviceBlock->stringSize));
@@ -487,14 +488,14 @@ CFStringRef		CFStringCreateFromDacalPipe( CFAllocatorRef inAllocator, CFStringRe
 	
 	doCFCommand = CFStringCreateWithFormat(	inAllocator, NULL, CFSTR("\"%@\" %@"), commandURL, inCommandArgs );
 	if( doCFCommand == NULL ) goto BAIL;
-
-//	NSLog( (NSString*)doCFCommand );
-
+	
+	//	NSLog( (NSString*)doCFCommand );
+	
 	doCommand = CFStringCreateCString( doCFCommand, kCFStringEncodingUTF8 );	
 	if( doCommand == NULL ) goto BAIL;
-
-//	printf("Carousel command: %s", doCommand);
-
+	
+	//	printf("Carousel command: %s", doCommand);
+	
 	utf8Name = (char*)calloc(1, pipeSize);
 	if( doCommand == NULL ) goto BAIL;
 	
@@ -513,13 +514,13 @@ CFStringRef		CFStringCreateFromDacalPipe( CFAllocatorRef inAllocator, CFStringRe
 			outCFText = (CFStringRef)NULL;
 		}
 	} 
-
+	
 BAIL:
 	if( outError ) *outError = outResult;
 	if( utf8Name ) free( utf8Name );
 	if( doCFCommand ) CFRelease( doCFCommand );
-//	if( commandURL ) CFRelease( commandURL );
-//	if( commandPathURL ) CFRelease( commandPathURL );
+	//	if( commandURL ) CFRelease( commandURL );
+	//	if( commandPathURL ) CFRelease( commandPathURL );
 	if( doCommand ) free( doCommand );
 	return( outCFText );
 }
@@ -574,7 +575,7 @@ IOReturn		dacalDoRequest(IOUSBDeviceInterface245** indeviceIntf, dacalCmd cmd, d
 		}
 		descriptorStr = CFStringCreateFromDacalString(&uniBuf);
 #ifdef __DCDEBUG			
-	NSLog( @"Device Status: %@\n", descriptorStr );		
+		NSLog( @"Device Status: %@\n", descriptorStr );		
 #endif
 		compareResult = CFStringCompareWithOptions(descriptorStr, dacalERROR, CFRangeMake(0,CFStringGetLength(dacalERROR)), kCFCompareCaseInsensitive);
 		if (compareResult == kCFCompareEqualTo) {
@@ -587,7 +588,7 @@ IOReturn		dacalDoRequest(IOUSBDeviceInterface245** indeviceIntf, dacalCmd cmd, d
 			if( gDACALVerbose ) printf("dacal: DoCmd reporting busy\n");
 			return (IOReturn)kDACALBusy;
 		}
-
+		
 		compareResult = CFStringCompareWithOptions(descriptorStr, dacalACK, CFRangeMake(0,CFStringGetLength(dacalACK)), kCFCompareCaseInsensitive);
 		if (compareResult == kCFCompareEqualTo)
 			break;
@@ -604,14 +605,14 @@ IOReturn		dacalDoRequest(IOUSBDeviceInterface245** indeviceIntf, dacalCmd cmd, d
 DACALCount			dacalDeviceRefToDeviceIndex( DACALDeviceRef deviceID )
 {
 	SInt8		checkIndex = 0;
-
+	
 	if( gDACALBoxes.boxCount == 0 ) return( kDACALIllegalDevice );							// No Boxes
 	if( deviceID == kDACALDefaultDevice ) return( gDACALDefaultDevice - 1 );				// Default Box
 	if( (1 <= deviceID) & (deviceID <= gDACALBoxes.boxCount) ) return ( deviceID - 1 );		// Actual Device
 	
-//	for( checkIndex = 0; checkIndex < gDACALBoxes.boxCount; checkIndex++ )					// Node ID
-//		if( DACAL_BOX_NODE(checkIndex) == deviceID ) return( checkIndex );
-
+	//	for( checkIndex = 0; checkIndex < gDACALBoxes.boxCount; checkIndex++ )					// Node ID
+	//		if( DACAL_BOX_NODE(checkIndex) == deviceID ) return( checkIndex );
+	
 	if( deviceID > kDACALIllegalDevice )										
 	{
 		CFUUIDRef	possibleID = (CFUUIDRef)deviceID;
@@ -621,7 +622,7 @@ DACALCount			dacalDeviceRefToDeviceIndex( DACALDeviceRef deviceID )
 			for( checkIndex=0; checkIndex < gDACALBoxes.boxCount; checkIndex++ )
 				if( DACAL_BOX_UUID(checkIndex) )
 					if( CFEqual( DACAL_BOX_UUID(checkIndex), possibleID ) ) return( checkIndex );
-				
+		
 		if( CFGetTypeID(possibleName) == CFStringGetTypeID() )								// Name?
 			for( checkIndex=0; checkIndex < gDACALBoxes.boxCount; checkIndex++ )
 				if( DACAL_BOX_NAME(checkIndex) )
@@ -714,10 +715,10 @@ CFUUIDRef		DACALCommandCopyUUID( DACALDeviceRef deviceID, DACALResult* outError 
 		CFStringRef showIt = NULL;
 		CFNumberRef	showNum = CFNumberCreate( NULL, kCFNumberSInt64Type, ourResult.uniString);
 		CFNumberGetValue( showNum, kCFNumberSInt64Type, &showlong );
-//		CFShow( showNum );
+		//		CFShow( showNum );
 		CFRelease( showNum ); 
 		
-//		printf("showlong: %lli, big endian: %lli, hex: %#llX\n", showlong, CFSwapInt64(showlong), showlong);
+		//		printf("showlong: %lli, big endian: %lli, hex: %#llX\n", showlong, CFSwapInt64(showlong), showlong);
 		showIt = CFStringCreateWithFormat( NULL, NULL, CFSTR("UUID(%i) %#llX"),(int)indexID, showlong );
 		//CFShow( showIt );	// this is the hex node id?
 	}
@@ -725,7 +726,7 @@ CFUUIDRef		DACALCommandCopyUUID( DACALDeviceRef deviceID, DACALResult* outError 
 	bytes = (CFUUIDBytes*)ourResult.uniString;	
 	deviceUUID = CFUUIDCreateFromUUIDBytes(gDACALDefaultCFAllocator, *bytes);
 	if( deviceUUID ) DACAL_BOX_UUID(indexID) = deviceUUID;
-
+	
 	//CFShow( deviceUUID );
 	
 	if( deviceUUID ) return( CFUUIDCreateFromUUIDBytes(gDACALDefaultCFAllocator, CFUUIDGetUUIDBytes(deviceUUID)) );	
@@ -762,7 +763,7 @@ CFStringRef		DACALCommandCopyModel( DACALDeviceRef deviceID, DACALResult* outErr
 	}
 	
 	DACAL_BOX_MODEL(indexID) = modelName;
-//	if( modelName ) CFRetain( modelName );
+	//	if( modelName ) CFRetain( modelName );
 	
 	return( modelName );
 }
@@ -770,7 +771,7 @@ CFStringRef		DACALCommandCopyModel( DACALDeviceRef deviceID, DACALResult* outErr
 DACALResult		DACALCommandReset( DACALDeviceRef deviceID )
 {
 	DACALResult theErr = DACALCommandRequestNoResult( deviceID, cmdReset );	
-
+	
 	DACAL_RESET_SLEEP
 	
 	return( theErr );
@@ -779,14 +780,14 @@ DACALResult		DACALCommandReset( DACALDeviceRef deviceID )
 DACALResult		DACALCommandCloseDoor( DACALDeviceRef deviceID )
 {
 	DACALResult theErr = DACALCommandRequestNoResult( deviceID, cmdCloseDoor );	
-
+	
 	if( theErr == 0 ) {
 		DACALCount		indexID = dacalDeviceRefToDeviceIndex( deviceID );
 		
 		DACAL_BOX_LASTSLOT(indexID)		= 0;
 		DACAL_BOX_LASTSLOTTIME(indexID)	= -1;
 	} 
-
+	
 	DACAL_SHORT_SLEEP
 	
 	return( theErr );
@@ -806,7 +807,7 @@ DACALResult		DACALCommandSetLED( DACALDeviceRef deviceID, Boolean isVisible )
 
 DACALResult		DACALCommandMoveToSlotWithOptions( DACALDeviceRef deviceID, DACALSlotNum newSlot, DACALOptionBits moveOptions )
 {
-	DACALResult		theErr;
+	DACALResult		theErr = kIOReturnNoDevice;
 	dacalString		slotBuffer;
 	UInt16			result;
 	Boolean			moveOnce		= moveOptions == kDACALOptionMoveOnce;
@@ -842,12 +843,12 @@ DACALResult		DACALCommandMoveToSlotWithOptions( DACALDeviceRef deviceID, DACALSl
 	}
 	
 	if( doClose && doOpen ) DACAL_SHORT_SLEEP
+		
+		if( doOpen )	{
+			theErr = DACALCommandRequestNoResult( deviceID, cmdMoveToSlot );	
+			theErr = dacalGetDescriptor(gDACALBoxes.box[indexID].boxRef, 0x0409, kUSBStringDesc, newSlot, &slotBuffer, sizeof(slotBuffer), &result);
+		}
 	
-	if( doOpen )	{
-	theErr = DACALCommandRequestNoResult( deviceID, cmdMoveToSlot );	
-	theErr = dacalGetDescriptor(gDACALBoxes.box[indexID].boxRef, 0x0409, kUSBStringDesc, newSlot, &slotBuffer, sizeof(slotBuffer), &result);
-	}
-
 ERRORBAIL:
 	if( (theErr == 0) && (moveToggle) ) 
 		if( theLastSlot == newSlot )
@@ -858,7 +859,7 @@ ERRORBAIL:
 				DACAL_BOX_LASTSLOTTIME(indexID) = -1;
 			return( theErr );
 		}
-		
+	
 	if( theErr == 0 ) {
 		DACAL_BOX_LASTSLOT(indexID)		= newSlot;
 		DACAL_BOX_LASTSLOTTIME(indexID)	= time(NULL);
@@ -871,35 +872,35 @@ ERRORBAIL:
 }
 
 DACALResult		DACALCommandMoveToSlot( DACALDeviceRef deviceID, DACALSlotNum newSlot )
-	{	return DACALCommandMoveToSlotWithOptions( deviceID, newSlot, kDACALOptionMoveDefault );	}
+{	return DACALCommandMoveToSlotWithOptions( deviceID, newSlot, kDACALOptionMoveDefault );	}
 /*
-{
-	DACALResult		theErr;
-	dacalString		slotBuffer;
-	UInt16			result;
-	DACALCount		indexID = dacalDeviceRefToDeviceIndex( deviceID );
-	
-	if( indexID == kDACALIllegalDevice ) return( kIOReturnNoDevice );
-	
-	theErr = DACALCommandCloseDoor( indexID );
-	if( theErr ) return theErr;
-	DACAL_SHORT_SLEEP
-	
-	theErr = DACALCommandRequestNoResult( indexID, cmdMoveToSlot );	
-	DACAL_SHORT_SLEEP
-	theErr = dacalGetDescriptor(gDACALBoxes.box[indexID].boxRef, 0x0409, kUSBStringDesc, newSlot, &slotBuffer, sizeof(slotBuffer), &result);
-//	DACAL_SHORT_SLEEP
-
-	if( theErr == 0 ) {
-		DACAL_BOX_LASTSLOT(indexID)		= newSlot;
-		DACAL_BOX_LASTSLOTTIME(indexID)	= time(NULL);
-	} else {
-		DACAL_BOX_LASTSLOT(indexID)		= 0;
-		DACAL_BOX_LASTSLOTTIME(indexID)	= -1;
-	}
-	return( theErr );
-}
-*/
+ {
+ DACALResult		theErr;
+ dacalString		slotBuffer;
+ UInt16			result;
+ DACALCount		indexID = dacalDeviceRefToDeviceIndex( deviceID );
+ 
+ if( indexID == kDACALIllegalDevice ) return( kIOReturnNoDevice );
+ 
+ theErr = DACALCommandCloseDoor( indexID );
+ if( theErr ) return theErr;
+ DACAL_SHORT_SLEEP
+ 
+ theErr = DACALCommandRequestNoResult( indexID, cmdMoveToSlot );	
+ DACAL_SHORT_SLEEP
+ theErr = dacalGetDescriptor(gDACALBoxes.box[indexID].boxRef, 0x0409, kUSBStringDesc, newSlot, &slotBuffer, sizeof(slotBuffer), &result);
+ //	DACAL_SHORT_SLEEP
+ 
+ if( theErr == 0 ) {
+ DACAL_BOX_LASTSLOT(indexID)		= newSlot;
+ DACAL_BOX_LASTSLOTTIME(indexID)	= time(NULL);
+ } else {
+ DACAL_BOX_LASTSLOT(indexID)		= 0;
+ DACAL_BOX_LASTSLOTTIME(indexID)	= -1;
+ }
+ return( theErr );
+ }
+ */
 
 DACALSlotNum	DACALCommandDVDGetSlot( DACALDeviceRef deviceID, DACALResult* outError )
 {
@@ -935,7 +936,7 @@ DACALResult		DACALCommandDVDMoveTo( DACALDeviceRef deviceID, DACALSlotNum newSlo
 	theErr = DACALCommandRequestNoResult( deviceID, cmdMoveToDVD );
 	if( theErr ) return( theErr );
 	DACAL_SHORT_SLEEP
-
+	
 	theErr = dacalGetDescriptor(gDACALBoxes.box[indexID].boxRef, 0x0409, kUSBStringDesc, newSlot, &slotBuffer, sizeof(slotBuffer), &result);
 	DACAL_SHORT_SLEEP
 	
@@ -963,7 +964,7 @@ CFStringRef		DACALCommandCopyName( DACALDeviceRef deviceID, DACALResult* outErro
 	if( outError ) *outError = 0;
 	nameCopy = DACAL_BOX_NAME(indexID);
 	if( nameCopy ) return( CFStringCreateCopy(gDACALDefaultCFAllocator, nameCopy) );
-
+	
 	return( nameCopy );
 }
 
@@ -976,10 +977,10 @@ DACALResult			DACALCommandSetName( DACALDeviceRef deviceID, CFStringRef deviceNa
 	
 	if( deviceName && DACAL_BOX_NAME(indexID) ) CFRelease( DACAL_BOX_NAME(indexID) );
 	if( deviceName ) DACAL_BOX_NAME(indexID) = CFStringCreateCopy( NULL, deviceName );
-//	else DACAL_BOX_NAME(indexID) = deviceName;
-
+	//	else DACAL_BOX_NAME(indexID) = deviceName;
+	
 	return CarouselWriteInfoFile( deviceID );
-//	return SaveUSBProductData( deviceID, deviceName, 0 );
+	//	return SaveUSBProductData( deviceID, deviceName, 0 );
 }
 
 DACALDeviceNode		DACALCommandCopyNode( DACALDeviceRef deviceID, DACALResult* outError )
@@ -997,17 +998,17 @@ DACALDeviceNode		DACALCommandCopyNode( DACALDeviceRef deviceID, DACALResult* out
 
 /*
  DACALResult			DACALCommandSetNode( DACALDeviceRef deviceID, DACALDeviceNode deviceNode )
-{
-	DACALCount		indexID = dacalDeviceRefToDeviceIndex( deviceID );
-	
-	if( indexID == kDACALIllegalDevice ) return( kIOReturnNoDevice );
-	
-//	DACAL_BOX_NODE(indexID) = deviceNode;
-
-	return CarouselWriteInfoFile( deviceID );
-//	return SaveUSBProductData( deviceID, DACAL_BOX_NAME(indexID), deviceNode );
-}
-*/
+ {
+ DACALCount		indexID = dacalDeviceRefToDeviceIndex( deviceID );
+ 
+ if( indexID == kDACALIllegalDevice ) return( kIOReturnNoDevice );
+ 
+ //	DACAL_BOX_NODE(indexID) = deviceNode;
+ 
+ return CarouselWriteInfoFile( deviceID );
+ //	return SaveUSBProductData( deviceID, DACAL_BOX_NAME(indexID), deviceNode );
+ }
+ */
 
 DACALSlotNum		DACALCommandGetSlotCount( DACALDeviceRef deviceID )
 {
@@ -1071,7 +1072,7 @@ CFMutableArrayRef		DACALCommandCopyAllSlotPaths( DACALDeviceRef deviceID, DACALR
 					testSlot = (CFURLRef)CFArrayGetValueAtIndex( folderList, index );
 					if( CFURLIsSlot( testSlot ) ) CFArrayAppendValue( slotList, (const void*)testSlot );
 				}
-			// CFShow( slotList );
+				// CFShow( slotList );
 			}
 		}
 		CFRelease( dataDict );
@@ -1104,20 +1105,20 @@ DACALResult		DACALSlotCreateIndex( DACALDeviceRef deviceID, DACALSlotNum slotNum
 		free( sourceFilePath );
 	}
 	
-//	doCFCommand = CFStringCreateWithFormat(	gDACALDefaultCFAllocator, NULL,
-//										   CFSTR("-x -c %i -s %i -t \"%@\" -l %i %@"), 
-//										   indexID + 1, slotNum, slotTitle, indexLevel, sourceType );
+	//	doCFCommand = CFStringCreateWithFormat(	gDACALDefaultCFAllocator, NULL,
+	//										   CFSTR("-x -c %i -s %i -t \"%@\" -l %i %@"), 
+	//										   indexID + 1, slotNum, slotTitle, indexLevel, sourceType );
 	doCFCommand = CFStringCreateWithFormat(	gDACALDefaultCFAllocator, NULL,
-											CFSTR("-x -c %@ -s %i -t \"%@\" -l %i %@"), 
-											boxUUID, slotNum, slotTitle, indexLevel, sourceType );
+										   CFSTR("-x -c %@ -s %i -t \"%@\" -l %i %@"), 
+										   boxUUID, slotNum, slotTitle, indexLevel, sourceType );
 	if( doCFCommand == NULL ) goto BAIL;
-
+	
 	CFShow(CFSTR("Driver call:"));
 	CFShow( doCFCommand );
 	
 	doCommand = CFStringCreateFromDacalPipe( gDACALDefaultCFAllocator, doCFCommand, &outResult );	
 	if( doCommand != NULL ) CFRelease( doCommand );
-
+	
 BAIL:
 	if( doCFCommand )	CFRelease( doCFCommand );
 	if( sourceType )	CFRelease( sourceType );
@@ -1138,15 +1139,15 @@ DACALResult		DACALSlotDeleteIndex( DACALDeviceRef deviceID, DACALSlotNum slotNum
 		goto BAIL;
 	}
 	
-//	doCFCommand = CFStringCreateWithFormat(	gDACALDefaultCFAllocator, NULL, CFSTR("-c %i -s %i -k"), indexID + 1, slotNum );
+	//	doCFCommand = CFStringCreateWithFormat(	gDACALDefaultCFAllocator, NULL, CFSTR("-c %i -s %i -k"), indexID + 1, slotNum );
 	doCFCommand = CFStringCreateWithFormat(	gDACALDefaultCFAllocator, NULL, CFSTR("-c %@ -s %i -k"), boxUUID, slotNum );
 	if( doCFCommand == NULL ) {
 		outResult = kIOReturnNoDevice;
 		goto BAIL;
 	}
-
+	
 	pipeResult = CFStringCreateFromDacalPipe( gDACALDefaultCFAllocator, doCFCommand, &outResult );	
-
+	
 BAIL:
 	if( pipeResult != NULL ) CFRelease( pipeResult );
 	if( boxUUID ) CFRelease( boxUUID );	
@@ -1165,16 +1166,16 @@ CFStringRef		DACALSlotCopyTitle( DACALDeviceRef deviceID, DACALSlotNum slotNum, 
 		if( outError ) *outError = kIOReturnNoDevice;
 		goto BAIL;
 	}
-
-//	doCFCommand = CFStringCreateWithFormat(	gDACALDefaultCFAllocator, NULL, CFSTR("-c %i -s %i -w"), indexID + 1, slotNum );
+	
+	//	doCFCommand = CFStringCreateWithFormat(	gDACALDefaultCFAllocator, NULL, CFSTR("-c %i -s %i -w"), indexID + 1, slotNum );
 	doCFCommand = CFStringCreateWithFormat(	gDACALDefaultCFAllocator, NULL, CFSTR("-c %@ -s %i -w"), boxUUID, slotNum );
 	if( doCFCommand == NULL ) {
 		if( outError ) *outError = kIOReturnBadArgument;
 		return( (CFStringRef)NULL );
 	}
-
+	
 	outputString = CFStringCreateFromDacalPipe( gDACALDefaultCFAllocator, doCFCommand, outError );
-
+	
 BAIL:
 	if( doCFCommand )	CFRelease( doCFCommand );
 	if( boxUUID )		CFRelease( boxUUID );	
@@ -1191,7 +1192,7 @@ DACALResult		DACALSlotSetTitle( DACALDeviceRef deviceID, DACALSlotNum slotNum, C
 	CFStringRef		boxUUID = CFUUIDCreateString( NULL, DACAL_BOX_UUID(indexID) );
 	
 	if( indexID == kDACALIllegalDevice ) return( kIOReturnNoDevice );
-		
+	
 	doCFCommand = CFStringCreateWithFormat(	gDACALDefaultCFAllocator, NULL,
 										   CFSTR("-c %@ -s %i -R \"%@\""), 
 										   boxUUID, slotNum, slotTitle );
@@ -1228,12 +1229,12 @@ CFURLRef		DACALSlotCopyPath( DACALDeviceRef deviceID, DACALSlotNum slotNum, DACA
 	
 	doCFCommand = CFStringCreateWithFormat(	gDACALDefaultCFAllocator, NULL, CFSTR("-c %@ -s %i -w"), boxUUID, slotNum );
 	if( doCFCommand == NULL ) goto BAIL;
-
+	
 	outPathString = CFStringCreateFromDacalPipe( gDACALDefaultCFAllocator, doCFCommand, &outResult );	
 	if( outPathString == NULL ) goto BAIL;
-
+	
 	outPathURL = CFURLCreateWithFileSystemPath( gDACALDefaultCFAllocator, outPathString, kCFURLPOSIXPathStyle, TRUE );
-
+	
 BAIL:
 	if( outError ) *outError = outResult;
 	if( outPathString )	CFRelease( outPathString );
@@ -1265,32 +1266,51 @@ BAIL:
 DACALResult		DACALSlotSetType( DACALDeviceRef deviceID, DACALSlotNum slotNum, CFStringRef slotType )
 {
 	DACALResult		outResult = kIOReturnBadArgument;
-	CFStringRef		doCFCommand;
-	CFStringRef		doCommand;
-	DACALCount		indexID = dacalDeviceRefToDeviceIndex( deviceID );
-	CFStringRef		boxUUID = CFUUIDCreateString( NULL, DACAL_BOX_UUID(indexID) );
+	CFURLRef		slotURL = DACALSlotCopyPath(deviceID, slotNum, &outResult );
 	
-	if( indexID == kDACALIllegalDevice ) return( kIOReturnNoDevice );
-	
-	doCFCommand = CFStringCreateWithFormat(	gDACALDefaultCFAllocator, NULL,
-										   CFSTR("-c %@ -s %i -K \"%@\""), 
-										   boxUUID, slotNum, slotType );
-	if( doCFCommand == NULL ) goto BAIL;
-	
-	if( gDACALVerbose )
-	{
-		CFShow(CFSTR("Driver call DACALSlotSetType:"));
-		CFShow( doCFCommand );
+	if( outResult != 0 ) goto BAIL;
+	if( slotURL == NULL ) {
+		outResult = kIOReturnBadArgument;
+		goto BAIL;
 	}
 	
-	doCommand = CFStringCreateFromDacalPipe( gDACALDefaultCFAllocator, doCFCommand, &outResult );	
-	if( doCommand != NULL ) CFRelease( doCommand );
+	outResult = CFURLSetXattr( slotURL, kDACALCarouselDocumentXAttrSlotKind, slotType );
 	
 BAIL:
-	if( doCFCommand )	CFRelease( doCFCommand );
-	if( boxUUID )		CFRelease( boxUUID );
+	if( slotURL )	CFRelease( slotURL );
 	return( outResult );
 }
+
+
+
+/*	DACALResult		outResult = kIOReturnBadArgument;
+ CFStringRef		doCFCommand;
+ CFStringRef		doCommand;
+ DACALCount		indexID = dacalDeviceRefToDeviceIndex( deviceID );
+ CFStringRef		boxUUID = CFUUIDCreateString( NULL, DACAL_BOX_UUID(indexID) );
+ 
+ if( indexID == kDACALIllegalDevice ) return( kIOReturnNoDevice );
+ 
+ doCFCommand = CFStringCreateWithFormat(	gDACALDefaultCFAllocator, NULL,
+ CFSTR("-c %@ -s %i -K \"%@\""), 
+ boxUUID, slotNum, slotType );
+ if( doCFCommand == NULL ) goto BAIL;
+ 
+ if( gDACALVerbose )
+ {
+ CFShow(CFSTR("Driver call DACALSlotSetType:"));
+ CFShow( doCFCommand );
+ }
+ 
+ doCommand = CFStringCreateFromDacalPipe( gDACALDefaultCFAllocator, doCFCommand, &outResult );	
+ if( doCommand != NULL ) CFRelease( doCommand );
+ 
+ BAIL:
+ if( doCFCommand )	CFRelease( doCFCommand );
+ if( boxUUID )		CFRelease( boxUUID );
+ return( outResult );
+ */
+
 
 DACALSlotNum	DACALSlotNextFreeNumber( DACALDeviceRef deviceID, DACALSlotNum lowestSlot, DACALSlotNum highestSlot, DACALResult* outError )
 {
@@ -1320,13 +1340,13 @@ DACALSlotNum	DACALSlotNextFreeNumber( DACALDeviceRef deviceID, DACALSlotNum lowe
 		goto BAIL;
 	}
 	
-//	doCFCommand = CFStringCreateWithFormat(	gDACALDefaultCFAllocator, NULL, CFSTR("-c %i -s %i -N"), indexID + 1, highestSlot );
+	//	doCFCommand = CFStringCreateWithFormat(	gDACALDefaultCFAllocator, NULL, CFSTR("-c %i -s %i -N"), indexID + 1, highestSlot );
 	doCFCommand = CFStringCreateWithFormat(	gDACALDefaultCFAllocator, NULL, CFSTR("-c %@ -m %i -s %i -N"), boxUUID, lowestSlot, highestSlot );
 	if( doCFCommand == NULL ) goto BAIL;
-
+	
 	outPathString = CFStringCreateFromDacalPipe( gDACALDefaultCFAllocator, doCFCommand, &outResult );	
 	if( outPathString == NULL ) goto BAIL;
-
+	
 	outPathURL = CFURLCreateWithFileSystemPath( gDACALDefaultCFAllocator, outPathString, kCFURLPOSIXPathStyle, TRUE );
 	if( outPathURL != NULL ) {
 		outSlotConstName = CFURLCopyLastPathComponent( outPathURL );
@@ -1338,7 +1358,7 @@ DACALSlotNum	DACALSlotNextFreeNumber( DACALDeviceRef deviceID, DACALSlotNum lowe
 		CFRelease( outSlotName );
 		CFRelease( outSlotConstName );
 	}
-
+	
 BAIL:
 	if( outError ) *outError = outResult;
 	if( outPathString )	CFRelease( outPathString );
@@ -1396,7 +1416,7 @@ DACALSlotNum		DACALDevicesGetSlotCount( CFStringRef aDeviceType )
 	DACALSlotNum	dc101SlotCount = 150;
 	DACALSlotNum	dc300SlotCount = 150;
 	DACALSlotNum	dc016SlotCount = 100;
-
+	
 	if( aDeviceType == NULL ) return( badSlotCount );
 	if( CFGetTypeID(aDeviceType) != CFStringGetTypeID() )	return( badSlotCount );
 	
@@ -1427,7 +1447,7 @@ CFArrayRef	DACALDevicesCopyAllNames( void )
 		boxNames[boxIndex] = CFStringCreateCopy(gDACALDefaultCFAllocator, DACAL_BOX_NAME(boxIndex));
 	
 	boxArray = CFArrayCreate( gDACALDefaultCFAllocator, (const void**)boxNames, boxCount, &kCFTypeArrayCallBacks );
-
+	
 	free( boxNames );
 	return( boxArray );
 }
@@ -1455,7 +1475,7 @@ DACALResult		DACALDeviceClose( DACALDeviceRef deviceID )
 	(void) (*theInterface)->Release(theInterface);
 	
 	IOObjectRelease( theDevice );
-		
+	
 	if( DACAL_BOX_NAME(indexID) )	CFRelease( DACAL_BOX_NAME(indexID) );
 	if( DACAL_BOX_MODEL(indexID) ) CFRelease( DACAL_BOX_MODEL(indexID) );
 	if( DACAL_BOX_UUID(indexID) )	CFRelease( DACAL_BOX_UUID(indexID) );
@@ -1492,11 +1512,11 @@ DACALDeviceRef	DACALDeviceCreateWithService( io_service_t ioDeviceObj, DACALResu
 	SInt32						score;
 	CFUUIDRef					newID;
 	CFStringRef					newModel;
-//	CFStringRef					newName;
-//	CFStringRef					userName;
+	//	CFStringRef					newName;
+	//	CFStringRef					userName;
 	DACALDeviceNode				newNode;
-//	DACALDeviceRef				originalDefault = DACALDevicesGetDefaultDevice();
-//	DACALDeviceRef				currentDefault;
+	//	DACALDeviceRef				originalDefault = DACALDevicesGetDefaultDevice();
+	//	DACALDeviceRef				currentDefault;
 	
 	err = IOCreatePlugInInterfaceForService(ioDeviceObj, kIOUSBDeviceUserClientTypeID, kIOCFPlugInInterfaceID, &ioPlugin, &score);
 	if( outErr != NULL ) *outErr = err;
@@ -1514,9 +1534,9 @@ DACALDeviceRef	DACALDeviceCreateWithService( io_service_t ioDeviceObj, DACALResu
 		if( gDACALVerbose ) printf("dacal: unable to create a device interface. ret = %08x, dev = %p\n", err, ioPlugin);
 		return( thisRef );
 	}
-		
+	
 	if( gDACALVerbose ) printf("dacal: Found device %p\n", (void*)ioDeviceObj);
-		
+	
 	err = (*deviceIntf)->USBDeviceOpen(deviceIntf);
 	if( outErr != NULL ) *outErr = err;
 	if (err) {
@@ -1535,46 +1555,46 @@ DACALDeviceRef	DACALDeviceCreateWithService( io_service_t ioDeviceObj, DACALResu
 	DACAL_BOX_MODEL(thisRef)		= NULL;
 	DACAL_BOX_LASTSLOT(thisRef)		= 0;
 	DACAL_BOX_LASTSLOTTIME(thisRef)	= -1;
-//	DACAL_BOX_NODE(thisRef)			= index+1;
+	//	DACAL_BOX_NODE(thisRef)			= index+1;
 	
 	newID							= DACALCommandCopyUUID( newNode, NULL );
 	newModel						= DACALCommandCopyModel( newNode, NULL );
-
+	
 	CarouselEstablishInfoFile( newID );
 	
 	
 	// Use the default device ID to bootstrap the new node
 	// Can't use the API because it checks for a valid id!
-//	gDACALDefaultDevice = thisRef + 1;
+	//	gDACALDefaultDevice = thisRef + 1;
 	
-//	DACAL_BOX_NODE(thisRef)			= thisRef + 1;
-//	newID = DACALCommandCopyUUID( thisRef+1, NULL );
-//	newModel = DACALCommandCopyModel( thisRef+1, NULL );
-//	DACAL_BOX_NAME(thisRef)			= CopyUSBProductData( thisRef, &newNode );
-
-//	newID							= DACALCommandCopyUUID( kDACALDefaultDevice, NULL );
-//	newModel						= DACALCommandCopyModel( kDACALDefaultDevice, NULL );
-//	DACAL_BOX_NAME(thisRef)			= CopyUSBProductData( (DACALDeviceRef)newID, &newNode );
-
+	//	DACAL_BOX_NODE(thisRef)			= thisRef + 1;
+	//	newID = DACALCommandCopyUUID( thisRef+1, NULL );
+	//	newModel = DACALCommandCopyModel( thisRef+1, NULL );
+	//	DACAL_BOX_NAME(thisRef)			= CopyUSBProductData( thisRef, &newNode );
+	
+	//	newID							= DACALCommandCopyUUID( kDACALDefaultDevice, NULL );
+	//	newModel						= DACALCommandCopyModel( kDACALDefaultDevice, NULL );
+	//	DACAL_BOX_NAME(thisRef)			= CopyUSBProductData( (DACALDeviceRef)newID, &newNode );
+	
 	// If the node doesn't exist assign a new one.
-//	if( newNode == 0 ) newNode = thisRef + 1;
+	//	if( newNode == 0 ) newNode = thisRef + 1;
 	
-//	NSLog(@"Opened node: %i", newNode);
+	//	NSLog(@"Opened node: %i", newNode);
 	
-/*	if( DACAL_BOX_NAME(thisRef)	== NULL )
-	{
-		userName = CSCopyUserName(TRUE);
-		newName = CFStringCreateWithFormat( NULL, NULL, CFSTR("%@'s Carousel %i"), userName, newNode );
-		//SaveUSBProductData( (DACALDeviceRef)newID, newName, newNode );
-		SaveUSBProductData( kDACALDefaultDevice, newName, newNode );
-		DACAL_BOX_NAME(thisRef) = newName;
-		CFRelease( userName );
-	}
-		
-	if( newID ) CFRelease( newID );
-	if( newModel) CFRelease( newModel );
-*/	
-//	DACALDevicesSetDefaultDevice( originalDefault );
+	/*	if( DACAL_BOX_NAME(thisRef)	== NULL )
+	 {
+	 userName = CSCopyUserName(TRUE);
+	 newName = CFStringCreateWithFormat( NULL, NULL, CFSTR("%@'s Carousel %i"), userName, newNode );
+	 //SaveUSBProductData( (DACALDeviceRef)newID, newName, newNode );
+	 SaveUSBProductData( kDACALDefaultDevice, newName, newNode );
+	 DACAL_BOX_NAME(thisRef) = newName;
+	 CFRelease( userName );
+	 }
+	 
+	 if( newID ) CFRelease( newID );
+	 if( newModel) CFRelease( newModel );
+	 */	
+	//	DACALDevicesSetDefaultDevice( originalDefault );
 	
 	return( thisRef );
 }
@@ -1602,8 +1622,6 @@ DACALResult		DACALDevicesInitialize( void )
     io_iterator_t			devIter = 0;
     io_service_t			ioDeviceObj;
 	
-	//FSCatalogInfo			permCatInfo;
-	//FSPermissionInfo		permInfo;
 	FSRef					topFolder;
 	OSErr					ffErr;
 	
@@ -1611,74 +1629,87 @@ DACALResult		DACALDevicesInitialize( void )
 	
 	DACALDevicesSetCFAllocator( kCFAllocatorDefault );	// initialize with default allocator
 	
+	{
+		
+		ffErr = FSFindFolder( kUserDomain, kDomainLibraryFolderType, FALSE, &topFolder );
+		if( ffErr ) fprintf( stderr,"No Local Library?");
+		
+		CFURLRef	sysURL = CFURLCreateFromFSRef( kCFAllocatorDefault, &topFolder );
+		CFURLRef	padURL = CFURLCreateCopyAppendingPathComponent( kCFAllocatorDefault, sysURL, DACAL_CAROUSEL_FOLDERNAME_CFSTRING, TRUE );
+		FSRef		padFS;
+		FSCatalogInfo			permCatInfo;
+		FSPermissionInfo		*permInfo = (FSPermissionInfo*)&(permCatInfo.permissions);
+		
+		Boolean		foundPAD = CFURLGetFSRef( padURL, &padFS );
+		CFIndex		theUniCount = CFStringGetLength( DACAL_CAROUSEL_FOLDERNAME_CFSTRING );
+		UniChar		theUniName[1024];
+		
+		if( foundPAD == FALSE ) {
+			permInfo->mode = 0755;			// drwxr-xr-x
+			CFStringGetCharacters( DACAL_CAROUSEL_FOLDERNAME_CFSTRING, CFRangeMake(0, theUniCount), theUniName );
+			
+			ffErr = FSCreateDirectoryUnicode( &topFolder, theUniCount, (const UniChar*)theUniName, kFSCatInfoPermissions, &permCatInfo, &padFS, NULL, NULL );
+			if( ffErr ) fprintf( stderr, "FSCreateDirectoryUnicode: %i\n", ffErr );
+		}
+		
+		if( padURL != NULL ) CFRelease( padURL );
+		if( sysURL != NULL ) CFRelease( sysURL );
+	}
+	
+	
+	
+	
 	// setup a system folder descriptor to make finding the Carousel folder easy
 	AddFolderDescriptor( kDACALCarouselsFolderType, kFolderInLocalOrRemoteUserFolder, 
-							kRelativeFolder, kDomainLibraryFolderType, 0, 0, 
-							DACAL_CAROUSEL_FOLDERNAME_PSTRING, TRUE );
-
+						kRelativeFolder, kDomainLibraryFolderType, 0, 0, 
+						DACAL_CAROUSEL_FOLDERNAME_PSTRING, TRUE );
+	
 	
 	ffErr = FSFindFolder( kOnAppropriateDisk, kDACALCarouselsFolderType, TRUE, &topFolder );
-/*
-	if( ffErr == afpAccessDenied ) {
-		
-		CFURLRef thePAD = CFURLCreateFromFSRef( kCFAllocatorDefault, &topFolder );
-		CFURLRef	theCMD = CFURLCreateWithString(kCFAllocatorDefault, CFSTR("/bin/chmod"), NULL );
-		CFStringRef		thePADMOD = CFStringCreateWithFormat( kCFAllocatorDefault, NULL, CFSTR("+r \"%@\""), thePAD );
-		
-		CFShow( CFStringCreateFromCommandPipe(kCFAllocatorDefault, theCMD, thePADMOD, NULL) );
-		
-		//permInfo.mode = 755;
-		//perCatInfo.permissions = permInfo;
-		
-		permCatInfo.permissions[3] = 755;
-		ffErr = FSSetCatalogInfo( &topFolder, kFSCatInfoPermissions, &permCatInfo );
-		fprintf( stderr, "FSSetCatalogInfo: %i\n", ffErr );
-	}	
-*/	
 	
-														// Find USB Interface
+	// Find USB Interface
     err = IOMasterPort(MACH_PORT_NULL, &masterPort);				
     if (err) {
         if( gDACALVerbose ) printf("dacal: could not create master port, err = %08x\n", err);
         return err;
     }
-																	// Looking for USBD device
+	// Looking for USBD device
     matchingDictionary = IOServiceMatching(kIOUSBDeviceClassName);	// requires <IOKit/usb/IOUSBLib.h>
-																	// Specifiy vendor, product and revision
+	// Specifiy vendor, product and revision
     if (!matchingDictionary) {
         if( gDACALVerbose ) printf("dacal: could not create matching dictionary\n");
         return kIOReturnNoDevice;
     }
 	
 	// Setup vendorID
-		numberRef = CFNumberCreate(gDACALDefaultCFAllocator, kCFNumberSInt32Type, &kDACALVendorID);
-		if (!numberRef) {
-			if( gDACALVerbose ) printf("dacal: could not create CFNumberRef for vendor\n");
-			return kIOReturnNoMemory;
-		}
-		CFDictionaryAddValue(matchingDictionary, CFSTR(kUSBVendorID), numberRef);
-		CFRelease(numberRef);
-		numberRef = 0;
+	numberRef = CFNumberCreate(gDACALDefaultCFAllocator, kCFNumberSInt32Type, &kDACALVendorID);
+	if (!numberRef) {
+		if( gDACALVerbose ) printf("dacal: could not create CFNumberRef for vendor\n");
+		return kIOReturnNoMemory;
+	}
+	CFDictionaryAddValue(matchingDictionary, CFSTR(kUSBVendorID), numberRef);
+	CFRelease(numberRef);
+	numberRef = 0;
 	
 	// Setup productID
-		numberRef = CFNumberCreate(gDACALDefaultCFAllocator, kCFNumberSInt32Type, &kDACALProductID);
-		if (!numberRef) {
-			if( gDACALVerbose ) printf("dacal: could not create CFNumberRef for product\n");
-			return kIOReturnNoMemory;
-		}
-		CFDictionaryAddValue(matchingDictionary, CFSTR(kUSBProductID), numberRef);
-		CFRelease(numberRef);
-		numberRef = 0;
+	numberRef = CFNumberCreate(gDACALDefaultCFAllocator, kCFNumberSInt32Type, &kDACALProductID);
+	if (!numberRef) {
+		if( gDACALVerbose ) printf("dacal: could not create CFNumberRef for product\n");
+		return kIOReturnNoMemory;
+	}
+	CFDictionaryAddValue(matchingDictionary, CFSTR(kUSBProductID), numberRef);
+	CFRelease(numberRef);
+	numberRef = 0;
 	
 	// Setup bRelease
-		numberRef = CFNumberCreate(gDACALDefaultCFAllocator, kCFNumberSInt32Type, &kDACALReleaseID);
-		if (!numberRef) {
-			if( gDACALVerbose ) printf("dacal: could not create CFNumberRef for product\n");
-			return kIOReturnNoMemory;
-		}
-		CFDictionaryAddValue(matchingDictionary, CFSTR(kUSBDeviceReleaseNumber), numberRef);
-		CFRelease(numberRef);
-		numberRef = 0;
+	numberRef = CFNumberCreate(gDACALDefaultCFAllocator, kCFNumberSInt32Type, &kDACALReleaseID);
+	if (!numberRef) {
+		if( gDACALVerbose ) printf("dacal: could not create CFNumberRef for product\n");
+		return kIOReturnNoMemory;
+	}
+	CFDictionaryAddValue(matchingDictionary, CFSTR(kUSBDeviceReleaseNumber), numberRef);
+	CFRelease(numberRef);
+	numberRef = 0;
     
     err = IOServiceGetMatchingServices(masterPort, matchingDictionary, &devIter);
     matchingDictionary = 0;			// this was consumed by the above call

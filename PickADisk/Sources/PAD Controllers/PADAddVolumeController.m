@@ -171,8 +171,7 @@
 	if( newPath != nil )
 		doPath = [NSString stringWithFormat:@"-d%@", [newPath path]];
 	
-//	if( !([[NSUserDefaults standardUserDefaults] boolForKey:@"PADEjectOnIndex"] == YES ) && !([self pendingURL] != nil) )
-		[doArgs addObject:@"-x"];
+	[doArgs addObject:@"-x"];
 	[doArgs addObject:[NSString stringWithFormat:@"-c%@", deviceUUIDString]];
 	[doArgs addObject:[NSString stringWithFormat:@"-s%i", nextSlot]];
 	[doArgs addObject:[NSString stringWithFormat:@"-t%@", newTitle]];

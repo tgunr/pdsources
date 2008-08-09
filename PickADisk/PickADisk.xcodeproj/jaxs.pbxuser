@@ -97,7 +97,7 @@
 		};
 	};
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
-		activeBuildConfigurationName = Development;
+		activeBuildConfigurationName = Deployment;
 		activeExecutable = 5CDEBFB00E15BBA800732C82 /* PickADisk */;
 		activeTarget = 735CC299049A7E2A00C919A3 /* PickADisk */;
 		addToTargets = (
@@ -223,21 +223,11 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 239729969;
-			PBXWorkspaceStateSaveDate = 239729969;
+			PBXPerProjectTemplateStateSaveDate = 239947072;
+			PBXWorkspaceStateSaveDate = 239947072;
 		};
 		perUserProjectItems = {
-			5C1ECDC60E419C980091B446 = 5C1ECDC60E419C980091B446 /* PlistBookmark */;
-			5C39337F0E49FD8E0032804C /* PBXTextBookmark */ = 5C39337F0E49FD8E0032804C /* PBXTextBookmark */;
-			5C3933870E49FF450032804C /* PBXTextBookmark */ = 5C3933870E49FF450032804C /* PBXTextBookmark */;
-			5C3933A50E4A00370032804C /* PBXTextBookmark */ = 5C3933A50E4A00370032804C /* PBXTextBookmark */;
-			5C3933A80E4A01460032804C /* PBXTextBookmark */ = 5C3933A80E4A01460032804C /* PBXTextBookmark */;
-			5C3933AB0E4A03110032804C /* PBXTextBookmark */ = 5C3933AB0E4A03110032804C /* PBXTextBookmark */;
-			5C3933AC0E4A033D0032804C /* PBXTextBookmark */ = 5C3933AC0E4A033D0032804C /* PBXTextBookmark */;
-			5C3933AF0E4A04140032804C /* PBXTextBookmark */ = 5C3933AF0E4A04140032804C /* PBXTextBookmark */;
-			5C3933B10E4A04910032804C /* PBXTextBookmark */ = 5C3933B10E4A04910032804C /* PBXTextBookmark */;
-			5CFA5A250E49F82100E62CAF = 5CFA5A250E49F82100E62CAF /* PBXTextBookmark */;
-			5CFA5A5A0E49FD0D00E62CAF = 5CFA5A5A0E49FD0D00E62CAF /* PBXTextBookmark */;
+			5C1ECDC60E419C980091B446 /* PlistBookmark */ = 5C1ECDC60E419C980091B446 /* PlistBookmark */;
 		};
 		sourceControlManager = 5CDEBFC00E15BBB700732C82 /* Source Control */;
 		userBuildSettings = {
@@ -296,7 +286,7 @@
 		ignoreCount = 0;
 		lineNumber = 593;
 		location = PickADisk;
-		modificationTime = 239731516.031268;
+		modificationTime = 239946511.93729;
 		state = 1;
 	};
 	5C2742160E282FFD00A32C40 /* TreeController.m:587 */ = {
@@ -313,7 +303,7 @@
 		ignoreCount = 0;
 		lineNumber = 587;
 		location = PickADisk;
-		modificationTime = 239731516.031326;
+		modificationTime = 239946511.9373;
 		state = 1;
 	};
 	5C2742180E282FFD00A32C40 /* TreeController.m:588 */ = {
@@ -330,7 +320,7 @@
 		ignoreCount = 0;
 		lineNumber = 588;
 		location = PickADisk;
-		modificationTime = 239731516.031355;
+		modificationTime = 239946511.937307;
 		state = 1;
 	};
 	5C27421A0E282FFE00A32C40 /* TreeController.m:589 */ = {
@@ -347,7 +337,7 @@
 		ignoreCount = 0;
 		lineNumber = 589;
 		location = PickADisk;
-		modificationTime = 239731516.031393;
+		modificationTime = 239946511.937313;
 		state = 1;
 	};
 	5C2D25F30E304B1C005F9FB5 /* PADIndexProgressController.m */ = {
@@ -396,7 +386,7 @@
 		ignoreCount = 0;
 		lineNumber = 144;
 		location = PickADisk;
-		modificationTime = 239731516.031458;
+		modificationTime = 239946511.937326;
 		state = 1;
 	};
 	5C3100BA0E471CB000EE3DA2 /* PADIndexProgressController.m:34 */ = {
@@ -413,88 +403,8 @@
 		ignoreCount = 0;
 		lineNumber = 34;
 		location = PickADisk;
-		modificationTime = 239731516.031495;
+		modificationTime = 239946511.937333;
 		state = 1;
-	};
-	5C39337F0E49FD8E0032804C /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 5CAFCCA60E2EB77300A7BEA4 /* dacallib.m */;
-		name = "dacallib.m: 864";
-		rLen = 0;
-		rLoc = 29425;
-		rType = 0;
-		vrLen = 1400;
-		vrLoc = 27735;
-	};
-	5C3933870E49FF450032804C /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 5CAFCCA60E2EB77300A7BEA4 /* dacallib.m */;
-		name = "dacallib.m: 819";
-		rLen = 0;
-		rLoc = 28169;
-		rType = 0;
-		vrLen = 1316;
-		vrLoc = 27669;
-	};
-	5C3933A50E4A00370032804C /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 5CAFCCA60E2EB77300A7BEA4 /* dacallib.m */;
-		name = "dacallib.m: 819";
-		rLen = 0;
-		rLoc = 28169;
-		rType = 0;
-		vrLen = 1316;
-		vrLoc = 27669;
-	};
-	5C3933A80E4A01460032804C /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 5CAFCCA60E2EB77300A7BEA4 /* dacallib.m */;
-		name = "dacallib.m: 819";
-		rLen = 0;
-		rLoc = 28169;
-		rType = 0;
-		vrLen = 1318;
-		vrLoc = 27669;
-	};
-	5C3933AB0E4A03110032804C /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 5CAFCCA60E2EB77300A7BEA4 /* dacallib.m */;
-		name = "dacallib.m: 819";
-		rLen = 0;
-		rLoc = 28169;
-		rType = 0;
-		vrLen = 1290;
-		vrLoc = 27669;
-	};
-	5C3933AC0E4A033D0032804C /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 5CAFCCA60E2EB77300A7BEA4 /* dacallib.m */;
-		name = "dacallib.m: 819";
-		rLen = 0;
-		rLoc = 28169;
-		rType = 0;
-		vrLen = 1290;
-		vrLoc = 27669;
-	};
-	5C3933AF0E4A04140032804C /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 5CAFCCA60E2EB77300A7BEA4 /* dacallib.m */;
-		name = "dacallib.m: 819";
-		rLen = 0;
-		rLoc = 28169;
-		rType = 0;
-		vrLen = 1291;
-		vrLoc = 27669;
-	};
-	5C3933B10E4A04910032804C /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 5CAFCCA60E2EB77300A7BEA4 /* dacallib.m */;
-		name = "dacallib.m: 819";
-		rLen = 0;
-		rLoc = 28169;
-		rType = 0;
-		vrLen = 1300;
-		vrLoc = 27669;
 	};
 	5C48B4250E444E27005795F7 /* PADLayoutView.h */ = {
 		uiCtxt = {
@@ -651,7 +561,7 @@
 		ignoreCount = 0;
 		lineNumber = 518;
 		location = PickADisk;
-		modificationTime = 239731516.031423;
+		modificationTime = 239946511.9373201;
 		state = 1;
 	};
 	5C829C750E46AC730069483D /* PADLifecycleSetup.h */ = {
@@ -720,9 +630,9 @@
 	};
 	5CAFCCA60E2EB77300A7BEA4 /* dacallib.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1299, 24458}}";
-			sepNavSelRange = "{41684, 89}";
-			sepNavVisRange = "{41349, 899}";
+			sepNavIntBoundsRect = "{{0, 0}, {1097, 23660}}";
+			sepNavSelRange = "{50841, 77}";
+			sepNavVisRange = "{50447, 1194}";
 			sepNavWindowFrame = "{{144, 68}, {1022, 796}}";
 		};
 	};
@@ -811,23 +721,6 @@
 	5CDEBFC10E15BBB700732C82 /* Code sense */ = {
 		isa = PBXCodeSenseManager;
 		indexTemplatePath = "";
-	};
-	5CFA5A250E49F82100E62CAF /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 5CAFCCA60E2EB77300A7BEA4 /* dacallib.m */;
-		rLen = 1;
-		rLoc = 806;
-		rType = 1;
-	};
-	5CFA5A5A0E49FD0D00E62CAF /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 5CAFCCA60E2EB77300A7BEA4 /* dacallib.m */;
-		name = "dacallib.m: 864";
-		rLen = 0;
-		rLoc = 29425;
-		rType = 0;
-		vrLen = 1283;
-		vrLoc = 28198;
 	};
 	735CC297049A7E1F00C919A3 /* Prefix.h */ = {
 		uiCtxt = {
