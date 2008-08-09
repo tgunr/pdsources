@@ -1,0 +1,1 @@
+Your software has been successfully installed. Please make sure you have your carousels plugged before starting the application. If no carousels are detected you may have to power them down and back up or restart for them to appear.
