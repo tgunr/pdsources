@@ -12,16 +12,29 @@
 	<string>6.0</string>
 	<key>CFBundlePackageType</key>
 	<string>KEXT</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0.1</string>
 	<key>CFBundleSignature</key>
 	<string>PADr</string>
 	<key>CFBundleVersion</key>
-	<string>100</string>
-	<key>CFBundleShortVersionString</key>
-	<string>1.0.0</string>
-	<key>NSHumanReadableCopyright</key>
-	<string>© 2008, polyMicro Systems</string>
+	<string>101</string>
 	<key>IOKitPersonalities</key>
 	<dict>
+		<key>DeviceDriver</key>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>com.apple.kernel.iokit</string>
+			<key>IOClass</key>
+			<string>IOService</string>
+			<key>IOProviderClass</key>
+			<string>IOUSBDevice</string>
+			<key>bcdDevice</key>
+			<integer>256</integer>
+			<key>idProduct</key>
+			<integer>23195</integer>
+			<key>idVendor</key>
+			<integer>1204</integer>
+		</dict>
 		<key>InterfaceDriver</key>
 		<dict>
 			<key>CFBundleIdentifier</key>
@@ -39,22 +52,9 @@
 			<key>idVendor</key>
 			<integer>1204</integer>
 		</dict>
-		<key>DeviceDriver</key>
-		<dict>
-			<key>CFBundleIdentifier</key>
-			<string>com.apple.kernel.iokit</string>
-			<key>IOClass</key>
-			<string>IOService</string>
-			<key>IOProviderClass</key>
-			<string>IOUSBDevice</string>
-			<key>bcdDevice</key>
-			<integer>256</integer>
-			<key>idProduct</key>
-			<integer>23195</integer>
-			<key>idVendor</key>
-			<integer>1204</integer>
-		</dict>
 	</dict>
+	<key>NSHumanReadableCopyright</key>
+	<string>© 2008, polyMicro Systems</string>
 	<key>OSBundleLibraries</key>
 	<dict>
 		<key>com.apple.iokit.IOUSBFamily</key>
