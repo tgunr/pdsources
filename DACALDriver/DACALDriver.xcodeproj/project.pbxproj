@@ -17,6 +17,8 @@
 		7543D51F0E3BBDFE009A8AF3 /* VendorSpecificDriver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VendorSpecificDriver.cpp; sourceTree = "<group>"; };
 		7543D5230E3BBE60009A8AF3 /* DACALSpecificDriver */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = DACALSpecificDriver; sourceTree = "<group>"; };
 		7543D5960E3BD6A3009A8AF3 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		75C815000E4DFCE6003D8293 /* postinstall.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = postinstall.sh; sourceTree = "<group>"; };
+		75C815240E4E32E4003D8293 /* preinstall.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = preinstall.sh; sourceTree = "<group>"; };
 		8DA8362C06AD9B9200E5AC22 /* Kernel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kernel.framework; path = /System/Library/Frameworks/Kernel.framework; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
@@ -64,6 +66,8 @@
 				7543D5230E3BBE60009A8AF3 /* DACALSpecificDriver */,
 				7543D51E0E3BBDFE009A8AF3 /* VendorSpecificDriver.h */,
 				7543D51F0E3BBDFE009A8AF3 /* VendorSpecificDriver.cpp */,
+				75C815000E4DFCE6003D8293 /* postinstall.sh */,
+				75C815240E4E32E4003D8293 /* preinstall.sh */,
 			);
 			name = Source;
 			sourceTree = "<group>";
