@@ -870,6 +870,7 @@ ELIAAAAAAAgACAAIAAgAAQABAAEAAQ</bytes>
 													</object>
 													<string key="NSFrameSize">{207, 458}</string>
 													<reference key="NSSuperview" ref="413350330"/>
+													<reference key="NSNextKeyView" ref="800879139"/>
 													<reference key="NSDocView" ref="800879139"/>
 													<reference key="NSBGColor" ref="1067545439"/>
 													<int key="NScvFlags">4</int>
@@ -897,6 +898,7 @@ ELIAAAAAAAgACAAIAAgAAQABAAEAAQ</bytes>
 											</object>
 											<string key="NSFrame">{{-1, 0}, {207, 458}}</string>
 											<reference key="NSSuperview" ref="343571003"/>
+											<reference key="NSNextKeyView" ref="168235971"/>
 											<int key="NSsFlags">528</int>
 											<reference key="NSVScroller" ref="706881340"/>
 											<reference key="NSHScroller" ref="245779865"/>
