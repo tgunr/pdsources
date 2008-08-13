@@ -197,7 +197,7 @@
 	if( [theText length] != 0 ) {
 		if( savedSelection == nil) {
 			if( [[indexController outlineView] numberOfSelectedRows] > 0 ) savedSelection = [[[indexController outlineView] selectedRowIndexes] retain]; 
-			[[indexController outlineView] deselectAll:self]; 
+			[[indexController dataSource] toolbarSearchStart:self];
 		}
 		[dataController setTreeRoot:nil];
 		
@@ -234,13 +234,31 @@
 	} else {
 		if( savedSelection != nil ) {
 			[[indexController outlineView] selectRowIndexes:savedSelection byExtendingSelection:NO]; 
-			[indexController outlineViewAction:self]; 
 			[savedSelection release];
 			savedSelection = nil;
 		}
+		[indexController outlineViewAction:self]; 
 	}
 }
 
+- (IBAction)homeSearchAction:(id)sender
+{
+	[searchField setStringValue:[sender stringValue]];
+	[self searchAction:sender];
+}
+
+- (IBAction)provideFeedback:(id)sender
+{
+	return [[AppController shared] provideFeedback:sender];
+}
+
+- (void)reportNoDevice:(BOOL)hasBox
+{
+	hasBoxes = hasBox;
+	
+	[noBoxIcon setHidden:hasBox];
+	[[dataController dataSource] setPrompt:(hasBox==YES) ? @"Ready" : @"No carousels detected"];	
+}
 
 - (void)setSelectedDevices: (NSArray*)deviceList
 {

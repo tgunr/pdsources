@@ -22,8 +22,8 @@ void DACALSetup( void )
 {
 	DACALRegisterIconResource( CFSTR("DC300Black"), kDACALCarouselsFolderType );
 	DACALRegisterIconResource( CFSTR("CDAudio"), 'cdda' );
-	DACALRegisterIconResource( CFSTR("DVD"), 'dvd ' );
-	DACALRegisterIconResource( CFSTR("CD"), 'Dcd ' );
+	DACALRegisterIconResource( CFSTR("DVD-Video"), 'dvd ' );
+	DACALRegisterIconResource( CFSTR("CD-silver"), 'Dcd ' );
 	//DACALRegisterIconResource( CFSTR("ClockSearch"), 'ClkS' );
 	//DACALRegisterIconResource( CFSTR("SmartFolder"), 'SmFl' );
 
@@ -183,6 +183,13 @@ static AppController *shared;
 	return( (NSArray*)outArray );
 }
 
+- (IBAction)provideFeedback:(id)sender
+{
+	CFURLRef	feedbackURL = CFURLCreateWithString( kCFAllocatorDefault, CFSTR("http://pickadisk.com/feedback/"), NULL );
+	CFURLRef	launchURL;
+	
+	LSOpenCFURLRef( feedbackURL, &launchURL );
+}
 
 
 + (void)playUISound:(NSInteger)theSound {
@@ -200,6 +207,8 @@ static AppController *shared;
 }
 
 - (void)setDataView:(TreeController*)tc { dataView = tc; }
+
+- (PADIndexToolbarController*)toolbarController { return toolbarController; }
 
 - (void)setToolbarController:(PADIndexToolbarController*)tb { toolbarController = tb; }
 

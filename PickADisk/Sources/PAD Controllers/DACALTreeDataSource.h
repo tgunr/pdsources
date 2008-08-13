@@ -15,6 +15,8 @@
 @interface DACALTreeDataSource : TreeControllerDataSource {
 
 	IBOutlet	NSTextField		*promptText;
+	IBOutlet	NSImageView		*noBoxIcon;
+	IBOutlet	NSTabView		*tabView;
 	IBOutlet	id				secondaryController;
 	
 }
@@ -23,6 +25,10 @@
 
 - (SimpleTreeNode*)findTreeNodeForDevice:(DACALDeviceRef)theBoxRef;
 - (void)slotAddedToDevice:(DACALDeviceRef)theBoxRef forSlot:(DACALSlotNum)newSlot;
+- (void)toolbarSearchStart:(id)sender;
+- (void)reportNoDevice:(BOOL)hasBox;
+- (void)setPrompt:(NSString*)newPrompt;
+- (void)updatePrompt;
 
 @end
 

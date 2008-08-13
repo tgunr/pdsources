@@ -95,11 +95,7 @@
 */
 - (IBAction)provideFeedback:(id)sender
 {
-	CFURLRef	feedbackURL = CFURLCreateWithString( kCFAllocatorDefault, CFSTR("mailto:feedback@pickadisk.com?subject=PickADisk%20Feedback"), NULL );
-	CFURLRef	launchURL;
-	
-	LSOpenCFURLRef( feedbackURL, &launchURL );
-	//CFRelease( feedbackURL );
+	return [[AppController shared] provideFeedback:sender];
 }
 
 

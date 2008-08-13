@@ -21,9 +21,11 @@ int		jPADBusyBodyBeat;			// Used internally as the counter for row spinning arro
 
 + (id)shared;
 + (void)playUISound:(NSInteger)theSound;
+- (IBAction)provideFeedback:(id)sender;
 - (void)queueOperation:(NSOperation*)op;
 
 - (void)setDataView:(TreeController*)tc;
+- (PADIndexToolbarController*)toolbarController;
 - (void)setToolbarController:(PADIndexToolbarController*)tb;
 - (IBAction)printReport:(id)sender;
 

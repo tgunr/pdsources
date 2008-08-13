@@ -22,7 +22,10 @@
 	IBOutlet	NSButton	*assignButton;
 	IBOutlet	NSButton	*unassignButton;
 	
+	IBOutlet	NSImageView	*noBoxIcon;
+	
 	IBOutlet	NSSearchField	*searchField;
+	IBOutlet	NSSearchField	*homeSearchField;
 	
 	IBOutlet	id			indexController;
 	IBOutlet	id			dataController;
@@ -33,6 +36,7 @@
 	NSArray					*selectedNodes;
 	
 	NSIndexSet				*savedSelection;
+	BOOL					hasBoxes;
 
 }
 
@@ -43,6 +47,10 @@
 - (IBAction)clickAssign:(id)sender;
 - (IBAction)clickUnassign:(id)sender;
 - (IBAction)searchAction:(id)sender;
+- (IBAction)homeSearchAction:(id)sender;
+- (IBAction)provideFeedback:(id)sender;
+
+- (void)reportNoDevice:(BOOL)hasBox;
 
 - (void)setSelectedDevices: (NSArray*)deviceList;
 - (void)setSelectedDevice: (DACALDeviceRef)theDevice;

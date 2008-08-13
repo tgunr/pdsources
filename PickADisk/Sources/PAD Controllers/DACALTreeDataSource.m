@@ -152,6 +152,8 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 	}
 */
 
+	[self reportNoDevice:(count!=0) ? YES : NO]; 
+
 	PADBOX_VALID_END
 	
 	return theOutputTree;
@@ -164,6 +166,45 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 	[[[self treeControl] outlineView] expandItem:nil expandChildren:YES];
 }
 
+- (void)toolbarSearchStart:(id)sender
+{
+	[[[self treeControl] outlineView] deselectAll:self]; 
+	[tabView selectTabViewItemWithIdentifier:@"Data"];
+}
+
+- (void)reportNoDevice:(BOOL)hasBox
+{
+	[noBoxIcon setHidden:hasBox];
+	[self updatePrompt];	
+}
+
+- (void)setPrompt:(NSString*)newPrompt
+{
+	if( newPrompt == nil ) newPrompt = @"";
+	[promptText setStringValue: newPrompt];
+}
+
+- (void)updatePrompt
+{
+	NSString*	promptData;
+	
+	if( [[[tabView selectedTabViewItem] identifier] compare:@"Home"] == NSOrderedSame )
+	   promptData = (DACALDevicesGetCount()!=0) ? @"Ready" : @"No carousels detected";
+	else {
+		NSArray *selectedNodes = [secondaryController selectedNodes];
+		
+		int			index = 0;
+		int			count = [selectedNodes count];
+
+		index = [[secondaryController outlineView] numberOfRows];
+		
+		if( count ) promptData = [NSString stringWithFormat:@"%i of %i selected", (int)count, (int)index];
+		else		promptData = [NSString stringWithFormat:@"%i item%@", (int)index, ((index==1) ? @"" : @"s")];
+	}
+	   
+	   [self setPrompt:promptData];
+}
+	   	   
 
 - (void)outlineViewAction:(id)tree
 {
@@ -175,6 +216,9 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 //	NSURL*	theURL;
 	DACALDeviceRef theDevice;
 	PADIndexToolbarController* toolControl = (PADIndexToolbarController*)[self toolbarControl];
+	
+	if( [selectedNodes count] == 0 ) [tabView selectTabViewItemWithIdentifier:@"Home"];
+	else  [tabView selectTabViewItemWithIdentifier:@"Data"];
 	
 	[secondaryController setTreeRoot:nil];
 	//[secondaryController removeAllChildren];
@@ -323,20 +367,7 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 }
 
 - (void)updatePrompt
-{
-	NSArray *selectedNodes = [treeControl selectedNodes];
-
-	int			index = 0;
-	int			count = [selectedNodes count];
-	NSString*	promptData;
-	
-	index = [[treeControl outlineView] numberOfRows];
-		
-	if( count ) promptData = [NSString stringWithFormat:@"%i of %i selected", (int)count, (int)index];
-	else		promptData = [NSString stringWithFormat:@"%i item%@", (int)index, ((index==1) ? @"" : @"s")];
-
-	[promptText setStringValue: promptData];
-}
+	{ [[DACALTreeDataSource shared] updatePrompt]; }
 
 - (void)outlineViewAction:(id)tree
 {
