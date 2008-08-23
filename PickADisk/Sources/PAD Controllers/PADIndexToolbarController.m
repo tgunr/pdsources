@@ -170,7 +170,7 @@
 
 		if( dataController ) [(TreeController*)dataController deleteSelections:self];
 		//[self setSelectedSlots:nil];
-		[self setSelectedNodes:nil];
+		[self setSelectedNode:nil];
 		
 		[AppController playUISound:kASSystemSoundShred];
     }
