@@ -6,7 +6,7 @@
 #
 
 DEBUGCMD=
-CAROUSELPATH=${CAROUSELPATH:-"$HOME/Library/Carousels"}
+CAROUSELPATH=${CAROUSELPATH:-"$HOME/Library/PickADisk"}
 XATTRCMD=/Users/davec/bin/xattr
 # delete all known attributes
 OLDXATTR="com.polymicrosystems.pickadisk'.device
@@ -26,6 +26,8 @@ xattrbase="com.polymicrosystems.pickadisk"
 xattrcarousel="$xattrbase.device"
 xattrslot="$xattrcarousel.slot"
 xattrkind="$xattrslot.kind"
+xattradded="$xattrslot.added"
+xattrcheckout="$xattrslot.checkout"
 
 function del-xattr {
 	xattrs=`$XATTRCMD -l "$1" | awk 'BEGIN{FS=":"}; {print $2}'`
@@ -44,19 +46,28 @@ function del-xattr {
 	done
 }
 
+function del-all-xattr {
+	xattrs=`$XATTRCMD -l "$1" | awk 'BEGIN{FS=":"}; {print $2}'`
+	for xattr in $xattrs ; do
+		$DEBUGCMD $XATTRCMD -d "${xattr}" "$1" >/dev/null
+	done
+}
+
 if [[ ! -e "$CAROUSELPATH" ]] ; then
 	echo "$CAROUSELPATH does not exist"
 	exit 1
 fi
 
+dateadded=`date "+%Y-%m-%d% %H:%M:%S -0700"`
 pushd "$CAROUSELPATH"
+
 # for carousel in "Carousel 1" ; do 
 for carousel in *.carousel; do 
     pushd "$carousel" >/dev/null
     export currentCarousel="${carousel#Carousel }"
     for slot in Slot*[0-9] ; do
 		# for slot in "Slot 54" ; do
-	pushd "$slot" >/dev/null
+	pushd "$slot" > /dev/null
 	export currentSlot="${slot#Slot }"
 	echo "Checking slot $slot"
 	# run thru the slots
@@ -65,20 +76,22 @@ for carousel in *.carousel; do
 	    find "$file" -print0 | while read -d $'\0' filename ; do
 		# echo "`pwd`/$filename: C=$currentCarousel S=$currentSlot"
 		# delete specified attributes 
-		del-xattr "$filename" "$currentSlot"
+		del-all-xattr "$filename" "$currentSlot"
 		# add in new ones
 		$DEBUGCMD $XATTRCMD -w "$xattrcarousel" $currentCarousel "$filename"
 		$DEBUGCMD $XATTRCMD -w "$xattrslot" $currentSlot "$filename"
+		# $XATTRCMD -l "$filename"
 	    done # with files in slot
 	done # with slot
 	popd > /dev/null 
-	# echo "Setting slot $slot"
+	echo "Setting slot $slot"
 	# delete specified attributes 
-	del-xattr "$slot"	"$currentSlot"		
+	del-all-xattr "$slot"	"$currentSlot"		
 	# add in new ones
 	$DEBUGCMD $XATTRCMD -w "$xattrcarousel"  $currentCarousel "$slot"
 	$DEBUGCMD $XATTRCMD -w "$xattrslot" $currentSlot "$slot"
 	$DEBUGCMD $XATTRCMD -w "$xattrkind" data "$slot"
+	$DEBUGCMD $XATTRCMD -w "$xattradded" "$dateadded" "$slot"
 	# $XATTRCMD -l "$slot"
     done
     popd > /dev/null # back to carousels
