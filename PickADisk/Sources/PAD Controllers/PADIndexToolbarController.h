@@ -21,6 +21,7 @@
 	IBOutlet	NSButton	*closeDoorButton;
 	IBOutlet	NSButton	*assignButton;
 	IBOutlet	NSButton	*unassignButton;
+	IBOutlet	NSToolbarItem *printButton;
 	
 	IBOutlet	NSImageView	*noBoxIcon;
 	
@@ -46,14 +47,18 @@
 - (IBAction)clickCloseDoor:(id)sender;
 - (IBAction)clickAssign:(id)sender;
 - (IBAction)clickUnassign:(id)sender;
+- (IBAction)clickIdentify:(id)sender;
+- (IBAction)clickPrintReport:(id)sender;
 - (IBAction)searchAction:(id)sender;
 - (IBAction)homeSearchAction:(id)sender;
 - (IBAction)provideFeedback:(id)sender;
 
 - (void)reportNoDevice:(BOOL)hasBox;
+- (BOOL)validateMenuItem:(NSMenuItem *)item;
 
 - (void)setSelectedDevices: (NSArray*)deviceList;
 - (void)setSelectedDevice: (DACALDeviceRef)theDevice;
+- (void)addSelectedDevice:(DACALDeviceRef)theDevice;
 - (NSArray*)selectedDevices;
 
 - (void)setSelectedSlots: (NSArray*)slotList;
@@ -62,6 +67,8 @@
 
 - (void)setSelectedNodes: (NSArray*)nodeList;
 - (void)setSelectedNode: (SimpleTreeNode*)theNode;
+- (void)addSelectedNode:(SimpleTreeNode*)theNode;
 - (NSArray*)selectedNodes;
+- (void)resetSelection;
 
 @end

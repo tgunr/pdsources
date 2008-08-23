@@ -40,51 +40,35 @@ Boolean	CFURLIsSlot( CFURLRef url )
 	CFStringRef		slotNumber = NULL;
 	Boolean			isSlot = FALSE;
 	
-	slotNumber = CFURLCopyXattr( url, kDACALCarouselDocumentXAttrSlotKind, (OSStatus*)NULL );
+	slotNumber = CFURLCopyXattr( kCFAllocatorDefault, url, kDACALCarouselDocumentXAttrSlotAddDate, (OSStatus*)NULL );
 	if( slotNumber != NULL ) 
 	{	
 		isSlot = TRUE;
 		CFRelease( slotNumber );
-	} else {
-		CFURLRef	actualSlot = CFURLCreateCopyDeletingLastPathComponent( NULL, url );
-		slotNumber = CFURLCopyXattr( actualSlot, kDACALCarouselDocumentXAttrSlotKind, (OSStatus*)NULL );
-		if( slotNumber != NULL ) 
-		{	
-			//isSlot = TRUE;
-			CFRelease( slotNumber );
-		}
-		CFRelease( actualSlot );
-	}
+	} 
 	
 	return( isSlot );
-	
-	/*
-	 CFStringRef		itemName = CFURLCopyLastPathComponent( url );
-	 CFRange			foundRange = CFStringFind( itemName, CFSTR("Slot "), 0 );
-	 
-	 CFRelease( itemName );
-	 
-	 if( foundRange.length == 0 )
-	 {
-	 CFURLRef	actualSlot = CFURLCreateCopyDeletingLastPathComponent( NULL, url );
-	 itemName = CFURLCopyLastPathComponent( actualSlot );
-	 foundRange = CFStringFind( itemName, CFSTR("Slot "), 0 );
-	 
-	 CFRelease( itemName );
-	 CFRelease( actualSlot );
-	 }
-	 
-	 return( foundRange.length != 0 );
-	 */
 }
 
-DACALDeviceRef	CFURLCopyCarouselUUID( CFURLRef url )
+Boolean			CFURLIsTopInSlot( CFAllocatorRef inAllocator, CFURLRef url )
+{
+	Boolean			isSlot = FALSE;
+	CFURLRef		actualSlot = CFURLCreateCopyDeletingLastPathComponent( inAllocator, url );
+
+	if( actualSlot ) {
+		isSlot = CFURLIsSlot( actualSlot );		// unfortunately this 
+		CFRelease( actualSlot );
+	}
+	return( isSlot );
+}	
+
+DACALDeviceRef	CFURLCopyCarouselUUID( CFAllocatorRef inAllocator, CFURLRef url )
 {
 	CFStringRef		slotIDString = NULL;
 	CFUUIDRef		slotUUID = NULL;
 	
-	slotIDString = CFURLCopyXattr( url, kDACALCarouselDocumentXAttrCarousel, (OSStatus*)NULL );
-	if( slotIDString != NULL ) slotUUID = CFUUIDCreateFromString(NULL, slotIDString );
+	slotIDString = CFURLCopyXattr( inAllocator, url, kDACALCarouselDocumentXAttrCarousel, (OSStatus*)NULL );
+	if( slotIDString != NULL ) slotUUID = CFUUIDCreateFromString(inAllocator, slotIDString );
 	if( slotIDString != NULL ) CFRelease( slotIDString );
 	
 	return( (DACALDeviceRef)slotUUID );
@@ -98,7 +82,7 @@ DACALSlotNum	CFURLGetSlotNumber( CFURLRef url, Boolean onlySlotFolders )
 	
 	if( onlySlotFolders && !CFURLIsSlot(url) ) return outSlot;
 	
-	slotNumber = CFURLCopyXattr( url, kDACALCarouselDocumentXAttrSlot, (OSStatus*)NULL );
+	slotNumber = CFURLCopyXattr( kCFAllocatorDefault, url, kDACALCarouselDocumentXAttrSlot, (OSStatus*)NULL );
 	if( slotNumber != NULL ) outSlot = CFStringGetIntValue( slotNumber );
 	if( slotNumber != NULL ) CFRelease( slotNumber );
 	
@@ -143,6 +127,10 @@ IconRef	CFURLGetIcon( CFAllocatorRef allocator, CFURLRef url, OSStatus* outError
 	HFSUniStr255	theFileName;
 	SInt16			theFileLabel;
 	
+	CFURLRef		theSlotTopPath = CFURLCreateCopyDeletingLastPathComponent( allocator, url );
+	//CFStringRef		slotIconFlavor = NULL;
+	OSType			slotIconType = kGenericCDROMIcon;
+
 	IconRef			theOutputIcon = NULL;
 	
 	if( CFURLIsCarousel(url) ) {
@@ -157,6 +145,20 @@ IconRef	CFURLGetIcon( CFAllocatorRef allocator, CFURLRef url, OSStatus* outError
 		if( outResult != 0 ) printf( "GetIconRef: %d\n", (int)outResult );
 		//else printf("Assigned disc icon!\n");
 		AcquireIconRef(theOutputIcon);
+		goto BAIL;
+	}
+	
+	if( (theSlotTopPath != NULL ) && CFURLIsSlot( theSlotTopPath ) ) {
+		//slotIconFlavor = CFURLCopyItemFlavor( theSlotTopPath, &outResult );
+		//if( [(NSString*)PADINDEX_FLAVORVALUE_MUSIC compare:(NSString*)slotIconFlavor] == NSOrderedSame )
+		//	slotIconType = 'cdda';				// CDAudioVolume
+		//else if( [(NSString*)PADINDEX_FLAVORVALUE_MOVIE compare:(NSString*)slotIconFlavor] == NSOrderedSame )
+		//	slotIconType = 'dvd ';				// public.dvd-media
+		//else
+		//	slotIconType = kGenericCDROMIcon;   // public.cd-media
+		slotIconType = kGenericCDROMIcon;   
+		theOutputIcon = DACALGetIconRefForType(slotIconType);
+		//AcquireIconRef(theOutputIcon);
 		goto BAIL;
 	}
 	
@@ -235,11 +237,24 @@ Boolean	CFURLIsVisible( CFURLRef url )
 	
 	outResult = LSCopyItemInfoForRef( &theFileRef, kLSRequestBasicFlagsOnly, &theFileInfo );
 	if( outResult == noErr ) isURLVisible = ((theFileInfo.flags & kLSItemInfoIsInvisible) == 0);
-	
+		
 BAIL:
 	return( isURLVisible );
 }
 
+IconRef		DACALGetIconRefForType( int	theType )
+{
+	OSStatus		outResult = paramErr;
+	IconRef			theOutputIcon = NULL;
+	
+	if( theType == 0 ) goto BAIL;
+	
+	outResult = GetIconRef( kOnSystemDisk, kDACALCreatorType, theType, &theOutputIcon );
+	if( outResult != 0 ) outResult = GetIconRef( kOnSystemDisk, kSystemIconsCreator, theType, &theOutputIcon );
+	
+BAIL:
+	return( theOutputIcon );
+}
 
 NSImage*	DACALGetIconImageForType( int	theType )
 {
@@ -264,4 +279,60 @@ NSImage*	DACALGetIconImageForType( int	theType )
 BAIL:
 	return( theOutputImage );
 }
+
+CFDateRef	CFURLCopyDateSlotAdded( CFAllocatorRef inAllocator, CFURLRef url, SInt32* outError )
+{
+	SInt32			theErr = kCFURLUnknownError;
+	CFDateRef		theDate = NULL;
+	
+	DACALDeviceRef	theBox = CFURLCopyCarouselUUID( inAllocator, url );
+	DACALSlotNum	theSlot = CFURLGetSlotNumber( url, FALSE );
+	
+	CFURLRef		theSlotURL = DACALSlotCopyPath( theBox, theSlot, (DACALResult*)&theErr );
+	CFStringRef		theSlotDate = NULL;
+	
+	if( theSlotURL ) {			
+		theSlotDate = CFURLCopyXattr( inAllocator, theSlotURL, kDACALCarouselDocumentXAttrSlotAddDate, &theErr );
+		if(theErr != 0) theDate = (CFDateRef)[NSDate dateWithString:(NSString*)theSlotDate];
+		if(!theDate) theDate = CFURLCopyDateCreated( inAllocator, theSlotURL, &theErr );			// backup for existing slots
+	}
+		
+	if( outError ) *outError = theErr;
+	return( theDate );
+}
+
+CFStringRef	CFURLCopyItemFlavor( CFURLRef url, OSStatus* outError )
+{	
+//	SInt32			theErr = kCFURLUnknownError;
+	CFStringRef		newFlav = CFURLCopyXattr( kCFAllocatorDefault, url, kDACALCarouselDocumentXAttrSlotKind, outError ); 
+	DACALDeviceRef	theBox = CFURLCopyCarouselUUID( NULL, url );
+	DACALSlotNum	theSlot = CFURLGetSlotNumber( url, FALSE );
+	
+	CFURLRef		theSlotURL = DACALSlotCopyPath( theBox, theSlot, (DACALResult*)outError );
+	
+	if( !newFlav ) newFlav =  CFURLCopyXattr( kCFAllocatorDefault, theSlotURL, kDACALCarouselDocumentXAttrSlotKind, outError ); 
+	
+	return( newFlav );
+}
+
+OSStatus		CFURLSetItemFlavor( CFURLRef url, CFStringRef newFlavor )
+{	return CFURLSetXattr( url, kDACALCarouselDocumentXAttrSlotKind, newFlavor ); }
+
+NSImage*		DACALCreateImageRefForFlavor( NSString* flavorName )
+{
+	OSType			genericIconType = 'gFil';
+
+	if( [(NSString*)PADINDEX_FLAVORVALUE_MUSIC compare:(NSString*)flavorName] == NSOrderedSame )
+		genericIconType = 'gMus';				// CDAudioVolume
+	else if( [(NSString*)PADINDEX_FLAVORVALUE_MOVIE compare:(NSString*)flavorName] == NSOrderedSame )
+		genericIconType = 'gMov';				// public.dvd-media
+
+	return( DACALGetIconImageForType(genericIconType) );
+}
+
+
+
+
+
+
 

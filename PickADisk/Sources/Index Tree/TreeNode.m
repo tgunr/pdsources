@@ -199,6 +199,33 @@
     [nodeChildren makeObjectsPerformSelector:@selector(recursiveSortChildren)];
 }
 
+- (void)sortChildrenUsingDescriptors:(NSArray*)newDescriptors
+	{ [nodeChildren sortUsingDescriptors:newDescriptors]; }
+
+- (void)sortExpandedChildrenUsingDescriptors:(NSArray*)newDescriptors
+{
+	[nodeChildren sortUsingDescriptors:newDescriptors];
+	if( [[self nodeData] isExpanded] ) {
+		[nodeChildren makeObjectsPerformSelector:@selector(sortExpandedChildrenUsingDescriptors:) withObject:newDescriptors];
+	}
+}
+
+- (void)sortExpandedChildrenForView:(NSOutlineView*)theView
+	{ [self sortExpandedChildrenUsingDescriptors:[theView sortDescriptors]]; }
+
+- (void)recursiveReExpandInView:(NSOutlineView*)theView
+{
+    [nodeChildren makeObjectsPerformSelector:@selector(recursiveReExpandInView:) withObject:theView];
+	if( [[self nodeData] isExpanded] ) [theView expandItem:self];
+}
+
+
+- (void)recursiveSortChildrenUsingDescriptors:(NSArray*)newDescriptors
+{
+    [nodeChildren sortUsingDescriptors:newDescriptors];
+    [nodeChildren makeObjectsPerformSelector:@selector(recursiveSortChildrenUsingDescriptors:) withObject:newDescriptors];
+}
+
 - (NSString *)description {
     // Return something that will be useful for debugging.
     return [NSString stringWithFormat:@"%@ - nodeData: %@", [super description], nodeData];

@@ -18,6 +18,9 @@
 		5C2EBE930E29719B009BAF4C /* update.icns in Resources */ = {isa = PBXBuildFile; fileRef = 5C2EBE920E29719B009BAF4C /* update.icns */; };
 		5C2EBE960E2979B3009BAF4C /* sidebarpref.icns in Resources */ = {isa = PBXBuildFile; fileRef = 5C2EBE950E2979B3009BAF4C /* sidebarpref.icns */; };
 		5C2EBE9C0E2991BF009BAF4C /* PADPrefsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C2EBE9A0E2991BF009BAF4C /* PADPrefsController.m */; };
+		5C440D750E5C27DF0020A588 /* Generic_Music.icns in Resources */ = {isa = PBXBuildFile; fileRef = 5C440D720E5C27DF0020A588 /* Generic_Music.icns */; };
+		5C440D760E5C27DF0020A588 /* Generic_Files.icns in Resources */ = {isa = PBXBuildFile; fileRef = 5C440D730E5C27DF0020A588 /* Generic_Files.icns */; };
+		5C440D770E5C27DF0020A588 /* Generic_Movie.icns in Resources */ = {isa = PBXBuildFile; fileRef = 5C440D740E5C27DF0020A588 /* Generic_Movie.icns */; };
 		5C48B4280E444E27005795F7 /* PADLayoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C48B4260E444E27005795F7 /* PADLayoutView.m */; };
 		5C48B6950E453D98005795F7 /* PADLifecycleController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C48B6930E453D98005795F7 /* PADLifecycleController.m */; };
 		5C4E17FD0E216A2D0091DD7D /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C4E17FC0E216A2D0091DD7D /* IOKit.framework */; };
@@ -51,11 +54,13 @@
 		5C7C51140E3DEC4D00FCEBD8 /* xattr in Resources */ = {isa = PBXBuildFile; fileRef = 5C6657010E3822D400414ECB /* xattr */; };
 		5C8B8BB60E3FCCFA007A1505 /* PADCarouselOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8B8BB40E3FCCF9007A1505 /* PADCarouselOperation.m */; };
 		5C90847E0E2D748800162C13 /* PADIndexOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C90847C0E2D748800162C13 /* PADIndexOperation.m */; };
+		5C9C3E730E5796720004DA00 /* PADOperationOpenDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C9C3E710E5796720004DA00 /* PADOperationOpenDevice.m */; };
 		5CA07A710E2E274900F71FA7 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CA07A700E2E274900F71FA7 /* Carbon.framework */; };
 		5CAFCCAC0E2EB77300A7BEA4 /* dacallib.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CAFCCA60E2EB77300A7BEA4 /* dacallib.m */; };
 		5CAFCCEF0E2EC1E900A7BEA4 /* pmsCFUtility.c in Sources */ = {isa = PBXBuildFile; fileRef = 5CAFCCED0E2EC1E900A7BEA4 /* pmsCFUtility.c */; };
 		5CAFCD1D0E2ED18200A7BEA4 /* pmsDACALUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CAFCD1B0E2ED18200A7BEA4 /* pmsDACALUtility.m */; };
 		5CD985180E4E60A700441ED7 /* PADHomeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CD985160E4E60A700441ED7 /* PADHomeView.m */; };
+		5CE577300E590C230086A57F /* PADOperationControlDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE5772E0E590C230086A57F /* PADOperationControlDevice.m */; };
 		735CC2A3049A7E2A00C919A3 /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 29B97318FDCFA39411CA2CEA /* MainMenu.nib */; };
 		735CC2A4049A7E2A00C919A3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		735CC2A5049A7E2A00C919A3 /* InitInfo.dict in Resources */ = {isa = PBXBuildFile; fileRef = 0405E529FF13D2D511CA0E35 /* InitInfo.dict */; };
@@ -123,6 +128,9 @@
 		5C2EBE950E2979B3009BAF4C /* sidebarpref.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = sidebarpref.icns; sourceTree = "<group>"; };
 		5C2EBE990E2991BF009BAF4C /* PADPrefsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PADPrefsController.h; sourceTree = "<group>"; };
 		5C2EBE9A0E2991BF009BAF4C /* PADPrefsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PADPrefsController.m; sourceTree = "<group>"; };
+		5C440D720E5C27DF0020A588 /* Generic_Music.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Generic_Music.icns; sourceTree = "<group>"; };
+		5C440D730E5C27DF0020A588 /* Generic_Files.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Generic_Files.icns; sourceTree = "<group>"; };
+		5C440D740E5C27DF0020A588 /* Generic_Movie.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Generic_Movie.icns; sourceTree = "<group>"; };
 		5C48B4250E444E27005795F7 /* PADLayoutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PADLayoutView.h; sourceTree = "<group>"; };
 		5C48B4260E444E27005795F7 /* PADLayoutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PADLayoutView.m; sourceTree = "<group>"; };
 		5C48B6920E453D98005795F7 /* PADLifecycleController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PADLifecycleController.h; sourceTree = "<group>"; };
@@ -173,6 +181,8 @@
 		5C90847C0E2D748800162C13 /* PADIndexOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PADIndexOperation.m; sourceTree = "<group>"; };
 		5C9293A80E1EBF7100835A1F /* BTHIconResources.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTHIconResources.h; sourceTree = "<group>"; };
 		5C9293A90E1EBF7100835A1F /* BTHIconResources.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTHIconResources.m; sourceTree = "<group>"; };
+		5C9C3E700E5796720004DA00 /* PADOperationOpenDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PADOperationOpenDevice.h; sourceTree = "<group>"; };
+		5C9C3E710E5796720004DA00 /* PADOperationOpenDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PADOperationOpenDevice.m; sourceTree = "<group>"; };
 		5CA07A700E2E274900F71FA7 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
 		5CAFCCA50E2EB77300A7BEA4 /* dacallib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dacallib.h; path = ../pmssource/carlib/dacallib.h; sourceTree = SOURCE_ROOT; };
 		5CAFCCA60E2EB77300A7BEA4 /* dacallib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = dacallib.m; path = ../pmssource/carlib/dacallib.m; sourceTree = SOURCE_ROOT; };
@@ -183,6 +193,8 @@
 		5CAFCD1B0E2ED18200A7BEA4 /* pmsDACALUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = pmsDACALUtility.m; sourceTree = "<group>"; };
 		5CD985150E4E60A700441ED7 /* PADHomeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PADHomeView.h; sourceTree = "<group>"; };
 		5CD985160E4E60A700441ED7 /* PADHomeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PADHomeView.m; sourceTree = "<group>"; };
+		5CE5772D0E590C230086A57F /* PADOperationControlDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PADOperationControlDevice.h; sourceTree = "<group>"; };
+		5CE5772E0E590C230086A57F /* PADOperationControlDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PADOperationControlDevice.m; sourceTree = "<group>"; };
 		735CC297049A7E1F00C919A3 /* Prefix.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Prefix.h; path = Sources/Prefix.h; sourceTree = SOURCE_ROOT; };
 		735CC2C0049A7E2A00C919A3 /* Info-PickADisk.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-PickADisk.plist"; sourceTree = SOURCE_ROOT; };
 		735CC2C1049A7E2A00C919A3 /* PickADisk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PickADisk.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -330,6 +342,9 @@
 		5C6C12D20E240AAC0097CC7A /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				5C440D720E5C27DF0020A588 /* Generic_Music.icns */,
+				5C440D730E5C27DF0020A588 /* Generic_Files.icns */,
+				5C440D740E5C27DF0020A588 /* Generic_Movie.icns */,
 				5C6CC4F00E4FAC2F000EE6B3 /* CD-silver.icns */,
 				5C6CC4F10E4FAC2F000EE6B3 /* DVD-Video.icns */,
 				5C1ECD070E4154790091B446 /* PAD4.icns */,
@@ -357,6 +372,10 @@
 				5C1ECC0E0E4120050091B446 /* PADSearchRequest.m */,
 				5C8B8BB30E3FCCF9007A1505 /* PADCarouselOperation.h */,
 				5C8B8BB40E3FCCF9007A1505 /* PADCarouselOperation.m */,
+				5C9C3E700E5796720004DA00 /* PADOperationOpenDevice.h */,
+				5C9C3E710E5796720004DA00 /* PADOperationOpenDevice.m */,
+				5CE5772D0E590C230086A57F /* PADOperationControlDevice.h */,
+				5CE5772E0E590C230086A57F /* PADOperationControlDevice.m */,
 				5C6C12E80E240BEA0097CC7A /* AppController.h */,
 				5C6C12E90E240BEA0097CC7A /* AppController.m */,
 				5C6C12EA0E240BEA0097CC7A /* DACALTreeDataSource.h */,
@@ -518,6 +537,9 @@
 				5C6CC5060E4FB4E9000EE6B3 /* noBox.png in Resources */,
 				5C6CC53C0E4FC9AC000EE6B3 /* betablue.png in Resources */,
 				5C6CC54A0E4FD604000EE6B3 /* BlackPlus.png in Resources */,
+				5C440D750E5C27DF0020A588 /* Generic_Music.icns in Resources */,
+				5C440D760E5C27DF0020A588 /* Generic_Files.icns in Resources */,
+				5C440D770E5C27DF0020A588 /* Generic_Movie.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -561,6 +583,8 @@
 				5C48B4280E444E27005795F7 /* PADLayoutView.m in Sources */,
 				5C48B6950E453D98005795F7 /* PADLifecycleController.m in Sources */,
 				5CD985180E4E60A700441ED7 /* PADHomeView.m in Sources */,
+				5C9C3E730E5796720004DA00 /* PADOperationOpenDevice.m in Sources */,
+				5CE577300E590C230086A57F /* PADOperationControlDevice.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

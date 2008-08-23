@@ -32,8 +32,10 @@
 }
 
 - (void)dealloc {
-    [treeData release];
+    //[treeData release];
     [draggedNodes release];
+
+	//if( dataSource != nil ) [dataSource release];
     [super dealloc];
 }
 
@@ -90,10 +92,11 @@
     NSInteger childIndex = 0;
     SimpleTreeNode *selectedNode = treeData;
     TreeNode *parentNode = nil;
-
+	
 	if( treeData == nil ) {
+		[newChild sortChildrenUsingDescriptors:[outlineView sortDescriptors]];
 		[self setTreeRoot:newChild];
-		return;
+		goto AFTERRELOAD;
 	}
 
     if ([[selectedNode nodeData] isGroup]) { 
@@ -106,7 +109,11 @@
     }
     
     [parentNode insertChild: newChild atIndex: childIndex];
-    [outlineView reloadData];
+ 	[parentNode sortChildrenUsingDescriptors:[outlineView sortDescriptors]];	
+   [outlineView reloadData];
+	
+AFTERRELOAD:
+	[newChild recursiveReExpandInView:outlineView];
 }
 
 - (id)dataSource { return dataSource; }
@@ -232,16 +239,26 @@
     return [node numberOfChildren];
 }
 
-- (id)outlineView:(NSOutlineView *)outlineView objectValueForTableColumn:(NSTableColumn *)tableColumn byItem:(id)item {
+- (id)outlineView:(NSOutlineView *)ov objectValueForTableColumn:(NSTableColumn *)tableColumn byItem:(id)item {
     id objectValue = nil;
     SimpleNodeData *data = [item nodeData];
     
     // The return value from this method is used to configure the state of the items cell via setObjectValue:
     if ((tableColumn == nil) || [[tableColumn identifier] isEqualToString:COLUMNID_NAME]) {
 		objectValue = [data name];
-		[item setBusy: [data busy]];
+		//[item setBusy: [data busy]];
     } else if ([[tableColumn identifier] isEqualToString:COLUMNID_SLOT]) {
 		objectValue = [NSString stringWithFormat:@"%i", [data itemSlot]];
+	} else if ([[tableColumn identifier] isEqualToString:COLUMNID_MODDATE]) {
+		//NSDateFormatter*	thisDateForm = [[NSDateFormatter alloc] init];
+		//objectValue = [thisDateForm stringFromDate:[data itemModDate]]; 
+		objectValue = [data itemAddDate];
+	} else if ([[tableColumn identifier] isEqualToString:COLUMNID_TYPE]) {
+		//objectValue = [data itemFlavor];
+		objectValue = DACALCreateImageRefForFlavor([data itemFlavor]);
+	} else {
+		//
+		NSLog(@"Unknown Column: %@", [tableColumn identifier]);
 	}
 /*  
  *	These are additional column data suppliers from the original example:
@@ -274,6 +291,12 @@
     if ((tableColumn == nil) || [[tableColumn identifier] isEqualToString:COLUMNID_SLOT]) {
 		if( dataSource != nil ) [dataSource performSelector:@selector(nodeSlotChanged:toSlot:) withObject:(SimpleTreeNode*)item withObject:(NSString*)object];
 		else [data setItemSlot:(DACALSlotNum)[object intValue]];
+	}
+
+    // Here, we manipulate the type/flavor data stored in the node.
+    if ((tableColumn == nil) || [[tableColumn identifier] isEqualToString:COLUMNID_TYPE]) {
+		if( dataSource != nil ) [dataSource performSelector:@selector(nodeTypeChanged:toType:) withObject:(SimpleTreeNode*)item withObject:(NSString*)object];
+		else [data setItemFlavor:object];
 	}
 }
 
@@ -318,11 +341,31 @@
     return [[item nodeData] isGroup] && [self allowGroupRowLook];
 }
 
-- (BOOL)outlineView:(NSOutlineView *)outlineView shouldExpandItem:(id)item {
+- (BOOL)outlineView:(NSOutlineView *)ov shouldExpandItem:(id)item {
     return [[item nodeData] isExpandable];
 }
 
-- (void)outlineView:(NSOutlineView *)outlineView willDisplayCell:(NSCell *)cell forTableColumn:(NSTableColumn *)tableColumn item:(id)item {    
+- (void)outlineViewItemWillExpand:(NSNotification *)notification {
+	SimpleTreeNode*		theItem = [[notification userInfo] valueForKey:@"NSObject"];
+	
+	if( theItem ) 
+	{
+		[[theItem nodeData] setExpanded:YES];
+		[theItem sortChildrenUsingDescriptors:[[self outlineView] sortDescriptors]];
+	}
+}
+
+- (void)outlineViewItemDidCollapse:(NSNotification *)notification {
+	SimpleTreeNode*		theItem = [[notification userInfo] valueForKey:@"NSObject"];
+	
+	if( theItem ) [[theItem nodeData] setExpanded:NO];
+}
+
+- (void)outlineView:(NSOutlineView *)ov willDisplayOutlineCell:(id)cell forTableColumn:(NSTableColumn *)tableColumn item:(id)item {
+//	if( [[item nodeData] isExpanded] ) [ov expandItem:item];
+}
+
+- (void)outlineView:(NSOutlineView *)ov willDisplayCell:(NSCell *)cell forTableColumn:(NSTableColumn *)tableColumn item:(id)item {    
     SimpleNodeData *data = [item nodeData];
     if ((tableColumn == nil) || [[tableColumn identifier] isEqualToString:COLUMNID_NAME]) {
 
@@ -396,6 +439,16 @@
     }
 }
 
+- (void)outlineView:(NSOutlineView *)theView sortDescriptorsDidChange:(NSArray *)oldDescriptors
+{
+	NSArray* selectedItems = [outlineView allSelectedItems];
+	NSArray* newDescriptors = [outlineView sortDescriptors];
+	
+	[treeData sortExpandedChildrenUsingDescriptors:newDescriptors];
+    [outlineView reloadData];
+	[outlineView selectItems:selectedItems byExtendingSelection:NO];
+}
+
 
 // ================================================================
 //  NSOutlineView data source methods. (dragging related)
@@ -426,49 +479,143 @@ NSFileHandle *NewFileHandleForWritingFile(NSString *dirpath, NSString *basename,
         *oFilename = (fileHandle ? filename : nil);
     }
     
+	
     return fileHandle;
 }
 
+NSURL *NewFileURLForWritingFile(NSString *dirpath, NSString *basename, NSString *extension) {
+    NSString *filename = nil;
+    BOOL done = NO;
+ //   NSInteger fdForWriting = -1, uniqueNum = 0;
+	NSInteger uniqueNum = 0;
+	NSURL*	outURL = nil;
+	
+    while (!done) {
+        filename = [NSString stringWithFormat:@"%@%@.%@", basename, (uniqueNum ? [NSString stringWithFormat:@"-%ld", (long)uniqueNum] : @""), extension];
+ //       fdForWriting = open([[NSString stringWithFormat:@"%@/%@", dirpath, filename] UTF8String], O_WRONLY | O_CREAT | O_EXCL, 0666);
+ //       if (fdForWriting < 0 && errno == EEXIST) {
+ //           // Try another name.
+ //           uniqueNum++;
+ //       } else {
+            done = YES;
+ //       }
+    }
+	
+	outURL = [NSURL fileURLWithPath:filename];
+	
+    return outURL;
+}
+
+
+
 // We promised the files, so now lets make good on that promise!
-- (NSArray *)outlineView:(NSOutlineView *)outlineView namesOfPromisedFilesDroppedAtDestination:(NSURL *)dropDestination forDraggedItems:(NSArray *)items {
+- (NSArray *)outlineView:(NSOutlineView *)ov namesOfPromisedFilesDroppedAtDestination:(NSURL *)dropDestination forDraggedItems:(NSArray *)items {
     NSInteger i = 0, count = [items count];
     NSMutableArray *filenames = [NSMutableArray array];
     for (i=0; i<count; i++) {
-        
+//		NSString *urlFile = [NSString stringWithFormat:@"[InternetShortcut]\nURL=%@\n", [[items objectAtIndex:i] description]];
+		
+		
+		
+		NSDictionary*	urlDict = [NSDictionary dictionaryWithObject:[[items objectAtIndex:i] description] forKey:@"URL"];
+		NSURL*			urlPlace = NewFileURLForWritingFile([dropDestination path], @"PromiseTestFile", @"url");
+		NSLog(@"URL: %@", urlPlace);
+		
+		BOOL	good = [urlDict writeToURL:urlPlace atomically:NO];
+		NSLog(@"Good: %@", good?@"YES":@"NO");
+		
+/*
         NSString *filename  = nil;
-        NSFileHandle *fileHandle = NewFileHandleForWritingFile([dropDestination path], @"PromiseTestFile", @"txt", &filename);
+        NSFileHandle *fileHandle = NewFileHandleForWritingFile([dropDestination path], @"PromiseTestFile", @"url", &filename);
         if (fileHandle) {
-            NSData *fileData  = [[[items objectAtIndex:i] description] dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:NO];
+			NSString *urlFile = [NSString stringWithFormat:@"[InternetShortcut]\nURL=%@\n", [[items objectAtIndex:i] description]];
+            NSData *fileData  = [[urlFile dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:NO] retain];
             [fileHandle writeData: fileData];
             [fileHandle release];
             fileHandle = nil;
+			
 
-            [filenames addObject: filename];
+//			NSString *filename = nil;
+			FSRef	fileRef;
+			OSStatus err;
+			HFSUniStr255 theResFileName;
+			ResFileRefNum theResFileNum;
+			ResFileRefNum saveFileNum = CurResFile();
+			const void*	theData = [fileData bytes];
+			Handle	theDataHandle;
+			
+			PtrToHand( theData, &theDataHandle, [fileData length]);
+			
+			FSGetResourceForkName(&theResFileName);
+
+			filename = [NSString stringWithFormat:@"%@/%@.%@", [dropDestination path], @"PromiseTestFile", @"webloc"];
+			err = FSPathMakeRef( (const UInt8*)[filename UTF8String], &fileRef, FALSE );
+			NSLog(@"%@ e:%i",filename, (int)err);
+			if( err == 0 ) {
+				printf("here\n");
+				err = FSCreateResourceFork( &fileRef, theResFileName.length, theResFileName.unicode, 0 );
+				err = FSOpenResourceFile( &fileRef,  theResFileName.length, theResFileName.unicode, fsWrPerm, &theResFileNum);
+				
+				if(err == 0) {
+					UseResFile( theResFileNum );
+					AddResource( theDataHandle, 'url ', 0, (ConstStr255Param)"" );
+					err = ResError();
+					printf("AddResource: %i\n", (int)err);
+					
+					UseResFile( saveFileNum );
+					CloseResFile( theResFileNum );
+				} else 
+					 printf("FSOpenResourceFile: %i\n",(int) err);
+			
+			}
+ */
+            [filenames addObject: [urlPlace path]];
         }
-    }
+    
     return ([filenames count] ? filenames : nil);
 }
 
-- (BOOL)outlineView:(NSOutlineView *)outlineView writeItems:(NSArray *)items toPasteboard:(NSPasteboard *)pboard {
+- (BOOL)outlineView:(NSOutlineView *)ov writeItems:(NSArray *)items toPasteboard:(NSPasteboard *)pboard {
+	
+	draggedNodes = items; // Don't retain since this is just holding temporaral drag information, and it is only used during a drag!  We could put this in the pboard actually.
+	
+	if( dataSource != nil ) return [dataSource outlineView:ov writeItems:items toPasteboard:pboard];
+	
+	draggedNodes = nil;
+	return NO;
+}
+/*	
     draggedNodes = items; // Don't retain since this is just holding temporaral drag information, and it is only used during a drag!  We could put this in the pboard actually.
     
     // Provide data for our custom type, and simple NSStrings.
-    [pboard declareTypes:[NSArray arrayWithObjects:DragDropSimplePboardType, NSStringPboardType, NSFilesPromisePboardType, nil] owner:self];
-
-    // the actual data doesn't matter since DragDropSimplePboardType drags aren't recognized by anyone but us!.
+    //[pboard declareTypes:[NSArray arrayWithObjects:DragDropSimplePboardType, NSStringPboardType, NSFilesPromisePboardType, nil] owner:self];
+	[pboard declareTypes:[NSArray arrayWithObjects:DragDropSimplePboardType, NSURLPboardType, nil] owner:self];
+    
+	// the actual data doesn't matter since DragDropSimplePboardType drags aren't recognized by anyone but us!.
     [pboard setData:[NSData data] forType:DragDropSimplePboardType]; 
     
     // Put string data on the pboard... notice you candrag into TextEdit!
-    [pboard setString: [draggedNodes description] forType: NSStringPboardType];
+    //[pboard setString: [draggedNodes description] forType: NSStringPboardType];
     
     // Put the promised type we handle on the pasteboard.
-    [pboard setPropertyList:[NSArray arrayWithObjects:@"txt", nil] forType:NSFilesPromisePboardType];
+    //[pboard setPropertyList:[NSArray arrayWithObjects:@"txt", nil] forType:NSFilesPromisePboardType];
 
+	// Put URL data on the pboard
+	[[NSURL URLWithString:[[items objectAtIndex:0] description]] writeToPasteboard:pboard];
+	
     return YES;
 }
+*/
 
 - (NSDragOperation)outlineView:(NSOutlineView *)ov validateDrop:(id <NSDraggingInfo>)info proposedItem:(id)item proposedChildIndex:(NSInteger)childIndex {
     // This method validates whether or not the proposal is a valid one. Returns NO if the drop should not be allowed.
+	
+	if( dataSource != nil ) return [dataSource outlineView:ov validateDrop:info proposedItem:item proposedChildIndex:childIndex];
+	
+	return NSDragOperationNone;
+}
+
+/*	
     SimpleTreeNode *targetNode = item;
     BOOL targetNodeIsValid = YES;
 
@@ -503,28 +650,82 @@ NSFileHandle *NewFileHandleForWritingFile(NSString *dirpath, NSString *basename,
 	}
     }
     
-	if (targetNodeIsValid && !([info draggingSource]==outlineView))
+//	if (targetNodeIsValid && !([info draggingSource]==outlineView)) {
 		if( [[targetNode nodeData] itemType] == kPADTypeGroupFavorites ) return NSDragOperationCopy;
+		if( [[[targetNode nodeParent] nodeData] itemType] == kPADTypeGroupLibrary ) return NSDragOperationCopy;
+		
+		targetNodeIsValid = NO;
+	}
+//
+	if (targetNodeIsValid && !([info draggingSource]==outlineView)) {
+		if( [[targetNode nodeData] itemType] == kPADTypeGroupFavorites ) return NSDragOperationCopy;
+		else if( [[[targetNode nodeParent] nodeData] itemType] == kPADTypeGroupLibrary ) {
+			NSArray *_draggedNodes = [[[info draggingSource] dataSource] draggedNodes];
+			int		nodeIndex, nodeCount = [_draggedNodes count];
+			
+			for(nodeIndex=0; nodeIndex<nodeCount; nodeIndex++)
+				if( [[[[_draggedNodes objectAtIndex:nodeIndex] nodeData] itemFlavor] compare:[[targetNode nodeData] itemFlavor]] != NSOrderedSame )
+					return NSDragOperationLink;
+
+			targetNodeIsValid = NO;
+		}
 		else targetNodeIsValid = NO;
+	}
 	
     // Set the item and child index in case we computed a retargeted one.
     [outlineView setDropItem:targetNode dropChildIndex:childIndex];
     
     return targetNodeIsValid ? NSDragOperationGeneric : NSDragOperationNone;
 }
-
-- (void)tableView:(NSTableView *)tableView sortDescriptorsDidChange:(NSArray *)oldDescriptors
-{
-    //[myTableDataArray sortUsingDescriptors:[tableView sortDescriptors]];
-    [tableView reloadData];
-}
-
+*/
+/*
 - (void)_performDropOperation:(id <NSDraggingInfo>)info onNode:(TreeNode *)parentNode atIndex:(NSInteger)childIndex {
     // Helper method to insert dropped data into the model. 
     NSPasteboard *pboard = [info draggingPasteboard];
-    NSMutableArray *itemsToSelect = nil;
+	
+	NSString*	destinationFlavor = [[parentNode nodeData] itemFlavor];
+//	CFURLRef	slotURL = NULL;
+//	OSStatus	theErr = 0;
     
-    // Do the appropriate thing depending on wether the data is DragDropSimplePboardType or NSStringPboardType.
+    if ([pboard availableTypeFromArray:[NSArray arrayWithObjects:DragDropSimplePboardType, nil]] != nil) {
+        TreeController *dragDataSource = [[info draggingSource] dataSource];
+        NSArray *_draggedNodes = [dragDataSource draggedNodes];
+        NSEnumerator *draggedNodesEnum = [_draggedNodes objectEnumerator];
+        SimpleTreeNode *_draggedNode = nil;
+		SimpleTreeNode *_bioParent = nil;
+		int				itemRow = 0;
+        
+        while ((_draggedNode = [draggedNodesEnum nextObject])) {
+			
+
+			if( [dragDataSource dataSource] != nil ) [[dragDataSource dataSource] performSelector:@selector(nodeTypeChanged:toType:) withObject:(SimpleTreeNode*)_draggedNode withObject:destinationFlavor];
+
+			[[dragDataSource outlineView] reloadItem:_draggedNode];
+			
+//			_bioParent = (SimpleTreeNode*)[_draggedNode nodeParent];
+//			itemRow = [_bioParent indexOfChild:_draggedNode];
+//			[_draggedNode removeFromParent];
+//			[[dragDataSource outlineView] reloadItem:_bioParent];
+//			[_bioParent insertChild:_draggedNode atIndex:itemRow];
+//			[[dragDataSource outlineView] reloadItem:_bioParent];
+		}
+		[[dragDataSource outlineView] reloadData];
+	}
+}
+ */
+ 
+//			if( slotURL ) {
+//				theErr = CFURLSetXattr( slotURL, kDACALCarouselDocumentXAttrSlotKind, (CFStringRef)destinationFlavor );
+//			
+//				[[_draggedNode nodeData] setItemFlavor:destinationFlavor];
+//				[[dragDataSource outlineView] reloadItem:_draggedNode];
+//			}
+//		}
+//		[[dragDataSource dataSource] sortExpandedChildrenWithCurrentDescriptors:nil];
+		
+//	}
+/*
+	// Do the appropriate thing depending on wether the data is DragDropSimplePboardType or NSStringPboardType.
     if ([pboard availableTypeFromArray:[NSArray arrayWithObjects:DragDropSimplePboardType, nil]] != nil) {
         TreeController *dragDataSource = [[info draggingSource] dataSource];
         NSArray *_draggedNodes = [TreeNode minimumNodeCoverFromNodesInArray:[dragDataSource draggedNodes]];
@@ -546,37 +747,31 @@ NSFileHandle *NewFileHandleForWritingFile(NSString *dirpath, NSString *basename,
 	itemsToSelect = [NSMutableArray arrayWithObject:newItem];
 	[parentNode insertChild:newItem atIndex:childIndex++];
     }
+*/
+//    [outlineView reloadData];
+//    [outlineView selectItems:itemsToSelect byExtendingSelection: NO];
+//}
 
-    [outlineView reloadData];
-    [outlineView selectItems:itemsToSelect byExtendingSelection: NO];
+- (BOOL)outlineView:(NSOutlineView *)ov acceptDrop:(id <NSDraggingInfo>)info item:(id)item childIndex:(NSInteger)childIndex {
+
+	if( dataSource != nil ) return [dataSource outlineView:ov acceptDrop:info item:item childIndex:childIndex];
+	
+    return YES;
 }
-
-- (BOOL)outlineView:(NSOutlineView *)outlineView acceptDrop:(id <NSDraggingInfo>)info item:(id)item childIndex:(NSInteger)childIndex {
-    // Determine the parent to insert into and the child index to insert at.
-    SimpleTreeNode *node = (item == nil) ? treeData : item;
+/*
+	SimpleTreeNode *node = item;
     SimpleNodeData *data = [node nodeData];
     
     if ([data isLeaf]) {
-        // If our target is a leaf, and we are dropping on it
-        if (childIndex == NSOutlineViewDropOnItemIndex) {
-            // If we are dropping on a leaf, we will have to turn it into a non-leaf node, and insert it at the start
-            [data setIsLeaf:NO];
-            [data setExpandable:YES];
-            childIndex = 0;
-        } else {
-            // We will be dropping on the item's parent at the target index of this child, plus one
-            childIndex = [[node nodeParent]indexOfChild:node] + 1;
-            node = (SimpleTreeNode *)[node nodeParent];
-        }
-    } else {            
-        if (childIndex == NSOutlineViewDropOnItemIndex) {
-            // Insert it at the start, if we were dropping on it
-            childIndex = 0;
-        }
-    }
-    
-    [self _performDropOperation:info onNode:node atIndex:childIndex];
-	
+		if( [[[node nodeParent] nodeData] itemType] == kPADTypeGroupLibrary ) {
+			
+		    [self _performDropOperation:info onNode:node atIndex:childIndex];	
+			
+		}
+		
+		
+	}
+		
 	if( [data itemType] == kPADTypeGroupDevices ) {
 //		SimpleTreeNode *parent = (SimpleTreeNode*)[item nodeParent];
 		DACALDeviceRef boxRef;
@@ -589,10 +784,9 @@ NSFileHandle *NewFileHandleForWritingFile(NSString *dirpath, NSString *basename,
 			NSLog( @"DACALCommandSetNode( %@, %i ): %i", (NSURL*)boxRef, [item indexOfChildIdenticalTo:(TreeNode*)entry]+1, theErr );
 		}
     }
-
+ }
+*/
         
-    return YES;
-}
 
 
 // On MacOS 10.5 and above, NSTableView and NSOutlineView have better contextual menu support. We now see a highlighted item for what was clicked on,
@@ -728,7 +922,7 @@ NSFileHandle *NewFileHandleForWritingFile(NSString *dirpath, NSString *basename,
 	if( colIndex == [theView columnWithIdentifier:COLUMNID_NAME] )
 	{
 		workNode = [theView itemAtRow:rowIndex];
-		workCell = [theView preparedCellAtColumn:0 row:rowIndex];
+		workCell = [theView preparedCellAtColumn:0 row:rowIndex];		
 
 		partHit = [workCell hitTestForEvent:[[NSApplication sharedApplication]currentEvent] inRect:rowFrame ofView:theView];
 		
@@ -743,9 +937,154 @@ NSFileHandle *NewFileHandleForWritingFile(NSString *dirpath, NSString *basename,
 			if( [self respondsToSelector:@selector(doubleClickImage:)] == YES )
 				[self performSelector:@selector(doubleClickImage:) withObject:(id)workNode];
 		}
+	} else if( colIndex != -1 )
+	{
+		workNode = [theView itemAtRow:rowIndex];
+		if( partHit == NSCellHitNone ) {
+			if([[workNode nodeData] isExpandable] == YES ) 
+				if( [theView isItemExpanded:workNode] == YES ) {
+					[theView collapseItem:workNode];
+				} else {
+					[theView expandItem:workNode];
+				}
+		}
 	}
-	
 	return;
+}
+
+- (BOOL)performDropOperation:(id <NSDraggingInfo>)info onNode:(TreeNode *)parentNode atIndex:(NSInteger)childIndex
+{
+    // Helper method to insert dropped data into the model. 
+    NSPasteboard *pboard = [info draggingPasteboard];
+	NSMutableArray* itemsToSelect = nil;
+	
+	// Do the appropriate thing depending on wether the data is DragDropSimplePboardType or NSStringPboardType.
+    if ([pboard availableTypeFromArray:[NSArray arrayWithObjects:DragDropSimplePboardType, nil]] != nil) {
+        TreeController *dragDataSource = [[info draggingSource] dataSource];
+        NSArray *_draggedNodes = [TreeNode minimumNodeCoverFromNodesInArray:[dragDataSource draggedNodes]];
+        NSEnumerator *draggedNodesEnum = [_draggedNodes objectEnumerator];
+        SimpleTreeNode *_draggedNode = nil, *_draggedNodeParent = nil;
+        
+		itemsToSelect = [NSMutableArray arrayWithArray:[treeControl selectedNodes]];
+		
+        while ((_draggedNode = [draggedNodesEnum nextObject])) {
+            _draggedNodeParent = (SimpleTreeNode *)[_draggedNode nodeParent];
+            if (parentNode == _draggedNodeParent && [parentNode indexOfChild:_draggedNode] < childIndex) childIndex--;
+            [_draggedNodeParent removeChild:_draggedNode];
+        }
+        [parentNode insertChildren:_draggedNodes atIndex:childIndex];
+    }  else if ([pboard availableTypeFromArray:[NSArray arrayWithObject:NSStringPboardType]]) {
+        NSString *string = [pboard stringForType:NSStringPboardType];
+		SimpleTreeNode *newItem = [SimpleTreeNode treeNodeWithData:[SimpleNodeData leafDataWithName:string]];
+		
+		itemsToSelect = [NSMutableArray arrayWithObject:newItem];
+		[parentNode insertChild:newItem atIndex:childIndex++];
+    }
+	
+	[[treeControl outlineView] reloadData];
+	[[treeControl outlineView] selectItems:itemsToSelect byExtendingSelection: NO];
+	
+	return (itemsToSelect!=nil) ? YES : NO;
+}
+
+- (BOOL)outlineView:(NSOutlineView *)ov writeItems:(NSArray *)items toPasteboard:(NSPasteboard *)pboard {
+	
+    // Provide data for our custom type, and simple NSStrings.
+    //[pboard declareTypes:[NSArray arrayWithObjects:DragDropSimplePboardType, NSStringPboardType, NSFilesPromisePboardType, nil] owner:self];
+	[pboard declareTypes:[NSArray arrayWithObjects:DragDropSimplePboardType, NSURLPboardType, nil] owner:self];
+    
+	// the actual data doesn't matter since DragDropSimplePboardType drags aren't recognized by anyone but us!.
+    [pboard setData:[NSData data] forType:DragDropSimplePboardType]; 
+    
+    // Put string data on the pboard... notice you candrag into TextEdit!
+    //[pboard setString: [draggedNodes description] forType: NSStringPboardType];
+    
+    // Put the promised type we handle on the pasteboard.
+    //[pboard setPropertyList:[NSArray arrayWithObjects:@"txt", nil] forType:NSFilesPromisePboardType];
+	
+	// Put URL data on the pboard
+	[[NSURL URLWithString:[[items objectAtIndex:0] description]] writeToPasteboard:pboard];
+	
+    return YES;
+}
+
+- (NSDragOperation)validateDropSource:(id <NSDraggingInfo>)info proposedItem:(id)item proposedChildIndex:(NSInteger)childIndex
+{
+
+	return NSDragOperationGeneric;
+}
+
+- (NSDragOperation)outlineView:(NSOutlineView *)ov validateDrop:(id <NSDraggingInfo>)info proposedItem:(id)item proposedChildIndex:(NSInteger)childIndex {
+    SimpleTreeNode *targetNode = item;
+    BOOL targetNodeIsValid = YES;
+	NSDragOperation targetNodeDragOp = NSDragOperationNone;
+	
+    if ([treeControl onlyAcceptDropOnRoot]) {
+		targetNode = nil;
+		childIndex = NSOutlineViewDropOnItemIndex;
+    } else {
+		BOOL isOnDropTypeProposal = childIndex==NSOutlineViewDropOnItemIndex;
+		
+		// Refuse if: dropping "on" the view itself unless we have no data in the view.
+		if (targetNode==nil && childIndex==NSOutlineViewDropOnItemIndex && [[treeControl treeRoot] numberOfChildren]!=0) 
+			targetNodeIsValid = NO;
+		
+		if (targetNode==nil && childIndex==NSOutlineViewDropOnItemIndex && [treeControl allowOnDropOnLeaf]==NO)
+			targetNodeIsValid = NO;
+		
+        SimpleTreeNode *node = (item == nil) ? [treeControl treeRoot] : item;
+        SimpleNodeData *data = [node nodeData];
+		
+		// Refuse if: we are trying to do something which is not allowed as specified by the UI check boxes.
+		if ((targetNodeIsValid && isOnDropTypeProposal==NO && [treeControl allowBetweenDrop]==NO) ||
+			([data isGroup] && isOnDropTypeProposal==YES && [treeControl allowOnDropOnGroup]==NO) ||
+			([data isLeaf ] && isOnDropTypeProposal==YES && [treeControl allowOnDropOnLeaf]==NO))
+			targetNodeIsValid = NO;
+	    
+		// Check to make sure we don't allow a node to be inserted into one of its descendants!
+		if (targetNodeIsValid && ([info draggingSource]==[treeControl outlineView]) && [[info draggingPasteboard] availableTypeFromArray:[NSArray arrayWithObject: DragDropSimplePboardType]] != nil) {
+			NSArray *_draggedNodes = [[[info draggingSource] dataSource] draggedNodes];
+			//SimpleTreeNode *targetParent = (SimpleTreeNode*)[targetNode nodeParent];
+			targetNodeIsValid = ![targetNode isDescendantOfNodeInArray: _draggedNodes];
+			if( targetNodeIsValid ) targetNodeIsValid = [targetNode isParentOfNodesInArray: [treeControl draggedNodes]];
+		}
+    }
+    
+	if( targetNodeIsValid ) targetNodeDragOp = [self validateDropSource:info proposedItem:item proposedChildIndex:childIndex];
+	
+    // Set the item and child index in case we computed a retargeted one.
+    [[treeControl outlineView] setDropItem:targetNode dropChildIndex:childIndex];
+    
+    return targetNodeIsValid ? targetNodeDragOp : NSDragOperationNone;
+}
+
+- (BOOL)outlineView:(NSOutlineView *)ov acceptDrop:(id <NSDraggingInfo>)info item:(id)item childIndex:(NSInteger)childIndex
+{
+	
+    // Determine the parent to insert into and the child index to insert at.
+    SimpleTreeNode *node = (item == nil) ? [treeControl treeRoot] : item;
+    SimpleNodeData *data = [node nodeData];
+    
+    if ([data isLeaf]) {
+        // If our target is a leaf, and we are dropping on it
+        if (childIndex == NSOutlineViewDropOnItemIndex) {
+            // If we are dropping on a leaf, we will have to turn it into a non-leaf node, and insert it at the start
+            [data setIsLeaf:NO];
+            [data setExpandable:YES];
+            childIndex = 0;
+        } else {
+            // We will be dropping on the item's parent at the target index of this child, plus one
+            childIndex = [[node nodeParent]indexOfChild:node] + 1;
+            node = (SimpleTreeNode *)[node nodeParent];
+        }
+    } else {            
+        if (childIndex == NSOutlineViewDropOnItemIndex) {
+            // Insert it at the start, if we were dropping on it
+            childIndex = 0;
+        }
+    }
+    
+    return [self performDropOperation:info onNode:node atIndex:childIndex];	
 }
 
 // On MacOS 10.5 and above, NSTableView and NSOutlineView have better contextual menu support. We now see a highlighted item for what was clicked on, and can access that item to do particular things (such as dynamically change the menu, as we do here!). Each of the contextual menus in the nib file have the delegate set to be the AppController instance. In menuNeedsUpdate, we dynamically update the menus based on the currently clicked upon row/column pair.
@@ -813,6 +1152,14 @@ NSFileHandle *NewFileHandleForWritingFile(NSString *dirpath, NSString *basename,
 {
 	return NO;
 }
+
+- (void)sortExpandedChildrenWithCurrentDescriptors:(SimpleTreeNode*)theNode
+{
+	if( theNode == nil ) theNode = [[self treeControl] treeRoot];
+	if( theNode ) [theNode sortExpandedChildrenUsingDescriptors:[[[self treeControl] outlineView] sortDescriptors ]];
+}
+
+
 
 @end	// TreeControllerDataSource
 

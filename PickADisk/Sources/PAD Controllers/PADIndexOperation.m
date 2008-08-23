@@ -35,6 +35,18 @@
     [super dealloc];
 }
 
+- (BOOL)cancelOperationForDevice:(DACALDeviceRef)oldBox
+{
+	DACALDeviceRef		ourBox = CFURLCopyCarouselUUID( kCFAllocatorDefault, (CFURLRef)itemLocation );
+	BOOL				sameBox = NO;
+	
+	if( CFEqual( (CFTypeRef)ourBox, (CFTypeRef)oldBox ) ) sameBox = YES;
+	
+	if( ourBox ) CFRelease( (CFTypeRef)ourBox );
+	
+	return NO;
+}
+
 - (void)main
 {
 	SimpleTreeNode*		theNode = [self subtreeChild];

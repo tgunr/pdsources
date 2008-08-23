@@ -11,7 +11,8 @@
 #include <CoreFoundation/CoreFoundation.h>
 
 extern OSStatus		CFURLSetXattr( CFURLRef inURL, CFStringRef inKeyName, CFStringRef inKeyValue );
-extern CFStringRef	CFURLCopyXattr( CFURLRef inURL, CFStringRef inKeyName, OSStatus* outError );
+extern size_t		CFURLGetXattrSize( CFURLRef inURL, CFStringRef inKeyName );
+extern CFStringRef	CFURLCopyXattr( CFAllocatorRef inAllocator, CFURLRef inURL, CFStringRef inKeyName, OSStatus* outError );
 
 extern char*		CFStringCreateCString( CFStringRef theString, CFStringEncoding theEncoding );
 extern CFStringRef	CFStringCreateFromCommandPipe( CFAllocatorRef inAllocator, CFURLRef inCommandURL, CFStringRef inCommandArgs, OSStatus* outError );
@@ -22,6 +23,10 @@ extern CFStringRef	CFStringCreateFromCommandPipe( CFAllocatorRef inAllocator, CF
 //
 
 OSErr				CFStringSpeak( CFStringRef theWords, Boolean interrupt, SpeechChannel onChannel );
+
+CFDateRef	CFURLCopyDateAccessed( CFAllocatorRef inAllocator, CFURLRef url, SInt32* outError );
+CFDateRef	CFURLCopyDateCreated( CFAllocatorRef inAllocator, CFURLRef url, SInt32* outError );
+CFDateRef	CFURLCopyDateModified( CFAllocatorRef inAllocator, CFURLRef url, SInt32* outError );
 
 
 

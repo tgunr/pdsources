@@ -15,8 +15,23 @@
 //#import <CoreFoundation/CoreFoundation.h>
 #import "pmsCFUtility.h"
 #import "pmsDACALUtility.h"
+#import "PADOperationOpenDevice.h"
+
+CFStringRef		kPADClientIdentifier = CFSTR("PAD.DACAL.CLIENT");
 
 #define PAD_BUSYBODY_DELAY 0.1
+
+void DACALNotification( void* inData, DACALDeviceRef inBox, CFStringRef inMessage, CFDictionaryRef inParam )
+{
+
+	//NSLog( @"Client Notification: Device: %@ Message: %@", inBox, inMessage );
+	
+	if( CFStringHasPrefix( inMessage, kDACALCarouselNoticeDeviceOpen ) )
+		[PADOperationOpenDevice addDeviceToSourceTree:inBox forTarget:[AppController shared] endSelector:@selector(deviceAttached:)];
+	else if( CFStringHasPrefix( inMessage, kDACALCarouselNoticeDeviceClose ) )
+		[[AppController shared] deviceDetached:inBox];
+}
+
 
 void DACALSetup( void )
 {
@@ -24,10 +39,17 @@ void DACALSetup( void )
 	DACALRegisterIconResource( CFSTR("CDAudio"), 'cdda' );
 	DACALRegisterIconResource( CFSTR("DVD-Video"), 'dvd ' );
 	DACALRegisterIconResource( CFSTR("CD-silver"), 'Dcd ' );
+
+	DACALRegisterIconResource( CFSTR("Generic_Files"), 'gFil' );
+	DACALRegisterIconResource( CFSTR("Generic_Music"), 'gMus' );
+	DACALRegisterIconResource( CFSTR("Generic_Movie"), 'gMov' );
+
 	//DACALRegisterIconResource( CFSTR("ClockSearch"), 'ClkS' );
 	//DACALRegisterIconResource( CFSTR("SmartFolder"), 'SmFl' );
 
-	DACALDevicesInitialize();
+	DACALClientCreate( kCFAllocatorDefault, kPADClientIdentifier, NULL, DACALNotification );
+	
+//	DACALDevicesInitialize();
 }
 
 
@@ -55,8 +77,11 @@ static AppController *shared;
 		DACALSetup();
 
 		queue = [[NSOperationQueue alloc] init];
-		[queue setMaxConcurrentOperationCount:6];
+		[queue setMaxConcurrentOperationCount:5];
 		
+		queueUI = [[NSOperationQueue alloc] init];
+		[queueUI setMaxConcurrentOperationCount:1];
+
 		//busyBodies = [NSMutableDictionary dictionaryWithCapacity:1000];
 		//busyBodies = [NSMutableArray arrayWithCapacity:0];
 		busyBodies = [[NSMutableArray alloc] initWithCapacity:8192];
@@ -71,13 +96,28 @@ static AppController *shared;
 }
 
 - (void)queueOperation:(NSOperation*)op { [queue addOperation:op]; }
+- (void)queueUIOperation:(NSOperation*)op { [queueUI addOperation:op]; }
+
+- (void)cancelOperationsForDevice:(DACALDeviceRef)oldBox
+{
+	[queue setSuspended:YES];
+	
+	NSArray*	theOps = [queue operations];
+	int			index, count = [theOps count];
+	
+	for( index=0; index < count; index++ )
+		[[theOps objectAtIndex:index] cancelOperationForDevice:(DACALDeviceRef)oldBox];
+
+	[queue setSuspended:NO];
+}
 
 - (void)dealloc
 {
 	[queue release], queue = nil;
+	[queueUI release], queueUI = nil;
 	[busyBodies release], busyBodies = nil;
 	
-	DACALDevicesFinalize();
+	DACALClientRelease( kPADClientIdentifier );
 	
     [super dealloc];
 }
@@ -104,6 +144,8 @@ static AppController *shared;
 
 	// Add busy body heartbeat
 	[NSTimer scheduledTimerWithTimeInterval:PAD_BUSYBODY_DELAY target:self selector:@selector(doBusyWork:) userInfo:nil repeats:YES];
+	
+	DACALDevicesInitialize();
 	
 	PADBOX_VALID_END
 	
@@ -138,6 +180,33 @@ static AppController *shared;
 
 	[addVolumeController ejectedMounts:oldMounts];
 	
+}
+
+-(void)deviceAttached:(DACALDeviceRef)newBox
+{	
+//	[[[DACALTreeDataSource shared] findTreeNodeForDevice:newBox] setBusy:NO];
+	
+	[[DACALTreeDataSource shared] doAction];
+
+	NSLog( @"Attached Device: %@", DACALCommandCopyName( newBox, NULL ) );
+
+}
+
+-(void)deviceDetached:(DACALDeviceRef)oldBox
+{
+	SimpleTreeNode*		boxNode = [[DACALTreeDataSource shared] findTreeNodeForDevice:oldBox];
+	SimpleTreeNode*		boxParent = (SimpleTreeNode*)[boxNode nodeParent];
+	
+	[self cancelOperationsForDevice:oldBox];
+	
+	[boxNode removeFromParent];
+	[boxNode release];
+	
+	[[[[DACALTreeDataSource shared] treeControl] outlineView] reloadItem:(id)boxParent reloadChildren:YES];
+	[[DACALTreeDataSource shared] doAction];
+	
+	NSLog( @"Detached Device: %@", DACALCommandCopyName( oldBox, NULL ) );
+
 }
 
 - (void)handleOpenLocationAppleEvent:(NSAppleEventDescriptor *)event withReplyEvent:(NSAppleEventDescriptor *)reply {
@@ -191,10 +260,25 @@ static AppController *shared;
 	LSOpenCFURLRef( feedbackURL, &launchURL );
 }
 
+- (BOOL)validateMenuItem:(NSMenuItem *)item
+{
+	if( toolbarController != nil ) return [toolbarController validateMenuItem:item];
 
-+ (void)playUISound:(NSInteger)theSound {
-		
+	return NO;
+}
+
++ (void)playUISound:(NSInteger)theSound
+{
 	if( [[NSUserDefaults standardUserDefaults] boolForKey:@"PADPlaySounds"] == YES ) AudioServicesPlaySystemSound( (SystemSoundID)theSound );
+}
+
++ (void)playUISoundForResult:(DACALResult)theResult
+{
+	SystemSoundID	theSound = kASSystemSoundDoink;
+	
+	if( theResult == kDACALOK ) theSound = kASSystemSoundSuccess;
+	
+	[self playUISound:theSound];
 
 }
 
@@ -211,6 +295,14 @@ static AppController *shared;
 - (PADIndexToolbarController*)toolbarController { return toolbarController; }
 
 - (void)setToolbarController:(PADIndexToolbarController*)tb { toolbarController = tb; }
+
+- (IBAction)addSlot:(id)sender { [toolbarController clickAssign:self]; }
+- (IBAction)mountDisc:(id)sender { [toolbarController clickPlay:self]; }
+- (IBAction)deleteSlot:(id)sender { [toolbarController clickUnassign:self]; }
+- (IBAction)idUnits:(id)sender { [toolbarController clickIdentify:self]; }
+- (IBAction)resetCarousel:(id)sender { [toolbarController clickReset:self]; }
+- (IBAction)checkInOut:(id)sender { [toolbarController clickCheckOut:self]; }
+- (IBAction)retractDoor:(id)sender { [toolbarController clickCloseDoor:self]; }
 
 - (IBAction)printReport:(id)sender
 {
@@ -269,9 +361,12 @@ static AppController *shared;
 	[busyBodies removeObject:item];
 	//NSLog( @"Removed %@ <%@>\n\tBodies: %@", [item description], item, [busyBodies description] );
 
-	theTable = [dataView outlineView];
+	if( [[item nodeData] itemType] == kPADTypeIndexDevice )
+		theTable = [[[DACALTreeDataSource shared] treeControl] outlineView];
+	else
+		theTable = [dataView outlineView];
 	if(theTable != nil)
-		[theTable reloadItem:(id)item reloadChildren:NO];
+		[theTable reloadItem:(id)item reloadChildren:YES];
 	
 	busyBusy = NO;
 }
@@ -297,17 +392,26 @@ static AppController *shared;
 - (void)doBusyWork:(NSTimer*)busyTimer
 { 
 	NSOutlineView* theTable = nil;
+	int				theRow;
 	
 	if( busyBusy == YES ) return;
 	if( [busyBodies count] == 0 ) return;
 	
 	busyBusy = YES;	
-    NSObject *entry = nil;
+
+	SimpleTreeNode	*entry = nil;
     NSEnumerator *enumerator = [busyBodies objectEnumerator];
-    while ((entry=[enumerator nextObject])) {
-		theTable = [dataView outlineView];
+    while ((entry=(SimpleTreeNode*)[enumerator nextObject])) {
+		if( [[entry nodeData] itemType] == kPADTypeIndexDevice )
+		{
+			theTable = [[[DACALTreeDataSource shared] treeControl] outlineView];
+			[theTable reloadItem:[[entry nodeParent] nodeParent] reloadChildren:YES];
+			theRow = [theTable rowForItem:entry];
+			if( ![[theTable itemAtRow:theRow] isEqual:entry] ) theTable = nil;
+		}
+		else
+			theTable = [dataView outlineView];
 		if(theTable != nil)
-			//[entry setBusyCount:[entry busyCount]+1];
 			[theTable reloadItem:(id)entry reloadChildren:YES];
 			//NSLog( @"Got Busy: %@ <%@>\n\tBodies: %@", [entry description], entry, [busyBodies description] );
 		theTable = nil;

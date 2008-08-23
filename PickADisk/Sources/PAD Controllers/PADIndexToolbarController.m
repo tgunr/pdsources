@@ -15,34 +15,70 @@
 {
 	
 	[[AppController shared] setToolbarController:self];
+	
+}
+
+- (BOOL)validateMenuItem:(NSMenuItem *)item
+{
+	BOOL		updateIt = NO;
+	BOOL		anyDevicesSelected = [[self selectedDevices] count] > 0;
+	BOOL		anyNodesSelected = [[self selectedNodes] count] > 0;
+	BOOL		anyUnits = DACALDevicesGetCount() > 0;
+	
+	SEL			theItemAction = [item action];
+	
+	if( theItemAction == @selector(addSlot:) ) updateIt = anyUnits;
+	else if( theItemAction == @selector(mountDisc:) ) updateIt = NO; // anyNodesSelected;
+	else if( theItemAction == @selector(checkInOut:) ) updateIt = anyNodesSelected;
+	else if( theItemAction == @selector(deleteSlot:) ) updateIt = anyNodesSelected;
+	else if( theItemAction == @selector(idUnits:) ) updateIt = NO; // anyUnits;
+	else if( theItemAction == @selector(printReport:) ) updateIt = anyDevicesSelected;
+	else if( theItemAction == @selector(retractDoor:) ) updateIt = anyDevicesSelected;
+	else if( theItemAction == @selector(resetCarousel:) ) updateIt = anyDevicesSelected;
+	
+	return updateIt;
 }
 
 -(void)adoptSelection
 {
-	NSInteger	boxCount = 0;
-//	NSInteger	slotCount = 0;
 	BOOL		anyBox = NO;
 	BOOL		anySlot = NO;
 	
-	if( [self selectedDevices] ) boxCount = [[self selectedDevices] count];
-	if( boxCount > 0 ) anyBox = YES;
-	
-//	if( [self selectedSlots] ) slotCount = [[self selectedSlots] count];
-//	if( slotCount > 0 ) anySlot = YES;
-	
-	if( [self selectedNodes] ) {
-		anyBox = YES;
-		anySlot = YES;
-	}
+	if( [self selectedDevices] )
+		anyBox = [[self selectedDevices] count] > 0;
+	if( [self selectedNodes] )	
+		anySlot = [[self selectedNodes] count] > 0;
 	
 	if( resetButton )		[resetButton setEnabled:anyBox];
 	if( closeDoorButton )	[closeDoorButton setEnabled:anyBox];
 	if( assignButton )		[assignButton setEnabled:anyBox];
-	if( playButton )		[playButton setEnabled:anySlot];
+	//if( playButton )		[playButton setEnabled:anySlot];
 	if( checkOutButton )	[checkOutButton setEnabled:anySlot];
 	if( unassignButton )	[unassignButton setEnabled:anySlot];
 	
 	if( dataController )	[[dataController dataSource] updatePrompt];
+}
+
+-(void)toolbarWillAddItem:(NSNotification *)notification
+{
+	NSToolbarItem*	toolbarItem = [[notification userInfo] objectForKey:@"item"];
+	
+	if ([[toolbarItem itemIdentifier] isEqual:NSToolbarPrintItemIdentifier])
+	{
+		[toolbarItem setTarget:self];
+		[toolbarItem setAction:@selector(clickPrintReport:)];
+	}
+	
+}
+
+-(BOOL)validateToolbarItem:(NSToolbarItem *)toolbarItem
+{
+	BOOL	toolValid = NO;
+	
+	if ([[toolbarItem itemIdentifier] isEqual:NSToolbarPrintItemIdentifier]) 
+		toolValid = [[self selectedDevices] count] > 0;
+	
+	return toolValid;	
 }
 
 - (IBAction)clickReset:(id)sender
@@ -55,8 +91,8 @@
 
 	for( index=0; index < boxCount; index++ )
 	{
-		aBox = (DACALDeviceRef)[[self selectedDevices] objectAtIndex:index];
-		DACALCommandReset( aBox );
+		aBox = (DACALDeviceRef)[[self selectedDevices] objectAtIndex:index];		
+		[AppController playUISoundForResult:DACALCommandReset( aBox )];
 	}
 }
 
@@ -108,6 +144,10 @@
 	[pvc startSheet:[assignButton window]];
 }
 
+- (IBAction)clickIdentify:(id)sender{
+	NSLog(@"Unimplemented Feature");
+}
+
 - (void)unassignAlertDidEnd:(NSAlert *)alert returnCode:(int)rc contextInfo:(void *)ci
 {
 	NSArray*	slotArray = [self selectedNodes];
@@ -129,7 +169,7 @@
 		}
 
 		if( dataController ) [(TreeController*)dataController deleteSelections:self];
-		[self setSelectedSlots:nil];
+		//[self setSelectedSlots:nil];
 		[self setSelectedNodes:nil];
 		
 		[AppController playUISound:kASSystemSoundShred];
@@ -176,6 +216,10 @@
 	[alert beginSheetModalForWindow:[unassignButton window] modalDelegate:self didEndSelector:@selector(unassignAlertDidEnd:returnCode:contextInfo:) contextInfo:nil];
 }
 
+- (IBAction)clickPrintReport:(id)sender
+	{ [[AppController shared] printReport:self]; }
+
+
 - (IBAction)searchAction:(id)sender
 {
 	NSString*		theText = [sender stringValue];
@@ -213,7 +257,6 @@
 
 			outItems = CFStringCreateFromCommandPipe( NULL, (CFURLRef)findURL, (CFStringRef)findArgs, NULL );
 			if( outItems != NULL ) {
-				
 				outList = CFStringCreateArrayBySeparatingStrings( NULL, outItems, outDelim );
 				
 				for( resultIndex = 0; resultIndex < CFArrayGetCount( outList ); resultIndex++ )
@@ -221,10 +264,11 @@
 					CFStringRef	tempPathName = (CFStringRef)CFArrayGetValueAtIndex( outList, resultIndex);
 					foundPath = CFURLCreateWithFileSystemPath( NULL, tempPathName, kCFURLPOSIXPathStyle, FALSE );
 					if( CFURLGetSlotNumber( foundPath, FALSE ) != 0 )
-					{
-						newNode = [SimpleTreeNode treeFromLocation:(NSURL*)CFRetain(foundPath)];
-						[newRoot insertChild:newNode atIndex:[newRoot numberOfChildren]];
-					}
+						if( !CFURLIsSlot( foundPath ) )
+						{
+							newNode = [SimpleTreeNode treeOperationFromLocation:(NSURL*)CFRetain(foundPath)];
+							[newRoot insertChild:newNode atIndex:[newRoot numberOfChildren]];
+						}
 				}
 				
 				[dataController setTreeRoot:newRoot];
@@ -272,13 +316,18 @@
 
 - (void)addSelectedDevice:(DACALDeviceRef)theDevice
 {
-	if( ![selectedDevices containsObject:(id)theDevice])
-		[self setSelectedDevices:[selectedDevices arrayByAddingObject:(id)theDevice]];
+	if( theDevice != kDACALNullDevice )
+		if( ![selectedDevices containsObject:(id)theDevice])
+			[self setSelectedDevices:[selectedDevices arrayByAddingObject:(id)theDevice]];
 }
 
 - (void)setSelectedDevice: (DACALDeviceRef)theDevice
 {
-	NSArray*	newList = [NSArray arrayWithObject:(id)theDevice];	
+	NSArray*	newList;
+	
+	if( theDevice == kDACALNullDevice ) newList = [NSArray array];
+	else newList = [NSArray arrayWithObject:(id)theDevice];	
+
 	[self setSelectedDevices:newList];
 }
 - (NSArray*)selectedDevices { return selectedDevices; }
@@ -318,10 +367,23 @@
 
 - (void)setSelectedNode: (SimpleTreeNode*)theNode
 {
-	NSArray*	newList = [NSArray arrayWithObject:theNode];	
+	NSArray*	newList = (theNode) ? [NSArray arrayWithObject:theNode] : [NSArray array];	
 	[self setSelectedNodes:newList];
 }
 
 - (NSArray*)selectedNodes; { return selectedNodes; }
+
+- (void)addSelectedNode:(SimpleTreeNode*)theNode
+{
+	if( !selectedNodes ) [self addSelectedNode:theNode];
+	else if( ![selectedNodes containsObject:(id)theNode])
+			[self setSelectedNodes:[selectedNodes arrayByAddingObject:(id)theNode]];
+}
+
+- (void)resetSelection
+{
+	[self setSelectedDevice:kDACALNullDevice];
+	[self setSelectedNode:nil];	
+}
 
 @end

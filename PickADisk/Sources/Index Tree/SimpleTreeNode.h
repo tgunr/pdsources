@@ -19,6 +19,8 @@ const enum {
 	kPADTypeDataMuisc
 } PADNodeTypes;
 
+@class SimpleNodeData;
+
 @interface SimpleTreeNode : TreeNode {
 
 }
@@ -29,6 +31,7 @@ const enum {
 // This is a convenience method to return a tree root of a tree derived from an input dictionary. (see InitInfo.dict)
 + (id)treeFromLocation:(NSURL *)loc;
 
++ (id)treeOperationFromLocation:(NSURL *)loc forUI:(BOOL)uiQueue;
 + (id)treeOperationFromLocation:(NSURL *)loc;
 - (id)initFromLocation:(NSURL*)loc;
 - (id)initOperationFromLocation:(NSURL*)loc;
@@ -54,6 +57,11 @@ const enum {
 //-(NSString*)name;
 //-(NSNumber*)slotNSNumber;
 
+-(SimpleNodeData*)keyName;
+-(SimpleNodeData*)keySlotNumber;
+-(SimpleNodeData*)keyAddDate;
+-(SimpleNodeData*)keyFlavor;
+
 @end	// <<Simple Tree Node>>
 
 @interface SimpleNodeData : NSObject {
@@ -62,11 +70,13 @@ const enum {
     NSImage			*iconRep;
 	NSURL			*location;
 	NSString		*itemFlavor;
+	NSDate			*itemAddDate;
 	NSInteger		itemType;
 	DACALDeviceRef	itemDevice;
 	DACALSlotNum	itemSlot;
     BOOL			isLeaf;
     BOOL			isExpandable;
+	BOOL			isExpanded;
     BOOL			isSelectable;
 	BOOL			isBusy;
 	SimpleTreeNode *subTree;
@@ -101,6 +111,9 @@ const enum {
 - (void)setExpandable:(BOOL)value;
 - (BOOL)isExpandable;
 
+- (void)setExpanded:(BOOL)value;
+- (BOOL)isExpanded;
+
 - (BOOL)isSelectable;
 - (void)setSelectable:(BOOL)value;
 
@@ -124,6 +137,10 @@ const enum {
 - (void)setItemFlavor:(NSString *)name;
 - (NSString *)itemFlavor;
 
+// Set and get the add date.
+- (void)setItemAddDate:(NSDate *)newDay;
+- (NSDate *)itemAddDate;
+
 - (void)setSubTree:(SimpleTreeNode*)tree;
 - (SimpleTreeNode*)subTree;
 
@@ -132,6 +149,8 @@ const enum {
 
 - (NSComparisonResult)compareDataNames:(SimpleNodeData *)otherData;
 - (NSComparisonResult)compareDataSlots:(SimpleNodeData *)otherData;
+- (NSComparisonResult)compareDataAddDates:(SimpleNodeData *)other;
+- (NSComparisonResult)compareDataFlavors:(SimpleNodeData *)other;
 
 - (NSComparisonResult)compare:(id)otherData;
 

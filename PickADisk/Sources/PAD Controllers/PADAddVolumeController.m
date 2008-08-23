@@ -6,9 +6,9 @@
 //  Copyright 2008 __MyCompanyName__. All rights reserved.
 //
 
-#import "PADAddVolumeController.h"
-
 #import "pmsDACALUtility.h"
+#import "PADAddVolumeController.h"
+#import "PADOperationControlDevice.h"
 
 @implementation PADAddVolumeController
 
@@ -125,32 +125,52 @@
 	[NSApp endSheet:sheetWindow];
 }
 
+- (void)controlTextDidChange:(NSNotification *)aNotification
+{
+	[self slotNameChanged:self];
+}
+
+-(void)indexDeviceControlFinished:(id)sender
+{
+	[AppController playUISound: kASSystemSoundSuccess];
+}
+
 -(void) indexProgressComplete:(PADIndexProgressController*)progress
 {
 	int		result = [progress taskResult];
-	int		sound = kASSystemSoundSuccess;
+//	int		sound = kASSystemSoundSuccess;
 	DACALDeviceRef  currentBox= (DACALDeviceRef)DACALCommandCopyUUID( [carouselList indexOfSelectedItem]+1, NULL );
 	DACALSlotNum	currentSlot =  (DACALSlotNum)[slotNumber intValue];
-	DACALResult		typeResult;
+//	DACALResult		typeResult;
+	CFURLRef		slotURL = NULL;
 	NSURL*			currentVolume = [self pendingURL];
+	NSString*		theDate = [[NSDate date] description];
 	
 	if( result != 0 )
-		sound = kASSystemSoundDoink;
+		[AppController playUISound: kASSystemSoundDoink];
 
 	if( result == 0 )
 	{
-		typeResult = DACALSlotSetType( currentBox, currentSlot, (CFStringRef)[slotTypeList stringValue] );
-		if( (typeResult != 0) && gDACALVerbose ) NSLog(@"DACALSlotSetType Err: %i", (int)typeResult);  
+//		typeResult = DACALSlotSetType( currentBox, currentSlot, (CFStringRef)[slotTypeList titleOfSelectedItem] );
+//		if( (typeResult != 0) ) NSLog(@"DACALSlotSetType Err: %i", (int)typeResult);  
+
+		slotURL = DACALSlotCopyPath( currentBox, currentSlot, NULL );
+		if( slotURL ) CFURLSetXattr( slotURL, kDACALCarouselDocumentXAttrSlotAddDate, (CFStringRef)theDate );
+		if( slotURL ) CFURLSetXattr( slotURL, kDACALCarouselDocumentXAttrSlotKind, (CFStringRef)[slotTypeList titleOfSelectedItem] );
+		if( slotURL ) CFRelease( slotURL );
+		
 		
 		[[DACALTreeDataSource shared] slotAddedToDevice: currentBox forSlot: currentSlot];
 
-		if( ([[NSUserDefaults standardUserDefaults] boolForKey:@"PADEjectOnIndex"] == YES ) && (currentVolume != nil) )
-			[[NSWorkspace sharedWorkspace] unmountAndEjectDeviceAtPath: [currentVolume path]];
-		if( [[NSUserDefaults standardUserDefaults] boolForKey:@"PADCheckInOnIndex"] == YES )
-			DACALCommandMoveToSlotWithOptions( currentBox, currentSlot, kDACALOptionMoveDefault );
+		//if( ([[NSUserDefaults standardUserDefaults] boolForKey:@"PADEjectOnIndex"] == YES ) && (currentVolume != nil) )
+		//	[[NSWorkspace sharedWorkspace] unmountAndEjectDeviceAtPath: [currentVolume path]];
+		//if( [[NSUserDefaults standardUserDefaults] boolForKey:@"PADCheckInOnIndex"] == YES )
+		//	DACALCommandMoveToSlotWithOptions( currentBox, currentSlot, kDACALOptionMoveDefault );
+		
+		[PADOperationControlDevice finishIndexingVolume:[currentVolume path] forSlot:currentSlot onDevice:currentBox forTarget:self];
 	}
 
-	[AppController playUISound: sound];
+	//[AppController playUISound: sound];
 }
 
 -(void) startIndexProgress:(NSTimer*)timer

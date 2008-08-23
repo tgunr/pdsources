@@ -46,6 +46,15 @@
 // sort children using the compare: method in nodeData
 - (void)recursiveSortChildren;
 
+// sort children using given descriptor arrays
+- (void)sortChildrenUsingDescriptors:(NSArray*)newDescriptors;
+- (void)sortExpandedChildrenUsingDescriptors:(NSArray*)newDescriptors;
+- (void)sortExpandedChildrenForView:(NSOutlineView*)theView;
+- (void)recursiveSortChildrenUsingDescriptors:(NSArray*)newDescriptors;
+
+// Expand items being shown in a new view
+- (void)recursiveReExpandInView:(NSOutlineView*)theView;
+
 // Returns the minimum nodes from 'allNodes' required to cover the nodes in 'allNodes'.
 // This methods returns an array containing nodes from 'allNodes' such that no node in
 // the returned array has an ancestor in the returned array.

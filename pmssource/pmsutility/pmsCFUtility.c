@@ -9,6 +9,9 @@
 
 #include "pmsCFUtility.h"
 #include <sys/xattr.h>
+#include <sys/stat.h>
+#include <sys/errno.h>
+
 
 OSStatus		CFURLSetXattr( CFURLRef inURL, CFStringRef inKeyName, CFStringRef inKeyValue )
 {
@@ -34,6 +37,7 @@ OSStatus		CFURLSetXattr( CFURLRef inURL, CFStringRef inKeyName, CFStringRef inKe
 	keyValueSize = strlen((const char*)keyValue);
 	
 	if( setxattr( (const char *)&pathText, keyText, keyValue, keyValueSize, 0, 0 ) == -1 ) outResult = errno;
+	else outResult = 0;
 	
 EXIT:
 	if( keyText != NULL ) free( (void*)keyText );
@@ -42,7 +46,22 @@ EXIT:
 	return outResult;	
 }
 
-CFStringRef		CFURLCopyXattr( CFURLRef inURL, CFStringRef inKeyName, OSStatus* outError )
+size_t			CFURLGetXattrSize( CFURLRef inURL, CFStringRef inKeyName )
+{
+	UInt8			pathText[4096];
+	const char*		keyText = CFStringCreateCString(inKeyName, kCFStringEncodingUTF8);
+	size_t			keyValueSize = 0;
+	
+	if( keyText == NULL ) return keyValueSize;
+	
+	if( CFURLGetFileSystemRepresentation( inURL, TRUE, (UInt8*)&pathText, 4096 ) ) 
+		keyValueSize = getxattr( (const char *)&pathText, keyText, NULL, 0, 0, 0 );
+
+	free( (void*)keyText );
+	return keyValueSize;
+}
+
+CFStringRef		CFURLCopyXattr( CFAllocatorRef inAllocator, CFURLRef inURL, CFStringRef inKeyName, OSStatus* outError )
 {
 	OSStatus		outResult = -1;
 	UInt8			pathText[4096];
@@ -67,7 +86,7 @@ CFStringRef		CFURLCopyXattr( CFURLRef inURL, CFStringRef inKeyName, OSStatus* ou
 	keyValueSize = getxattr( (const char *)&pathText, keyText, keyValue, keyValueSize, 0, 0 );
 	if( keyValueSize == -1 ) goto EXIT;
 	
-	keyValueString = CFStringCreateWithBytes( NULL, (const UInt8*)keyValue, (CFIndex)keyValueSize, kCFStringEncodingUTF8, FALSE );
+	keyValueString = CFStringCreateWithBytes( inAllocator, (const UInt8*)keyValue, (CFIndex)keyValueSize, kCFStringEncodingUTF8, FALSE );
 	if( keyValueString != NULL ) outResult = 0;
 	
 EXIT:
@@ -175,3 +194,118 @@ BAIL:
 	if( doCommand ) free( doCommand );
 	return( outCFText );
 }
+
+CFDateRef	CFURLCopyDateModified( CFAllocatorRef inAllocator, CFURLRef url, SInt32* outError )
+{
+	CFDateRef			outDate = NULL;
+	SInt32				outResult = 0;
+	
+	outDate = (CFDateRef)CFURLCreatePropertyFromResource( inAllocator, url, kCFURLFileLastModificationTime, &outResult );
+	
+	if( outError ) *outError = outResult;
+	return( outDate );
+}
+
+// Time of file creation. Only set once when the file is created. 
+// On filesystems where birthtime is not available, this returns the ctime (last inode data modification) instead.
+// Some of this inspired by Darwin.  See http://www.opensource.apple.com/darwinsource/10.5.4/CF-476.14/CFFileUtilities.c
+// Specifically _CFGetFileProperties()
+
+CFDateRef	CFURLCopyDateCreated( CFAllocatorRef inAllocator, CFURLRef url, SInt32* outError )
+{
+	SInt32		theErr = kCFURLUnknownError;
+	CFDateRef	outDate = (CFDateRef)NULL;
+	
+	Boolean		fileExists = FALSE;
+    Boolean		isDirectory = FALSE;
+		
+    struct stat64	statBuf;
+    char			path[4096];
+	
+	if (!CFURLGetFileSystemRepresentation( url, TRUE, (uint8_t *)path, 4096)) goto BAIL;
+	
+    if (stat64(path, &statBuf) != 0)
+	{
+        // stat failed, but why?
+        if (errno == ENOENT) {
+            fileExists = false;
+			theErr = ENOENT;
+        } else {
+            theErr = errno;
+			goto BAIL;
+        }
+    } else {
+        fileExists = true;
+        isDirectory = ((statBuf.st_mode & S_IFMT) == S_IFDIR);
+    }
+	
+	if (fileExists)
+	{
+		CFAbsoluteTime theTime = (CFAbsoluteTime)statBuf.st_birthtimespec.tv_sec - kCFAbsoluteTimeIntervalSince1970;
+	    theTime += (CFAbsoluteTime)statBuf.st_birthtimespec.tv_nsec / 1000000000.0;
+		outDate = CFDateCreate( inAllocator, theTime );
+		if( outDate ) theErr = 0;
+	}
+	
+BAIL:
+	if( outError ) *outError = theErr;
+	return( outDate );
+}
+
+// Time when file data last accessed. Changed by the mknod(2) , utimes(2) and read(2) system calls.
+
+CFDateRef	CFURLCopyDateAccessed( CFAllocatorRef inAllocator, CFURLRef url, SInt32* outError )
+{
+	SInt32		theErr = kCFURLUnknownError;
+	CFDateRef	outDate = (CFDateRef)NULL;
+	
+	Boolean		fileExists = FALSE;
+    Boolean		isDirectory = FALSE;
+	
+    struct stat64	statBuf;
+    char			path[4096];
+	
+	if (!CFURLGetFileSystemRepresentation( url, TRUE, (uint8_t *)path, 4096)) goto BAIL;
+	
+    if (stat64(path, &statBuf) != 0)
+	{
+        // stat failed, but why?
+        if (errno == ENOENT) {
+            fileExists = false;
+			theErr = ENOENT;
+        } else {
+            theErr = errno;
+			goto BAIL;
+        }
+    } else {
+        fileExists = true;
+        isDirectory = ((statBuf.st_mode & S_IFMT) == S_IFDIR);
+    }
+	
+	if (fileExists)
+	{
+		CFAbsoluteTime theTime = (CFAbsoluteTime)statBuf.st_atimespec.tv_sec - kCFAbsoluteTimeIntervalSince1970;
+	    theTime += (CFAbsoluteTime)statBuf.st_atimespec.tv_nsec / 1000000000.0;
+		outDate = CFDateCreate( inAllocator, theTime );
+		if( outDate ) theErr = 0;
+	}
+	
+BAIL:
+	if( outError ) *outError = theErr;
+	return( outDate );
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

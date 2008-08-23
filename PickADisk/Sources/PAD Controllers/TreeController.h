@@ -22,6 +22,8 @@
 #define DragDropSimplePboardType 	@"MyCustomOutlineViewPboardType"
 #define COLUMNID_NAME				@"NameColumn"
 #define COLUMNID_SLOT				@"SlotColumn"
+#define COLUMNID_MODDATE			@"DateAddColumn"
+#define COLUMNID_TYPE				@"TypeColumn"
 //#define COLUMNID_NODE_KIND		@"NodeKindColumn"
 
 @class SimpleTreeNode;
@@ -107,6 +109,12 @@
 - (void)menuNeedsUpdate:(NSMenu*)menu fromTree:(id)tree;
 - (void)nodeNameChanged:(SimpleTreeNode*)theNode toName:(NSString*)theName;
 - (NSInteger)shouldEditTableColumn:(NSTableColumn *)tc item:(id)item;
+- (void)sortExpandedChildrenWithCurrentDescriptors:(SimpleTreeNode*)theNode;
+
+- (BOOL)outlineView:(NSOutlineView *)ov writeItems:(NSArray *)items toPasteboard:(NSPasteboard *)pboard;
+- (NSDragOperation)validateDropSource:(id <NSDraggingInfo>)info proposedItem:(id)item proposedChildIndex:(NSInteger)childIndex;
+- (BOOL)outlineView:(NSOutlineView *)ov acceptDrop:(id <NSDraggingInfo>)info item:(id)item childIndex:(NSInteger)childIndex;
+- (BOOL)performDropOperation:(id <NSDraggingInfo>)info onNode:(TreeNode *)parentNode atIndex:(NSInteger)childIndex;
 
 @end
 

@@ -14,6 +14,7 @@
 #include <sys/xattr.h>
 #include <mach/mach.h>
 #include <IOKit/IOKitLib.h>
+#include <IOKit/IOMessage.h>
 #include <IOKit/IOCFPlugIn.h>
 #include <IOKit/hid/IOHIDLib.h>
 #include <IOKit/hid/IOHIDKeys.h>
@@ -52,17 +53,24 @@ extern CFStringRef		kDACALCarouselDocumentInfoKeyUUID;
 extern CFStringRef		kDACALCarouselDocumentXAttrCarousel;
 extern CFStringRef		kDACALCarouselDocumentXAttrSlot;
 extern CFStringRef		kDACALCarouselDocumentXAttrSlotKind;
+extern CFStringRef		kDACALCarouselDocumentXAttrSlotAddDate;
+extern CFStringRef		kDACALCarouselDocumentXAttrSlotCheckout;
 extern CFStringRef		kDACALCarouselDocumentXAttrVolumeName;
+
+extern CFStringRef		kDACALCarouselNoticeDeviceOpen;
+extern CFStringRef		kDACALCarouselNoticeDeviceClose;
 
 
 extern const DACALDeviceRef	kDACALDefaultDevice;
 extern const DACALDeviceRef	kDACALIllegalDevice;
 extern const DACALDeviceRef	kDACALDevicesMaxCount;
+extern const DACALDeviceRef kDACALNullDevice;
 
 extern const DACALResult	kDACALOK;
 extern const DACALResult	kDACALBusy;
 extern const DACALResult	kDACALError;
 extern const DACALResult	kDACALInvalidParameter;
+
 
 const enum {
 	kDACALOptionMoveDefault		= 0x00,		// regular MoveToSlot:  close, move, open
@@ -75,6 +83,10 @@ const enum {								// This constant can be used with FSFindFolder()
 	kDACALCarouselsFolderType	= 'Crsl',	// to locate the Carousels folder.
 	kDACALCreatorType = 'PADr'
 } DACALEnumType;
+
+// Callbacks
+
+typedef void *DACALClientNotificationCallback( void* clientData, DACALDeviceRef noticeDevice, CFStringRef noticeMessage, CFDictionaryRef noticeData );
 
 // Public Functions
 
@@ -117,5 +129,13 @@ extern DACALDeviceRef	DACALDevicesGetDefaultDevice( void );
 extern DACALResult		DACALDevicesSetDefaultDevice( DACALDeviceRef deviceID );
 extern CFAllocatorRef	DACALDevicesGetCFAllocator( void );
 extern DACALResult		DACALDevicesSetCFAllocator( CFAllocatorRef defaultAlloc );
+
+extern DACALDeviceRef	DACALDeviceRetain( DACALDeviceRef inDevice );
+extern void				DACALDeviceRelease( DACALDeviceRef inDevice );
+
+extern DACALResult		DACALClientCreate( CFAllocatorRef useAllocator, CFStringRef clientID, void* useDataRef, void* useCallback);
+extern void				DACALClientRelease( CFStringRef clientID );
+extern void				DACALClientNotifyAll( DACALDeviceRef noticeDevice, CFStringRef noticeMessage, CFDictionaryRef noticeData );
+
 
 #endif // __dacallib__

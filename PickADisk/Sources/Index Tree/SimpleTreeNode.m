@@ -17,7 +17,7 @@
  redistribute this Apple software.
  
  In consideration of your agreement to abide by the following terms, and subject to these 
- terms, Apple grants you a personal, non-exclusive license, under Apple’s copyrights in 
+ terms, Apple grants you a personal, non-exclusive license, under Apple‚Äö√Ñ√¥s copyrights in 
  this original Apple software (the "Apple Software"), to use, reproduce, modify and 
  redistribute the Apple Software, with or without modifications, in source and/or binary 
  forms; provided that if you redistribute the Apple Software in its entirety and without 
@@ -58,11 +58,13 @@
         isLeaf = leaf;
         iconRep = nil;
         isExpandable = !isLeaf;
+		isExpanded = NO;
         isSelectable = isLeaf;    
 		location = NULL;
 		itemType = 0;
 		itemDevice = (DACALDeviceRef)NULL;
 		itemSlot = 0;
+		itemAddDate = nil;
 		itemFlavor = nil;
     }
     return self;
@@ -71,7 +73,7 @@
 - (id)initWithLocation:(NSURL *)loc {
 
 	BOOL	isAFolder = (CFURLHasDirectoryPath((CFURLRef)loc)) ? YES : NO;
-	BOOL	isASlot = (CFURLIsSlot((CFURLRef)loc)) ? YES : NO;
+//	BOOL	isASlot = (CFURLIsSlot((CFURLRef)loc)) ? YES : NO;
 
     if (self = [super init]) {
         location = [loc retain];
@@ -79,23 +81,28 @@
         isLeaf = !isAFolder;
         iconRep = CFURLGetIconAsNSImage( NULL, (CFURLRef)loc, NULL);
         isExpandable = isAFolder;
+		isExpanded = NO;
         isSelectable = YES;    
-		itemType = 0;
-		itemDevice = CFURLCopyCarouselUUID( (CFURLRef)loc );
+		itemType = kPADTypeDataSlot;
+		itemDevice = CFURLCopyCarouselUUID( kCFAllocatorDefault, (CFURLRef)loc );
 		itemSlot = CFURLGetSlotNumber( (CFURLRef)loc, FALSE );
+		itemAddDate = (NSDate*)CFURLCopyDateSlotAdded( NULL, (CFURLRef)loc, NULL );
 		
-		if(isASlot == YES){
-			itemType = kPADTypeDataSlot;
-			itemFlavor = (NSString*)DACALSlotCopyType( itemDevice, itemSlot, NULL );
-		}
-		if( itemFlavor == nil) itemFlavor = @"Files";
-    }
+		itemFlavor = (NSString*)CFURLCopyItemFlavor( (CFURLRef)loc, NULL );			// was DACALSlotCopyType( itemDevice, itemSlot, NULL );
+		if( itemFlavor == nil) itemFlavor = PADINDEX_FLAVORVALUE_FILES;
+		if( [itemFlavor compare:@"data"] == NSOrderedSame ) itemFlavor = PADINDEX_FLAVORVALUE_FILES;		// patch for old run slots! please fix.
+		
+		if( [itemFlavor compare:PADINDEX_FLAVORVALUE_MUSIC] == NSOrderedSame )
+			itemType = kPADTypeDataMuisc;
+		else if( [itemFlavor compare:PADINDEX_FLAVORVALUE_MOVIE] == NSOrderedSame )
+			itemType = kPADTypeDataMovie;
+	}
     return self;
 }
 
 - (id)initWithLocation:(NSURL *)loc isLeaf:(BOOL)leaf {
 
-	BOOL	isASlot = (CFURLIsSlot((CFURLRef)loc)) ? YES : NO;
+//	BOOL	isASlot = (CFURLIsSlot((CFURLRef)loc)) ? YES : NO;
 
     if (self = [super init]) {
         location = [loc retain];
@@ -103,19 +110,22 @@
         isLeaf = leaf;
         iconRep = CFURLGetIconAsNSImage( NULL, (CFURLRef)loc, NULL);
         isExpandable = !leaf;
+		isExpanded = NO;
         isSelectable = YES;    
- 		itemType = 0;
-		itemDevice = CFURLCopyCarouselUUID( (CFURLRef)loc );
+ 		itemType = kPADTypeDataSlot;
+		itemDevice = CFURLCopyCarouselUUID( kCFAllocatorDefault, (CFURLRef)loc );
 		itemSlot = CFURLGetSlotNumber( (CFURLRef)loc, FALSE );
-   }
+		itemAddDate = (NSDate*)CFURLCopyDateSlotAdded( NULL, (CFURLRef)loc, NULL );
 
-	if(isASlot == YES){
-		itemType = kPADTypeDataSlot;
-		itemFlavor = (NSString*)DACALSlotCopyType( itemDevice, itemSlot, NULL );
-	}
-	if( itemFlavor == nil) itemFlavor = @"Files";
-	
-	
+		itemFlavor = (NSString*)CFURLCopyItemFlavor( (CFURLRef)loc, NULL );			// was DACALSlotCopyType( itemDevice, itemSlot, NULL );
+		if( itemFlavor == nil) itemFlavor = @"Files";
+		if( [itemFlavor compare:@"data"] == NSOrderedSame ) itemFlavor = @"Files";
+		
+		if( [(NSString*)@"Music" compare:itemFlavor] == NSOrderedSame )
+			itemType = kPADTypeDataMuisc;
+		else if( [(NSString*)@"Movie" compare:itemFlavor] == NSOrderedSame )
+			itemType = kPADTypeDataMovie;
+   }	
 	return self;
 }
 
@@ -140,8 +150,15 @@
 }
 
 - (void)dealloc {
-    [name release];
-    [iconRep release];
+    if(name)		[name release];
+    if(iconRep)		[iconRep release];
+	if(location)	[location release];
+	if(itemFlavor)	[itemFlavor release];
+	if(itemAddDate)	[itemAddDate release];
+	if(itemDevice)	CFRelease((CFTypeRef)itemDevice);
+	
+	if(subTree)		[subTree release];
+	
     [super dealloc];
 }
 
@@ -184,6 +201,14 @@
 
 - (BOOL)isExpandable {
     return isExpandable;
+}
+
+- (void)setExpanded:(BOOL)value {
+    isExpanded = value;
+}
+
+- (BOOL)isExpanded {
+    return isExpanded;
 }
 
 - (BOOL)isSelectable {
@@ -264,15 +289,30 @@
     }
 }
 
+- (NSDate *)itemAddDate { return itemAddDate; }
+
+- (void)setItemAddDate:(NSDate *)newDay {
+    if (!itemAddDate || ![itemAddDate isEqual:newDay]) {
+		[itemAddDate release];
+		itemAddDate = [newDay retain];
+    }
+}
+
 - (SimpleTreeNode*)subTree { return subTree; }
 
 - (BOOL)busy { return isBusy; }
 - (void)setBusy:(BOOL)value { isBusy = value; }
 
 
+-(NSComparisonResult)compareDataAddDates:(SimpleNodeData *)other
+{
+	//	NSLog(@"COMPARE Add Date");
+	return( [[self itemAddDate] compare:[other itemAddDate]] );
+}
+
 -(NSComparisonResult)compareDataNames:(SimpleNodeData *)other
 {
-	NSLog(@"COMPARE NAME");
+//	NSLog(@"COMPARE NAME");
 	return( [[self name] localizedCaseInsensitiveCompare:(NSString*)[other name]] );
 }
 
@@ -285,6 +325,12 @@
 	if( thisSlot == thatSlot ) return NSOrderedSame;
 	if( thisSlot < thatSlot ) return NSOrderedAscending;
 	return NSOrderedDescending;
+}
+
+-(NSComparisonResult)compareDataFlavors:(SimpleNodeData *)other
+{
+	//	NSLog(@"COMPARE Flavors");
+	return( [[self itemFlavor] compare:[other itemFlavor]] );
 }
 
 - (NSComparisonResult)compare:(id)otherData
@@ -383,7 +429,7 @@
         while ((entry = [entryEnum nextObject])) {
 			if( CFURLIsVisible((CFURLRef)entry) ) {
 				if (CFURLHasDirectoryPath((CFURLRef)entry))
-					child = [SimpleTreeNode treeFromLocation:entry];
+					child = [SimpleTreeNode treeOperationFromLocation:entry];
 				else 
 					child = [[[SimpleTreeNode alloc] initWithData:[SimpleNodeData nodeDataWithURL:entry] parent:nil children:[NSArray array]] autorelease];
 				[self insertChild: child atIndex: [self numberOfChildren]];
@@ -452,6 +498,11 @@
     return self;
 }
 
+- (void)dealloc {
+    [self setBusy:NO];
+    [super dealloc];
+}
+
 + (id)nodeDataWithURL:(NSURL*)loc {
     // Convenience method to return a leaf node with its location set.
 	return [[[SimpleTreeNode alloc] initWithData:[SimpleNodeData nodeDataWithURL:loc] parent:nil children:[NSArray array]] autorelease];
@@ -466,19 +517,25 @@
     return [[[SimpleTreeNode alloc] initFromLocation:loc] autorelease];
 }
 
-+ (id)treeOperationFromLocation:(NSURL *)loc
++ (id)treeOperationFromLocation:(NSURL *)loc forUI:(BOOL)uiQueue
 {
 	SimpleTreeNode*		ourNode = [[SimpleTreeNode alloc] initWithData:[SimpleNodeData nodeDataWithURL:loc] parent:nil children:[NSArray array]];// [SimpleTreeNode nodeDataWithURL:loc];
 
 	self = ourNode;	
 
 	PADIndexOperation *indexOp = [[PADIndexOperation alloc] initWithLocation:loc forChild:ourNode];
-	[[AppController shared] queueOperation:indexOp];
+	if( uiQueue ) [[AppController shared] queueUIOperation:indexOp];
+	else [[AppController shared] queueOperation:indexOp];
+
 	[indexOp release];
 	
     return self;
 }
 
++ (id)treeOperationFromLocation:(NSURL *)loc
+{
+	return [SimpleTreeNode treeOperationFromLocation:loc forUI:NO];
+}
 
 - (void)setDataDeviceAndSlotFromData:(id)data
 {
@@ -508,20 +565,20 @@
 	BOOL	isBusy = [[self nodeData] busy];
 	if( isBusy == value ) return;
 	
-	[[self nodeData] setBusy:value];
 	isBusy = value;
 	
 	if( isBusy == YES )
 	{	//NSLog(@"%@:Got Busy",self);
 		[[AppController shared]	performSelectorOnMainThread:@selector(scheduleAddBusyBody:)
 												 withObject:self
-											  waitUntilDone:NO];
+											  waitUntilDone:YES];
 	} else {
 		//NSLog(@"%@:Not Busy",self);
 		[[AppController shared]	performSelectorOnMainThread:@selector(scheduleRemoveBusyBody:)
 												 withObject:self
 											  waitUntilDone:NO];		
 	}
+	[[self nodeData] setBusy:value];
 }
 
 - (SimpleTreeNode*)childWithName:(NSString*)theName
@@ -608,6 +665,39 @@ FOUND:
 	return( outFoundNode );
 }
 
+-(SimpleNodeData*)keyName { return [self nodeData]; }
+-(SimpleNodeData*)keySlotNumber { return [self nodeData]; }
+-(SimpleNodeData*)keyAddDate { return [self nodeData]; }
+-(SimpleNodeData*)keyFlavor { return [self nodeData]; }
+
+- (NSString*)localPathName { return [[self nodeData] name]; }
+
+- (NSMutableString*)localPathString {
+	
+	if( [[self nodeData] itemDevice] == kDACALNullDevice ) return nil;
+	
+	NSMutableString*		outNames = [NSMutableString stringWithCapacity:0];
+	SimpleTreeNode*			aParent = (SimpleTreeNode*)self;	//[self nodeParent];
+	
+	while ([aParent nodeParent] != nil) {
+		[outNames setString:[NSString stringWithFormat:@"%@/%@",[aParent localPathName],outNames]];
+		aParent = (SimpleTreeNode*)[aParent nodeParent];
+	}
+	return outNames;
+}
+
+- (NSString *)description {
+	
+	if( [[self nodeData] itemDevice] == kDACALNullDevice ) return [[self nodeData] name];
+	
+	NSMutableString*	localPath = [self localPathString];
+	NSString*			localHost = @"";
+	NSString*			localDevice = (NSString*)CFUUIDCreateString( kCFAllocatorDefault, (CFUUIDRef)[[self nodeData] itemDevice] );
+	NSString*			urlString = [NSString stringWithFormat:@"carousel://%@/%@/%i/%@", localHost, localDevice, [[self nodeData] itemSlot], localPath];
+
+	[localDevice release];
+    return urlString;
+}
 
 
 @end

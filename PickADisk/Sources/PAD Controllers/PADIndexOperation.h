@@ -21,6 +21,8 @@
 @property(retain) NSURL				*itemLocation;
 @property(retain) id				finishTarget;
 
+- (BOOL)cancelOperationForDevice:(DACALDeviceRef)oldBox;
+
 - (id)initWithLocation:(NSURL*)url forChild:(SimpleTreeNode*)child;
 
 // Prototype for completion selector is -(void)subTreeCompletedLoad:(SimpleTreeNode*)item
