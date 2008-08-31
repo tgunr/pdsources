@@ -256,6 +256,9 @@ AFTERRELOAD:
 	} else if ([[tableColumn identifier] isEqualToString:COLUMNID_TYPE]) {
 		//objectValue = [data itemFlavor];
 		objectValue = DACALCreateImageRefForFlavor([data itemFlavor]);
+    } else if ([[tableColumn identifier] isEqualToString:COLUMNID_SCORE]) {
+		SearchNodeData *Sdata = [item nodeData];
+		objectValue = [NSNumber numberWithInt:(int)([Sdata matchScore]*100)];
 	} else {
 		//
 		NSLog(@"Unknown Column: %@", [tableColumn identifier]);
@@ -355,11 +358,29 @@ AFTERRELOAD:
 	}
 }
 
+- (void)outlineViewItemDidExpand:(NSNotification *)notification
+{
+	SimpleTreeNode*		theItem = [[notification userInfo] valueForKey:@"NSObject"];
+	
+	if( dataSource != nil )
+		[dataSource performSelector:@selector(nodeDidExpand:) withObject:theItem];
+}
+
 - (void)outlineViewItemDidCollapse:(NSNotification *)notification {
 	SimpleTreeNode*		theItem = [[notification userInfo] valueForKey:@"NSObject"];
 	
 	if( theItem ) [[theItem nodeData] setExpanded:NO];
+	
+	if( dataSource != nil )
+		[dataSource performSelector:@selector(nodeDidCollapse:) withObject:theItem];	
 }
+
+- (void)outlineViewSelectionDidChange:(NSNotification *)notification
+{
+	if( dataSource != nil )
+		[dataSource performSelector:@selector(selectionDidChange)];
+}
+
 
 - (void)outlineView:(NSOutlineView *)ov willDisplayOutlineCell:(id)cell forTableColumn:(NSTableColumn *)tableColumn item:(id)item {
 //	if( [[item nodeData] isExpanded] ) [ov expandItem:item];
@@ -449,6 +470,22 @@ AFTERRELOAD:
 	[outlineView selectItems:selectedItems byExtendingSelection:NO];
 }
 
+
+- (NSString *)outlineView:(NSOutlineView *)ov toolTipForCell:(NSCell *)cell rect:(NSRectPointer)inRect tableColumn:(NSTableColumn *)tc item:(id)inItem mouseLocation:(NSPoint)inMouseLocation
+{
+	if( dataSource != nil )
+		return [dataSource toolTipForCell:cell rect:inRect tableColumn:tc item:inItem mouseLocation:inMouseLocation];
+	
+	return nil;
+}
+
+- (BOOL)outlineView:(NSOutlineView *)outlineView shouldShowCellExpansionForTableColumn:(NSTableColumn *)tc item:(id)inItem
+{
+	if( dataSource != nil )
+		return [dataSource shouldShowCellExpansionForTableColumn:tc item:inItem];
+	
+	return NO;
+}
 
 // ================================================================
 //  NSOutlineView data source methods. (dragging related)
@@ -1143,6 +1180,21 @@ NSURL *NewFileURLForWritingFile(NSString *dirpath, NSString *basename, NSString 
 	return;
 }
 
+- (void)nodeDidCollapse:(SimpleTreeNode*)theNode
+{
+	return;
+}
+
+- (void)nodeDidExpand:(SimpleTreeNode*)theNode
+{
+	return;
+}
+
+- (void)selectionDidChange
+{
+	return;
+}
+
 - (NSInteger)shouldEditTableColumn:(NSTableColumn *)tc item:(id)item
 {
 	return YES;
@@ -1159,7 +1211,15 @@ NSURL *NewFileURLForWritingFile(NSString *dirpath, NSString *basename, NSString 
 	if( theNode ) [theNode sortExpandedChildrenUsingDescriptors:[[[self treeControl] outlineView] sortDescriptors ]];
 }
 
+- (BOOL)shouldShowCellExpansionForTableColumn:(NSTableColumn *)tc item:(id)inItem
+{
+	return NO;
+}
 
+- (NSString*)toolTipForCell:(NSCell *)cell rect:(NSRectPointer)inRect tableColumn:(NSTableColumn *)tc item:(id)inItem mouseLocation:(NSPoint)inMouseLocation
+{
+	return [inItem tooltip];
+}
 
 @end	// TreeControllerDataSource
 

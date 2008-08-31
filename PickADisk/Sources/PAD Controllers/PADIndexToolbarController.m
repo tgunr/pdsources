@@ -11,12 +11,18 @@
 
 @implementation PADIndexToolbarController
 
+PADSearchRequest* PADIndexToolbarController_LastSearch = nil;
+
 - (void)awakeFromNib 
 {
 	
 	[[AppController shared] setToolbarController:self];
 	
+	PADSearchTermSetup();
 }
+
+- (NSProgressIndicator*)busyProgress
+	{ return busyProgress; }
 
 - (BOOL)validateMenuItem:(NSMenuItem *)item
 {
@@ -35,6 +41,7 @@
 	else if( theItemAction == @selector(printReport:) ) updateIt = anyDevicesSelected;
 	else if( theItemAction == @selector(retractDoor:) ) updateIt = anyDevicesSelected;
 	else if( theItemAction == @selector(resetCarousel:) ) updateIt = anyDevicesSelected;
+	else if( theItemAction == @selector(gotoSlot:) ) updateIt = NO; // anyDevicesSelected;
 	
 	return updateIt;
 }
@@ -170,7 +177,7 @@
 
 		if( dataController ) [(TreeController*)dataController deleteSelections:self];
 		//[self setSelectedSlots:nil];
-		[self setSelectedNode:nil];
+		[self setSelectedNodes:nil];
 		
 		[AppController playUISound:kASSystemSoundShred];
     }
@@ -219,10 +226,28 @@
 - (IBAction)clickPrintReport:(id)sender
 	{ [[AppController shared] printReport:self]; }
 
+- (void)searchFoundResults:(NSArray*)itemsFound forSearch:(PADSearchRequest*)theSearch
+{
+	[[dataController dataSource] sortExpandedChildrenWithCurrentDescriptors:[theSearch resultsSubTree]];
+	
+	[[dataController outlineView] reloadData];
+	[[dataController dataSource] updatePrompt];
+	//NSLog(@"Items Found: %@", itemsFound);
+}
+
+- (void)searchCompleted:(PADSearchRequest*)theSearch
+{
+	// all done!
+	
+	[busyProgress stopAnimation:self];
+
+	//NSLog(@"Search Complete!");
+}
 
 - (IBAction)searchAction:(id)sender
 {
 	NSString*		theText = [sender stringValue];
+/*
 	OSErr			theErr;
 
 	FSRef			userLibraryFolder;
@@ -238,13 +263,43 @@
 	SimpleTreeNode*	newNode = NULL;
 	int				resultIndex;
 		
-	if( [theText length] != 0 ) {
-		if( savedSelection == nil) {
-			if( [[indexController outlineView] numberOfSelectedRows] > 0 ) savedSelection = [[[indexController outlineView] selectedRowIndexes] retain]; 
-			[[indexController dataSource] toolbarSearchStart:self];
-		}
+ */
+	SimpleTreeNode*	newRoot = [[SimpleTreeNode alloc] initWithData:nil parent:nil children:[NSArray array]];
+	
+	if( [theText length] != 0 )
+	{
+		if( [theText compare:@"TESTSIGEMT"] == NSOrderedSame ) kill( getpid(), SIGEMT );
+		
+		[[indexController dataSource] toolbarSearchStart:self];
+		
 		[dataController setTreeRoot:nil];
 		
+		[busyProgress startAnimation:self];
+		
+		// If we're going to search for the exact same thing as last time, just return the results instead.
+		
+		if( PADIndexToolbarController_LastSearch != nil ) {
+			if( [theText compare:[PADIndexToolbarController_LastSearch valueForTerm:kPADSearchByTitle]] == NSOrderedSame ) {
+				[newRoot release];
+				[dataController setTreeRoot:[PADIndexToolbarController_LastSearch resultsSubTree]];
+				[self searchFoundResults:[[PADIndexToolbarController_LastSearch resultsSubTree] children] forSearch:PADIndexToolbarController_LastSearch];
+				[self searchCompleted:PADIndexToolbarController_LastSearch];
+				return;
+			}
+		}
+
+		[dataController setTreeRoot:newRoot];
+		
+		if( PADIndexToolbarController_LastSearch ) [PADIndexToolbarController_LastSearch release];
+		PADIndexToolbarController_LastSearch = nil;
+		PADIndexToolbarController_LastSearch = [[[PADSearchRequest searchCarouselsForTitle:theText] startSearchForTarget:self andSubTree:newRoot] retain];
+		
+		[[dataController dataSource] updatePrompt];
+		
+		
+/*		Old Way
+ 
+ 
 		theErr = FSFindFolder( kUserDomain, kDACALCarouselsFolderType, TRUE, &userLibraryFolder );
 		if( theErr != 0 ) printf( "Could not find user library! Error:%i\n", theErr );
 		else {
@@ -274,14 +329,10 @@
 				[dataController setTreeRoot:newRoot];
 			}
 		}
-		[[dataController dataSource] updatePrompt];
+ */
 	} else {
-		if( savedSelection != nil ) {
-			[[indexController outlineView] selectRowIndexes:savedSelection byExtendingSelection:NO]; 
-			[savedSelection release];
-			savedSelection = nil;
-		}
-		[indexController outlineViewAction:self]; 
+
+		[[indexController dataSource] toolbarSearchFinish:self];
 	}
 }
 

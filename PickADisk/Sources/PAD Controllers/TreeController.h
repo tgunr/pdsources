@@ -24,6 +24,7 @@
 #define COLUMNID_SLOT				@"SlotColumn"
 #define COLUMNID_MODDATE			@"DateAddColumn"
 #define COLUMNID_TYPE				@"TypeColumn"
+#define COLUMNID_SCORE				@"ScoreColumn"
 //#define COLUMNID_NODE_KIND		@"NodeKindColumn"
 
 @class SimpleTreeNode;
@@ -115,6 +116,9 @@
 - (NSDragOperation)validateDropSource:(id <NSDraggingInfo>)info proposedItem:(id)item proposedChildIndex:(NSInteger)childIndex;
 - (BOOL)outlineView:(NSOutlineView *)ov acceptDrop:(id <NSDraggingInfo>)info item:(id)item childIndex:(NSInteger)childIndex;
 - (BOOL)performDropOperation:(id <NSDraggingInfo>)info onNode:(TreeNode *)parentNode atIndex:(NSInteger)childIndex;
+
+- (BOOL)shouldShowCellExpansionForTableColumn:(NSTableColumn *)tc item:(id)inItem;
+- (NSString*)toolTipForCell:(NSCell *)cell rect:(NSRectPointer)inRect tableColumn:(NSTableColumn *)tc item:(id)inItem mouseLocation:(NSPoint)inMouseLocation;
 
 @end
 

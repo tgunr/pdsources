@@ -9,23 +9,37 @@
 #import <Cocoa/Cocoa.h>
 
 #import "TreeController.h"
-#import "SimpleTreeNode.h"
+#import "PADIndexNodeData.h"
 #import "PADIndexToolbarController.h"
 
 // Index group names
 
-#define		PADINDEX_GROUPTITLE_LIBRARY		@"LIBRARY"
-#define		PADINDEX_GROUPTITLE_DEVICES		@"CAROUSELS"
-#define		PADINDEX_GROUPTITLE_FAVORITES	@"BOOKMARKS"
-#define		PADINDEX_GROUPTITLE_SEARHCES	@"SEARCH FOR"
+#define		PADINDEX_GROUPTITLE_LIBRARY			@"LIBRARY"
+#define		PADINDEX_GROUPTITLE_DEVICES			@"CAROUSELS"
+#define		PADINDEX_GROUPTITLE_FAVORITES		@"BOOKMARKS"
+#define		PADINDEX_GROUPTITLE_SEARHCES		@"SEARCH FOR"
 
 #define		PADINDEX_FLAVORVALUE_FILES			@"Files"
+#define		PADINDEX_FLAVORVALUE_IMAGE			@"Image"
 #define		PADINDEX_FLAVORVALUE_MUSIC			@"Music"
 #define		PADINDEX_FLAVORVALUE_MOVIE			@"Movie"
 
 #define		PADINDEX_FLAVORTITLE_FILES			@"Files"
+#define		PADINDEX_FLAVORTITLE_IMAGE			@"Images"
 #define		PADINDEX_FLAVORTITLE_MUSIC			@"Music"
 #define		PADINDEX_FLAVORTITLE_MOVIE			@"Movies"
+
+@interface DACALIndexState : NSObject
+{
+	NSMutableDictionary*	savedViewData;	
+}
+
+-(void)restoreSettings;
+-(void)removeSetting:(NSString*)settingName forKey:(NSString*)keyName;
+-(void)addSettingsForKey:(NSString*)keyName saveView:(NSOutlineView*)doView saveSelection:(BOOL)doSelect saveSorts:(BOOL)doSorts;
++(id)saveSetupForKey:(NSString*)keyName saveView:(NSOutlineView*)doView saveSelection:(BOOL)doSelect saveSorts:(BOOL)doSorts;
+
+@end
 
 @interface DACALTreeDataSource : TreeControllerDataSource {
 
@@ -34,6 +48,8 @@
 	IBOutlet	NSTabView		*tabView;
 	IBOutlet	id				secondaryController;
 	
+	DACALIndexState*			savedSelection;
+	DACALIndexState*			sortedSelection;
 }
 
 + (id)shared;
@@ -41,6 +57,7 @@
 - (SimpleTreeNode*)findTreeNodeForDevice:(DACALDeviceRef)theBoxRef;
 - (void)slotAddedToDevice:(DACALDeviceRef)theBoxRef forSlot:(DACALSlotNum)newSlot;
 - (void)toolbarSearchStart:(id)sender;
+- (void)toolbarSearchFinish:(id)sender;
 - (void)reportNoDevice:(BOOL)hasBox;
 - (void)setPrompt:(NSString*)newPrompt;
 - (void)updatePrompt;
@@ -58,3 +75,7 @@
 - (void)doubleClickCellContent:(id)item;
 
 @end
+
+
+
+

@@ -81,8 +81,8 @@
 	CFURLRef			slotURL;
 
 	int					slotindex, slotcount;
-	OSType				slotIconType = kGenericCDROMIcon;
-	OSType				compareIconType = 0;
+//	OSType				slotIconType = kGenericCDROMIcon;
+//	OSType				compareIconType = 0;
 
 	[theChildNode setBusy:YES];
 
@@ -93,12 +93,13 @@
 		theSlotTitle = DACALSlotCopyTitle( theBoxRef, slotNum, NULL );
 		if( theSlotTitle != NULL ) {															// Create a url to the slot
 			slotURL = CFURLCreateCopyAppendingPathComponent( NULL, (CFURLRef)[slotFolders objectAtIndex:slotindex-1], (CFStringRef) theSlotTitle, TRUE );			
-			theSubtreeChild = [SimpleTreeNode treeOperationFromLocation:(NSURL*)slotURL];
+			//theSubtreeChild = [SimpleTreeNode treeOperationFromLocation:(NSURL*)slotURL];
+			theSubtreeChild = [SimpleTreeNode treeFromLocation:(NSURL*)slotURL];
 
-			compareIconType = [[theSubtreeChild nodeData] itemType];
-			if		( compareIconType == kPADTypeDataMuisc ) slotIconType = 'cdda';				// CDAudioVolume
-			else if	( compareIconType == kPADTypeDataMovie ) slotIconType = 'dvd ';				// public.dvd-media
-			else											 slotIconType = kGenericCDROMIcon;  // public.cd-media
+			//compareIconType = [[theSubtreeChild nodeData] itemType];
+			//if		( compareIconType == kPADTypeDataMuisc ) slotIconType = 'cdda';				// CDAudioVolume
+			//else if	( compareIconType == kPADTypeDataMovie ) slotIconType = 'dvd ';				// public.dvd-media
+			//else											 slotIconType = kGenericCDROMIcon;  // public.cd-media
 			//[[theSubtreeChild nodeData] setIconRep:DACALGetIconImageForType(slotIconType)];
 			
 			[theSubtreeNode insertChild:theSubtreeChild atIndex:[theSubtreeNode numberOfChildren]];

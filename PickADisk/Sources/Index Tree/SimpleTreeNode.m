@@ -47,8 +47,20 @@
 #import "DACALTreeDataSource.h"
 #import "pmsDACALUtility.h"
 
-#define KEY_GROUPNAME	@"Group"
-#define KEY_ENTRIES		@"Entries"
+Boolean		CFAbsoluteTimeBetweenTimes( CFAbsoluteTime lowTime, CFAbsoluteTime unknownTime, CFAbsoluteTime hiTime );
+Boolean		CFAbsoluteTimeBetweenTimes( CFAbsoluteTime lowTime, CFAbsoluteTime unknownTime, CFAbsoluteTime hiTime )
+{
+	CFAbsoluteTime	actualLow = lowTime;
+	CFAbsoluteTime	actualHi = hiTime;
+
+	if( lowTime > hiTime ) {
+		actualLow = hiTime;
+		actualHi = lowTime;
+	}
+	
+	return ( (actualLow <= unknownTime) && (unknownTime <=actualHi) );
+}
+
 
 @implementation SimpleNodeData
 
@@ -131,22 +143,22 @@
 
 + (id)leafDataWithName:(NSString*)str {
     // Convenience method to return a leaf node with its name set.
-    return [[[SimpleNodeData alloc] initWithName:str isLeaf:YES] autorelease];
+    return [[SimpleNodeData alloc] initWithName:str isLeaf:YES];
 }
 
 + (id)groupDataWithName:(NSString*)str {
     // Convenience method to return a branch node with its name set.
-    return [[[SimpleNodeData alloc] initWithName:str isLeaf:NO] autorelease];
+    return [[SimpleNodeData alloc] initWithName:str isLeaf:NO];
 }
 
 + (id)nodeDataWithURL:(NSURL*)loc {
     // Convenience method to return a leaf node with its location set.
-    return [[[SimpleNodeData alloc] initWithLocation:loc] autorelease];
+    return [[SimpleNodeData alloc] initWithLocation:loc];
 }
 
 + (id)nodeDataWithURL:(NSURL*)loc isLeaf:(BOOL)leaf {
     // Convenience method to return a leaf node with its location set.
-    return [[[SimpleNodeData alloc] initWithLocation:loc isLeaf:leaf] autorelease];
+    return [[SimpleNodeData alloc] initWithLocation:loc isLeaf:leaf];
 }
 
 - (void)dealloc {
@@ -270,6 +282,10 @@
 - (void)setItemSlot:(DACALSlotNum)slot { itemSlot = slot; }
 - (DACALSlotNum)itemSlot { return itemSlot; }
 
+- (NSNumber*)numberForSlotNumber
+{ return [NSNumber numberWithInt:[self itemSlot]]; }
+
+
 - (void)setItemType:(NSInteger)type { itemType = type; }
 - (NSInteger)itemType { return itemType; }
 
@@ -333,6 +349,9 @@
 	return( [[self itemFlavor] compare:[other itemFlavor]] );
 }
 
+-(NSComparisonResult)compareDataScores:(SimpleNodeData *)other
+	{ return NSOrderedSame; }
+
 - (NSComparisonResult)compare:(id)otherData
 { 
 	NSComparisonResult		slotResult = NSOrderedAscending;
@@ -347,6 +366,111 @@
 	return slotResult;
 }
 
+- (NSNumber*)searchForName:(NSString*)other withOptions:(NSMutableDictionary*)options
+{
+	NSString*	ourName = [self name];
+	NSRange		foundRange;
+	PADSearchRelevance	rank = 0.0;
+	NSStringCompareOptions	findOptions = NSCaseInsensitiveSearch || NSNumericSearch || NSDiacriticInsensitiveSearch || NSWidthInsensitiveSearch;
+	NSNumber*	optionOption = nil;
+	
+	if( (options) && (optionOption = [options objectForKey:@"Options"]) )
+		findOptions = [optionOption intValue];
+	
+	if( [ourName localizedCaseInsensitiveCompare:other] == NSOrderedSame ) rank = 1.0;
+	else {
+		foundRange = [ourName rangeOfString:other options:findOptions];
+		if( foundRange.length != 0 ) rank = (foundRange.length*1.0) / ([ourName length]*1.0);
+	}
+
+	//if( rank )
+	//	NSLog(@"Search for:%@ in %@ score:%f length:%i ourlength:%i", other, [self description], rank, foundRange.length, [ourName length]);
+	
+	return( [NSNumber numberWithFloat:rank] );
+}
+
+- (NSNumber*)searchForFlavor:(NSString*)other withOptions:(NSMutableDictionary*)options
+{
+	NSString*	ourFlavor = [self itemFlavor];
+	PADSearchRelevance	rank = 0.0;
+	
+	if( other )
+		if( [ourFlavor compare:other] == NSOrderedSame ) rank = 1.0;
+	
+	//if( rank )
+	//	NSLog(@"Search for:%@ in %@ score:%f", other, [self description], rank);
+	
+	return( [NSNumber numberWithFloat:rank] );
+}
+
+- (NSNumber*)searchForDateAdded:(id)other withOptions:(NSMutableDictionary*)options
+{
+	CFDateRef	ourDate = (CFDateRef)[self itemAddDate];
+//	CFDateRef	otherDate;
+//	CFTimeInterval	timeBetween;
+	
+	CFAbsoluteTime  distantTime = (ourDate!=NULL) ? CFDateGetAbsoluteTime(ourDate) : 0.0;
+	CFAbsoluteTime	anchorTime = 0.0;
+	CFAbsoluteTime	limitTime = 0.0;
+	PADSearchRelevance	rank = 0.0;
+	NSString*	whichKind = nil;
+	
+	whichKind = (NSString*)[options objectForKey:@"Range"];
+	
+	if( [whichKind isEqual:@"Day Count"] ) {
+		CFTimeInterval	dayCount = [[options objectForKey:@"Days"] doubleValue];
+		CFTimeInterval	daySeconds = dayCount * 86400;
+		
+		if( other == nil ) other = [NSDate date];
+		if( ([other isKindOfClass:[NSString class]] ) && ([other compare:@"Yesterday"] == NSOrderedSame) )
+			other = [NSDate yesterday];
+		
+		if( (other != nil) && (ourDate != nil) )
+		{
+			anchorTime = CFDateGetAbsoluteTime((CFDateRef)other);
+			limitTime = anchorTime + daySeconds;
+			//otherDate = (CFDateRef)[(NSDate*)other addTimeInterval:(NSTimeInterval)daySeconds];
+			
+			//timeBetween = CFDateGetTimeIntervalSinceDate( ourDate, otherDate );
+			if( CFAbsoluteTimeBetweenTimes( limitTime, distantTime, anchorTime ) )
+				rank = (anchorTime-distantTime)/daySeconds;
+			if( rank < 0.0 ) rank = -rank;
+		}
+	}	
+	
+	// if( rank )
+	//	NSLog(@"Search distantDate:%f anchorDate:%f limitDate:%f  rank:%f", distantTime, anchorTime, limitTime, rank );
+	
+	return( [NSNumber numberWithFloat:rank] );
+}
+
+- (NSNumber*)searchForFileUTI:(NSString*)other withOptions:(NSMutableDictionary*)options
+{
+	CFStringRef			ourUTI = CFURLCopyUTI( kCFAllocatorDefault, (CFURLRef)[self location], NULL );
+	PADSearchRelevance	rank = 0.0;
+	
+	if( other ) {
+		if( [other isKindOfClass:[NSString class]] )
+			if( UTTypeConformsTo( ourUTI, (CFStringRef)other ) ) rank = 1.0;
+		if( [other isKindOfClass:[NSArray class]] )
+		{
+			NSArray*	utiArray = (NSArray*)other;
+			int		utiIndex, utiCount = [utiArray count];
+			
+			for( utiIndex=0; utiIndex < utiCount; utiIndex++ )
+				if( UTTypeConformsTo( ourUTI, (CFStringRef)[utiArray objectAtIndex:utiIndex] ) )
+				{
+					rank = 1.0;
+					break;
+				}
+		}
+	}
+	//if( rank )
+	//	NSLog(@"Search UTI for:%@ in %@ score:%f", other, ourUTI, rank);
+	
+	return( [NSNumber numberWithFloat:rank] );
+}
+
 @end
 
 @implementation SimpleTreeNode
@@ -355,6 +479,12 @@
 {
 	if (![super init]) return nil;
 
+	return self;
+}
+
+-(id)initWithData:(id)data
+{
+	self = [super initWithData:data parent:nil children:[[NSArray alloc] init]];
 	return self;
 }
 
@@ -368,7 +498,7 @@
 	NSString*	entryName;
 	NSString*	entryIconType; 
     
-    self = [super initWithData:data parent:nil children:[NSArray array]];
+    self = [super initWithData:data parent:nil children:[[NSArray alloc] init]];
     if (self != nil) {
         while ((entry = [entryEnum nextObject])) {
 			
@@ -377,10 +507,10 @@
 			else if ([entry isKindOfClass: [NSArray class]]) {
 				entryName = [entry objectAtIndex:0];
 				entryIconType = [entry objectAtIndex:1];
-				child = [[[SimpleTreeNode alloc] initWithData:[SimpleNodeData leafDataWithName:entryName] parent:nil children:[NSArray array]] autorelease];
+				child = [[SimpleTreeNode alloc] initWithData:[SimpleNodeData leafDataWithName:entryName] parent:nil children:[[NSArray alloc] init]];
 				[[child nodeData] setIconRep: DACALGetIconImageForType( UTGetOSTypeFromString( (CFStringRef)entryIconType ) )];
 			} else 
-                child = [[[SimpleTreeNode alloc] initWithData:[SimpleNodeData leafDataWithName:entry] parent:nil children:[NSArray array]] autorelease];
+                child = [[SimpleTreeNode alloc] initWithData:[SimpleNodeData leafDataWithName:entry] parent:nil children:[[NSArray alloc] init]];
             [self insertChild: child atIndex: [self numberOfChildren]];
         }
     }
@@ -424,14 +554,14 @@
     id entry;
     SimpleTreeNode *child = nil;
     
-    if( [self nodeData] == nil ) self = [super initWithData:[SimpleNodeData nodeDataWithURL:loc] parent:nil children:[NSArray array]]; // [super initWithData:data parent:nil children:[NSArray array]];
+    if( [self nodeData] == nil ) self = [super initWithData:[SimpleNodeData nodeDataWithURL:loc] parent:nil children:[[NSArray alloc] init]]; // [super initWithData:data parent:nil children:[NSArray array]];
     if (self != nil) {
         while ((entry = [entryEnum nextObject])) {
 			if( CFURLIsVisible((CFURLRef)entry) ) {
 				if (CFURLHasDirectoryPath((CFURLRef)entry))
-					child = [SimpleTreeNode treeOperationFromLocation:entry];
+					child = [SimpleTreeNode treeFromLocation:entry];
 				else 
-					child = [[[SimpleTreeNode alloc] initWithData:[SimpleNodeData nodeDataWithURL:entry] parent:nil children:[NSArray array]] autorelease];
+					child = [[SimpleTreeNode alloc] initWithData:[SimpleNodeData nodeDataWithURL:entry] parent:nil children:[[NSArray alloc] init]];
 				[self insertChild: child atIndex: [self numberOfChildren]];
 			}
         }
@@ -479,14 +609,14 @@
     id entry;
     SimpleTreeNode *child = nil;
     
-    if( [self nodeData] == nil ) self = [super initWithData:[SimpleNodeData nodeDataWithURL:loc] parent:nil children:[NSArray array]];
+    if( [self nodeData] == nil ) self = [super initWithData:[SimpleNodeData nodeDataWithURL:loc] parent:nil children:[[NSArray alloc] init]];
     if (self != nil) {
         while ((entry = [entryEnum nextObject])) {
 			if( CFURLIsVisible((CFURLRef)entry) ) {
 				if (CFURLHasDirectoryPath((CFURLRef)entry))
 					child = [SimpleTreeNode treeOperationFromLocation:entry];
 				else 
-					child = [[[SimpleTreeNode alloc] initWithData:[SimpleNodeData nodeDataWithURL:entry] parent:nil children:[NSArray array]] autorelease];
+					child = [[SimpleTreeNode alloc] initWithData:[SimpleNodeData nodeDataWithURL:entry] parent:nil children:[[NSArray alloc] init]];
 				[self insertChild: child atIndex: [self numberOfChildren]];
 			}
         }
@@ -505,21 +635,21 @@
 
 + (id)nodeDataWithURL:(NSURL*)loc {
     // Convenience method to return a leaf node with its location set.
-	return [[[SimpleTreeNode alloc] initWithData:[SimpleNodeData nodeDataWithURL:loc] parent:nil children:[NSArray array]] autorelease];
+	return [[SimpleTreeNode alloc] initWithData:[SimpleNodeData nodeDataWithURL:loc] parent:nil children:[NSArray array]];
 }
 
 
 + (id)treeFromDictionary:(NSDictionary *)dict {
-    return [[[SimpleTreeNode alloc] initFromDictionary:dict] autorelease];
+    return [[SimpleTreeNode alloc] initFromDictionary:dict];
 }
 
 + (id)treeFromLocation:(NSURL *)loc {
-    return [[[SimpleTreeNode alloc] initFromLocation:loc] autorelease];
+    return [[SimpleTreeNode alloc] initFromLocation:loc];
 }
 
 + (id)treeOperationFromLocation:(NSURL *)loc forUI:(BOOL)uiQueue
 {
-	SimpleTreeNode*		ourNode = [[SimpleTreeNode alloc] initWithData:[SimpleNodeData nodeDataWithURL:loc] parent:nil children:[NSArray array]];// [SimpleTreeNode nodeDataWithURL:loc];
+	SimpleTreeNode*		ourNode = [[SimpleTreeNode alloc] initWithData:[SimpleNodeData nodeDataWithURL:loc] parent:nil children:[[NSArray alloc] init]];// [SimpleTreeNode nodeDataWithURL:loc];
 
 	self = ourNode;	
 
@@ -665,6 +795,9 @@ FOUND:
 	return( outFoundNode );
 }
 
+- (NSNumber*)numberForSlotNumber
+	{ return [[self nodeData] numberForSlotNumber]; }
+
 -(SimpleNodeData*)keyName { return [self nodeData]; }
 -(SimpleNodeData*)keySlotNumber { return [self nodeData]; }
 -(SimpleNodeData*)keyAddDate { return [self nodeData]; }
@@ -683,10 +816,28 @@ FOUND:
 		[outNames setString:[NSString stringWithFormat:@"%@/%@",[aParent localPathName],outNames]];
 		aParent = (SimpleTreeNode*)[aParent nodeParent];
 	}
+	
+	if( [outNames length] > 0 ) outNames = (NSMutableString*)[outNames substringToIndex:[outNames length]-1];
+	
 	return outNames;
 }
 
-- (NSString *)description {
+- (NSString *)description
+{
+	
+	if( [[self nodeData] itemDevice] == kDACALNullDevice ) return [[self nodeData] name];
+	if( [[self nodeData] itemSlot] == 0 ) return [[self nodeData] name];
+	
+	NSMutableString*	localPath = [self localPathString];
+	NSString*			localDevice = (NSString*)DACALCommandCopyName([[self nodeData] itemDevice], NULL );
+	NSString*			outString = [NSString stringWithFormat:@"“%@” Slot %i: %@", localDevice, [[self nodeData] itemSlot], localPath];
+
+	[localDevice release];
+    return outString;
+}
+
+- (NSString*)urlString
+{
 	
 	if( [[self nodeData] itemDevice] == kDACALNullDevice ) return [[self nodeData] name];
 	
@@ -697,6 +848,23 @@ FOUND:
 
 	[localDevice release];
     return urlString;
+}
+
+- (NSString *)tooltip
+{
+	if( [[self nodeData] itemDevice] == kDACALNullDevice ) return [[self nodeData] name];
+	if( [[self nodeData] itemSlot] == 0 ) return [[self nodeData] name];
+
+	NSMutableString*	localPath = [self localPathString];
+	
+	if( [[self nodeData] respondsToSelector:@selector(matchActual)] )
+		localPath = [[[self nodeData] matchActual] localPathString];
+	
+	NSString*			localDevice = (NSString*)DACALCommandCopyName([[self nodeData] itemDevice], NULL );
+	NSString*			outString = [NSString stringWithFormat:@"“%@” Slot %i\n%@", localDevice, [[self nodeData] itemSlot], localPath];
+	
+	[localDevice release];
+    return outString;
 }
 
 

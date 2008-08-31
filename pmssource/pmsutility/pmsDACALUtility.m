@@ -267,6 +267,8 @@ NSImage*	DACALGetIconImageForType( int	theType )
 	
 	if( theType == 0 ) goto BAIL;
 	
+	if( theType == 'morI' ) theType = 'morÄ';
+	
 	outResult = GetIconRef( kOnSystemDisk, kDACALCreatorType, theType, &theOutputIcon );
 	if( outResult != 0 ) outResult = GetIconRef( kOnSystemDisk, kSystemIconsCreator, theType, &theOutputIcon );
 	
@@ -326,6 +328,8 @@ NSImage*		DACALCreateImageRefForFlavor( NSString* flavorName )
 		genericIconType = 'gMus';				// CDAudioVolume
 	else if( [(NSString*)PADINDEX_FLAVORVALUE_MOVIE compare:(NSString*)flavorName] == NSOrderedSame )
 		genericIconType = 'gMov';				// public.dvd-media
+	else if( [(NSString*)PADINDEX_FLAVORVALUE_IMAGE compare:(NSString*)flavorName] == NSOrderedSame )
+		genericIconType = 'gImg';				// generic-image
 
 	return( DACALGetIconImageForType(genericIconType) );
 }

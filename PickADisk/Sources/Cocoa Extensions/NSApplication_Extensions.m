@@ -22,3 +22,32 @@
 }
 @end
 */
+@implementation NSDate(MyExtensions)
+
++(NSDate*)tomorrow
+{ return [[NSDate date] addTimeInterval:86400.0]; }
+
++(NSDate*)yesterday
+	{ return [[NSDate date] addTimeInterval:-86400.0]; }
+
+-(BOOL)isBetweenStartDate:(NSDate*)startDate andEndDate:(NSDate*)endDate
+{
+	BOOL	isBetween = NO;
+	
+	NSDate*	lowDate = startDate;
+	NSDate*	hiDate = endDate;
+	
+	if( [lowDate compare:hiDate] != NSOrderedAscending )
+	{
+		lowDate = endDate;
+		endDate = startDate;
+	}
+	
+	if( [self compare:lowDate] != NSOrderedAscending )
+		if( [self compare:hiDate] != NSOrderedDescending )
+			isBetween = YES;
+	
+	return isBetween;
+}
+
+@end		//NSDate(MyExtensions)

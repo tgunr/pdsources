@@ -184,9 +184,19 @@
 	NSString*		deviceUUIDString = (NSString*)CFUUIDCreateString( NULL, (CFUUIDRef)deviceID );
 	NSString*		doCmd = [[NSBundle mainBundle] pathForResource:@"carousel" ofType:@"sh"];
 	NSMutableArray*	doArgs = [NSMutableArray arrayWithCapacity:6];
+	NSString*		slotType = [slotTypeList titleOfSelectedItem];
 	
-	int				doLevel = 4;													// Should use user defaults!
+	int				doLevel = 4;													
+	
+	if( [slotType compare:@"Movie"] == NSOrderedSame ) 
+		doLevel = [[NSUserDefaults standardUserDefaults] integerForKey:@"PADScanDepthVideo"];
+	else if( [slotType compare:@"Music"] == NSOrderedSame )
+		doLevel = [[NSUserDefaults standardUserDefaults] integerForKey:@"PADScanDepthAudio"];
+	else 
+		doLevel = [[NSUserDefaults standardUserDefaults] integerForKey:@"PADScanDepthData"];
 //	PADIndexProgressController*	progressController = nil;
+	
+//	NSLog(@"Do Level:%i", doLevel);
 	
 	if( newPath != nil )
 		doPath = [NSString stringWithFormat:@"-d%@", [newPath path]];
@@ -199,7 +209,7 @@
 	[doArgs addObject:doPath];
 	
 //	[doArgs addObject:@"-X"];
-	NSLog(@"Task Call: %@\n\t%@", doCmd, [doArgs description]);
+//	NSLog(@"Task Call: %@\n\t%@", doCmd, [doArgs description]);
 	
 	progressController = nil;
 	[NSBundle loadNibNamed:@"CarouselProgress" owner:self];

@@ -16,10 +16,12 @@
 #import "pmsCFUtility.h"
 #import "pmsDACALUtility.h"
 #import "PADOperationOpenDevice.h"
+#import <ILCrashReporter/ILCrashReporter.h>
 
 CFStringRef		kPADClientIdentifier = CFSTR("PAD.DACAL.CLIENT");
 
 #define PAD_BUSYBODY_DELAY 0.1
+#define PAD_PREFS_VERSION	(const char*)"0.1"
 
 void DACALNotification( void* inData, DACALDeviceRef inBox, CFStringRef inMessage, CFDictionaryRef inParam )
 {
@@ -43,6 +45,7 @@ void DACALSetup( void )
 	DACALRegisterIconResource( CFSTR("Generic_Files"), 'gFil' );
 	DACALRegisterIconResource( CFSTR("Generic_Music"), 'gMus' );
 	DACALRegisterIconResource( CFSTR("Generic_Movie"), 'gMov' );
+	DACALRegisterIconResource( CFSTR("Generic_Image"), 'gImg' );
 
 	//DACALRegisterIconResource( CFSTR("ClockSearch"), 'ClkS' );
 	//DACALRegisterIconResource( CFSTR("SmartFolder"), 'SmFl' );
@@ -74,10 +77,15 @@ static AppController *shared;
 
 		PADBOX_VALID_BEGIN
 		
+		[self initCrashReport];
+		[self initPreferences];
 		DACALSetup();
 
 		queue = [[NSOperationQueue alloc] init];
-		[queue setMaxConcurrentOperationCount:5];
+		[queue setMaxConcurrentOperationCount:6];
+		
+		queueSearch = [[NSOperationQueue alloc] init];
+		[queueSearch setMaxConcurrentOperationCount:2];
 		
 		queueUI = [[NSOperationQueue alloc] init];
 		[queueUI setMaxConcurrentOperationCount:1];
@@ -97,6 +105,7 @@ static AppController *shared;
 
 - (void)queueOperation:(NSOperation*)op { [queue addOperation:op]; }
 - (void)queueUIOperation:(NSOperation*)op { [queueUI addOperation:op]; }
+- (void)queueSearchOperation:(NSOperation*)op {	[queueSearch addOperation:op]; }
 
 - (void)cancelOperationsForDevice:(DACALDeviceRef)oldBox
 {
@@ -120,6 +129,64 @@ static AppController *shared;
 	DACALClientRelease( kPADClientIdentifier );
 	
     [super dealloc];
+}
+
+- (void)initCrashReport
+{
+	[[ILCrashReporter defaultReporter]
+	 launchReporterForCompany:@"PickADisk"
+	 reportAddr:@"crashreport@pickadisk.com"];	
+}
+
+- (void)initPreferences
+{
+	NSMutableDictionary*	defaultPrefs = [NSMutableDictionary dictionaryWithCapacity:0];
+	NSNumber*				boolTRUE = [NSNumber numberWithInt:1];
+	NSNumber*				boolFALSE = [NSNumber numberWithInt:0];
+	NSString*				prefsVersion = [NSString stringWithCString:PAD_PREFS_VERSION];
+	NSString*				currentVersion = nil;
+	BOOL					needsUpdate = NO;
+	BOOL					gotUpdate = NO;
+	NSUserDefaults*			defaults = [NSUserDefaults standardUserDefaults];
+	
+	currentVersion = [defaults stringForKey:@"PADPrefsVersion"];
+	
+	if( !currentVersion || ![prefsVersion isEqual:currentVersion] )
+		needsUpdate = YES;
+	
+	[defaultPrefs setObject:prefsVersion forKey:@"PADPrefsVersion"];
+	
+	[defaultPrefs setObject:boolTRUE forKey:@"PADPlaySounds"];
+
+	[defaultPrefs setObject:boolTRUE forKey:@"PADEjectOnIndex"];
+	[defaultPrefs setObject:boolTRUE forKey:@"PADCheckInOnIndex"];
+	
+	[defaultPrefs setObject:[NSNumber numberWithInt:5] forKey:@"PADScanDepthData"];
+	[defaultPrefs setObject:[NSNumber numberWithInt:3] forKey:@"PADScanDepthAudio"];
+	[defaultPrefs setObject:[NSNumber numberWithInt:1] forKey:@"PADScanDepthVideo"];
+	
+	[defaultPrefs setObject:boolTRUE forKey:@"PADColumnDateAdded"];
+	[defaultPrefs setObject:boolTRUE forKey:@"PADColumnSlotNum"];
+	[defaultPrefs setObject:boolTRUE forKey:@"PADColumnSlotType"];
+	
+	[defaultPrefs setObject:boolFALSE forKey:@"PADSearchResultsGrouped"];
+
+	[defaults registerDefaults:defaultPrefs];
+	
+	if( needsUpdate )
+	{
+		if( currentVersion == nil ) 
+			gotUpdate = YES;
+		
+				
+		if( gotUpdate == YES ) {
+			[defaults setObject:prefsVersion forKey:@"PADPrefsVersion"];
+			[defaults synchronize];
+			if( currentVersion == nil ) currentVersion = [NSString stringWithCString:(const char*)"0.0"];
+			NSLog(@"Updated preferences from version %@ to version %@", currentVersion, prefsVersion);
+		}
+	}
+	
 }
 
 - (void)awakeFromNib {
@@ -303,6 +370,7 @@ static AppController *shared;
 - (IBAction)resetCarousel:(id)sender { [toolbarController clickReset:self]; }
 - (IBAction)checkInOut:(id)sender { [toolbarController clickCheckOut:self]; }
 - (IBAction)retractDoor:(id)sender { [toolbarController clickCloseDoor:self]; }
+- (IBAction)gotoSlot:(id)sender { NSLog(@"Unimplemented feature."); }
 
 - (IBAction)printReport:(id)sender
 {
@@ -412,7 +480,7 @@ static AppController *shared;
 		else
 			theTable = [dataView outlineView];
 		if(theTable != nil)
-			[theTable reloadItem:(id)entry reloadChildren:YES];
+			if( [[[entry nodeParent] nodeData] isExpanded] ) [theTable reloadItem:(id)entry reloadChildren:[[entry nodeData] isExpanded]];
 			//NSLog( @"Got Busy: %@ <%@>\n\tBodies: %@", [entry description], entry, [busyBodies description] );
 		theTable = nil;
 	}

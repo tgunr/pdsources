@@ -1259,6 +1259,34 @@ BAIL:
 
 CFURLRef		DACALSlotCopyPath( DACALDeviceRef deviceID, DACALSlotNum slotNum, DACALResult* outError )
 {
+	CFURLRef	outURL = NULL;
+	CFURLRef	boxURL = DACALCommandCopyPath( deviceID, outError );
+	CFStringRef	slotName = NULL;
+	FSRef		slotRef;
+	Boolean		goodSlot = FALSE;
+	
+	if( boxURL == NULL ) return outURL;
+	
+	slotName = CFStringCreateWithFormat( gDACALDefaultCFAllocator, NULL, CFSTR("Slot %i"), (int)slotNum );
+	if( slotName ) {
+		outURL = CFURLCreateCopyAppendingPathComponent( gDACALDefaultCFAllocator, boxURL, slotName, TRUE );
+		CFRelease( slotName );
+	}
+	
+	// check if real?
+	if( outURL ) {
+		goodSlot = CFURLGetFSRef( outURL, &slotRef );
+		if( !goodSlot) {
+			CFRelease( outURL );
+			outURL = NULL;
+		}
+	}
+	
+	return outURL;
+}	
+/*
+CFURLRef		DACALSlotCopyPath( DACALDeviceRef deviceID, DACALSlotNum slotNum, DACALResult* outError )
+{
 	DACALResult		outResult = kIOReturnBadArgument;
 	CFURLRef		outPathURL = NULL;
 	CFStringRef		outPathString = NULL;
@@ -1291,6 +1319,7 @@ BAIL:
 	if( boxUUID )		CFRelease( boxUUID );	
 	return( outPathURL );
 }
+ */
 
 CFStringRef		DACALSlotCopyType( DACALDeviceRef deviceID, DACALSlotNum slotNum, DACALResult* outError )
 {

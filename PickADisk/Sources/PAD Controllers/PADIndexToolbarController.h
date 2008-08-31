@@ -10,6 +10,7 @@
 #import "TreeController.h"
 #import "DACALTreeDataSource.h"
 #import "PADAddVolumeController.h"
+#import "PADSearchRequest.h"
 
 @interface PADIndexToolbarController : NSObject {
 	
@@ -28,6 +29,8 @@
 	IBOutlet	NSSearchField	*searchField;
 	IBOutlet	NSSearchField	*homeSearchField;
 	
+	IBOutlet	NSProgressIndicator	*busyProgress;
+	
 	IBOutlet	id			indexController;
 	IBOutlet	id			dataController;
 	IBOutlet	id			addVolumeController;
@@ -36,7 +39,6 @@
 	NSArray					*selectedSlots;
 	NSArray					*selectedNodes;
 	
-	NSIndexSet				*savedSelection;
 	BOOL					hasBoxes;
 
 }
@@ -70,5 +72,6 @@
 - (void)addSelectedNode:(SimpleTreeNode*)theNode;
 - (NSArray*)selectedNodes;
 - (void)resetSelection;
+- (NSProgressIndicator*)busyProgress;
 
 @end

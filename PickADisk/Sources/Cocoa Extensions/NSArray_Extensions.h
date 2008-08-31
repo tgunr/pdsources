@@ -2,6 +2,7 @@
 
 @interface NSArray(MyExtensions)
 - (BOOL)containsObjectIdenticalTo:(id)object;
+- (NSArray*) arrayWithSubTrees;
 @end
 
 @interface NSMutableArray(MyExtensions)

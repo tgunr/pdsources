@@ -296,7 +296,35 @@ BAIL:
 }
 
 
-
+CFStringRef	CFURLCopyUTI( CFAllocatorRef inAllocator, CFURLRef inURL, OSStatus*	outError )
+{
+	CFStringRef			outUTI = NULL;
+	LSItemInfoRecord	theInfo;
+	CFStringRef			theTag = NULL;
+	OSStatus			theErr;
+	
+	
+	theErr = LSCopyItemInfoForURL( inURL, kLSRequestExtension || kLSRequestTypeCreator, &theInfo );
+	if( theErr != 0 ) goto BAIL;
+	
+	if( theInfo.extension != NULL )
+		theTag = theInfo.extension;
+	else
+		theTag = UTCreateStringForOSType( theInfo.filetype );
+	
+	if( theTag == NULL ) {
+		theErr = kCFURLUnknownError;
+		goto BAIL;
+	}
+	
+	outUTI = UTTypeCreatePreferredIdentifierForTag( kUTTagClassFilenameExtension, theTag, NULL );
+	if( outUTI == NULL ) theErr = kCFURLUnknownError;
+	
+BAIL:
+	if( theTag != NULL ) CFRelease( theTag );
+	if( outError ) *outError = theErr;
+	return outUTI;
+}
 
 
 

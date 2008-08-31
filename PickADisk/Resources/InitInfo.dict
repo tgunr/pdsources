@@ -12,13 +12,17 @@
 					<string>docs</string>
 				</array>
 				<array>
-					<string>Music</string>
-					<string>spki</string>
+					<string>Images</string>
+					<string>morI</string>
 				</array>
 				<array>
 					<string>Movies</string>
 					<string>fvoc</string>
 				</array>
+				<array>
+					<string>Music</string>
+					<string>spki</string>
+			</array>
 			</array>
 			<key>Group</key>
 			<string>LIBRARY</string>
@@ -50,6 +54,10 @@
 				</array>
 				<array>
 					<string>Past Week</string>
+					<string>clck</string>
+				</array>
+				<array>
+					<string>Past Month</string>
 					<string>clck</string>
 				</array>
 				<array>

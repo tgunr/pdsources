@@ -4,7 +4,7 @@
 @implementation PADPrefsController
 
 - (void)awakeFromNib {
-	
+
 	if( tabToolbar ) [tabToolbar setSelectedItemIdentifier:[[[tabToolbar items] objectAtIndex:0] itemIdentifier]];
 		
 	[[NSUserDefaultsController sharedUserDefaultsController] addObserver:self forKeyPath:@"values.SULastCheckTime" options:0 context:NULL];

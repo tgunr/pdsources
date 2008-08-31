@@ -17,6 +17,7 @@ void DACALSetup( void );
 @interface AppController : NSObject {
 	NSOperationQueue*		queue;
 	NSOperationQueue*		queueUI;
+	NSOperationQueue*		queueSearch;
 	NSMutableArray*			busyBodies;
 //	BOOL					busyBusy;
 	TreeController*			dataView;
@@ -29,8 +30,11 @@ void DACALSetup( void );
 + (void)playUISoundForResult:(DACALResult)theResult;
 
 - (IBAction)provideFeedback:(id)sender;			// Now unused - sent to prefs controller instead
+- (void)initCrashReport;
+- (void)initPreferences;
 - (void)queueOperation:(NSOperation*)op;
 - (void)queueUIOperation:(NSOperation*)op;
+- (void)queueSearchOperation:(NSOperation*)op;
 
 - (void)setDataView:(TreeController*)tc;
 - (PADIndexToolbarController*)toolbarController;
@@ -44,6 +48,7 @@ void DACALSetup( void );
 - (IBAction)idUnits:(id)sender;
 - (IBAction)retractDoor:(id)sender;
 - (IBAction)resetCarousel:(id)sender;
+- (IBAction)gotoSlot:(id)sender;
 
 -(void)deviceAttached:(DACALDeviceRef)newBox;
 -(void)deviceDetached:(DACALDeviceRef)oldBox;

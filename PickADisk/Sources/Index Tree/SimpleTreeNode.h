@@ -3,6 +3,9 @@
 
 #import "TreeNode.h"
 
+#define KEY_GROUPNAME	@"Group"
+#define KEY_ENTRIES		@"Entries"
+
 const enum {
 	kPADTypeUnknown				= 0,
 	kPADTypeGroupLibrary,
@@ -16,7 +19,8 @@ const enum {
 	kPADTypeDataSlot,
 	kPADTypeDataFiles,
 	kPADTypeDataMovie,
-	kPADTypeDataMuisc
+	kPADTypeDataMuisc,
+	kPADTypeDataImage
 } PADNodeTypes;
 
 @class SimpleNodeData;
@@ -33,6 +37,7 @@ const enum {
 
 + (id)treeOperationFromLocation:(NSURL *)loc forUI:(BOOL)uiQueue;
 + (id)treeOperationFromLocation:(NSURL *)loc;
+- (id)initWithData:(id)data;
 - (id)initFromLocation:(NSURL*)loc;
 - (id)initOperationFromLocation:(NSURL*)loc;
 
@@ -54,8 +59,11 @@ const enum {
 - (SimpleTreeNode*)childWithSlotNum:(DACALSlotNum)theSlotNum;
 - (SimpleTreeNode*)childWithItemType:(NSInteger)theItemType;
 
+- (NSString*)urlString;
+- (NSString *)tooltip;
 //-(NSString*)name;
 //-(NSNumber*)slotNSNumber;
+- (NSNumber*)numberForSlotNumber;
 
 -(SimpleNodeData*)keyName;
 -(SimpleNodeData*)keySlotNumber;
@@ -81,6 +89,11 @@ const enum {
 	BOOL			isBusy;
 	SimpleTreeNode *subTree;
 }
+
+- (id)initWithName:(NSString *)str isLeaf:(BOOL)leaf;
+
+- (id)initWithLocation:(NSURL *)loc;
+- (id)initWithLocation:(NSURL *)loc isLeaf:(BOOL)leaf;
 
 // Convenience method to return a leaf node with its name set.
 + (id)leafDataWithName:(NSString *)name;
@@ -132,6 +145,7 @@ const enum {
 
 - (void)setItemSlot:(DACALSlotNum)slot;
 - (DACALSlotNum)itemSlot;
+- (NSNumber*)numberForSlotNumber;
 
 // Set and get the flavor.
 - (void)setItemFlavor:(NSString *)name;
@@ -151,6 +165,7 @@ const enum {
 - (NSComparisonResult)compareDataSlots:(SimpleNodeData *)otherData;
 - (NSComparisonResult)compareDataAddDates:(SimpleNodeData *)other;
 - (NSComparisonResult)compareDataFlavors:(SimpleNodeData *)other;
+- (NSComparisonResult)compareDataScores:(SimpleNodeData *)other;
 
 - (NSComparisonResult)compare:(id)otherData;
 

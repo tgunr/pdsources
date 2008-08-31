@@ -18,3 +18,11 @@ IBOutlet id addVolumeController;
 
 @end
 */
+@interface NSDate(MyExtensions)
+
++(NSDate*)tomorrow;
++(NSDate*)yesterday;
+
+-(BOOL)isBetweenStartDate:(NSDate*)startDate andEndDate:(NSDate*)endDate;
+
+@end
