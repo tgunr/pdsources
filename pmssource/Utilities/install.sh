@@ -9,7 +9,7 @@ CMDPATH="`dirname "$0"`"
 
 # See if user has a bin folder
 if [[ -d ~/bin ]] ; then
-	rsync -auv --exclude="install.sh" --exclude=".*" "$CMDPATH" ~/bin
+	rsync -auv --exclude="install.sh" --exclude=".*" "$CMDPATH/*.sh" ~/bin
 
 	set()					# set -s for set command without functions
 	{
