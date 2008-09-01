@@ -74,6 +74,10 @@ while [ "${1+isset}" ]; do
 	    to_slot="$2"
 	    shift 2
     ;;
+	-v|--verbose)
+		verbose=-v
+		shift
+	;;
     -h|--help)
 	    usage
 	    # no shifting needed here, we'll quit!
@@ -104,7 +108,6 @@ if ! [[ $from_slot && $to_slot ]] ; then
 	echo "$CMDNAME: --from-slot and --to-slot must be specified"
 	exit 64
 fi
-set -x
 
 from_carouselbase="$CAROUSELPATH/$from_carousel.carousel"
 from_carouselbaseslot="$from_carouselbase/Slot $from_slot"
@@ -145,14 +148,14 @@ fi
 
 # go find the --to-slot and move it aside
 if [[ -e "$to_carouselbaseslot" ]] ; then
-	$DEBUGCMD mv "$to_carouselbaseslot" "$CAROUSELPATH/"
+	$DEBUGCMD mv -f $verbose "$to_carouselbaseslot" "$CAROUSELPATH/"
 fi
 
 # now move the from_slot to the to_slot
-$DEBUGCMD mv -fv "$from_carouselbaseslot" "$to_carouselbaseslot"
-#$DEBUGCMD set-xattr "$to_carouselbaseslot" $to_carousel $to_slot
+$DEBUGCMD mv -f $verbose "$from_carouselbaseslot" "$to_carouselbaseslot"
+$DEBUGCMD set-xattr "$to_carouselbaseslot" $to_carousel $to_slot
 
 if [[ -e "$CAROUSELPATH/Slot $to_slot" ]] ; then
-	$DEBUGCMD mv -fv "$CAROUSELPATH/Slot $to_slot" "$from_carouselbaseslot"
-#	$DEBUGCMD set-xattr "$from_carouselbaseslot" $from_carousel $from_slot
+	$DEBUGCMD mv -f $verbose "$CAROUSELPATH/Slot $to_slot" "$from_carouselbaseslot"
+	$DEBUGCMD set-xattr "$from_carouselbaseslot" $from_carousel $from_slot
 fi
