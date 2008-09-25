@@ -22,7 +22,7 @@
  redistribute this Apple software.
  
  In consideration of your agreement to abide by the following terms, and subject to these 
- terms, Apple grants you a personal, non-exclusive license, under AppleÕs copyrights in 
+ terms, Apple grants you a personal, non-exclusive license, under Appleâ€™s copyrights in 
  this original Apple software (the "Apple Software"), to use, reproduce, modify and 
  redistribute the Apple Software, with or without modifications, in source and/or binary 
  forms; provided that if you redistribute the Apple Software in its entirety and without 
@@ -193,6 +193,20 @@
     }
     return YES;
 }
+
+- (void)reloadData:(id)newData reloadChildren:(BOOL)recurse
+{
+	if( [self nodeData] == nil )
+		[self setNodeData:[newData reload]];
+	else
+		[self setNodeData:[[self nodeData] reloadData:newData]];
+	
+	if( recurse == YES )
+		[nodeChildren makeObjectsPerformSelector:@selector(reloadDataAndChildren)];
+}
+
+- (void)reloadDataAndChildren
+	{ [self reloadData:nil reloadChildren:YES]; }
 
 - (void)recursiveSortChildren {
     [nodeChildren sortUsingSelector:@selector(compare:)];

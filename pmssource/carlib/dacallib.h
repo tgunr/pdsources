@@ -56,6 +56,7 @@ extern CFStringRef		kDACALCarouselDocumentXAttrSlotKind;
 extern CFStringRef		kDACALCarouselDocumentXAttrSlotAddDate;
 extern CFStringRef		kDACALCarouselDocumentXAttrSlotCheckout;
 extern CFStringRef		kDACALCarouselDocumentXAttrVolumeName;
+extern CFStringRef		kDACALCarouselDocumentXAttrUserTitle;
 
 extern CFStringRef		kDACALCarouselNoticeDeviceOpen;
 extern CFStringRef		kDACALCarouselNoticeDeviceClose;
@@ -114,6 +115,7 @@ extern DACALResult		DACALCommandDVDEject( DACALDeviceRef deviceID );
 
 extern DACALResult		DACALSlotCreateIndex( DACALDeviceRef deviceID, DACALSlotNum slotNum, CFStringRef slotTitle, DACALCount indexLevel, CFURLRef sourcePath );
 extern DACALResult		DACALSlotDeleteIndex( DACALDeviceRef deviceID, DACALSlotNum slotNum );
+extern DACALResult		DACALSlotMove( DACALDeviceRef fromDeviceID, DACALSlotNum fromSlotNum, DACALDeviceRef toDeviceID, DACALSlotNum toSlotNum );
 extern CFStringRef		DACALSlotCopyTitle( DACALDeviceRef deviceID, DACALSlotNum slotNum, DACALResult* outError );
 extern DACALResult		DACALSlotSetTitle( DACALDeviceRef deviceID, DACALSlotNum slotNum, CFStringRef slotTitle );
 extern CFURLRef			DACALSlotCopyPath( DACALDeviceRef deviceID, DACALSlotNum slotNum, DACALResult* outError );

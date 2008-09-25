@@ -43,6 +43,10 @@
 // returns YES if every 'node' in the array 'nodes' is an child of ours.
 - (BOOL)isParentOfNodesInArray:(NSArray *)nodes;
 
+// The nodeData is invalid and needs refreshing, or if necessary replacing
+- (void)reloadData:(id)newData reloadChildren:(BOOL)recurse;
+- (void)reloadDataAndChildren;
+
 // sort children using the compare: method in nodeData
 - (void)recursiveSortChildren;
 

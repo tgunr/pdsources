@@ -43,7 +43,7 @@
 {
 	if( self = [super init] )
 	{
-		[self setTheBoxRef:kDACALNullDevice];
+		[self setTheBoxRef:nil];
 		[self setWorkSlot:0];
 		[self setOtherDevice:kDACALNullDevice];
 		[self setOtherSlot:0];
@@ -54,7 +54,7 @@
 
 -(void)dealloc
 {
-	[self setTheBoxRef:kDACALNullDevice];
+	[self setTheBoxRef:nil];
 	[self setWorkSlot:0];
 	[self setOtherDevice:kDACALNullDevice];
 	[self setOtherSlot:0];
@@ -63,7 +63,7 @@
 	[super dealloc];
 }
 
--(id)initForBox:(DACALDeviceRef)newBox forSlot:(DACALSlotNum)newSlot ejectVolume:(NSString*)volumePath
+-(id)initForBox:(DACALDevice*)newBox forSlot:(DACALSlotNum)newSlot ejectVolume:(NSString*)volumePath
 {
 	if( self = [self init] )
 	{
@@ -74,17 +74,20 @@
 	return self;
 }
 
+-(void)queueTaskForOperation:(PADCarouselOperation*)ownerOp
+{ [[AppController shared] queueUIOperation:ownerOp]; }
+
 -(BOOL)runTaskForOperation:(PADCarouselOperation*)ownerOp
 {
 	if( ([[NSUserDefaults standardUserDefaults] boolForKey:@"PADEjectOnIndex"] == YES ) && (ejectVolume != nil) )
 		[[NSWorkspace sharedWorkspace] unmountAndEjectDeviceAtPath: ejectVolume];
 	if( ([[NSUserDefaults standardUserDefaults] boolForKey:@"PADCheckInOnIndex"] == YES ) && (workSlot != 0) )
-		DACALCommandMoveToSlotWithOptions( theBoxRef, workSlot, kDACALOptionMoveDefault );
+		DACALCommandMoveToSlotWithOptions( [theBoxRef deviceRef], workSlot, kDACALOptionMoveDefault );
 	
 	return YES; 
 }
 
-+(PADOperationControlDevice*)finishIndexingVolume:(NSString*)volumePath forSlot:(DACALSlotNum)newSlot onDevice:(DACALDeviceRef)newBox forTarget:(id)theTarget
++(PADOperationControlDevice*)finishIndexingVolume:(NSString*)volumePath forSlot:(DACALSlotNum)newSlot onDevice:(DACALDevice*)newBox forTarget:(id)theTarget
 {
 	PADOperationControlDevice*	newSelf = [[PADOperationControlDevice alloc] initForBox:newBox forSlot:newSlot ejectVolume:volumePath];
 	

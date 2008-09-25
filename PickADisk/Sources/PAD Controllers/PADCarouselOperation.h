@@ -25,7 +25,7 @@
 -(SEL)finishSelector;
 -(void)setFinishSelector:(SEL)newSel;
 
--(BOOL)cancelOperationForDevice:(DACALDeviceRef)oldBox;
+-(BOOL)cancelOperationForDevice:(DACALDevice*)oldBox;
 
 -(id)initWithTarget:(id)theTarget endSelector:(SEL)theSelector;
 +(id)startOperationTask:(id)opTask forTarget:(id)opTarget endSelector:(SEL)theSelector;
@@ -34,18 +34,19 @@
 
 @interface PADOperationTask : NSObject {
 
-	DACALDeviceRef		theBoxRef;
+	DACALDevice*		theBoxRef;
 
 }
 
--(DACALDeviceRef)theBoxRef;
--(void)setTheBoxRef:(DACALDeviceRef)newBox;
+-(DACALDevice*)theBoxRef;
+-(void)setTheBoxRef:(DACALDevice*)newBox;
 
 -(BOOL)newTaskForOperation:(PADCarouselOperation*)ownerOp;
+-(void)queueTaskForOperation:(PADCarouselOperation*)ownerOp;
 -(BOOL)runTaskForOperation:(PADCarouselOperation*)ownerOp;
 -(id)endTaskForOperation:(PADCarouselOperation*)ownerOp;
 
--(BOOL)cancelOperationForDevice:(DACALDeviceRef)oldBox;
+-(BOOL)cancelOperationForDevice:(DACALDevice*)oldBox;
 -(id)startNewOperationForTarget:(id)theTarget endSelector:(SEL)theSelector;
 
 @end

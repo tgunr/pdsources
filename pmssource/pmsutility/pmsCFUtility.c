@@ -12,21 +12,96 @@
 #include <sys/stat.h>
 #include <sys/errno.h>
 
-
-OSStatus		CFURLSetXattr( CFURLRef inURL, CFStringRef inKeyName, CFStringRef inKeyValue )
+OSStatus		FSPathSetXattr( UInt8* pathText, CFStringRef inKeyName, CFStringRef inKeyValue )
 {
 	OSStatus		outResult = -1;
-	UInt8			pathText[4096];
 	const char*		keyText = CFStringCreateCString(inKeyName, kCFStringEncodingUTF8);
 	void*			keyValue = NULL;
 	size_t			keyValueSize = 0;
-	Boolean			goodPath = FALSE;
 	
+	if( pathText == NULL ) goto EXIT;
 	if( keyText == NULL ) goto EXIT;
 	
+	if( inKeyValue == NULL ) {
+		if( removexattr( (const char *)pathText, keyText, 0 ) == -1 ) outResult = errno;
+		else outResult = 0;
+		goto EXIT;
+	}
+	
+	keyValue = CFStringCreateCString(inKeyValue, kCFStringEncodingUTF8);
+	keyValueSize = strlen((const char*)keyValue);
+	
+	if( setxattr( (const char *)pathText, keyText, keyValue, keyValueSize, 0, 0 ) == -1 ) outResult = errno;
+	else outResult = 0;
+	
+EXIT:
+	if( keyText != NULL ) free( (void*)keyText );
+	if( keyValue != NULL ) free( keyValue );
+	
+	return outResult;	
+}
+
+size_t			FSPathGetXattrSize( UInt8* pathText, CFStringRef inKeyName )
+{
+	const char*		keyText = CFStringCreateCString(inKeyName, kCFStringEncodingUTF8);
+	size_t			keyValueSize = 0;
+	
+	if( keyText == NULL ) return keyValueSize;
+	
+	if( pathText != NULL ) 
+		keyValueSize = getxattr( (const char *)pathText, keyText, NULL, 0, 0, 0 );
+	
+	free( (void*)keyText );
+	return keyValueSize;
+}
+
+
+CFStringRef		FSPathCopyXattr( CFAllocatorRef inAllocator, UInt8* pathText, CFStringRef inKeyName, OSStatus* outError )
+{
+	OSStatus		outResult = -1;
+	const char*		keyText = CFStringCreateCString(inKeyName, kCFStringEncodingUTF8);
+	void*			keyValue = NULL;
+	size_t			keyValueSize = 0;
+	
+	CFStringRef		keyValueString = NULL;
+	
+	if( pathText == NULL ) goto EXIT;
+	if( keyText == NULL ) goto EXIT;
+	
+	keyValueSize = getxattr( (const char *)pathText, keyText, NULL, 0, 0, 0 );
+	if( keyValueSize == -1 ) goto EXIT;
+	
+	keyValue = (UInt8*)calloc( 1, keyValueSize+1 );
+	if( keyValue == NULL) goto EXIT;
+	
+	keyValueSize = getxattr( (const char *)pathText, keyText, keyValue, keyValueSize, 0, 0 );
+	if( keyValueSize == -1 ) goto EXIT;
+	
+	keyValueString = CFStringCreateWithBytes( inAllocator, (const UInt8*)keyValue, (CFIndex)keyValueSize, kCFStringEncodingUTF8, FALSE );
+	if( keyValueString != NULL ) outResult = 0;
+	
+EXIT:
+	if( keyText != NULL ) free( (void*)keyText );
+	if( keyValue != NULL ) free( keyValue );
+	
+	if( outError != NULL ) *outError = outResult;
+	return keyValueString;	
+}
+
+OSStatus		CFURLSetXattr( CFURLRef inURL, CFStringRef inKeyName, CFStringRef inKeyValue )
+{
+	UInt8			pathText[4096];
+	Boolean			goodPath = FALSE;
+	OSStatus		outResult = -1;
+	const char*		keyText = CFStringCreateCString(inKeyName, kCFStringEncodingUTF8);
+	void*			keyValue = NULL;
+	size_t			keyValueSize = 0;
+
+	if( keyText == NULL ) goto EXIT;
+
 	goodPath = CFURLGetFileSystemRepresentation( inURL, TRUE, (UInt8*)&pathText, 4096 );
 	if( !goodPath ) goto EXIT;
-	
+
 	if( inKeyValue == NULL ) {
 		if( removexattr( (const char *)&pathText, keyText, 0 ) == -1 ) outResult = errno;
 		else outResult = 0;
@@ -56,25 +131,109 @@ size_t			CFURLGetXattrSize( CFURLRef inURL, CFStringRef inKeyName )
 	
 	if( CFURLGetFileSystemRepresentation( inURL, TRUE, (UInt8*)&pathText, 4096 ) ) 
 		keyValueSize = getxattr( (const char *)&pathText, keyText, NULL, 0, 0, 0 );
-
+	
 	free( (void*)keyText );
 	return keyValueSize;
 }
 
 CFStringRef		CFURLCopyXattr( CFAllocatorRef inAllocator, CFURLRef inURL, CFStringRef inKeyName, OSStatus* outError )
 {
-	OSStatus		outResult = -1;
 	UInt8			pathText[4096];
+	Boolean			goodPath = FALSE;
+	OSStatus		outResult = -1;
 	const char*		keyText = CFStringCreateCString(inKeyName, kCFStringEncodingUTF8);
 	void*			keyValue = NULL;
 	size_t			keyValueSize = 0;
-	Boolean			goodPath = FALSE;
 	
 	CFStringRef		keyValueString = NULL;
 	
 	if( keyText == NULL ) goto EXIT;
-	
+
 	goodPath = CFURLGetFileSystemRepresentation( inURL, TRUE, (UInt8*)&pathText, 4096 );
+	if( !goodPath ) goto EXIT;
+
+	keyValueSize = getxattr( (const char *)&pathText, keyText, NULL, 0, 0, 0 );
+	if( keyValueSize == -1 ) goto EXIT;
+	
+	keyValue = (UInt8*)calloc( 1, keyValueSize+1 );
+	if( keyValue == NULL) goto EXIT;
+	
+	keyValueSize = getxattr( (const char *)&pathText, keyText, keyValue, keyValueSize, 0, 0 );
+	if( keyValueSize == -1 ) goto EXIT;
+	
+	keyValueString = CFStringCreateWithBytes( inAllocator, (const UInt8*)keyValue, (CFIndex)keyValueSize, kCFStringEncodingUTF8, FALSE );
+	if( keyValueString != NULL ) outResult = 0;
+	
+EXIT:
+	if( keyText != NULL ) free( (void*)keyText );
+	if( keyValue != NULL ) free( keyValue );
+	
+	if( outError != NULL ) *outError = outResult;
+	return keyValueString;	
+}
+
+OSStatus		FSSetXattr( FSRef* inLocation, CFStringRef inKeyName, CFStringRef inKeyValue )
+{
+	UInt8			pathText[4096];
+	Boolean			goodPath = FALSE;
+	OSStatus		outResult = -1;
+	const char*		keyText = CFStringCreateCString(inKeyName, kCFStringEncodingUTF8);
+	void*			keyValue = NULL;
+	size_t			keyValueSize = 0;
+	
+	if( keyText == NULL ) goto EXIT;
+	
+	goodPath = (Boolean)(FSRefMakePath( inLocation, (UInt8*)&pathText, 4096 ) == 0);
+	if( !goodPath ) goto EXIT;
+	
+	if( inKeyValue == NULL ) {
+		if( removexattr( (const char *)&pathText, keyText, 0 ) == -1 ) outResult = errno;
+		else outResult = 0;
+		goto EXIT;
+	}
+	
+	keyValue = CFStringCreateCString(inKeyValue, kCFStringEncodingUTF8);
+	keyValueSize = strlen((const char*)keyValue);
+	
+	if( setxattr( (const char *)&pathText, keyText, keyValue, keyValueSize, 0, 0 ) == -1 ) outResult = errno;
+	else outResult = 0;
+	
+EXIT:
+	if( keyText != NULL ) free( (void*)keyText );
+	if( keyValue != NULL ) free( keyValue );
+	
+	return outResult;	
+}
+
+size_t			FSGetXattrSize( FSRef* inLocation, CFStringRef inKeyName )
+{
+	UInt8			pathText[4096];
+	const char*		keyText = CFStringCreateCString(inKeyName, kCFStringEncodingUTF8);
+	size_t			keyValueSize = 0;
+	
+	if( keyText == NULL ) return keyValueSize;
+	
+	if( (FSRefMakePath( inLocation, (UInt8*)&pathText, 4096 )) == 0 )
+		keyValueSize = getxattr( (const char *)&pathText, keyText, NULL, 0, 0, 0 );
+	
+	free( (void*)keyText );
+	return keyValueSize;
+}
+
+CFStringRef		FSCopyXattr( CFAllocatorRef inAllocator, FSRef* inLocation, CFStringRef inKeyName, OSStatus* outError )
+{
+	UInt8			pathText[4096];
+	Boolean			goodPath = FALSE;
+	OSStatus		outResult = -1;
+	const char*		keyText = CFStringCreateCString(inKeyName, kCFStringEncodingUTF8);
+	void*			keyValue = NULL;
+	size_t			keyValueSize = 0;
+	
+	CFStringRef		keyValueString = NULL;
+	
+	if( keyText == NULL ) goto EXIT;
+
+	goodPath = (Boolean)(FSRefMakePath( inLocation, (UInt8*)&pathText, 4096 ) == 0);
 	if( !goodPath ) goto EXIT;
 	
 	keyValueSize = getxattr( (const char *)&pathText, keyText, NULL, 0, 0, 0 );
@@ -96,7 +255,6 @@ EXIT:
 	if( outError != NULL ) *outError = outResult;
 	return keyValueString;	
 }
-
 
 char*			CFStringCreateCString( CFStringRef theString, CFStringEncoding theEncoding )
 {
@@ -193,6 +351,18 @@ BAIL:
 	//	if( commandPathURL ) CFRelease( commandPathURL );
 	if( doCommand ) free( doCommand );
 	return( outCFText );
+}
+
+CFStringRef	CFBundleRunShellScript( CFAllocatorRef inAllocator, CFBundleRef inBundle, CFStringRef inScriptName, CFStringRef inScriptArgs, OSStatus* outError )
+{
+	CFURLRef		scriptURL = CFBundleCopyResourceURL( inBundle, inScriptName, CFSTR("sh"), NULL );
+	CFStringRef		resultString = NULL;
+	
+	if( scriptURL != NULL )
+		resultString = CFStringCreateFromCommandPipe( inAllocator, scriptURL, inScriptArgs, outError );
+	
+	if( scriptURL ) CFRelease( scriptURL );
+	return resultString;
 }
 
 CFDateRef	CFURLCopyDateModified( CFAllocatorRef inAllocator, CFURLRef url, SInt32* outError )

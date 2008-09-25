@@ -18,6 +18,6 @@
 -(SimpleTreeNode*)theDeviceNode;
 -(void)setTheDeviceNode:(SimpleTreeNode*)newNode;
 
-+(BOOL)addDeviceToSourceTree:(DACALDeviceRef)newBox forTarget:(id)theTarget endSelector:(SEL)theSelector;
++(BOOL)addDeviceToSourceTree:(DACALDevice*)newBox;
 
 @end

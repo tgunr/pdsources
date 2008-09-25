@@ -14,7 +14,7 @@
  redistribute this Apple software.
  
  In consideration of your agreement to abide by the following terms, and subject to these 
- terms, Apple grants you a personal, non-exclusive license, under AppleÕs copyrights in 
+ terms, Apple grants you a personal, non-exclusive license, under Appleâ€™s copyrights in 
  this original Apple software (the "Apple Software"), to use, reproduce, modify and 
  redistribute the Apple Software, with or without modifications, in source and/or binary 
  forms; provided that if you redistribute the Apple Software in its entirety and without 
@@ -76,18 +76,92 @@
 
 @implementation MyOutlineView
 
-/* This NSOutlineView subclass is necessary only if you want to delete items by dragging them to the trash.  In order to support drags to the trash, you need to implement draggedImage:endedAt:operation: and handle the NSDragOperationDelete operation.  For any other operation, pass the message to the superclass */
-- (void)draggedImage:(NSImage *)image endedAt:(NSPoint)screenPoint operation:(NSDragOperation)operation {
-    if (operation == NSDragOperationDelete) {
-        // Tell all of the dragged nodes to remove themselves from the model.
-        NSArray *selection = [[self dataSource] draggedNodes];
-        [selection makeObjectsPerformSelector: @selector(removeFromParent)];
-        [self deselectAll:nil];
-        [self reloadData];
-    } else {
+-(PADSearchRequest*)currentSearch
+	{ return currentSearch; }
+
+-(void)setCurrentSearch:(PADSearchRequest*)newSearch
+{
+	if( currentSearch == newSearch ) return;
+	if( newSearch != nil ) [newSearch retain];
+	if( currentSearch != nil ) [currentSearch release];
+	currentSearch = newSearch;
+	
+	//if( currentSearch && [currentSearch searchResultsDirty] && ![currentSearch searchBusy] )
+		//[currentSearch startSearch];
+//	NSLog(@"View Search: %@", newSearch);
+}
+
+-(void)dealloc
+{
+	[self setCurrentSearch:nil];
+	
+	[[PADSearchService sharedSearch] removeActiveWatcher:self];
+	
+	[super dealloc];
+}
+
+- (id)initWithCoder:(NSCoder *)decoder
+{
+	if( self = [super initWithCoder:decoder] ) {
+		[[PADSearchService sharedSearch] addActiveWatcher:self];
+	}
+	
+	return self;
+}
+
+-(void)searchDataChanged:(NSArray*)theItems
+{
+	PADSearchRequest*	ourSearch = [self currentSearch];
+	
+	if( ourSearch != nil )
+	{
+		if( ![ourSearch searchBusy] ){
+			[ourSearch startSearch];
+			NSLog(@"Research: %@", ourSearch);
+		}
+		NSLog(@"Busy: %@", ourSearch);
+	}
+//	NSLog(@"No Search?: %@", self);
+
+}
+
+-(void)searchStarted:(PADSearchRequest*)newSearch
+{
+	PADSearchRequest*	ourSearch = [self currentSearch];
+	
+	if( ourSearch == newSearch )
+	{
+		//[self reloadData];
+	}
+
+//	NSLog(@"Search Started: %@", ourSearch);
+
+}
+
+-(void)searchFinished:(PADSearchRequest*)newSearch
+{
+	PADSearchRequest*	ourSearch = [self currentSearch];
+	
+	if( ourSearch == newSearch )
+	{
+		[self reloadData];
+	}
+//	NSLog(@"Search Finished: %@", ourSearch);
+}
+
+// This NSOutlineView subclass is necessary only if you want to delete items by dragging them to the trash.  
+// In order to support drags to the trash, you need to implement draggedImage:endedAt:operation: and handle the NSDragOperationDelete operation.  
+// For any other operation, pass the message to the superclass
+
+- (void)draggedImage:(NSImage *)image endedAt:(NSPoint)screenPoint operation:(NSDragOperation)operation
+{
+	
+	if( [[self delegate] respondsToSelector:@selector(draggedImage:endedAt:operation:)] )
+	   [[self delegate] draggedImage:image endedAt:screenPoint operation:operation];
+	else {
         [super draggedImage:image endedAt:screenPoint operation:operation];
     }
 }
 
-@end
+@end		// MyOutlineView
 

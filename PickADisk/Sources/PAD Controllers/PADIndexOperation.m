@@ -35,16 +35,14 @@
     [super dealloc];
 }
 
-- (BOOL)cancelOperationForDevice:(DACALDeviceRef)oldBox
+- (BOOL)cancelOperationForDevice:(DACALDevice*)oldBox
 {
 	DACALDeviceRef		ourBox = CFURLCopyCarouselUUID( kCFAllocatorDefault, (CFURLRef)itemLocation );
-	BOOL				sameBox = NO;
-	
-	if( CFEqual( (CFTypeRef)ourBox, (CFTypeRef)oldBox ) ) sameBox = YES;
-	
+	BOOL				sameBox = [oldBox isEqual:DACALDeviceForDeviceRef( ourBox )];
+		
 	if( ourBox ) CFRelease( (CFTypeRef)ourBox );
 	
-	return NO;
+	return sameBox;
 }
 
 - (void)main

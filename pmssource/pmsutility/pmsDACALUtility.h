@@ -31,3 +31,5 @@ CFDateRef		CFURLCopyDateSlotAdded( CFAllocatorRef inAllocator, CFURLRef url, SIn
 CFStringRef		CFURLCopyItemFlavor( CFURLRef url, OSStatus* outError );
 OSStatus		CFURLSetItemFlavor( CFURLRef url, CFStringRef newFlavor );
 
+CFStringRef		CFURLCopyReferenceTitle( CFAllocatorRef inAllocator, CFURLRef url, OSStatus* outError );
+OSStatus		CFURLSetReferenceTitle( CFURLRef url, CFStringRef newTitle );

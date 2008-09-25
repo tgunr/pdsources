@@ -223,6 +223,21 @@ CFStringRef	CFURLCopyDisplayName( CFAllocatorRef allocator, CFURLRef url, OSStat
  }
  */
 
+CFStringRef	CFURLCopyReferenceTitle( CFAllocatorRef inAllocator, CFURLRef url, OSStatus* outError )
+{
+	CFStringRef		itemName = NULL;
+	
+	itemName = CFURLCopyXattr( inAllocator, url, kDACALCarouselDocumentXAttrUserTitle, outError );
+	if( itemName == NULL ) itemName = CFURLCopyDisplayName( inAllocator, url, outError );
+	
+	return( itemName );
+}
+
+OSStatus	CFURLSetReferenceTitle( CFURLRef url, CFStringRef newTitle )
+{	
+	return CFURLSetXattr( url, kDACALCarouselDocumentXAttrUserTitle, newTitle );
+}
+
 
 Boolean	CFURLIsVisible( CFURLRef url )
 {

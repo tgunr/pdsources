@@ -217,7 +217,7 @@ PADSearchRequest* PADIndexToolbarController_LastSearch = nil;
 	prompt = [NSString stringWithFormat:@"Are you sure you want to unassign and delete slot%@?", promptSlots];
 
 	alert = [NSAlert alertWithMessageText:prompt
-		defaultButton:@"Cancel" alternateButton:@"Unassign" otherButton:nil
+		defaultButton:@"Cancel" alternateButton:@"Delete" otherButton:nil
 		informativeTextWithFormat:@"Deleted slots cannot be restored."];
 
 	[alert beginSheetModalForWindow:[unassignButton window] modalDelegate:self didEndSelector:@selector(unassignAlertDidEnd:returnCode:contextInfo:) contextInfo:nil];
@@ -282,9 +282,15 @@ PADSearchRequest* PADIndexToolbarController_LastSearch = nil;
 			if( [theText compare:[PADIndexToolbarController_LastSearch valueForTerm:kPADSearchByTitle]] == NSOrderedSame ) {
 				[newRoot release];
 				[dataController setTreeRoot:[PADIndexToolbarController_LastSearch resultsSubTree]];
-				[self searchFoundResults:[[PADIndexToolbarController_LastSearch resultsSubTree] children] forSearch:PADIndexToolbarController_LastSearch];
-				[self searchCompleted:PADIndexToolbarController_LastSearch];
-				return;
+				[(MyOutlineView*)[dataController outlineView] setCurrentSearch:PADIndexToolbarController_LastSearch];
+				if( ![PADIndexToolbarController_LastSearch searchResultsDirty] ) {
+					[self searchFoundResults:[[PADIndexToolbarController_LastSearch resultsSubTree] children] forSearch:PADIndexToolbarController_LastSearch];
+					[self searchCompleted:PADIndexToolbarController_LastSearch];
+					return;
+				} else {
+					[PADIndexToolbarController_LastSearch startSearch];
+					[[dataController dataSource] updatePrompt];
+				}
 			}
 		}
 
@@ -292,7 +298,9 @@ PADSearchRequest* PADIndexToolbarController_LastSearch = nil;
 		
 		if( PADIndexToolbarController_LastSearch ) [PADIndexToolbarController_LastSearch release];
 		PADIndexToolbarController_LastSearch = nil;
-		PADIndexToolbarController_LastSearch = [[[PADSearchRequest searchCarouselsForTitle:theText] startSearchForTarget:self andSubTree:newRoot] retain];
+		PADIndexToolbarController_LastSearch = [[[PADSearchRequest searchCarouselsForTitle:theText] setupSearchForTarget:self onNode:nil andSubTree:newRoot] retain];
+		[(MyOutlineView*)[dataController outlineView] setCurrentSearch:PADIndexToolbarController_LastSearch];
+		[PADIndexToolbarController_LastSearch startSearch];
 		
 		[[dataController dataSource] updatePrompt];
 		

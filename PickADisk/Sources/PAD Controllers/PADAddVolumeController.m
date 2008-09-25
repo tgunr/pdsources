@@ -6,16 +6,19 @@
 //  Copyright 2008 __MyCompanyName__. All rights reserved.
 //
 
-#import "pmsDACALUtility.h"
+//#import "pmsDACALUtility.h"
+#import "DACALDeviceObjC.h"
 #import "PADAddVolumeController.h"
-#import "PADOperationControlDevice.h"
 
 @implementation PADAddVolumeController
+
+NSString*	PADAddVolumeController_lastItemName;
 
 - (id)init {
     if (self = [super init]) {
 		//isPending = NO;
 		pendingVolumes = [[NSMutableArray arrayWithCapacity:100] retain];
+		PADAddVolumeController_lastItemName = nil;
 	}
 	
     return self; 
@@ -130,47 +133,18 @@
 	[self slotNameChanged:self];
 }
 
--(void)indexDeviceControlFinished:(id)sender
-{
-	[AppController playUISound: kASSystemSoundSuccess];
-}
-
 -(void) indexProgressComplete:(PADIndexProgressController*)progress
 {
-	int		result = [progress taskResult];
-//	int		sound = kASSystemSoundSuccess;
+	int				result = [progress taskResult];
 	DACALDeviceRef  currentBox= (DACALDeviceRef)DACALCommandCopyUUID( [carouselList indexOfSelectedItem]+1, NULL );
-	DACALSlotNum	currentSlot =  (DACALSlotNum)[slotNumber intValue];
-//	DACALResult		typeResult;
-	CFURLRef		slotURL = NULL;
-	NSURL*			currentVolume = [self pendingURL];
-	NSString*		theDate = [[NSDate date] description];
+	DACALDevice*	thisDevice = DACALDeviceForDeviceRef( currentBox );
 	
-	if( result != 0 )
+	if( (result == 0) && thisDevice )
+		[thisDevice indexedNewVolume:[self pendingURL] forSlot:[slotNumber intValue] ofType:[slotTypeList titleOfSelectedItem]]; 
+	else
 		[AppController playUISound: kASSystemSoundDoink];
 
-	if( result == 0 )
-	{
-//		typeResult = DACALSlotSetType( currentBox, currentSlot, (CFStringRef)[slotTypeList titleOfSelectedItem] );
-//		if( (typeResult != 0) ) NSLog(@"DACALSlotSetType Err: %i", (int)typeResult);  
-
-		slotURL = DACALSlotCopyPath( currentBox, currentSlot, NULL );
-		if( slotURL ) CFURLSetXattr( slotURL, kDACALCarouselDocumentXAttrSlotAddDate, (CFStringRef)theDate );
-		if( slotURL ) CFURLSetXattr( slotURL, kDACALCarouselDocumentXAttrSlotKind, (CFStringRef)[slotTypeList titleOfSelectedItem] );
-		if( slotURL ) CFRelease( slotURL );
-		
-		
-		[[DACALTreeDataSource shared] slotAddedToDevice: currentBox forSlot: currentSlot];
-
-		//if( ([[NSUserDefaults standardUserDefaults] boolForKey:@"PADEjectOnIndex"] == YES ) && (currentVolume != nil) )
-		//	[[NSWorkspace sharedWorkspace] unmountAndEjectDeviceAtPath: [currentVolume path]];
-		//if( [[NSUserDefaults standardUserDefaults] boolForKey:@"PADCheckInOnIndex"] == YES )
-		//	DACALCommandMoveToSlotWithOptions( currentBox, currentSlot, kDACALOptionMoveDefault );
-		
-		[PADOperationControlDevice finishIndexingVolume:[currentVolume path] forSlot:currentSlot onDevice:currentBox forTarget:self];
-	}
-
-	//[AppController playUISound: sound];
+	if( currentBox != kDACALNullDevice ) CFRelease( (CFTypeRef)currentBox );
 }
 
 -(void) startIndexProgress:(NSTimer*)timer
@@ -184,20 +158,10 @@
 	NSString*		deviceUUIDString = (NSString*)CFUUIDCreateString( NULL, (CFUUIDRef)deviceID );
 	NSString*		doCmd = [[NSBundle mainBundle] pathForResource:@"carousel" ofType:@"sh"];
 	NSMutableArray*	doArgs = [NSMutableArray arrayWithCapacity:6];
-	NSString*		slotType = [slotTypeList titleOfSelectedItem];
+//	NSString*		slotType = [slotTypeList titleOfSelectedItem];
 	
-	int				doLevel = 4;													
-	
-	if( [slotType compare:@"Movie"] == NSOrderedSame ) 
-		doLevel = [[NSUserDefaults standardUserDefaults] integerForKey:@"PADScanDepthVideo"];
-	else if( [slotType compare:@"Music"] == NSOrderedSame )
-		doLevel = [[NSUserDefaults standardUserDefaults] integerForKey:@"PADScanDepthAudio"];
-	else 
-		doLevel = [[NSUserDefaults standardUserDefaults] integerForKey:@"PADScanDepthData"];
-//	PADIndexProgressController*	progressController = nil;
-	
-//	NSLog(@"Do Level:%i", doLevel);
-	
+	int				doLevel = [depthLevel intValue];												
+		
 	if( newPath != nil )
 		doPath = [NSString stringWithFormat:@"-d%@", [newPath path]];
 	
@@ -222,7 +186,7 @@
 									 finishSelector:@selector(indexProgressComplete:)
 									 modalForWindow:parentWindow];
 	
-		[progressController setPrimaryPromptString:[NSString stringWithFormat:@"Indexing “%@”...", newTitle]];
+		[progressController setPrimaryPromptString:[NSString stringWithFormat:@"Indexing ‚Äú%@‚Äù...", newTitle]];
 		[progressController setSecondaryPromptString:[NSString stringWithFormat:@"Assigning to slot %i", (int)nextSlot]];
 	}
 }
@@ -261,14 +225,41 @@
 */
 }
 
--(IBAction) clickType:(id)sender
+- (void)changeToFlavor:(NSString*)slotType
 {
-	NSInteger	theTypeName = [slotTypeList indexOfSelectedItem];
+	float			doLevel = 5.0;
+	OSType			doIcon = 'gFIL';
 	
-	if( theTypeName == 1 )		[cdIcon setImage: DACALGetIconImageForType('cdda')];
-	else if( theTypeName == 2 ) [cdIcon setImage: DACALGetIconImageForType('dvd ')];
-	else						[cdIcon setImage: DACALGetIconImageForType('Dcd ')];
+	if( !slotType || ([slotType isEqual:PADAddVolumeController_lastItemName]) )
+		return;
+		
+	PADAddVolumeController_lastItemName = slotType;
+	
+	if( [slotType compare:@"Movie"] == NSOrderedSame ) {
+		doLevel = [[NSUserDefaults standardUserDefaults] floatForKey:@"PADScanDepthVideo"];
+		doIcon = 'gMov';
+	} else if( [slotType compare:@"Music"] == NSOrderedSame ) {
+		doLevel = [[NSUserDefaults standardUserDefaults] floatForKey:@"PADScanDepthAudio"];
+		doIcon = 'gMus';
+	} else if( [slotType compare:@"Image"] == NSOrderedSame ) {
+		doLevel = [[NSUserDefaults standardUserDefaults] floatForKey:@"PADScanDepthImage"];
+		doIcon = 'gImg';
+	} else  {
+		doLevel = [[NSUserDefaults standardUserDefaults] floatForKey:@"PADScanDepthData"];
+		doIcon = 'gFil';
+	}
+	
+	[depthLevel animateToFloatValue:doLevel allowsTicksOnly:YES];
+	[cdIcon setImage:DACALGetIconImageForType( doIcon )];
 }
+
+-(IBAction) clickType:(id)sender
+	{ //[self changeToFlavor:[slotTypeList titleOfSelectedItem]]; }
+		return;
+	}
+
+-(void)menu:(NSMenu *)menu willHighlightItem:(NSMenuItem *)item
+	{ if( item ) [self changeToFlavor:[item title]]; }
 
 -(void) chooseVolumeCancel
 {
@@ -358,16 +349,17 @@ NAVERR:
 {
 	CFStringRef		existingSlotName = DACALSlotCopyTitle( [carouselList indexOfSelectedItem]+1, [slotNumber intValue], NULL );
 	CFStringRef		blankSlotName = (CFStringRef)[self pendingTitle];
-	BOOL			isBlankBlank = FALSE;
+	BOOL			isBlankBlank = NO;
 	
 	if( blankSlotName == NULL ) blankSlotName = CFSTR("");
 	
-	 if( existingSlotName ) [slotTitle setStringValue:(NSString*)existingSlotName];
-	 else [slotTitle setStringValue: (NSString*)blankSlotName];
+	if( existingSlotName ) [slotTitle setStringValue:(NSString*)existingSlotName];
+	else [slotTitle setStringValue: (NSString*)blankSlotName];
 	 
-	if( [[slotTitle stringValue] compare:@""] == NSOrderedSame ) isBlankBlank = TRUE;
-	 [okButton setEnabled: !isBlankBlank];
-	 [slotTitle setEnabled: (!existingSlotName) ? YES : NO];
+	if( [[slotTitle stringValue] compare:@""] == NSOrderedSame ) isBlankBlank = YES;
+	[okButton setEnabled: !isBlankBlank];
+	[depthLevel setEnabled: !isBlankBlank];
+	[slotTitle setEnabled: (!existingSlotName) ? YES : NO];
 }
 
 -(IBAction) slotTitleChanged:(id)sender 
@@ -390,6 +382,7 @@ NAVERR:
 	
 	if( [[slotTitle stringValue] compare:@""] == NSOrderedSame ) isBlankBlank = TRUE;
 	[okButton setEnabled: !isBlankBlank];
+	[depthLevel setEnabled: !isBlankBlank];
 }
 
 -(IBAction) carouselChanged:(id)sender
@@ -399,6 +392,7 @@ NAVERR:
 	
 	if( nextSlot ) {
 		[slotNumber setIntValue: nextSlot];
+		[slotDial setIntValue:nextSlot];
 		[self slotChanged: sender];
 	}
 }
@@ -507,6 +501,7 @@ NAVERR:
 	//[self slotChanged:self];
 	if( [[slotTitle stringValue] compare:@""] == NSOrderedSame ) isBlankBlank = TRUE;
 	[okButton setEnabled: !isBlankBlank];
+	[depthLevel setEnabled: !isBlankBlank];
 
 }
 
@@ -527,7 +522,10 @@ NAVERR:
 	[carouselList selectItemAtIndex:node-1];
 	
 	// Do Media
-	//[self syncMediaTitles];
+	[self syncMediaTitles];
+	
+	// Set Level
+	[self changeToFlavor:[slotTypeList titleOfSelectedItem]];
 	
 	// Be Changed
 	[self carouselChanged:self];
@@ -605,6 +603,7 @@ NAVERR:
 	
 	if( [[slotTitle stringValue] compare:@""] == NSOrderedSame ) isBlankBlank = TRUE;
 	[okButton setEnabled: !isBlankBlank];
+	[depthLevel setEnabled: !isBlankBlank];
 
 }
 

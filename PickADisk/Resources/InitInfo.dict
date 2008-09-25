@@ -9,20 +9,20 @@
 			<array>
 				<array>
 					<string>Files</string>
-					<string>docs</string>
+					<string>gFil</string>
 				</array>
 				<array>
 					<string>Images</string>
-					<string>morI</string>
+					<string>gImg</string>
 				</array>
 				<array>
 					<string>Movies</string>
-					<string>fvoc</string>
+					<string>gMov</string>
 				</array>
 				<array>
 					<string>Music</string>
-					<string>spki</string>
-			</array>
+					<string>gMus</string>
+				</array>
 			</array>
 			<key>Group</key>
 			<string>LIBRARY</string>

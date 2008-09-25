@@ -21,7 +21,7 @@
 @property(retain) NSURL				*itemLocation;
 @property(retain) id				finishTarget;
 
-- (BOOL)cancelOperationForDevice:(DACALDeviceRef)oldBox;
+- (BOOL)cancelOperationForDevice:(DACALDevice*)oldBox;
 
 - (id)initWithLocation:(NSURL*)url forChild:(SimpleTreeNode*)child;
 

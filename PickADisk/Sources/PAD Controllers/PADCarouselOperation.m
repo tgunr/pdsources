@@ -11,23 +11,27 @@
 
 @implementation PADOperationTask
 
--(DACALDeviceRef)theBoxRef
+-(DACALDevice*)theBoxRef
 { return theBoxRef; }
--(void)setTheBoxRef:(DACALDeviceRef)newBox
+-(void)setTheBoxRef:(DACALDevice*)newBox
 {
-	if( newBox ) CFRetain((CFTypeRef)newBox);
-	if( theBoxRef ) CFRelease((CFTypeRef)theBoxRef);
+	if( newBox ) [newBox retain];
+	if( theBoxRef ) [theBoxRef release];
 	theBoxRef = newBox; 
 }
 
 -(void)dealloc
 {
-	[self setTheBoxRef:kDACALNullDevice];
+	[self setTheBoxRef:nil];
 	[super dealloc];
 }
 
 -(BOOL)newTaskForOperation:(PADCarouselOperation*)ownerOp
 	{ return YES; }
+
+-(void)queueTaskForOperation:(PADCarouselOperation*)ownerOp
+	{ [[AppController shared] queueOperation:ownerOp]; }
+
 -(BOOL)runTaskForOperation:(PADCarouselOperation*)ownerOp
 {
 	
@@ -38,10 +42,9 @@
 	{ return (id)ownerOp; }
 
 
--(BOOL)cancelOperationForDevice:(DACALDeviceRef)oldBox
+-(BOOL)cancelOperationForDevice:(DACALDevice*)oldBox
 {
-	if( CFEqual( (CFTypeRef)oldBox, (CFTypeRef)[self theBoxRef] ) ) return YES;
-	return NO; 
+	return [[self theBoxRef] isEqual:oldBox];
 }
 
 -(id)startNewOperationForTarget:(id)theTarget endSelector:(SEL)theSelector
@@ -86,7 +89,7 @@
 	[super dealloc];
 }
 
--(BOOL)cancelOperationForDevice:(DACALDeviceRef)oldBox
+-(BOOL)cancelOperationForDevice:(DACALDevice*)oldBox
 {
 	BOOL cancel = [[self thisOperation] cancelOperationForDevice:oldBox];
 	
@@ -101,7 +104,7 @@
 	
 	[newTask setThisOperation:opTask];
 	if( [[newTask thisOperation] newTaskForOperation:newTask] )
-		[[AppController shared] queueUIOperation:newTask];
+		[[newTask thisOperation] queueTaskForOperation:newTask];
 	else {
 		[newTask release];
 		newTask = nil;

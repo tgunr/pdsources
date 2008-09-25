@@ -102,6 +102,7 @@ PADSearchTerm*	PADCopySearchTermWithTitleOrID( NSString* aTitle );
 	NSMutableArray*			searchResults;
 	
 	id						searchTarget;
+	id						searchNode;
 	id						searchSubTree;
 	NSMutableArray*			searchTermParents;
 }
@@ -120,10 +121,12 @@ PADSearchTerm*	PADCopySearchTermWithTitleOrID( NSString* aTitle );
 //
 // Note that any returned itemsFound are already attached as children to subTree if one is provided.
 //
--(PADSearchRequest*)startSearchForTarget:(id)target andSubTree:(id)subTree;
+-(PADSearchRequest*)setupSearchForTarget:(id)target onNode:(id)node andSubTree:(id)subTree;
+-(PADSearchRequest*)startSearch;
 
 -(SimpleTreeNode*)resultsSubTree;
 -(NSMutableDictionary*)searchTermDictionary;
+-(id)searchTarget;
 -(BOOL)searchBusy;
 -(id)valueForTerm:(id)term;
 
@@ -132,6 +135,7 @@ PADSearchTerm*	PADCopySearchTermWithTitleOrID( NSString* aTitle );
 
 // Called internally
 -(void)createTermsForKeys;
+-(void)searchDataChanged:(NSArray*)theItems;
 
 // Used to setup a new search.  If inLocs == nil, then the subTrees of all the mounted devices are used.
 -(id)initSearchInLocations:(NSArray*)inLocs andOptions:(NSDictionary*)inOptions;
@@ -172,6 +176,27 @@ PADSearchTerm*	PADCopySearchTermWithTitleOrID( NSString* aTitle );
 +(PADSearchTermOperation*)searchOperationsForTreeNode:(SimpleTreeNode*)rootSubTree forTerms:(NSArray*)theTerms andTarget:(id)aTarget;
 
 @end	// PADSearchTermOperation
+
+@interface PADSearchService : NSObject
+{
+	NSMutableArray*		activeSearches;
+	NSMutableArray*		activeWatchers;
+}
+
++(id)sharedSearch;
++(void)updateAllSearches;
+
+-(void)addActiveSearch:(PADSearchRequest*)newRequest;
+-(void)removeActiveSearch:(PADSearchRequest*)oldRequest;
+
+-(void)addActiveWatcher:(id)newWatcher;
+-(void)removeActiveWatcher:(id)oldWatcher;
+
+-(void)searchStarted:(PADSearchRequest*)aRequest;
+-(void)searchFinished:(PADSearchRequest*)aRequest;
+-(void)searchDataChanged:(NSArray*)theItems;
+
+@end	// PADSearchService
 
 @interface SearchNodeData : SimpleNodeData
 {

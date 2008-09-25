@@ -13,16 +13,16 @@ PADSearchRequest* PADCreateSearchForType( OSType aType )
 {
 	PADSearchRequest*	theReq = nil;
 	
-	if( aType == 'fvoc' )
+	if( aType == 'gMov' )
 		theReq = [PADSearchRequest searchCarouselsForKind:(NSString*)PADINDEX_FLAVORVALUE_MOVIE resultType:kPADSearchOptionResultTypeItem];
 	
-	if( aType == 'spki' )
+	if( aType == 'gMus' )
 		theReq = [PADSearchRequest searchCarouselsForKind:(NSString*)PADINDEX_FLAVORVALUE_MUSIC resultType:kPADSearchOptionResultTypeItem];
 	
-	if( aType == 'docs' )
+	if( aType == 'gFil' )
 		theReq = [PADSearchRequest searchCarouselsForKind:(NSString*)PADINDEX_FLAVORVALUE_FILES resultType:kPADSearchOptionResultTypeItem];
 	
-	if( aType == 'morI' )
+	if( aType == 'gImg' )
 		theReq = [PADSearchRequest searchCarouselsForKind:(NSString*)PADINDEX_FLAVORVALUE_IMAGE resultType:kPADSearchOptionResultTypeItem];
 
 	return theReq;

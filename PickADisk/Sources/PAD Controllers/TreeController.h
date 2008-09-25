@@ -97,6 +97,8 @@
 - (id)treeControl;
 - (void)setTreeControl:(id)tree;
 
+- (NSOutlineView*)outlineView;
+
 - (void)removeAllChildren;
 
 - (id)toolbarControl;

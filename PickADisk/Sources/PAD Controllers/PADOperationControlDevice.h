@@ -31,8 +31,8 @@
 -(NSString*)ejectVolume;
 -(void)setEjectVolume:(NSString*)volumePath;
 
--(id)initForBox:(DACALDeviceRef)newBox forSlot:(DACALSlotNum)newSlot ejectVolume:(NSString*)volumePath;
+-(id)initForBox:(DACALDevice*)newBox forSlot:(DACALSlotNum)newSlot ejectVolume:(NSString*)volumePath;
 
-+(PADOperationControlDevice*)finishIndexingVolume:(NSString*)volumePath forSlot:(DACALSlotNum)newSlot onDevice:(DACALDeviceRef)newBox forTarget:(id)theTarget;
++(PADOperationControlDevice*)finishIndexingVolume:(NSString*)volumePath forSlot:(DACALSlotNum)newSlot onDevice:(DACALDevice*)newBox forTarget:(id)theTarget;
 
 @end

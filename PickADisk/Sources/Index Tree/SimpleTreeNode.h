@@ -161,6 +161,9 @@ const enum {
 - (BOOL)busy;
 - (void)setBusy:(BOOL)value;
 
+- (id)reload;
+- (id)reloadData:(id)newData;
+
 - (NSComparisonResult)compareDataNames:(SimpleNodeData *)otherData;
 - (NSComparisonResult)compareDataSlots:(SimpleNodeData *)otherData;
 - (NSComparisonResult)compareDataAddDates:(SimpleNodeData *)other;

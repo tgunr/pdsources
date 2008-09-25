@@ -2,8 +2,8 @@
 //  AppDelegate.m
 //  Async Downloader
 //
-//  Created by Matt Long on 2/16/08.
-//  Copyright 2008 Cocoa Is My Girlfriend. All rights reserved.
+//  Created by Jack Small on 7/7/08.
+//  Copyright 2008 Jack Small. All rights reserved.
 //
 
 
@@ -17,44 +17,11 @@
 #import "pmsDACALUtility.h"
 #import "PADOperationOpenDevice.h"
 #import <ILCrashReporter/ILCrashReporter.h>
+#import "DACDriverInstaller.h"
+#import "DACVolume.h"
 
-CFStringRef		kPADClientIdentifier = CFSTR("PAD.DACAL.CLIENT");
-
-#define PAD_BUSYBODY_DELAY 0.1
-#define PAD_PREFS_VERSION	(const char*)"0.1"
-
-void DACALNotification( void* inData, DACALDeviceRef inBox, CFStringRef inMessage, CFDictionaryRef inParam )
-{
-
-	//NSLog( @"Client Notification: Device: %@ Message: %@", inBox, inMessage );
-	
-	if( CFStringHasPrefix( inMessage, kDACALCarouselNoticeDeviceOpen ) )
-		[PADOperationOpenDevice addDeviceToSourceTree:inBox forTarget:[AppController shared] endSelector:@selector(deviceAttached:)];
-	else if( CFStringHasPrefix( inMessage, kDACALCarouselNoticeDeviceClose ) )
-		[[AppController shared] deviceDetached:inBox];
-}
-
-
-void DACALSetup( void )
-{
-	DACALRegisterIconResource( CFSTR("DC300Black"), kDACALCarouselsFolderType );
-	DACALRegisterIconResource( CFSTR("CDAudio"), 'cdda' );
-	DACALRegisterIconResource( CFSTR("DVD-Video"), 'dvd ' );
-	DACALRegisterIconResource( CFSTR("CD-silver"), 'Dcd ' );
-
-	DACALRegisterIconResource( CFSTR("Generic_Files"), 'gFil' );
-	DACALRegisterIconResource( CFSTR("Generic_Music"), 'gMus' );
-	DACALRegisterIconResource( CFSTR("Generic_Movie"), 'gMov' );
-	DACALRegisterIconResource( CFSTR("Generic_Image"), 'gImg' );
-
-	//DACALRegisterIconResource( CFSTR("ClockSearch"), 'ClkS' );
-	//DACALRegisterIconResource( CFSTR("SmartFolder"), 'SmFl' );
-
-	DACALClientCreate( kCFAllocatorDefault, kPADClientIdentifier, NULL, DACALNotification );
-	
-//	DACALDevicesInitialize();
-}
-
+#define PAD_BUSYBODY_DELAY	0.1
+#define PAD_PREFS_VERSION	(const char*)"0.3"
 
 @implementation AppController
 static AppController *shared;
@@ -107,7 +74,7 @@ static AppController *shared;
 - (void)queueUIOperation:(NSOperation*)op { [queueUI addOperation:op]; }
 - (void)queueSearchOperation:(NSOperation*)op {	[queueSearch addOperation:op]; }
 
-- (void)cancelOperationsForDevice:(DACALDeviceRef)oldBox
+- (void)cancelOperationsForDevice:(DACALDevice*)oldBox
 {
 	[queue setSuspended:YES];
 	
@@ -115,7 +82,7 @@ static AppController *shared;
 	int			index, count = [theOps count];
 	
 	for( index=0; index < count; index++ )
-		[[theOps objectAtIndex:index] cancelOperationForDevice:(DACALDeviceRef)oldBox];
+		[[theOps objectAtIndex:index] cancelOperationForDevice:oldBox];
 
 	[queue setSuspended:NO];
 }
@@ -163,6 +130,7 @@ static AppController *shared;
 	
 	[defaultPrefs setObject:[NSNumber numberWithInt:5] forKey:@"PADScanDepthData"];
 	[defaultPrefs setObject:[NSNumber numberWithInt:3] forKey:@"PADScanDepthAudio"];
+	[defaultPrefs setObject:[NSNumber numberWithInt:2] forKey:@"PADScanDepthImage"];
 	[defaultPrefs setObject:[NSNumber numberWithInt:1] forKey:@"PADScanDepthVideo"];
 	
 	[defaultPrefs setObject:boolTRUE forKey:@"PADColumnDateAdded"];
@@ -171,6 +139,8 @@ static AppController *shared;
 	
 	[defaultPrefs setObject:boolFALSE forKey:@"PADSearchResultsGrouped"];
 
+	[defaultPrefs setObject:@"4BDD0419-381B-4CCB-A50F-A645B456E199" forKey:@"PADPrefToolSelected"];
+	
 	[defaults registerDefaults:defaultPrefs];
 	
 	if( needsUpdate )
@@ -178,6 +148,8 @@ static AppController *shared;
 		if( currentVersion == nil ) 
 			gotUpdate = YES;
 		
+		if( [currentVersion compare:@"0.1"] == NSOrderedSame )
+			gotUpdate = YES;
 				
 		if( gotUpdate == YES ) {
 			[defaults setObject:prefsVersion forKey:@"PADPrefsVersion"];
@@ -212,8 +184,8 @@ static AppController *shared;
 	// Add busy body heartbeat
 	[NSTimer scheduledTimerWithTimeInterval:PAD_BUSYBODY_DELAY target:self selector:@selector(doBusyWork:) userInfo:nil repeats:YES];
 	
-	DACALDevicesInitialize();
-	
+	DACALClientInitialize();
+		
 	PADBOX_VALID_END
 	
 	if( !PADBOX_VALIDATED ) NSLog(@"PickADisk has expired.");
@@ -228,13 +200,18 @@ static AppController *shared;
 //	NSURL*			discURL = nil; //
 	
 	for( index=0; index < mountCount; index++ )
-		[urlMounts addObject:[NSURL fileURLWithPath:[newMounts objectAtIndex:index]]];
+		[urlMounts addObject:[[NSURL fileURLWithPath:[newMounts objectAtIndex:index]] retain]];
 
 	NSLog(@"Detected Mounts: %@", urlMounts);	
 
 	//if( addVolumeController ) [addVolumeController detectedMounts:urlMounts];
 	//id controllerThing = [[NSApplication sharedApplication] addVolumeController];
+	
+	NSArray*		newVolumes = [DACVolume detectedMounts:urlMounts];
 	[addVolumeController detectedMounts:urlMounts];
+	
+	if( newVolumes ) [newVolumes release];
+	
 //	[urlMounts release];
 	
 	NSLogFunc;
@@ -247,33 +224,6 @@ static AppController *shared;
 
 	[addVolumeController ejectedMounts:oldMounts];
 	
-}
-
--(void)deviceAttached:(DACALDeviceRef)newBox
-{	
-//	[[[DACALTreeDataSource shared] findTreeNodeForDevice:newBox] setBusy:NO];
-	
-	[[DACALTreeDataSource shared] doAction];
-
-	NSLog( @"Attached Device: %@", DACALCommandCopyName( newBox, NULL ) );
-
-}
-
--(void)deviceDetached:(DACALDeviceRef)oldBox
-{
-	SimpleTreeNode*		boxNode = [[DACALTreeDataSource shared] findTreeNodeForDevice:oldBox];
-	SimpleTreeNode*		boxParent = (SimpleTreeNode*)[boxNode nodeParent];
-	
-	[self cancelOperationsForDevice:oldBox];
-	
-	[boxNode removeFromParent];
-	[boxNode release];
-	
-	[[[[DACALTreeDataSource shared] treeControl] outlineView] reloadItem:(id)boxParent reloadChildren:YES];
-	[[DACALTreeDataSource shared] doAction];
-	
-	NSLog( @"Detached Device: %@", DACALCommandCopyName( oldBox, NULL ) );
-
 }
 
 - (void)handleOpenLocationAppleEvent:(NSAppleEventDescriptor *)event withReplyEvent:(NSAppleEventDescriptor *)reply {
@@ -321,7 +271,7 @@ static AppController *shared;
 
 - (IBAction)provideFeedback:(id)sender
 {
-	CFURLRef	feedbackURL = CFURLCreateWithString( kCFAllocatorDefault, CFSTR("http://pickadisk.com/feedback/"), NULL );
+	CFURLRef	feedbackURL = CFURLCreateWithString( kCFAllocatorDefault, CFCopyLocalizedString(CFSTR("http://pickadisk.com/feedback/"), CFSTR("PAD URL used when user selects Provide User Feedback")), NULL );
 	CFURLRef	launchURL;
 	
 	LSOpenCFURLRef( feedbackURL, &launchURL );
@@ -358,6 +308,7 @@ static AppController *shared;
 }
 
 - (void)setDataView:(TreeController*)tc { dataView = tc; }
+- (id)dataView { return (id)dataView; }
 
 - (PADIndexToolbarController*)toolbarController { return toolbarController; }
 
@@ -421,20 +372,37 @@ static AppController *shared;
 - (void)removeBusyBody:(id)item
 {
 	NSOutlineView* theTable = nil;
-
+	int				theRow;
+	
 	busyBusy = YES;
 	//[busyBodies removeObjectForKey:item]; 
 	//NSLog( @"Bodies: %@", [busyBodies description] );
 	//if( [busyBodies count] > 0 ) [busyBodies removeObject:item];
 	[busyBodies removeObject:item];
 	//NSLog( @"Removed %@ <%@>\n\tBodies: %@", [item description], item, [busyBodies description] );
-
+/*
 	if( [[item nodeData] itemType] == kPADTypeIndexDevice )
 		theTable = [[[DACALTreeDataSource shared] treeControl] outlineView];
 	else
 		theTable = [dataView outlineView];
 	if(theTable != nil)
-		[theTable reloadItem:(id)item reloadChildren:YES];
+		[theTable reloadItem:(id)[item nodeParent] reloadChildren:YES];
+*/
+	if( [[item nodeData] itemType] == kPADTypeIndexDevice )
+	{
+		theTable = [[[DACALTreeDataSource shared] treeControl] outlineView];
+		[theTable reloadItem:[[item nodeParent] nodeParent] reloadChildren:YES];
+		theRow = [theTable rowForItem:item];
+		if( ![[theTable itemAtRow:theRow] isEqual:item] ) theTable = nil;
+	}
+	else
+		theTable = [dataView outlineView];
+	if(theTable != nil) [theTable reloadItem:(id)item reloadChildren:[[item nodeData] isExpanded]];
+
+		//if( [[[item nodeParent] nodeData] isExpanded] ) 
+				//NSLog( @"Got Busy: %@ <%@>\n\tBodies: %@", [entry description], entry, [busyBodies description] );
+	theTable = nil;
+	
 	
 	busyBusy = NO;
 }
@@ -480,7 +448,8 @@ static AppController *shared;
 		else
 			theTable = [dataView outlineView];
 		if(theTable != nil)
-			if( [[[entry nodeParent] nodeData] isExpanded] ) [theTable reloadItem:(id)entry reloadChildren:[[entry nodeData] isExpanded]];
+			[theTable reloadItem:(id)entry reloadChildren:[[entry nodeData] isExpanded]];
+			//if( [[[entry nodeParent] nodeData] isExpanded] ) 
 			//NSLog( @"Got Busy: %@ <%@>\n\tBodies: %@", [entry description], entry, [busyBodies description] );
 		theTable = nil;
 	}

@@ -13,8 +13,9 @@
     #import <Foundation/Foundation.h>
     #import <AppKit/AppKit.h>
 	#import "pms.h"
-	#import "dacallib.h"
+	#import "DACALDeviceObjC.h"
 	#import "NSApplication_Extensions.h"
+	#import "NSSlider_Animation.h"
 	#import "AppController.h"
 	#import "PADLifecycleSetup.h"
 	

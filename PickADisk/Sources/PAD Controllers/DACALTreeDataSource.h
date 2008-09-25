@@ -11,6 +11,7 @@
 #import "TreeController.h"
 #import "PADIndexNodeData.h"
 #import "PADIndexToolbarController.h"
+#import "DACALViewDataSource.h"
 
 // Index group names
 
@@ -64,17 +65,10 @@
 - (void)doReport;
 - (void)doAction;
 
-@end
-
-@interface DACALViewDataSource : TreeControllerDataSource {
-
-	IBOutlet	NSTextField		*promptText;
-}
-
-- (void)updatePrompt;
-- (void)doubleClickCellContent:(id)item;
+- (void)draggedImage:(NSImage *)image endedAt:(NSPoint)screenPoint operation:(NSDragOperation)operation;
 
 @end
+
 
 
 

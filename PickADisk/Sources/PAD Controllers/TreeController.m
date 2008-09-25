@@ -824,7 +824,10 @@ NSURL *NewFileURLForWritingFile(NSString *dirpath, NSString *basename, NSString 
  }
 */
         
-
+- (void)draggedImage:(NSImage *)image endedAt:(NSPoint)screenPoint operation:(NSDragOperation)operation
+{
+	if( dataSource ) [dataSource draggedImage:image endedAt:screenPoint operation:operation];
+}
 
 // On MacOS 10.5 and above, NSTableView and NSOutlineView have better contextual menu support. We now see a highlighted item for what was clicked on,
 // and can access that item to do particular things (such as dynamically change the menu, as we do here!). Each of the contextual menus in the nib file
@@ -854,7 +857,7 @@ NSURL *NewFileURLForWritingFile(NSString *dirpath, NSString *basename, NSString 
 - (void)_addNewDataToSelection:(SimpleTreeNode *)newChild {
     NSInteger childIndex = 0, newRow = 0;
     NSArray *selectedNodes = [self selectedNodes];
-    SimpleTreeNode *selectedNode = ([selectedNodes count] ? [selectedNodes objectAtIndex:0] : treeData);
+    SimpleTreeNode *selectedNode = ([selectedNodes count]>0) ? [selectedNodes objectAtIndex:0] : treeData;
     TreeNode *parentNode = nil;
 
     if ([[selectedNode nodeData] isGroup]) { 
@@ -885,6 +888,14 @@ NSURL *NewFileURLForWritingFile(NSString *dirpath, NSString *basename, NSString 
 	if( tree != nil ) [tree retain];
 	treeControl = tree;
 }
+
+- (NSOutlineView*)outlineView
+{
+	if( [self treeControl] ) return [[self treeControl] outlineView];
+	
+	return nil;
+}
+
 
 - (void)removeAllChildren
 {
@@ -1040,7 +1051,8 @@ NSURL *NewFileURLForWritingFile(NSString *dirpath, NSString *basename, NSString 
     //[pboard setPropertyList:[NSArray arrayWithObjects:@"txt", nil] forType:NSFilesPromisePboardType];
 	
 	// Put URL data on the pboard
-	[[NSURL URLWithString:[[items objectAtIndex:0] description]] writeToPasteboard:pboard];
+	if( items && ([items count]>0) )
+		[[NSURL URLWithString:[[items objectAtIndex:0] description]] writeToPasteboard:pboard];
 	
     return YES;
 }
@@ -1122,6 +1134,20 @@ NSURL *NewFileURLForWritingFile(NSString *dirpath, NSString *basename, NSString 
     }
     
     return [self performDropOperation:info onNode:node atIndex:childIndex];	
+}
+
+
+// In order to support drags to the trash, you need to implement draggedImage:endedAt:operation: and handle the NSDragOperationDelete operation.  
+// For any other operation, pass the message to the superclass
+- (void)draggedImage:(NSImage *)image endedAt:(NSPoint)screenPoint operation:(NSDragOperation)operation
+{
+	if (operation == NSDragOperationDelete) {
+        // Tell all of the dragged nodes to remove themselves from the model.
+        NSArray *selection = [[self treeControl] draggedNodes];
+        [selection makeObjectsPerformSelector: @selector(removeFromParent)];
+        [[self outlineView] deselectAll:nil];
+        [[self outlineView] reloadData];
+	}
 }
 
 // On MacOS 10.5 and above, NSTableView and NSOutlineView have better contextual menu support. We now see a highlighted item for what was clicked on, and can access that item to do particular things (such as dynamically change the menu, as we do here!). Each of the contextual menus in the nib file have the delegate set to be the AppController instance. In menuNeedsUpdate, we dynamically update the menus based on the currently clicked upon row/column pair.

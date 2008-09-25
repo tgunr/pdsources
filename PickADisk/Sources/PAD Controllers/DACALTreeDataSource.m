@@ -63,8 +63,8 @@
 
 -(void)addSettingsForKey:(NSString*)keyName saveView:(NSOutlineView*)doView saveSelection:(BOOL)doSelect saveSorts:(BOOL)doSorts
 {
-	NSIndexSet*	theIndex = (doSelect) ? [doView selectedRowIndexes] : nil;
-	NSArray*	theSorts = (doSorts)  ? [doView sortDescriptors] : nil;
+	NSIndexSet*	theIndex = (doSelect==YES) ? [doView selectedRowIndexes] : nil;
+	NSArray*	theSorts = (doSorts==YES)  ? [doView sortDescriptors] : nil;
 	NSMutableDictionary*	theData = [NSMutableDictionary dictionaryWithCapacity:4];
 
 	[theData setObject:doView forKey:@"View"];
@@ -195,8 +195,8 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 - (void)toolbarSearchStart:(id)sender
 {
 	if( !savedSelection ) {
-		savedSelection = [DACALIndexState saveSetupForKey:@"DataIndex" saveView:[[self treeControl] outlineView] saveSelection:YES saveSorts:NO];
-		[savedSelection addSettingsForKey:@"DataView" saveView:[secondaryController outlineView] saveSelection:YES saveSorts:YES];
+		savedSelection = [DACALIndexState saveSetupForKey:@"DataView" saveView:[secondaryController outlineView] saveSelection:YES saveSorts:YES];
+		[savedSelection addSettingsForKey:@"DataIndex" saveView:[[self treeControl] outlineView] saveSelection:YES saveSorts:NO];
 	}
 	
 	[[[self treeControl] outlineView] deselectAll:self]; 
@@ -214,7 +214,7 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 -(void)toolbarSearchFinish:(id)sender
 {
 	if( !sortedSelection ) {
-		sortedSelection = [DACALIndexState saveSetupForKey:@"SortData" saveView:[secondaryController outlineView] saveSelection:NO saveSorts:YES];
+		sortedSelection = [DACALIndexState saveSetupForKey:@"SortData" saveView:[secondaryController outlineView] saveSelection:YES saveSorts:YES];
 		[savedSelection addSettingsForKey:@"SortIndex" saveView:[[self treeControl] outlineView] saveSelection:YES saveSorts:NO];
 	}
 	
@@ -255,11 +255,22 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 {
 	NSString*	promptData;
 	DACALSlotNum	count = DACALDevicesGetCount();
+	NSString*	carouselString;
+	NSString*	itemString;
+	
+	if( count == 1 ) {
+		carouselString = NSLocalizedString(@"carousel", @"Data View Prompt Singular form of carousel device");
+		itemString = NSLocalizedString(@"item", @"Data View Prompt Singular form of data view element");
+	} else {
+		carouselString = NSLocalizedString(@"carousels", @"Data View Prompt Plural form of carousel devices");
+		itemString = NSLocalizedString(@"items", @"DataView Prompt Plural form of data view elements");
+	}
 	
 	if( [[[tabView selectedTabViewItem] identifier] compare:@"Home"] == NSOrderedSame )
 	{
-		if( count == 0) promptData = @"No carousels detected";
-		else promptData = [NSString stringWithFormat:@"%i carousel%@ online", count, (count==1) ? @"" : @"s"];
+		if( count == 0) promptData = NSLocalizedString(@"No carousels detected", @"Data View Prompt when no carousel devices are currently detected");
+		else promptData = [NSString stringWithFormat:NSLocalizedString(@"%i %@ online", @"Data View Prompt Format for number of carousel devices attached"),
+						   count, carouselString];
 	} else {
 		NSArray *selectedNodes = [secondaryController selectedNodes];
 		
@@ -268,8 +279,8 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 
 		index = [[secondaryController outlineView] numberOfRows];
 		
-		if( count ) promptData = [NSString stringWithFormat:@"%i of %i selected", (int)count, (int)index];
-		else		promptData = [NSString stringWithFormat:@"%i item%@", (int)index, ((index==1) ? @"" : @"s")];
+		if( count ) promptData = [NSString stringWithFormat:NSLocalizedString(@"%i of %i selected", @"Data View Standard Prompt Format for number of elements selected of total count"), count, index];
+		else		promptData = [NSString stringWithFormat:NSLocalizedString(@"%i %@", @"Data View Prompt Format for total count of visible elements"), index, itemString];
 	}
 	   
 	   [self setPrompt:promptData];
@@ -323,17 +334,31 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 		subTree = [data subTree];
 		if( [data respondsToSelector:@selector(itemSearch)] ) {
 			itemSearch = [data itemSearch];
+			[(MyOutlineView*)[self outlineView] setCurrentSearch:itemSearch];
 			if( itemSearch != nil )
 			{
 				if( subTree == nil ) {
 				}
 				
-				if( ([itemSearch searchBusy] == NO) && ([itemSearch searchResultsDirty]) ) {					
+				if( [itemSearch searchTarget] != self )
+				{
 					subTree = [[SimpleTreeNode alloc] initWithData:nil parent:nil children:[NSArray array]];
 					[data setSubTree:subTree];
 					[[[[AppController shared] toolbarController] busyProgress] startAnimation:self];
-					[itemSearch startSearchForTarget:self andSubTree:subTree];
+					[itemSearch setupSearchForTarget:self onNode:[selectedNodes objectAtIndex:index] andSubTree:subTree];
+					[itemSearch startSearch];
+				} else {
+					if( ![itemSearch searchBusy] && [itemSearch searchResultsDirty] )
+						[itemSearch startSearch];					
 				}
+				
+				
+				//if( ([itemSearch searchBusy] == NO) && ([itemSearch searchResultsDirty]) ) {					
+				//	subTree = [[SimpleTreeNode alloc] initWithData:nil parent:nil children:[NSArray array]];
+				//	[data setSubTree:subTree];
+				//	[[[[AppController shared] toolbarController] busyProgress] startAnimation:self];
+				//	[itemSearch startSearchForTarget:self onNode:[selectedNodes objectAtIndex:index] andSubTree:subTree];
+				//}
 			}
 		}
 			
@@ -409,9 +434,11 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 												  withObject:(SimpleTreeNode*)_draggedNode
 												  withObject:destinationFlavor];
 			
-			[[dragDataSource outlineView] reloadItem:_draggedNode];
+			//[[dragDataSource outlineView] reloadItem:_draggedNode];
 		}
-		[[dragDataSource outlineView] reloadData];
+		//[[dragDataSource outlineView] reloadData];
+		[[PADSearchService sharedSearch] searchDataChanged:_draggedNodes];
+		
 		[AppController playUISound: kASSystemSoundSuccess];
 	}
 }
@@ -565,6 +592,8 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 		//CFRelease( theSlotContentPath );
 		//CFRelease( theSlotTitle );
 		//CFRelease( theSlotPath );
+		
+		[[PADSearchService sharedSearch] searchDataChanged:[NSArray arrayWithObject:theSubtreeChild]];
 	}
 	
 	[self doAction];
@@ -605,305 +634,18 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 	[[NSApplication sharedApplication] terminate:self];
 }
 
+- (void)draggedImage:(NSImage *)image endedAt:(NSPoint)screenPoint operation:(NSDragOperation)operation
+{
+	NSLog(@"Dragged Operation: %i", operation);
+	
+	if( operation == NSDragOperationNone ) {
+		//	Actual delete removed because it is too intense!
+		//	[super draggedImage:image endedAt:screenPoint operation:NSDragOperationDelete];					
+		NSShowAnimationEffect(NSAnimationEffectPoof, screenPoint, NSZeroSize, nil, nil, nil);
+		return;
+	}
+	
+	[super draggedImage:image endedAt:screenPoint operation:operation];
+}
 
 @end	// DACALTreeDataSource
-
-
-@implementation DACALViewDataSource
-
-- (void)dealloc
-{
-	[[NSUserDefaultsController sharedUserDefaultsController] removeObserver:self forKeyPath:@"values.PADColumnSlotType"];
-	[[NSUserDefaultsController sharedUserDefaultsController] removeObserver:self forKeyPath:@"values.PADColumnSlotNum"];
-	[[NSUserDefaultsController sharedUserDefaultsController] removeObserver:self forKeyPath:@"values.PADColumnDateAdded"];
-
-	[super dealloc];
-}
-
-- (void)awakeFromNib 
-{
-	if( !PADBOX_VALIDATED ) [[[treeControl outlineView] window] orderOut:self];
-	
-	[[AppController shared] setDataView: treeControl];
-
-//	NSTableColumn*		nameCol = [[treeControl outlineView] tableColumnWithIdentifier:COLUMNID_NAME];
-	NSTableColumn*		slotCol = [[treeControl outlineView] tableColumnWithIdentifier:COLUMNID_SLOT];
-	NSTableColumn*		aDayCol = [[treeControl outlineView] tableColumnWithIdentifier:COLUMNID_MODDATE];
-	NSTableColumn*		flavCol = [[treeControl outlineView] tableColumnWithIdentifier:COLUMNID_TYPE];
-//	NSTableColumn*		rankCol = [[treeControl outlineView] tableColumnWithIdentifier:COLUMNID_SCORE];
-	
-	// NSSortDescriptor*	nameSort = [[[NSSortDescriptor alloc] initWithKey:@"keyName" ascending:YES selector:@selector(compareDataNames:)] autorelease];
-	// NSSortDescriptor*	slotSort = [[[NSSortDescriptor alloc] initWithKey:@"keySlotNumber" ascending:YES selector:@selector(compareDataSlots:)] autorelease];
-	// NSSortDescriptor*	aDaySort = [[[NSSortDescriptor alloc] initWithKey:@"keyAddDate" ascending:YES selector:@selector(compareDataAddDates:)] autorelease];
-	// NSSortDescriptor*	flavSort = [[[NSSortDescriptor alloc] initWithKey:@"keyFlavor" ascending:YES selector:@selector(compareDataFlavors:)] autorelease];
-	// NSSortDescriptor*	rankSort = [[[NSSortDescriptor alloc] initWithKey:@"keyScore" ascending:NO selector:@selector(compareDataScores:)] autorelease];
-	
-	BOOL				slotVisible = [[NSUserDefaults standardUserDefaults] boolForKey:@"PADColumnSlotNum"];
-	BOOL				aDayVisible = [[NSUserDefaults standardUserDefaults] boolForKey:@"PADColumnDateAdded"];
-	BOOL				flavVisible = [[NSUserDefaults standardUserDefaults] boolForKey:@"PADColumnSlotType"];
-	
-	// NSMutableArray*		startOrder = [NSMutableArray arrayWithCapacity:5];
-	
-	// [nameCol setSortDescriptorPrototype:nameSort];
-	// [slotCol setSortDescriptorPrototype:slotSort];
-	// [aDayCol setSortDescriptorPrototype:aDaySort];
-	// [flavCol setSortDescriptorPrototype:flavSort];
-	// [rankCol setSortDescriptorPrototype:rankSort];
-	
-	// if( slotVisible )	[startOrder addObject:slotSort];
-	// 					[startOrder addObject:nameSort];
-	// if( flavVisible )	[startOrder addObject:flavSort];
-	// if( aDayVisible )	[startOrder addObject:aDaySort];
-		
-	// [[treeControl outlineView] setSortDescriptors:startOrder];
-	
-	[slotCol setHidden:!slotVisible];
-	[aDayCol setHidden:!aDayVisible];
-	[flavCol setHidden:!flavVisible];
-	
-	[[NSUserDefaultsController sharedUserDefaultsController] addObserver:self forKeyPath:@"values.PADColumnDateAdded" options:0 context:NULL];
-	[[NSUserDefaultsController sharedUserDefaultsController] addObserver:self forKeyPath:@"values.PADColumnSlotNum" options:0 context:NULL];
-	[[NSUserDefaultsController sharedUserDefaultsController] addObserver:self forKeyPath:@"values.PADColumnSlotType" options:0 context:NULL];
-
-}
-
-- (SimpleTreeNode*)createInitialTree:(id)tree
-{
-	SimpleTreeNode*		theOutputTree = nil;	
-	return theOutputTree;
-}
-
-- (void)updatePrompt
-	{ [[DACALTreeDataSource shared] doReport]; }
-
-- (void)outlineViewAction:(id)tree
-{
-	NSArray *selectedNodes = [treeControl selectedNodes];
-//	NSMutableArray *selectedSlots = [NSMutableArray arrayWithCapacity:0];
-	SimpleNodeData *data;
-	int		index = 0;
-	int		count = [selectedNodes count];
-
-	//	NSURL*	theURL;
-	DACALSlotNum theSlot;
-	PADIndexToolbarController* toolControl = (PADIndexToolbarController*)[self toolbarControl];
-//	NSNumber*	slotNumber;
-	
-	//[toolControl setSelectedNode:nil];
-	
-	for( index=0; index<count; index++ )
-	{
-		data = [[selectedNodes objectAtIndex:index] nodeData];
-		theSlot = [data itemSlot];
-		if( theSlot != 0 ) {
-			[toolControl addSelectedNode:[selectedNodes objectAtIndex:index]];
-			//slotNumber = [NSNumber numberWithInteger:(NSInteger)theSlot];
-			//if( ![selectedSlots containsObject:slotNumber] )
-			//	[selectedSlots addObject:slotNumber];
-		}
-    }
-	//if( toolControl ) {
-	//	[toolControl setSelectedSlots:(NSArray*)selectedSlots];
-	//	[toolControl setSelectedNodes:selectedNodes];
-	//}
-
-	[self updatePrompt];
-
-	return;
-}
-
-- (void)nodeNameChanged:(SimpleTreeNode*)theNode toName:(NSString*)theName
-{
-	SimpleNodeData	*theData = [theNode nodeData];
-	DACALDeviceRef	theBox = [theData itemDevice];
-	DACALSlotNum	theSlot = [theData itemSlot];
-//	CFURLRef		theURL = [theData location];
-	DACALResult		theErr;
-
-	if( [[theData name] compare:theName] == NSOrderedSame ) return;
-	
-	// This should not be possible since we checked already before we allowed editing.
-	// if( (theURL == NULL) || (CFURLIsSlot(theURL) != TRUE) ) return;
-	
-	theErr = DACALSlotSetTitle( theBox, theSlot, (CFStringRef)theName );
-	if( theErr != 0 ) goto SLOTNAMEFAILED;
-
-	[theData setName:theName];
-
-	//if( [theNode nodeParent] ) [[theNode nodeParent] sortExpandedChildrenUsingDescriptors:[[[self treeControl] outlineView] sortDescriptors ]];
-	[self sortExpandedChildrenWithCurrentDescriptors:(SimpleTreeNode*)[theNode nodeParent]];
-	
-	
-	[AppController playUISound: kASSystemSoundSuccess];
-	return;
-	
-SLOTNAMEFAILED:
-	
-	[AppController playUISound: kASSystemSoundDoink];
-	return;
-}
-
-- (void)nodeSlotChanged:(SimpleTreeNode*)node toSlot:(NSString*)slotString
-{
-	DACALSlotNum	oldSlot = [[node nodeData] itemSlot];
-	DACALSlotNum	newSlot = [slotString intValue];
-	
-	if( oldSlot == newSlot ) return;
-	
-	NSString*		theString = nil;
-
-	theString = [NSString stringWithFormat:@"Change from slot %i to slot %i.", oldSlot, newSlot];
-
-	NSLog( theString );
-	CFStringSpeak( (CFStringRef)theString, FALSE, NULL );
-}
-
-- (void)nodeTypeChanged:(SimpleTreeNode*)theNode toType:(NSString*)theName
-{
-	SimpleNodeData	*theData = [theNode nodeData];
-	CFURLRef		theURL = (CFURLRef)[theData location];
-	
-//	CFURLRef		testURL = (CFURLRef)[(SimpleNodeData*)[theNode nodeData] location];
-	DACALResult		theErr;
-	
-//	CFShow(testURL);
-//	theURL = testURL;
-	
-	if( [[theData itemFlavor] compare:theName] == NSOrderedSame ) return;
-		
-	theErr = CFURLSetXattr( theURL, kDACALCarouselDocumentXAttrSlotKind, (CFStringRef)theName );
-	if( theErr != 0 ) goto SLOTTYPEFAILED;
-	
-	[theData setItemFlavor:theName];
-	[theData setIconRep:CFURLGetIconAsNSImage( NULL, (CFURLRef)theURL, NULL)];
-	
-	//if( [theNode nodeParent] ) [[theNode nodeParent] sortExpandedChildrenUsingDescriptors:[[[self treeControl] outlineView] sortDescriptors ]]; 
-	[self sortExpandedChildrenWithCurrentDescriptors:(SimpleTreeNode*)[theNode nodeParent]];
-	
-	//[AppController playUISound: kASSystemSoundSuccess];
-	return;
-	
-SLOTTYPEFAILED:
-	if( theErr != 0 ) NSLog(@"Error:%i Setting to:%@ for URL:%@", (int)theErr, theName, (NSURL*)theURL);
-	[AppController playUISound: kASSystemSoundDoink];
-	return;
-}
-
-- (void)nodeDidCollapse:(SimpleTreeNode*)theNode
-{
-	[self updatePrompt];
-	return;
-}
-
-- (void)nodeDidExpand:(SimpleTreeNode*)theNode
-{
-	[self updatePrompt];
-	return;
-}
-
-- (void)selectionDidChange
-{
-	[self updatePrompt];
-	return;
-}
-
-- (NSInteger)shouldEditTableColumn:(NSTableColumn *)tc item:(id)item
-{
-	SimpleNodeData	*theData = [item nodeData];
-	CFURLRef		theURL = NULL;
-	
-	if([[tc identifier] compare:COLUMNID_SLOT] == NSOrderedSame) 
-		return NO;	// Currently unimplemented
-	
-	if([[tc identifier] compare:COLUMNID_NAME] == NSOrderedSame) {
-		theURL = (CFURLRef)[theData location];
-		if( theURL == NULL ) return NO;
-		if( CFURLIsTopInSlot(kCFAllocatorDefault, theURL) == TRUE ) return YES;
-		return NO;
-	}
-	
-	return NO;
-}
-
-- (void)doubleClickImage:(id)item
-{
-	SimpleNodeData	*theData = [item nodeData];
-	DACALDeviceRef	theBox = [theData itemDevice];
-	DACALSlotNum	theSlot = [theData itemSlot];
-
-	DACALCommandMoveToSlotWithOptions( theBox, theSlot, kDACALOptionMoveToggle );
-}
-
-- (void)doubleClickCellContent:(id)item
-{
-	SimpleNodeData	*theData = [item nodeData];
-	NSOutlineView	*theView = [[self treeControl] outlineView];
-	
-	if([theData isExpandable] == YES ) 
-		if( [theView isItemExpanded:item] == YES ) {
-			[theView collapseItem:item];
-		} else {
-			[theView expandItem:item];
-		}
-}
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
-{
-	if (object == [NSUserDefaultsController sharedUserDefaultsController] )
-	{
-		NSTableColumn*		workColumn = nil;
-		NSSortDescriptor*	workSorter = nil;
-		NSArray*			viewSorts = nil;
-		NSMutableArray*		viewNewSorts = nil;
-		NSInteger			workIndex = 0;
-		NSString*			workKey = nil;
-		BOOL				isVisible = NO;
-		
-		if( [keyPath hasSuffix:@"PADColumnDateAdded"] ) {
-			workColumn = [[[self treeControl] outlineView] tableColumnWithIdentifier:COLUMNID_MODDATE];
-			workKey = @"PADColumnDateAdded";
-		}
-		
-		if( [keyPath hasSuffix:@"PADColumnSlotNum"] ) {
-			workColumn = [[[self treeControl] outlineView] tableColumnWithIdentifier:COLUMNID_SLOT];
-			workKey = @"PADColumnSlotNum";
-		}
-		
-		if( [keyPath hasSuffix:@"PADColumnSlotType"] ) {
-			workColumn = [[[self treeControl] outlineView] tableColumnWithIdentifier:COLUMNID_TYPE];
-			workKey = @"PADColumnSlotType";
-		}
-		
-		if( workKey ) isVisible = [[NSUserDefaults standardUserDefaults] boolForKey:workKey];
-		if( workColumn ) {
-			[workColumn setHidden:!isVisible];
-
-			workSorter = [workColumn sortDescriptorPrototype];
-			viewSorts = [[[self treeControl] outlineView] sortDescriptors];
-			workIndex = [viewSorts indexOfObjectIdenticalTo:workSorter];
-
-			viewNewSorts = [NSMutableArray arrayWithCapacity:[viewSorts count]];
-			[viewNewSorts addObjectsFromArray:viewSorts];
-			if( (workIndex != NSNotFound) && !isVisible ) 
-				[viewNewSorts removeObjectAtIndex:workIndex];
-			if( isVisible && (workIndex == NSNotFound) )
-				[viewNewSorts addObject:workSorter];
-			
-			workColumn = [[[self treeControl] outlineView] tableColumnWithIdentifier:COLUMNID_NAME];
-			workSorter = [workColumn sortDescriptorPrototype];
-			[viewNewSorts removeObjectIdenticalTo:workSorter];
-			[viewNewSorts insertObject:workSorter atIndex:0];
-			
-			[[[self treeControl] outlineView] setSortDescriptors:viewNewSorts];
-			[self sortExpandedChildrenWithCurrentDescriptors:nil];
-		}
-		//NSLog(@"Column:%@ key:%@ visible:%i", workColumn, workKey, isVisible);
-	}
-	else
-	{
-		[super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
-	}
-}
-
-
-@end	// DACALViewDataSource

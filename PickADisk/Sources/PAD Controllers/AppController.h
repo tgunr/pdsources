@@ -10,9 +10,6 @@
 int				jPADBusyBodyBeat;			// Used internally as the counter for row spinning arrows
 BOOL			busyBusy;
 
-void DACALNotification( void* inData, DACALDeviceRef inBox, CFStringRef inMessage, CFDictionaryRef inParam );
-void DACALSetup( void );
-
 
 @interface AppController : NSObject {
 	NSOperationQueue*		queue;
@@ -35,7 +32,9 @@ void DACALSetup( void );
 - (void)queueOperation:(NSOperation*)op;
 - (void)queueUIOperation:(NSOperation*)op;
 - (void)queueSearchOperation:(NSOperation*)op;
+- (void)cancelOperationsForDevice:(DACALDevice*)oldBox;
 
+- (id)dataView;
 - (void)setDataView:(TreeController*)tc;
 - (PADIndexToolbarController*)toolbarController;
 - (void)setToolbarController:(PADIndexToolbarController*)tb;
@@ -49,9 +48,6 @@ void DACALSetup( void );
 - (IBAction)retractDoor:(id)sender;
 - (IBAction)resetCarousel:(id)sender;
 - (IBAction)gotoSlot:(id)sender;
-
--(void)deviceAttached:(DACALDeviceRef)newBox;
--(void)deviceDetached:(DACALDeviceRef)oldBox;
 
 - (void)addBusyBody:(id)cell ofView:(id)view;
 - (void)addBusyBody:(id)item;

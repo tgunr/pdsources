@@ -10,7 +10,7 @@
 #include "dacallib.h"
 #include "../pmsutility/pmsDACALUtility.h"
 
-#define __DCDEBUG												// define this in your pch to go verbose debug
+//#define __DCDEBUG												// define this in your pch to go verbose debug
 
 #define DACAL_MAXDEVICE_COUNT	64*4							// 64 boxes + 64 hubs = 128 devices/per port for possible 4 ports.  Total 256 devices.
 #define	DACAL_MAXCLIENT_COUNT	1								// Only 1 will work for now.
@@ -133,6 +133,7 @@ CFStringRef			kDACALCarouselDocumentXAttrSlotKind		=CFSTR("com.polymicrosystems.
 CFStringRef			kDACALCarouselDocumentXAttrSlotAddDate	=CFSTR("com.polymicrosystems.pickadisk.device.slot.added");
 CFStringRef			kDACALCarouselDocumentXAttrSlotCheckout	=CFSTR("com.polymicrosystems.pickadisk.device.slot.checkout");
 CFStringRef			kDACALCarouselDocumentXAttrVolumeName	=CFSTR("com.polymicrosystems.pickadisk.device.volname");
+CFStringRef			kDACALCarouselDocumentXAttrUserTitle	=CFSTR("com.polymicrosystems.pickadisk.item.usertitle");
 
 CFStringRef			kDACALCarouselNoticeDeviceOpen			= CFSTR("Open Device");
 CFStringRef			kDACALCarouselNoticeDeviceClose			= CFSTR("Close Device");
@@ -1201,6 +1202,46 @@ BAIL:
 	CFRelease( doCFCommand );
 	return( outResult );
 }
+
+DACALResult		DACALSlotMove( DACALDeviceRef fromDeviceID, DACALSlotNum fromSlotNum, DACALDeviceRef toDeviceID, DACALSlotNum toSlotNum )
+{
+	DACALResult		outResult = kIOReturnNoDevice;
+	CFStringRef		returnText = NULL;
+	CFStringRef		scriptArgs = NULL;
+	CFStringRef		scriptFormat = CFSTR("--from-carousel %@ --from-slot %i --to-carousel %@ --to-slot %i");
+	CFStringRef		fromBoxUUID = NULL;
+	CFStringRef		destBoxUUID = NULL;
+	DACALCount		fromIndexID = 0;
+	DACALCount		toIndexID = 0;
+
+	if( toDeviceID == kDACALNullDevice ) toDeviceID = fromDeviceID;
+	if( toSlotNum == 0 ) toSlotNum = fromSlotNum;
+	
+	fromIndexID = dacalDeviceRefToDeviceIndex( fromDeviceID );
+	toIndexID = dacalDeviceRefToDeviceIndex( toDeviceID );
+	
+	if( (fromIndexID == kDACALIllegalDevice) || (toIndexID == kDACALIllegalDevice) ) goto BAIL;
+	
+	if( (fromSlotNum < 1) || (fromSlotNum > DACALCommandGetSlotCount( fromDeviceID )) ) goto BAIL;
+	if( (toIndexID < 1) || (toIndexID > DACALCommandGetSlotCount( toDeviceID )) ) goto BAIL;
+	
+	fromBoxUUID = CFUUIDCreateString( gDACALDefaultCFAllocator, DACAL_BOX_UUID(fromIndexID) );
+	destBoxUUID = CFUUIDCreateString( gDACALDefaultCFAllocator, DACAL_BOX_UUID(toIndexID) );
+	
+	if( (fromBoxUUID == NULL) || (destBoxUUID == NULL) ) goto BAIL;
+	
+	scriptArgs = CFStringCreateWithFormat( gDACALDefaultCFAllocator, NULL, scriptFormat, fromBoxUUID, fromSlotNum, destBoxUUID, toSlotNum );
+	
+	returnText = CFBundleRunShellScript( gDACALDefaultCFAllocator, CFBundleGetMainBundle(), CFSTR("swapslot"), scriptArgs, (OSStatus*)&outResult );
+	
+BAIL:
+	if( fromBoxUUID ) CFRelease( fromBoxUUID );
+	if( destBoxUUID ) CFRelease( destBoxUUID );
+	if( scriptArgs ) CFRelease( scriptArgs );
+	if( returnText ) CFRelease( returnText );
+	return outResult;
+}
+
 
 CFStringRef		DACALSlotCopyTitle( DACALDeviceRef deviceID, DACALSlotNum slotNum, DACALResult* outError )
 {

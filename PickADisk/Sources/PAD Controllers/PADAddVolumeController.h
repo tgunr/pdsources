@@ -53,6 +53,8 @@
 
 - (void)awakeFromNib;
  
+- (void)changeToFlavor:(NSString*)slotType;
+
 - (void)deviceSelectionChanged:(NSArray *)newSet;
 - (void)startSheet:(id)sender;
 - (void)windowWillBeginSheet:(NSNotification *)notification;

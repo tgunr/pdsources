@@ -165,6 +165,8 @@ static NSMutableArray*		gPADSearchTerms = nil;
 
 void			PADSearchTermSetup()
 {
+	[PADSearchService sharedSearch];
+	
 	PADAddSearchTerm( kPADSearchByTitle, kPADSearchByTitleID, @selector(nodeData), @selector(searchForName:withOptions:), nil, nil );
 	PADAddSearchTerm( kPADSearchByType, kPADSearchByTypeID, @selector(nodeData), @selector(searchForFlavor:withOptions:), nil, nil );
 	PADAddSearchTerm( kPADSearchByDateAdded, kPADSearchByDateAddedID, @selector(nodeData), @selector(searchForDateAdded:withOptions:), nil, nil );
@@ -213,6 +215,8 @@ PADSearchTerm*	PADCopySearchTermWithTitleOrID( NSString* aTermName )
 	
 	NSLog(@"DEALLOC REQUEST");
 	
+	[[PADSearchService sharedSearch] removeActiveSearch:self];
+	
 	if( searchLocations!= nil )			[searchLocations release];
 	if( searchTermDictionary!= nil )	[searchTermDictionary release];
 	if( searchTermElements!= nil )		[searchTermElements release];
@@ -227,6 +231,7 @@ PADSearchTerm*	PADCopySearchTermWithTitleOrID( NSString* aTermName )
 	searchOptions = nil;
 	searchResults = nil;
 	searchTarget = nil;
+	searchNode = nil;
 	searchSubTree = nil;
 	searchingNow = NO;
 	
@@ -278,6 +283,9 @@ PADSearchTerm*	PADCopySearchTermWithTitleOrID( NSString* aTermName )
 
 -(void)dirtySearchResults
 	{ searchResultsDirty = YES; }
+
+-(id)searchTarget
+	{ return searchTarget; }
 
 -(BOOL)searchBusy
 {
@@ -341,26 +349,44 @@ PADSearchTerm*	PADCopySearchTermWithTitleOrID( NSString* aTermName )
 		if( ( searchTarget != nil ) && ( [newResults count] > 0 ) )
 			[searchTarget performSelector:@selector(searchFoundResults:forSearch:) withObject:newResults withObject:self];
 	} else {
+		searchResultsDirty = NO;
 		if( searchTarget != nil ) {
 			if( [newResults count] > 0 ) 
 				[searchTarget performSelector:@selector(searchFoundResults:forSearch:) withObject:newResults withObject:self];
 			[searchTarget performSelector:@selector(searchCompleted:) withObject:self];
 		}
 		[searchTermOperations removeAllObjects];
-		searchResultsDirty = NO;
+		//if( searchNode != nil )
+			//[searchNode setBusy:NO];
+		[[PADSearchService sharedSearch] searchFinished:self];
 	}	
 }
 
+-(PADSearchRequest*)setupSearchForTarget:(id)target onNode:(id)node andSubTree:(id)subTree
+{
+	searchTarget = target;
+	searchNode = node;
+	searchSubTree = subTree;
+	searchResultsDirty = YES;
 
--(PADSearchRequest*)startSearchForTarget:(id)target andSubTree:(id)subTree
+	[[PADSearchService sharedSearch] addActiveSearch:self];
+	
+	return self;
+}
+
+-(PADSearchRequest*)startSearch
 {
 	int		locIndex, locCount = [searchLocations count];
 	PADSearchTermOperation*		newTerm;
 	SimpleTreeNode*				devicesNode = nil;
 	
-	searchTarget = target;
-	searchSubTree = subTree;
-	searchResultsDirty = YES;
+	if( searchResultsDirty == NO )
+		return self;
+
+	if( searchSubTree != nil )
+		[[searchSubTree children] makeObjectsPerformSelector:@selector(removeFromParent)];
+
+	[[PADSearchService sharedSearch] searchStarted:self];
 	
 	[self createTermsForKeys];
 	
@@ -371,6 +397,9 @@ PADSearchTerm*	PADCopySearchTermWithTitleOrID( NSString* aTermName )
 	}
 
 	//NSLog(@"Searching locations: %@", searchLocations);
+	
+	//if( searchNode != nil )
+	//	[searchNode setBusy:YES];
 	
 	for( locIndex=0; locIndex < locCount; locIndex++ )
 	{
@@ -444,6 +473,15 @@ PADSearchTerm*	PADCopySearchTermWithTitleOrID( NSString* aTermName )
 			
 	}
 }
+
+-(void)searchDataChanged:(NSArray*)theItems
+{
+	if( ![self searchBusy] ) {
+		[self dirtySearchResults];
+		NSLog(@"Results Dirty: %@", self);
+	}
+}
+
 
 -(id)initSearchInLocations:(NSArray*)inLocs andOptions:(NSDictionary*)inOptions
 {
@@ -731,9 +769,106 @@ STARTSEARCH:
 +(PADSearchTermOperation*)searchOperationsForTreeNode:(SimpleTreeNode*)rootSubTree forTerms:(NSArray*)theTerms andTarget:(id)aTarget
 	{ return [[PADSearchTermOperation alloc] initWithTree:rootSubTree forTerms:theTerms andTarget:aTarget]; }
 
-
-
 @end		// PADSearchTermOperation
+
+@implementation PADSearchService
+static PADSearchService* PADSearchService_shared;
+
+-(void)dealloc
+{
+	if( activeSearches != nil ) [activeSearches release];
+	activeSearches = nil;
+	if( activeWatchers != nil ) [activeWatchers release];
+	activeWatchers = nil;
+	
+	[super dealloc];
+}
+
+-(id)init
+{
+    if (PADSearchService_shared) 
+	{
+		[self autorelease];
+		return PADSearchService_shared;
+	}
+	
+	if( self = [super init] )
+	{
+		activeSearches = [[NSMutableArray alloc] initWithCapacity:0];
+		activeWatchers = [[NSMutableArray alloc] initWithCapacity:0];
+		
+		PADSearchService_shared = self;
+	}
+	return self;
+}
+
++(id)sharedSearch
+{
+    if (!PADSearchService_shared) {
+        [[PADSearchService alloc] init];
+    }
+    return PADSearchService_shared;
+}
+
++(void)updateAllSearches
+	{ [[PADSearchService sharedSearch] searchDataChanged:nil]; }
+
+
+-(void)addActiveSearch:(PADSearchRequest*)newRequest
+{
+	if( !activeSearches ) return;
+	
+	if( [activeSearches indexOfObject:newRequest] == NSNotFound )
+	{
+		[activeSearches addObject:newRequest];
+	}
+}
+
+-(void)removeActiveSearch:(PADSearchRequest*)oldRequest
+{
+	if( !activeSearches ) return;
+	
+	
+	if( [activeSearches indexOfObject:oldRequest] != NSNotFound )
+	{
+		[activeSearches removeObject:oldRequest];
+	}
+}
+
+-(void)addActiveWatcher:(id)newWatcher
+{
+	if( !activeWatchers ) return;
+	
+	if( [activeWatchers indexOfObject:newWatcher] == NSNotFound )
+		[activeWatchers addObject:newWatcher];
+}
+
+-(void)removeActiveWatcher:(id)oldWatcher
+{
+	if( !activeWatchers ) return;
+	
+	[activeWatchers removeObject:oldWatcher];
+}
+
+-(void)searchStarted:(PADSearchRequest*)aRequest
+{
+	[activeWatchers makeObjectsPerformSelector:@selector(searchStarted:) withObject:(id)aRequest];	
+}
+-(void)searchFinished:(PADSearchRequest*)aRequest
+{
+	[activeWatchers makeObjectsPerformSelector:@selector(searchFinished:) withObject:(id)aRequest];	
+}
+
+-(void)searchDataChanged:(NSArray*)theItems
+{
+	[activeSearches makeObjectsPerformSelector:@selector(searchDataChanged:) withObject:(id)theItems]; 
+	[activeWatchers makeObjectsPerformSelector:@selector(searchDataChanged:) withObject:(id)theItems];
+}
+
+
+@end		// PADSearchService
+
+
 
 @implementation SearchNodeData
 
@@ -743,6 +878,15 @@ STARTSEARCH:
 	matchActual = nil;
 
 	[super dealloc];
+}
+
+-(id)reload
+{
+	if( matchActual != nil ) 
+		[self setLocation:[(SimpleNodeData*)[matchActual nodeData] location]];
+	
+	self = [super reload];
+	return self;
 }
 
 -(NSComparisonResult)compareDataScores:(SearchNodeData *)other

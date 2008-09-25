@@ -52,7 +52,7 @@ Boolean		CFAbsoluteTimeBetweenTimes( CFAbsoluteTime lowTime, CFAbsoluteTime unkn
 {
 	CFAbsoluteTime	actualLow = lowTime;
 	CFAbsoluteTime	actualHi = hiTime;
-
+	
 	if( lowTime > hiTime ) {
 		actualLow = hiTime;
 		actualHi = lowTime;
@@ -89,7 +89,7 @@ Boolean		CFAbsoluteTimeBetweenTimes( CFAbsoluteTime lowTime, CFAbsoluteTime unkn
 
     if (self = [super init]) {
         location = [loc retain];
-		name = (NSString*)CFURLCopyDisplayName( NULL, (CFURLRef)loc, NULL);
+		name = (NSString*)CFURLCopyReferenceTitle( NULL, (CFURLRef)loc, NULL);
         isLeaf = !isAFolder;
         iconRep = CFURLGetIconAsNSImage( NULL, (CFURLRef)loc, NULL);
         isExpandable = isAFolder;
@@ -118,7 +118,7 @@ Boolean		CFAbsoluteTimeBetweenTimes( CFAbsoluteTime lowTime, CFAbsoluteTime unkn
 
     if (self = [super init]) {
         location = [loc retain];
-		name = (NSString*)CFURLCopyDisplayName( NULL, (CFURLRef)loc, NULL);
+		name = (NSString*)CFURLCopyReferenceTitle( NULL, (CFURLRef)loc, NULL);
         isLeaf = leaf;
         iconRep = CFURLGetIconAsNSImage( NULL, (CFURLRef)loc, NULL);
         isExpandable = !leaf;
@@ -262,7 +262,7 @@ Boolean		CFAbsoluteTimeBetweenTimes( CFAbsoluteTime lowTime, CFAbsoluteTime unkn
 	
 	[self setLocation:loc];
 	[self setIconRep: [[NSImage alloc]initByReferencingURL:loc]];
-	[self setName: (NSString*)CFURLCopyDisplayName( NULL, (CFURLRef)loc, NULL)];
+	[self setName: (NSString*)CFURLCopyReferenceTitle( NULL, (CFURLRef)loc, NULL)];
 }
 
 - (void)setItemDevice:(DACALDeviceRef)device {
@@ -319,6 +319,44 @@ Boolean		CFAbsoluteTimeBetweenTimes( CFAbsoluteTime lowTime, CFAbsoluteTime unkn
 - (BOOL)busy { return isBusy; }
 - (void)setBusy:(BOOL)value { isBusy = value; }
 
+- (id)reload
+{
+	
+	NSURL*		loc = [self location];
+	//BOOL		isAFolder = (CFURLHasDirectoryPath((CFURLRef)loc)) ? YES : NO;
+	
+	name = (NSString*)CFURLCopyReferenceTitle( NULL, (CFURLRef)loc, NULL);
+	//isLeaf = !isAFolder;
+	iconRep = CFURLGetIconAsNSImage( NULL, (CFURLRef)loc, NULL);
+	//isExpandable = isAFolder;
+	itemDevice = CFURLCopyCarouselUUID( kCFAllocatorDefault, (CFURLRef)loc );
+	itemSlot = CFURLGetSlotNumber( (CFURLRef)loc, FALSE );
+	itemAddDate = (NSDate*)CFURLCopyDateSlotAdded( NULL, (CFURLRef)loc, NULL );
+	
+	itemFlavor = (NSString*)CFURLCopyItemFlavor( (CFURLRef)loc, NULL );			// was DACALSlotCopyType( itemDevice, itemSlot, NULL );
+	if( itemFlavor == nil) itemFlavor = PADINDEX_FLAVORVALUE_FILES;
+	if( [itemFlavor compare:@"data"] == NSOrderedSame ) itemFlavor = PADINDEX_FLAVORVALUE_FILES;		// patch for old run slots! please fix.
+	
+	if( [itemFlavor compare:PADINDEX_FLAVORVALUE_MUSIC] == NSOrderedSame )
+		itemType = kPADTypeDataMuisc;
+	else if( [itemFlavor compare:PADINDEX_FLAVORVALUE_MOVIE] == NSOrderedSame )
+		itemType = kPADTypeDataMovie;
+	else if( [itemFlavor compare:PADINDEX_FLAVORVALUE_IMAGE] == NSOrderedSame )
+		itemType = kPADTypeDataImage;
+	
+	return self;	
+}
+
+- (id)reloadData:(id)newData
+{
+	self = [self reload];
+//	if( newData == nil) self = [self reload];
+//	else {
+//		[self autorelease];
+//		self = [newData reload];
+//	}
+	return self;
+}
 
 -(NSComparisonResult)compareDataAddDates:(SimpleNodeData *)other
 {
@@ -336,7 +374,7 @@ Boolean		CFAbsoluteTimeBetweenTimes( CFAbsoluteTime lowTime, CFAbsoluteTime unkn
 {
 	DACALSlotNum	thisSlot = [self itemSlot];
 	DACALSlotNum	thatSlot = [other itemSlot];
-	
+
 //	NSLog(@"COMPARE SLOT");
 	if( thisSlot == thatSlot ) return NSOrderedSame;
 	if( thisSlot < thatSlot ) return NSOrderedAscending;
@@ -529,6 +567,8 @@ Boolean		CFAbsoluteTimeBetweenTimes( CFAbsoluteTime lowTime, CFAbsoluteTime unkn
 	CFArrayRef			folderList = NULL;
 	Boolean				wasFound = FALSE;
 	Boolean				isSlot = CFURLIsSlot( (CFURLRef)loc );
+	DACALSlotElement*	ourElement = DACALDeviceSlotElementForURL( (CFURLRef)loc );
+	DACALSlotElement*	anElement = nil;
 	
 	wasFound = CFURLCreateDataAndPropertiesFromResource(NULL, (CFURLRef)loc, NULL, &dataDict, dataProps, NULL);
 	if( wasFound ) {
@@ -556,12 +596,17 @@ Boolean		CFAbsoluteTimeBetweenTimes( CFAbsoluteTime lowTime, CFAbsoluteTime unkn
     
     if( [self nodeData] == nil ) self = [super initWithData:[SimpleNodeData nodeDataWithURL:loc] parent:nil children:[[NSArray alloc] init]]; // [super initWithData:data parent:nil children:[NSArray array]];
     if (self != nil) {
+		[ourElement setElementNode:self];
+		anElement = [DACALSlotElement slotElementForNode:self];
         while ((entry = [entryEnum nextObject])) {
 			if( CFURLIsVisible((CFURLRef)entry) ) {
 				if (CFURLHasDirectoryPath((CFURLRef)entry))
 					child = [SimpleTreeNode treeFromLocation:entry];
 				else 
+				{
 					child = [[SimpleTreeNode alloc] initWithData:[SimpleNodeData nodeDataWithURL:entry] parent:nil children:[[NSArray alloc] init]];
+					anElement = [DACALSlotElement slotElementForNode:child];
+				}
 				[self insertChild: child atIndex: [self numberOfChildren]];
 			}
         }
@@ -845,7 +890,7 @@ FOUND:
 	NSString*			localHost = @"";
 	NSString*			localDevice = (NSString*)CFUUIDCreateString( kCFAllocatorDefault, (CFUUIDRef)[[self nodeData] itemDevice] );
 	NSString*			urlString = [NSString stringWithFormat:@"carousel://%@/%@/%i/%@", localHost, localDevice, [[self nodeData] itemSlot], localPath];
-
+	
 	[localDevice release];
     return urlString;
 }
@@ -854,7 +899,7 @@ FOUND:
 {
 	if( [[self nodeData] itemDevice] == kDACALNullDevice ) return [[self nodeData] name];
 	if( [[self nodeData] itemSlot] == 0 ) return [[self nodeData] name];
-
+	
 	NSMutableString*	localPath = [self localPathString];
 	
 	if( [[self nodeData] respondsToSelector:@selector(matchActual)] )
