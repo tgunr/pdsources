@@ -10,7 +10,7 @@
 #include "dacallib.h"
 #include "../pmsutility/pmsDACALUtility.h"
 
-//#define __DCDEBUG												// define this in your pch to go verbose debug
+#define __DCDEBUG												// define this in your pch to go verbose debug
 
 #define DACAL_MAXDEVICE_COUNT	64*4							// 64 boxes + 64 hubs = 128 devices/per port for possible 4 ports.  Total 256 devices.
 #define	DACAL_MAXCLIENT_COUNT	1								// Only 1 will work for now.
@@ -749,10 +749,17 @@ CFUUIDRef		DACALCommandCopyUUID( DACALDeviceRef deviceID, DACALResult* outError 
 	
 	bzero(&ourResult, sizeof(ourResult));
 	theErr = DACALCommandRequest( deviceID, cmdGetUUID, &ourResult );
-	if( outError ) *outError = theErr;
-	if( theErr ) return( (CFUUIDRef)NULL );
+	if( outError ) 
+		*outError = theErr;
+	if( theErr ) 
+		return( (CFUUIDRef)NULL );
 	
 	{
+		// DAC-2008-09-25 This should be changed to use CFSwapInt16BigToHost or something similar
+		// also, result has to even or swab will fail
+#ifdef __BIG_ENDIAN__
+		swab(ourResult.uniString, ourResult.uniString, ourResult.stringSize*2);
+#endif
 		long long   showlong = 0;
 		CFStringRef showIt = NULL;
 		CFNumberRef	showNum = CFNumberCreate( NULL, kCFNumberSInt64Type, ourResult.uniString);
