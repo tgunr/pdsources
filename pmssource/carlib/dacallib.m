@@ -85,10 +85,10 @@ typedef struct {
 } DACALArray;
 
 typedef struct {
-	char	stringSize;	
-	char	stringCode;
+	UInt8	stringSize;	
+	UInt8	stringCode;
 	UniChar uniString[128];
-} dacalString;
+} dacalString, *dacalStringRef;
 
 typedef struct {
 	CFStringRef						clientIdentifier;
@@ -181,6 +181,7 @@ void*			CarouselReadInfoFileKey( DACALDeviceRef deviceID, CFStringRef inKeyName,
 //DACALResult		SaveUSBProductData(DACALDeviceRef deviceID, CFStringRef inName, DACALDeviceNode inNode);
 CFStringRef		CFStringCreateFromDacalString( dacalString* deviceBlock );
 CFStringRef		CFStringCreateFromDacalPipe( CFAllocatorRef inAllocator, CFStringRef inCommandArgs, DACALResult* outError );
+void			dacalStringSwapDeviceToHost( dacalStringRef inString );
 IOReturn		dacalGetDescriptor(IOUSBDeviceInterface245 **deviceIntf, UInt16 index, UInt8 descType, UInt8 descIndex, void *buf, UInt16 len, UInt16 *result);
 IOReturn		dacalDoRequest(IOUSBDeviceInterface245** indeviceIntf, dacalCmd cmd, dacalString* outResult);
 DACALCount		dacalDeviceRefToDeviceIndex( DACALDeviceRef deviceID );
@@ -503,7 +504,7 @@ DACALResult		SaveUSBProductData( DACALDeviceRef deviceID, CFStringRef inName, DA
 */
 
 CFStringRef		CFStringCreateFromDacalString( dacalString* deviceBlock ) {
-	return( CFStringCreateWithCharacters( gDACALDefaultCFAllocator, (UniChar*)&deviceBlock->uniString, deviceBlock->stringSize));
+	return( CFStringCreateWithCharacters( gDACALDefaultCFAllocator, (UniChar*)deviceBlock->uniString, deviceBlock->stringSize));
 }	
 
 CFStringRef		CFStringCreateFromDacalPipe( CFAllocatorRef inAllocator, CFStringRef inCommandArgs, DACALResult* outError )
@@ -561,6 +562,23 @@ BAIL:
 	return( outCFText );
 }
 
+void			dacalStringSwapDeviceToHost( dacalStringRef inString )
+{
+#ifdef __BIG_ENDIAN__
+	
+	char				swapCode = inString->stringSize;
+	char				swapSize = inString->stringCode;
+	int					uIndex;
+	
+	inString->stringSize = swapSize;
+	inString->stringCode = swapCode;
+	
+	for( uIndex=0; uIndex < swapSize; uIndex++ ) 
+		inString->uniString[uIndex] = CFSwapInt16( inString->uniString[uIndex] );
+	
+#endif
+}
+
 IOReturn		dacalGetDescriptor(IOUSBDeviceInterface245 **deviceIntf, UInt16 index, UInt8 descType, UInt8 descIndex, void *buf, UInt16 len, UInt16 *result) {
     IOUSBDevRequest req;
     IOReturn err;
@@ -577,10 +595,12 @@ IOReturn		dacalGetDescriptor(IOUSBDeviceInterface245 **deviceIntf, UInt16 index,
 	*result = req.wLenDone;
 	// DAC-2008-09-24 This should be changed to use CFSwapInt16BigToHost or something similar
 	// also, result has to even or swab will fail
-#ifdef __BIG_ENDIAN__
+//#ifdef __BIG_ENDIAN__
+//	if(!err)
+//		swab(buf, buf, *result);
+//#endif
 	if(!err)
-		swab(buf, buf, *result);
-#endif
+		dacalStringSwapDeviceToHost( (dacalStringRef)buf );
 	return err;
 }
 

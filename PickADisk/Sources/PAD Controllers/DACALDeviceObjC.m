@@ -639,6 +639,8 @@ void DACALSetup( void )
 	DACALRegisterIconResource( CFSTR("Generic_Movie"), 'gMov' );
 	DACALRegisterIconResource( CFSTR("Generic_Image"), 'gImg' );
 	
+	[DACVolumeService sharedVolumeService];
+	
 	DACALClientCreate( kCFAllocatorDefault, kPADClientIdentifier, NULL, DACALNotification );
 }
 

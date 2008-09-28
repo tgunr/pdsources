@@ -231,7 +231,7 @@ AFTERRELOAD:
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView isItemExpandable:(id)item {
     SimpleTreeNode *node = (item == nil) ? treeData : item;
-    return [[node nodeData] isGroup];
+    return [[node nodeData] isExpandable];
 }
 
 - (NSInteger)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item {
@@ -345,7 +345,7 @@ AFTERRELOAD:
 }
 
 - (BOOL)outlineView:(NSOutlineView *)ov shouldExpandItem:(id)item {
-    return [[item nodeData] isExpandable];
+    return [[item nodeData] isGroup];
 }
 
 - (void)outlineViewItemWillExpand:(NSNotification *)notification {

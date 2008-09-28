@@ -3,6 +3,7 @@
 @interface NSArray(MyExtensions)
 - (BOOL)containsObjectIdenticalTo:(id)object;
 - (NSArray*) arrayWithSubTrees;
+- (NSArray*) arrayOfURLsFromPaths;
 @end
 
 @interface NSMutableArray(MyExtensions)

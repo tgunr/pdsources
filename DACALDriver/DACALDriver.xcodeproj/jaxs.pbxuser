@@ -1,7 +1,7 @@
 // !$*UTF8*$!
 {
 	089C1669FE841209C02AAC07 /* Project object */ = {
-		activeBuildConfigurationName = Deploy;
+		activeBuildConfigurationName = Release;
 		activeTarget = 32D94FC30562CBF700B6AF17 /* DACALDriver */;
 		codeSenseManager = 5C6B6F850E42654D00AEF52F /* Code sense */;
 		perUserDictionary = {
@@ -41,6 +41,22 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
+			PBXConfiguration.PBXFileTableDataSource3.PBXSymbolsDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXSymbolsDataSource_SymbolNameID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					16,
+					200,
+					50,
+					376,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXSymbolsDataSource_SymbolTypeIconID,
+					PBXSymbolsDataSource_SymbolNameID,
+					PBXSymbolsDataSource_SymbolTypeID,
+					PBXSymbolsDataSource_ReferenceNameID,
+				);
+			};
 			PBXConfiguration.PBXTargetDataSource.PBXTargetDataSource = {
 				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
 				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
@@ -63,20 +79,18 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 239938881;
-			PBXWorkspaceStateSaveDate = 239938881;
+			PBXPerProjectTemplateStateSaveDate = 244088896;
+			PBXWorkspaceStateSaveDate = 244088896;
 		};
 		perUserProjectItems = {
+			5C4387710E8C80570070CF56 /* PlistBookmark */ = 5C4387710E8C80570070CF56 /* PlistBookmark */;
 			5CD980030E4D2D3000441ED7 /* PBXTextBookmark */ = 5CD980030E4D2D3000441ED7 /* PBXTextBookmark */;
 			5CD980040E4D2D3000441ED7 /* PBXTextBookmark */ = 5CD980040E4D2D3000441ED7 /* PBXTextBookmark */;
 			5CD980050E4D2D3000441ED7 /* PBXTextBookmark */ = 5CD980050E4D2D3000441ED7 /* PBXTextBookmark */;
-			5CD980060E4D2D3000441ED7 /* PlistBookmark */ = 5CD980060E4D2D3000441ED7 /* PlistBookmark */;
 			5CD980090E4D2D3000441ED7 /* PlistBookmark */ = 5CD980090E4D2D3000441ED7 /* PlistBookmark */;
 			5CD9800A0E4D2D3000441ED7 /* PBXTextBookmark */ = 5CD9800A0E4D2D3000441ED7 /* PBXTextBookmark */;
 			5CD9800B0E4D2D3000441ED7 /* PBXTextBookmark */ = 5CD9800B0E4D2D3000441ED7 /* PBXTextBookmark */;
-			5CD9800C0E4D2D3000441ED7 /* PlistBookmark */ = 5CD9800C0E4D2D3000441ED7 /* PlistBookmark */;
 			5CD9800E0E4D2D3000441ED7 /* PBXTextBookmark */ = 5CD9800E0E4D2D3000441ED7 /* PBXTextBookmark */;
-			5CD984610E4D464C00441ED7 /* PlistBookmark */ = 5CD984610E4D464C00441ED7 /* PlistBookmark */;
 			5CD984620E4D464C00441ED7 /* PlistBookmark */ = 5CD984620E4D464C00441ED7 /* PlistBookmark */;
 		};
 		sourceControlManager = 5C6B6F840E42654D00AEF52F /* Source Control */;
@@ -85,6 +99,17 @@
 	};
 	32D94FC30562CBF700B6AF17 /* DACALDriver */ = {
 		activeExec = 0;
+	};
+	5C4387710E8C80570070CF56 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 7543D5960E3BD6A3009A8AF3 /* Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = /Volumes/Archive/svnsources/polymicro/PMTB/trunk/DACALDriver/Info.plist;
+		rLen = 0;
+		rLoc = 2147483647;
 	};
 	5C6B6F840E42654D00AEF52F /* Source Control */ = {
 		isa = PBXSourceControlManager;
@@ -127,25 +152,6 @@
 		vrLen = 498;
 		vrLoc = 556;
 	};
-	5CD980060E4D2D3000441ED7 /* PlistBookmark */ = {
-		isa = PlistBookmark;
-		fRef = 5CD980070E4D2D3000441ED7 /* Info.plist */;
-		fallbackIsa = PBXBookmark;
-		isK = 0;
-		kPath = (
-			CFBundleSignature,
-		);
-		name = /Volumes/Archive/svnsources/polymicro/PMTB/trunk/DACALDriver/build/Debug/DACALDriver.kext/Contents/Info.plist;
-		rLen = 0;
-		rLoc = 2147483647;
-	};
-	5CD980070E4D2D3000441ED7 /* Info.plist */ = {
-		isa = PBXFileReference;
-		lastKnownFileType = text.plist.xml;
-		name = Info.plist;
-		path = /Volumes/Archive/svnsources/polymicro/PMTB/trunk/DACALDriver/build/Debug/DACALDriver.kext/Contents/Info.plist;
-		sourceTree = "<absolute>";
-	};
 	5CD980090E4D2D3000441ED7 /* PlistBookmark */ = {
 		isa = PlistBookmark;
 		fRef = 7543D5960E3BD6A3009A8AF3 /* Info.plist */;
@@ -178,25 +184,6 @@
 		vrLen = 946;
 		vrLoc = 0;
 	};
-	5CD9800C0E4D2D3000441ED7 /* PlistBookmark */ = {
-		isa = PlistBookmark;
-		fRef = 5CD9800D0E4D2D3000441ED7 /* Info.plist */;
-		fallbackIsa = PBXBookmark;
-		isK = 0;
-		kPath = (
-			CFBundleSignature,
-		);
-		name = /Volumes/Archive/svnsources/polymicro/PMTB/trunk/DACALDriver/build/Debug/DACALDriver.kext/Contents/Info.plist;
-		rLen = 0;
-		rLoc = 2147483647;
-	};
-	5CD9800D0E4D2D3000441ED7 /* Info.plist */ = {
-		isa = PBXFileReference;
-		lastKnownFileType = text.plist.xml;
-		name = Info.plist;
-		path = /Volumes/Archive/svnsources/polymicro/PMTB/trunk/DACALDriver/build/Debug/DACALDriver.kext/Contents/Info.plist;
-		sourceTree = "<absolute>";
-	};
 	5CD9800E0E4D2D3000441ED7 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 7543D51F0E3BBDFE009A8AF3 /* VendorSpecificDriver.cpp */;
@@ -206,18 +193,6 @@
 		rType = 0;
 		vrLen = 946;
 		vrLoc = 0;
-	};
-	5CD984610E4D464C00441ED7 /* PlistBookmark */ = {
-		isa = PlistBookmark;
-		fRef = 7543D5960E3BD6A3009A8AF3 /* Info.plist */;
-		fallbackIsa = PBXBookmark;
-		isK = 0;
-		kPath = (
-			CFBundleExecutable,
-		);
-		name = /Volumes/Archive/svnsources/polymicro/PMTB/trunk/DACALDriver/Info.plist;
-		rLen = 0;
-		rLoc = 2147483647;
 	};
 	5CD984620E4D464C00441ED7 /* PlistBookmark */ = {
 		isa = PlistBookmark;

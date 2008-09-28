@@ -64,6 +64,26 @@
 	return outArray;
 }
 
+- (NSArray*) arrayOfURLsFromPaths
+{
+	NSInteger		pathCount = [self count];
+	NSInteger		index = 0;
+	NSMutableArray*	urlArray = [NSMutableArray arrayWithCapacity:pathCount];
+	NSURL*			workURL = nil;
+	NSArray*		outArray = nil;
+	
+	//	Create array of urls from array of paths
+	for( index=0; index < pathCount; index++ ) {
+		workURL = [[NSURL alloc] initFileURLWithPath:[self objectAtIndex:index]];
+		if( workURL )
+			[urlArray addObject:workURL];
+	}
+	
+	outArray = [NSArray arrayWithArray:urlArray];
+	return outArray;
+}
+
+
 @end
 
 @implementation NSMutableArray (MyExtensions)

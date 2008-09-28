@@ -272,16 +272,12 @@
 								<string>089C167CFE841241C02AAC07</string>
 								<string>19C28FB6FE9D52B211CA2CBB</string>
 								<string>1C37FBAC04509CD000000102</string>
-								<string>5CD980330E4D2D4100441ED7</string>
-								<string>5CD984600E4D464C00441ED7</string>
 								<string>1C37FABC05509CD000000102</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
 									<integer>14</integer>
-									<integer>8</integer>
-									<integer>7</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
@@ -332,21 +328,19 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>5CD984620E4D464C00441ED7</string>
+										<string>5C4387710E8C80570070CF56</string>
 										<key>history</key>
 										<array>
 											<string>5CD980030E4D2D3000441ED7</string>
 											<string>5CD980040E4D2D3000441ED7</string>
 											<string>5CD980050E4D2D3000441ED7</string>
-											<string>5CD980060E4D2D3000441ED7</string>
-											<string>5CD984610E4D464C00441ED7</string>
+											<string>5CD984620E4D464C00441ED7</string>
 										</array>
 										<key>prevStack</key>
 										<array>
 											<string>5CD980090E4D2D3000441ED7</string>
 											<string>5CD9800A0E4D2D3000441ED7</string>
 											<string>5CD9800B0E4D2D3000441ED7</string>
-											<string>5CD9800C0E4D2D3000441ED7</string>
 											<string>5CD9800E0E4D2D3000441ED7</string>
 										</array>
 									</dict>
@@ -405,9 +399,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>5CD980350E4D2E7000441ED7</string>
+				<string>5C4387720E8C80570070CF56</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>5CD980360E4D2E7000441ED7</string>
+				<string>5C4387730E8C80570070CF56</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -622,7 +616,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>5CD984630E4D464C00441ED7</string>
-				<string>5CD984640E4D464C00441ED7</string>
+				<string>5C4387740E8C80570070CF56</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>

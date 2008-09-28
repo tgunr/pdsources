@@ -23,13 +23,15 @@
 @end
 */
 
+const	time_t	kTimeOneDayInSeconds = 86400.0;
+
 @implementation NSDate(MyExtensions)
 
 +(NSDate*)tomorrow
-{ return [[NSDate date] addTimeInterval:86400.0]; }
+{ return [[NSDate date] addTimeInterval:kTimeOneDayInSeconds]; }
 
 +(NSDate*)yesterday
-	{ return [[NSDate date] addTimeInterval:-86400.0]; }
+	{ return [[NSDate date] addTimeInterval:-kTimeOneDayInSeconds]; }
 
 -(BOOL)isBetweenStartDate:(NSDate*)startDate andEndDate:(NSDate*)endDate
 {

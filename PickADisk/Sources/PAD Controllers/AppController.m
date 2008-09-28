@@ -165,15 +165,6 @@ static AppController *shared;
 
 	PADBOX_VALID_BEGIN
 
-	NSNotificationCenter *noteCenter;
-	
-	// Assume -observerMethod:(id)aNotification exists
-	noteCenter = [[NSWorkspace sharedWorkspace] notificationCenter];
-	[noteCenter addObserver:self selector:@selector(newMediaDetected:)
-					  name:@"NSWorkspaceDidMountNotification" object:nil]; // Register for all mount notifications
-	[noteCenter addObserver:self selector:@selector(existingMediaRemoved:)
-					  name:@"NSWorkspaceWillUnmountNotification" object:nil]; // Register for all unmount notifications
-
 	// Register for 'GURL' Apple Event to handle URL opening
 	[[NSAppleEventManager sharedAppleEventManager] setEventHandler:self andSelector:@selector(handleOpenLocationAppleEvent:withReplyEvent:) forEventClass:kInternetEventClass andEventID:kAEGetURL];
 	
@@ -189,41 +180,6 @@ static AppController *shared;
 	PADBOX_VALID_END
 	
 	if( !PADBOX_VALIDATED ) NSLog(@"PickADisk has expired.");
-}
-
-- (void) newMediaDetected:(id)aNotification {
-	
-	NSArray*		newMounts = [[NSWorkspace sharedWorkspace] mountNewRemovableMedia];
-	NSInteger		mountCount = [newMounts count];
-	NSInteger		index = 0;
-	NSMutableArray*	urlMounts = [NSMutableArray arrayWithCapacity:mountCount];
-//	NSURL*			discURL = nil; //
-	
-	for( index=0; index < mountCount; index++ )
-		[urlMounts addObject:[[NSURL fileURLWithPath:[newMounts objectAtIndex:index]] retain]];
-
-	NSLog(@"Detected Mounts: %@", urlMounts);	
-
-	//if( addVolumeController ) [addVolumeController detectedMounts:urlMounts];
-	//id controllerThing = [[NSApplication sharedApplication] addVolumeController];
-	
-	NSArray*		newVolumes = [DACVolume detectedMounts:urlMounts];
-	[addVolumeController detectedMounts:urlMounts];
-	
-	if( newVolumes ) [newVolumes release];
-	
-//	[urlMounts release];
-	
-	NSLogFunc;
-}
-
-- (void) existingMediaRemoved:(id)aNotification {
-	NSArray*	oldMounts = (NSArray*)[NSArray arrayWithObject:[NSURL fileURLWithPath:[[aNotification userInfo] valueForKey:@"NSDevicePath"]]];
-	
-	NSLog(@"Detected Unmounts: %@", oldMounts);	
-
-	[addVolumeController ejectedMounts:oldMounts];
-	
 }
 
 - (void)handleOpenLocationAppleEvent:(NSAppleEventDescriptor *)event withReplyEvent:(NSAppleEventDescriptor *)reply {

@@ -10,6 +10,7 @@
 #import "SimpleTreeNode.h"
 #import "PADIndexProgressController.h"
 #import "DACALTreeDataSource.h"
+#import "DACVolume.h"
 //#import <DiscID/DiscID.h>
 
 @interface PADAddVolumeController : NSObject {
@@ -24,6 +25,7 @@
 	IBOutlet	NSTextField		*slotNumber;
 	IBOutlet	NSSlider		*slotDial;
 	IBOutlet	NSSlider		*depthLevel;
+	IBOutlet	NSButton		*ejectButton;
 	
 	IBOutlet	NSWindow		*parentWindow;
 	IBOutlet	PADIndexProgressController *progressController;
@@ -39,12 +41,14 @@
 -(IBAction) clickOK:(id)sender;
 -(IBAction) clickType:(id)sender;
 -(IBAction) clickChoose:(id)sender;
+-(IBAction) clickEject:(id)sender;
 -(IBAction) slotChanged:(id)sender;
 -(IBAction) slotTitleChanged:(id)sender;
 -(IBAction) slotDialChanged:(id)sender;
 -(IBAction) slotNameChanged:(id)sender;
 -(IBAction) carouselChanged:(id)sender;
 
+-(DACVolume*)pendingVolume;
 -(NSString*) pendingTitle;
 //-(void)setPendingTitle:(NSString*)inTitle;
 -(NSURL*) pendingURL;
@@ -59,6 +63,9 @@
 - (void)startSheet:(id)sender;
 - (void)windowWillBeginSheet:(NSNotification *)notification;
 - (void)syncMediaTitles;
+
+- (void)detectedVolumes:(NSArray *)newVolumes;
+- (void)ejectedVolumes:(NSArray*)oldVolumes;
 - (void)detectedMounts:(NSArray *)newMounts;
 - (void)ejectedMounts:(NSArray*)oldMounts;
 

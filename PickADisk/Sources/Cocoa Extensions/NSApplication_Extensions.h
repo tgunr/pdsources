@@ -19,6 +19,8 @@ IBOutlet id addVolumeController;
 @end
 */
 
+extern const	time_t	kTimeOneDayInSeconds;
+
 @interface NSDate(MyExtensions)
 
 +(NSDate*)tomorrow;

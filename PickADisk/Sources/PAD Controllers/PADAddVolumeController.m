@@ -150,6 +150,7 @@ NSString*	PADAddVolumeController_lastItemName;
 -(void) startIndexProgress:(NSTimer*)timer
 {
 	NSString*		newTitle = [slotTitle stringValue];
+	NSString*		deviceTitle = [carouselList stringValue];
 	DACALDeviceRef	deviceID = (DACALDeviceRef)DACALCommandCopyUUID( [carouselList indexOfSelectedItem]+1, NULL );
 	DACALSlotNum	nextSlot = (DACALSlotNum)[slotNumber intValue];
 	NSURL*			newPath = [self pendingURL];
@@ -186,8 +187,8 @@ NSString*	PADAddVolumeController_lastItemName;
 									 finishSelector:@selector(indexProgressComplete:)
 									 modalForWindow:parentWindow];
 	
-		[progressController setPrimaryPromptString:[NSString stringWithFormat:@"Indexing ‚Äú%@‚Äù...", newTitle]];
-		[progressController setSecondaryPromptString:[NSString stringWithFormat:@"Assigning to slot %i", (int)nextSlot]];
+		[progressController setPrimaryPromptString:[NSString stringWithFormat:NSLocalizedString(@"Indexing “%@”...", @"Command Progress Window Primpary Prompt Format displaying new slot title name"), newTitle]];
+		[progressController setSecondaryPromptString:[NSString stringWithFormat:NSLocalizedString(@"Assigning to slot %i on %@", @"Command Progress Window Secondary Prompt Format displaing target slot and device"), (int)nextSlot, deviceTitle]];
 	}
 }
 
@@ -251,6 +252,29 @@ NSString*	PADAddVolumeController_lastItemName;
 	
 	[depthLevel animateToFloatValue:doLevel allowsTicksOnly:YES];
 	[cdIcon setImage:DACALGetIconImageForType( doIcon )];
+}
+
+-(void)guessSelectedVolumeFlavor
+{
+	NSInteger	actualIndex = [slotTitle indexOfItemWithObjectValue:[slotTitle stringValue]]; 
+	NSInteger	selectedIndex = [slotTitle indexOfSelectedItem];
+	NSString*	guessFlavor = nil;
+	BOOL		canEject = NO;
+
+	if( actualIndex != NSNotFound )
+	{
+		canEject = YES;
+		guessFlavor = [[pendingVolumes objectAtIndex:actualIndex] guessPADFlavor];
+		if( guessFlavor ) {
+			[slotTypeList selectItemWithTitle:guessFlavor];
+			[self changeToFlavor:guessFlavor];
+		}
+		
+		if( selectedIndex != actualIndex )
+			[slotTitle selectItemAtIndex:actualIndex];
+	}
+	
+	[ejectButton setHidden: !canEject];
 }
 
 -(IBAction) clickType:(id)sender
@@ -339,12 +363,22 @@ void MyNavEventProc (NavEventCallbackMessage callBackSelector, NavCBRecPtr callB
 	
 	theErr = NavDialogRun( theNavRef );
 	
-	
-	
 NAVERR:
 	
 	return;
 }
+
+-(IBAction) clickEject:(id)sender
+{
+	BOOL		goodE = NO;
+	DACVolume*	theV = [self pendingVolume];
+	
+	if( theV )
+		goodE = [theV ejectVolume];
+
+	[AppController playUISoundForResult: (goodE == YES) ? kDACALOK : kDACALError];
+}
+
 -(IBAction) slotChanged:(id)sender 
 {
 	CFStringRef		existingSlotName = DACALSlotCopyTitle( [carouselList indexOfSelectedItem]+1, [slotNumber intValue], NULL );
@@ -376,11 +410,16 @@ NAVERR:
 
 -(IBAction) slotNameChanged:(id)sender
 {
-	BOOL			isBlankBlank = FALSE;
+	BOOL			isBlankBlank = NO;
 
-	//[self slotChanged:sender];
+	if( [[slotTitle stringValue] compare:@""] == NSOrderedSame )
+		isBlankBlank = YES;
 	
-	if( [[slotTitle stringValue] compare:@""] == NSOrderedSame ) isBlankBlank = TRUE;
+	if( !isBlankBlank )
+		[self guessSelectedVolumeFlavor];
+	else
+		[ejectButton setHidden:YES];
+	
 	[okButton setEnabled: !isBlankBlank];
 	[depthLevel setEnabled: !isBlankBlank];
 }
@@ -397,13 +436,24 @@ NAVERR:
 	}
 }
 
+-(DACVolume*)pendingVolume
+{ 
+	DACVolume*	currentVolume = nil;
+	int			selectedIndex = [slotTitle indexOfSelectedItem];
+	
+	if( selectedIndex != -1 )
+		currentVolume = [pendingVolumes objectAtIndex:selectedIndex];
+	
+	return currentVolume; 
+}
+
 -(NSString*) pendingTitle
 {
 	NSString*	newTitle = nil;
-	NSURL*		theURL = [self pendingURL];
+	DACVolume*	theVolume = [self pendingVolume];
 	
-	if( theURL != nil )
-		newTitle = (NSString*)CFURLCopyDisplayName( NULL, (CFURLRef)theURL, NULL);
+	if( theVolume != nil )
+		newTitle = [theVolume mediaTitle];
 	
 	return newTitle;
 }
@@ -420,15 +470,14 @@ NAVERR:
 
 -(NSURL*) pendingURL 
 { 
-	NSURL*	currentURL = nil;
-	int		selectedIndex = [slotTitle indexOfSelectedItem];
+	NSURL*		currentURL = nil;
+	DACVolume*	theVolume = [self pendingVolume];
 	
-	if( selectedIndex != -1 )
-		currentURL = [pendingVolumes objectAtIndex:selectedIndex];
+	if( theVolume != nil )
+		currentURL = [theVolume volumeURL];
 	
 	return currentURL; 
 }
-
 
 /*
  -(void)setPendingURL:(NSURL*)inPath
@@ -464,45 +513,36 @@ NAVERR:
 
 - (void)syncMediaTitles
 {
-	NSArray*	mediaPaths = [[NSWorkspace sharedWorkspace] mountedRemovableMedia];
-	int			mediaCount = [mediaPaths count];
-	int			mediaIndex;
-	NSString*		selectedMedia = nil;
+	NSArray*		mediaVolumes = [[DACVolumeService sharedVolumeService] knownIndexableVolumes:nil];
+	int				mediaCount = [mediaVolumes count];
+	int				mediaIndex;
 	int				selectedIndex;
-	Boolean		isBlankBlank = FALSE;
-	
-	//pendingVolumes = [[NSMutableArray arrayWithCapacity:100] retain];
-	
-	
+	NSString*		selectedMedia = nil;
+	Boolean			isBlankBlank = FALSE;
 	
 	selectedMedia = (NSString*)[slotTitle objectValueOfSelectedItem];
 	selectedIndex = [slotTitle indexOfSelectedItem];
 	
 	[slotTitle removeAllItems];
+	[pendingVolumes removeAllObjects];
 
-	if( mediaCount == 0 ) [pendingVolumes removeAllObjects];
-	else {
-		//if( pendingVolumes == nil ) pendingVolumes = [NSMutableArray arrayWithCapacity:10];
-		for( mediaIndex=0; mediaIndex < mediaCount; mediaIndex++ )	{										// This list should be filtered to remove known discs!
-			[pendingVolumes addObject:[NSURL fileURLWithPath:[mediaPaths objectAtIndex:mediaIndex]]];
-			[slotTitle addItemWithObjectValue:(id)CFURLCopyDisplayName( kCFAllocatorDefault, (CFURLRef)[pendingVolumes objectAtIndex:mediaIndex], NULL )];
-		}
+	for( mediaIndex=0; mediaIndex < mediaCount; mediaIndex++ ) {
+		[pendingVolumes addObject:[mediaVolumes objectAtIndex:mediaIndex]];
+		[slotTitle addItemWithObjectValue:[[pendingVolumes objectAtIndex:mediaIndex] mediaTitle]];
 	}
 		
-	//NSLog(@"index = %i",[slotTitle indexOfItemWithObjectValue:selectedMedia]);
-	
 	if( selectedMedia != nil ) {
-		if( [slotTitle indexOfItemWithObjectValue:selectedMedia] != INT32_MAX )
+		if( [slotTitle indexOfItemWithObjectValue:selectedMedia] != NSNotFound ) {
 			[slotTitle selectItemWithObjectValue:selectedMedia];
-		else
+			[self guessSelectedVolumeFlavor];
+		} else
 			[slotTitle setStringValue:@""];
 	}
 	
-	//[self slotChanged:self];
 	if( [[slotTitle stringValue] compare:@""] == NSOrderedSame ) isBlankBlank = TRUE;
 	[okButton setEnabled: !isBlankBlank];
 	[depthLevel setEnabled: !isBlankBlank];
-
+	[ejectButton setHidden:([slotTitle indexOfSelectedItem] == -1)];
 }
 
 - (void)startSheet:(id)sender
@@ -538,6 +578,66 @@ NAVERR:
 			modalDelegate: self
 		   didEndSelector: @selector(assignSheetDidEnd:returnCode:contextInfo:)
 			  contextInfo: nil];
+}
+
+- (void)detectedVolumes:(NSArray *)newVolumes
+{
+	int			mediaIndex;
+	int			lastIndex = [pendingVolumes count];
+	
+	if( [sheetWindow isVisible] == NO ) return;
+	
+	[pendingVolumes addObjectsFromArray:newVolumes];
+	for( mediaIndex=0; mediaIndex < [newVolumes count]; mediaIndex++ )
+		[slotTitle addItemWithObjectValue:[[newVolumes objectAtIndex:mediaIndex] mediaTitle]];
+	
+	if( [newVolumes count] > 0 ) {
+		
+		[slotTitle selectItemAtIndex:lastIndex];
+		[slotTitle setStringValue:[slotTitle objectValueOfSelectedItem]];
+		[self guessSelectedVolumeFlavor];
+		
+	} else {
+
+		[self syncMediaTitles];
+		
+	}
+
+	[self carouselChanged:self];
+
+}
+
+- (void)ejectedVolumes:(NSArray*)oldVolumes;
+{
+	int				mountIndex;
+	NSUInteger		foundIndex;
+	int				mountCount = [oldVolumes count];
+	Boolean			isBlankBlank = FALSE;
+	BOOL			canEject = NO;
+	
+	for( mountIndex=0; mountIndex < mountCount; mountIndex++ )
+	{
+		foundIndex = [pendingVolumes indexOfObject:[oldVolumes objectAtIndex:mountIndex]];
+		if( foundIndex != NSNotFound )
+		{
+			[pendingVolumes removeObjectAtIndex:foundIndex];
+			if( [slotTitle indexOfSelectedItem] == foundIndex ) {
+				[slotTitle deselectItemAtIndex:foundIndex];
+				[slotTitle setStringValue:@""];
+			}
+			[slotTitle removeItemAtIndex:foundIndex];
+		}
+		
+	}
+	
+	if( [[slotTitle stringValue] compare:@""] == NSOrderedSame ) isBlankBlank = TRUE;
+	[okButton setEnabled: !isBlankBlank];
+	[depthLevel setEnabled: !isBlankBlank];
+	
+	if( !isBlankBlank )
+		canEject = ([slotTitle indexOfSelectedItem] != -1) ? YES : NO;
+	
+	[ejectButton setHidden:!canEject];
 }
 
 - (void)detectedMounts:(NSArray *)newMounts

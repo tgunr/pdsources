@@ -349,7 +349,11 @@ NSImage*		DACALCreateImageRefForFlavor( NSString* flavorName )
 	return( DACALGetIconImageForType(genericIconType) );
 }
 
+BOOL			BooleanToBOOL(Boolean	inBoolean)
+	{ return (inBoolean == TRUE) ? YES : NO; }
 
+Boolean			BOOLToBoolean(BOOL		inBool)
+	{ return(inBool == YES ); }
 
 
 

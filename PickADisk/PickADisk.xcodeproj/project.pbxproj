@@ -22,6 +22,7 @@
 		5C2EBE930E29719B009BAF4C /* update.icns in Resources */ = {isa = PBXBuildFile; fileRef = 5C2EBE920E29719B009BAF4C /* update.icns */; };
 		5C2EBE960E2979B3009BAF4C /* sidebarpref.icns in Resources */ = {isa = PBXBuildFile; fileRef = 5C2EBE950E2979B3009BAF4C /* sidebarpref.icns */; };
 		5C2EBE9C0E2991BF009BAF4C /* PADPrefsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C2EBE9A0E2991BF009BAF4C /* PADPrefsController.m */; };
+		5C438A5A0E8E825F0070CF56 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0247A8BE007179D411CA0E35 /* Foundation.framework */; };
 		5C440D750E5C27DF0020A588 /* Generic_Music.icns in Resources */ = {isa = PBXBuildFile; fileRef = 5C440D720E5C27DF0020A588 /* Generic_Music.icns */; };
 		5C440D760E5C27DF0020A588 /* Generic_Files.icns in Resources */ = {isa = PBXBuildFile; fileRef = 5C440D730E5C27DF0020A588 /* Generic_Files.icns */; };
 		5C440D770E5C27DF0020A588 /* Generic_Movie.icns in Resources */ = {isa = PBXBuildFile; fileRef = 5C440D740E5C27DF0020A588 /* Generic_Movie.icns */; };
@@ -267,6 +268,7 @@
 				5C6CC47A0E4F9763000EE6B3 /* Quartz.framework in Frameworks */,
 				5C2E41100E74076A00D7DF4A /* Security.framework in Frameworks */,
 				5CF4D9810E68E6DF0091A77F /* ILCrashReporter.framework in Frameworks */,
+				5C438A5A0E8E825F0070CF56 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,6 +324,7 @@
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0247A8BE007179D411CA0E35 /* Foundation.framework */,
 				5C2E410F0E74076A00D7DF4A /* Security.framework */,
 				5CF4D9800E68E6DF0091A77F /* ILCrashReporter.framework */,
 				5C6CC4790E4F9763000EE6B3 /* Quartz.framework */,
@@ -341,7 +344,6 @@
 			isa = PBXGroup;
 			children = (
 				0247A8BD007179D411CA0E35 /* AppKit.framework */,
-				0247A8BE007179D411CA0E35 /* Foundation.framework */,
 			);
 			name = "Other Frameworks";
 			sourceTree = "<group>";
