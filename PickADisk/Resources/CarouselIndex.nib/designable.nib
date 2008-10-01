@@ -868,6 +868,7 @@ ELIAAAAAAAgACAAIAAgAAQABAAEAAQ</bytes>
 													</object>
 													<string key="NSFrameSize">{207, 458}</string>
 													<reference key="NSSuperview" ref="413350330"/>
+													<reference key="NSNextKeyView" ref="800879139"/>
 													<reference key="NSDocView" ref="800879139"/>
 													<reference key="NSBGColor" ref="1067545439"/>
 													<int key="NScvFlags">4</int>
@@ -895,6 +896,7 @@ ELIAAAAAAAgACAAIAAgAAQABAAEAAQ</bytes>
 											</object>
 											<string key="NSFrame">{{-1, 0}, {207, 458}}</string>
 											<reference key="NSSuperview" ref="343571003"/>
+											<reference key="NSNextKeyView" ref="168235971"/>
 											<int key="NSsFlags">528</int>
 											<reference key="NSVScroller" ref="706881340"/>
 											<reference key="NSHScroller" ref="245779865"/>
@@ -1313,13 +1315,13 @@ ELIAAAAAAAgACAAIAAgAAQABAAEAAQ</bytes>
 																			<object class="NSOutlineView" id="589173348">
 																				<reference key="NSNextResponder" ref="862184346"/>
 																				<int key="NSvFlags">4370</int>
-																				<string key="NSFrameSize">{526, 441}</string>
+																				<string key="NSFrameSize">{525, 441}</string>
 																				<reference key="NSSuperview" ref="862184346"/>
 																				<bool key="NSEnabled">YES</bool>
 																				<object class="NSTableHeaderView" key="NSHeaderView" id="647408740">
 																					<reference key="NSNextResponder" ref="595458703"/>
 																					<int key="NSvFlags">256</int>
-																					<string key="NSFrameSize">{526, 17}</string>
+																					<string key="NSFrameSize">{525, 17}</string>
 																					<reference key="NSSuperview" ref="595458703"/>
 																					<reference key="NSTableView" ref="589173348"/>
 																				</object>
@@ -1333,7 +1335,7 @@ ELIAAAAAAAgACAAIAAgAAQABAAEAAQ</bytes>
 																					<bool key="EncodedWithXMLCoder">YES</bool>
 																					<object class="NSTableColumn" id="787282738">
 																						<string key="NSIdentifier">NameColumn</string>
-																						<double key="NSWidth">3.020000e+02</double>
+																						<double key="NSWidth">3.010000e+02</double>
 																						<double key="NSMinWidth">1.000000e+02</double>
 																						<double key="NSMaxWidth">1.000000e+03</double>
 																						<object class="NSTableHeaderCell" key="NSHeaderCell">
@@ -1407,9 +1409,9 @@ ELIAAAAAAAgACAAIAAgAAQABAAEAAQ</bytes>
 																					</object>
 																					<object class="NSTableColumn" id="998275295">
 																						<string key="NSIdentifier">CheckOutColumn</string>
-																						<double key="NSWidth">2.800000e+01</double>
-																						<double key="NSMinWidth">2.800000e+01</double>
-																						<double key="NSMaxWidth">2.800000e+01</double>
+																						<double key="NSWidth">1.600000e+01</double>
+																						<double key="NSMinWidth">1.600000e+01</double>
+																						<double key="NSMaxWidth">1.600000e+01</double>
 																						<object class="NSTableHeaderCell" key="NSHeaderCell">
 																							<int key="NSCellFlags">75628032</int>
 																							<int key="NSCellFlags2">0</int>
@@ -1592,7 +1594,6 @@ ELIAAAAAAAgACAAIAAgAAQABAAEAAQ</bytes>
 																		<int key="NSvFlags">256</int>
 																		<string key="NSFrame">{{-100, -100}, {427, 15}}</string>
 																		<reference key="NSSuperview" ref="731857042"/>
-																		<bool key="NSEnabled">YES</bool>
 																		<int key="NSsFlags">1</int>
 																		<reference key="NSTarget" ref="731857042"/>
 																		<string key="NSAction">_doScroller:</string>
@@ -1618,7 +1619,7 @@ ELIAAAAAAAgACAAIAAgAAQABAAEAAQ</bytes>
 																<string key="NSFrame">{{9, 14}, {525, 458}}</string>
 																<reference key="NSSuperview" ref="448590186"/>
 																<reference key="NSNextKeyView" ref="862184346"/>
-																<int key="NSsFlags">656</int>
+																<int key="NSsFlags">528</int>
 																<reference key="NSVScroller" ref="451090969"/>
 																<reference key="NSHScroller" ref="481840658"/>
 																<reference key="NSContentView" ref="862184346"/>

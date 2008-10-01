@@ -136,6 +136,7 @@ static AppController *shared;
 	[defaultPrefs setObject:boolTRUE forKey:@"PADColumnDateAdded"];
 	[defaultPrefs setObject:boolTRUE forKey:@"PADColumnSlotNum"];
 	[defaultPrefs setObject:boolTRUE forKey:@"PADColumnSlotType"];
+	[defaultPrefs setObject:boolTRUE forKey:@"PADColumnCheckedOut"];
 	
 	[defaultPrefs setObject:boolFALSE forKey:@"PADSearchResultsGrouped"];
 

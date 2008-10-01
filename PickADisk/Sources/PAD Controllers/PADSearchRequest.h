@@ -142,6 +142,7 @@ PADSearchTerm*	PADCopySearchTermWithTitleOrID( NSString* aTitle );
 
 +(id)searchCarouselsForFileUTI:(NSString*)inUTI resultType:(const NSString*)inType;
 +(id)searchCarouselsForDateAddedBeforeDays:(NSTimeInterval)inDays ofDate:(id)inDate resultType:(const NSString*)inType;
++(id)searchCarouselsForCheckedInOutBeforeDays:(NSTimeInterval)inDays ofDate:(id)inDate resultType:(const NSString*)inType;
 +(id)searchCarouselsForKind:(NSString*)inTerm resultType:(const NSString*)inType;
 +(id)searchCarouselsForTitle:(NSString*)inTerm;
 

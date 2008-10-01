@@ -342,6 +342,11 @@ Boolean		CFAbsoluteTimeBetweenTimes( CFAbsoluteTime lowTime, CFAbsoluteTime unkn
 	return [itemElement checkedOutDate];
 }
 
+-(NSDate*)checkedInDate
+{
+	if( !itemElement ) return nil;
+	return [itemElement checkedInDate];
+}
 
 - (id)reload
 {
@@ -421,7 +426,7 @@ Boolean		CFAbsoluteTimeBetweenTimes( CFAbsoluteTime lowTime, CFAbsoluteTime unkn
 	BOOL		otherCheckedOut = [other isCheckedOut];
 
 	if( (selfCheckedOut == NO) && (otherCheckedOut == NO) )
-		return NSOrderedSame;
+		return [[self checkedInDate] compare:[other checkedInDate]];
 	
 	if( (selfCheckedOut == NO) && (otherCheckedOut == YES) )
 		return NSOrderedAscending;

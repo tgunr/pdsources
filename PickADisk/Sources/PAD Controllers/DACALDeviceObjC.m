@@ -187,6 +187,12 @@ NSMutableArray*		gDACALDevices;
 	return [elementSlot checkedOutDate];
 }
 
+-(NSDate*)checkedInDate
+{
+	if( !elementSlot ) return nil;
+	return [elementSlot checkedInDate];
+}
+
 @end		// DACALSlotElement
 
 @implementation DACALSlot
@@ -241,14 +247,24 @@ NSMutableArray*		gDACALDevices;
 	{		//	Is Checked out?
 		
 		CFStringRef		checkedOut = NULL;
+		CFStringRef		checkedIn = NULL;
 		
-		if( slotCheckedOut != nil ) [slotCheckedOut release];
-		if( FSIsFSRefValid( &slotFSRef ) )
+		if( FSIsFSRefValid( &slotFSRef ) ) {
 			checkedOut = FSCopyXattr( kCFAllocatorDefault, &slotFSRef, kDACALCarouselDocumentXAttrSlotCheckout, NULL );
+			checkedIn = FSCopyXattr( kCFAllocatorDefault, &slotFSRef, kDACALCarouselDocumentXAttrSlotCheckout, NULL );
+			if( checkedIn == NULL )
+				checkedIn = FSCopyXattr( kCFAllocatorDefault, &slotFSRef, kDACALCarouselDocumentXAttrSlotAddDate, NULL );
+		}
+		
 		if( checkedOut != NULL ) 
-			slotCheckedOut = [[NSDate alloc] initWithString:(NSString*)checkedOut];
+			[self setCheckedOutDate:[[NSDate alloc] initWithString:(NSString*)checkedOut]];
 		else
-			slotCheckedOut = nil;
+			[self setCheckedOutDate:nil];
+		
+		if( checkedIn != NULL ) 
+			[self setCheckedInDate:[[NSDate alloc] initWithString:(NSString*)checkedIn]];
+		else
+			[self setCheckedInDate:nil];
 	}
 	
 	return goodSet;
@@ -337,7 +353,8 @@ NSMutableArray*		gDACALDevices;
 {
 	DACALResult			theErr = kDACALError;
 	SimpleTreeNode*		swapNode = nil;
-	NSDate*				swapDate = nil;
+	NSDate*				swapOutDate = nil;
+	NSDate*				swapInDate = nil;
 	NSMutableArray*		swapElements = nil;
 	
 	theErr = DACALSlotMove( [[self slotDevice] deviceRef], [self slotNumber], [[otherSlot slotDevice] deviceRef], [otherSlot slotNumber] );
@@ -348,15 +365,18 @@ NSMutableArray*		gDACALDevices;
 		swapElements = [[self slotElements] retain];
 		
 		if( [self isCheckedOut] == YES )
-			swapDate = [[self checkedOutDate] retain];
+			swapOutDate = [[self checkedOutDate] retain];
+		swapInDate = [[self checkedInDate] retain];
 		
 		[self setSlotNode:[otherSlot slotNode]];
 		[self setSlotElements:[otherSlot slotElements]];
 		[self setCheckedOutDate:[otherSlot checkedOutDate]];
+		[self setCheckedInDate:[otherSlot checkedInDate]];
 		
 		[otherSlot setSlotNode:swapNode];
 		[otherSlot setSlotElements:swapElements];
-		[otherSlot setCheckedOutDate:swapDate];
+		[otherSlot setCheckedOutDate:swapOutDate];
+		[otherSlot setCheckedInDate:swapInDate];
 		
 		//[swapNode release];
 		//[swapElements release];
@@ -452,16 +472,32 @@ NSMutableArray*		gDACALDevices;
 	}
 }
 
+-(NSDate*)checkedInDate
+{ return slotCheckedIn; }
+
+-(void)setCheckedInDate:(NSDate*)newDate
+{ 
+	if( !slotCheckedIn || slotCheckedIn != newDate )
+	{
+		if( newDate ) [newDate retain];
+		if( slotCheckedIn ) [slotCheckedIn release];
+		slotCheckedIn = newDate;
+	}
+}
+
 -(NSDictionary*)currentReservation
 {
 	NSDictionary*			manifestDict = [self reservationHistory];
 	NSDictionary*			thisReservation = nil;
 	NSDate*					checkOutDate = [self checkedOutDate];
+	NSDate*					checkInDate = [self checkedInDate];
 	
-	if( checkOutDate == nil ) return thisReservation;
-	
-	if( manifestDict != nil )
-		thisReservation = [manifestDict objectForKey:[checkOutDate description]];
+	if( manifestDict != nil ) {
+		if( checkOutDate != nil )
+			thisReservation = [manifestDict objectForKey:[checkOutDate description]];
+		else
+			thisReservation = [manifestDict objectForKey:[checkInDate description]];
+	}
 	
 	return thisReservation;
 }
@@ -546,7 +582,14 @@ NSMutableArray*		gDACALDevices;
 		
 		if( didWork ) {
 			FSSetXattr( &slotFSRef, kDACALCarouselDocumentXAttrSlotCheckout, (CFStringRef)NULL );
+			FSSetXattr( &slotFSRef, kDACALCarouselDocumentXAttrSlotCheckIn, (CFStringRef)[newDate description] );
 			[self setCheckedOutDate:nil];
+			[self setCheckedInDate:newDate];
+		}
+		
+		if( [[slotNode nodeData] itemAddDate] == nil ) {
+			FSSetXattr( &slotFSRef, kDACALCarouselDocumentXAttrSlotAddDate, (CFStringRef)[newDate description] );
+			[[slotNode nodeData] setItemAddDate:newDate];
 		}
 	}
 	
@@ -728,11 +771,14 @@ NSMutableArray*		gDACALDevices;
 
 -(void)indexedNewVolume:(NSURL*)newVolume forSlot:(DACALSlotNum)newSlot ofType:(NSString*)newType
 {
-	CFURLRef	slotURL = DACALSlotCopyPath( deviceRef, newSlot, NULL );
+	CFURLRef		slotURL = DACALSlotCopyPath( deviceRef, newSlot, NULL );
+	
 	if( slotURL ) CFURLSetXattr( slotURL, kDACALCarouselDocumentXAttrSlotAddDate, (CFStringRef)[[NSDate date] description] );
 	if( slotURL ) CFURLSetXattr( slotURL, kDACALCarouselDocumentXAttrSlotKind, (CFStringRef)newType );
 	if( slotURL ) CFRelease( slotURL );
 	
+	// Go ahead and check it in
+	[[self slotWithNumber:newSlot] checkInForUser:NSFullUserName() onHost:[[NSHost currentHost] name]];
 	
 	[[DACALTreeDataSource shared] slotAddedToDevice: deviceRef forSlot: newSlot];
 		

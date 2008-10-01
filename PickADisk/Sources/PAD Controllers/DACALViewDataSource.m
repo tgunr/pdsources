@@ -29,6 +29,7 @@
 	NSTableColumn*		slotCol = [[treeControl outlineView] tableColumnWithIdentifier:COLUMNID_SLOT];
 	NSTableColumn*		aDayCol = [[treeControl outlineView] tableColumnWithIdentifier:COLUMNID_MODDATE];
 	NSTableColumn*		flavCol = [[treeControl outlineView] tableColumnWithIdentifier:COLUMNID_TYPE];
+	NSTableColumn*		chckCol = [[treeControl outlineView] tableColumnWithIdentifier:COLUMNID_CHECKEDOUT];
 //	NSTableColumn*		rankCol = [[treeControl outlineView] tableColumnWithIdentifier:COLUMNID_SCORE];
 	
 	// NSSortDescriptor*	nameSort = [[[NSSortDescriptor alloc] initWithKey:@"keyName" ascending:YES selector:@selector(compareDataNames:)] autorelease];
@@ -40,6 +41,7 @@
 	BOOL				slotVisible = [[NSUserDefaults standardUserDefaults] boolForKey:@"PADColumnSlotNum"];
 	BOOL				aDayVisible = [[NSUserDefaults standardUserDefaults] boolForKey:@"PADColumnDateAdded"];
 	BOOL				flavVisible = [[NSUserDefaults standardUserDefaults] boolForKey:@"PADColumnSlotType"];
+	BOOL				chckVisible = [[NSUserDefaults standardUserDefaults] boolForKey:@"PADColumnCheckedOut"];
 	
 	// NSMutableArray*		startOrder = [NSMutableArray arrayWithCapacity:5];
 	
@@ -59,10 +61,12 @@
 	[slotCol setHidden:!slotVisible];
 	[aDayCol setHidden:!aDayVisible];
 	[flavCol setHidden:!flavVisible];
+	[chckCol setHidden:!chckVisible];
 	
 	[[NSUserDefaultsController sharedUserDefaultsController] addObserver:self forKeyPath:@"values.PADColumnDateAdded" options:0 context:NULL];
 	[[NSUserDefaultsController sharedUserDefaultsController] addObserver:self forKeyPath:@"values.PADColumnSlotNum" options:0 context:NULL];
 	[[NSUserDefaultsController sharedUserDefaultsController] addObserver:self forKeyPath:@"values.PADColumnSlotType" options:0 context:NULL];
+	[[NSUserDefaultsController sharedUserDefaultsController] addObserver:self forKeyPath:@"values.PADColumnCheckedOut" options:0 context:NULL];
 
 }
 
@@ -338,6 +342,11 @@ SLOTTYPEFAILED:
 		if( [keyPath hasSuffix:@"PADColumnSlotType"] ) {
 			workColumn = [[[self treeControl] outlineView] tableColumnWithIdentifier:COLUMNID_TYPE];
 			workKey = @"PADColumnSlotType";
+		}
+		
+		if( [keyPath hasSuffix:@"PADColumnCheckedOut"] ) {
+			workColumn = [[[self treeControl] outlineView] tableColumnWithIdentifier:COLUMNID_CHECKEDOUT];
+			workKey = @"PADColumnCheckedOut";
 		}
 		
 		if( workKey ) isVisible = [[NSUserDefaults standardUserDefaults] boolForKey:workKey];

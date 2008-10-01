@@ -19,6 +19,12 @@ const	NSString*			kPADSearchByDateAdded			= @"DateAdded";
 const	NSString*			kPADSearchByDateAddedID			= @"com.polymicrosystems.pickadisk.searchterm.dateadded";
 const	NSString*			kPADSearchByFileUTI				= @"FileUTI";
 const	NSString*			kPADSearchByFileUTIID			= @"com.polymicrosystems.pickadisk.searchterm.fileuti";
+const	NSString*			kPADSearchByDateCheckedOut		= @"DateCheckedOut";
+const	NSString*			kPADSearchByDateCheckedOutID	= @"com.polymicrosystems.pickadisk.searchterm.datecheckedout";
+const	NSString*			kPADSearchByDateCheckedIn		= @"DateCheckedIn";
+const	NSString*			kPADSearchByDateCheckedInID		= @"com.polymicrosystems.pickadisk.searchterm.datecheckedin";
+const	NSString*			kPADSearchByDateCheckedInOut	= @"DateCheckedInOut";
+const	NSString*			kPADSearchByDateCheckedInOutID	= @"com.polymicrosystems.pickadisk.searchterm.datecheckedinout";
 
 
 const	PADSearchRelevance	kPADSearchWeightNormal			= 1.0;
@@ -171,6 +177,10 @@ void			PADSearchTermSetup()
 	PADAddSearchTerm( kPADSearchByType, kPADSearchByTypeID, @selector(nodeData), @selector(searchForFlavor:withOptions:), nil, nil );
 	PADAddSearchTerm( kPADSearchByDateAdded, kPADSearchByDateAddedID, @selector(nodeData), @selector(searchForDateAdded:withOptions:), nil, nil );
 	PADAddSearchTerm( kPADSearchByFileUTI, kPADSearchByFileUTIID, @selector(nodeData), @selector(searchForFileUTI:withOptions:), nil, nil );
+#warning add these methods!
+	//PADAddSearchTerm( kPADSearchByDateCheckedIn, kPADSearchByDateCheckedInID, @selector(nodeData), @selector(searchForDateCheckedIn:withOptions:), nil, nil );
+	//PADAddSearchTerm( kPADSearchByDateCheckedOut, kPADSearchByDateCheckedOutID, @selector(nodeData), @selector(searchForDateCheckedOut:withOptions:), nil, nil );
+	//PADAddSearchTerm( kPADSearchByDateCheckedInOut, kPADSearchByDateCheckedInOutID, @selector(nodeData), @selector(searchForDateCheckedInOut:withOptions:), nil, nil );
 }
 
 void PADAddSearchTerm( const NSString* title, const NSString* newID, SEL getSel, SEL cmpSel, id data, NSDictionary* options )
@@ -531,6 +541,23 @@ PADSearchTerm*	PADCopySearchTermWithTitleOrID( NSString* aTermName )
 	if( newRequest )
 	{
 		[newRequest addSearchTerm:kPADSearchByDateAdded forValue:inDate inOrder:0 withWeight:kPADSearchWeightNormal andOptions:dateOptions];
+	}
+	
+	return newRequest;
+}
+
++(id)searchCarouselsForCheckedInOutBeforeDays:(NSTimeInterval)inDays ofDate:(id)inDate resultType:(const NSString*)inType
+{ 
+	NSDictionary*			optionDict = [NSDictionary dictionaryWithObject:inType forKey:kPADSearchOptionResultType];
+	PADSearchRequest*		newRequest = [[PADSearchRequest alloc] initSearchInLocations:nil andOptions:optionDict];
+	NSMutableDictionary*	dateOptions = [NSMutableDictionary dictionaryWithCapacity:2];
+	
+	[dateOptions setObject:@"Day Count" forKey:@"Range"];
+	[dateOptions setObject:[NSNumber numberWithDouble:-inDays] forKey:@"Days"];
+	
+	if( newRequest )
+	{
+		[newRequest addSearchTerm:kPADSearchByDateCheckedInOut forValue:inDate inOrder:0 withWeight:kPADSearchWeightNormal andOptions:dateOptions];
 	}
 	
 	return newRequest;

@@ -74,4 +74,6 @@
 - (void)resetSelection;
 - (NSProgressIndicator*)busyProgress;
 
+-(NSString*)checkedOutTitle;
+
 @end

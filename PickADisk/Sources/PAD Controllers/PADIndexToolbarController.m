@@ -35,7 +35,11 @@ PADSearchRequest* PADIndexToolbarController_LastSearch = nil;
 	
 	if( theItemAction == @selector(addSlot:) ) updateIt = anyUnits;
 	else if( theItemAction == @selector(mountDisc:) ) updateIt = NO; // anyNodesSelected;
-	else if( theItemAction == @selector(checkInOut:) ) updateIt = anyNodesSelected;
+	else if( theItemAction == @selector(checkInOut:) ) 
+	{
+		updateIt = anyNodesSelected;
+		[item setTitle:[self checkedOutTitle]];
+	}
 	else if( theItemAction == @selector(deleteSlot:) ) updateIt = anyNodesSelected;
 	else if( theItemAction == @selector(idUnits:) ) updateIt = NO; // anyUnits;
 	else if( theItemAction == @selector(printReport:) ) updateIt = anyDevicesSelected;
@@ -69,10 +73,10 @@ PADSearchRequest* PADIndexToolbarController_LastSearch = nil;
 	return [self toobarItemWithIdentifier:@"D9318872-BA3F-47C5-AF8E-B794018E8C85"];
 }
 
--(void)adoptSelection
+-(NSString*)checkedOutTitle
 {
-	BOOL		anyBox = NO;
-	BOOL		anySlot = NO;
+	NSString*	outCheckedTitle = nil;
+	
 	NSInteger	nodeCount = [[self selectedNodes] count];
 	NSInteger	nodeIndex;
 	NSInteger	checkState = 0;
@@ -81,14 +85,8 @@ PADSearchRequest* PADIndexToolbarController_LastSearch = nil;
 	NSString*	checkInTitle = NSLocalizedString(@"Checkout", @"Index Toolbar Item Title when selection in checked in.");
 	NSString*	checkOutTitle = NSLocalizedString(@"Check In", @"Index Toolbar Item Title when selection in checked out.");
 	NSString*	checkInOutTitle = NSLocalizedString(@"Checkout/In", @"Index Toolbar Item Title when selection mixed checked in/out.");
-	NSString*	checkTitle = nil;
 	
-	if( [self selectedDevices] )
-		anyBox = [[self selectedDevices] count] > 0;
-	if( [self selectedNodes] )	
-		anySlot = nodeCount > 0;
-	
-	if( anySlot == YES ) {
+	if( nodeCount > 0 ) {
 		firstCheckState = [[[[self selectedNodes] objectAtIndex:0] nodeData] isCheckedOut];
 		checkState = firstCheckState;
 	}
@@ -99,19 +97,34 @@ PADSearchRequest* PADIndexToolbarController_LastSearch = nil;
 			checkState = -1;
 			break;
 		}
-		
+	
 	if( checkState != firstCheckState )
-		checkTitle = checkInOutTitle;
+		outCheckedTitle = checkInOutTitle;
 	else {
 		if( firstCheckState == YES )
-			checkTitle = checkOutTitle;
+			outCheckedTitle = checkOutTitle;
 		else
-			checkTitle = checkInTitle;
+			outCheckedTitle = checkInTitle;
 	}
 
-	[[self checkOutToolbarItem] setLabel:checkTitle];
-	//[checkOutButton setTitle:checkTitle];
-	//NSLog(@"Check Title: %@", checkTitle);
+	//NSLog(@"Check Title: %@", outCheckedTitle);
+
+	return outCheckedTitle;
+}
+
+-(void)adoptSelection
+{
+	BOOL			anyBox = NO;
+	BOOL			anySlot = NO;
+	NSToolbarItem*	checkTBItem = [self checkOutToolbarItem];
+	
+	if( [self selectedDevices] )
+		anyBox = [[self selectedDevices] count] > 0;
+	if( [self selectedNodes] )	
+		anySlot = [[self selectedNodes] count] > 0;
+	
+	if( checkTBItem != nil )
+		[checkTBItem setLabel:[self checkedOutTitle]];
 	
 	if( resetButton )		[resetButton setEnabled:anyBox];
 	if( closeDoorButton )	[closeDoorButton setEnabled:anyBox];

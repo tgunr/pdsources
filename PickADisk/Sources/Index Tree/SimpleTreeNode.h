@@ -168,6 +168,7 @@ const enum {
 
 -(BOOL)isCheckedOut;
 -(NSDate*)checkedOutDate;
+-(NSDate*)checkedInDate;
 
 - (id)reload;
 - (id)reloadData:(id)newData;

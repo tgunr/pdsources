@@ -62,6 +62,7 @@ extern DACALSlotElement*	DACALDeviceSlotElementForURL( CFURLRef itemURL );
 
 -(BOOL)isCheckedOut;
 -(NSDate*)checkedOutDate;
+-(NSDate*)checkedInDate;
 
 @end		// DACALSlotElement
 
@@ -75,6 +76,7 @@ extern DACALSlotElement*	DACALDeviceSlotElementForURL( CFURLRef itemURL );
 	FSRef				slotFSRef;
 	
 	NSDate*				slotCheckedOut;
+	NSDate*				slotCheckedIn;
 	NSMutableArray*		slotElements;
 }
 
@@ -112,6 +114,8 @@ extern DACALSlotElement*	DACALDeviceSlotElementForURL( CFURLRef itemURL );
 -(BOOL)isCheckedOut;
 -(NSDate*)checkedOutDate;
 -(void)setCheckedOutDate:(NSDate*)newDate;
+-(NSDate*)checkedInDate;
+-(void)setCheckedInDate:(NSDate*)newDate;
 -(NSDictionary*)currentReservation;
 -(NSDictionary*)reservationHistory;
 -(BOOL)checkOutForUser:(NSString*)userName onHost:(NSString*)userHost;

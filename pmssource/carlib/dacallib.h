@@ -55,6 +55,7 @@ extern CFStringRef		kDACALCarouselDocumentXAttrSlot;
 extern CFStringRef		kDACALCarouselDocumentXAttrSlotKind;
 extern CFStringRef		kDACALCarouselDocumentXAttrSlotAddDate;
 extern CFStringRef		kDACALCarouselDocumentXAttrSlotCheckout;
+extern CFStringRef		kDACALCarouselDocumentXAttrSlotCheckIn;
 extern CFStringRef		kDACALCarouselDocumentXAttrVolumeName;
 extern CFStringRef		kDACALCarouselDocumentXAttrUserTitle;
 
