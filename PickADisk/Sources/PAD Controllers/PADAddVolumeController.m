@@ -645,7 +645,8 @@ NAVERR:
 	int			mediaIndex;
 	int			lastIndex = [pendingVolumes count];
 
-	if( [sheetWindow isVisible] == NO ) return;
+	if( [sheetWindow isVisible] == NO ) 
+		return;
 
 	[pendingVolumes addObjectsFromArray:newMounts];
 	for( mediaIndex=0; mediaIndex < [newMounts count]; mediaIndex++ )											// This list should be filtered to remove known discs!

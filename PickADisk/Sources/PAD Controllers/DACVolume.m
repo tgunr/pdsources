@@ -326,7 +326,7 @@ HAVEGUESS:
 
 MISMATCH:
 	NSLog(@"Media mismatch: %@", self);
-	//if( volumeData != NULL ) CFShow( volumeData );
+	if( volumeData != NULL ) CFShow( volumeData );
 	
 FAILED:
 	if( volumeData != NULL ) CFRelease( volumeData );
@@ -350,11 +350,11 @@ FAILED:
 	
 	//if( (newList == nil) || (newCount == 0) ) return outMounts;
 	
-	for( newIndex=0; newIndex < newCount; newIndex++ )
-	{
+	for( newIndex=0; newIndex < newCount; newIndex++ ) {
 		newItemURL = (NSURL*)[newMounts objectAtIndex:newIndex];
 		newVolume = [DACVolume volumeForMountURL:newItemURL];
-		if( newVolume ) [newList addObject:newVolume];
+		if( newVolume ) 
+			[newList addObject:newVolume];
 	}
 	
 	if( [newList count] > 0 )

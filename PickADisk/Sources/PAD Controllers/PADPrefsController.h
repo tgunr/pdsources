@@ -2,17 +2,22 @@
 
 @interface PADPrefsController : NSObject {
 	
-	IBOutlet NSWindow*		prefsWindow;
-    IBOutlet id				tabView;
-	IBOutlet NSToolbar*		tabToolbar;
+	IBOutlet NSWindow*			prefsWindow;
+    IBOutlet id					tabView;
+	IBOutlet NSToolbar*			tabToolbar;
 
-	IBOutlet NSTextField*	updateText;
+	IBOutlet NSTextField*		updateText;
 	
-	IBOutlet NSButton*		installDriver;
-	IBOutlet NSButton*		removeDriver;
-	IBOutlet NSImageView*	driverNotImage;
-	IBOutlet NSTextField*	driverPrompt;
+	IBOutlet NSButton*			installDriver;
+	IBOutlet NSButton*			removeDriver;
+	IBOutlet NSImageView*		driverNotImage;
+	IBOutlet NSTextField*		driverPrompt;
 	
+	IBOutlet NSTextField*		licenseeField;
+	IBOutlet NSTextField*		licenseMailField;
+	IBOutlet NSButton*			selectLicenseFile;
+	IBOutlet NSButton*			submitLicenseBtn;
+	IBOutlet NSPathControl*		licensePathControl;
 }
 
 - (IBAction)runPreferences:(id)sender;

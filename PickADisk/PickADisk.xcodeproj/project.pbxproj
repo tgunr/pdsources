@@ -91,6 +91,10 @@
 		735CC2B9049A7E2A00C919A3 /* TreeNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 08DC403CFF0C20FA11CA0E35 /* TreeNode.m */; settings = {ATTRIBUTES = (); }; };
 		735CC2BA049A7E2A00C919A3 /* ImageAndTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 02AAE104FF38CCE111CA0E35 /* ImageAndTextCell.m */; settings = {ATTRIBUTES = (); }; };
 		735CC2BD049A7E2A00C919A3 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 011669A0FFC1E3D311CA0E35 /* Cocoa.framework */; };
+		751C4E2D0E9400250027BC1C /* AquaticPrime.m in Sources */ = {isa = PBXBuildFile; fileRef = 751C4E2C0E9400250027BC1C /* AquaticPrime.m */; };
+		75AE63270E935A7E00208DC3 /* LicenseController.h in Headers */ = {isa = PBXBuildFile; fileRef = 75AE63250E935A7E00208DC3 /* LicenseController.h */; };
+		75AE63280E935A7E00208DC3 /* LicenseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AE63260E935A7E00208DC3 /* LicenseController.m */; };
+		75E667D60E92CA9500A9DA07 /* license.icns in Resources */ = {isa = PBXBuildFile; fileRef = 75E667D50E92CA9500A9DA07 /* license.icns */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -255,6 +259,14 @@
 		735CC297049A7E1F00C919A3 /* Prefix.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Prefix.h; path = Sources/Prefix.h; sourceTree = SOURCE_ROOT; };
 		735CC2C0049A7E2A00C919A3 /* Info-PickADisk.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-PickADisk.plist"; sourceTree = SOURCE_ROOT; };
 		735CC2C1049A7E2A00C919A3 /* PickADisk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PickADisk.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		751C4E2C0E9400250027BC1C /* AquaticPrime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AquaticPrime.m; path = Sources/License/AquaticPrime.m; sourceTree = "<group>"; };
+		75AE63250E935A7E00208DC3 /* LicenseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LicenseController.h; path = Sources/License/LicenseController.h; sourceTree = "<group>"; };
+		75AE63260E935A7E00208DC3 /* LicenseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LicenseController.m; path = Sources/License/LicenseController.m; sourceTree = "<group>"; };
+		75E666F50E92A6EB00A9DA07 /* AQDataExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AQDataExtensions.h; path = Sources/License/AQDataExtensions.h; sourceTree = "<group>"; };
+		75E666F60E92A6EB00A9DA07 /* AQDataExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AQDataExtensions.m; path = Sources/License/AQDataExtensions.m; sourceTree = "<group>"; };
+		75E666F90E92A99000A9DA07 /* AquaticPrime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AquaticPrime.h; path = Sources/License/AquaticPrime.h; sourceTree = "<group>"; };
+		75E666FD0E92A9A600A9DA07 /* AquaticPrime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AquaticPrime.framework; path = Frameworks/AquaticPrime.framework; sourceTree = SOURCE_ROOT; };
+		75E667D50E92CA9500A9DA07 /* license.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = license.icns; path = ../Resources/license.icns; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -318,6 +330,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				75E6672A0E92AC3000A9DA07 /* License */,
 				5C6C12E70E240BEA0097CC7A /* PAD Controllers */,
 				01518910FF1B822411CA0E35 /* Index Tree */,
 				01518911FF1B822411CA0E35 /* Cocoa Extensions */,
@@ -424,6 +437,7 @@
 		5C6C12D20E240AAC0097CC7A /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				75E667D50E92CA9500A9DA07 /* license.icns */,
 				5CDAC1C40E934054003984E1 /* success.icns */,
 				5CBA91660E73D380000279A2 /* driver.icns */,
 				5C57B7F60E66EF630063190F /* Generic_Image.icns */,
@@ -546,6 +560,20 @@
 			path = ../pmssource/pmsutility;
 			sourceTree = SOURCE_ROOT;
 		};
+		75E6672A0E92AC3000A9DA07 /* License */ = {
+			isa = PBXGroup;
+			children = (
+				75AE63250E935A7E00208DC3 /* LicenseController.h */,
+				75AE63260E935A7E00208DC3 /* LicenseController.m */,
+				75E666FD0E92A9A600A9DA07 /* AquaticPrime.framework */,
+				75E666F90E92A99000A9DA07 /* AquaticPrime.h */,
+				751C4E2C0E9400250027BC1C /* AquaticPrime.m */,
+				75E666F50E92A6EB00A9DA07 /* AQDataExtensions.h */,
+				75E666F60E92A6EB00A9DA07 /* AQDataExtensions.m */,
+			);
+			name = License;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -553,6 +581,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75AE63270E935A7E00208DC3 /* LicenseController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -640,6 +669,7 @@
 				5CC83EED0E6F6C81000903AD /* swapslot.sh in Resources */,
 				5CBA913B0E739484000279A2 /* Localizable.strings in Resources */,
 				5CBA91670E73D380000279A2 /* driver.icns in Resources */,
+				75E667D60E92CA9500A9DA07 /* license.icns in Resources */,
 				5CDAC1C50E934054003984E1 /* success.icns in Resources */,
 				5CDAC1E50E9342C3003984E1 /* CheckedOut.png in Resources */,
 			);
@@ -712,6 +742,8 @@
 				5CBA8FCF0E71DD0F000279A2 /* NSSlider_Animation.m in Sources */,
 				5C2E40E30E73FBD300D7DF4A /* DACDriverInstaller.m in Sources */,
 				5C5F7DBF0E771E83003111DF /* DACVolume.m in Sources */,
+				75AE63280E935A7E00208DC3 /* LicenseController.m in Sources */,
+				751C4E2D0E9400250027BC1C /* AquaticPrime.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -745,25 +777,28 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		B69BDD9508A2EC26008AC9B5 /* Development */ = {
+		75D3EBAB0E8BF811009A0199 /* DebugPPC */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(NATIVE_ARCH)";
+				ARCHS = ppc;
+				FRAMEWORK_SEARCH_PATHS = "";
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
+				PRODUCT_NAME = PickADisk;
+				SDKROOT = /Developer/SDKs/MacOSX10.5.sdk;
+			};
+			name = DebugPPC;
+		};
+		75D3EBAC0E8BF811009A0199 /* DebugPPC */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = ppc;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
-					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
-					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
-					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_4)",
-					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_5)",
-					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_6)",
+					"$(SRCROOT)/Frameworks",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(DEVELOPER_DIR)/SDKs/MacOSX10.5.sdk/System/Library/Frameworks\"";
-				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../DiscID/build/Release\"";
-				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_4 = "\"$(SRCROOT)\"";
-				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_5 = "\"$(SRCROOT)/Frameworks\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_6 = "\"$(SRCROOT)/Frameworks\"";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
@@ -776,18 +811,70 @@
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "Info-PickADisk.plist";
 				INSTALL_PATH = "";
-				LIBRARY_SEARCH_PATHS = "";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+				);
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)\"";
 				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
+				OTHER_LDFLAGS = (
+					"-lcrypto",
+					"-seg1addr",
+					0x10000000,
+				);
 				PRODUCT_NAME = PickADisk;
 				SECTORDER_FLAGS = "";
 				WARNING_CFLAGS = "-Wmost";
 				WRAPPER_EXTENSION = app;
 				ZERO_LINK = YES;
 			};
+			name = DebugPPC;
+		};
+		B69BDD9508A2EC26008AC9B5 /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH)";
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/Frameworks",
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(DEVELOPER_DIR)/SDKs/MacOSX10.5.sdk/System/Library/Frameworks\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../DiscID/build/Release\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_6 = "\"$(SRCROOT)/Frameworks\"";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Sources/Prefix.h;
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
+				GCC_WARN_UNKNOWN_PRAGMAS = NO;
+				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = "Info-PickADisk.plist";
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+				);
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)\"";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = (
+					"-lcrypto",
+					"-seg1addr",
+					0x10000000,
+				);
+				PRODUCT_NAME = PickADisk;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = "";
+				WRAPPER_EXTENSION = app;
+				ZERO_LINK = YES;
+			};
 			name = Development;
 		};
-		B69BDD9608A2EC26008AC9B5 /* Deployment */ = {
+		B69BDD9608A2EC26008AC9B5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1)";
@@ -795,19 +882,11 @@
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
-					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
-					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
-					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_4)",
-					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_5)",
-					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_6)",
+					"$(SRCROOT)/Frameworks",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(DEVELOPER_DIR)/SDKs/MacOSX10.5.sdk/System/Library/Frameworks\"";
-				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../DiscID/build/Release\"";
-				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_4 = "\"$(SRCROOT)\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_5 = "\"$(SRCROOT)/Frameworks\"";
-				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_6 = "\"$(SRCROOT)/Frameworks\"";
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Sources/Prefix.h;
@@ -816,51 +895,24 @@
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "Info-PickADisk.plist";
 				INSTALL_PATH = /Applications;
-				LIBRARY_SEARCH_PATHS = "";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+				);
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)\"";
 				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
+				OTHER_LDFLAGS = (
+					"-lcrypto",
+					"-seg1addr",
+					0x10000000,
+				);
 				PRODUCT_NAME = PickADisk;
 				SECTORDER_FLAGS = "";
 				WARNING_CFLAGS = "-Wmost";
 				WRAPPER_EXTENSION = app;
 				ZERO_LINK = NO;
 			};
-			name = Deployment;
-		};
-		B69BDD9708A2EC26008AC9B5 /* Default */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
-					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
-					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
-					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_4)",
-					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_5)",
-					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_6)",
-				);
-				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(DEVELOPER_DIR)/SDKs/MacOSX10.5.sdk/System/Library/Frameworks\"";
-				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)\"";
-				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../DiscID/build/Release\"";
-				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_4 = "\"$(SRCROOT)\"";
-				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_5 = "\"$(SRCROOT)/Frameworks\"";
-				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_6 = "\"$(SRCROOT)/Frameworks\"";
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = Prefix.h;
-				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
-				GCC_WARN_UNKNOWN_PRAGMAS = NO;
-				HEADER_SEARCH_PATHS = "";
-				INFOPLIST_FILE = "Info-PickADisk.plist";
-				INSTALL_PATH = "$(LOCAL_DEVELOPER_DIR)/Demos";
-				LIBRARY_SEARCH_PATHS = "";
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = DragNDropOutlineView;
-				SECTORDER_FLAGS = "";
-				WARNING_CFLAGS = "-Wmost";
-				WRAPPER_EXTENSION = app;
-			};
-			name = Default;
+			name = Release;
 		};
 		B69BDD9908A2EC26008AC9B5 /* Development */ = {
 			isa = XCBuildConfiguration;
@@ -869,13 +921,15 @@
 					"$(NATIVE_ARCH)",
 					ppc,
 				);
+				FRAMEWORK_SEARCH_PATHS = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.5;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = PickADisk;
 				SDKROOT = /Developer/SDKs/MacOSX10.5.sdk;
 			};
 			name = Development;
 		};
-		B69BDD9A08A2EC26008AC9B5 /* Deployment */ = {
+		B69BDD9A08A2EC26008AC9B5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = (
@@ -883,18 +937,11 @@
 					x86_64,
 					ppc,
 				);
+				FRAMEWORK_SEARCH_PATHS = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				SDKROOT = /Developer/SDKs/MacOSX10.5.sdk;
 			};
-			name = Deployment;
-		};
-		B69BDD9B08A2EC26008AC9B5 /* Default */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				MACOSX_DEPLOYMENT_TARGET = 10.5;
-				SDKROOT = /Developer/SDKs/MacOSX10.5.sdk;
-			};
-			name = Default;
+			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
@@ -903,21 +950,21 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B69BDD9508A2EC26008AC9B5 /* Development */,
-				B69BDD9608A2EC26008AC9B5 /* Deployment */,
-				B69BDD9708A2EC26008AC9B5 /* Default */,
+				75D3EBAC0E8BF811009A0199 /* DebugPPC */,
+				B69BDD9608A2EC26008AC9B5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Default;
+			defaultConfigurationName = Development;
 		};
 		B69BDD9808A2EC26008AC9B5 /* Build configuration list for PBXProject "PickADisk" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B69BDD9908A2EC26008AC9B5 /* Development */,
-				B69BDD9A08A2EC26008AC9B5 /* Deployment */,
-				B69BDD9B08A2EC26008AC9B5 /* Default */,
+				75D3EBAB0E8BF811009A0199 /* DebugPPC */,
+				B69BDD9A08A2EC26008AC9B5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Default;
+			defaultConfigurationName = Development;
 		};
 /* End XCConfigurationList section */
 	};

@@ -25,7 +25,7 @@
 	#define		PADBOX_DELAY	86400.0
 
 	#define		PADBOX_PRIMARY_MESSAGE		CFSTR("PickADisk has expired.")
-	#define		PADBOX_SECONDARY_MESSAGE	CFSTR("This version of PickADisk will no longer function.  Try using software update to get a newer version or contact ployMicro Systems for instructions.")
+	#define		PADBOX_SECONDARY_MESSAGE	CFSTR("This version of PickADisk will no longer function.  Try using software update under the 'File' menu to get a newer version or contact ployMicro Systems for instructions.")
 
 	@interface PADBOXController : NSObject {
 

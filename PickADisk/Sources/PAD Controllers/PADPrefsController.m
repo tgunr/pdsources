@@ -1,6 +1,7 @@
 #import "PADPrefsController.h"
 #import <Sparkle/SUUpdater.h>
 #import "DACDriverInstaller.h"
+#import "LicenseController.h"
 
 @implementation PADPrefsController
 
@@ -8,6 +9,21 @@
 
 	[[NSUserDefaultsController sharedUserDefaultsController] addObserver:self forKeyPath:@"values.SULastCheckTime" options:0 context:NULL];
 	[[NSUserDefaultsController sharedUserDefaultsController] addObserver:self forKeyPath:@"values.DACALDriverInstalled" options:0 context:NULL];
+
+    [licensePathControl setTarget:self];
+    [licensePathControl setDoubleAction:@selector(pathControlDoubleClick:)];
+	[licensePathControl setDelegate:self];
+
+	BOOL valid = [[LicenseController shared] dataValid];
+	if (valid) {
+		[licenseeField setStringValue: [[[LicenseController shared] licenseDict] objectForKey: @"Name"]];
+		[licenseMailField setStringValue: [[[LicenseController shared] licenseDict] objectForKey: @"Email"]];
+		[submitLicenseBtn setEnabled: FALSE];
+	} else {
+		[licenseeField setStringValue: @""];
+		[licenseMailField setStringValue: @""];
+		[submitLicenseBtn setEnabled: TRUE];
+	}		
 }
 
 - (void)dealloc
@@ -70,16 +86,20 @@
 {
 	NSString*	startToolID = [[NSUserDefaults standardUserDefaults] objectForKey:@"PADPrefToolSelected"];
 	
-	if( tabToolbar ) [self clickTool:[self toolbarItemForIdentifier:startToolID]];
+	if( tabToolbar ) 
+		[self clickTool:[self toolbarItemForIdentifier:startToolID]];
 	[self refreshUpdateDate:self];
 	[self updateDriverPane];
-	if( prefsWindow ) [prefsWindow makeKeyAndOrderFront:sender];
+	if( prefsWindow ) 
+		[prefsWindow makeKeyAndOrderFront:sender];
 }
 
 - (IBAction)clickTool:(NSToolbarItem*)sender
 {
-	if( tabView ) [tabView selectTabViewItemWithIdentifier: [sender label]];
-	if( tabToolbar ) [tabToolbar setSelectedItemIdentifier: [sender itemIdentifier]];
+	if( tabView ) 
+		[tabView selectTabViewItemWithIdentifier: [sender label]];
+	if( tabToolbar ) 
+		[tabToolbar setSelectedItemIdentifier: [sender itemIdentifier]];
 	
 	[[NSUserDefaults standardUserDefaults] setObject:[sender itemIdentifier] forKey:@"PADPrefToolSelected"];
 
@@ -180,4 +200,6 @@
 	if( prefsWindow ) [prefsWindow makeKeyAndOrderFront:sender];
 	
 }
+
+
 @end

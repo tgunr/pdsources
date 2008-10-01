@@ -902,7 +902,8 @@ NSURL *NewFileURLForWritingFile(NSString *dirpath, NSString *basename, NSString 
 
 - (NSOutlineView*)outlineView
 {
-	if( [self treeControl] ) return [[self treeControl] outlineView];
+	if( [self treeControl] ) 
+		return [[self treeControl] outlineView];
 	
 	return nil;
 }

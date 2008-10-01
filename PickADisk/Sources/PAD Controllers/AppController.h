@@ -6,7 +6,6 @@
 #import "TreeController.h"
 #import "PADLayoutView.h"
 
-
 int				jPADBusyBodyBeat;			// Used internally as the counter for row spinning arrows
 BOOL			busyBusy;
 

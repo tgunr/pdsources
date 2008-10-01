@@ -19,6 +19,7 @@
 #import <ILCrashReporter/ILCrashReporter.h>
 #import "DACDriverInstaller.h"
 #import "DACVolume.h"
+#import "LicenseController.h"
 
 #define PAD_BUSYBODY_DELAY	0.1
 #define PAD_PREFS_VERSION	(const char*)"0.3"
@@ -166,6 +167,9 @@ static AppController *shared;
 
 	PADBOX_VALID_BEGIN
 
+	// Validate pref license
+	BOOL valid = [[LicenseController shared] dataValid];
+	
 	// Register for 'GURL' Apple Event to handle URL opening
 	[[NSAppleEventManager sharedAppleEventManager] setEventHandler:self andSelector:@selector(handleOpenLocationAppleEvent:withReplyEvent:) forEventClass:kInternetEventClass andEventID:kAEGetURL];
 	
@@ -178,9 +182,12 @@ static AppController *shared;
 	
 	DACALClientInitialize();
 		
+	if (!valid)
+		NSLog(@"License invalid");
+		
 	PADBOX_VALID_END
-	
-	if( !PADBOX_VALIDATED ) NSLog(@"PickADisk has expired.");
+	if( !PADBOX_VALIDATED ) 
+		NSLog(@"PickADisk has expired.");
 }
 
 - (void)handleOpenLocationAppleEvent:(NSAppleEventDescriptor *)event withReplyEvent:(NSAppleEventDescriptor *)reply {
@@ -416,6 +423,7 @@ static AppController *shared;
 		
 	busyBusy = NO;
 }
+
 @end
 
 
