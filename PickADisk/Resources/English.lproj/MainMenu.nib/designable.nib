@@ -2,13 +2,13 @@
 <archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="7.02">
 	<data>
 		<int key="IBDocument.SystemTarget">1050</int>
-		<string key="IBDocument.SystemVersion">9C7010</string>
-		<string key="IBDocument.InterfaceBuilderVersion">658</string>
-		<string key="IBDocument.AppKitVersion">949.26</string>
+		<string key="IBDocument.SystemVersion">9F33</string>
+		<string key="IBDocument.InterfaceBuilderVersion">670</string>
+		<string key="IBDocument.AppKitVersion">949.34</string>
 		<string key="IBDocument.HIToolboxVersion">352.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="1249"/>
+			<integer value="846"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -2858,9 +2858,7 @@
 																	<int key="NSCellFlags2">131072</int>
 																	<object class="NSURL" key="NSContents">
 																		<nil key="NS.base"/>
-																		<object class="NSMutableString" key="NS.relative">
-																			<characters key="NS.bytes">file://localhost/</characters>
-																		</object>
+																		<string key="NS.relative">file://localhost/</string>
 																	</object>
 																	<reference key="NSSupport" ref="26"/>
 																	<reference key="NSControlView" ref="271423435"/>
@@ -49636,9 +49634,6 @@ AAgAAQABAAEAAQ</bytes>
 			<object class="NSCustomObject" id="802505680">
 				<string key="NSClassName">DACDriverInstaller</string>
 			</object>
-			<object class="NSCustomObject" id="423408796">
-				<string key="NSClassName">NSObject</string>
-			</object>
 		</object>
 		<object class="IBObjectContainer" key="IBDocument.Objects">
 			<object class="NSMutableArray" key="connectionRecords">
@@ -52307,12 +52302,6 @@ AAgAAQABAAEAAQ</bytes>
 						<reference key="parent" ref="1046993664"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">1229</int>
-						<reference key="object" ref="423408796"/>
-						<reference key="parent" ref="134860817"/>
-						<string key="objectName">LicenseController</string>
-					</object>
-					<object class="IBObjectRecord">
 						<int key="objectID">1233</int>
 						<reference key="object" ref="937229753"/>
 						<reference key="parent" ref="197210630"/>
@@ -52592,7 +52581,6 @@ AAgAAQABAAEAAQ</bytes>
 					<string>1222.IBPluginDependency</string>
 					<string>1223.IBPluginDependency</string>
 					<string>1223.ImportedFromIB2</string>
-					<string>1229.IBPluginDependency</string>
 					<string>1233.IBPluginDependency</string>
 					<string>1236.IBPluginDependency</string>
 					<string>1237.IBPluginDependency</string>
@@ -52959,7 +52947,6 @@ AAgAAQABAAEAAQ</bytes>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<object class="NSMutableArray">
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<string>plist</string>
@@ -53111,7 +53098,7 @@ AAgAAQABAAEAAQ</bytes>
 					<reference ref="8"/>
 					<string>{3.40282e+38, 3.40282e+38}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{-34, 486}, {617, 0}}</string>
+					<string>{{-43, 465}, {617, 0}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -53381,7 +53368,7 @@ AAgAAQABAAEAAQ</bytes>
 					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">Sources/PAD Controllers/LicenseController.h</string>
+						<string key="minorKey">Sources/License/LicenseController.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
@@ -53414,7 +53401,7 @@ AAgAAQABAAEAAQ</bytes>
 							<string>driverPrompt</string>
 							<string>installDriver</string>
 							<string>licenseMailField</string>
-							<string>licensePath</string>
+							<string>licensePathControl</string>
 							<string>licenseeField</string>
 							<string>prefsWindow</string>
 							<string>removeDriver</string>
