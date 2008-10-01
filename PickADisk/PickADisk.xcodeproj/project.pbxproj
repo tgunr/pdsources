@@ -76,6 +76,8 @@
 		5CC83F710E6F957B000903AD /* PADURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CC83F6F0E6F957B000903AD /* PADURL.m */; };
 		5CC83FC70E6FB34C000903AD /* DACALDeviceObjC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CC83FC50E6FB34C000903AD /* DACALDeviceObjC.m */; };
 		5CD985180E4E60A700441ED7 /* PADHomeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CD985160E4E60A700441ED7 /* PADHomeView.m */; };
+		5CDAC1C50E934054003984E1 /* success.icns in Resources */ = {isa = PBXBuildFile; fileRef = 5CDAC1C40E934054003984E1 /* success.icns */; };
+		5CDAC1E50E9342C3003984E1 /* CheckedOut.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CDAC1E40E9342C3003984E1 /* CheckedOut.png */; };
 		5CE577300E590C230086A57F /* PADOperationControlDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE5772E0E590C230086A57F /* PADOperationControlDevice.m */; };
 		5CF4D9810E68E6DF0091A77F /* ILCrashReporter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CF4D9800E68E6DF0091A77F /* ILCrashReporter.framework */; };
 		5CF4D98E0E68E9300091A77F /* ILCrashReporter.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5CF4D9800E68E6DF0091A77F /* ILCrashReporter.framework */; };
@@ -245,6 +247,8 @@
 		5CC83FC50E6FB34C000903AD /* DACALDeviceObjC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DACALDeviceObjC.m; sourceTree = "<group>"; };
 		5CD985150E4E60A700441ED7 /* PADHomeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PADHomeView.h; sourceTree = "<group>"; };
 		5CD985160E4E60A700441ED7 /* PADHomeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PADHomeView.m; sourceTree = "<group>"; };
+		5CDAC1C40E934054003984E1 /* success.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = success.icns; sourceTree = "<group>"; };
+		5CDAC1E40E9342C3003984E1 /* CheckedOut.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CheckedOut.png; sourceTree = "<group>"; };
 		5CE5772D0E590C230086A57F /* PADOperationControlDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PADOperationControlDevice.h; sourceTree = "<group>"; };
 		5CE5772E0E590C230086A57F /* PADOperationControlDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PADOperationControlDevice.m; sourceTree = "<group>"; };
 		5CF4D9800E68E6DF0091A77F /* ILCrashReporter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ILCrashReporter.framework; path = Frameworks/ILCrashReporter.framework; sourceTree = SOURCE_ROOT; };
@@ -420,6 +424,7 @@
 		5C6C12D20E240AAC0097CC7A /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				5CDAC1C40E934054003984E1 /* success.icns */,
 				5CBA91660E73D380000279A2 /* driver.icns */,
 				5C57B7F60E66EF630063190F /* Generic_Image.icns */,
 				5C440D720E5C27DF0020A588 /* Generic_Music.icns */,
@@ -495,6 +500,7 @@
 		5C7C501B0E3D843700FCEBD8 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				5CDAC1E40E9342C3003984E1 /* CheckedOut.png */,
 				5C6CC5490E4FD604000EE6B3 /* BlackPlus.png */,
 				5C6CC5050E4FB4E9000EE6B3 /* noBox.png */,
 				5C6CC4E20E4FA97E000EE6B3 /* DVD.png */,
@@ -634,6 +640,8 @@
 				5CC83EED0E6F6C81000903AD /* swapslot.sh in Resources */,
 				5CBA913B0E739484000279A2 /* Localizable.strings in Resources */,
 				5CBA91670E73D380000279A2 /* driver.icns in Resources */,
+				5CDAC1C50E934054003984E1 /* success.icns in Resources */,
+				5CDAC1E50E9342C3003984E1 /* CheckedOut.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

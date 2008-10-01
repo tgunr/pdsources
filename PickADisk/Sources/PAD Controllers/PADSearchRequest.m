@@ -929,6 +929,7 @@ static PADSearchService* PADSearchService_shared;
 	{
 		matchActual = [inMatch retain];
 		matchScore = inScore;
+		[self setItemElement:[[inMatch nodeData] itemElement]];
 	}
 
 	return self;

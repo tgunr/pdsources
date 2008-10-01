@@ -259,6 +259,17 @@ AFTERRELOAD:
     } else if ([[tableColumn identifier] isEqualToString:COLUMNID_SCORE]) {
 		SearchNodeData *Sdata = [item nodeData];
 		objectValue = [NSNumber numberWithInt:(int)([Sdata matchScore]*100)];
+	} else if ([[tableColumn identifier] isEqualToString:COLUMNID_CHECKEDOUT]) {
+		SearchNodeData *Sdata = [item nodeData];
+		NSString*	imagePath = nil;
+		NSImage*	theImage = nil;
+		NSBundle*	imageBundle = [NSBundle mainBundle];
+		
+		if( [Sdata isCheckedOut] )
+			if( imagePath = [imageBundle pathForResource:@"CheckedOut" ofType:@"png"] )
+				theImage = [[NSImage alloc] initByReferencingFile:imagePath]; 
+		
+		objectValue = theImage;
 	} else {
 		//
 		NSLog(@"Unknown Column: %@", [tableColumn identifier]);

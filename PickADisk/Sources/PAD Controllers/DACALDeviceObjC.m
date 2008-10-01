@@ -12,6 +12,21 @@
 
 CFStringRef		kPADClientIdentifier = CFSTR("PAD.DACAL.CLIENT");
 
+//	Externally referenced
+
+NSString*	kDACSlotReservationTime = @"DACResTime";
+NSString*	kDACSlotReservationType = @"DACResType";
+NSString*	kDACSlotReservationUser = @"DACResUser";
+NSString*	kDACSlotReservationHost = @"DACResHost";
+
+NSString*	kDACSlotReservationTypeCheckOut	= @"DACCheckOut";
+NSString*	kDACSlotReservationTypeCheckIn	= @"DACCheckIn";
+
+//	Internal constants
+
+NSString*	kDACSlotReservationFileName					= @".reservations";
+NSString*	kDACSlotReservationFileNameWithExtension	= @".reservations.plist";
+
 NSMutableArray*		gDACALDevices;
 
 @implementation DACALSlotElement
@@ -98,10 +113,15 @@ NSMutableArray*		gDACALDevices;
 
 +(id)slotElementForNode:(SimpleTreeNode*)newNode
 {
+	if( [[newNode nodeData] itemElement] != nil )
+		return [[newNode nodeData] itemElement];
+	
 	DACALSlotElement*	ourElement = DACALDeviceSlotElementForURL( (CFURLRef)[(SimpleNodeData*)[newNode nodeData] location] );
 	
-	if( ourElement != nil )
+	if( ourElement != nil ) {
 		[ourElement setElementNode:newNode];
+		[[newNode nodeData] setItemElement:ourElement];
+	}
 	
 	return ourElement;
 }
@@ -155,6 +175,18 @@ NSMutableArray*		gDACALDevices;
 	[elementSlot reloadElement:self];
 }
 
+-(BOOL)isCheckedOut
+{
+	if( !elementSlot ) return NO;
+	return [elementSlot isCheckedOut];
+}
+
+-(NSDate*)checkedOutDate
+{
+	if( !elementSlot ) return nil;
+	return [elementSlot checkedOutDate];
+}
+
 @end		// DACALSlotElement
 
 @implementation DACALSlot
@@ -163,13 +195,15 @@ NSMutableArray*		gDACALDevices;
 {
 	NSLog(@"Dealloc Slot: %@", [self title]);
 	
-	if( slotDevice ) [slotDevice release];
-	if( slotNode ) [slotNode release];
-	if( slotElements ) [slotElements release];
+	if( slotDevice )		[slotDevice release];
+	if( slotNode )			[slotNode release];
+	if( slotElements )		[slotElements release];
+	if( slotCheckedOut )	[slotCheckedOut release];
 	
 	slotDevice = nil;
 	slotNode = nil;
 	slotElements = nil;
+	slotCheckedOut = nil;
 	
 	[super dealloc];
 }
@@ -198,6 +232,27 @@ NSMutableArray*		gDACALDevices;
 
 -(BOOL)setSlotFSRefFromURL:(NSURL*)slotURL
 	{ return( (CFURLGetFSRef( (CFURLRef)slotURL, &slotFSRef ) == TRUE) ? YES : NO ); }
+
+-(BOOL)setSlotLocation:(NSURL*)slotURL
+{
+	BOOL	goodSet = [self setSlotFSRefFromURL:slotURL];
+	
+	if( goodSet == YES )
+	{		//	Is Checked out?
+		
+		CFStringRef		checkedOut = NULL;
+		
+		if( slotCheckedOut != nil ) [slotCheckedOut release];
+		if( FSIsFSRefValid( &slotFSRef ) )
+			checkedOut = FSCopyXattr( kCFAllocatorDefault, &slotFSRef, kDACALCarouselDocumentXAttrSlotCheckout, NULL );
+		if( checkedOut != NULL ) 
+			slotCheckedOut = [[NSDate alloc] initWithString:(NSString*)checkedOut];
+		else
+			slotCheckedOut = nil;
+	}
+	
+	return goodSet;
+}
 
 -(NSMutableArray*)slotElements
 	{ return slotElements; }
@@ -263,6 +318,7 @@ NSMutableArray*		gDACALDevices;
 	{
 		slotDevice = [newDevice retain];
 		slotNumber = newSlot;
+		slotCheckedOut = nil;
 		
 		slotElements = [[NSMutableArray alloc] initWithCapacity:0];
 	}
@@ -281,6 +337,7 @@ NSMutableArray*		gDACALDevices;
 {
 	DACALResult			theErr = kDACALError;
 	SimpleTreeNode*		swapNode = nil;
+	NSDate*				swapDate = nil;
 	NSMutableArray*		swapElements = nil;
 	
 	theErr = DACALSlotMove( [[self slotDevice] deviceRef], [self slotNumber], [[otherSlot slotDevice] deviceRef], [otherSlot slotNumber] );
@@ -290,11 +347,16 @@ NSMutableArray*		gDACALDevices;
 		swapNode = [[self slotNode] retain];
 		swapElements = [[self slotElements] retain];
 		
+		if( [self isCheckedOut] == YES )
+			swapDate = [[self checkedOutDate] retain];
+		
 		[self setSlotNode:[otherSlot slotNode]];
 		[self setSlotElements:[otherSlot slotElements]];
+		[self setCheckedOutDate:[otherSlot checkedOutDate]];
 		
 		[otherSlot setSlotNode:swapNode];
 		[otherSlot setSlotElements:swapElements];
+		[otherSlot setCheckedOutDate:swapDate];
 		
 		//[swapNode release];
 		//[swapElements release];
@@ -374,6 +436,126 @@ NSMutableArray*		gDACALDevices;
 	[self reloadSlot];
 }
 
+-(BOOL)isCheckedOut
+	{ return (slotCheckedOut != nil); }
+
+-(NSDate*)checkedOutDate
+	{ return slotCheckedOut; }
+
+-(void)setCheckedOutDate:(NSDate*)newDate
+{ 
+	if( !slotCheckedOut || slotCheckedOut != newDate )
+	{
+		if( newDate ) [newDate retain];
+		if( slotCheckedOut ) [slotCheckedOut release];
+		slotCheckedOut = newDate;
+	}
+}
+
+-(NSDictionary*)currentReservation
+{
+	NSDictionary*			manifestDict = [self reservationHistory];
+	NSDictionary*			thisReservation = nil;
+	NSDate*					checkOutDate = [self checkedOutDate];
+	
+	if( checkOutDate == nil ) return thisReservation;
+	
+	if( manifestDict != nil )
+		thisReservation = [manifestDict objectForKey:[checkOutDate description]];
+	
+	return thisReservation;
+}
+
+-(NSDictionary*)reservationHistory
+{
+	NSURL*					manifestURL = [NSURL URLWithString:kDACSlotReservationFileNameWithExtension relativeToURL:[self fileURL]];
+	NSDictionary*			manifestDict = nil;
+
+	if( manifestURL != nil )
+		[NSDictionary dictionaryWithContentsOfURL:manifestURL];
+	
+	return manifestDict;
+}
+
+-(BOOL)checkOutForUser:(NSString*)userName onHost:(NSString*)userHost
+{
+	BOOL					didWork = NO;
+	NSURL*					manifestURL = [NSURL URLWithString:kDACSlotReservationFileNameWithExtension relativeToURL:[self fileURL]];
+	NSDictionary*			manifestDict = [NSDictionary dictionaryWithContentsOfURL:manifestURL];
+	NSMutableDictionary*	newManDict = [NSMutableDictionary dictionaryWithCapacity:0];
+	NSMutableDictionary*	newManEntry = [NSMutableDictionary dictionaryWithCapacity:0];
+	NSDate*					newDate = [NSDate date];
+	
+	if( BOOLToBoolean([self isCheckedOut]) ) return didWork;
+	
+	if( manifestURL != nil )
+	{
+		if( manifestDict != nil )
+			[newManDict addEntriesFromDictionary:manifestDict];
+		
+		[newManEntry setValue:newDate		forKey:kDACSlotReservationTime];
+		[newManEntry setValue:userName		forKey:kDACSlotReservationUser];
+		[newManEntry setValue:userHost		forKey:kDACSlotReservationHost];
+		[newManEntry setValue:kDACSlotReservationTypeCheckOut
+					   forKey:kDACSlotReservationType];
+		
+		[newManDict setValue:newManEntry	forKey:[newDate description]];
+		didWork = [newManDict writeToURL:manifestURL atomically:YES];
+		
+		if( didWork ) {
+			FSSetXattr( &slotFSRef, kDACALCarouselDocumentXAttrSlotCheckout, (CFStringRef)[newDate description] );
+			[self setCheckedOutDate:newDate];
+		}
+	}
+	
+	[self reloadSlot];
+	
+	NSLog(@"Slot Checkout:%@\nManifset URL:%@\nManifest Dictionary:%@", self, manifestURL, manifestDict);
+	
+	return didWork;
+}
+
+
+
+-(BOOL)checkInForUser:(NSString*)userName onHost:(NSString*)userHost
+{
+	BOOL					didWork = NO;
+	NSDate*					checkOutDate = [self checkedOutDate];
+	NSURL*					manifestURL = [NSURL URLWithString:kDACSlotReservationFileNameWithExtension relativeToURL:[self fileURL]];
+	NSDictionary*			manifestDict = [NSDictionary dictionaryWithContentsOfURL:manifestURL];
+	NSDictionary*			checkInEntry = [manifestDict objectForKey:[checkOutDate description]];
+	NSMutableDictionary*	newManDict = [NSMutableDictionary dictionaryWithCapacity:0];
+	NSMutableDictionary*	newManEntry = [NSMutableDictionary dictionaryWithCapacity:0];
+	NSDate*					newDate = [NSDate date];
+	
+	if( manifestURL == nil ) return didWork;
+	
+	if( checkInEntry != nil )
+	{
+		if( manifestDict != nil )
+			[newManDict addEntriesFromDictionary:manifestDict];
+		
+		[newManEntry setValue:newDate		forKey:kDACSlotReservationTime];
+		[newManEntry setValue:userName		forKey:kDACSlotReservationUser];
+		[newManEntry setValue:userHost		forKey:kDACSlotReservationHost];
+		[newManEntry setValue:kDACSlotReservationTypeCheckIn
+					   forKey:kDACSlotReservationType];
+		
+		[newManDict setValue:newManEntry	forKey:[newDate description]];
+		didWork = [newManDict writeToURL:manifestURL atomically:YES];
+		
+		if( didWork ) {
+			FSSetXattr( &slotFSRef, kDACALCarouselDocumentXAttrSlotCheckout, (CFStringRef)NULL );
+			[self setCheckedOutDate:nil];
+		}
+	}
+	
+	[self reloadSlot];
+	
+	NSLog(@"Slot Check In:%@\nManifset URL:%@\nManifest Dictionary:%@", self, manifestURL, manifestDict);
+	
+	return didWork;
+}
 
 @end		// DACALSlot
 
@@ -462,7 +644,7 @@ NSMutableArray*		gDACALDevices;
 		theSlotTitle = DACALSlotCopyTitle( theBoxRef, slotNum, NULL );
 		if( theSlotTitle != NULL ) {															// Create a url to the slot
 			slotURL = [slotFolders objectAtIndex:slotindex-1];
-			[theSlot setSlotFSRefFromURL:slotURL];												// Save a FSRef while we know where it slot is			
+			[theSlot setSlotLocation:slotURL];													// Save a FSRef while we know where it slot is			
 			
 			slotTopURL = CFURLCreateCopyAppendingPathComponent( NULL, (CFURLRef)slotURL, (CFStringRef) theSlotTitle, TRUE );
 			

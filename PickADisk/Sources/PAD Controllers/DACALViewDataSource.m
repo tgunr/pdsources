@@ -88,7 +88,7 @@
 	PADIndexToolbarController* toolControl = (PADIndexToolbarController*)[self toolbarControl];
 //	NSNumber*	slotNumber;
 	
-	//[toolControl setSelectedNode:nil];
+	[toolControl setSelectedNode:nil];
 	
 	for( index=0; index<count; index++ )
 	{

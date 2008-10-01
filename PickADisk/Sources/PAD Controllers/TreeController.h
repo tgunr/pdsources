@@ -25,6 +25,7 @@
 #define COLUMNID_MODDATE			@"DateAddColumn"
 #define COLUMNID_TYPE				@"TypeColumn"
 #define COLUMNID_SCORE				@"ScoreColumn"
+#define COLUMNID_CHECKEDOUT			@"CheckOutColumn"
 //#define COLUMNID_NODE_KIND		@"NodeKindColumn"
 
 @class SimpleTreeNode;

@@ -46,15 +46,72 @@ PADSearchRequest* PADIndexToolbarController_LastSearch = nil;
 	return updateIt;
 }
 
+-(NSToolbarItem*)toobarItemWithIdentifier:(NSString*)identifier
+{
+	NSToolbarItem*	outItem = nil;
+	NSArray*		items = [indexToolbar visibleItems];
+	NSInteger		itemCount = [items count];
+	NSInteger		itemIndex = 0;
+
+	for( itemIndex=0; itemIndex < itemCount; itemIndex++ )
+		if( [[[items objectAtIndex:itemIndex] itemIdentifier] isEqual:identifier] == YES )
+		{
+			outItem = [items objectAtIndex:itemIndex];
+			break;
+		} //else
+			//NSLog(@"Not identifier: %@ for Item:%@", [[items objectAtIndex:itemIndex] itemIdentifier], [[items objectAtIndex:itemIndex] label]);
+	
+	return outItem;
+}
+
+-(NSToolbarItem*)checkOutToolbarItem
+{
+	return [self toobarItemWithIdentifier:@"D9318872-BA3F-47C5-AF8E-B794018E8C85"];
+}
+
 -(void)adoptSelection
 {
 	BOOL		anyBox = NO;
 	BOOL		anySlot = NO;
+	NSInteger	nodeCount = [[self selectedNodes] count];
+	NSInteger	nodeIndex;
+	NSInteger	checkState = 0;
+	BOOL		firstCheckState = NO;
+	
+	NSString*	checkInTitle = NSLocalizedString(@"Checkout", @"Index Toolbar Item Title when selection in checked in.");
+	NSString*	checkOutTitle = NSLocalizedString(@"Check In", @"Index Toolbar Item Title when selection in checked out.");
+	NSString*	checkInOutTitle = NSLocalizedString(@"Checkout/In", @"Index Toolbar Item Title when selection mixed checked in/out.");
+	NSString*	checkTitle = nil;
 	
 	if( [self selectedDevices] )
 		anyBox = [[self selectedDevices] count] > 0;
 	if( [self selectedNodes] )	
-		anySlot = [[self selectedNodes] count] > 0;
+		anySlot = nodeCount > 0;
+	
+	if( anySlot == YES ) {
+		firstCheckState = [[[[self selectedNodes] objectAtIndex:0] nodeData] isCheckedOut];
+		checkState = firstCheckState;
+	}
+	
+	for( nodeIndex=1; nodeIndex < nodeCount; nodeIndex++ )
+		if( [[[[self selectedNodes] objectAtIndex:nodeIndex] nodeData] isCheckedOut] != firstCheckState )
+		{
+			checkState = -1;
+			break;
+		}
+		
+	if( checkState != firstCheckState )
+		checkTitle = checkInOutTitle;
+	else {
+		if( firstCheckState == YES )
+			checkTitle = checkOutTitle;
+		else
+			checkTitle = checkInTitle;
+	}
+
+	[[self checkOutToolbarItem] setLabel:checkTitle];
+	//[checkOutButton setTitle:checkTitle];
+	//NSLog(@"Check Title: %@", checkTitle);
 	
 	if( resetButton )		[resetButton setEnabled:anyBox];
 	if( closeDoorButton )	[closeDoorButton setEnabled:anyBox];
@@ -112,15 +169,30 @@ PADSearchRequest* PADIndexToolbarController_LastSearch = nil;
 	SimpleNodeData*	aNode;
 	DACALDeviceRef	aBox;
 	DACALSlotNum	aSlot;
+	DACALResult		moveResult;
+	BOOL			goodCheck = NO;
+	
+	NSString*		user = NSFullUserName();
+	NSString*		host = [[NSHost currentHost] name];
 
 	if( [self selectedNodes] ) slotCount = [[self selectedNodes] count];
 
 	for( index=0; index < slotCount; index++ )
 	{
 		aNode = [[[self selectedNodes] objectAtIndex:index] nodeData];
+		
+		if( [aNode isCheckedOut] == YES )
+			goodCheck = [[[aNode itemElement] elementSlot] checkInForUser:user onHost:host];
+		else
+			goodCheck = [[[aNode itemElement] elementSlot] checkOutForUser:user onHost:host];
+		
 		aBox = [aNode itemDevice]; // (DACALDeviceRef)[[self selectedDevices] objectAtIndex:0];
 		aSlot = [aNode itemSlot];  // (DACALSlotNum)[[[self selectedSlots] objectAtIndex:index] longValue];
-		DACALCommandMoveToSlotWithOptions( aBox, aSlot, kDACALOptionMoveOnce);
+		moveResult = DACALCommandMoveToSlotWithOptions( aBox, aSlot, kDACALOptionMoveOnce);
+		
+		[AppController playUISoundForResult: (goodCheck == YES) ? kDACALOK : kDACALError];
+		if( index + 1 < slotCount )
+			sleep( 5.0 );
 	}
 }
 

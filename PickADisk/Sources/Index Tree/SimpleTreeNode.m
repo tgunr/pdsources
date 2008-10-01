@@ -170,6 +170,7 @@ Boolean		CFAbsoluteTimeBetweenTimes( CFAbsoluteTime lowTime, CFAbsoluteTime unkn
 	if(itemDevice)	CFRelease((CFTypeRef)itemDevice);
 	
 	if(subTree)		[subTree release];
+	if(itemElement) [itemElement release];
 	
     [super dealloc];
 }
@@ -316,8 +317,31 @@ Boolean		CFAbsoluteTimeBetweenTimes( CFAbsoluteTime lowTime, CFAbsoluteTime unkn
 
 - (SimpleTreeNode*)subTree { return subTree; }
 
+- (void)setItemElement:(id)element {
+    if (!itemElement || ![itemElement isEqual:element]) {
+		[itemElement release];
+		itemElement = [element retain];
+    }
+	
+}
+
+- (id)itemElement { return itemElement; }
+
 - (BOOL)busy { return isBusy; }
 - (void)setBusy:(BOOL)value { isBusy = value; }
+
+-(BOOL)isCheckedOut
+{
+	if( !itemElement ) return NO;
+	return [itemElement isCheckedOut];
+}
+
+-(NSDate*)checkedOutDate
+{
+	if( !itemElement ) return nil;
+	return [itemElement checkedOutDate];
+}
+
 
 - (id)reload
 {
@@ -389,6 +413,24 @@ Boolean		CFAbsoluteTimeBetweenTimes( CFAbsoluteTime lowTime, CFAbsoluteTime unkn
 
 -(NSComparisonResult)compareDataScores:(SimpleNodeData *)other
 	{ return NSOrderedSame; }
+
+- (NSComparisonResult)compareKeyCheckedOut:(SimpleNodeData *)other
+{
+	//	NSLog(@"COMPARE Checked Out");
+	BOOL		selfCheckedOut = [self isCheckedOut];
+	BOOL		otherCheckedOut = [other isCheckedOut];
+
+	if( (selfCheckedOut == NO) && (otherCheckedOut == NO) )
+		return NSOrderedSame;
+	
+	if( (selfCheckedOut == NO) && (otherCheckedOut == YES) )
+		return NSOrderedAscending;
+	
+	if( (otherCheckedOut == NO) || !other )
+		return NSOrderedDescending;
+	
+	return( [[self checkedOutDate] compare:[other checkedOutDate]] );
+}
 
 - (NSComparisonResult)compare:(id)otherData
 { 
@@ -597,6 +639,7 @@ Boolean		CFAbsoluteTimeBetweenTimes( CFAbsoluteTime lowTime, CFAbsoluteTime unkn
     if( [self nodeData] == nil ) self = [super initWithData:[SimpleNodeData nodeDataWithURL:loc] parent:nil children:[[NSArray alloc] init]]; // [super initWithData:data parent:nil children:[NSArray array]];
     if (self != nil) {
 		[ourElement setElementNode:self];
+		[[self nodeData] setItemElement:ourElement];
 		anElement = [DACALSlotElement slotElementForNode:self];
         while ((entry = [entryEnum nextObject])) {
 			if( CFURLIsVisible((CFURLRef)entry) ) {
@@ -847,6 +890,7 @@ FOUND:
 -(SimpleNodeData*)keySlotNumber { return [self nodeData]; }
 -(SimpleNodeData*)keyAddDate { return [self nodeData]; }
 -(SimpleNodeData*)keyFlavor { return [self nodeData]; }
+-(SimpleNodeData*)keyCheckedOut { return [self nodeData]; }
 
 - (NSString*)localPathName { return [[self nodeData] name]; }
 
@@ -875,7 +919,7 @@ FOUND:
 	
 	NSMutableString*	localPath = [self localPathString];
 	NSString*			localDevice = (NSString*)DACALCommandCopyName([[self nodeData] itemDevice], NULL );
-	NSString*			outString = [NSString stringWithFormat:@"“%@” Slot %i: %@", localDevice, [[self nodeData] itemSlot], localPath];
+	NSString*			outString = [NSString stringWithFormat:NSLocalizedString(@"“%@” Slot %i: %@", @"Element Node Description Format with device, slot num and item path"), localDevice, [[self nodeData] itemSlot], localPath];
 
 	[localDevice release];
     return outString;
@@ -901,12 +945,17 @@ FOUND:
 	if( [[self nodeData] itemSlot] == 0 ) return [[self nodeData] name];
 	
 	NSMutableString*	localPath = [self localPathString];
+	NSDate*				checkOutDate = [[self nodeData] checkedOutDate];
+	NSString*			checkedOutString = NSLocalizedString(@"", @"Element Node Tooltip Format for items checked in");
 	
 	if( [[self nodeData] respondsToSelector:@selector(matchActual)] )
 		localPath = [[[self nodeData] matchActual] localPathString];
 	
+	if( checkOutDate != nil )
+		checkedOutString = [NSString stringWithFormat:NSLocalizedString(@"Checked out on %@\n", @"Element Node Tooltip Format for date checked out"), [checkOutDate description]];
+	
 	NSString*			localDevice = (NSString*)DACALCommandCopyName([[self nodeData] itemDevice], NULL );
-	NSString*			outString = [NSString stringWithFormat:@"“%@” Slot %i\n%@", localDevice, [[self nodeData] itemSlot], localPath];
+	NSString*			outString = [NSString stringWithFormat:NSLocalizedString(@"“%@” Slot %i\n%@%@", @"Element Node Tooltip Format for device name, slot num, checked out string, item path"), localDevice, [[self nodeData] itemSlot], checkedOutString, localPath];
 	
 	[localDevice release];
     return outString;

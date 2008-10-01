@@ -69,6 +69,7 @@ const enum {
 -(SimpleNodeData*)keySlotNumber;
 -(SimpleNodeData*)keyAddDate;
 -(SimpleNodeData*)keyFlavor;
+-(SimpleNodeData*)keyCheckedOut;
 
 @end	// <<Simple Tree Node>>
 
@@ -88,6 +89,7 @@ const enum {
     BOOL			isSelectable;
 	BOOL			isBusy;
 	SimpleTreeNode *subTree;
+	id				itemElement;
 }
 
 - (id)initWithName:(NSString *)str isLeaf:(BOOL)leaf;
@@ -158,8 +160,14 @@ const enum {
 - (void)setSubTree:(SimpleTreeNode*)tree;
 - (SimpleTreeNode*)subTree;
 
+- (void)setItemElement:(id)element;
+- (id)itemElement;
+
 - (BOOL)busy;
 - (void)setBusy:(BOOL)value;
+
+-(BOOL)isCheckedOut;
+-(NSDate*)checkedOutDate;
 
 - (id)reload;
 - (id)reloadData:(id)newData;
@@ -169,6 +177,7 @@ const enum {
 - (NSComparisonResult)compareDataAddDates:(SimpleNodeData *)other;
 - (NSComparisonResult)compareDataFlavors:(SimpleNodeData *)other;
 - (NSComparisonResult)compareDataScores:(SimpleNodeData *)other;
+- (NSComparisonResult)compareKeyCheckedOut:(SimpleNodeData *)other;
 
 - (NSComparisonResult)compare:(id)otherData;
 

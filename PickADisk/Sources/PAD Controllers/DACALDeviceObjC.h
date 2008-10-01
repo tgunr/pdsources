@@ -12,6 +12,15 @@
 
 extern CFStringRef			kPADClientIdentifier;
 
+//	Slot reservation dictionary keys
+extern	NSString*	kDACSlotReservationTime;
+extern  NSString*	kDACSlotReservationType;
+extern	NSString*	kDACSlotReservationUser;
+extern	NSString*	kDACSlotReservationHost;
+
+extern	NSString*	kDACSlotReservationTypeCheckOut;
+extern	NSString*	kDACSlotReservationTypeCheckIn;
+
 @class DACALSlotElement;
 @class DACALSlot;
 @class DACALDevice;
@@ -51,6 +60,9 @@ extern DACALSlotElement*	DACALDeviceSlotElementForURL( CFURLRef itemURL );
 -(NSString*)flavor;
 -(void)setFlavor:(NSString*)newFlavor;
 
+-(BOOL)isCheckedOut;
+-(NSDate*)checkedOutDate;
+
 @end		// DACALSlotElement
 
 
@@ -62,6 +74,7 @@ extern DACALSlotElement*	DACALDeviceSlotElementForURL( CFURLRef itemURL );
 	SimpleTreeNode*		slotNode;
 	FSRef				slotFSRef;
 	
+	NSDate*				slotCheckedOut;
 	NSMutableArray*		slotElements;
 }
 
@@ -72,6 +85,7 @@ extern DACALSlotElement*	DACALDeviceSlotElementForURL( CFURLRef itemURL );
 -(SimpleTreeNode*)slotNode;
 -(FSRef*)slotFSRef;
 -(BOOL)setSlotFSRefFromURL:(NSURL*)slotURL;
+-(BOOL)setSlotLocation:(NSURL*)slotURL;
 
 -(NSMutableArray*)slotElements;
 -(void)setSlotElements:(NSMutableArray*)newElements;
@@ -94,6 +108,14 @@ extern DACALSlotElement*	DACALDeviceSlotElementForURL( CFURLRef itemURL );
 
 -(NSString*)flavor;
 -(void)setFlavor:(NSString*)newFlavor;
+
+-(BOOL)isCheckedOut;
+-(NSDate*)checkedOutDate;
+-(void)setCheckedOutDate:(NSDate*)newDate;
+-(NSDictionary*)currentReservation;
+-(NSDictionary*)reservationHistory;
+-(BOOL)checkOutForUser:(NSString*)userName onHost:(NSString*)userHost;
+-(BOOL)checkInForUser:(NSString*)userName onHost:(NSString*)userHost;
 
 @end		// DACALSlot
 
