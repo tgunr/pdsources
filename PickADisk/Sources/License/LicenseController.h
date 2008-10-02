@@ -12,7 +12,7 @@
 
 @interface PADPrefsController(LicenseExtension)
 
-- (IBAction)selectLicenseFile:(id)sender;
+- (IBAction)selectLicenseFileBtn:(id)sender;
 - (IBAction)submitLicense:(id)sender;
 
 - (void)pathControlDoubleClick:(id)sender;
@@ -23,14 +23,17 @@
 {
 	NSDictionary *			licenseDict;
 	AquaticPrime *			licenseValidator;
+	NSData *				licenseData;
 }
 
 + (id)shared;
 - (id)init;
 - (AquaticPrime *)licenseValidator;
 - (NSDictionary *)licenseDict;
-- (NSDictionary*)checkLicense:(NSString*)licensePath;
-- (BOOL) fileValid:(NSString*)licensePath ;
-- (BOOL) dataValid;
+- (void)setLicenseValidator:(AquaticPrime *)newValidator;
+- (void)setLicenseData:(NSData *)data;
+- (NSDictionary*)checkLicenseFile:(NSString*)licensePath;
+- (BOOL) openLicenseFile:(NSString*)licensePath ;
+- (BOOL) licenseValid;
 @end
 

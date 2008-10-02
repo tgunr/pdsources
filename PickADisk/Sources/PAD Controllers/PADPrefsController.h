@@ -15,7 +15,7 @@
 	
 	IBOutlet NSTextField*		licenseeField;
 	IBOutlet NSTextField*		licenseMailField;
-	IBOutlet NSButton*			selectLicenseFile;
+	IBOutlet NSButton*			selectLicenseFileBtn;
 	IBOutlet NSButton*			submitLicenseBtn;
 	IBOutlet NSPathControl*		licensePathControl;
 }
@@ -28,5 +28,6 @@
 
 - (IBAction)runDriverInstaller:(id)sender;
 - (void)updateDriverPane;
+- (void)updateLicensePanel;
 
 @end

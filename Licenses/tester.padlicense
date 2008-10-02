@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Date</key>
+	<string>2008-09-30</string>
+	<key>Email</key>
+	<string>tester@pickadisk.com</string>
+	<key>Name</key>
+	<string>tester</string>
+	<key>Order</key>
+	<string>1</string>
+	<key>Signature</key>
+	<data>
+	hLf9pqlyflmRjArqqge53b9rmwJrG2XIsvzuVmC2XAqanBAjqo3jvFaPKcZLPVkrEjnc
+	Y/hMgP1d7SISFK2B1aNsUZiDowZW69pSWJVTSAijVmbSvgRsraTL3Qgqn5MgBNk5fk5R
+	UKT9ciIQ2sxLohCcLkbNKV9mf6wa1GonCew=
+	</data>
+	<key>Version</key>
+	<string>1.0</string>
+</dict>
+</plist>

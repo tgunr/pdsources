@@ -123,7 +123,7 @@
 //
 //	User clicked "Set Path..." button to pick a file system object.
 // -------------------------------------------------------------------------------
-- (IBAction)selectLicenseFile:(id)sender
+- (IBAction)selectLicenseFileBtn:(id)sender
 {
 	NSOpenPanel* panel = [NSOpenPanel openPanel];
 	[panel setAllowsMultipleSelection:NO];
@@ -135,20 +135,25 @@
 	
 	NSArray * licenseFiles;
 	NSURL * url;
-	NSArray *fileTypes = [NSArray arrayWithObject:@"plist"];
+	NSArray *fileTypes = [NSArray arrayWithObject:@"padlicense"];
 	NSInteger result = [panel runModalForTypes:fileTypes];
 	if (result) {
 		licenseFiles = [panel filenames];
 		url = [NSURL fileURLWithPath: [licenseFiles objectAtIndex: 0]];
 		[licensePathControl setURL: url];
 		LicenseController *validator =  [LicenseController shared];
-		NSDictionary *licenseDict = [validator checkLicense: [url path]];
+		NSDictionary *licenseDict = [validator checkLicenseFile: [url path]];
 		if (licenseDict) {
 			NSString *licenseName = [licenseDict objectForKey:@"Name"];
 			[licenseeField setStringValue: licenseName];
 			NSString *licenseEmail = [licenseDict objectForKey:@"Email"];
 			[licenseMailField setStringValue: licenseEmail];
-			[[NSUserDefaults standardUserDefaults] setObject: licenseDict forKey:@"licenseDict"];
+			NSData * licenseData = [NSData dataWithContentsOfFile:[url path]];
+			NSString * licenseSignature = [licenseDict objectForKey: @"Signature"];
+			const void * data = [licenseData bytes];
+			[[NSUserDefaults standardUserDefaults] setObject: licenseData forKey:@"licenseDict"];
+			[validator setLicenseData: licenseData];
+			[self updateLicensePanel];
 		}
 	}
 
@@ -233,45 +238,65 @@ static LicenseController*	shared = nil;
 	// *** End Public Key *** 
 	
 	// Instantiate AquaticPrime
-	licenseValidator = [AquaticPrime aquaticPrimeWithKey:key];
+	[self setLicenseValidator: [AquaticPrime aquaticPrimeWithKey:key]];
 
 	// Blacklist bad licenses
-	[licenseValidator setBlacklist:[NSArray arrayWithObject:@"94f93b1db282f562d7ff846f1dc31e2f9ed39862"]];
-	licenseDict = [[NSUserDefaults standardUserDefaults] objectForKey:@"licenseDict"];
-	NSData * licenseData;
-	if (licenseDict)
-		licenseData = [licenseDict objectForKey: @"Signature"];
+	[licenseValidator setBlacklist:[NSArray arrayWithObject:@"56237cb06e032ba9d7ed5c4b5f5f89790493386e"]];
+	// init from prefs if possible
+	licenseData  = [[NSUserDefaults standardUserDefaults] objectForKey:@"licenseDict"];
+	NSUInteger len = [licenseData length];
+	const void * data = [licenseData bytes];
+	licenseDict = [licenseValidator dictionaryForLicenseData: licenseData];
+	if (!licenseDict)
+		return self;
 	return self;
 }
 
 - (AquaticPrime *)licenseValidator { return licenseValidator; }
 - (NSDictionary *)licenseDict { return licenseDict; }
 
-- (BOOL) dataValid {
+- (void)setLicenseValidator:(AquaticPrime *)newValidator {
+	if( !licenseValidator || licenseValidator != newValidator ) {
+		if( licenseValidator ) 
+			[licenseValidator release];
+		if( newValidator ) 
+			[newValidator retain];
+		licenseValidator = newValidator;
+	}
+}
+
+- (void)setLicenseData:(NSData *)data {
+	licenseData = data;
+}
+
+- (BOOL) licenseValid {
 	if (licenseDict)
-		return [licenseValidator verifyLicenseData: [licenseDict objectForKey: @"Signature"]];
+		return [licenseValidator verifyLicenseData: licenseData];
 	else
 		return false;
 }
 
-- (NSDictionary*)checkLicense:(NSString*)licensePath {
+- (NSDictionary*)checkLicenseFile:(NSString*)licensePath {
     // Get the dictionary from the license file
     // If the license is invalid, we get nil back instead of a dictionary
     licenseDict = [licenseValidator dictionaryForLicenseFile:licensePath];
-	NSString *aKey;
-	aKey = [licenseValidator key];
-	aKey = [licenseValidator privateKey];
-	aKey = [licenseValidator getLastError];
 	return licenseDict;
 }
 
-- (BOOL) fileValid:(NSString*)licensePath {
-	NSDictionary *theDict = [self checkLicense: licensePath];
+- (BOOL)checkLicenseData:(NSData*)data {
+    // Get the dictionary from the license file
+    // If the license is invalid, we get nil back instead of a dictionary
+    return [licenseValidator verifyLicenseData:data];
+}
+
+- (BOOL) openLicenseFile:(NSString*)licensePath {
+	NSDictionary *theDict = [self checkLicenseFile: licensePath];
 	if (!theDict)
 		return true;
 	return false;
 }
 
 @end
+
 
 

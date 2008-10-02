@@ -5,25 +5,32 @@
 
 @implementation PADPrefsController
 
-- (void)awakeFromNib {
-
-	[[NSUserDefaultsController sharedUserDefaultsController] addObserver:self forKeyPath:@"values.SULastCheckTime" options:0 context:NULL];
-	[[NSUserDefaultsController sharedUserDefaultsController] addObserver:self forKeyPath:@"values.DACALDriverInstalled" options:0 context:NULL];
-
-    [licensePathControl setTarget:self];
-    [licensePathControl setDoubleAction:@selector(pathControlDoubleClick:)];
-	[licensePathControl setDelegate:self];
-
-	BOOL valid = [[LicenseController shared] dataValid];
+- (void) updateLicensePanel {
+	BOOL valid = [[LicenseController shared] licenseValid];
 	if (valid) {
 		[licenseeField setStringValue: [[[LicenseController shared] licenseDict] objectForKey: @"Name"]];
 		[licenseMailField setStringValue: [[[LicenseController shared] licenseDict] objectForKey: @"Email"]];
 		[submitLicenseBtn setEnabled: FALSE];
+		[selectLicenseFileBtn setEnabled: FALSE];
 	} else {
 		[licenseeField setStringValue: @""];
 		[licenseMailField setStringValue: @""];
 		[submitLicenseBtn setEnabled: TRUE];
-	}		
+		[selectLicenseFileBtn setEnabled: TRUE];
+	}
+}
+
+- (void)awakeFromNib {
+	
+	[[NSUserDefaultsController sharedUserDefaultsController] addObserver:self forKeyPath:@"values.SULastCheckTime" options:0 context:NULL];
+	[[NSUserDefaultsController sharedUserDefaultsController] addObserver:self forKeyPath:@"values.DACALDriverInstalled" options:0 context:NULL];
+	
+    [licensePathControl setTarget:self];
+    [licensePathControl setDoubleAction:@selector(pathControlDoubleClick:)];
+	[licensePathControl setDelegate:self];
+	
+	[self updateLicensePanel];
+	
 }
 
 - (void)dealloc
@@ -58,7 +65,7 @@
 	for(index=0; index<theCount; index++)
 		[theArray addObject:[[theItems objectAtIndex:index] itemIdentifier]];
 	
-//	NSLog(@"Selectables: %@", theArray);
+	//	NSLog(@"Selectables: %@", theArray);
 	
 	return theArray;
 }
@@ -102,7 +109,7 @@
 		[tabToolbar setSelectedItemIdentifier: [sender itemIdentifier]];
 	
 	[[NSUserDefaults standardUserDefaults] setObject:[sender itemIdentifier] forKey:@"PADPrefToolSelected"];
-
+	
 	NSLog(@"Clicked Tool Label:%@ ID:%@", [sender label], [sender itemIdentifier]);
 	
 	[self refreshUpdateDate:sender];
@@ -113,7 +120,7 @@
 	NSRect		theWindowFrame = [[tabView window] frame];
 	NSRect		theContentFrame = [[tabView window] contentRectForFrameRect:theWindowFrame];
 	NSPoint		theNewSize; // = theTabFrame.size;
-
+	
 	float		theToolbarHeight = -(theWindowFrame.size.height - theContentFrame.size.height);
 	float		theNewHeight = (theWindowFrame.size.height - (theTabFrame.size.height - theBottomFrame.origin.y)) + theToolbarHeight;
 	float		theDeltaHeight = theWindowFrame.size.height - theNewHeight;
@@ -154,21 +161,21 @@
 }
 
 /*
-//-(void) refreshUpdateTimer:(NSTimer*)timer
-//	{ [self refreshUpdateDate:[timer userInfo]]; }
-
-
-- (IBAction)checkForUpdatesAndRefreshDate:(id)sender
-{
-	[[SUUpdater sharedUpdater] checkForUpdates:sender];
-	
-//	[NSTimer scheduledTimerWithTimeInterval:3.0
-//									 target:self
-//								   selector:@selector(refreshUpdateTimer:)
-//								   userInfo:sender
-//									repeats:NO];
-}
-*/
+ //-(void) refreshUpdateTimer:(NSTimer*)timer
+ //	{ [self refreshUpdateDate:[timer userInfo]]; }
+ 
+ 
+ - (IBAction)checkForUpdatesAndRefreshDate:(id)sender
+ {
+ [[SUUpdater sharedUpdater] checkForUpdates:sender];
+ 
+ //	[NSTimer scheduledTimerWithTimeInterval:3.0
+ //									 target:self
+ //								   selector:@selector(refreshUpdateTimer:)
+ //								   userInfo:sender
+ //									repeats:NO];
+ }
+ */
 - (IBAction)provideFeedback:(id)sender
 {
 	return [[AppController shared] provideFeedback:sender];
@@ -187,7 +194,7 @@
 	
 	if( haveDriver )
 		outPrompt = [NSString stringWithFormat:NSLocalizedString(@"DACAL Driver v%@\nInstalled %@",@"Prefs Window Drive Pane Format Prompt for driver version on installed date"), gotVers, [gotDate description]];
-
+	
 	[driverPrompt setStringValue:outPrompt];
 }
 

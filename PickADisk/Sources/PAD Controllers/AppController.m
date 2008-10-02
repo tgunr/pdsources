@@ -168,7 +168,7 @@ static AppController *shared;
 	PADBOX_VALID_BEGIN
 
 	// Validate pref license
-	BOOL valid = [[LicenseController shared] dataValid];
+	BOOL valid = [[LicenseController shared] licenseValid];
 	
 	// Register for 'GURL' Apple Event to handle URL opening
 	[[NSAppleEventManager sharedAppleEventManager] setEventHandler:self andSelector:@selector(handleOpenLocationAppleEvent:withReplyEvent:) forEventClass:kInternetEventClass andEventID:kAEGetURL];

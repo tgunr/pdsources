@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Date</key>
+	<string>2008-10-01</string>
+	<key>Email</key>
+	<string>davec@mac.com</string>
+	<key>Name</key>
+	<string>davec</string>
+	<key>Order</key>
+	<string>2</string>
+	<key>Signature</key>
+	<data>
+	gEqSjfMda4QfrkBSFsBk1DhzkW4/zNwtYnxLy9+zk5K0kReZ9coFuhCkMTIqaRzj2Y6N
+	SHqKKKVYHYfkOMtZXKCV/XTTP0NX+uT3iuIwsUOPcPs+6cLtbXDOc/K+5k+u5shLbt8P
+	cmXBfFBms1G2lQzXy5mqGPAFkfxNrLM/eac=
+	</data>
+	<key>Version</key>
+	<string>1.0</string>
+</dict>
+</plist>

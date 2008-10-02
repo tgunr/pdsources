@@ -8,7 +8,7 @@
 		<string key="IBDocument.HIToolboxVersion">352.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="846"/>
+			<integer value="1249"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -2260,7 +2260,7 @@
 													<int key="NSCellFlags">67239424</int>
 													<int key="NSCellFlags2">272891904</int>
 													<string key="NSContents">The DACAL Driver is a system extension that enables Mac OS X to communicate with your ZioTek CD Carousel over a USB connection.  You need to install it on every Mac that you want attach carousels to ensure maximum compatibility.</string>
-													<object class="NSFont" key="NSSupport">
+													<object class="NSFont" key="NSSupport" id="142561688">
 														<string key="NSName">LucidaGrande</string>
 														<double key="NSSize">1.300000e+01</double>
 														<int key="NSfFlags">16</int>
@@ -2815,28 +2815,6 @@
 																	<reference key="NSControlView" ref="654558865"/>
 																	<reference key="NSBackgroundColor" ref="591678401"/>
 																	<reference key="NSTextColor" ref="136817688"/>
-																</object>
-															</object>
-															<object class="NSTextField" id="784556077">
-																<reference key="NSNextResponder" ref="923079383"/>
-																<int key="NSvFlags">268</int>
-																<string key="NSFrame">{{22, 102}, {373, 39}}</string>
-																<reference key="NSSuperview" ref="923079383"/>
-																<bool key="NSEnabled">YES</bool>
-																<object class="NSTextFieldCell" key="NSCell" id="123347415">
-																	<int key="NSCellFlags">-1805517311</int>
-																	<int key="NSCellFlags2">272629760</int>
-																	<string key="NSContents">Select the license file sent to you via email or drag the file into the selection area.</string>
-																	<reference key="NSSupport" ref="535736222"/>
-																	<reference key="NSControlView" ref="784556077"/>
-																	<bool key="NSDrawsBackground">YES</bool>
-																	<reference key="NSBackgroundColor" ref="951321156"/>
-																	<object class="NSColor" key="NSTextColor" id="51883271">
-																		<int key="NSColorSpace">6</int>
-																		<string key="NSCatalogName">System</string>
-																		<string key="NSColorName">textColor</string>
-																		<reference key="NSColor" ref="95162142"/>
-																	</object>
 																</object>
 															</object>
 															<object class="NSPathControl" id="271423435">
@@ -49408,7 +49386,7 @@ AAgAAQABAAEAAQ</bytes>
 																	<reference key="NSDelegate" ref="271423435"/>
 																	<object class="NSArray" key="NSAllowedTypes">
 																		<bool key="EncodedWithXMLCoder">YES</bool>
-																		<string>plist</string>
+																		<string>padlicense</string>
 																	</object>
 																</object>
 															</object>
@@ -49430,6 +49408,22 @@ AAgAAQABAAEAAQ</bytes>
 																	<string key="NSKeyEquivalent"/>
 																	<int key="NSPeriodicDelay">200</int>
 																	<int key="NSPeriodicInterval">25</int>
+																</object>
+															</object>
+															<object class="NSTextField" id="102825973">
+																<reference key="NSNextResponder" ref="923079383"/>
+																<int key="NSvFlags">268</int>
+																<string key="NSFrame">{{20, 114}, {378, 34}}</string>
+																<reference key="NSSuperview" ref="923079383"/>
+																<bool key="NSEnabled">YES</bool>
+																<object class="NSTextFieldCell" key="NSCell" id="43884587">
+																	<int key="NSCellFlags">67239424</int>
+																	<int key="NSCellFlags2">272891904</int>
+																	<string key="NSContents">Select the license file sent to you via email or drag the file into the selection area or double-cllick the license file.</string>
+																	<reference key="NSSupport" ref="142561688"/>
+																	<reference key="NSControlView" ref="102825973"/>
+																	<reference key="NSBackgroundColor" ref="591678401"/>
+																	<reference key="NSTextColor" ref="136817688"/>
 																</object>
 															</object>
 														</object>
@@ -49497,7 +49491,12 @@ AAgAAQABAAEAAQ</bytes>
 																	<reference key="NSControlView" ref="82452089"/>
 																	<bool key="NSDrawsBackground">YES</bool>
 																	<reference key="NSBackgroundColor" ref="951321156"/>
-																	<reference key="NSTextColor" ref="51883271"/>
+																	<object class="NSColor" key="NSTextColor" id="51883271">
+																		<int key="NSColorSpace">6</int>
+																		<string key="NSCatalogName">System</string>
+																		<string key="NSColorName">textColor</string>
+																		<reference key="NSColor" ref="95162142"/>
+																	</object>
 																</object>
 															</object>
 															<object class="NSTextField" id="804457880">
@@ -49536,13 +49535,13 @@ AAgAAQABAAEAAQ</bytes>
 															<object class="NSButton" id="502351922">
 																<reference key="NSNextResponder" ref="316568636"/>
 																<int key="NSvFlags">268</int>
-																<string key="NSFrame">{{301, 6}, {96, 32}}</string>
+																<string key="NSFrame">{{260, 6}, {141, 32}}</string>
 																<reference key="NSSuperview" ref="316568636"/>
 																<bool key="NSEnabled">YES</bool>
 																<object class="NSButtonCell" key="NSCell" id="618211378">
 																	<int key="NSCellFlags">67239424</int>
 																	<int key="NSCellFlags2">134217728</int>
-																	<string key="NSContents">Submit</string>
+																	<string key="NSContents">Request License</string>
 																	<reference key="NSSupport" ref="535736222"/>
 																	<reference key="NSControlView" ref="502351922"/>
 																	<int key="NSButtonFlags">-2038284033</int>
@@ -50423,12 +50422,20 @@ AAgAAQABAAEAAQ</bytes>
 					<int key="connectionID">1272</int>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">selectLicenseFile:</string>
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">selectLicenseFileBtn</string>
 						<reference key="source" ref="887774783"/>
 						<reference key="destination" ref="660530628"/>
 					</object>
-					<int key="connectionID">1275</int>
+					<int key="connectionID">1276</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">selectLicenseFileBtn:</string>
+						<reference key="source" ref="887774783"/>
+						<reference key="destination" ref="660530628"/>
+					</object>
+					<int key="connectionID">1277</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -52331,10 +52338,10 @@ AAgAAQABAAEAAQ</bytes>
 						<reference key="object" ref="759439630"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="784556077"/>
 							<reference ref="660530628"/>
 							<reference ref="654558865"/>
 							<reference ref="271423435"/>
+							<reference ref="102825973"/>
 						</object>
 						<reference key="parent" ref="937575627"/>
 					</object>
@@ -52351,20 +52358,6 @@ AAgAAQABAAEAAQ</bytes>
 						<int key="objectID">1240</int>
 						<reference key="object" ref="833838808"/>
 						<reference key="parent" ref="654558865"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">1241</int>
-						<reference key="object" ref="784556077"/>
-						<object class="NSMutableArray" key="children">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="123347415"/>
-						</object>
-						<reference key="parent" ref="759439630"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">1242</int>
-						<reference key="object" ref="123347415"/>
-						<reference key="parent" ref="784556077"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">1243</int>
@@ -52491,6 +52484,20 @@ AAgAAQABAAEAAQ</bytes>
 						<reference key="object" ref="199849125"/>
 						<reference key="parent" ref="386611112"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">1278</int>
+						<reference key="object" ref="102825973"/>
+						<object class="NSMutableArray" key="children">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<reference ref="43884587"/>
+						</object>
+						<reference key="parent" ref="759439630"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">1279</int>
+						<reference key="object" ref="43884587"/>
+						<reference key="parent" ref="102825973"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -52586,8 +52593,6 @@ AAgAAQABAAEAAQ</bytes>
 					<string>1237.IBPluginDependency</string>
 					<string>1239.IBPluginDependency</string>
 					<string>1240.IBPluginDependency</string>
-					<string>1241.IBPluginDependency</string>
-					<string>1242.IBPluginDependency</string>
 					<string>1243.IBPluginDependency</string>
 					<string>1244.IBPathControlIntegration.allowedTypes</string>
 					<string>1244.IBPluginDependency</string>
@@ -52607,6 +52612,8 @@ AAgAAQABAAEAAQ</bytes>
 					<string>1266.IBPluginDependency</string>
 					<string>1273.IBPluginDependency</string>
 					<string>1274.IBPluginDependency</string>
+					<string>1278.IBPluginDependency</string>
+					<string>1279.IBPluginDependency</string>
 					<string>141.IBPluginDependency</string>
 					<string>141.ImportedFromIB2</string>
 					<string>19.IBPluginDependency</string>
@@ -52945,12 +52952,12 @@ AAgAAQABAAEAAQ</bytes>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<object class="NSMutableArray">
 						<bool key="EncodedWithXMLCoder">YES</bool>
-						<string>plist</string>
+						<string>padlicense</string>
 					</object>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -53240,7 +53247,7 @@ AAgAAQABAAEAAQ</bytes>
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">1275</int>
+			<int key="maxID">1279</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -53356,7 +53363,7 @@ AAgAAQABAAEAAQ</bytes>
 						<object class="NSMutableArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>pathControlDoubleClick:</string>
-							<string>selectLicenseFile:</string>
+							<string>selectLicenseFileBtn:</string>
 							<string>submitLicense:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
@@ -53405,7 +53412,7 @@ AAgAAQABAAEAAQ</bytes>
 							<string>licenseeField</string>
 							<string>prefsWindow</string>
 							<string>removeDriver</string>
-							<string>selectLicenseFile</string>
+							<string>selectLicenseFileBtn</string>
 							<string>submitLicenseBtn</string>
 							<string>tabToolbar</string>
 							<string>tabView</string>
