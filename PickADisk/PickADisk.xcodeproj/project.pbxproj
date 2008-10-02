@@ -265,7 +265,6 @@
 		75E666F50E92A6EB00A9DA07 /* AQDataExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AQDataExtensions.h; path = Sources/License/AQDataExtensions.h; sourceTree = "<group>"; };
 		75E666F60E92A6EB00A9DA07 /* AQDataExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AQDataExtensions.m; path = Sources/License/AQDataExtensions.m; sourceTree = "<group>"; };
 		75E666F90E92A99000A9DA07 /* AquaticPrime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AquaticPrime.h; path = Sources/License/AquaticPrime.h; sourceTree = "<group>"; };
-		75E666FD0E92A9A600A9DA07 /* AquaticPrime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AquaticPrime.framework; path = Frameworks/AquaticPrime.framework; sourceTree = SOURCE_ROOT; };
 		75E667D50E92CA9500A9DA07 /* license.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = license.icns; path = ../Resources/license.icns; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -565,7 +564,6 @@
 			children = (
 				75AE63250E935A7E00208DC3 /* LicenseController.h */,
 				75AE63260E935A7E00208DC3 /* LicenseController.m */,
-				75E666FD0E92A9A600A9DA07 /* AquaticPrime.framework */,
 				75E666F90E92A99000A9DA07 /* AquaticPrime.h */,
 				751C4E2C0E9400250027BC1C /* AquaticPrime.m */,
 				75E666F50E92A6EB00A9DA07 /* AQDataExtensions.h */,
