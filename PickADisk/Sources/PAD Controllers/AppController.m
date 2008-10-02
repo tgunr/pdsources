@@ -208,6 +208,13 @@ static AppController *shared;
     }
 }
 
+- (BOOL)application:(NSApplication *)theApplication openFile:(NSString *)filename
+{
+	if( [filename hasSuffix:@"padlicense"] == YES )
+		NSLog(@"Open a license: %@", filename);
+	
+	return YES;
+}
 
 - (NSArray*)feedParametersForHostBundle:(NSBundle*)hostBundle sendingSystemProfile:(BOOL)isSending
 {
