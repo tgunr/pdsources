@@ -10,13 +10,9 @@
 	if (valid) {
 		[licenseeField setStringValue: [[[LicenseController shared] licenseDict] objectForKey: @"Name"]];
 		[licenseMailField setStringValue: [[[LicenseController shared] licenseDict] objectForKey: @"Email"]];
-		[submitLicenseBtn setEnabled: FALSE];
-		[selectLicenseFileBtn setEnabled: FALSE];
 	} else {
 		[licenseeField setStringValue: @""];
 		[licenseMailField setStringValue: @""];
-		[submitLicenseBtn setEnabled: TRUE];
-		[selectLicenseFileBtn setEnabled: TRUE];
 	}
 }
 
