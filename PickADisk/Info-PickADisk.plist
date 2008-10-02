@@ -11,16 +11,18 @@
 			<array>
 				<string>padlicense</string>
 			</array>
+			<key>CFBundleTypeIconFile</key>
+			<string>license.icns</string>
 			<key>CFBundleTypeName</key>
 			<string>License</string>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>LSItemContentTypes</key>
 			<array>
-				<string>com.polymicrosystems.carousel.license</string>
+				<string>com.polymicrosystems.pickadisk.documents.license</string>
 			</array>
 			<key>LSTypeIsPackage</key>
-			<true/>
+			<false/>
 			<key>NSPersistentStoreTypeKey</key>
 			<string>XML</string>
 		</dict>
@@ -77,7 +79,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1027</string>
+	<string>1028</string>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2008, polyMicro Systems</string>
 	<key>NSMainNibFile</key>
@@ -108,6 +110,25 @@
 				<key>public.filename-extension</key>
 				<array>
 					<string>carousel</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>com.apple.plist</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>PickADisk License File</string>
+			<key>UTTypeIconFile</key>
+			<string>license.icns</string>
+			<key>UTTypeIdentifier</key>
+			<string>com.polymicrosystems.pickadisk.documents.license</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>padlicense</string>
 				</array>
 			</dict>
 		</dict>
