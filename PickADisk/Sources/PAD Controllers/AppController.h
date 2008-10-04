@@ -24,6 +24,7 @@ BOOL			busyBusy;
 + (id)shared;
 + (void)playUISound:(NSInteger)theSound;
 + (void)playUISoundForResult:(DACALResult)theResult;
++ (void)playUISoundForBOOL:(BOOL)wasSuccess;
 
 - (IBAction)provideFeedback:(id)sender;			// Now unused - sent to prefs controller instead
 - (void)initCrashReport;
@@ -47,6 +48,7 @@ BOOL			busyBusy;
 - (IBAction)retractDoor:(id)sender;
 - (IBAction)resetCarousel:(id)sender;
 - (IBAction)gotoSlot:(id)sender;
+- (IBAction)runLicense:(id)sender;
 
 - (void)addBusyBody:(id)cell ofView:(id)view;
 - (void)addBusyBody:(id)item;

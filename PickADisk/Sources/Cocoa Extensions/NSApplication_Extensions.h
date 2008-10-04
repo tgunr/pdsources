@@ -27,5 +27,6 @@ extern const	time_t	kTimeOneDayInSeconds;
 +(NSDate*)yesterday;
 
 -(BOOL)isBetweenStartDate:(NSDate*)startDate andEndDate:(NSDate*)endDate;
+-(NSString*)naturalDateString;
 
 @end

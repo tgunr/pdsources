@@ -116,7 +116,7 @@
 		<dict>
 			<key>UTTypeConformsTo</key>
 			<array>
-				<string>com.apple.plist</string>
+				<string>com.apple.property-list</string>
 			</array>
 			<key>UTTypeDescription</key>
 			<string>PickADisk License File</string>

@@ -179,17 +179,20 @@
 
 - (void)updateDriverPane
 {
-	BOOL	haveDriver = [DACDriverInstaller isDriverKextInstalled];
-	NSDate*	gotDate = [DACDriverInstaller dateDriverKextInstalled];
+	BOOL		haveDriver = [DACDriverInstaller isDriverKextInstalled];
+	NSString*	gotDate = [[DACDriverInstaller dateDriverKextInstalled] description];
 	NSString*	gotVers = [DACDriverInstaller versionOfDriverKextLoaded];
 	NSString*	outPrompt = NSLocalizedString(@"The DACAL Driver is not installed on this machine.", @"Prefs Window Driver Pane Default Prompt when drive is not found");
 	
 	[installDriver setHidden:haveDriver];
 	[removeDriver setHidden:!haveDriver];
 	[driverNotImage setHidden:haveDriver];
-	
-	if( haveDriver )
-		outPrompt = [NSString stringWithFormat:NSLocalizedString(@"DACAL Driver v%@\nInstalled %@",@"Prefs Window Drive Pane Format Prompt for driver version on installed date"), gotVers, [gotDate description]];
+		
+	if( haveDriver ) {
+		if( gotDate == nil ) gotDate = NSLocalizedString(@"Yes","Prefs Window Driver Pane Default Date when date is not found but driver is installed");
+		if( gotVers == nil ) gotVers = NSLocalizedString(@"100 Series","Prefs Window Driver Pane Default Version when version is not found but driver is installed");
+		outPrompt = [NSString stringWithFormat:NSLocalizedString(@"DACAL Driver v%@\nInstalled %@",@"Prefs Window Driver Pane Prompt Format for driver version on installed date"), gotVers, gotDate];
+	}
 	
 	[driverPrompt setStringValue:outPrompt];
 }

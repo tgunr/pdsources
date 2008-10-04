@@ -29,11 +29,13 @@
 + (id)shared;
 - (id)init;
 - (AquaticPrime *)licenseValidator;
+- (void)setLicenseValidator:(AquaticPrime *)newValidator;
 - (NSDictionary *)licenseDict;
 - (void)setLicenseValidator:(AquaticPrime *)newValidator;
 - (void)setLicenseData:(NSData *)data;
 - (NSDictionary*)checkLicenseFile:(NSString*)licensePath;
 - (BOOL) openLicenseFile:(NSString*)licensePath ;
+- (BOOL)registerLicenseFromFile:(NSString*)licensePath;
 - (BOOL) licenseValid;
 @end
 

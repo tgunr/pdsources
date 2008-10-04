@@ -982,32 +982,33 @@ NSURL *NewFileURLForWritingFile(NSString *dirpath, NSString *basename, NSString 
 	if( colIndex == [theView columnWithIdentifier:COLUMNID_NAME] )
 	{
 		workNode = [theView itemAtRow:rowIndex];
-		workCell = [theView preparedCellAtColumn:0 row:rowIndex];		
+		workCell = [theView preparedCellAtColumn:colIndex row:rowIndex];		
 
 		partHit = [workCell hitTestForEvent:[[NSApplication sharedApplication]currentEvent] inRect:rowFrame ofView:theView];
 		
-		if( partHit == NSCellHitNone ) {
-			if([[workNode nodeData] isExpandable] == YES ) 
+		if( partHit == NSCellHitIconArea ) {
+			if( [self respondsToSelector:@selector(doubleClickImage:inCell:)] == YES )
+				[self performSelector:@selector(doubleClickImage:inCell:) withObject:(id)workNode withObject:workCell];
+		} else if( [self respondsToSelector:@selector(doubleClickCellContent:inCell:)] == YES )
+				[self performSelector:@selector(doubleClickCellContent:inCell:) withObject:(id)workNode withObject:workCell];
+			else if([[workNode nodeData] isExpandable] == YES ) 
 				if( [theView isItemExpanded:workNode] == YES ) {
 					[theView collapseItem:workNode];
 				} else {
 					[theView expandItem:workNode];
 				}
-		} else if( partHit == NSCellHitIconArea ) {
-			if( [self respondsToSelector:@selector(doubleClickImage:)] == YES )
-				[self performSelector:@selector(doubleClickImage:) withObject:(id)workNode];
-		}
 	} else if( colIndex != -1 )
 	{
 		workNode = [theView itemAtRow:rowIndex];
-		if( partHit == NSCellHitNone ) {
-			if([[workNode nodeData] isExpandable] == YES ) 
-				if( [theView isItemExpanded:workNode] == YES ) {
-					[theView collapseItem:workNode];
-				} else {
-					[theView expandItem:workNode];
-				}
-		}
+		workCell = [theView preparedCellAtColumn:colIndex row:rowIndex];		
+		if( [self respondsToSelector:@selector(doubleClickCellContent:inCell:)] == YES )
+			[self performSelector:@selector(doubleClickCellContent:inCell:) withObject:(id)workNode withObject:workCell];
+		else if([[workNode nodeData] isExpandable] == YES ) 
+			if( [theView isItemExpanded:workNode] == YES ) {
+				[theView collapseItem:workNode];
+			} else {
+				[theView expandItem:workNode];
+			}
 	}
 	return;
 }

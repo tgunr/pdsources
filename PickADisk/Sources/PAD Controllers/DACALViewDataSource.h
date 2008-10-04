@@ -19,6 +19,6 @@
 }
 
 - (void)updatePrompt;
-- (void)doubleClickCellContent:(id)item;
+- (void)doubleClickCellContent:(id)item inCell:(NSCell*)cell;
 
 @end

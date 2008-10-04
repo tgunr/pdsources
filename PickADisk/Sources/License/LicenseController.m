@@ -142,6 +142,19 @@
 		url = [NSURL fileURLWithPath: [licenseFiles objectAtIndex: 0]];
 		[licensePathControl setURL: url];
 		LicenseController *validator =  [LicenseController shared];
+		NSDictionary *licenseDict = nil;
+		if( [validator registerLicenseFromFile:[url path]] == YES )
+			licenseDict = [validator licenseDict];
+
+		if (licenseDict) {
+			NSString *licenseName = [licenseDict objectForKey:@"Name"];
+			[licenseeField setStringValue: licenseName];
+			NSString *licenseEmail = [licenseDict objectForKey:@"Email"];
+			[licenseMailField setStringValue: licenseEmail];
+			[self updateLicensePanel];
+		}
+	}
+/*
 		NSDictionary *licenseDict = [validator checkLicenseFile: [url path]];
 		if (licenseDict) {
 			NSString *licenseName = [licenseDict objectForKey:@"Name"];
@@ -156,6 +169,7 @@
 			[self updateLicensePanel];
 		}
 	}
+ */
 
 //	[panel beginSheetForDirectory:nil file:nil types:nil modalForWindow:[self window]
 //					modalDelegate:self
@@ -244,8 +258,8 @@ static LicenseController*	shared = nil;
 	[licenseValidator setBlacklist:[NSArray arrayWithObject:@"56237cb06e032ba9d7ed5c4b5f5f89790493386e"]];
 	// init from prefs if possible
 	licenseData  = [[NSUserDefaults standardUserDefaults] objectForKey:@"licenseDict"];
-	NSUInteger len = [licenseData length];
-	const void * data = [licenseData bytes];
+//	NSUInteger len = [licenseData length];
+//	const void * data = [licenseData bytes];
 	licenseDict = [licenseValidator dictionaryForLicenseData: licenseData];
 	if (!licenseDict)
 		return self;
@@ -294,6 +308,30 @@ static LicenseController*	shared = nil;
 	if (!theDict)
 		return true;
 	return false;
+}
+
+- (BOOL)registerLicenseFromFile:(NSString*)licensePath {
+	
+	if( [self licenseValid] == YES )
+		return NO;
+	
+	BOOL			goodRegister = NO;
+	NSDictionary*	newLicenseDict = [self checkLicenseFile: licensePath];
+
+	if (newLicenseDict)
+	{
+		NSData * newLicenseData = [NSData dataWithContentsOfFile:licensePath];
+		//NSString * licenseSignature = [newLicenseDict objectForKey: @"Signature"];
+		//const void * data = [newLicenseData bytes];
+
+		[[NSUserDefaults standardUserDefaults] setObject: newLicenseData forKey:@"licenseDict"];
+		[self setLicenseData: newLicenseData];
+		goodRegister = YES;
+	}
+	
+	[AppController playUISoundForBOOL:goodRegister];
+	
+	return goodRegister;
 }
 
 @end

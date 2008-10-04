@@ -83,6 +83,7 @@ extern DACALSlotElement*	DACALDeviceSlotElementForURL( CFURLRef itemURL );
 
 
 -(DACALDevice*)slotDevice;
+-(DACALDeviceRef)slotDeviceRef;
 -(DACALSlotNum)slotNumber;
 -(SimpleTreeNode*)slotNode;
 -(FSRef*)slotFSRef;
@@ -111,6 +112,8 @@ extern DACALSlotElement*	DACALDeviceSlotElementForURL( CFURLRef itemURL );
 -(NSString*)flavor;
 -(void)setFlavor:(NSString*)newFlavor;
 
+-(DACALResult)moveDeviceToSlotWithOptions:(DACALOptionBits)slotOptions;
+
 -(BOOL)isCheckedOut;
 -(NSDate*)checkedOutDate;
 -(void)setCheckedOutDate:(NSDate*)newDate;
@@ -120,6 +123,7 @@ extern DACALSlotElement*	DACALDeviceSlotElementForURL( CFURLRef itemURL );
 -(NSDictionary*)reservationHistory;
 -(BOOL)checkOutForUser:(NSString*)userName onHost:(NSString*)userHost;
 -(BOOL)checkInForUser:(NSString*)userName onHost:(NSString*)userHost;
+-(BOOL)toggleReservationForUser:(NSString*)userName	onHost:(NSString*)userHost;
 
 @end		// DACALSlot
 

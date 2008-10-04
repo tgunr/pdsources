@@ -53,4 +53,15 @@ const	time_t	kTimeOneDayInSeconds = 86400.0;
 	return isBetween;
 }
 
+-(NSString*)naturalDateString
+{
+	NSString*			outDateString = nil;
+	NSDateFormatter*	naturalFormatter = [[NSDateFormatter alloc] initWithDateFormat:@"%c" allowNaturalLanguage:YES];
+	
+	if( naturalFormatter != nil )
+		outDateString = [naturalFormatter stringFromDate:self];
+	
+	return outDateString;
+}
+
 @end		//NSDate(MyExtensions)

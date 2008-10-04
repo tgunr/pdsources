@@ -46,6 +46,7 @@ PADSearchRequest* PADIndexToolbarController_LastSearch = nil;
 	else if( theItemAction == @selector(retractDoor:) ) updateIt = anyDevicesSelected;
 	else if( theItemAction == @selector(resetCarousel:) ) updateIt = anyDevicesSelected;
 	else if( theItemAction == @selector(gotoSlot:) ) updateIt = NO; // anyDevicesSelected;
+	else if( theItemAction == @selector(runLicense:) ) updateIt = NO;
 	
 	return updateIt;
 }
@@ -180,20 +181,22 @@ PADSearchRequest* PADIndexToolbarController_LastSearch = nil;
 	NSInteger		slotCount = 0;
 	NSInteger		index;
 	SimpleNodeData*	aNode;
-	DACALDeviceRef	aBox;
-	DACALSlotNum	aSlot;
-	DACALResult		moveResult;
-	BOOL			goodCheck = NO;
+//	DACALDeviceRef	aBox;
+//	DACALSlotNum	aSlot;
+//	DACALResult		moveResult;
+//	BOOL			goodCheck = NO;
 	
-	NSString*		user = NSFullUserName();
-	NSString*		host = [[NSHost currentHost] name];
+//	NSString*		user = NSFullUserName();
+//	NSString*		host = [[NSHost currentHost] name];
 
 	if( [self selectedNodes] ) slotCount = [[self selectedNodes] count];
 
 	for( index=0; index < slotCount; index++ )
 	{
+
 		aNode = [[[self selectedNodes] objectAtIndex:index] nodeData];
 		
+/*
 		if( [aNode isCheckedOut] == YES )
 			goodCheck = [[[aNode itemElement] elementSlot] checkInForUser:user onHost:host];
 		else
@@ -204,9 +207,14 @@ PADSearchRequest* PADIndexToolbarController_LastSearch = nil;
 		moveResult = DACALCommandMoveToSlotWithOptions( aBox, aSlot, kDACALOptionMoveOnce);
 		
 		[AppController playUISoundForResult: (goodCheck == YES) ? kDACALOK : kDACALError];
+ */
+		[[[aNode itemElement] elementSlot] toggleReservationForUser:nil onHost:nil];
+		
 		if( index + 1 < slotCount )
-			sleep( 5.0 );
+			sleep( 7.0 );
 	}
+	
+	[self adoptSelection];
 }
 
 - (IBAction)clickCloseDoor:(id)sender 

@@ -295,26 +295,35 @@ SLOTTYPEFAILED:
 	return NO;
 }
 
-- (void)doubleClickImage:(id)item
+- (void)doubleClickImage:(id)item inCell:(NSCell*)cell
 {
 	SimpleNodeData	*theData = [item nodeData];
-	DACALDeviceRef	theBox = [theData itemDevice];
-	DACALSlotNum	theSlot = [theData itemSlot];
+//	DACALDeviceRef	theBox = [theData itemDevice];
+//	DACALSlotNum	theSlot = [theData itemSlot];
 
-	DACALCommandMoveToSlotWithOptions( theBox, theSlot, kDACALOptionMoveToggle );
+//	DACALCommandMoveToSlotWithOptions( theBox, theSlot, kDACALOptionMoveToggle );
+
+	[[[theData itemElement] elementSlot] toggleReservationForUser:nil onHost:nil];
+	
 }
 
-- (void)doubleClickCellContent:(id)item
+- (void)doubleClickCellContent:(id)item inCell:(NSCell*)cell
 {
 	SimpleNodeData	*theData = [item nodeData];
 	NSOutlineView	*theView = [[self treeControl] outlineView];
 	
-	if([theData isExpandable] == YES ) 
-		if( [theView isItemExpanded:item] == YES ) {
-			[theView collapseItem:item];
-		} else {
-			[theView expandItem:item];
-		}
+	if( [theView clickedColumn] == [theView columnWithIdentifier:COLUMNID_CHECKEDOUT] )
+		[[[[item nodeData] itemElement] elementSlot] toggleReservationForUser:nil onHost:nil];
+	else 
+	{	
+		if([theData isExpandable] == YES ) 
+			if( [theView isItemExpanded:item] == YES ) {
+				[theView collapseItem:item];
+			} else {
+				[theView expandItem:item];
+			}
+	} 
+		
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context

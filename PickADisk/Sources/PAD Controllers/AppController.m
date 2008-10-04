@@ -22,7 +22,7 @@
 #import "LicenseController.h"
 
 #define PAD_BUSYBODY_DELAY	0.1
-#define PAD_PREFS_VERSION	(const char*)"0.3"
+#define PAD_PREFS_VERSION	(const char*)"0.4"
 
 @implementation AppController
 static AppController *shared;
@@ -147,12 +147,14 @@ static AppController *shared;
 	
 	if( needsUpdate )
 	{
-		if( currentVersion == nil ) 
-			gotUpdate = YES;
+		//if( currentVersion == nil ) 
+		//	gotUpdate = YES;
 		
-		if( [currentVersion compare:@"0.1"] == NSOrderedSame )
-			gotUpdate = YES;
-				
+		//if( [currentVersion compare:@"0.1"] == NSOrderedSame )
+		//	gotUpdate = YES;
+		
+		gotUpdate = YES;
+		
 		if( gotUpdate == YES ) {
 			[defaults setObject:prefsVersion forKey:@"PADPrefsVersion"];
 			[defaults synchronize];
@@ -211,7 +213,7 @@ static AppController *shared;
 - (BOOL)application:(NSApplication *)theApplication openFile:(NSString *)filename
 {
 	if( [filename hasSuffix:@"padlicense"] == YES )
-		NSLog(@"Open a license: %@", filename);
+		return [[LicenseController shared] registerLicenseFromFile:filename];
 	
 	return YES;
 }
@@ -270,6 +272,16 @@ static AppController *shared;
 
 }
 
++ (void)playUISoundForBOOL:(BOOL)wasSuccess
+{
+	SystemSoundID	theSound = kASSystemSoundDoink;
+	
+	if( wasSuccess == YES ) theSound = kASSystemSoundSuccess;
+	
+	[self playUISound:theSound];
+	
+}
+
 + (id)shared
 {
     if (!shared) {
@@ -293,6 +305,8 @@ static AppController *shared;
 - (IBAction)checkInOut:(id)sender { [toolbarController clickCheckOut:self]; }
 - (IBAction)retractDoor:(id)sender { [toolbarController clickCloseDoor:self]; }
 - (IBAction)gotoSlot:(id)sender { NSLog(@"Unimplemented feature."); }
+
+- (IBAction)runLicense:(id)sender { NSLog(@"Unimplemented feature."); }
 
 - (IBAction)printReport:(id)sender
 {

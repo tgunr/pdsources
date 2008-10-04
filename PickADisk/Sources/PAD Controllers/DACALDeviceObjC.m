@@ -217,6 +217,12 @@ NSMutableArray*		gDACALDevices;
 -(DACALDevice*)slotDevice
 	{ return slotDevice; }
 
+-(DACALDeviceRef)slotDeviceRef
+{ 
+	if( slotDevice == nil) return kDACALNullDevice;
+	return [slotDevice deviceRef]; 
+}
+
 -(DACALSlotNum)slotNumber
 	{ return slotNumber; }
 
@@ -456,6 +462,9 @@ NSMutableArray*		gDACALDevices;
 	[self reloadSlot];
 }
 
+-(DACALResult)moveDeviceToSlotWithOptions:(DACALOptionBits)slotOptions
+	{ return DACALCommandMoveToSlotWithOptions( [self slotDeviceRef], [self slotNumber], slotOptions ); }
+
 -(BOOL)isCheckedOut
 	{ return (slotCheckedOut != nil); }
 
@@ -598,6 +607,25 @@ NSMutableArray*		gDACALDevices;
 	NSLog(@"Slot Check In:%@\nManifset URL:%@\nManifest Dictionary:%@", self, manifestURL, manifestDict);
 	
 	return didWork;
+}
+
+-(BOOL)toggleReservationForUser:(NSString*)userName	onHost:(NSString*)userHost
+{
+	NSString*		user = (userName == nil) ? NSFullUserName() : userName;
+	NSString*		host = (userHost == nil) ? [[NSHost currentHost] name] : userHost;
+	BOOL			goodCheck = NO;
+	DACALResult		goodMove = kDACALError;
+	
+	if( [self isCheckedOut] == YES )
+		goodCheck = [self checkInForUser:user onHost:host];
+	else
+		goodCheck = [self checkOutForUser:user onHost:host];
+	
+	goodMove = [self moveDeviceToSlotWithOptions:kDACALOptionMoveOnce];
+	
+	[AppController playUISoundForResult: (goodCheck == YES) ? kDACALOK : kDACALError];
+
+	return goodCheck;
 }
 
 @end		// DACALSlot
