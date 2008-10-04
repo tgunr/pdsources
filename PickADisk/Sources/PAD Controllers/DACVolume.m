@@ -485,11 +485,15 @@ static id	DACVolumeService_shared = nil;
 	NSString*		newMediaPath = [NSString stringWithString:[[aNotification userInfo] valueForKey:@"NSDevicePath"]];
 	NSArray*		newMounts = [NSArray arrayWithObject:newMediaPath];
 	NSArray*		newVolumes = [DACVolume detectedMounts:[newMounts arrayOfURLsFromPaths]];
+	NSWindow*		mainWindow = [[[[AppController shared] dataView] outlineView] window];
 	
 	NSLog(@"Mounted Volumes: %@", newVolumes);	
 		
 	[knownVolumes addObjectsFromArray:newVolumes];
-	
+
+	if( [mainWindow attachedSheet] == nil )
+		[[[AppController shared] addVolumeController] startSheet:mainWindow];
+
 	//	Notify the Add Volumes Window
 	[[[AppController shared] addVolumeController] performSelectorOnMainThread:@selector(detectedVolumes:)
 																   withObject:[self knownIndexableVolumes:newVolumes]

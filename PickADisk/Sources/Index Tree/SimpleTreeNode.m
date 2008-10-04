@@ -47,20 +47,6 @@
 #import "DACALTreeDataSource.h"
 #import "pmsDACALUtility.h"
 
-Boolean		CFAbsoluteTimeBetweenTimes( CFAbsoluteTime lowTime, CFAbsoluteTime unknownTime, CFAbsoluteTime hiTime );
-Boolean		CFAbsoluteTimeBetweenTimes( CFAbsoluteTime lowTime, CFAbsoluteTime unknownTime, CFAbsoluteTime hiTime )
-{
-	CFAbsoluteTime	actualLow = lowTime;
-	CFAbsoluteTime	actualHi = hiTime;
-	
-	if( lowTime > hiTime ) {
-		actualLow = hiTime;
-		actualHi = lowTime;
-	}
-	
-	return ( (actualLow <= unknownTime) && (unknownTime <=actualHi) );
-}
-
 
 @implementation SimpleNodeData
 
@@ -525,6 +511,44 @@ Boolean		CFAbsoluteTimeBetweenTimes( CFAbsoluteTime lowTime, CFAbsoluteTime unkn
 	
 	// if( rank )
 	//	NSLog(@"Search distantDate:%f anchorDate:%f limitDate:%f  rank:%f", distantTime, anchorTime, limitTime, rank );
+	
+	return( [NSNumber numberWithFloat:rank] );
+}
+
+- (NSNumber*)searchForDateCheckedIn:(id)other withOptions:(NSMutableDictionary*)options
+{
+	NSDate*				ourDate = [self checkedInDate];
+	PADSearchRelevance	rank = 0.0;
+	
+	if( ourDate )
+		rank = [ourDate rankWithDate:other withOptions:options];
+	
+	return( [NSNumber numberWithFloat:rank] );
+}
+
+- (NSNumber*)searchForDateCheckedOut:(id)other withOptions:(NSMutableDictionary*)options
+{
+	NSDate*				ourDate = [self checkedOutDate];
+	PADSearchRelevance	rank = 0.0;
+
+	if( ourDate )
+		rank = [ourDate rankWithDate:other withOptions:options];
+	
+	return( [NSNumber numberWithFloat:rank] );
+}
+
+- (NSNumber*)searchForDateCheckedInOut:(id)other withOptions:(NSMutableDictionary*)options
+{
+	NSDate*				ourDate = nil;
+	PADSearchRelevance	rank = 0.0;
+
+	if( [self isCheckedOut] == YES )
+		ourDate = [self checkedOutDate];
+	else
+		ourDate = [self checkedInDate];
+	
+	if( ourDate )
+		rank = [ourDate rankWithDate:other withOptions:options];
 	
 	return( [NSNumber numberWithFloat:rank] );
 }

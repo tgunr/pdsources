@@ -147,19 +147,19 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 	[[theGroupNode nodeData] setItemType:kPADTypeGroupSearches];
 	theWorkNode = [theGroupNode childWithName:@"Today"];
 	theWorkData = [theWorkNode nodeData];
-	[theWorkData setItemSearch:[PADSearchRequest searchCarouselsForDateAddedBeforeDays:1 ofDate:nil resultType:kPADSearchOptionResultTypeItem]];
+	[theWorkData setItemSearch:[PADSearchRequest searchCarouselsForCheckedInOutBeforeDays:1 ofDate:nil resultType:kPADSearchOptionResultTypeItem]];
 	
 	theWorkNode = [theGroupNode childWithName:@"Yesterday"];
 	theWorkData = [theWorkNode nodeData];
-	[theWorkData setItemSearch:[PADSearchRequest searchCarouselsForDateAddedBeforeDays:1 ofDate:@"Yesterday" resultType:kPADSearchOptionResultTypeItem]];
+	[theWorkData setItemSearch:[PADSearchRequest searchCarouselsForCheckedInOutBeforeDays:1 ofDate:@"Yesterday" resultType:kPADSearchOptionResultTypeItem]];
 	
 	theWorkNode = [theGroupNode childWithName:@"Past Week"];
 	theWorkData = [theWorkNode nodeData];
-	[theWorkData setItemSearch:[PADSearchRequest searchCarouselsForDateAddedBeforeDays:7 ofDate:nil resultType:kPADSearchOptionResultTypeItem]];
+	[theWorkData setItemSearch:[PADSearchRequest searchCarouselsForCheckedInOutBeforeDays:7 ofDate:nil resultType:kPADSearchOptionResultTypeItem]];
 	
 	theWorkNode = [theGroupNode childWithName:@"Past Month"];
 	theWorkData = [theWorkNode nodeData];
-	[theWorkData setItemSearch:[PADSearchRequest searchCarouselsForDateAddedBeforeDays:30 ofDate:nil resultType:kPADSearchOptionResultTypeItem]];
+	[theWorkData setItemSearch:[PADSearchRequest searchCarouselsForCheckedInOutBeforeDays:30 ofDate:nil resultType:kPADSearchOptionResultTypeItem]];
 	
 	theWorkNode = [theGroupNode childWithName:@"All Images"];
 	theWorkData = [theWorkNode nodeData];

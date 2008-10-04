@@ -496,6 +496,19 @@ BAIL:
 	return outUTI;
 }
 
+Boolean		CFAbsoluteTimeBetweenTimes( CFAbsoluteTime lowTime, CFAbsoluteTime unknownTime, CFAbsoluteTime hiTime )
+{
+	CFAbsoluteTime	actualLow = lowTime;
+	CFAbsoluteTime	actualHi = hiTime;
+	
+	if( lowTime > hiTime ) {
+		actualLow = hiTime;
+		actualHi = lowTime;
+	}
+	
+	return ( (actualLow <= unknownTime) && (unknownTime <=actualHi) );
+}
+
 
 
 

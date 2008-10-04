@@ -565,17 +565,17 @@ NSMutableArray*		gDACALDevices;
 -(BOOL)checkInForUser:(NSString*)userName onHost:(NSString*)userHost
 {
 	BOOL					didWork = NO;
-	NSDate*					checkOutDate = [self checkedOutDate];
+//	NSDate*					checkOutDate = [self checkedOutDate];
 	NSURL*					manifestURL = [NSURL URLWithString:kDACSlotReservationFileNameWithExtension relativeToURL:[self fileURL]];
 	NSDictionary*			manifestDict = [NSDictionary dictionaryWithContentsOfURL:manifestURL];
-	NSDictionary*			checkInEntry = [manifestDict objectForKey:[checkOutDate description]];
+//	NSDictionary*			checkInEntry = [manifestDict objectForKey:[checkOutDate description]];
 	NSMutableDictionary*	newManDict = [NSMutableDictionary dictionaryWithCapacity:0];
 	NSMutableDictionary*	newManEntry = [NSMutableDictionary dictionaryWithCapacity:0];
 	NSDate*					newDate = [NSDate date];
 	
 	if( manifestURL == nil ) return didWork;
 	
-	if( checkInEntry != nil )
+//	if( checkInEntry != nil )
 	{
 		if( manifestDict != nil )
 			[newManDict addEntriesFromDictionary:manifestDict];
@@ -809,6 +809,7 @@ NSMutableArray*		gDACALDevices;
 	[[self slotWithNumber:newSlot] checkInForUser:NSFullUserName() onHost:[[NSHost currentHost] name]];
 	
 	[[DACALTreeDataSource shared] slotAddedToDevice: deviceRef forSlot: newSlot];
+	//[[PADSearchService sharedSearch] searchDataChanged:[NSArray array]];
 		
 	[PADOperationControlDevice finishIndexingVolume:[newVolume path] forSlot:newSlot onDevice:self forTarget:self];	
 }

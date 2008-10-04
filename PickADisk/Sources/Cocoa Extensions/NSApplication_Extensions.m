@@ -64,4 +64,49 @@ const	time_t	kTimeOneDayInSeconds = 86400.0;
 	return outDateString;
 }
 
+
+// if other == nil then the current time is used.
+// if other = @"Yesterday" then yesterday is used.
+// else other = NSDate* 
+
+-(float)rankWithDate:(id)other withOptions:(NSMutableDictionary*)options
+{
+	CFDateRef	ourDate = (CFDateRef)self;
+	
+	CFAbsoluteTime  distantTime = (ourDate!=NULL) ? CFDateGetAbsoluteTime(ourDate) : 0.0;
+	CFAbsoluteTime	anchorTime = 0.0;
+	CFAbsoluteTime	limitTime = 0.0;
+	float			rank = 0.0;
+	NSString*		whichKind = nil;
+	
+	whichKind = (NSString*)[options objectForKey:@"Range"];
+	
+	if( [whichKind isEqual:@"Day Count"] ) {
+		CFTimeInterval	dayCount = [[options objectForKey:@"Days"] doubleValue];
+		CFTimeInterval	daySeconds = dayCount * 86400;
+		
+		if( other == nil ) other = [NSDate date];
+		if( ([other isKindOfClass:[NSString class]] ) && ([other compare:@"Yesterday"] == NSOrderedSame) )
+			other = [NSDate yesterday];
+		
+		if( (other != nil) && (ourDate != nil) )
+		{
+			anchorTime = CFDateGetAbsoluteTime((CFDateRef)other);
+			limitTime = anchorTime + daySeconds;
+			//otherDate = (CFDateRef)[(NSDate*)other addTimeInterval:(NSTimeInterval)daySeconds];
+			
+			//timeBetween = CFDateGetTimeIntervalSinceDate( ourDate, otherDate );
+			if( CFAbsoluteTimeBetweenTimes( limitTime, distantTime, anchorTime ) )
+				rank = (anchorTime-distantTime)/daySeconds;
+			if( rank < 0.0 ) rank = -rank;
+		}
+	}	
+	
+	// if( rank )
+	//	NSLog(@"Search distantDate:%f anchorDate:%f limitDate:%f  rank:%f", distantTime, anchorTime, limitTime, rank );
+	
+	return( rank );
+}
+
+
 @end		//NSDate(MyExtensions)

@@ -177,10 +177,9 @@ void			PADSearchTermSetup()
 	PADAddSearchTerm( kPADSearchByType, kPADSearchByTypeID, @selector(nodeData), @selector(searchForFlavor:withOptions:), nil, nil );
 	PADAddSearchTerm( kPADSearchByDateAdded, kPADSearchByDateAddedID, @selector(nodeData), @selector(searchForDateAdded:withOptions:), nil, nil );
 	PADAddSearchTerm( kPADSearchByFileUTI, kPADSearchByFileUTIID, @selector(nodeData), @selector(searchForFileUTI:withOptions:), nil, nil );
-#warning add these methods!
-	//PADAddSearchTerm( kPADSearchByDateCheckedIn, kPADSearchByDateCheckedInID, @selector(nodeData), @selector(searchForDateCheckedIn:withOptions:), nil, nil );
-	//PADAddSearchTerm( kPADSearchByDateCheckedOut, kPADSearchByDateCheckedOutID, @selector(nodeData), @selector(searchForDateCheckedOut:withOptions:), nil, nil );
-	//PADAddSearchTerm( kPADSearchByDateCheckedInOut, kPADSearchByDateCheckedInOutID, @selector(nodeData), @selector(searchForDateCheckedInOut:withOptions:), nil, nil );
+	PADAddSearchTerm( kPADSearchByDateCheckedIn, kPADSearchByDateCheckedInID, @selector(nodeData), @selector(searchForDateCheckedIn:withOptions:), nil, nil );
+	PADAddSearchTerm( kPADSearchByDateCheckedOut, kPADSearchByDateCheckedOutID, @selector(nodeData), @selector(searchForDateCheckedOut:withOptions:), nil, nil );
+	PADAddSearchTerm( kPADSearchByDateCheckedInOut, kPADSearchByDateCheckedInOutID, @selector(nodeData), @selector(searchForDateCheckedInOut:withOptions:), nil, nil );
 }
 
 void PADAddSearchTerm( const NSString* title, const NSString* newID, SEL getSel, SEL cmpSel, id data, NSDictionary* options )
@@ -824,7 +823,7 @@ static PADSearchService* PADSearchService_shared;
 		activeSearches = [[NSMutableArray alloc] initWithCapacity:0];
 		activeWatchers = [[NSMutableArray alloc] initWithCapacity:0];
 		
-		PADSearchService_shared = self;
+		PADSearchService_shared = [self retain];
 	}
 	return self;
 }
