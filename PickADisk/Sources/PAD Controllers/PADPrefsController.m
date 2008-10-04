@@ -1,31 +1,15 @@
 #import "PADPrefsController.h"
 #import <Sparkle/SUUpdater.h>
 #import "DACDriverInstaller.h"
-#import "LicenseController.h"
 
 @implementation PADPrefsController
 
-- (void) updateLicensePanel {
-	BOOL valid = [[LicenseController shared] licenseValid];
-	if (valid) {
-		[licenseeField setStringValue: [[[LicenseController shared] licenseDict] objectForKey: @"Name"]];
-		[licenseMailField setStringValue: [[[LicenseController shared] licenseDict] objectForKey: @"Email"]];
-	} else {
-		[licenseeField setStringValue: @""];
-		[licenseMailField setStringValue: @""];
-	}
-}
+static Boolean	PADPrefsControllerB = false;
 
 - (void)awakeFromNib {
 	
 	[[NSUserDefaultsController sharedUserDefaultsController] addObserver:self forKeyPath:@"values.SULastCheckTime" options:0 context:NULL];
 	[[NSUserDefaultsController sharedUserDefaultsController] addObserver:self forKeyPath:@"values.DACALDriverInstalled" options:0 context:NULL];
-	
-    [licensePathControl setTarget:self];
-    [licensePathControl setDoubleAction:@selector(pathControlDoubleClick:)];
-	[licensePathControl setDelegate:self];
-	
-	[self updateLicensePanel];
 	
 }
 
@@ -206,6 +190,5 @@
 	if( prefsWindow ) [prefsWindow makeKeyAndOrderFront:sender];
 	
 }
-
 
 @end

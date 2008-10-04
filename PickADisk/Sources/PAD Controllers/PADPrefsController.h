@@ -13,11 +13,6 @@
 	IBOutlet NSImageView*		driverNotImage;
 	IBOutlet NSTextField*		driverPrompt;
 	
-	IBOutlet NSTextField*		licenseeField;
-	IBOutlet NSTextField*		licenseMailField;
-	IBOutlet NSButton*			selectLicenseFileBtn;
-	IBOutlet NSButton*			submitLicenseBtn;
-	IBOutlet NSPathControl*		licensePathControl;
 }
 
 - (IBAction)runPreferences:(id)sender;
@@ -27,7 +22,7 @@
 - (IBAction)provideFeedback:(id)sender;
 
 - (IBAction)runDriverInstaller:(id)sender;
+
 - (void)updateDriverPane;
-- (void)updateLicensePanel;
 
 @end

@@ -61,5 +61,6 @@ BOOL			busyBusy;
 
 - (PADAddVolumeController*)addVolumeController;
 - (void)setAddVolumeController:(PADAddVolumeController*)inAVC;
-
+- (IBAction)runLicense:(id)sender;
+- (void)doCheckWork:(NSTimer*)checkTimer;
 @end

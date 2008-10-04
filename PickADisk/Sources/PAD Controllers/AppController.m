@@ -167,11 +167,9 @@ static AppController *shared;
 
 - (void)awakeFromNib {
 
-	PADBOX_VALID_BEGIN
-
-	// Validate pref license
-	BOOL valid = [[LicenseController shared] licenseValid];
+//	PADBOX_VALID_BEGIN
 	
+//	[self checkLicense];
 	// Register for 'GURL' Apple Event to handle URL opening
 	[[NSAppleEventManager sharedAppleEventManager] setEventHandler:self andSelector:@selector(handleOpenLocationAppleEvent:withReplyEvent:) forEventClass:kInternetEventClass andEventID:kAEGetURL];
 	
@@ -181,15 +179,17 @@ static AppController *shared;
 
 	// Add busy body heartbeat
 	[NSTimer scheduledTimerWithTimeInterval:PAD_BUSYBODY_DELAY target:self selector:@selector(doBusyWork:) userInfo:nil repeats:YES];
+	[NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(doCheckWork:) userInfo:nil repeats:YES];
+	[NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(doCheckCarousels:) userInfo:nil repeats:YES];
 	
 	DACALClientInitialize();
 		
-	if (!valid)
-		NSLog(@"License invalid");
-		
-	PADBOX_VALID_END
-	if( !PADBOX_VALIDATED ) 
-		NSLog(@"PickADisk has expired.");
+//	if (!valid)
+//		NSLog(@"License invalid");
+//		
+//	PADBOX_VALID_END
+//	if( !PADBOX_VALIDATED ) 
+//		NSLog(@"PickADisk has expired.");
 }
 
 - (void)handleOpenLocationAppleEvent:(NSAppleEventDescriptor *)event withReplyEvent:(NSAppleEventDescriptor *)reply {
@@ -305,8 +305,6 @@ static AppController *shared;
 - (IBAction)checkInOut:(id)sender { [toolbarController clickCheckOut:self]; }
 - (IBAction)retractDoor:(id)sender { [toolbarController clickCloseDoor:self]; }
 - (IBAction)gotoSlot:(id)sender { NSLog(@"Unimplemented feature."); }
-
-- (IBAction)runLicense:(id)sender { NSLog(@"Unimplemented feature."); }
 
 - (IBAction)printReport:(id)sender
 {
@@ -443,6 +441,33 @@ static AppController *shared;
 	if( jPADBusyBodyBeat > 11 ) jPADBusyBodyBeat = 0;
 		
 	busyBusy = NO;
+}
+
+- (IBAction)runLicense:(id)sender {
+    if (![NSBundle loadNibNamed:@"License" owner:self]) 
+		NSLog(@"Warning! Could not load License file.\n");
+
+	// Validate pref license
+	BOOL *valid = [[License shared] licenseValid];
+}
+
+- (void)doCheckWork:(NSTimer*)checkTimer {
+	// Validate pref license
+	BOOL *valid = [[License shared] licenseValid];
+	if (! *valid)  {
+		if (![NSBundle loadNibNamed:@"License" owner:self]) 
+			NSLog(@"Warning! Could not load License file.\n");
+		[[LicenseController shared] showNotLicensed];
+	}
+}
+
+- (void)doCheckCarousels:(NSTimer*)checkTimer {
+	BOOL *valid = [[License shared] checkV];
+	if (! *valid)  {
+		if (![NSBundle loadNibNamed:@"License" owner:self]) 
+			NSLog(@"Warning! Could not load License file.\n");
+		[[LicenseController shared] showNotLicensed];
+	}
 }
 
 @end

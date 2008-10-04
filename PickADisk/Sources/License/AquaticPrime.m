@@ -74,7 +74,7 @@
 	return [[[AquaticPrime alloc] initWithKey:key privateKey:privateKey] autorelease];
 }
 
-+ (id)aquaticPrimeWithKey:(NSString *)key
++ (id)aquaticPrimeWithKey:(NSString *)key 
 {
 	return [[[AquaticPrime alloc] initWithKey:key privateKey:nil] autorelease];
 }
@@ -86,6 +86,7 @@
 
 - (BOOL)setKey:(NSString *)key privateKey:(NSString *)privateKey
 {
+
 	// Must have public modulus, private key is optional
 	if (!key || [key isEqualToString:@""]) {
 		[self _setError:@"Empty public key parameter"];
@@ -102,9 +103,11 @@
 	
 	// Determine if we have hex or decimal values
 	int result;
-	if ([[key lowercaseString] hasPrefix:@"0x"])
-		result = BN_hex2bn(&rsaKey->n, (const char *)[[key substringFromIndex:2] UTF8String]);
-	else
+	if ([[key lowercaseString] hasPrefix:@"0x"]) {
+		// Plug in last byte of public key here for obfuscation
+		pkey =  [key stringByAppendingString:@"3F"];
+		result = BN_hex2bn(&rsaKey->n, (const char *)[[pkey substringFromIndex:2] UTF8String]);
+	}	else
 		result = BN_dec2bn(&rsaKey->n, (const char *)[key UTF8String]);
 		
 	if (!result) {

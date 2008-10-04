@@ -35,6 +35,7 @@
 	NSString *aqError;
 	NSString *hash;
 	NSArray *blacklist;
+	NSString *pkey;
 }
 
 // Creation
