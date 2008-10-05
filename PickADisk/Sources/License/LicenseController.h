@@ -5,35 +5,44 @@
 	IBOutlet NSWindow*			notLicensedWindow;
 	IBOutlet NSWindow*			enterLicenseWindow;
 	IBOutlet NSWindow*			requestLicenseWindow;
+	IBOutlet NSWindow*			licenseWindow;
 
 	IBOutlet NSTextField*		licenseeField;
 	IBOutlet NSTextField*		licenseMailField;
 
-	IBOutlet NSButton*			selectLicenseFileBtn;
-	IBOutlet NSButton*			requestLicenseBtn;
+	IBOutlet NSButton*			cancelBtn;
+	IBOutlet NSButton*			okBtn;
+	// License Notice
 	IBOutlet NSButton*			enterLicenseBtn;
-	IBOutlet NSButton*			cancelLicenseBtn;
 	IBOutlet NSButton*			visitLicenseBtn;
+	// Enter License
+	IBOutlet NSButton*			selectLicenseFileBtn;
 	IBOutlet NSButton*			lostLicenseBtn;
+	IBOutlet NSPathControl*		licensePathControl;
+	// Request License
 	IBOutlet NSButton*			submitRequestBtn;
 
-	IBOutlet NSPathControl*		licensePathControl;
 	
 }
  
 + (id)shared;
 - (id)init;
-- (IBAction)selectLicenseFileBtn:(id)sender;
-- (IBAction)requestLicenseBtn:(id)sender;
+
+- (IBAction)cancelBtn:(id)sender;	
+- (IBAction)okBtn:(id)sender;	
+// License Notice
 - (IBAction)enterLicenseBtn:(id)sender;
-- (IBAction)cancelLicenseBtn:(id)sender;	
 - (IBAction)visitLicenseBtn:(id)sender;	
-- (IBAction)submitRequestBtn:(id)sender;	
-- (IBAction)lostLicenseBtn:(id)sender;	
+// Enter License
+- (IBAction)selectLicenseFileBtn:(id)sender;
 - (void)pathControlDoubleClick:(id)sender;	
+- (IBAction)lostLicenseBtn:(id)sender;	
+// Request License
+- (IBAction)submitRequestBtn:(id)sender;	
 - (void)updateLicensePanel;
 - (void)showNotLicensed;
-
+// Licensed
+- (IBAction)closeLicensedSheet: (id)sender;
 @end
 
 @interface License : NSObject

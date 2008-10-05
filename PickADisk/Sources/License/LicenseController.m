@@ -38,11 +38,26 @@ static BOOL	shared_LicenseControllerB = false;
 	[licensePathControl setDelegate:self];
 }
 
+- (void)didEndLicensedSheet:(NSWindow *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo {
+    [sheet orderOut:self];
+}
+
+- (IBAction)closeLicensedSheet: (id)sender {
+    [NSApp endSheet:licenseWindow];
+	[NSApp stopModal];
+}
+
 - (void) updateLicensePanel {
 	BOOL *valid = [[License shared] licenseValid];
 	if (valid) {
 		[licenseeField setStringValue: [[[License shared] licenseDict] objectForKey: @"Name"]];
 		[licenseMailField setStringValue: [[[License shared] licenseDict] objectForKey: @"Email"]];
+		[NSApp runModalForWindow: enterLicenseWindow];
+		[NSApp beginSheet: enterLicenseWindow
+		   modalForWindow: licenseWindow 
+            modalDelegate: self
+		   didEndSelector: @selector(didEndLicensedSheet:returnCode:contextInfo:)
+			  contextInfo: nil];
 	} else {
 		[licenseeField setStringValue: @""];
 		[licenseMailField setStringValue: @""];
@@ -55,8 +70,7 @@ static BOOL	shared_LicenseControllerB = false;
 //  This method is the "double-click" action for the control.
 //	Since we are a standard or navigation style we ask for the control's path component.
 // -------------------------------------------------------------------------------
-- (void)pathControlDoubleClick:(id)sender
-{
+- (void)pathControlDoubleClick:(id)sender {
     if ([licensePathControl clickedPathComponentCell] != nil)
 		[[NSWorkspace sharedWorkspace] openURL:[[licensePathControl clickedPathComponentCell] URL]];
 }
@@ -66,8 +80,7 @@ static BOOL	shared_LicenseControllerB = false;
 //
 //	Delegate method to NSPathControl to determine how the NSOpenPanel will look/behave.
 // -------------------------------------------------------------------------------
-- (void)pathControl:(NSPathControl*)pathControl willDisplayOpenPanel:(NSOpenPanel*)openPanel
-{	
+- (void)pathControl:(NSPathControl*)pathControl willDisplayOpenPanel:(NSOpenPanel*)openPanel {	
 	// change the wind title and choose buttons titles
 	[openPanel setAllowsMultipleSelection:NO];
 	[openPanel setCanChooseDirectories:YES];
@@ -83,8 +96,7 @@ static BOOL	shared_LicenseControllerB = false;
 //	Delegate method on NSPathControl (as NSPathStylePopUp) that determines what popup menus 
 //	will look like.  In our case we add "Reveal in Finder".
 // -------------------------------------------------------------------------------
-- (void)pathControl:(NSPathControl*)pathControl willPopUpMenu:(NSMenu*)menu
-{
+- (void)pathControl:(NSPathControl*)pathControl willPopUpMenu:(NSMenu*)menu {
 	if (true)
 	{
 		// add the "Reveal in Finder" menu item (but only for file system paths, not our custom path);
@@ -182,10 +194,6 @@ static BOOL	shared_LicenseControllerB = false;
 		License *validator =  [License shared];
 		NSDictionary *licenseDict = [validator checkLicenseFile: [url path]];
 		if (licenseDict) {
-			NSString *licenseName = [licenseDict objectForKey:@"Name"];
-			[licenseeField setStringValue: licenseName];
-			NSString *licenseEmail = [licenseDict objectForKey:@"Email"];
-			[licenseMailField setStringValue: licenseEmail];
 			NSData * licenseData = [NSData dataWithContentsOfFile:[url path]];
 			NSString * licenseSignature = [licenseDict objectForKey: @"Signature"];
 			const void * data = [licenseData bytes];
@@ -221,6 +229,12 @@ static BOOL	shared_LicenseControllerB = false;
 	[licensePathControl setURL: url];
 }
 
+- (IBAction)okBtn:(id)sender {
+}
+
+- (IBAction)cancelBtn:(id)sender {
+}
+
 - (IBAction)submitLicense:(id)sender {
 }
 
@@ -233,10 +247,10 @@ static BOOL	shared_LicenseControllerB = false;
 - (IBAction)visitLicenseBtn:(id)sender {
 }
 
-- (IBAction)cancelLicenseBtn:(id)sender {
-}
-
 - (IBAction)enterLicenseBtn:(id)sender {
+	[enterLicenseWindow makeKeyAndOrderFront: self];
+	[enterLicenseWindow setDelegate: self];
+	[notLicensedWindow performClose: self];
 }
 
 - (IBAction)requestLicenseBtn:(id)sender {
@@ -248,8 +262,17 @@ static BOOL	shared_LicenseControllerB = false;
 }
 
 - (void)showNotLicensed {
-	return;
-//	[notLicensedWindow makeKeyAndOrderFront: self];
+	NSWindow *parentWindow = [NSApp mainWindow];
+	[NSApp beginSheet: notLicensedWindow
+	   modalForWindow: parentWindow
+		modalDelegate: nil
+	   didEndSelector: nil
+		  contextInfo: nil];
+	[notLicensedWindow makeKeyAndOrderFront: self];
+	[notLicensedWindow setDelegate: self];
+	[NSApp runModalForWindow:notLicensedWindow];
+	[NSApp endSheet:notLicensedWindow];
+	[notLicensedWindow orderOut:self];
 	NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 	[alert addButtonWithTitle:@"View Site"];
 	[alert addButtonWithTitle:@"Cancel"];
@@ -409,6 +432,25 @@ static BOOL isValid = false;
 }
 
 - (BOOL)registerLicenseFromFile:(NSString*)licensePath {
+	
+	if( [self licenseValid] == YES )
+		return NO;
+	
+	BOOL			goodRegister = NO;
+	NSDictionary*	newLicenseDict = [self checkLicenseFile: licensePath];
+	if (newLicenseDict)
+	{
+		NSData * newLicenseData = [NSData dataWithContentsOfFile:licensePath];
+		//NSString * licenseSignature = [newLicenseDict objectForKey: @"Signature"];
+		//const void * data = [newLicenseData bytes];
+		[[NSUserDefaults standardUserDefaults] setObject: newLicenseData forKey:@"licenseDict"];
+		[self setLicenseData: newLicenseData];
+		goodRegister = YES;
+	}
+	
+	[AppController playUISoundForBOOL:goodRegister];
+	
+	return goodRegister;
 }
 
 @end
