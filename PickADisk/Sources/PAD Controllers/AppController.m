@@ -39,16 +39,16 @@ static AppController *shared;
 		
 #if PADBOX_EXPIRE_CHECK != 0
 		[PADBOXController	performSelectorOnMainThread:@selector(startBOXWithToken:)
-											withObject:[NSNumber numberWithDouble:PADBOX_EXPIRE_DATE]
+										   withObject:[NSNumber numberWithDouble:PADBOX_EXPIRE_DATE]
 										waitUntilDone:YES];
 #endif		
-
+		
 		PADBOX_VALID_BEGIN
 		
 		[self initCrashReport];
 		[self initPreferences];
 		DACALSetup();
-
+		
 		queue = [[NSOperationQueue alloc] init];
 		[queue setMaxConcurrentOperationCount:6];
 		
@@ -57,7 +57,7 @@ static AppController *shared;
 		
 		queueUI = [[NSOperationQueue alloc] init];
 		[queueUI setMaxConcurrentOperationCount:1];
-
+		
 		//busyBodies = [NSMutableDictionary dictionaryWithCapacity:1000];
 		//busyBodies = [NSMutableArray arrayWithCapacity:0];
 		busyBodies = [[NSMutableArray alloc] initWithCapacity:8192];
@@ -84,7 +84,7 @@ static AppController *shared;
 	
 	for( index=0; index < count; index++ )
 		[[theOps objectAtIndex:index] cancelOperationForDevice:oldBox];
-
+	
 	[queue setSuspended:NO];
 }
 
@@ -125,7 +125,7 @@ static AppController *shared;
 	[defaultPrefs setObject:prefsVersion forKey:@"PADPrefsVersion"];
 	
 	[defaultPrefs setObject:boolTRUE forKey:@"PADPlaySounds"];
-
+	
 	[defaultPrefs setObject:boolTRUE forKey:@"PADEjectOnIndex"];
 	[defaultPrefs setObject:boolTRUE forKey:@"PADCheckInOnIndex"];
 	
@@ -140,7 +140,7 @@ static AppController *shared;
 	[defaultPrefs setObject:boolTRUE forKey:@"PADColumnCheckedOut"];
 	
 	[defaultPrefs setObject:boolFALSE forKey:@"PADSearchResultsGrouped"];
-
+	
 	[defaultPrefs setObject:@"4BDD0419-381B-4CCB-A50F-A645B456E199" forKey:@"PADPrefToolSelected"];
 	
 	[defaults registerDefaults:defaultPrefs];
@@ -166,34 +166,35 @@ static AppController *shared;
 }
 
 - (void)awakeFromNib {
-
-//	PADBOX_VALID_BEGIN
+PADBOX_VALID_BEGIN
 	
-//	[self checkLicense];
 	// Register for 'GURL' Apple Event to handle URL opening
 	[[NSAppleEventManager sharedAppleEventManager] setEventHandler:self andSelector:@selector(handleOpenLocationAppleEvent:withReplyEvent:) forEventClass:kInternetEventClass andEventID:kAEGetURL];
 	
 	// *** new nibs
 	[NSBundle loadNibNamed:@"CarouselIndex" owner:[NSApplication sharedApplication]];
+//	[NSBundle loadNibNamed:@"License" owner:[NSApplication sharedApplication]];
 	//[NSBundle loadNibNamed:@"CarouselProgress" owner:[NSApplication sharedApplication]];
-
+	
 	// Add busy body heartbeat
 	[NSTimer scheduledTimerWithTimeInterval:PAD_BUSYBODY_DELAY target:self selector:@selector(doBusyWork:) userInfo:nil repeats:YES];
-	[NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(doCheckWork:) userInfo:nil repeats:YES];
-	[NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(doCheckCarousels:) userInfo:nil repeats:YES];
+	//	[NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(doCheckWork:) userInfo:nil repeats:YES];
+	//	[NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(doCheckCarousels:) userInfo:nil repeats:YES];
 	
 	DACALClientInitialize();
-		
-//	if (!valid)
-//		NSLog(@"License invalid");
-//		
-//	PADBOX_VALID_END
-//	if( !PADBOX_VALIDATED ) 
-//		NSLog(@"PickADisk has expired.");
+	
+	//	[[LicenseController shared] showNotLicensed];
+	
+	//	if (!valid)
+	//		NSLog(@"License invalid");
+	//		
+	PADBOX_VALID_END
+	if( !PADBOX_VALIDATED ) 
+		NSLog(@"PickADisk has expired.");
 }
 
 - (void)handleOpenLocationAppleEvent:(NSAppleEventDescriptor *)event withReplyEvent:(NSAppleEventDescriptor *)reply {
-
+	
     NSAppleEventDescriptor *directObjectDescriptor = [event paramDescriptorForKeyword:keyDirectObject];
 	NSString *urlString;
 	NSURL *objectURL;
@@ -253,7 +254,7 @@ static AppController *shared;
 - (BOOL)validateMenuItem:(NSMenuItem *)item
 {
 	if( toolbarController != nil ) return [toolbarController validateMenuItem:item];
-
+	
 	return NO;
 }
 
@@ -269,7 +270,7 @@ static AppController *shared;
 	if( theResult == kDACALOK ) theSound = kASSystemSoundSuccess;
 	
 	[self playUISound:theSound];
-
+	
 }
 
 + (void)playUISoundForBOOL:(BOOL)wasSuccess
@@ -398,7 +399,7 @@ static AppController *shared;
 - (void)scheduledRemoveBusyBody:(NSTimer*)busyTimer
 { 
 	if( busyBusy == YES ) return;
-
+	
 	[self removeBusyBody:[busyTimer userInfo]];
 	[busyTimer invalidate];
 }
@@ -417,7 +418,7 @@ static AppController *shared;
 	if( [busyBodies count] == 0 ) return;
 	
 	busyBusy = YES;	
-
+	
 	SimpleTreeNode	*entry = nil;
     NSEnumerator *enumerator = [busyBodies objectEnumerator];
     while ((entry=(SimpleTreeNode*)[enumerator nextObject])) {
@@ -432,21 +433,21 @@ static AppController *shared;
 			theTable = [dataView outlineView];
 		if(theTable != nil)
 			[theTable reloadItem:(id)entry reloadChildren:[[entry nodeData] isExpanded]];
-			//if( [[[entry nodeParent] nodeData] isExpanded] ) 
-			//NSLog( @"Got Busy: %@ <%@>\n\tBodies: %@", [entry description], entry, [busyBodies description] );
+		//if( [[[entry nodeParent] nodeData] isExpanded] ) 
+		//NSLog( @"Got Busy: %@ <%@>\n\tBodies: %@", [entry description], entry, [busyBodies description] );
 		theTable = nil;
 	}
 	
 	jPADBusyBodyBeat++;
 	if( jPADBusyBodyBeat > 11 ) jPADBusyBodyBeat = 0;
-		
+	
 	busyBusy = NO;
 }
 
 - (IBAction)runLicense:(id)sender {
     if (![NSBundle loadNibNamed:@"License" owner:self]) 
 		NSLog(@"Warning! Could not load License file.\n");
-
+	
 	// Validate pref license
 	BOOL *valid = [[License shared] licenseValid];
 }
