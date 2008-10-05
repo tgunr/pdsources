@@ -378,7 +378,7 @@ static BOOL *PADCS[5];
 
 static BOOL isValid = false;
 
-- (BOOL*) licenseValid {
+- (BOOL*)licenseValid {
 //	[self limit];
 	isValid = false;
 	*PADCS[(int)PADCS[4]] = false;
@@ -433,7 +433,7 @@ static BOOL isValid = false;
 
 - (BOOL)registerLicenseFromFile:(NSString*)licensePath {
 	
-	if( [self licenseValid] == YES )
+	if( *[self licenseValid] == YES )
 		return NO;
 	
 	BOOL			goodRegister = NO;
