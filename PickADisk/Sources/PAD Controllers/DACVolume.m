@@ -668,7 +668,8 @@ static id	DACVolumeService_shared = nil;
 	[knownVolumes addObjectsFromArray:newVolumes];
 
 	if( [mainWindow attachedSheet] == nil )
-		[[[AppController shared] addVolumeController] startSheet:mainWindow];
+		[[[AppController shared] toolbarController] clickAssign:self];
+		//[[[AppController shared] addVolumeController] startSheet:mainWindow];
 
 	//	Notify the Add Volumes Window
 	[[[AppController shared] addVolumeController] performSelectorOnMainThread:@selector(detectedVolumes:)
