@@ -166,7 +166,8 @@ static AppController *shared;
 }
 
 - (void)awakeFromNib {
-PADBOX_VALID_BEGIN
+	
+	PADBOX_VALID_BEGIN
 	
 	// Register for 'GURL' Apple Event to handle URL opening
 	[[NSAppleEventManager sharedAppleEventManager] setEventHandler:self andSelector:@selector(handleOpenLocationAppleEvent:withReplyEvent:) forEventClass:kInternetEventClass andEventID:kAEGetURL];

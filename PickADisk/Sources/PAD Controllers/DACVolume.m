@@ -7,6 +7,8 @@
 //
 
 #import "DACVolume.h"
+#import <IOKit/IOMessage.h>
+#import <IOKit/storage/IODVDMedia.h>
 
 
 @implementation DACVolume
@@ -208,6 +210,168 @@ HAVEGUESS:
 	return outGuess;
 }
 
+-(NSDictionary*)getDVDMediaInfo
+{
+    HRESULT             herror            = S_OK;
+    IOReturn            error             = kIOReturnSuccess;
+    IOCFPlugInInterface **plugInInterface = NULL;
+    MMCDeviceInterface  **mmcInterface    = NULL;
+    NSMutableDictionary *dict             = NULL;
+    bool                firstTime         = true;
+    io_name_t           deviceName;
+    int                 n;
+	
+	io_service_t		service			  = DADiskCopyIOMedia( [self volumeDiskRef] );
+	
+	NSMutableArray *formats		= [NSMutableArray arrayWithCapacity:3];
+	[formats addObject:[NSNumber numberWithInt:0]];
+	[formats addObject:[NSNumber numberWithInt:14]];
+	[formats addObject:[NSNumber numberWithInt:255]];
+    NSArray*		fFormats    = [[NSArray alloc] initWithArray:formats];
+
+    error = IORegistryEntryGetName(service, deviceName);
+    if(error != kIOReturnSuccess) {
+        goto bail;
+    }
+    
+    while (true) {
+        SInt32 score;
+        error = IOCreatePlugInInterfaceForService(service,
+                                                  kIOMMCDeviceUserClientTypeID,
+                                                  kIOCFPlugInInterfaceID,
+                                                  &plugInInterface,
+                                                  &score);
+        if(error == kIOReturnSuccess) {
+            break;
+        }
+        else if(error == kIOReturnUnsupported || error == kIOReturnNoResources) {
+            io_registry_entry_t parentService = (io_object_t)NULL;
+            error = IORegistryEntryGetParentEntry(service, kIOServicePlane, &parentService);
+            if(error != kIOReturnSuccess) {
+                goto bail;
+            }
+            if(!firstTime) {
+                IOObjectRelease(service);
+            }
+            firstTime = false;
+            service   = parentService;
+        }
+        else {
+            goto bail;
+        }
+    }
+    
+    herror = (*plugInInterface)->QueryInterface(plugInInterface,
+                                                CFUUIDGetUUIDBytes(kIOMMCDeviceInterfaceID),
+                                                (LPVOID)&mmcInterface);
+    if(herror != S_OK) {
+        goto bail;
+    }
+	
+    dict = [[[NSMutableDictionary alloc] initWithCapacity:3] autorelease];
+    [dict setObject:[NSString stringWithCString:deviceName] forKey:@"Name"];
+    
+ 	sleep(3);
+	
+    NSLog(@"getMediaInfo: deviceName = %s", deviceName);
+    for(n = 0; n < [fFormats count]; n++) {
+        int format = [[fFormats objectAtIndex:n] intValue];
+        [self readDVDStructure:mmcInterface
+					withFormat:format address:0 layer:0 intoDictionary:dict];
+        //NSLog(@"getMediaInfo: format = %@", [dict objectForKey:[NSNumber numberWithInt:format]]);
+    }
+    
+bail:
+    if(mmcInterface != NULL) {
+        (*mmcInterface)->Release(mmcInterface);
+    }
+    if(plugInInterface != NULL) {
+        IODestroyPlugInInterface(plugInInterface);
+    }
+//	if( service != NULL )
+//		CFRelease( service );
+	
+    return dict;
+}
+
+
+- (void) readDVDStructure:(MMCDeviceInterface**)mmcInterface
+			   withFormat:(SCSICmdField1Byte)format
+				  address:(SCSICmdField4Byte)address
+					layer:(SCSICmdField1Byte)layer
+		   intoDictionary:(NSMutableDictionary*)dict
+{
+    HRESULT  herror     = S_OK;
+    NSData   *data      = NULL;
+    Ptr      buffer    = NULL;
+    int      bufferSize = 0;
+	
+    SCSITaskStatus  taskStatus
+	
+	
+	= kSCSITaskStatus_GOOD;
+    SCSI_Sense_Data senseData;
+    UInt8           header[4];
+    
+	herror = (*mmcInterface)->ReadDVDStructure(mmcInterface,
+                                               address,
+                                               layer,
+                                               format,
+                                               header,
+                                               sizeof(header),
+                                               &taskStatus,
+                                               &senseData);
+    if(herror != S_OK || taskStatus != kSCSITaskStatus_GOOD) {
+        goto bail;
+    }
+    
+    bufferSize = header[0] * 0x100 + header[1] + 2;
+    buffer     = NewPtrClear(bufferSize);
+    if(buffer == NULL) {
+        goto bail;
+    }
+	
+    herror = (*mmcInterface)->ReadDVDStructure(mmcInterface,
+                                               address,
+                                               layer,
+                                               format,
+                                               buffer,
+                                               bufferSize,
+                                               &taskStatus,
+                                               &senseData);
+    if(herror != S_OK || taskStatus != kSCSITaskStatus_GOOD) {
+        goto bail;
+    }
+	
+    data = [[[NSData alloc] initWithBytes:buffer length:bufferSize] autorelease];
+    if(data != NULL) {
+        [dict setObject:data forKey:[NSNumber numberWithInt:format]];
+    }
+    
+bail:
+    if(buffer != NULL) {
+        DisposePtr(buffer);
+    }
+	
+    if(data == NULL) {
+        NSString* errorMsg = nil;
+        if(herror == S_OK && taskStatus == kSCSITaskStatus_CHECK_CONDITION) {
+            UInt8 key  = senseData.SENSE_KEY & 0x0f;
+            UInt8 asc  = senseData.ADDITIONAL_SENSE_CODE;
+			//          UInt8 ascq = senseData.ADDITIONAL_SENSE_CODE_QUALIFIER;
+            if(key == kSENSE_KEY_ILLEGAL_REQUEST && asc == 0x24) {
+                errorMsg = [NSString stringWithFormat: @"No support for format %i on this drive", format];
+            }
+        }
+        if(errorMsg == nil)
+            errorMsg = @"Could not read DVD structure from the media";
+        if(errorMsg != nil) 
+			[dict setObject:errorMsg forKey:@"ErrorMessage"];
+    }
+}
+
+
+
 -(DACVolume*)initForMountURL:(NSURL*)mountURL
 {
 	CFDictionaryRef	volumeData = NULL;
@@ -319,6 +483,18 @@ HAVEGUESS:
 			if( FSIsFSRefValid(&iconFileRef) )
 				RegisterIconRefFromFSRef( kDACALCarouselsFolderType, DACVolume_nextIconID++, &iconFileRef, &mediaIcon );
 		}
+		
+		if( [self isDVD] == YES )
+		{
+			NSDictionary*	dvdInfo = [self getDVDMediaInfo];				// autoreleased
+			if( dvdInfo != nil )
+			{
+				NSLog(@"DVD Info Dict: %@", dvdInfo);
+				// save the id?
+				
+			}
+		}
+		
 		
 	}
 	if( volumeData != NULL ) CFRelease( volumeData );

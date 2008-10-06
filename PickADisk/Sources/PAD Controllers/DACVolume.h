@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import <DiskArbitration/DiskArbitration.h>
 #import <IOKit/IOKitLib.h>
+#import <IOKit/scsi/SCSITaskLib.h>
 
 @interface DACVolume : NSObject {
 
@@ -47,7 +48,14 @@
 -(BOOL)isDVD;
 -(BOOL)isBD;
 -(NSString*)guessPADFlavor;
+-(NSDictionary*)getDVDMediaInfo;
 -(BOOL)ejectVolume;
+
+- (void) readDVDStructure:(MMCDeviceInterface**)mmcInterface
+			   withFormat:(SCSICmdField1Byte)format
+				  address:(SCSICmdField4Byte)address
+					layer:(SCSICmdField1Byte)layer
+		   intoDictionary:(NSMutableDictionary*)dict;
 
 -(DACVolume*)initForMountURL:(NSURL*)mountURL;
 +(DACVolume*)volumeForMountURL:(NSURL*)mountURL;
