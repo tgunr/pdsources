@@ -12,6 +12,10 @@
 #include <sys/stat.h>
 #include <sys/errno.h>
 
+// MD5 includes
+#include <openssl/evp.h>
+#include <openssl/err.h>
+
 OSStatus		FSPathSetXattr( UInt8* pathText, CFStringRef inKeyName, CFStringRef inKeyValue )
 {
 	OSStatus		outResult = -1;
@@ -255,6 +259,55 @@ EXIT:
 	if( outError != NULL ) *outError = outResult;
 	return keyValueString;	
 }
+
+OSStatus		FSSetXattrProperty( CFAllocatorRef inAllocator, FSRef* inLocation, CFStringRef inKeyName, CFPropertyListRef inKeyValue )
+{
+	OSStatus	outStatus = -1;
+	
+	CFDataRef	workValue = NULL;
+	CFStringRef	workString = NULL;
+	
+	if( CFPropertyListIsValid( inKeyValue, kCFPropertyListXMLFormat_v1_0 ) )
+		workValue = CFPropertyListCreateXMLData( inAllocator, inKeyValue );
+	
+	if( workValue != NULL )
+		workString = CFStringCreateWithBytes( inAllocator, CFDataGetBytePtr(workValue), CFDataGetLength(workValue), kCFStringEncodingUTF8, TRUE );
+		
+	if( workString != NULL )
+		outStatus = FSSetXattr( inLocation, inKeyName, workString );
+	
+	return outStatus;
+}
+
+CFPropertyListRef	FSCopyXattrProperty( CFAllocatorRef inAllocator, FSRef* inLocation, CFStringRef inKeyName, OSStatus* outError )
+{
+	OSStatus			outStatus = -1;
+	CFPropertyListRef	outValue = NULL;
+	
+	CFDataRef			workValue = NULL;
+	CFStringRef			workString = NULL;
+	CFStringRef			errorString = NULL;
+	
+	workString = FSCopyXattr( inAllocator, inLocation, inKeyName, outError );
+	if( workString == NULL ) goto BAIL;
+
+	workValue = CFStringCreateExternalRepresentation( inAllocator, workString, kCFStringEncodingUTF8, 0 );
+	if( workValue == NULL ) goto BAIL;
+	
+	outValue = CFPropertyListCreateFromXMLData( inAllocator, workValue, kCFPropertyListMutableContainers, &errorString );
+	
+BAIL:
+	if( errorString != NULL ) CFRelease( errorString );
+	if( workString != NULL ) CFRelease( workString );
+	if( workValue != NULL ) CFRelease( workValue );
+	
+	if( outError != NULL ) *outError = outStatus;
+	return outValue;
+}
+
+
+
+
 
 char*			CFStringCreateCString( CFStringRef theString, CFStringEncoding theEncoding )
 {
@@ -510,13 +563,100 @@ Boolean		CFAbsoluteTimeBetweenTimes( CFAbsoluteTime lowTime, CFAbsoluteTime unkn
 }
 
 
+//	Internal headers
+
+CFDataRef	CFDataCreateEVPDigest( CFAllocatorRef inAllocator, CFDataRef inData, const EVP_MD* inDigestType );
+CFDataRef	CFStringCreateEVPDigest( CFAllocatorRef inAllocator, CFStringRef inString, const EVP_MD* inDigestType );
 
 
+CFDataRef	CFDataCreateEVPDigest( CFAllocatorRef inAllocator, CFDataRef inData, const EVP_MD* inDigestType )
+{
+	//	Compute an EVP digest
+	//	See <openssl/evp.h> for details 
+	
+	EVP_MD_CTX mdctx;
+	unsigned char md_value[EVP_MAX_MD_SIZE];
+	unsigned int md_len;
+
+	if( inData == NULL ) return (CFDataRef)NULL;
+	
+	EVP_DigestInit( &mdctx, inDigestType );
+	EVP_DigestUpdate( &mdctx, CFDataGetBytePtr(inData), CFDataGetLength(inData) );
+	EVP_DigestFinal( &mdctx, md_value, &md_len );
+	return CFDataCreate( inAllocator, md_value, md_len );
+}
+
+CFDataRef	CFDataCreateMD5Digest( CFAllocatorRef inAllocator, CFDataRef inData )
+{ return CFDataCreateEVPDigest( inAllocator, inData, EVP_md5() ); }
+
+CFDataRef	CFDataCreateSHA1Digest( CFAllocatorRef inAllocator, CFDataRef inData )
+{ return CFDataCreateEVPDigest( inAllocator, inData, EVP_sha1() ); }
+
+CFDataRef	CFStringCreateEVPDigest( CFAllocatorRef inAllocator, CFStringRef inString, const EVP_MD* inDigestType )
+{
+	CFDataRef	theStringData = CFStringCreateExternalRepresentation( inAllocator, inString, kCFStringEncodingUTF8, 0 );
+	CFDataRef	theDigest = NULL;
+	
+	if( theStringData == NULL )
+		return theDigest;
+	
+	theDigest = CFDataCreateEVPDigest( inAllocator, theStringData, inDigestType );
+	
+	CFRelease( theStringData );
+	return theDigest;
+}
+
+CFDataRef	CFStringCreateMD5Digest( CFAllocatorRef inAllocator, CFStringRef inString )
+{ return CFStringCreateEVPDigest( inAllocator, inString, EVP_md5() ); }
+
+CFDataRef	CFStringCreateSHA1Digest( CFAllocatorRef inAllocator, CFStringRef inString )
+{ return CFStringCreateEVPDigest( inAllocator, inString, EVP_sha1() ); }
 
 
+CFStringRef	CFDataCreateHexString( CFAllocatorRef inAllocator, CFDataRef inData )
+{
+	CFStringRef			outString = NULL;
+	const UInt8*		myBytes = CFDataGetBytePtr( inData );
+	unsigned int		myLength = CFDataGetLength( inData );
+	unsigned int		myIndex;
+	CFMutableStringRef	workString = CFStringCreateMutable( inAllocator, myLength*2+1 );
+	
+	if( workString == NULL ) return outString;
+	
+	for (myIndex = 0; myIndex < myLength; myIndex++ )
+		CFStringAppendFormat( workString, NULL, CFSTR("%02x"), myBytes[myIndex] );
+	
+	outString = CFStringCreateCopy( inAllocator, workString );
+	
+	CFRelease( outString );
+	return outString;
+}
 
+CFDataRef	CFStringCreateDataForHex( CFAllocatorRef inAllocator, CFStringRef inHexString )
+{
+	CFDataRef			outData = NULL;
+	CFIndex				myLength = CFStringGetLength( inHexString ) / 2;
+	CFIndex				myIndex;
+	CFRange				indexRange;
+	UniChar				workValue[1] = { 0 };
+	unsigned int		workResult = 0;
+	CFMutableDataRef	workData = CFDataCreateMutable( inAllocator, myLength );
+	
+	if( workData == NULL ) return outData;
+	
+	for( myIndex=0; myIndex < myLength; myIndex++ )
+	{
+		indexRange.length = 2;
+		indexRange.location = myIndex * 2;
+		CFStringGetCharacters( inHexString, indexRange, workValue );
+		if( sscanf( (const char*)workValue, "%02x", &workResult ) == 1 );
+			CFDataAppendBytes( workData, (const UInt8*)&workResult, 1 );
+	}
+	
+	outData = CFDataCreateCopy( inAllocator, workData );
 
-
-
+	CFRelease( workData );
+	return outData;
+}
 
 

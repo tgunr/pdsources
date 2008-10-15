@@ -18,7 +18,15 @@
 	IBOutlet	NSTextField		*promptText;
 }
 
+- (IBAction)ctmMountOpen:(id)sender;
+- (IBAction)ctmCheckIn:(id)sender;
+- (IBAction)ctmCheckOut:(id)sender;
+- (IBAction)ctmDeleteSlot:(id)sender;
+
 - (void)updatePrompt;
 - (void)doubleClickCellContent:(id)item inCell:(NSCell*)cell;
+
+- (void)nodeSlotChanged:(SimpleTreeNode*)node toSlot:(NSString*)slotString;
+- (void)nodeTypeChanged:(SimpleTreeNode*)theNode toType:(NSString*)theName;
 
 @end

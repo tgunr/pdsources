@@ -41,6 +41,8 @@ BOOL			busyBusy;
 
 - (IBAction)addSlot:(id)sender;
 - (IBAction)checkInOut:(id)sender;
+- (IBAction)checkIn:(id)sender;
+- (IBAction)checkOut:(id)sender;
 - (IBAction)mountDisc:(id)sender;
 - (IBAction)printReport:(id)sender;
 - (IBAction)deleteSlot:(id)sender;

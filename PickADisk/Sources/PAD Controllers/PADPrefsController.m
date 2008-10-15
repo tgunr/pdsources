@@ -1,6 +1,7 @@
 #import "PADPrefsController.h"
 #import <Sparkle/SUUpdater.h>
 #import "DACDriverInstaller.h"
+#import "PADPrefsTreeController.h"
 
 @implementation PADPrefsController
 
@@ -90,7 +91,7 @@ static Boolean	PADPrefsControllerB = false;
 	
 	[[NSUserDefaults standardUserDefaults] setObject:[sender itemIdentifier] forKey:@"PADPrefToolSelected"];
 	
-	NSLog(@"Clicked Tool Label:%@ ID:%@", [sender label], [sender itemIdentifier]);
+	// NSLog(@"Clicked Tool Label:%@ ID:%@", [sender label], [sender itemIdentifier]);
 	
 	[self refreshUpdateDate:sender];
 	

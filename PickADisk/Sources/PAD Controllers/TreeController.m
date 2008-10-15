@@ -53,6 +53,13 @@
 	
 }
 
+
+- (void)recreateInitialTree
+{
+	// Install Data for Tree
+	if( dataSource != nil ) [dataSource performSelector:@selector(recreateInitialTree)];
+}
+
 - (NSArray *)draggedNodes { 
     return draggedNodes; 
 }
@@ -211,6 +218,9 @@ AFTERRELOAD:
 }
 
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem {
+	
+	return [dataSource validateMenuItem:menuItem];
+	
     if ([menuItem action]==@selector(deleteSelections:)) {
 	// The delete selection item should be disabled if nothing is selected.
 	return ([[self selectedNodes] count] > 0);
@@ -239,79 +249,25 @@ AFTERRELOAD:
     return [node numberOfChildren];
 }
 
-- (id)outlineView:(NSOutlineView *)ov objectValueForTableColumn:(NSTableColumn *)tableColumn byItem:(id)item {
+- (id)outlineView:(NSOutlineView *)ov objectValueForTableColumn:(NSTableColumn *)tableColumn byItem:(id)item
+{
     id objectValue = nil;
-    SimpleNodeData *data = [item nodeData];
     
     // The return value from this method is used to configure the state of the items cell via setObjectValue:
-    if ((tableColumn == nil) || [[tableColumn identifier] isEqualToString:COLUMNID_NAME]) {
-		objectValue = [data name];
-		//[item setBusy: [data busy]];
-    } else if ([[tableColumn identifier] isEqualToString:COLUMNID_SLOT]) {
-		objectValue = [NSString stringWithFormat:@"%i", [data itemSlot]];
-	} else if ([[tableColumn identifier] isEqualToString:COLUMNID_MODDATE]) {
-		//NSDateFormatter*	thisDateForm = [[NSDateFormatter alloc] init];
-		//objectValue = [thisDateForm stringFromDate:[data itemModDate]]; 
-		objectValue = [data itemAddDate];
-	} else if ([[tableColumn identifier] isEqualToString:COLUMNID_TYPE]) {
-		//objectValue = [data itemFlavor];
-		objectValue = DACALCreateImageRefForFlavor([data itemFlavor]);
-    } else if ([[tableColumn identifier] isEqualToString:COLUMNID_SCORE]) {
-		SearchNodeData *Sdata = [item nodeData];
-		objectValue = [NSNumber numberWithInt:(int)([Sdata matchScore]*100)];
-	} else if ([[tableColumn identifier] isEqualToString:COLUMNID_CHECKEDOUT]) {
-		SearchNodeData *Sdata = [item nodeData];
-		NSString*	imagePath = nil;
-		NSImage*	theImage = nil;
-		NSBundle*	imageBundle = [NSBundle mainBundle];
-		
-		if( [Sdata isCheckedOut] )
-			if( imagePath = [imageBundle pathForResource:@"CheckedOut" ofType:@"png"] )
-				theImage = [[NSImage alloc] initByReferencingFile:imagePath]; 
-		
-		objectValue = theImage;
-	} else {
-		//
+	if( dataSource != nil )
+		objectValue = [dataSource performSelector:@selector(objectValueForTableColumn:byItem:) withObject:tableColumn withObject:item];
+	else
 		NSLog(@"Unknown Column: %@", [tableColumn identifier]);
-	}
-/*  
- *	These are additional column data suppliers from the original example:
- *
-    } else if ([[tableColumn identifier] isEqualToString:COLUMNID_IS_EXPANDABLE]) {
-	// Here, object value will be used to set the state of a check box.
-	objectValue = [NSNumber numberWithBool:[data isGroup] && [data isExpandable]];
-    } else if ([[tableColumn identifier] isEqualToString:COLUMNID_NODE_KIND]) {
-	objectValue = ([data isLeaf] ? @"Leaf" : @"Group");
-    } else if ([[tableColumn identifier] isEqualToString:COLUMID_IS_SELECTABLE]) {
-        // Again -- this object value will set the state of the check box.
-        objectValue = [NSNumber numberWithBool:[data isSelectable]];
-    }
-*/
+
     return objectValue;
 }
 
-
 // Optional method: needed to allow editing.
-- (void)outlineView:(NSOutlineView *)ov setObjectValue:(id)object forTableColumn:(NSTableColumn *)tableColumn byItem:(id)item  {
-    SimpleNodeData *data = [item nodeData];
-    
-    // Here, we manipulate the name data stored in the node.
-    if ((tableColumn == nil) || [[tableColumn identifier] isEqualToString:COLUMNID_NAME]) {
-		if( dataSource != nil ) [dataSource performSelector:@selector(nodeNameChanged:toName:) withObject:(SimpleTreeNode*)item withObject:(NSString*)object];
-		else [data setName:object];
-	}
-
-    // Here, we manipulate the slot data stored in the node.
-    if ((tableColumn == nil) || [[tableColumn identifier] isEqualToString:COLUMNID_SLOT]) {
-		if( dataSource != nil ) [dataSource performSelector:@selector(nodeSlotChanged:toSlot:) withObject:(SimpleTreeNode*)item withObject:(NSString*)object];
-		else [data setItemSlot:(DACALSlotNum)[object intValue]];
-	}
-
-    // Here, we manipulate the type/flavor data stored in the node.
-    if ((tableColumn == nil) || [[tableColumn identifier] isEqualToString:COLUMNID_TYPE]) {
-		if( dataSource != nil ) [dataSource performSelector:@selector(nodeTypeChanged:toType:) withObject:(SimpleTreeNode*)item withObject:(NSString*)object];
-		else [data setItemFlavor:object];
-	}
+- (void)outlineView:(NSOutlineView *)ov setObjectValue:(id)object forTableColumn:(NSTableColumn *)tableColumn byItem:(id)item
+{
+	//	Here, we call the data source to fill in the value.
+	if( dataSource != nil )
+		[dataSource setObjectValue:object forTableColumn:tableColumn byItem:item];
 }
 
 /*  
@@ -344,7 +300,7 @@ AFTERRELOAD:
     }
 	
 	// If the item is a new cell, startup busy if necessary
-	if ((tableColumn == nil) || [[tableColumn identifier] isEqualToString:COLUMNID_NAME])
+	if ((tableColumn != nil) && [[tableColumn identifier] isEqualToString:COLUMNID_NAME])
 		[outCell setBusy: [item busy]];
 	
     return outCell;
@@ -352,11 +308,24 @@ AFTERRELOAD:
 
 // To get the "group row" look, we implement this method.
 - (BOOL)outlineView:ov isGroupItem:(id)item {
-    return [[item nodeData] isGroup] && [self allowGroupRowLook];
+	if( dataSource != nil )
+		return [dataSource outlineView:ov isGroupItem:item];
+	else
+		return [[item nodeData] isGroup] && [self allowGroupRowLook];
 }
 
 - (BOOL)outlineView:(NSOutlineView *)ov shouldExpandItem:(id)item {
-    return [[item nodeData] isGroup];
+	if( dataSource != nil )
+		return [dataSource outlineView:ov shouldExpandItem:item];
+	else
+		return [[item nodeData] isGroup];
+}
+
+- (BOOL)outlineView:(NSOutlineView *)ov shouldCollapseItem:(id)item {
+	if( dataSource != nil )
+		return [dataSource outlineView:ov shouldCollapseItem:item];
+	else
+		return [[item nodeData] isGroup];
 }
 
 - (void)outlineViewItemWillExpand:(NSNotification *)notification {
@@ -437,21 +406,12 @@ AFTERRELOAD:
 
 - (BOOL)outlineView:(NSOutlineView *)ov shouldSelectItem:(id)item {
     // Control selection of a particular item. 
-    BOOL result = [[item nodeData] isSelectable];
-    if (result) {
-        //We can access the clicked row and column to potentially disable row selection based on what item was clicked on. We don't want to change the selection when clicking on a column with a button cell, if that option is checked.
-        if (![self allowButtonCellsToChangeSelection]) {
-            NSInteger clickedCol = [ov clickedColumn];
-            NSInteger clickedRow = [ov clickedRow];
-            if (clickedRow >= 0 && clickedCol >= 0) {
-                NSCell *cell = [ov preparedCellAtColumn:clickedCol row:clickedRow];
-                if ([cell isKindOfClass:[NSButtonCell class]] && [cell isEnabled]) {
-                    result = NO;
-                }            
-            }
-        }
-    }
-    return result;
+	if( dataSource != nil )
+		return [dataSource outlineView:ov shouldSelectItem:item];
+	else
+		return [[item nodeData] isSelectable];
+
+	return NO;
 }
 
 - (BOOL)outlineView:(NSOutlineView *)ov shouldTrackCell:(NSCell *)cell forTableColumn:(NSTableColumn *)tableColumn item:(id)item {
@@ -947,6 +907,24 @@ NSURL *NewFileURLForWritingFile(NSString *dirpath, NSString *basename, NSString 
     //[outlineView setAutoresizesOutlineColumn:NO];
 }
 
+- (void)reinitOutlineView
+{
+	
+}
+
+- (void)recreateInitialTree
+{	
+	// Install Data for Tree
+	[[self treeControl] setTreeRoot:[self createInitialTree:[self treeControl]]];
+	
+	// Initialize the View
+	[self reinitOutlineView];
+	
+	// Refresh
+	[[self outlineView] reloadData];
+	
+}
+
 - (void)outlineViewAction:(id)tree
 {
 /*   NSArray *selectedNodes = [treeControl selectedNodes];
@@ -1011,6 +989,49 @@ NSURL *NewFileURLForWritingFile(NSString *dirpath, NSString *basename, NSString 
 			}
 	}
 	return;
+}
+
+
+-(id)objectValueForTableColumn:(NSTableColumn *)tableColumn byItem:(id)item
+{
+    id objectValue = nil;
+ 
+    if ((tableColumn == nil) || [[tableColumn identifier] isEqualToString:COLUMNID_NAME]) {
+		objectValue = [[item nodeData] name];
+   } else
+		NSLog(@"Data Request for Unknown Column: %@", [tableColumn identifier]);
+	
+	return objectValue;
+}
+
+-(void)setObjectValue:(id)object forTableColumn:(NSTableColumn *)tableColumn byItem:(id)item
+{
+    // Here, we manipulate the name data stored in the node.
+    if ((tableColumn == nil) || [[tableColumn identifier] isEqualToString:COLUMNID_NAME]) {
+		[self nodeNameChanged:item toName:object];
+		return;
+	}
+
+	NSLog(@"Data Change for Unknown Column: %@", [tableColumn identifier]);
+}
+
+// To get the "group row" look, we implement this method.
+- (BOOL)outlineView:ov isGroupItem:(id)item {
+    return [[item nodeData] isGroup] && [[self treeControl] allowGroupRowLook];
+}
+
+- (BOOL)outlineView:(NSOutlineView *)ov shouldExpandItem:(id)item {
+    return [[item nodeData] isGroup];
+}
+
+- (BOOL)outlineView:(NSOutlineView *)ov shouldCollapseItem:(id)item {
+    return [[item nodeData] isGroup];
+}
+
+- (BOOL)outlineView:(NSOutlineView *)ov shouldSelectItem:(id)item {
+    // Control selection of a particular item. 
+	BOOL result = [[item nodeData] isSelectable];
+    return result;
 }
 
 - (BOOL)performDropOperation:(id <NSDraggingInfo>)info onNode:(TreeNode *)parentNode atIndex:(NSInteger)childIndex
@@ -1108,11 +1129,12 @@ NSURL *NewFileURLForWritingFile(NSString *dirpath, NSString *basename, NSString 
 			NSArray *_draggedNodes = [[[info draggingSource] dataSource] draggedNodes];
 			//SimpleTreeNode *targetParent = (SimpleTreeNode*)[targetNode nodeParent];
 			targetNodeIsValid = ![targetNode isDescendantOfNodeInArray: _draggedNodes];
-			if( targetNodeIsValid ) targetNodeIsValid = [targetNode isParentOfNodesInArray: [treeControl draggedNodes]];
+			//if( targetNodeIsValid ) targetNodeIsValid = [targetNode isParentOfNodesInArray: [treeControl draggedNodes]];
 		}
     }
     
-	if( targetNodeIsValid ) targetNodeDragOp = [self validateDropSource:info proposedItem:item proposedChildIndex:childIndex];
+	if( targetNodeIsValid )
+		targetNodeDragOp = [self validateDropSource:info proposedItem:item proposedChildIndex:childIndex];
 	
     // Set the item and child index in case we computed a retargeted one.
     [[treeControl outlineView] setDropItem:targetNode dropChildIndex:childIndex];
@@ -1152,15 +1174,51 @@ NSURL *NewFileURLForWritingFile(NSString *dirpath, NSString *basename, NSString 
 
 // In order to support drags to the trash, you need to implement draggedImage:endedAt:operation: and handle the NSDragOperationDelete operation.  
 // For any other operation, pass the message to the superclass
-- (void)draggedImage:(NSImage *)image endedAt:(NSPoint)screenPoint operation:(NSDragOperation)operation
+- (void)draggedImage:(NSImage *)image endedAt:(NSPoint)screenPoint operation:(NSDragOperation)op
 {
-	if (operation == NSDragOperationDelete) {
+	if (op == NSDragOperationDelete) {
         // Tell all of the dragged nodes to remove themselves from the model.
         NSArray *selection = [[self treeControl] draggedNodes];
         [selection makeObjectsPerformSelector: @selector(removeFromParent)];
         [[self outlineView] deselectAll:nil];
         [[self outlineView] reloadData];
 	}
+	
+	//[super draggedImage:image endedAt:screenPoint operation:op];
+}
+
+- (BOOL)validateMenuItem:(NSMenuItem *)menuItem {
+
+	//NSLog(@"Validate Menu Item: %@", [menuItem title]);
+	
+    if ([menuItem action]==@selector(deleteSelections:)) {
+		// The delete selection item should be disabled if nothing is selected.
+		return ([[[self treeControl] selectedNodes] count] > 0);
+    }    
+	
+    return YES;
+}
+
+- (NSArray*)ctmClickedRows
+{
+	NSArray*		outRowArray = nil;
+	NSOutlineView*	outlineView = [ treeControl outlineView ];
+    NSInteger		clickedRow = [outlineView clickedRow];
+    id				item = nil;
+    BOOL			clickedOnMultipleItems = NO;
+	
+    if (clickedRow != -1) {
+        // If we clicked on a selected row, then we want to consider all rows in the selection. Otherwise, we only consider the clicked on row.
+        item = [outlineView itemAtRow:clickedRow];
+        clickedOnMultipleItems = [outlineView isRowSelected:clickedRow] && ([outlineView numberOfSelectedRows] > 1);
+    }
+    
+	if( clickedOnMultipleItems )
+		outRowArray = [outlineView allSelectedItems];
+	else
+		outRowArray = [NSArray arrayWithObject:item];
+
+	return outRowArray;
 }
 
 // On MacOS 10.5 and above, NSTableView and NSOutlineView have better contextual menu support. We now see a highlighted item for what was clicked on, and can access that item to do particular things (such as dynamically change the menu, as we do here!). Each of the contextual menus in the nib file have the delegate set to be the AppController instance. In menuNeedsUpdate, we dynamically update the menus based on the currently clicked upon row/column pair.
@@ -1194,7 +1252,9 @@ NSURL *NewFileURLForWritingFile(NSString *dirpath, NSString *basename, NSString 
             [menuItem setEnabled:NO];
         }
         
-    } else if (menu == expandableColumnMenu) {
+    }
+	
+/*	else if (menu == expandableColumnMenu) {
         NSMenuItem *menuItem = [menu itemAtIndex:0];
         if (!clickedOnMultipleItems && (nodeData != nil)) {
             // The item will be enabled only if it is a group
@@ -1205,6 +1265,7 @@ NSURL *NewFileURLForWritingFile(NSString *dirpath, NSString *basename, NSString 
             [menuItem setEnabled:NO];
         }
     }
+*/
 }
 
 - (void)menuNeedsUpdate:(NSMenu *)menu fromTree:(id)tree
@@ -1259,6 +1320,45 @@ NSURL *NewFileURLForWritingFile(NSString *dirpath, NSString *basename, NSString 
 {
 	return [inItem tooltip];
 }
+
+- (void)updateChangesForItem:(id)changeItem withAction:(BOOL)doAction
+{
+	[self sortExpandedChildrenWithCurrentDescriptors:changeItem];
+	[[self outlineView] reloadData];
+	if( doAction == YES )
+		[self outlineViewAction:self];
+	
+	return;
+	
+	SimpleTreeNode*		itemParent = nil; //(SimpleTreeNode*)[changeItem nodeParent];
+	
+	if( itemParent == nil )
+		itemParent = [[self treeControl] treeRoot];
+	
+	[self sortExpandedChildrenWithCurrentDescriptors:itemParent];
+	[[self outlineView] reloadItem:(id)itemParent reloadChildren:YES];
+	[[self outlineView] reloadItem:(id)changeItem reloadChildren:YES];
+	
+	if( doAction == YES )
+		[self outlineViewAction:self];
+}
+
+- (void)updateChangesForItems:(NSArray*)changedItems withAction:(BOOL)doAction
+{
+	NSInteger	itemIndex, itemCount = [changedItems count];
+	
+	if( itemCount == 0 )
+		[self updateChangesForItem:nil withAction:NO];
+	else
+		for( itemIndex=0; itemIndex < itemCount; itemIndex++ )
+			[self updateChangesForItem:[changedItems objectAtIndex:itemIndex] withAction:NO];
+	
+	if( doAction == YES )
+		[self outlineViewAction:self];
+}
+
+- (void)updateChangesWithAction:(BOOL)doAction
+{ [self updateChangesForItem:nil withAction:doAction]; }
 
 @end	// TreeControllerDataSource
 

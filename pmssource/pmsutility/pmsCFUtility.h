@@ -22,6 +22,9 @@ extern OSStatus		FSSetXattr( FSRef* inLocation, CFStringRef inKeyName, CFStringR
 extern size_t		FSGetXattrSize( FSRef* inLocation, CFStringRef inKeyName );
 extern CFStringRef	FSCopyXattr( CFAllocatorRef inAllocator, FSRef* inLocation, CFStringRef inKeyName, OSStatus* outError );
 
+extern OSStatus				FSSetXattrProperty( CFAllocatorRef inAllocator, FSRef* inLocation, CFStringRef inKeyName, CFPropertyListRef inKeyValue );
+extern CFPropertyListRef	FSCopyXattrProperty( CFAllocatorRef inAllocator, FSRef* inLocation, CFStringRef inKeyName, OSStatus* outError );
+
 extern char*		CFStringCreateCString( CFStringRef theString, CFStringEncoding theEncoding );
 extern CFStringRef	CFStringCreateFromCommandPipe( CFAllocatorRef inAllocator, CFURLRef inCommandURL, CFStringRef inCommandArgs, OSStatus* outError );
 
@@ -42,6 +45,14 @@ CFStringRef	CFURLCopyUTI( CFAllocatorRef inAllocator, CFURLRef inURL, OSStatus*	
 
 Boolean		CFAbsoluteTimeBetweenTimes( CFAbsoluteTime lowTime, CFAbsoluteTime unknownTime, CFAbsoluteTime hiTime );
 
+
+CFDataRef	CFDataCreateMD5Digest( CFAllocatorRef inAllocator, CFDataRef inData );
+CFDataRef	CFDataCreateSHA1Digest( CFAllocatorRef inAllocator, CFDataRef inData );
+CFDataRef	CFStringCreateMD5Digest( CFAllocatorRef inAllocator, CFStringRef inString );
+CFDataRef	CFStringCreateSHA1Digest( CFAllocatorRef inAllocator, CFStringRef inString );
+
+CFStringRef	CFDataCreateHexString( CFAllocatorRef inAllocator, CFDataRef inData );
+CFDataRef	CFStringCreateDataForHex( CFAllocatorRef inAllocator, CFStringRef inHexString );
 
 
 

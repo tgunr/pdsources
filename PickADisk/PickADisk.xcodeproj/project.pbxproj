@@ -22,6 +22,7 @@
 		5C2EBE930E29719B009BAF4C /* update.icns in Resources */ = {isa = PBXBuildFile; fileRef = 5C2EBE920E29719B009BAF4C /* update.icns */; };
 		5C2EBE960E2979B3009BAF4C /* sidebarpref.icns in Resources */ = {isa = PBXBuildFile; fileRef = 5C2EBE950E2979B3009BAF4C /* sidebarpref.icns */; };
 		5C2EBE9C0E2991BF009BAF4C /* PADPrefsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C2EBE9A0E2991BF009BAF4C /* PADPrefsController.m */; };
+		5C30383C0EA5C8CE0067A8A8 /* PADPrefsTreeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C30383A0EA5C8CE0067A8A8 /* PADPrefsTreeController.m */; };
 		5C438A5A0E8E825F0070CF56 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0247A8BE007179D411CA0E35 /* Foundation.framework */; };
 		5C440D750E5C27DF0020A588 /* Generic_Music.icns in Resources */ = {isa = PBXBuildFile; fileRef = 5C440D720E5C27DF0020A588 /* Generic_Music.icns */; };
 		5C440D760E5C27DF0020A588 /* Generic_Files.icns in Resources */ = {isa = PBXBuildFile; fileRef = 5C440D730E5C27DF0020A588 /* Generic_Files.icns */; };
@@ -57,6 +58,8 @@
 		5C6CC5060E4FB4E9000EE6B3 /* noBox.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C6CC5050E4FB4E9000EE6B3 /* noBox.png */; };
 		5C6CC53C0E4FC9AC000EE6B3 /* betablue.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C6CC53B0E4FC9AC000EE6B3 /* betablue.png */; };
 		5C6CC54A0E4FD604000EE6B3 /* BlackPlus.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C6CC5490E4FD604000EE6B3 /* BlackPlus.png */; };
+		5C76C1270E9AD9FE00E363B0 /* NSData_Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C76C1250E9AD9FE00E363B0 /* NSData_Extensions.m */; };
+		5C76C1340E9ADD0500E363B0 /* NSString_Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C76C1320E9ADD0500E363B0 /* NSString_Extensions.m */; };
 		5C7C501F0E3D843700FCEBD8 /* DC300B_Front.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C7C501D0E3D843700FCEBD8 /* DC300B_Front.png */; };
 		5C7C50260E3D850800FCEBD8 /* CarouselBatch.nib in Resources */ = {isa = PBXBuildFile; fileRef = 5C7C50250E3D850800FCEBD8 /* CarouselBatch.nib */; };
 		5C7C51130E3DEC4D00FCEBD8 /* carousel.sh in Resources */ = {isa = PBXBuildFile; fileRef = 5C4E17EB0E2167580091DD7D /* carousel.sh */; };
@@ -94,7 +97,6 @@
 		751C4E2D0E9400250027BC1C /* AquaticPrime.m in Sources */ = {isa = PBXBuildFile; fileRef = 751C4E2C0E9400250027BC1C /* AquaticPrime.m */; };
 		75E667D60E92CA9500A9DA07 /* license.icns in Resources */ = {isa = PBXBuildFile; fileRef = 75E667D50E92CA9500A9DA07 /* license.icns */; };
 		75F02D190E954B1400A02B14 /* License.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75F02D180E954B1400A02B14 /* License.xib */; };
-		75F02D230E955A9400A02B14 /* LicenseController.h in Headers */ = {isa = PBXBuildFile; fileRef = 75F02D210E955A9400A02B14 /* LicenseController.h */; };
 		75F02D240E955A9400A02B14 /* LicenseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 75F02D220E955A9400A02B14 /* LicenseController.m */; };
 /* End PBXBuildFile section */
 
@@ -170,6 +172,8 @@
 		5C2EBE950E2979B3009BAF4C /* sidebarpref.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = sidebarpref.icns; sourceTree = "<group>"; };
 		5C2EBE990E2991BF009BAF4C /* PADPrefsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PADPrefsController.h; sourceTree = "<group>"; };
 		5C2EBE9A0E2991BF009BAF4C /* PADPrefsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PADPrefsController.m; sourceTree = "<group>"; };
+		5C3038390EA5C8CE0067A8A8 /* PADPrefsTreeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PADPrefsTreeController.h; sourceTree = "<group>"; };
+		5C30383A0EA5C8CE0067A8A8 /* PADPrefsTreeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PADPrefsTreeController.m; sourceTree = "<group>"; };
 		5C440D720E5C27DF0020A588 /* Generic_Music.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Generic_Music.icns; sourceTree = "<group>"; };
 		5C440D730E5C27DF0020A588 /* Generic_Files.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Generic_Files.icns; sourceTree = "<group>"; };
 		5C440D740E5C27DF0020A588 /* Generic_Movie.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Generic_Movie.icns; sourceTree = "<group>"; };
@@ -217,6 +221,10 @@
 		5C6CC5050E4FB4E9000EE6B3 /* noBox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noBox.png; sourceTree = "<group>"; };
 		5C6CC53B0E4FC9AC000EE6B3 /* betablue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = betablue.png; sourceTree = "<group>"; };
 		5C6CC5490E4FD604000EE6B3 /* BlackPlus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlackPlus.png; sourceTree = "<group>"; };
+		5C76C1240E9AD9FE00E363B0 /* NSData_Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSData_Extensions.h; sourceTree = "<group>"; };
+		5C76C1250E9AD9FE00E363B0 /* NSData_Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSData_Extensions.m; sourceTree = "<group>"; };
+		5C76C1310E9ADD0500E363B0 /* NSString_Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSString_Extensions.h; sourceTree = "<group>"; };
+		5C76C1320E9ADD0500E363B0 /* NSString_Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSString_Extensions.m; sourceTree = "<group>"; };
 		5C7C4EE80E3C006C00FCEBD8 /* DiscID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DiscID.framework; path = Frameworks/DiscID.framework; sourceTree = SOURCE_ROOT; };
 		5C7C501C0E3D843700FCEBD8 /* hellotag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hellotag.png; sourceTree = "<group>"; };
 		5C7C501D0E3D843700FCEBD8 /* DC300B_Front.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DC300B_Front.png; sourceTree = "<group>"; };
@@ -309,6 +317,8 @@
 		01518911FF1B822411CA0E35 /* Cocoa Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				5C76C1240E9AD9FE00E363B0 /* NSData_Extensions.h */,
+				5C76C1250E9AD9FE00E363B0 /* NSData_Extensions.m */,
 				5CBA8FCD0E71DD0F000279A2 /* NSSlider_Animation.m */,
 				5CBA8FCE0E71DD0F000279A2 /* NSSlider_Animation.h */,
 				5C6C14DC0E2B9FE60081A7B1 /* NSApplication_Extensions.h */,
@@ -323,6 +333,8 @@
 				06AA3D13FF0C15B911CA0E35 /* NSOutlineView_Extensions.m */,
 				5CC83F6E0E6F957B000903AD /* PADURL.h */,
 				5CC83F6F0E6F957B000903AD /* PADURL.m */,
+				5C76C1310E9ADD0500E363B0 /* NSString_Extensions.h */,
+				5C76C1320E9ADD0500E363B0 /* NSString_Extensions.m */,
 			);
 			name = "Cocoa Extensions";
 			path = "Sources/Cocoa Extensions";
@@ -491,6 +503,8 @@
 				5C6C12EF0E240BEA0097CC7A /* PADIndexToolbarController.m */,
 				5C2EBE990E2991BF009BAF4C /* PADPrefsController.h */,
 				5C2EBE9A0E2991BF009BAF4C /* PADPrefsController.m */,
+				5C3038390EA5C8CE0067A8A8 /* PADPrefsTreeController.h */,
+				5C30383A0EA5C8CE0067A8A8 /* PADPrefsTreeController.m */,
 				5C90847B0E2D748800162C13 /* PADIndexOperation.h */,
 				5C90847C0E2D748800162C13 /* PADIndexOperation.m */,
 				5C2D25F30E304B1C005F9FB5 /* PADIndexProgressController.m */,
@@ -582,7 +596,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				75F02D230E955A9400A02B14 /* LicenseController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -746,6 +759,9 @@
 				5C5F7DBF0E771E83003111DF /* DACVolume.m in Sources */,
 				751C4E2D0E9400250027BC1C /* AquaticPrime.m in Sources */,
 				75F02D240E955A9400A02B14 /* LicenseController.m in Sources */,
+				5C76C1270E9AD9FE00E363B0 /* NSData_Extensions.m in Sources */,
+				5C76C1340E9ADD0500E363B0 /* NSString_Extensions.m in Sources */,
+				5C30383C0EA5C8CE0067A8A8 /* PADPrefsTreeController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

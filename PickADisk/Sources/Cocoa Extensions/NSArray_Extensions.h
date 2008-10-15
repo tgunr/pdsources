@@ -7,6 +7,7 @@
 @end
 
 @interface NSMutableArray(MyExtensions)
-- (void)insertObjectsFromArray:(NSArray *)array atIndex:(NSInteger)index;
+-(void)insertObjectsFromArray:(NSArray *)array atIndex:(NSInteger)index;
+-(NSMutableArray*)reverseObjects;
 @end
 

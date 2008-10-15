@@ -9,17 +9,24 @@
 #import <Cocoa/Cocoa.h>
 #import "pmsDACALUtility.h"
 #import "SimpleTreeNode.h"
+#import "DACVolume.h"
 
 extern CFStringRef			kPADClientIdentifier;
 
 //	Slot reservation dictionary keys
-extern	NSString*	kDACSlotReservationTime;
-extern  NSString*	kDACSlotReservationType;
-extern	NSString*	kDACSlotReservationUser;
-extern	NSString*	kDACSlotReservationHost;
+extern	NSString*	kDACSlotReservationKeyTime;
+extern  NSString*	kDACSlotReservationKeyType;
+extern	NSString*	kDACSlotReservationKeyUser;
+extern	NSString*	kDACSlotReservationKeyHost;
+extern	NSString*	kDACSlotReservationKeyCountCheckOut;
 
 extern	NSString*	kDACSlotReservationTypeCheckOut;
 extern	NSString*	kDACSlotReservationTypeCheckIn;
+
+extern	NSString*	kDACBookmarkLocationInSidebar;
+extern	NSString*	kDACBookmarkLocationInMenubar;
+extern	NSString*	kDACBookmarkLocationInBookmarks;
+
 
 @class DACALSlotElement;
 @class DACALSlot;
@@ -31,12 +38,41 @@ extern DACALDevice*			DACALDeviceForDeviceRef(DACALDeviceRef aBoxRef);
 extern DACALSlot*			DACALDeviceSlotForSlotNumber(DACALDeviceRef aBoxRef, DACALSlotNum aSlotNum);
 extern DACALSlotElement*	DACALDeviceSlotElementForURL( CFURLRef itemURL );
 
+extern NSMutableArray*		gDACALDevices;
+
+@interface DACALSlotElementBookmark : NSObject
+{
+	DACALSlotElement*	markElement;
+	NSString*			markLocation;
+	SimpleTreeNode*		markNode;
+}
+
+-(DACALSlotElement*)markElement;
+-(NSString*)markLocation;
+-(SimpleTreeNode*)markNode;
+
+-(BOOL)isBookmarkLocation:(NSString*)theLocation;
+-(BOOL)removeBookmark;
+-(void)removeMarkNode;
+
+-(id)initBookmarkForElement:(DACALSlotElement*)theElement atLocation:(NSString*)theLocation attachNow:(BOOL)doAttach;
++(id)bookmarkForElement:(DACALSlotElement*)theElement atLocation:(NSString*)theLocation attachNow:(BOOL)doAttach;
+
+@end	//	DACALSlotElementBookmark
+
+
 @interface DACALSlotElement : NSObject {
 
 	DACALSlot*			elementSlot;
 	SimpleTreeNode*		elementNode;
 	FSRef				elementFSRef;
 	NSURL*				elementURL;
+	
+	NSMutableArray*		elementBookmarks;
+	
+	NSString*			comments;
+	NSArray*			tags;
+	NSInteger			stars;
 }
 
 -(DACALSlot*)elementSlot;
@@ -52,6 +88,7 @@ extern DACALSlotElement*	DACALDeviceSlotElementForURL( CFURLRef itemURL );
 +(id)slotElementForSlot:(DACALSlot*)newSlot atLocation:(NSURL*)newLoc;
 +(id)slotElementForNode:(SimpleTreeNode*)newNode;
 
+-(void)updateElementChanges:(BOOL)doAction;
 -(void)reloadElement;
 
 -(NSString*)title;
@@ -64,6 +101,20 @@ extern DACALSlotElement*	DACALDeviceSlotElementForURL( CFURLRef itemURL );
 -(NSDate*)checkedOutDate;
 -(NSDate*)checkedInDate;
 
+-(NSString*)comments;
+-(void)setComments:(NSString*)newComment;
+
+-(NSArray*)tags;
+-(void)setTags:(NSArray*)newTags;
+
+-(NSInteger)stars;
+-(void)setStars:(NSInteger)starLevel;
+
+-(NSMutableArray*)bookmarks;
+-(BOOL)removeBookmarkForLocation:(NSString*)markLocation;
+-(DACALSlotElementBookmark*)bookmarkForLocation:(NSString*)markLocation;
+-(DACALSlotElementBookmark*)createBookmarkAtLocation:(NSString*)markLocation attachNow:(BOOL)doAttach;
+
 @end		// DACALSlotElement
 
 
@@ -73,6 +124,7 @@ extern DACALSlotElement*	DACALDeviceSlotElementForURL( CFURLRef itemURL );
 	DACALSlotNum		slotNumber;
 
 	SimpleTreeNode*		slotNode;
+	DACVolume*			slotVolume;
 	FSRef				slotFSRef;
 	
 	NSDate*				slotCheckedOut;
@@ -86,7 +138,9 @@ extern DACALSlotElement*	DACALDeviceSlotElementForURL( CFURLRef itemURL );
 -(DACALDeviceRef)slotDeviceRef;
 -(DACALSlotNum)slotNumber;
 -(SimpleTreeNode*)slotNode;
+-(DACVolume*)slotVolume;
 -(FSRef*)slotFSRef;
+-(BOOL)validSlotFSRef;
 -(BOOL)setSlotFSRefFromURL:(NSURL*)slotURL;
 -(BOOL)setSlotLocation:(NSURL*)slotURL;
 
@@ -134,6 +188,7 @@ extern DACALSlotElement*	DACALDeviceSlotElementForURL( CFURLRef itemURL );
 	FSRef				deviceFSRef;
 
 	NSArray*			deviceSlots;
+	NSInteger			slotsUsed;
 	
 }
 
@@ -149,7 +204,7 @@ extern DACALSlotElement*	DACALDeviceSlotElementForURL( CFURLRef itemURL );
 
 -(DACALSlot*)slotWithNumber:(DACALSlotNum)aSlot;
 -(void)loadSlotIndex;
--(void)indexedNewVolume:(NSURL*)newVolume forSlot:(DACALSlotNum)newSlot ofType:(NSString*)newType;
+-(void)indexedNewVolume:(DACVolume*)newVolume forSlot:(DACALSlotNum)newSlot ofType:(NSString*)newType;
 -(void)swapSlotNumber:(DACALSlotNum)fromSlotNum toDevice:(DACALDevice*)toBox toSlotNumber:(DACALSlotNum)toSlotNum;
 
 -(id)initDeviceWithDeviceRef:(DACALDeviceRef)newDeviceRef;
@@ -162,6 +217,7 @@ extern DACALSlotElement*	DACALDeviceSlotElementForURL( CFURLRef itemURL );
 -(void)attachedDevice:(DACALDevice*)newBox;
 -(void)detachingDevice;
 
+-(NSInteger)slotsUsed;
 
 @end		// DACALDevice
 

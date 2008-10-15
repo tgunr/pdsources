@@ -57,7 +57,15 @@ extern CFStringRef		kDACALCarouselDocumentXAttrSlotAddDate;
 extern CFStringRef		kDACALCarouselDocumentXAttrSlotCheckout;
 extern CFStringRef		kDACALCarouselDocumentXAttrSlotCheckIn;
 extern CFStringRef		kDACALCarouselDocumentXAttrVolumeName;
+
 extern CFStringRef		kDACALCarouselDocumentXAttrUserTitle;
+extern CFStringRef		kDACALCarouselDocumentXAttrUserComments;
+extern CFStringRef		kDACALCarouselDocumentXAttrUserTags;
+extern CFStringRef		kDACALCarouselDocumentXAttrUserStars;
+extern CFStringRef		kDACALCarouselDocumentXAttrUserLinks;
+extern CFStringRef		kDACALCarouselDocumentXAttrUserArtwork;
+extern CFStringRef		kDACALCarouselDocumentXAttrUserRating;
+extern CFStringRef		kDACALCarouselDocumentXAttrBookmarks;
 
 extern CFStringRef		kDACALCarouselNoticeDeviceOpen;
 extern CFStringRef		kDACALCarouselNoticeDeviceClose;
@@ -135,6 +143,10 @@ extern DACALResult		DACALDevicesSetCFAllocator( CFAllocatorRef defaultAlloc );
 
 extern DACALDeviceRef	DACALDeviceRetain( DACALDeviceRef inDevice );
 extern void				DACALDeviceRelease( DACALDeviceRef inDevice );
+extern DACALResult		DACALDeviceInfoSetKey( DACALDeviceRef inDevice, CFStringRef inKeyName, CFTypeRef inKeyValue );
+extern DACALResult		DACALDeviceInfoAddDictionary( DACALDeviceRef inDevice, CFDictionaryRef keyValueDictionary );
+extern CFTypeRef		DACALDeviceInfoCopyKey( DACALDeviceRef deviceID, CFStringRef inKeyName, DACALResult* outResult );
+extern CFDictionaryRef	DACALDeviceInfoCopyKeys( DACALDeviceRef deviceID, CFArrayRef inKeyNames, DACALResult* outResult );
 
 extern DACALResult		DACALClientCreate( CFAllocatorRef useAllocator, CFStringRef clientID, void* useDataRef, void* useCallback);
 extern void				DACALClientRelease( CFStringRef clientID );

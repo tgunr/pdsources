@@ -9,6 +9,8 @@
 #import "ImageAndTextCell.h"
 #import <AppKit/NSCell.h>
 
+#define		DACIATCImageIndent		3
+
 @implementation ImageAndTextCell
 
 - (id)init {
@@ -49,7 +51,7 @@
         result.size = [image size];
 //        result.size =  NSMakeSize( 16.0, 16.0 );
         result.origin = cellFrame.origin;
-        result.origin.x += 3;
+        result.origin.x += DACIATCImageIndent;
         result.origin.y += ceil((cellFrame.size.height - result.size.height) / 2);
     } else {
         result = NSZeroRect;
@@ -63,8 +65,8 @@
     if (image != nil) {
         CGFloat imageWidth = [image size].width;
         result = cellFrame;
-        result.origin.x += (3 + imageWidth);
-        result.size.width -= (3 + imageWidth);
+        result.origin.x += (DACIATCImageIndent + imageWidth);
+        result.size.width -= (DACIATCImageIndent + imageWidth);
     } else {
         result = NSZeroRect;
     }
@@ -95,13 +97,13 @@
 
 - (void)editWithFrame:(NSRect)aRect inView:(NSView *)controlView editor:(NSText *)textObj delegate:(id)anObject event:(NSEvent *)theEvent {
     NSRect textFrame, imageFrame;
-    NSDivideRect (aRect, &imageFrame, &textFrame, 3 + [image size].width, NSMinXEdge);
+    NSDivideRect (aRect, &imageFrame, &textFrame, DACIATCImageIndent + [image size].width, NSMinXEdge);
     [super editWithFrame: textFrame inView: controlView editor:textObj delegate:anObject event: theEvent];
 }
 
 - (void)selectWithFrame:(NSRect)aRect inView:(NSView *)controlView editor:(NSText *)textObj delegate:(id)anObject start:(NSInteger)selStart length:(NSInteger)selLength {
     NSRect textFrame, imageFrame;
-    NSDivideRect (aRect, &imageFrame, &textFrame, 3 + [image size].width, NSMinXEdge);
+    NSDivideRect (aRect, &imageFrame, &textFrame, DACIATCImageIndent + [image size].width, NSMinXEdge);
     [super selectWithFrame: textFrame inView: controlView editor:textObj delegate:anObject start:selStart length:selLength];
 }
 
@@ -109,12 +111,12 @@
     if (image != nil) {
         NSRect	imageFrame;
         NSSize imageSize = [image size];
-		NSDivideRect(cellFrame, &imageFrame, &cellFrame, 3 + imageSize.width, NSMinXEdge);
+		NSDivideRect(cellFrame, &imageFrame, &cellFrame, DACIATCImageIndent + imageSize.width, NSMinXEdge);
         if ([self drawsBackground]) {
             [[self backgroundColor] set];
             NSRectFill(imageFrame);
         }
-        imageFrame.origin.x += 3;
+        imageFrame.origin.x += DACIATCImageIndent;
         imageFrame.size = imageSize;
 
         if ([controlView isFlipped])
@@ -143,7 +145,7 @@
 
 - (NSSize)cellSize {
     NSSize cellSize = [super cellSize];
-    cellSize.width += (image ? [image size].width : 0) + 3;
+    cellSize.width += (image ? [image size].width : 0) + DACIATCImageIndent;
     return cellSize;
 }
 
@@ -158,9 +160,9 @@
         // This code closely mimics drawWithFrame:inView:
         NSSize imageSize = [image size];
         NSRect imageFrame;
-        NSDivideRect(cellFrame, &imageFrame, &cellFrame, 3 + imageSize.width, NSMinXEdge);
+        NSDivideRect(cellFrame, &imageFrame, &cellFrame, DACIATCImageIndent + imageSize.width, NSMinXEdge);
         
-        imageFrame.origin.x += 3;
+        imageFrame.origin.x += DACIATCImageIndent;
         imageFrame.size = imageSize;
         // If the point is in the image rect, then it is a content hit
         if (NSMouseInRect(point, imageFrame, [controlView isFlipped])) {

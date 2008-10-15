@@ -117,9 +117,9 @@
 	{
 		if( ![ourSearch searchBusy] ){
 			[ourSearch startSearch];
-			NSLog(@"Research: %@", ourSearch);
+			// NSLog(@"Research: %@", ourSearch);
 		}
-		NSLog(@"Busy: %@", ourSearch);
+		// NSLog(@"Busy: %@", ourSearch);
 	}
 //	NSLog(@"No Search?: %@", self);
 
@@ -147,6 +147,18 @@
 		[self reloadData];
 	}
 //	NSLog(@"Search Finished: %@", ourSearch);
+}
+
+- (BOOL)validateMenuItem:(NSMenuItem *)menuItem {
+
+	BOOL isValid = YES;
+	
+	if( [[self delegate] respondsToSelector:@selector(validateMenuItem:)] )
+		isValid = [[self delegate] validateMenuItem:menuItem];
+	else
+        isValid = [super validateMenuItem:menuItem];
+	
+	return isValid;
 }
 
 // This NSOutlineView subclass is necessary only if you want to delete items by dragging them to the trash.  

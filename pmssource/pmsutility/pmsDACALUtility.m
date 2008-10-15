@@ -118,6 +118,8 @@ DACALSlotNum	CFURLGetSlotNumber( CFURLRef url, Boolean onlySlotFolders )
 	 */
 }
 
+int		DACUtility_nextIconID = 0;
+
 IconRef	CFURLGetIcon( CFAllocatorRef allocator, CFURLRef url, OSStatus* outError )
 {
 	FSRef			theFileRef;
@@ -141,7 +143,16 @@ IconRef	CFURLGetIcon( CFAllocatorRef allocator, CFURLRef url, OSStatus* outError
 	}
 	
 	if( CFURLIsSlot(url) ) {
-		outResult = GetIconRef( kOnSystemDisk, kDACALCreatorType, kGenericCDROMIcon, &theOutputIcon );
+		
+		NSURL*		iconURL = [NSURL URLWithString:@".DACDiscIcon.icns" relativeToURL:(NSURL*)url];
+		FSRef		iconFileRef;
+
+		if( iconURL ) CFURLGetFSRef( (CFURLRef)iconURL, &iconFileRef );
+
+		if( FSIsFSRefValid(&iconFileRef) )
+			outResult = RegisterIconRefFromFSRef( kDACALCarouselsFolderType, DACUtility_nextIconID++, &iconFileRef, &theOutputIcon );
+		if( outResult != 0 )
+			outResult = GetIconRef( kOnSystemDisk, kDACALCreatorType, kGenericCDROMIcon, &theOutputIcon );
 		if( outResult != 0 ) printf( "GetIconRef: %d\n", (int)outResult );
 		//else printf("Assigned disc icon!\n");
 		AcquireIconRef(theOutputIcon);
@@ -149,16 +160,29 @@ IconRef	CFURLGetIcon( CFAllocatorRef allocator, CFURLRef url, OSStatus* outError
 	}
 	
 	if( (theSlotTopPath != NULL ) && CFURLIsSlot( theSlotTopPath ) ) {
-		//slotIconFlavor = CFURLCopyItemFlavor( theSlotTopPath, &outResult );
-		//if( [(NSString*)PADINDEX_FLAVORVALUE_MUSIC compare:(NSString*)slotIconFlavor] == NSOrderedSame )
-		//	slotIconType = 'cdda';				// CDAudioVolume
-		//else if( [(NSString*)PADINDEX_FLAVORVALUE_MOVIE compare:(NSString*)slotIconFlavor] == NSOrderedSame )
-		//	slotIconType = 'dvd ';				// public.dvd-media
-		//else
-		//	slotIconType = kGenericCDROMIcon;   // public.cd-media
-		slotIconType = kGenericCDROMIcon;   
-		theOutputIcon = DACALGetIconRefForType(slotIconType);
-		//AcquireIconRef(theOutputIcon);
+
+		NSURL*		iconURL = [NSURL URLWithString:@"../.DACDiscIcon.icns" relativeToURL:(NSURL*)url];
+		FSRef		iconFileRef;
+		
+		if( iconURL ) CFURLGetFSRef( (CFURLRef)iconURL, &iconFileRef );
+		
+		if( FSIsFSRefValid(&iconFileRef) )
+			outResult = RegisterIconRefFromFSRef( kDACALCarouselsFolderType, DACUtility_nextIconID++, &iconFileRef, &theOutputIcon );
+		if( outResult != 0 )
+		{	
+			//slotIconFlavor = CFURLCopyItemFlavor( theSlotTopPath, &outResult );
+			//if( [(NSString*)PADINDEX_FLAVORVALUE_MUSIC compare:(NSString*)slotIconFlavor] == NSOrderedSame )
+			//	slotIconType = 'cdda';				// CDAudioVolume
+			//else if( [(NSString*)PADINDEX_FLAVORVALUE_MOVIE compare:(NSString*)slotIconFlavor] == NSOrderedSame )
+			//	slotIconType = 'dvd ';				// public.dvd-media
+			//else
+			//	slotIconType = kGenericCDROMIcon;   // public.cd-media
+			slotIconType = kGenericCDROMIcon;   
+			theOutputIcon = DACALGetIconRefForType(slotIconType);
+			//AcquireIconRef(theOutputIcon);
+			goto BAIL;
+		}
+		AcquireIconRef(theOutputIcon);
 		goto BAIL;
 	}
 	
@@ -355,7 +379,15 @@ BOOL			BooleanToBOOL(Boolean	inBoolean)
 Boolean			BOOLToBoolean(BOOL		inBool)
 	{ return(inBool == YES ); }
 
+CFBooleanRef	BooleanToCFBoolean(Boolean	inBoolean)
+	{ return( (inBoolean == TRUE) ? kCFBooleanTrue : kCFBooleanFalse ); }
 
+CFBooleanRef	BOOLToCFBoolean(BOOL	inBool)
+	{ return( (inBool == YES) ? kCFBooleanTrue : kCFBooleanFalse ); }
 
+BOOL			CFBooleanToBOOL(CFBooleanRef inCFBoolean)
+	{ return( BooleanToBOOL(CFBooleanGetValue(inCFBoolean)) ); }
 
+Boolean			CFBooleanToBoolean(CFBooleanRef inCFBoolean)
+	{ return( CFBooleanGetValue(inCFBoolean) ); }
 

@@ -258,7 +258,7 @@ static DACDriverInstaller*	DACDriverInstaller_shared = nil;
 	
 	taskStdOut = [[NSString alloc] initWithData:[pipeHandle readDataToEndOfFile] encoding:NSASCIIStringEncoding];
 	
-	NSLog(@"Let there be results: %@", taskStdOut);
+	//NSLog(@"Let there be results: %@", taskStdOut);
 	
 	if( [taskStdOut length] > 0 )
 	{

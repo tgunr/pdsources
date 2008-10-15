@@ -26,6 +26,15 @@
 #define COLUMNID_TYPE				@"TypeColumn"
 #define COLUMNID_SCORE				@"ScoreColumn"
 #define COLUMNID_CHECKEDOUT			@"CheckOutColumn"
+#define COLUMNID_DATECHECKEDOUT		@"DateCheckedOutColumn"
+
+#define COLUMNID_COMMENT			@"CommentColumn"
+#define COLUMNID_TAGS				@"TagsColumn"
+#define COLUMNID_STARS				@"StarsColumn"
+#define COLUMNID_RATING				@"RatingColumn"
+
+#define COLUMNID_PREFSCHECKBOX		@"PrefCheckedColumn"
+
 //#define COLUMNID_NODE_KIND		@"NodeKindColumn"
 
 @class SimpleTreeNode;
@@ -59,6 +68,7 @@
 - (void)setTreeRoot:(SimpleTreeNode*)root;
 - (void)addTreeRoot:(SimpleTreeNode*)newChild;
 - (void)addDataToTree:(SimpleTreeNode*)newChild startEdit:(BOOL)doEdit;
+- (void)recreateInitialTree;
 
 - (id)dataSource;
 
@@ -107,8 +117,10 @@
 
 - (SimpleTreeNode*)createInitialTree:(id)tree;
 - (void)outlineViewInit;
+- (void)recreateInitialTree;
 - (void)outlineViewAction:(id)tree;
 - (void)outlineViewDoubleAction:(id)tree;
+- (NSArray*)ctmClickedRows;
 - (void)menuNeedsUpdate:(NSMenu*)menu;
 - (void)menuNeedsUpdate:(NSMenu*)menu fromTree:(id)tree;
 - (void)nodeNameChanged:(SimpleTreeNode*)theNode toName:(NSString*)theName;
@@ -120,8 +132,15 @@
 - (BOOL)outlineView:(NSOutlineView *)ov acceptDrop:(id <NSDraggingInfo>)info item:(id)item childIndex:(NSInteger)childIndex;
 - (BOOL)performDropOperation:(id <NSDraggingInfo>)info onNode:(TreeNode *)parentNode atIndex:(NSInteger)childIndex;
 
+- (id)objectValueForTableColumn:(NSTableColumn *)tableColumn byItem:(id)item;
+- (void)setObjectValue:(id)object forTableColumn:(NSTableColumn *)tableColumn byItem:(id)item;
+
 - (BOOL)shouldShowCellExpansionForTableColumn:(NSTableColumn *)tc item:(id)inItem;
 - (NSString*)toolTipForCell:(NSCell *)cell rect:(NSRectPointer)inRect tableColumn:(NSTableColumn *)tc item:(id)inItem mouseLocation:(NSPoint)inMouseLocation;
+
+- (void)updateChangesForItem:(id)changeItem withAction:(BOOL)doAction;
+- (void)updateChangesForItems:(NSArray*)changedItems withAction:(BOOL)doAction;
+- (void)updateChangesWithAction:(BOOL)doAction;
 
 @end
 

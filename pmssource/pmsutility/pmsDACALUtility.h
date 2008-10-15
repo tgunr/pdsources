@@ -34,6 +34,10 @@ OSStatus		CFURLSetItemFlavor( CFURLRef url, CFStringRef newFlavor );
 CFStringRef		CFURLCopyReferenceTitle( CFAllocatorRef inAllocator, CFURLRef url, OSStatus* outError );
 OSStatus		CFURLSetReferenceTitle( CFURLRef url, CFStringRef newTitle );
 
-BOOL			BooleanToBOOL(Boolean	inBoolean);
-Boolean			BOOLToBoolean(BOOL		inBool);
+BOOL			BooleanToBOOL		(Boolean		inBoolean);
+Boolean			BOOLToBoolean		(BOOL			inBool);
+CFBooleanRef	BooleanToCFBoolean	(Boolean		inBoolean);
+CFBooleanRef	BOOLToCFBoolean		(BOOL			inBool);
+BOOL			CFBooleanToBOOL		(CFBooleanRef	inCFBoolean);
+Boolean			CFBooleanToBoolean	(CFBooleanRef	inCFBoolean);
 

@@ -12,26 +12,34 @@
 #define PADMATCHQUEUE_THRESHOLD		22
 
 const	NSString*			kPADSearchByTitle				= @"Title";
-const	NSString*			kPADSearchByTitleID				= @"com.polymicrosystems.pickadisk.searchterm.title";
-const	NSString*			kPADSearchByType				= @"UserType";
-const	NSString*			kPADSearchByTypeID				= @"com.polymicrosystems.pickadisk.searchterm.usertype";
-const	NSString*			kPADSearchByDateAdded			= @"DateAdded";
-const	NSString*			kPADSearchByDateAddedID			= @"com.polymicrosystems.pickadisk.searchterm.dateadded";
-const	NSString*			kPADSearchByFileUTI				= @"FileUTI";
-const	NSString*			kPADSearchByFileUTIID			= @"com.polymicrosystems.pickadisk.searchterm.fileuti";
-const	NSString*			kPADSearchByDateCheckedOut		= @"DateCheckedOut";
-const	NSString*			kPADSearchByDateCheckedOutID	= @"com.polymicrosystems.pickadisk.searchterm.datecheckedout";
-const	NSString*			kPADSearchByDateCheckedIn		= @"DateCheckedIn";
-const	NSString*			kPADSearchByDateCheckedInID		= @"com.polymicrosystems.pickadisk.searchterm.datecheckedin";
-const	NSString*			kPADSearchByDateCheckedInOut	= @"DateCheckedInOut";
-const	NSString*			kPADSearchByDateCheckedInOutID	= @"com.polymicrosystems.pickadisk.searchterm.datecheckedinout";
-
+const	NSString*			kPADSearchByTitleID					= @"com.polymicrosystems.pickadisk.searchterm.title";
+const	NSString*			kPADSearchBySlot				= @"Slot";
+const	NSString*			kPADSearchBySlotID					= @"com.polymicrosystems.pickadisk.searchterm.slot";
+const	NSString*			kPADSearchByType				= @"Library Type";
+const	NSString*			kPADSearchByTypeID					= @"com.polymicrosystems.pickadisk.searchterm.user.type";
+const	NSString*			kPADSearchByDateAdded			= @"Date Added";
+const	NSString*			kPADSearchByDateAddedID				= @"com.polymicrosystems.pickadisk.searchterm.date.added";
+const	NSString*			kPADSearchByFileUTI				= @"File Type";
+const	NSString*			kPADSearchByFileUTIID				= @"com.polymicrosystems.pickadisk.searchterm.uti.file";
+const	NSString*			kPADSearchByDateCheckedOut		= @"Date Checked Out";
+const	NSString*			kPADSearchByDateCheckedOutID		= @"com.polymicrosystems.pickadisk.searchterm.date.checkedout";
+const	NSString*			kPADSearchByDateCheckedIn		= @"Date Checked In";
+const	NSString*			kPADSearchByDateCheckedInID			= @"com.polymicrosystems.pickadisk.searchterm.date.checkedin";
+const	NSString*			kPADSearchByDateCheckedInOut	= @"Date Checked In or Out";
+const	NSString*			kPADSearchByDateCheckedInOutID		= @"com.polymicrosystems.pickadisk.searchterm.date.checkedinout";
+const	NSString*			kPADSearchByComments			= @"User Comments";
+const	NSString*			kPADSearchByCommentsID				= @"com.polymicrosystems.pickadisk.searchterm.user.comments";
+const	NSString*			kPADSearchByTags				= @"User Tags";
+const	NSString*			kPADSearchByTagsID					= @"com.polymicrosystems.pickadisk.searchterm.user.tags";
+const	NSString*			kPADSearchByStars				= @"User Stars";
+const	NSString*			kPADSearchByStarsID					= @"com.polymicrosystems.pickadisk.searchterm.user.stars";
 
 const	PADSearchRelevance	kPADSearchWeightNormal			= 1.0;
 const	PADSearchRelevance	kPADSearchWeightHalf			= 0.5;
 const	PADSearchRelevance	kPADSearchWeightNone			= 0.0;
 
 const	NSString*			kPADSearchTermKeyValue			= @"Value";
+const	NSString*			kPADSearchTermKeyConjunction	= @"Conjunction";
 const	NSString*			kPADSearchTermKeyOrder			= @"Order";
 const	NSString*			kPADSearchTermKeyWeight			= @"Weight";
 
@@ -72,6 +80,10 @@ static NSMutableArray*		gPADSearchTerms = nil;
 
 - (int)termOrder { return termOrder; }
 - (void)setTermOrder:(int)id { termOrder = id; }
+
+- (PADSearchConjunction)termConjuntion { return termConjuntion; }
+- (void)setTermConjunction:(PADSearchConjunction)newConjunction
+	{ termConjuntion = newConjunction; }
 
 - (float)termWeight { return termWeight; }
 - (void)setTermWeight:(float)weight { termWeight = weight; }
@@ -125,14 +137,19 @@ static NSMutableArray*		gPADSearchTerms = nil;
 
 - (PADSearchRelevance)compareForSearch:(id)value withOptions:(NSMutableDictionary*)options
 {	
-	id		ourData = [self compareData];
+	id						ourData = [self compareData];
+	PADSearchRelevance		rank = 0.0;
+	NSStringCompareOptions	findOptions = NSCaseInsensitiveSearch || NSNumericSearch || NSDiacriticInsensitiveSearch || NSWidthInsensitiveSearch;
+
+	if( ourData == nil ) rank = 1.0;
+	else if( [ourData isKindOfClass:[NSString class]] )
+		rank = [ourData rankWithString:value compareOptions:findOptions];
+	else if( [ourData isKindOfClass:[NSDate class]] )
+		rank = [ourData rankWithDate:value withOptions:options];
+	else if( [ourData isEqual:value] )
+		rank = 1.0;
 	
-	if( ourData == nil ) return 1.0;
-	if( [ourData isKindOfClass:[NSString class]] )
-		if( [ourData localizedCaseInsensitiveCompare:value] == NSOrderedSame ) return 1.0;
-	if( [ourData isEqual:value] ) return 1.0;
-	
-	return 0.0;
+	return rank;
 }
 
 - (PADSearchTerm*)initWithTitle:(NSString*)title termID:(NSString*)newID getSelector:(SEL)getSel compareSelector:(SEL)cmpSel compareData:(id)data andOptions:(NSDictionary*)options
@@ -143,12 +160,14 @@ static NSMutableArray*		gPADSearchTerms = nil;
 		[self setTermID:newID];
 		[self setGetSelector:getSel];
 		[self setCompareData:data];
+		[self setTermConjunction:kPADSearchConjunctionNormal];
 
 		if( cmpSel ) [self setCompareSelector:cmpSel];
 		else [self setCompareSelector:@selector(compareForSearch:withOptions:)];
-		
-		[self setTermOptions:[[NSMutableDictionary alloc] initWithCapacity:10]];
-		if( options ) [[self termOptions] addEntriesFromDictionary:options];
+				
+		[self setTermOptions:[[NSMutableDictionary alloc] initWithCapacity:0]];
+		if( options )
+			[[self termOptions] addEntriesFromDictionary:options];
 	}
 		
 	return self;
@@ -174,12 +193,16 @@ void			PADSearchTermSetup()
 	[PADSearchService sharedSearch];
 	
 	PADAddSearchTerm( kPADSearchByTitle, kPADSearchByTitleID, @selector(nodeData), @selector(searchForName:withOptions:), nil, nil );
+	PADAddSearchTerm( kPADSearchBySlot, kPADSearchBySlotID, @selector(nodeData), @selector(searchForSlot:withOptions:), nil, nil );
 	PADAddSearchTerm( kPADSearchByType, kPADSearchByTypeID, @selector(nodeData), @selector(searchForFlavor:withOptions:), nil, nil );
 	PADAddSearchTerm( kPADSearchByDateAdded, kPADSearchByDateAddedID, @selector(nodeData), @selector(searchForDateAdded:withOptions:), nil, nil );
 	PADAddSearchTerm( kPADSearchByFileUTI, kPADSearchByFileUTIID, @selector(nodeData), @selector(searchForFileUTI:withOptions:), nil, nil );
 	PADAddSearchTerm( kPADSearchByDateCheckedIn, kPADSearchByDateCheckedInID, @selector(nodeData), @selector(searchForDateCheckedIn:withOptions:), nil, nil );
 	PADAddSearchTerm( kPADSearchByDateCheckedOut, kPADSearchByDateCheckedOutID, @selector(nodeData), @selector(searchForDateCheckedOut:withOptions:), nil, nil );
 	PADAddSearchTerm( kPADSearchByDateCheckedInOut, kPADSearchByDateCheckedInOutID, @selector(nodeData), @selector(searchForDateCheckedInOut:withOptions:), nil, nil );
+	PADAddSearchTerm( kPADSearchByComments, kPADSearchByCommentsID, @selector(nodeData), @selector(searchForComments:withOptions:), nil, nil );
+	PADAddSearchTerm( kPADSearchByTags, kPADSearchByTagsID, @selector(nodeData), @selector(searchForTags:withOptions:), nil, nil );
+	PADAddSearchTerm( kPADSearchByStars, kPADSearchByStarsID, @selector(nodeData), @selector(searchForStars:withOptions:), nil, nil );
 }
 
 void PADAddSearchTerm( const NSString* title, const NSString* newID, SEL getSel, SEL cmpSel, id data, NSDictionary* options )
@@ -428,12 +451,13 @@ PADSearchTerm*	PADCopySearchTermWithTitleOrID( NSString* aTermName )
 }
 
 
--(void)addSearchTerm:(id)inTerm forValue:(id)inValue inOrder:(int)order withWeight:(float)weight andOptions:(NSDictionary*)options
+-(void)addSearchTerm:(id)inTerm forValue:(id)inValue inOrder:(int)order andConjunction:(PADSearchConjunction)inConj withWeight:(float)weight andOptions:(NSDictionary*)options
 {
 	id		setValue = nil;
 	NSMutableDictionary*	newOptions = [NSMutableDictionary dictionaryWithCapacity:0];
 	NSNumber*				setOrder = nil;
 	NSNumber*				setWeight = [NSNumber numberWithFloat:weight];
+	NSNumber*				setConj = [NSNumber numberWithInt:inConj];
 	
 	if( inValue != nil ) setValue = inValue;
 	else setValue = [NSNull null];
@@ -442,8 +466,9 @@ PADSearchTerm*	PADCopySearchTermWithTitleOrID( NSString* aTermName )
 	setOrder = [NSNumber numberWithInt:order];
 	
 	if( options ) [newOptions addEntriesFromDictionary:options];
-	[newOptions setObject:setValue forKey:kPADSearchTermKeyValue];
-	[newOptions setObject:setOrder forKey:kPADSearchTermKeyOrder];
+	[newOptions setObject:setValue	forKey:kPADSearchTermKeyValue];
+	[newOptions setObject:setOrder	forKey:kPADSearchTermKeyOrder];
+	[newOptions setObject:setConj	forKey:kPADSearchTermKeyConjunction];
 	[newOptions setObject:setWeight forKey:kPADSearchTermKeyWeight];
 	
 	[searchTermDictionary setObject:newOptions forKey:inTerm];
@@ -457,6 +482,7 @@ PADSearchTerm*	PADCopySearchTermWithTitleOrID( NSString* aTermName )
 	NSMutableDictionary* keyDict = nil;
 	id					keyValue = nil;
 	id					tempTerm = nil;
+	PADSearchConjunction	keyConj = kPADSearchConjunctionNormal;
 	float				keyWeight = 0;
 	int					fillLoop, keyIndex = 0;
 	
@@ -469,12 +495,14 @@ PADSearchTerm*	PADCopySearchTermWithTitleOrID( NSString* aTermName )
 		keyDict = [searchTermDictionary objectForKey:keyName];
 		keyValue = [keyDict objectForKey:kPADSearchTermKeyValue];
 		keyIndex = [[keyDict objectForKey:kPADSearchTermKeyOrder] intValue] - 1;
+		keyConj = [[keyDict objectForKey:kPADSearchTermKeyConjunction] intValue];
 		keyWeight = [[keyDict objectForKey:kPADSearchTermKeyWeight] floatValue];
 
 		if( tempTerm != nil ) {
 			if( [[NSNull null] isEqual:keyValue] ) keyValue = nil;
 			[tempTerm setCompareData:keyValue];
 			[tempTerm setTermOptions:keyDict];
+			[tempTerm setTermConjunction:keyConj];
 			[tempTerm setTermWeight:keyWeight];
 			[newTerms replaceObjectAtIndex:keyIndex withObject:tempTerm];
 		} else
@@ -487,7 +515,7 @@ PADSearchTerm*	PADCopySearchTermWithTitleOrID( NSString* aTermName )
 {
 	if( ![self searchBusy] ) {
 		[self dirtySearchResults];
-		NSLog(@"Results Dirty: %@", self);
+		// NSLog(@"Results Dirty: %@", self);
 	}
 }
 
@@ -515,6 +543,19 @@ PADSearchTerm*	PADCopySearchTermWithTitleOrID( NSString* aTermName )
 	return self;
 }
 
++(id)searchCarouselsForStars:(NSString*)inUTI resultType:(const NSString*)inType
+{ 
+	NSDictionary*		optionDict = [NSDictionary dictionaryWithObject:inType forKey:kPADSearchOptionResultType];
+	PADSearchRequest*	newRequest = [[PADSearchRequest alloc] initSearchInLocations:nil andOptions:optionDict];
+	
+	if( newRequest )
+	{
+		[newRequest addSearchTerm:kPADSearchByStars forValue:inUTI inOrder:0 andConjunction:kPADSearchConjunctionNormal withWeight:kPADSearchWeightNormal andOptions:nil];
+	}
+	
+	return newRequest;
+}
+
 +(id)searchCarouselsForFileUTI:(NSString*)inUTI resultType:(const NSString*)inType
 { 
 	NSDictionary*		optionDict = [NSDictionary dictionaryWithObject:inType forKey:kPADSearchOptionResultType];
@@ -522,7 +563,7 @@ PADSearchTerm*	PADCopySearchTermWithTitleOrID( NSString* aTermName )
 	
 	if( newRequest )
 	{
-		[newRequest addSearchTerm:kPADSearchByFileUTI forValue:inUTI inOrder:0 withWeight:kPADSearchWeightNormal andOptions:nil];
+		[newRequest addSearchTerm:kPADSearchByFileUTI forValue:inUTI inOrder:0 andConjunction:kPADSearchConjunctionNormal withWeight:kPADSearchWeightNormal andOptions:nil];
 	}
 	
 	return newRequest;
@@ -539,7 +580,7 @@ PADSearchTerm*	PADCopySearchTermWithTitleOrID( NSString* aTermName )
 	
 	if( newRequest )
 	{
-		[newRequest addSearchTerm:kPADSearchByDateAdded forValue:inDate inOrder:0 withWeight:kPADSearchWeightNormal andOptions:dateOptions];
+		[newRequest addSearchTerm:kPADSearchByDateAdded forValue:inDate inOrder:0 andConjunction:kPADSearchConjunctionNormal withWeight:kPADSearchWeightNormal andOptions:dateOptions];
 	}
 	
 	return newRequest;
@@ -556,7 +597,7 @@ PADSearchTerm*	PADCopySearchTermWithTitleOrID( NSString* aTermName )
 	
 	if( newRequest )
 	{
-		[newRequest addSearchTerm:kPADSearchByDateCheckedInOut forValue:inDate inOrder:0 withWeight:kPADSearchWeightNormal andOptions:dateOptions];
+		[newRequest addSearchTerm:kPADSearchByDateCheckedInOut forValue:inDate inOrder:0 andConjunction:kPADSearchConjunctionNormal withWeight:kPADSearchWeightNormal andOptions:dateOptions];
 	}
 	
 	return newRequest;
@@ -569,21 +610,50 @@ PADSearchTerm*	PADCopySearchTermWithTitleOrID( NSString* aTermName )
 	
 	if( newRequest )
 	{
-		[newRequest addSearchTerm:kPADSearchByType forValue:inKind inOrder:0 withWeight:kPADSearchWeightNormal andOptions:nil];
+		[newRequest addSearchTerm:kPADSearchByType forValue:inKind inOrder:0 andConjunction:kPADSearchConjunctionNormal withWeight:kPADSearchWeightNormal andOptions:nil];
 	}
 	
 	return newRequest;
 }
 
-+(id)searchCarouselsForTitle:(NSString*)inTerm
++(id)searchCarouselsForSlots:(NSString*)inSlot resultType:(const NSString*)inType
+{ 
+	NSDictionary*		optionDict = [NSDictionary dictionaryWithObject:inType forKey:kPADSearchOptionResultType];
+	PADSearchRequest*	newRequest = [[PADSearchRequest alloc] initSearchInLocations:nil andOptions:optionDict];
+	
+	if( newRequest )
+	{
+		[newRequest addSearchTerm:kPADSearchBySlot forValue:inSlot inOrder:0 andConjunction:kPADSearchConjunctionNormal withWeight:kPADSearchWeightNormal andOptions:nil];
+	}
+	
+	return newRequest;
+}
+
++(id)searchCarouselsForTitle:(NSString*)inKind resultType:(const NSString*)inType
+{ 
+	NSDictionary*		optionDict = [NSDictionary dictionaryWithObject:inType forKey:kPADSearchOptionResultType];
+	PADSearchRequest*	newRequest = [[PADSearchRequest alloc] initSearchInLocations:nil andOptions:optionDict];
+	
+	if( newRequest )
+	{
+		[newRequest addSearchTerm:kPADSearchByTitle forValue:inKind inOrder:0 andConjunction:kPADSearchConjunctionNormal withWeight:kPADSearchWeightNormal andOptions:nil];
+	}
+	
+	return newRequest;
+}
+
++(id)searchCarouselsForTerm:(NSString*)inTerm
 { 
 	NSDictionary*		optionDict = [NSDictionary dictionaryWithObject:kPADSearchOptionResultTypeLeaf forKey:kPADSearchOptionResultType];
 	PADSearchRequest*	newRequest = [[PADSearchRequest alloc] initSearchInLocations:nil andOptions:optionDict];
 	
 	if( newRequest )
 	{
-		[newRequest addSearchTerm:kPADSearchByTitle forValue:inTerm inOrder:0 withWeight:kPADSearchWeightNormal andOptions:nil];
-		//[newRequest addSearchTerm:kPADSearchByType forValue:nil inOrder:0 withWeight:0.3 andOptions:nil];
+		[newRequest addSearchTerm:kPADSearchByTitle forValue:inTerm inOrder:0 andConjunction:kPADSearchConjunctionNormal withWeight:kPADSearchWeightNormal andOptions:nil];
+		[newRequest addSearchTerm:kPADSearchBySlot forValue:inTerm inOrder:0 andConjunction:kPADSearchConjunctionNormal withWeight:kPADSearchWeightNormal andOptions:nil];
+		[newRequest addSearchTerm:kPADSearchByComments forValue:inTerm inOrder:0 andConjunction:kPADSearchConjunctionNormal withWeight:kPADSearchWeightNormal andOptions:nil];
+		[newRequest addSearchTerm:kPADSearchByTags forValue:inTerm inOrder:0 andConjunction:kPADSearchConjunctionNormal withWeight:kPADSearchWeightNormal andOptions:nil];
+		[newRequest addSearchTerm:kPADSearchByStars forValue:inTerm inOrder:0 andConjunction:kPADSearchConjunctionNormal withWeight:kPADSearchWeightNormal andOptions:nil];
 	}
 
 	return newRequest;
@@ -740,11 +810,16 @@ PADSearchTerm*	PADCopySearchTermWithTitleOrID( NSString* aTermName )
 
 -(void)main
 {
-	SimpleTreeNode*		searchNode = nil;
-	NSEnumerator*		termEnumerator = [searchTerms objectEnumerator];
-	PADSearchRelevance	searchRelevance = 0.0;
-	PADSearchTerm*		thisTerm = nil;
-	float				termsWeight = 0.0;
+	SimpleTreeNode*			searchNode = nil;
+	NSEnumerator*			termEnumerator = [searchTerms objectEnumerator];
+	PADSearchRelevance		searchRelevance = 0.0;
+	PADSearchRelevance		searchRank = 0.0;
+	PADSearchConjunction	searchConjunction = kPADSearchConjunctionNormal;
+	PADSearchTerm*			thisTerm = nil;
+	float					termsCount = (float)[searchTerms count];
+	float					termsWeight = 0.0;
+	BOOL					isNot = NO;
+	BOOL					isAnd = NO;
 	
 	[self pushChildrenInQueue:searchTree];
 
@@ -760,9 +835,24 @@ STARTSEARCH:
 		while ((thisTerm = (PADSearchTerm*)[termEnumerator nextObject])) 
 		{
 			if( [thisTerm isKindOfClass:[NSNull class]] ) continue;
-			searchRelevance += [thisTerm compareWithElement:searchNode];
-			if( searchRelevance == 0.0 ) break;
-			termsWeight += [thisTerm termWeight];
+			
+			searchConjunction = [thisTerm termConjuntion];
+			isNot = (searchConjunction & kPADSearchConjunctionNot);
+			isAnd = (searchConjunction & kPADSearchConjunctionAnd);
+			
+			if( [self bailIfCancelled] ) return;
+			searchRank = [thisTerm compareWithElement:searchNode];
+			
+			if( isNot == YES ) {
+				if( searchRank > 0.0 ) searchRank = 0.0;
+				else searchRank = 1.0;
+			}
+			if( (isAnd == YES) && (searchRank == 0.0) )
+				break;
+			if( searchRank > 0.0 ) {
+				searchRelevance += searchRank / termsCount;
+				termsWeight += [thisTerm termWeight] / termsCount;
+			}
 		}
 		if( [self bailIfCancelled] ) return;
 		

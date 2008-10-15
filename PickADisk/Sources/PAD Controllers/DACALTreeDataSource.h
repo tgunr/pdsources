@@ -53,6 +53,9 @@
 	DACALIndexState*			sortedSelection;
 }
 
+-(IBAction)ctmRefreshSearch:(id)sender;
+-(IBAction)ctmDeleteSelection:(id)sender;
+
 + (id)shared;
 
 - (SimpleTreeNode*)findTreeNodeForDevice:(DACALDeviceRef)theBoxRef;
@@ -66,6 +69,9 @@
 - (void)doAction;
 
 - (void)draggedImage:(NSImage *)image endedAt:(NSPoint)screenPoint operation:(NSDragOperation)operation;
+
+-(void)orderForUser:(SimpleTreeNode*)treeNode;
+-(void)saveUserOrder;
 
 @end
 

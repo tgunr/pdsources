@@ -22,7 +22,7 @@
 #import "LicenseController.h"
 
 #define PAD_BUSYBODY_DELAY	0.1
-#define PAD_PREFS_VERSION	(const char*)"0.4"
+#define PAD_PREFS_VERSION	(const char*)"0.5"
 
 @implementation AppController
 static AppController *shared;
@@ -134,10 +134,14 @@ static AppController *shared;
 	[defaultPrefs setObject:[NSNumber numberWithInt:2] forKey:@"PADScanDepthImage"];
 	[defaultPrefs setObject:[NSNumber numberWithInt:1] forKey:@"PADScanDepthVideo"];
 	
-	[defaultPrefs setObject:boolTRUE forKey:@"PADColumnDateAdded"];
+	[defaultPrefs setObject:boolFALSE forKey:@"PADColumnDateAdded"];
 	[defaultPrefs setObject:boolTRUE forKey:@"PADColumnSlotNum"];
 	[defaultPrefs setObject:boolTRUE forKey:@"PADColumnSlotType"];
 	[defaultPrefs setObject:boolTRUE forKey:@"PADColumnCheckedOut"];
+	[defaultPrefs setObject:boolTRUE forKey:@"PADColumnDateCheckedOut"];
+	[defaultPrefs setObject:boolTRUE forKey:@"PADColumnComments"];
+	[defaultPrefs setObject:boolFALSE forKey:@"PADColumnTags"];
+	[defaultPrefs setObject:boolFALSE forKey:@"PADColumnRating"];
 	
 	[defaultPrefs setObject:boolFALSE forKey:@"PADSearchResultsGrouped"];
 	
@@ -184,11 +188,11 @@ static AppController *shared;
 	
 	DACALClientInitialize();
 	
-	//	[[LicenseController shared] showNotLicensed];
+	//[[LicenseController shared] showNotLicensed];
 	
 	//	if (!valid)
 	//		NSLog(@"License invalid");
-	//		
+			
 	PADBOX_VALID_END
 	if( !PADBOX_VALIDATED ) 
 		NSLog(@"PickADisk has expired.");
@@ -305,6 +309,8 @@ static AppController *shared;
 - (IBAction)idUnits:(id)sender { [toolbarController clickIdentify:self]; }
 - (IBAction)resetCarousel:(id)sender { [toolbarController clickReset:self]; }
 - (IBAction)checkInOut:(id)sender { [toolbarController clickCheckOut:self]; }
+- (IBAction)checkIn:(id)sender { [toolbarController clickCheckIn:self]; }
+- (IBAction)checkOut:(id)sender { [toolbarController clickCheckOut:self]; }
 - (IBAction)retractDoor:(id)sender { [toolbarController clickCloseDoor:self]; }
 - (IBAction)gotoSlot:(id)sender { NSLog(@"Unimplemented feature."); }
 

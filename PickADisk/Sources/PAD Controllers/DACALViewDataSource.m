@@ -15,6 +15,11 @@
 	[[NSUserDefaultsController sharedUserDefaultsController] removeObserver:self forKeyPath:@"values.PADColumnSlotType"];
 	[[NSUserDefaultsController sharedUserDefaultsController] removeObserver:self forKeyPath:@"values.PADColumnSlotNum"];
 	[[NSUserDefaultsController sharedUserDefaultsController] removeObserver:self forKeyPath:@"values.PADColumnDateAdded"];
+	[[NSUserDefaultsController sharedUserDefaultsController] removeObserver:self forKeyPath:@"values.PADColumnCheckedOut"];
+	[[NSUserDefaultsController sharedUserDefaultsController] removeObserver:self forKeyPath:@"values.PADColumnDateCheckedOut"];
+	[[NSUserDefaultsController sharedUserDefaultsController] removeObserver:self forKeyPath:@"values.PADColumnComments"];
+	[[NSUserDefaultsController sharedUserDefaultsController] removeObserver:self forKeyPath:@"values.PADColumnTags"];
+	[[NSUserDefaultsController sharedUserDefaultsController] removeObserver:self forKeyPath:@"values.PADColumnRating"];
 
 	[super dealloc];
 }
@@ -30,6 +35,10 @@
 	NSTableColumn*		aDayCol = [[treeControl outlineView] tableColumnWithIdentifier:COLUMNID_MODDATE];
 	NSTableColumn*		flavCol = [[treeControl outlineView] tableColumnWithIdentifier:COLUMNID_TYPE];
 	NSTableColumn*		chckCol = [[treeControl outlineView] tableColumnWithIdentifier:COLUMNID_CHECKEDOUT];
+	NSTableColumn*		cDayCol = [[treeControl outlineView] tableColumnWithIdentifier:COLUMNID_DATECHECKEDOUT];
+	NSTableColumn*		cmtsCol = [[treeControl outlineView] tableColumnWithIdentifier:COLUMNID_COMMENT];
+	NSTableColumn*		tagsCol = [[treeControl outlineView] tableColumnWithIdentifier:COLUMNID_TAGS];
+	NSTableColumn*		strsCol = [[treeControl outlineView] tableColumnWithIdentifier:COLUMNID_STARS];
 //	NSTableColumn*		rankCol = [[treeControl outlineView] tableColumnWithIdentifier:COLUMNID_SCORE];
 	
 	// NSSortDescriptor*	nameSort = [[[NSSortDescriptor alloc] initWithKey:@"keyName" ascending:YES selector:@selector(compareDataNames:)] autorelease];
@@ -42,6 +51,10 @@
 	BOOL				aDayVisible = [[NSUserDefaults standardUserDefaults] boolForKey:@"PADColumnDateAdded"];
 	BOOL				flavVisible = [[NSUserDefaults standardUserDefaults] boolForKey:@"PADColumnSlotType"];
 	BOOL				chckVisible = [[NSUserDefaults standardUserDefaults] boolForKey:@"PADColumnCheckedOut"];
+	BOOL				cDayVisible = [[NSUserDefaults standardUserDefaults] boolForKey:@"PADColumnDateCheckedOut"];
+	BOOL				cmtsVisible = [[NSUserDefaults standardUserDefaults] boolForKey:@"PADColumnComments"];
+	BOOL				tagsVisible = [[NSUserDefaults standardUserDefaults] boolForKey:@"PADColumnTags"];
+	BOOL				strsVisible = [[NSUserDefaults standardUserDefaults] boolForKey:@"PADColumnRating"];
 	
 	// NSMutableArray*		startOrder = [NSMutableArray arrayWithCapacity:5];
 	
@@ -62,11 +75,19 @@
 	[aDayCol setHidden:!aDayVisible];
 	[flavCol setHidden:!flavVisible];
 	[chckCol setHidden:!chckVisible];
+	[cDayCol setHidden:!cDayVisible];
+	[cmtsCol setHidden:!cmtsVisible];
+	[tagsCol setHidden:!tagsVisible];
+	[strsCol setHidden:!strsVisible];
 	
 	[[NSUserDefaultsController sharedUserDefaultsController] addObserver:self forKeyPath:@"values.PADColumnDateAdded" options:0 context:NULL];
 	[[NSUserDefaultsController sharedUserDefaultsController] addObserver:self forKeyPath:@"values.PADColumnSlotNum" options:0 context:NULL];
 	[[NSUserDefaultsController sharedUserDefaultsController] addObserver:self forKeyPath:@"values.PADColumnSlotType" options:0 context:NULL];
 	[[NSUserDefaultsController sharedUserDefaultsController] addObserver:self forKeyPath:@"values.PADColumnCheckedOut" options:0 context:NULL];
+	[[NSUserDefaultsController sharedUserDefaultsController] addObserver:self forKeyPath:@"values.PADColumnDateCheckedOut" options:0 context:NULL];
+	[[NSUserDefaultsController sharedUserDefaultsController] addObserver:self forKeyPath:@"values.PADColumnComments" options:0 context:NULL];
+	[[NSUserDefaultsController sharedUserDefaultsController] addObserver:self forKeyPath:@"values.PADColumnTags" options:0 context:NULL];
+	[[NSUserDefaultsController sharedUserDefaultsController] addObserver:self forKeyPath:@"values.PADColumnRating" options:0 context:NULL];
 
 }
 
@@ -79,36 +100,105 @@
 - (void)updatePrompt
 	{ [[DACALTreeDataSource shared] doReport]; }
 
+-(id)objectValueForTableColumn:(NSTableColumn *)tableColumn byItem:(id)item
+{
+    id objectValue = nil;
+    SimpleNodeData *data = [item nodeData];
+
+	if ([[tableColumn identifier] isEqualToString:COLUMNID_SLOT]) {
+		objectValue = [NSString stringWithFormat:@"%i", [data itemSlot]];
+	} else if ([[tableColumn identifier] isEqualToString:COLUMNID_MODDATE]) {
+		//NSDateFormatter*	thisDateForm = [[NSDateFormatter alloc] init];
+		//objectValue = [thisDateForm stringFromDate:[data itemModDate]]; 
+		objectValue = [data itemAddDate];
+	} else if ([[tableColumn identifier] isEqualToString:COLUMNID_TYPE]) {
+		objectValue = DACALCreateImageRefForFlavor([data itemFlavor]);
+    } else if ([[tableColumn identifier] isEqualToString:COLUMNID_SCORE]) {
+		SearchNodeData *Sdata = [item nodeData];
+		objectValue = [NSNumber numberWithInt:(int)([Sdata matchScore]*100)];
+	} else if ([[tableColumn identifier] isEqualToString:COLUMNID_CHECKEDOUT]) {
+		SearchNodeData *Sdata = [item nodeData];
+		NSString*	imagePath = nil;
+		NSImage*	theImage = nil;
+		NSBundle*	imageBundle = [NSBundle mainBundle];
+		
+		if( [Sdata isCheckedOut] )
+			if( imagePath = [imageBundle pathForResource:@"CheckedOut" ofType:@"png"] )
+				theImage = [[NSImage alloc] initByReferencingFile:imagePath]; 
+		
+		objectValue = theImage;
+	} else if ([[tableColumn identifier] isEqualToString:COLUMNID_DATECHECKEDOUT]) {
+		objectValue = [data checkedOutDate];
+	} else if ([[tableColumn identifier] isEqualToString:COLUMNID_COMMENT]) {
+		NSString*	outComments = [data keyComments];
+		objectValue = outComments;
+	} else if ([[tableColumn identifier] isEqualToString:COLUMNID_TAGS]) {
+		NSArray*	outTags = [data keyTags];
+		if( outTags == nil ) outTags = [NSArray array];
+		objectValue = outTags;
+    } else if ([[tableColumn identifier] isEqualToString:COLUMNID_STARS]) {
+		objectValue = [NSNumber numberWithInt:(int)([data keyStars])];
+	} else
+		objectValue = [super objectValueForTableColumn:tableColumn byItem:item];
+	
+	return objectValue;
+}
+
+
+-(void)setObjectValue:(id)object forTableColumn:(NSTableColumn *)tableColumn byItem:(id)item
+{
+	SimpleNodeData *data = [item nodeData];
+    
+   // Here, we manipulate the slot data stored in the node.
+    if ((tableColumn == nil) || [[tableColumn identifier] isEqualToString:COLUMNID_SLOT]) {
+		[self nodeSlotChanged:item toSlot:object];
+		return;
+	}
+	
+    // Here, we manipulate the type/flavor data stored in the node.
+    if ((tableColumn == nil) || [[tableColumn identifier] isEqualToString:COLUMNID_TYPE]) {
+		[self nodeTypeChanged:item toType:object];
+		return;
+	}
+
+	// Here, we manipulate the comment data stored in the node.
+    if ((tableColumn == nil) || [[tableColumn identifier] isEqualToString:COLUMNID_COMMENT]) {
+		[data setKeyComments:object];
+		return;
+	}
+	
+	// Here, we manipulate the tag data stored in the node.
+    if ((tableColumn == nil) || [[tableColumn identifier] isEqualToString:COLUMNID_TAGS]) {
+		[data setKeyTags:object];
+		return;
+	}
+
+	// Here, we manipulate the stars data stored in the node.
+    if ((tableColumn == nil) || [[tableColumn identifier] isEqualToString:COLUMNID_STARS]) {
+		NSInteger	newStars = [object intValue];
+		[item setKeyStars:newStars];
+		return;
+	}
+	
+	[super setObjectValue:object forTableColumn:tableColumn byItem:item];
+}
+
+
 - (void)outlineViewAction:(id)tree
 {
-	NSArray *selectedNodes = [treeControl selectedNodes];
-//	NSMutableArray *selectedSlots = [NSMutableArray arrayWithCapacity:0];
-	SimpleNodeData *data;
-	int		index = 0;
-	int		count = [selectedNodes count];
+	NSArray*		selectedNodes = [treeControl selectedNodes];
+	NSEnumerator*	selectedEnum = [selectedNodes objectEnumerator];
+	SimpleTreeNode*	item = nil;
+	int				count = [selectedNodes count];
 
-	//	NSURL*	theURL;
-	DACALSlotNum theSlot;
+	DACALSlotNum	theSlot;
 	PADIndexToolbarController* toolControl = (PADIndexToolbarController*)[self toolbarControl];
-//	NSNumber*	slotNumber;
 	
 	[toolControl setSelectedNode:nil];
 	
-	for( index=0; index<count; index++ )
-	{
-		data = [[selectedNodes objectAtIndex:index] nodeData];
-		theSlot = [data itemSlot];
-		if( theSlot != 0 ) {
-			[toolControl addSelectedNode:[selectedNodes objectAtIndex:index]];
-			//slotNumber = [NSNumber numberWithInteger:(NSInteger)theSlot];
-			//if( ![selectedSlots containsObject:slotNumber] )
-			//	[selectedSlots addObject:slotNumber];
-		}
-    }
-	//if( toolControl ) {
-	//	[toolControl setSelectedSlots:(NSArray*)selectedSlots];
-	//	[toolControl setSelectedNodes:selectedNodes];
-	//}
+	while( item = [selectedEnum nextObject] )
+		if( [[item nodeData] itemSlot] != 0 ) 
+			[toolControl addSelectedNode:item];
 
 	[self updatePrompt];
 
@@ -278,7 +368,8 @@ SLOTTYPEFAILED:
 
 - (void)selectionDidChange
 {
-	[self updatePrompt];
+	//[self updatePrompt];
+	[self outlineViewAction:nil];
 	return;
 }
 
@@ -292,6 +383,15 @@ SLOTTYPEFAILED:
 		return YES;
 	}
 	
+	if([[tc identifier] compare:COLUMNID_COMMENT] == NSOrderedSame) 
+		return YES;	
+
+	if([[tc identifier] compare:COLUMNID_TAGS] == NSOrderedSame) 
+		return YES;	
+
+	if([[tc identifier] compare:COLUMNID_STARS] == NSOrderedSame) 
+		return YES;	
+
 	return NO;
 }
 
@@ -314,7 +414,11 @@ SLOTTYPEFAILED:
 	
 	if( [theView clickedColumn] == [theView columnWithIdentifier:COLUMNID_CHECKEDOUT] )
 		[[[[item nodeData] itemElement] elementSlot] toggleReservationForUser:nil onHost:nil];
-	else 
+	else if( [theView clickedColumn] == [theView columnWithIdentifier:COLUMNID_DATECHECKEDOUT] )
+		[[[[item nodeData] itemElement] elementSlot] toggleReservationForUser:nil onHost:nil];
+	else if( [theView clickedColumn] == [theView columnWithIdentifier:COLUMNID_TAGS] )
+		[theView editColumn:[theView clickedColumn] row:[theView clickedRow] withEvent:[[NSApplication sharedApplication] currentEvent] select:YES];
+	else 	
 	{	
 		if([theData isExpandable] == YES ) 
 			if( [theView isItemExpanded:item] == YES ) {
@@ -357,6 +461,26 @@ SLOTTYPEFAILED:
 			workColumn = [[[self treeControl] outlineView] tableColumnWithIdentifier:COLUMNID_CHECKEDOUT];
 			workKey = @"PADColumnCheckedOut";
 		}
+
+		if( [keyPath hasSuffix:@"PADColumnDateCheckedOut"] ) {
+			workColumn = [[[self treeControl] outlineView] tableColumnWithIdentifier:COLUMNID_DATECHECKEDOUT];
+			workKey = @"PADColumnDateCheckedOut";
+		}
+
+		if( [keyPath hasSuffix:@"PADColumnComments"] ) {
+			workColumn = [[[self treeControl] outlineView] tableColumnWithIdentifier:COLUMNID_COMMENT];
+			workKey = @"PADColumnComments";
+		}
+
+		if( [keyPath hasSuffix:@"PADColumnTags"] ) {
+			workColumn = [[[self treeControl] outlineView] tableColumnWithIdentifier:COLUMNID_TAGS];
+			workKey = @"PADColumnTags";
+		}
+
+		if( [keyPath hasSuffix:@"PADColumnRating"] ) {
+			workColumn = [[[self treeControl] outlineView] tableColumnWithIdentifier:COLUMNID_STARS];
+			workKey = @"PADColumnRating";
+		}
 		
 		if( workKey ) isVisible = [[NSUserDefaults standardUserDefaults] boolForKey:workKey];
 		if( workColumn ) {
@@ -389,6 +513,81 @@ SLOTTYPEFAILED:
 	}
 }
 
+- (void)menuNeedsUpdate:(NSMenu *)menu
+{
+	NSArray*		clickedItems = [self ctmClickedRows];
+	NSEnumerator*	clickedEnum = [clickedItems objectEnumerator];
+    NSInteger		clickedRow = [[self outlineView] clickedRow];
+	
+    id				item = nil;
+    SimpleNodeData*	nodeData = nil;
+	
+	NSMenuItem*		workItem = nil;
+	SEL				workSelector = nil;
+	NSInteger		itemCount = [menu numberOfItems];
+	
+    if( clickedRow != -1 ) 
+        item = [[self outlineView] itemAtRow:clickedRow];
+     else 
+		item = [clickedItems objectAtIndex:0];
+	
+	nodeData = [item nodeData];
+    
+    if (menu == outlineViewContextMenu) 
+	{
+		while( workItem = (NSMenuItem*)[clickedEnum nextObject] )
+		{
+			workSelector = [workItem action];
+			if( workSelector == @selector(ctmMountOpen:) )						//	Mount & Open
+				[workItem setEnabled:NO];	// ![nodeData isCheckedOut]
+			if( workSelector == @selector(ctmCheckIn:) )						//	Check In
+				[workItem setEnabled:[nodeData isCheckedOut]];
+			if( workSelector == @selector(ctmCheckOut:) )						//	Check Out
+				[workItem setEnabled:![nodeData isCheckedOut]];
+		}
+	}
+	
+}
+
+- (IBAction)ctmMountOpen:(id)sender
+{
+	NSLog(@"Mount and Open: Unimplemented feature!");	
+}
+
+- (IBAction)ctmCheckIn:(id)sender
+{
+	NSArray*		theItems = [self ctmClickedRows];
+	NSEnumerator*	arrayEnum = [theItems objectEnumerator];
+	SimpleTreeNode*	workItem = nil;
+	
+	while( workItem = [arrayEnum nextObject] )
+	{
+		if( [workItem respondsToSelector:@selector(matchActual)] )
+			workItem = [(SearchNodeData*)workItem matchActual];
+		
+		if( [[[workItem nodeData] itemElement] isCheckedOut] == YES )
+			[[[[workItem nodeData] itemElement] elementSlot] toggleReservationForUser:nil onHost:nil];
+	}
+}
+
+- (IBAction)ctmCheckOut:(id)sender
+{
+	NSArray*		theItems = [self ctmClickedRows];
+	NSEnumerator*	arrayEnum = [theItems objectEnumerator];
+	SimpleTreeNode*	workItem = nil;
+	
+	while( workItem = [arrayEnum nextObject] )
+	{
+		if( [workItem respondsToSelector:@selector(matchActual)] )
+			workItem = [(SearchNodeData*)workItem matchActual];
+		
+		if( [[[workItem nodeData] itemElement] isCheckedOut] == NO )
+			[[[[workItem nodeData] itemElement] elementSlot] toggleReservationForUser:nil onHost:nil];
+	}
+}
+
+- (IBAction)ctmDeleteSlot:(id)sender
+	{ [[[AppController shared] toolbarControl] unassignNodes:[self ctmClickedRows]]; }
 
 @end	// DACALViewDataSource
 

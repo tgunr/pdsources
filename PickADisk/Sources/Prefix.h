@@ -15,6 +15,8 @@
 	#import "pms.h"
 	#import "DACALDeviceObjC.h"
 	#import "NSApplication_Extensions.h"
+	#import "NSData_Extensions.h"
+	#import "NSString_Extensions.h"
 	#import "NSSlider_Animation.h"
 	#import "AppController.h"
 	#import "PADLifecycleSetup.h"

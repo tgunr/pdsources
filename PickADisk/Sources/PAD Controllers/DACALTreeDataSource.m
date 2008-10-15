@@ -101,6 +101,120 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 	return self;
 }
 
+-(void)orderForUser:(SimpleTreeNode*)treeNode
+{
+	NSDictionary*		orderDict = [[NSUserDefaults standardUserDefaults] dictionaryForKey:@"PADMainSidebarOrder"];
+	NSDictionary*		visibleDict = [[NSUserDefaults standardUserDefaults] dictionaryForKey:@"PADPrefsTreeIndexAvailability"];
+	
+	if( orderDict == nil )
+		return;
+	
+	NSArray*			orderGroupNames = [orderDict allKeys];
+	NSInteger			groupIndex, groupCount = [orderGroupNames count];
+	SimpleTreeNode*		workGroupNode = nil;
+	NSDictionary*		groupDict = nil;
+	NSDictionary*		childDict = nil;
+	NSArray*			childNames = nil;
+	NSArray*			orderNames = nil;
+	
+	if( treeNode == nil )
+		treeNode = [[self treeControl] treeRoot];
+	
+	for( groupIndex=0; groupIndex < groupCount; groupIndex++ )
+	{
+		workGroupNode = [treeNode childWithName:[orderGroupNames objectAtIndex:groupIndex]];
+		if( workGroupNode == nil ) continue;
+		childDict = [orderDict objectForKey:[[workGroupNode nodeData] name]];
+		childNames = [childDict objectForKey:@"Names"];
+		groupDict = [visibleDict objectForKey:[[workGroupNode nodeData] name]];
+		
+		if( visibleDict != nil )
+		{
+			NSMutableArray*		visibleNames = [NSMutableArray arrayWithCapacity:0];
+			NSEnumerator*		addEnum = [groupDict keyEnumerator];
+			NSEnumerator*		removeEnum = [groupDict keyEnumerator];
+			NSString*			itemNode = nil;
+			NSNumber*			itemVisible = nil;
+			
+			if( childNames != nil )
+				[visibleNames addObjectsFromArray:childNames];
+			
+			while ( itemNode = [addEnum nextObject] ) 
+			{
+				itemVisible = [groupDict objectForKey:itemNode];
+				if( itemVisible && ([itemVisible boolValue] == YES) )
+					if( ![visibleNames containsObject:itemNode] )
+						[visibleNames addObject:itemNode];
+			}
+			
+			while( itemNode = [removeEnum nextObject] )
+			{
+				itemVisible = [groupDict objectForKey:itemNode];
+				if( itemVisible && ([itemVisible boolValue] == NO) )
+					[visibleNames removeObject:itemNode];
+			}
+			
+			orderNames = visibleNames;
+		} else
+			orderNames = childNames;
+		
+		[workGroupNode orderChildrenByName:orderNames removeMissing:YES];
+		[[workGroupNode nodeData] setExpanded:CFBooleanToBOOL( (CFBooleanRef)[childDict objectForKey:@"Expanded"] )];
+		
+		if( [workGroupNode numberOfChildren] == 0 ) {
+			if( [[workGroupNode nodeData] itemType] == kPADTypeGroupLibrary )
+				[workGroupNode removeFromParent];
+			else if( [[workGroupNode nodeData] itemType] == kPADTypeGroupSearches )
+				[workGroupNode removeFromParent];
+			else if( [[workGroupNode nodeData] itemType] == kPADTypeGroupDevices )
+			{
+				NSEnumerator*	deviceEnum = [gDACALDevices objectEnumerator];
+				DACALDevice*	aDevice = nil;
+				
+				while ( aDevice = [deviceEnum nextObject] ) 
+					[workGroupNode insertChild:[aDevice deviceNode] atIndex:[workGroupNode numberOfChildren]];
+			}
+		}
+	}
+	
+	[treeNode orderChildrenByName:[orderDict objectForKey:@"Groups"] removeMissing:NO];
+}
+
+-(void)saveUserOrder
+{
+	NSMutableDictionary*	groupList = [NSMutableDictionary dictionaryWithCapacity:0];
+	SimpleTreeNode*			treeNode = [[self treeControl] treeRoot];
+	SimpleTreeNode*			groupNode = nil;
+//	SimpleTreeNode*			childNode = nil;
+	NSInteger				groupIndex, groupCount = [treeNode numberOfChildren];
+	NSInteger				childIndex, childCount;
+	NSMutableDictionary*	childDict = nil;
+	NSMutableArray*			childNames = nil;
+	NSMutableArray*			groupNames = [NSMutableArray arrayWithCapacity:groupCount];
+	
+	for( groupIndex=0; groupIndex < groupCount; groupIndex++ )
+	{
+		groupNode = (SimpleTreeNode*)[treeNode childAtIndex:groupIndex];
+		childCount = [groupNode numberOfChildren];
+		childDict = [NSMutableDictionary dictionaryWithCapacity:2];
+		childNames = [NSMutableArray arrayWithCapacity:childCount];
+		for( childIndex=0; childIndex < childCount; childIndex++ )
+			[childNames addObject:[[[groupNode childAtIndex:childIndex] nodeData] name]];
+		
+		[childDict setObject:[NSArray arrayWithArray:childNames] forKey:@"Names"];
+		[childDict setObject:(id)BOOLToCFBoolean([[groupNode nodeData] isExpanded]) forKey:@"Expanded"];
+		
+		[groupNames addObject:[[groupNode nodeData] name]];
+		[groupList setObject:[NSDictionary dictionaryWithDictionary:childDict] forKey:[[groupNode nodeData] name]];	
+	}
+	
+	[groupList setObject:groupNames forKey:@"Groups"];
+	
+	// NSLog(@"Group List: %@", groupList);
+	
+	[[NSUserDefaults standardUserDefaults] setObject:groupList forKey:@"PADMainSidebarOrder"];
+}
+
 - (SimpleTreeNode*)createInitialTree:(id)tree
 {
 	SimpleTreeNode*		theOutputTree = nil;
@@ -161,6 +275,10 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 	theWorkData = [theWorkNode nodeData];
 	[theWorkData setItemSearch:[PADSearchRequest searchCarouselsForCheckedInOutBeforeDays:30 ofDate:nil resultType:kPADSearchOptionResultTypeItem]];
 	
+	theWorkNode = [theGroupNode childWithName:@"My Favorites"];
+	theWorkData = [theWorkNode nodeData];
+	[theWorkData setItemSearch:[PADSearchRequest searchCarouselsForStars:@"5" resultType:kPADSearchOptionResultTypeItem]];
+	
 	theWorkNode = [theGroupNode childWithName:@"All Images"];
 	theWorkData = [theWorkNode nodeData];
 	[theWorkData setItemSearch:[PADSearchRequest searchCarouselsForFileUTI:(NSString*)kUTTypeImage resultType:kPADSearchOptionResultTypeItem]];
@@ -177,6 +295,8 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 	theWorkData = [theWorkNode nodeData];
 	[theWorkData setItemSearch:[PADSearchRequest searchCarouselsForFileUTI:(NSString*)kUTTypeContent resultType:kPADSearchOptionResultTypeItem]];
 
+	[self orderForUser:theOutputTree];
+	
 	[self doReport];
 
 	PADBOX_VALID_END
@@ -188,8 +308,19 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 {
 	[super outlineViewInit];
 	[[self treeControl] setAllowOnDropOnLeaf:YES]; 
+	//[[self treeControl] setAllowOnDropOnGroup:YES];
 	
-	[[[self treeControl] outlineView] expandItem:nil expandChildren:YES];
+	[[self outlineView] expandItem:nil expandChildren:YES];
+	[self saveUserOrder];
+}
+
+- (void)reinitOutlineView
+	{ [[self outlineView] expandItem:nil expandChildren:YES]; }
+
+- (void)recreateInitialTree
+{
+	//[self saveUserOrder];
+	[super recreateInitialTree];
 }
 
 - (void)toolbarSearchStart:(id)sender
@@ -307,16 +438,14 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 
 - (void)outlineViewAction:(id)tree
 {
-	NSArray *selectedNodes = [treeControl selectedNodes];
-//	NSMutableArray *selectedBoxes = [NSMutableArray arrayWithCapacity:0];
-	IndexNodeData *data;
-	SimpleTreeNode *subTree;
-	PADSearchRequest* itemSearch;
-	int		index;
-//	NSURL*	theURL;
-	DACALDeviceRef theDevice;
-	DACALSlotNum	theSlot;
-	PADIndexToolbarController* toolControl = (PADIndexToolbarController*)[self toolbarControl];
+	NSArray*					selectedNodes = [treeControl selectedNodes];
+	IndexNodeData*				data;
+	SimpleTreeNode*				subTree;
+	PADSearchRequest*			itemSearch;
+	int							index;
+	DACALDeviceRef				theDevice;
+	DACALSlotNum				theSlot;
+	PADIndexToolbarController*	toolControl = (PADIndexToolbarController*)[self toolbarControl];
 	
 	if( [selectedNodes count] == 0 ) [tabView selectTabViewItemWithIdentifier:@"Home"];
 	else  {
@@ -325,14 +454,14 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 	}
 	
 	[secondaryController setTreeRoot:nil];
-	//[secondaryController removeAllChildren];
 	[toolControl resetSelection];
 	
 	for( index=0; index<[selectedNodes count]; index++ )
 	{
 		data = [[selectedNodes objectAtIndex:index] nodeData];
 		subTree = [data subTree];
-		if( [data respondsToSelector:@selector(itemSearch)] ) {
+		if( [data respondsToSelector:@selector(itemSearch)] )
+		{
 			itemSearch = [data itemSearch];
 			[(MyOutlineView*)[self outlineView] setCurrentSearch:itemSearch];
 			if( itemSearch != nil )
@@ -351,29 +480,11 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 					if( ![itemSearch searchBusy] && [itemSearch searchResultsDirty] )
 						[itemSearch startSearch];					
 				}
-				
-				
-				//if( ([itemSearch searchBusy] == NO) && ([itemSearch searchResultsDirty]) ) {					
-				//	subTree = [[SimpleTreeNode alloc] initWithData:nil parent:nil children:[NSArray array]];
-				//	[data setSubTree:subTree];
-				//	[[[[AppController shared] toolbarController] busyProgress] startAnimation:self];
-				//	[itemSearch startSearchForTarget:self onNode:[selectedNodes objectAtIndex:index] andSubTree:subTree];
-				//}
 			}
 		}
-			
 
-		if( subTree != nil)	[secondaryController addTreeRoot:subTree];
-			//[secondaryController addDataToTree:subTree startEdit:NO];
-		
-		//if( [data location] != nil) 
-		//{
-			//if( index != 0 ) theURL = (NSURL*)CFURLCreateCopyDeletingLastPathComponent(NULL, (CFURLRef)[data location]);
-			//else theURL = (NSURL*)[data location];
-			//NSLog(@"The URL: %@\n", theURL );
-			//theURL = (NSURL*)[data location];
-			//[secondaryController addTreeRoot:  [SimpleTreeNode treeFromLocation: theURL]];
-		//}
+		if( subTree != nil)
+			[secondaryController addTreeRoot:subTree];
 		
 		theDevice = [data itemDevice];
 		
@@ -381,15 +492,11 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 		if( theSlot != 0 )
 			[toolControl addSelectedNode:[selectedNodes objectAtIndex:index]];
  		else if( theDevice != kDACALNullDevice )
-			[toolControl addSelectedDevice:theDevice];
+			[toolControl addSelectedDevice:theDevice adoptSelection:YES];
    }
-
-	//if( toolControl ) [toolControl setSelectedDevices:(NSArray*)selectedBoxes];
 	
 	[secondaryController outlineViewAction:secondaryController];
-
 	
-//	[selectedBoxes release];	
 	return;
 }
 
@@ -447,7 +554,7 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 {
     NSPasteboard*	pboard = [info draggingPasteboard];	
 	SimpleTreeNode*	newMark = nil;
-	SimpleTreeNode* newMarkTree = nil;
+//	SimpleTreeNode* newMarkTree = nil;
     
     if ([pboard availableTypeFromArray:[NSArray arrayWithObjects:DragDropSimplePboardType, nil]] != nil) {
         TreeController *dragDataSource = [[info draggingSource] dataSource];
@@ -459,11 +566,15 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
         while ((_draggedNode = [draggedNodesEnum nextObject])) 
 		{
 			if( !sourceWasUs ) {
-				newMark = (SimpleTreeNode*)[SimpleTreeNode nodeDataWithURL:(NSURL*)[(SimpleNodeData*)[_draggedNode nodeData] location]];
-				newMarkTree = (SimpleTreeNode*)[SimpleTreeNode treeOperationFromLocation:(NSURL*)[(SimpleNodeData*)[_draggedNode nodeData] location] forUI:YES];
-				[[newMark nodeData] setSubTree:newMarkTree];
-				[[newMark nodeData] setIsLeaf:YES];
-				[parentNode insertChild:newMark atIndex:childIndex];
+				//newMark = (SimpleTreeNode*)[SimpleTreeNode nodeDataWithURL:(NSURL*)[(SimpleNodeData*)[_draggedNode nodeData] location]];
+				//newMarkTree = (SimpleTreeNode*)[SimpleTreeNode treeOperationFromLocation:(NSURL*)[(SimpleNodeData*)[_draggedNode nodeData] location] forUI:YES];
+				//[[newMark nodeData] setSubTree:newMarkTree];
+				//[[newMark nodeData] setIsLeaf:YES];
+				//[[newMark nodeData] setExpandable:NO];
+				DACALSlotElement*			itemSlotElement = [(SimpleNodeData*)[_draggedNode nodeData] itemElement];
+				DACALSlotElementBookmark*	itemSlotBookmark = [itemSlotElement createBookmarkAtLocation:kDACBookmarkLocationInSidebar attachNow:NO];
+				if( itemSlotBookmark != nil )
+					[parentNode insertChild:[itemSlotBookmark markNode] atIndex:childIndex];
 			} else {
 				newMark = _draggedNode;
 				[parentNode removeChild:newMark];
@@ -490,11 +601,26 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 				}
 			}
 	
+	if( fromThisView ) {
+		BOOL allGroups = YES;
+		for(nodeIndex=0; nodeIndex<nodeCount; nodeIndex++) {
+			if( [[[_draggedNodes objectAtIndex:nodeIndex] nodeData] isLeaf] == YES )
+				allGroups = NO;
+			break;
+		}
+		if( allGroups == YES ) {
+			if( item && [[item nodeData] isGroup] == YES )
+				return NSDragOperationNone;
+			else return NSDragOperationMove;
+		}
+		if( ![item isParentOfNodesInArray: [treeControl draggedNodes]] ) return NSDragOperationNone;
+	}
 	if( [[item nodeData] itemType] == kPADTypeGroupFavorites ) {
+		return NSDragOperationNone;										//	Bookmarks need help!
 		if( fromThisView ) return NSDragOperationMove;
 		else return NSDragOperationCopy;
 	}
-	else if( [[[item nodeParent] nodeData] itemType] == kPADTypeGroupLibrary ) {
+	if( [[[item nodeParent] nodeData] itemType] == kPADTypeGroupLibrary ) {
 		//NSArray *_draggedNodes = [[[info draggingSource] dataSource] draggedNodes];
 		//int		nodeIndex, nodeCount = [_draggedNodes count];
 		
@@ -502,9 +628,6 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 			if( [[[[_draggedNodes objectAtIndex:nodeIndex] nodeData] itemFlavor] compare:[[item nodeData] itemFlavor]] != NSOrderedSame )
 				return NSDragOperationLink;
 	}
-
-		
-	
 	
 	if( fromThisView )
 	   return [super validateDropSource:info proposedItem:item proposedChildIndex:childIndex];
@@ -512,7 +635,7 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 	return NSDragOperationNone;
 }
 
-- (BOOL)outlineView:(NSOutlineView *)ov acceptDrop:(id <NSDraggingInfo>)info item:(id)item childIndex:(NSInteger)childIndex {
+- (BOOL)actualOutlineView:(NSOutlineView *)ov acceptDrop:(id <NSDraggingInfo>)info item:(id)item childIndex:(NSInteger)childIndex {
 	
     SimpleTreeNode *node = item;
     SimpleNodeData *data = [node nodeData];
@@ -532,6 +655,16 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 	}
 	
 	return [super outlineView:ov acceptDrop:info item:item childIndex:childIndex];
+}
+
+- (BOOL)outlineView:(NSOutlineView *)ov acceptDrop:(id <NSDraggingInfo>)info item:(id)item childIndex:(NSInteger)childIndex {
+
+	BOOL	wasDropped = [self actualOutlineView:ov acceptDrop:info item:item childIndex:childIndex];
+	
+	if( wasDropped )					// Save the tree order
+		[self saveUserOrder];
+	
+	return wasDropped;
 }
 
 - (SimpleTreeNode*)findTreeNodeForDevice:(DACALDeviceRef)theBoxRef
@@ -636,16 +769,102 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 
 - (void)draggedImage:(NSImage *)image endedAt:(NSPoint)screenPoint operation:(NSDragOperation)operation
 {
-	NSLog(@"Dragged Operation: %i", operation);
+	// NSLog(@"Dragged Operation: %i", operation);
 	
-	if( operation == NSDragOperationNone ) {
-		//	Actual delete removed because it is too intense!
-		//	[super draggedImage:image endedAt:screenPoint operation:NSDragOperationDelete];					
-		NSShowAnimationEffect(NSAnimationEffectPoof, screenPoint, NSZeroSize, nil, nil, nil);
-		return;
+	if( operation == NSDragOperationNone ) 
+	{
+		NSPoint		mousePoint = [NSEvent mouseLocation];
+		NSPoint		localPoint = [[self outlineView] convertPoint:[[[self outlineView] window] convertScreenToBase:mousePoint] fromView:nil];
+		if( [[self outlineView] hitTest:localPoint] == nil ) 
+		{
+			//	Actual delete removed because it is too intense!
+			//[super draggedImage:image endedAt:screenPoint operation:NSDragOperationDelete];					
+			NSShowAnimationEffect(NSAnimationEffectPoof, mousePoint, NSZeroSize, nil, nil, nil);
+			return;
+		}
 	}
 	
 	[super draggedImage:image endedAt:screenPoint operation:operation];
+}
+
+- (BOOL)validateMenuItem:(NSMenuItem *)menuItem {
+	//NSLog(@"Validate Menu Item: %@", [menuItem title]);
+	
+    if ([menuItem action]==@selector(deleteSelection:)) {
+		// The delete selection item should be disabled if nothing is selected.
+		if( [[[self treeControl] selectedNodes] count] == 0 )
+			return NO;
+		
+		if( [[[[self treeControl] selectedNodes] objectAtIndex:0] itemType] == kPADTypeIndexFavorites )
+			return YES;
+		
+		return NO;
+    }    
+	
+	if( [menuItem action]==@selector(selectAll:) )
+		return NO;
+	
+    return [super validateMenuItem:menuItem];
+}
+
+- (void)menuNeedsUpdate:(NSMenu *)menu
+{
+	NSOutlineView*	outlineView = [ treeControl outlineView ];
+    NSInteger		clickedRow = [outlineView clickedRow];
+    id				item = nil;
+    SimpleNodeData*	nodeData = nil;
+	NSMenuItem*		workItem = nil;
+	SEL				workSelector = nil;
+	NSInteger		itemIndex, itemCount = [menu numberOfItems];
+	
+    if (clickedRow != -1) {
+        item = [outlineView itemAtRow:clickedRow];
+        nodeData = [item nodeData];
+    }
+    
+    if (menu == outlineViewContextMenu) 
+	{
+		for( itemIndex=0; itemIndex < itemCount; itemIndex++ ) {
+			workItem = [menu itemAtIndex:itemIndex];
+			workSelector = [workItem action];
+			if( workSelector == @selector(ctmDeleteSelection:) )						//	Remove Item
+				[workItem setEnabled:[nodeData itemType] == kPADTypeIndexFavorites];
+			if( workSelector == @selector(ctmRefreshSearch:) )							//	Refresh Search
+				[workItem setEnabled:[nodeData respondsToSelector:@selector(itemSearch)] && [nodeData isLeaf]];
+		}
+	}
+
+}
+
+-(IBAction)ctmRefreshSearch:(id)sender
+{
+	NSArray*		clickedRows = [self ctmClickedRows];
+    id				item = ([clickedRows count] > 0) ? [clickedRows objectAtIndex:0] : nil;
+    IndexNodeData*	nodeData = (IndexNodeData*)[item nodeData];
+	
+	if( [nodeData respondsToSelector:@selector(itemSearch)] )
+		[[nodeData itemSearch] dirtySearchResults];
+	
+	[self doAction];
+}
+
+-(IBAction)ctmDeleteSelection:(id)sender
+{
+	NSOutlineView*	outlineView = [ treeControl outlineView ];
+    NSInteger		clickedRow = [outlineView clickedRow];
+    id				item = nil;
+    SimpleNodeData*	nodeData = nil;
+	
+    if (clickedRow != -1) {
+        item = [outlineView itemAtRow:clickedRow];
+        nodeData = [item nodeData];
+    }
+	
+	// NSLog(@"Delete Item: %@\nElement: %@", item, [nodeData itemElement]);
+	
+	[[nodeData itemElement] removeBookmarkForLocation:kDACBookmarkLocationInSidebar];
+	
+	[self doAction];
 }
 
 @end	// DACALTreeDataSource

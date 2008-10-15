@@ -140,7 +140,7 @@ NSString*	PADAddVolumeController_lastItemName;
 	DACALDevice*	thisDevice = DACALDeviceForDeviceRef( currentBox );
 	
 	if( (result == 0) && thisDevice )
-		[thisDevice indexedNewVolume:[self pendingURL] forSlot:[slotNumber intValue] ofType:[slotTypeList titleOfSelectedItem]]; 
+		[thisDevice indexedNewVolume:[self pendingVolume] forSlot:[slotNumber intValue] ofType:[slotTypeList titleOfSelectedItem]]; 
 	else
 		[AppController playUISound: kASSystemSoundDoink];
 

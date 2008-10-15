@@ -334,6 +334,43 @@
 	return [itemElement checkedInDate];
 }
 
+-(NSString*)keyComments
+{
+	if( !itemElement ) return nil;
+	return [itemElement comments];
+}
+
+-(void)setKeyComments:(NSString*)newComment
+{
+	if( itemElement != nil )
+		[itemElement setComments:newComment];
+}
+
+-(NSArray*)keyTags
+{
+	if( !itemElement ) return nil;
+	return [itemElement tags];
+}
+
+-(void)setKeyTags:(NSArray*)newTags
+{
+	if( itemElement != nil )
+		[itemElement setTags:newTags];
+}
+
+-(NSInteger)keyStars
+{
+	if( !itemElement ) return 0;
+	return [itemElement stars];
+}
+
+-(void)setKeyStars:(NSInteger)starLevel
+{
+	if( itemElement != nil )
+		[itemElement setStars:starLevel];
+}
+
+
 - (id)reload
 {
 	
@@ -423,6 +460,46 @@
 	return( [[self checkedOutDate] compare:[other checkedOutDate]] );
 }
 
+-(NSComparisonResult)compareCheckedOutDates:(SimpleNodeData *)other
+{
+	//	NSLog(@"COMPARE Check Out Dates");
+	return( [[self checkedOutDate] compare:[other checkedOutDate]] );
+}
+
+-(NSComparisonResult)compareKeyComments:(SimpleNodeData *)other
+{
+	//	NSLog(@"COMPARE COMMENTS");
+	return( [[self keyComments] localizedCaseInsensitiveCompare:(NSString*)[other keyComments]] );
+}
+
+- (NSComparisonResult)compareKeyTags:(SimpleNodeData *)other
+{
+	NSInteger	ourCount = [[self keyTags] count];
+	NSInteger	otherCount = [[other keyTags] count];
+	
+	if( ourCount < otherCount )
+		return NSOrderedAscending;
+	
+	if( ourCount > otherCount )
+		return NSOrderedDescending;
+	
+	return NSOrderedSame;
+}
+
+- (NSComparisonResult)compareKeyStars:(SimpleNodeData *)other;
+{
+	NSInteger	ourStars = [self keyStars];
+	NSInteger	otherStars = [other keyStars];
+	
+	if( ourStars < otherStars )
+		return NSOrderedAscending;
+	
+	if( ourStars > otherStars )
+		return NSOrderedDescending;
+	
+	return NSOrderedSame;
+}
+
 - (NSComparisonResult)compare:(id)otherData
 { 
 	NSComparisonResult		slotResult = NSOrderedAscending;
@@ -456,6 +533,20 @@
 
 	//if( rank )
 	//	NSLog(@"Search for:%@ in %@ score:%f length:%i ourlength:%i", other, [self description], rank, foundRange.length, [ourName length]);
+	
+	return( [NSNumber numberWithFloat:rank] );
+}
+
+- (NSNumber*)searchForSlot:(id)other withOptions:(NSMutableDictionary*)options
+{
+	NSString*			ourSlot = [NSString stringWithFormat:@"%i", [self itemSlot]];
+	PADSearchRelevance	rank = 0.0;
+	
+	if( ourSlot != nil )
+		rank = [ourSlot rankWithString:other compareOptions:NSNumericSearch];
+	
+	//if( rank )
+	//	NSLog(@"Slot Search for:%@ in:%@ Rank:%f", other, ourSlot, rank);
 	
 	return( [NSNumber numberWithFloat:rank] );
 }
@@ -579,6 +670,65 @@
 	
 	return( [NSNumber numberWithFloat:rank] );
 }
+
+- (NSNumber*)searchForComments:(NSString*)other withOptions:(NSMutableDictionary*)options
+{
+	NSString*	ourComments = [self keyComments];
+	PADSearchRelevance	rank = 0.0;
+	NSStringCompareOptions	findOptions = NSCaseInsensitiveSearch || NSNumericSearch || NSDiacriticInsensitiveSearch || NSWidthInsensitiveSearch;
+	NSNumber*	optionOption = nil;
+	
+	if( (options) && (optionOption = [options objectForKey:@"Options"]) )
+		findOptions = [optionOption intValue];
+	
+	rank = [ourComments rankWithString:other compareOptions:findOptions];
+	
+	//if( rank )
+	//	NSLog(@"Search for:%@ in %@ score:%f length:%i ourlength:%i", other, [self description], rank, foundRange.length, [ourName length]);
+	
+	return( [NSNumber numberWithFloat:rank] );
+}
+
+- (NSNumber*)searchForTags:(NSString*)other withOptions:(NSMutableDictionary*)options
+{
+	NSArray*	ourTags = [self keyTags];
+//	NSString*	ourTag = nil;
+	NSInteger	tagIndex, tagCount = [ourTags count];
+	PADSearchRelevance	rank = 0.0;
+	PADSearchRelevance	tagRank = 0.0;
+	NSStringCompareOptions	findOptions = NSCaseInsensitiveSearch || NSNumericSearch || NSDiacriticInsensitiveSearch || NSWidthInsensitiveSearch;
+	NSNumber*	optionOption = nil;
+	
+	if( (options) && (optionOption = [options objectForKey:@"Options"]) )
+		findOptions = [optionOption intValue];
+	
+	for( tagIndex=0; tagIndex < tagCount; tagIndex++ )
+	{
+		tagRank = [[ourTags objectAtIndex:tagIndex] rankWithString:other compareOptions:findOptions];
+		if( tagRank != 0.0 )
+			rank += (tagRank / tagCount);
+	}
+	
+	//if( rank )
+	//	NSLog(@"Search for:%@ in %@ score:%f length:%i ourlength:%i", other, [self description], rank, foundRange.length, [ourName length]);
+	
+	return( [NSNumber numberWithFloat:rank] );
+}
+
+- (NSNumber*)searchForStars:(id)other withOptions:(NSMutableDictionary*)options
+{
+	NSString*			ourStars = [NSString stringWithFormat:@"%i", [self keyStars]];
+	PADSearchRelevance	rank = 0.0;
+	
+	if( ourStars != nil )
+		rank = [ourStars rankWithString:other compareOptions:NSNumericSearch];
+
+	//if( [self keyStars] > 0 )
+	//	NSLog(@"Star Search for:%@ in:%@ Rank:%f", other, ourStars, rank);
+	
+	return( [NSNumber numberWithFloat:rank] );
+}
+
 
 @end
 
@@ -920,6 +1070,12 @@ FOUND:
 -(SimpleNodeData*)keyAddDate { return [self nodeData]; }
 -(SimpleNodeData*)keyFlavor { return [self nodeData]; }
 -(SimpleNodeData*)keyCheckedOut { return [self nodeData]; }
+-(SimpleNodeData*)keyCheckedOutDate { return [self nodeData]; }
+-(SimpleNodeData*)keyComments { return [self nodeData]; }
+-(SimpleNodeData*)keyTags { return [self nodeData]; }
+-(SimpleNodeData*)keyStars { return [self nodeData]; }
+-(void)setKeyStars:(NSInteger)starLevel
+	{ [[self nodeData] setKeyStars:starLevel]; }
 
 - (NSString*)localPathName { return [[self nodeData] name]; }
 

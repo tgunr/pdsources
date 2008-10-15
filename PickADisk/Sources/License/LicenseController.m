@@ -195,8 +195,8 @@ static BOOL	shared_LicenseControllerB = false;
 		NSDictionary *licenseDict = [validator checkLicenseFile: [url path]];
 		if (licenseDict) {
 			NSData * licenseData = [NSData dataWithContentsOfFile:[url path]];
-			NSString * licenseSignature = [licenseDict objectForKey: @"Signature"];
-			const void * data = [licenseData bytes];
+			//NSString * licenseSignature = [licenseDict objectForKey: @"Signature"];
+			//const void * data = [licenseData bytes];
 			[[NSUserDefaults standardUserDefaults] setObject: licenseData forKey:@"licenseDict"];
 			[validator setLicenseData: licenseData];
 			[self updateLicensePanel];
@@ -354,6 +354,8 @@ static BOOL *PADCS[5];
 	const void * data = [licenseData bytes];
 	licenseDict = [licenseValidator dictionaryForLicenseData: licenseData];
 	
+#pragma unused ( len, data )
+	
 	if (!licenseDict)
 		return self;
 	return self;
@@ -390,8 +392,8 @@ static BOOL isValid = false;
 			*PADCS[r] = true;
 			return PADCS[r];
 		}
-	else
-		return &isValid;
+	
+	return &isValid;
 }
 
 - (NSDictionary*)checkLicenseFile:(NSString*)licensePath {
@@ -419,6 +421,10 @@ static BOOL isValid = false;
 	NSUInteger index = [pkey lengthOfBytesUsingEncoding: NSASCIIStringEncoding];
 	NSString * string = [NSString string];
 	unichar l =	[pkey characterAtIndex: 254] << 8;
+
+#pragma unused (index, string)
+	
+	return l;
 }
 
 // Check the boolean pointers, only 1 can be on
@@ -428,6 +434,9 @@ static BOOL isValid = false;
 	for(i=0; i<4; i++)
 		isValid += *PADCS[i];
 	isValid = isValid < 2;
+	
+#pragma unused (n)
+	
 	return &isValid;
 }
 

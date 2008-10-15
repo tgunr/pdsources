@@ -23,6 +23,13 @@ extern const	NSString*			kPADSearchByDateAddedID;
 extern const	NSString*			kPADSearchByFileUTI;
 extern const	NSString*			kPADSearchByFileUTIID;
 
+typedef enum PADSearchConjunction {
+	kPADSearchConjunctionOr		= ( 1 << 0 ),
+	kPADSearchConjunctionAnd	= ( 1 << 1 ),
+	kPADSearchConjunctionNot	= ( 1 << 2 ),
+	kPADSearchConjunctionNormal	= kPADSearchConjunctionOr
+} PADSearchConjunction;
+
 extern const	PADSearchRelevance	kPADSearchWeightNormal;
 extern const	PADSearchRelevance	kPADSearchWeightHalf;
 extern const	PADSearchRelevance	kPADSearchWeightNone;
@@ -33,13 +40,14 @@ extern const	NSString*			kPADSearchOptionResultTypeItem;
 
 @interface PADSearchTerm : NSObject {
 
-	NSString*		termTitle;
-	NSString*		termID;
-	int				termOrder;
-	float			termWeight;
-	id				termCompareDataValue;
-	SEL				termGetDataSelector;
-	SEL				termCompareDataSelector;
+	NSString*				termTitle;
+	NSString*				termID;
+	int						termOrder;
+	PADSearchConjunction	termConjuntion;
+	float					termWeight;
+	id						termCompareDataValue;
+	SEL						termGetDataSelector;
+	SEL						termCompareDataSelector;
 
 	NSMutableDictionary*	termOptions;
 }
@@ -52,6 +60,9 @@ extern const	NSString*			kPADSearchOptionResultTypeItem;
 
 - (int)termOrder;
 - (void)setTermOrder:(int)id;
+
+- (PADSearchConjunction)termConjuntion;
+- (void)setTermConjunction:(PADSearchConjunction)newConjunction;
 
 - (float)termWeight;
 - (void)setTermWeight:(float)weight;
@@ -111,7 +122,7 @@ PADSearchTerm*	PADCopySearchTermWithTitleOrID( NSString* aTitle );
 // order is a positive integer reperesenting the absolute order of term evaluation, or one of the constants with a logical value
 // weight is expressed as a percentile where 1.0 = 100% *for each term*. 
 // Match "scores" are expressed as a relative percentage of the maximum score possible.
--(void)addSearchTerm:(id)inTerm forValue:(id)inValue inOrder:(int)order withWeight:(float)weight andOptions:(NSDictionary*)inOptions;
+-(void)addSearchTerm:(id)inTerm forValue:(id)inValue inOrder:(int)order andConjunction:(PADSearchConjunction)inConj withWeight:(float)weight andOptions:(NSDictionary*)inOptions;
 
 // This function is used to start a search.
 // Targets creating searches are expected to respond to the following selectors:
@@ -140,11 +151,13 @@ PADSearchTerm*	PADCopySearchTermWithTitleOrID( NSString* aTitle );
 // Used to setup a new search.  If inLocs == nil, then the subTrees of all the mounted devices are used.
 -(id)initSearchInLocations:(NSArray*)inLocs andOptions:(NSDictionary*)inOptions;
 
++(id)searchCarouselsForStars:(NSString*)inUTI resultType:(const NSString*)inType;
 +(id)searchCarouselsForFileUTI:(NSString*)inUTI resultType:(const NSString*)inType;
 +(id)searchCarouselsForDateAddedBeforeDays:(NSTimeInterval)inDays ofDate:(id)inDate resultType:(const NSString*)inType;
 +(id)searchCarouselsForCheckedInOutBeforeDays:(NSTimeInterval)inDays ofDate:(id)inDate resultType:(const NSString*)inType;
 +(id)searchCarouselsForKind:(NSString*)inTerm resultType:(const NSString*)inType;
-+(id)searchCarouselsForTitle:(NSString*)inTerm;
++(id)searchCarouselsForTitle:(NSString*)inKind resultType:(const NSString*)inType;
++(id)searchCarouselsForTerm:(NSString*)inTerm;
 
 @end	// PADSearchRequest
 

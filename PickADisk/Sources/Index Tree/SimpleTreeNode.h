@@ -59,6 +59,7 @@ const enum {
 - (SimpleTreeNode*)childWithSlotNum:(DACALSlotNum)theSlotNum;
 - (SimpleTreeNode*)childWithItemType:(NSInteger)theItemType;
 
+- (NSString*)localPathName;
 - (NSString*)urlString;
 - (NSString *)tooltip;
 //-(NSString*)name;
@@ -70,6 +71,10 @@ const enum {
 -(SimpleNodeData*)keyAddDate;
 -(SimpleNodeData*)keyFlavor;
 -(SimpleNodeData*)keyCheckedOut;
+-(SimpleNodeData*)keyComments;
+-(SimpleNodeData*)keyTags;
+-(SimpleNodeData*)keyStars; 
+-(void)setKeyStars:(NSInteger)starLevel;
 
 @end	// <<Simple Tree Node>>
 
@@ -170,6 +175,15 @@ const enum {
 -(NSDate*)checkedOutDate;
 -(NSDate*)checkedInDate;
 
+-(NSString*)keyComments;
+-(void)setKeyComments:(NSString*)newComment;
+
+-(NSArray*)keyTags;
+-(void)setKeyTags:(NSArray*)newTags;
+
+-(NSInteger)keyStars;
+-(void)setKeyStars:(NSInteger)starLevel;
+
 - (id)reload;
 - (id)reloadData:(id)newData;
 
@@ -179,6 +193,9 @@ const enum {
 - (NSComparisonResult)compareDataFlavors:(SimpleNodeData *)other;
 - (NSComparisonResult)compareDataScores:(SimpleNodeData *)other;
 - (NSComparisonResult)compareKeyCheckedOut:(SimpleNodeData *)other;
+- (NSComparisonResult)compareKeyComments:(SimpleNodeData *)other;
+- (NSComparisonResult)compareKeyTags:(SimpleNodeData *)other;
+- (NSComparisonResult)compareKeyStars:(SimpleNodeData *)other;
 
 - (NSComparisonResult)compare:(id)otherData;
 

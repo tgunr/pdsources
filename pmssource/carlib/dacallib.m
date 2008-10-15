@@ -10,7 +10,7 @@
 #include "dacallib.h"
 #include "../pmsutility/pmsDACALUtility.h"
 
-#define __DCDEBUG												// define this in your pch to go verbose debug
+//#define __DCDEBUG												// define this in your pch to go verbose debug
 
 #define DACAL_MAXDEVICE_COUNT	64*4							// 64 boxes + 64 hubs = 128 devices/per port for possible 4 ports.  Total 256 devices.
 #define	DACAL_MAXCLIENT_COUNT	1								// Only 1 will work for now.
@@ -122,7 +122,7 @@ CFStringRef		kDACALCarouselDocumentExtension = CFSTR("carousel");
 CFStringRef		kDACALCarouselDocumentDotExtension = CFSTR(".carousel");
 CFStringRef		kDACALCarouselDocumentInfoFile = CFSTR("carousel.plist");
 
-CFStringRef			kDACALCarouselDocumentDisplayNameFormat		=CFSTR("%@'s Carousel %i");
+CFStringRef			kDACALCarouselDocumentDisplayNameFormat		= CFSTR("%@'s Carousel %i");
 CFStringRef			kDACALCarouselDocumentInfoKeyName			=CFSTR("Name");
 CFStringRef			kDACALCarouselDocumentInfoKeyUUID			=CFSTR("UUID");
 //CFStringRef			kDACALCarouselDocumentInfoKeyNode			=CFSTR("Node")
@@ -134,7 +134,15 @@ CFStringRef			kDACALCarouselDocumentXAttrSlotAddDate	=CFSTR("com.polymicrosystem
 CFStringRef			kDACALCarouselDocumentXAttrSlotCheckout	=CFSTR("com.polymicrosystems.pickadisk.device.slot.checkout");
 CFStringRef			kDACALCarouselDocumentXAttrSlotCheckIn	=CFSTR("com.polymicrosystems.pickadisk.device.slot.checkin");
 CFStringRef			kDACALCarouselDocumentXAttrVolumeName	=CFSTR("com.polymicrosystems.pickadisk.device.volname");
+
 CFStringRef			kDACALCarouselDocumentXAttrUserTitle	=CFSTR("com.polymicrosystems.pickadisk.item.usertitle");
+CFStringRef			kDACALCarouselDocumentXAttrUserComments	=CFSTR("com.polymicrosystems.pickadisk.item.user.description");
+CFStringRef			kDACALCarouselDocumentXAttrUserTags		=CFSTR("com.polymicrosystems.pickadisk.item.user.tags");
+CFStringRef			kDACALCarouselDocumentXAttrUserStars	=CFSTR("com.polymicrosystems.pickadisk.item.user.starrating");
+CFStringRef			kDACALCarouselDocumentXAttrUserLinks	=CFSTR("com.polymicrosystems.pickadisk.item.user.urls");
+CFStringRef			kDACALCarouselDocumentXAttrUserArtwork	=CFSTR("com.polymicrosystems.pickadisk.item.user.artwork");
+CFStringRef			kDACALCarouselDocumentXAttrUserRating	=CFSTR("com.polymicrosystems.pickadisk.item.user.rating");
+CFStringRef			kDACALCarouselDocumentXAttrBookmarks	=CFSTR("com.polymicrosystems.pickadisk.item.bookmarks");
 
 CFStringRef			kDACALCarouselNoticeDeviceOpen			= CFSTR("Open Device");
 CFStringRef			kDACALCarouselNoticeDeviceClose			= CFSTR("Close Device");
@@ -172,11 +180,13 @@ const DACALResult		kDACALInvalidParameter = kIOReturnBadArgument;
 // Private Functions
 
 
-DACALResult		CarouselEstablishInfoFile( CFUUIDRef boxUUID );
-DACALResult		CarouselWriteInfoFile( DACALDeviceRef inDevice );
-DACALResult		CarouselWriteInfoFileKey( DACALDeviceRef inDevice, CFStringRef inKeyName, CFTypeRef inKeyValue );
-DACALResult		CarouselReadInfoFile( DACALDeviceRef indexID );
-void*			CarouselReadInfoFileKey( DACALDeviceRef deviceID, CFStringRef inKeyName, DACALResult* outResult );
+DACALResult			CarouselEstablishInfoFile( CFUUIDRef boxUUID );
+DACALResult			CarouselWriteInfoFile( DACALDeviceRef inDevice );
+DACALResult			CarouselWriteInfoFileKey( DACALDeviceRef inDevice, CFStringRef inKeyName, CFTypeRef inKeyValue );
+DACALResult			CarouselWriteInfoFileWithDictionary( DACALDeviceRef inDevice, CFDictionaryRef keyValueDictionary );
+DACALResult			CarouselReadInfoFile( DACALDeviceRef indexID );
+CFTypeRef			CarouselReadInfoFileKey( DACALDeviceRef deviceID, CFStringRef inKeyName, DACALResult* outResult );
+CFDictionaryRef		CarouselReadInfoFileKeys( DACALDeviceRef deviceID, CFArrayRef inKeyNames, DACALResult* outResult );
 
 //CFStringRef		CopyUSBProductData(DACALDeviceRef indexID, DACALDeviceNode* outNode);
 //DACALResult		SaveUSBProductData(DACALDeviceRef deviceID, CFStringRef inName, DACALDeviceNode inNode);
@@ -195,7 +205,7 @@ DACALDeviceRef	DACALDeviceCreateWithService( io_service_t ioDeviceObj, DACALResu
 DACALResult		DACALDeviceClose( DACALDeviceRef deviceID );
 
 
-void*			CarouselReadInfoFileKey( DACALDeviceRef deviceID, CFStringRef inKeyName, DACALResult* outResult )
+CFTypeRef		CarouselReadInfoFileKey( DACALDeviceRef deviceID, CFStringRef inKeyName, DACALResult* outResult )
 {
 	DACALResult			returnResult = kIOReturnBadArgument;
 	DACALDeviceRef		indexID = dacalDeviceRefToDeviceIndex( deviceID );
@@ -206,7 +216,7 @@ void*			CarouselReadInfoFileKey( DACALDeviceRef deviceID, CFStringRef inKeyName,
 	Boolean				infoGood = FALSE;
 	OSStatus			fileErr;
 	
-	void*				outData = NULL;
+	CFTypeRef			outData = NULL;
 	
 	if( !docURL ) goto BAIL;
 	
@@ -220,10 +230,10 @@ void*			CarouselReadInfoFileKey( DACALDeviceRef deviceID, CFStringRef inKeyName,
 	infoData = (CFDictionaryRef)CFPropertyListCreateFromXMLData( NULL, infoText, kCFPropertyListImmutable, NULL );
 	if( !infoData ) goto BAIL;
 	
-	outData = (void*)CFDictionaryGetValue( infoData, (const void*)inKeyName );
+	outData = (CFTypeRef)CFDictionaryGetValue( infoData, (const void*)inKeyName );
 	if( !outData ) goto BAIL;
 	
-	CFRetain( (CFTypeRef)outData );
+	CFRetain( outData );
 	returnResult = 0;
 	
 	//CFShow( outData );
@@ -231,6 +241,58 @@ void*			CarouselReadInfoFileKey( DACALDeviceRef deviceID, CFStringRef inKeyName,
 BAIL:
 	if( infoText ) CFRelease( infoText );
 //	if( docURL ) CFRelease( docURL );
+	if( infoURL ) CFRelease( infoURL );
+	
+	if( outResult != NULL ) *outResult = returnResult;
+	return outData;
+}
+
+CFDictionaryRef		CarouselReadInfoFileKeys( DACALDeviceRef deviceID, CFArrayRef inKeyNames, DACALResult* outResult )
+{
+	DACALResult			returnResult = kIOReturnBadArgument;
+	DACALDeviceRef		indexID = dacalDeviceRefToDeviceIndex( deviceID );
+	CFURLRef			docURL = DACAL_BOX_PATH(indexID);
+	CFURLRef			infoURL = NULL;
+	CFDataRef			infoText = NULL;
+	CFDictionaryRef		infoData = NULL;
+	Boolean				infoGood = FALSE;
+	CFStringRef			workKeyName = NULL;
+	CFIndex				keyIndex = 0;
+	CFIndex				keyCount = CFArrayGetCount( inKeyNames );
+	OSStatus			fileErr;
+	
+	CFMutableDictionaryRef	workData = CFDictionaryCreateMutable( gDACALDefaultCFAllocator, keyCount, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks );
+	CFDictionaryRef			outData = NULL;
+	void*					workKeyValue = NULL;
+	
+	if( !docURL ) goto BAIL;
+	
+	infoURL = CFURLCreateWithString( NULL, kDACALCarouselDocumentInfoFile, docURL );
+	infoGood = CFURLCreateDataAndPropertiesFromResource( NULL, infoURL, &infoText, NULL, NULL, &fileErr );
+	if( !infoGood ) {
+		returnResult = (DACALResult)fileErr;
+		goto BAIL;
+	}
+	
+	infoData = (CFDictionaryRef)CFPropertyListCreateFromXMLData( NULL, infoText, kCFPropertyListImmutable, NULL );
+	if( !infoData ) goto BAIL;
+	
+	for( keyIndex=0; keyIndex < keyCount; keyIndex++ )
+	{
+		workKeyName = (CFStringRef)CFArrayGetValueAtIndex( inKeyNames, keyIndex );
+		workKeyValue = (void*)CFDictionaryGetValue( infoData, (const void*)workKeyName );
+		if( workKeyValue != NULL )
+			CFDictionarySetValue( workData, workKeyName, workKeyValue );
+	}
+	
+	outData = CFDictionaryCreateCopy( gDACALDefaultCFAllocator, (CFDictionaryRef)workData );
+	returnResult = 0;
+	
+	//CFShow( outData );
+	
+BAIL:
+	if( infoText ) CFRelease( infoText );
+	if( workData ) CFRelease( workData );
 	if( infoURL ) CFRelease( infoURL );
 	
 	if( outResult != NULL ) *outResult = returnResult;
@@ -287,6 +349,57 @@ DACALResult		CarouselWriteInfoFileKey( DACALDeviceRef inDevice, CFStringRef inKe
 HAVEDICT:
 	CFDictionarySetValue( outDict, (const void*)inKeyName, (const void*)inKeyValue );
 		
+	// Save the file
+	
+	boxXML = CFPropertyListCreateXMLData( NULL, (CFPropertyListRef)outDict );
+	if( boxXML == NULL ) goto BAIL;
+	
+	goodSave = CFURLWriteDataAndPropertiesToResource( savePath, boxXML, NULL, &saveErr );
+	if( !goodSave ) {
+		outResult = saveErr;
+		goto BAIL;
+	}
+	
+BAIL:
+	if( boxUUIDString ) CFRelease( boxUUIDString );
+	if( boxXML ) CFRelease( boxXML );
+	if( savePath ) CFRelease( savePath );
+	if( outDict ) CFRelease( outDict );
+	
+	return outResult;
+}
+
+DACALResult		CarouselWriteInfoFileWithDictionary( DACALDeviceRef inDevice, CFDictionaryRef keyValueDictionary )
+{
+	DACALResult		outResult = kIOReturnBadArgument;
+	DACALDeviceRef	indexID = dacalDeviceRefToDeviceIndex( inDevice );
+	CFURLRef		devicePath = DACAL_BOX_PATH( indexID );
+	CFURLRef		savePath = CFURLCreateCopyAppendingPathComponent( NULL, devicePath, kDACALCarouselDocumentInfoFile, FALSE );
+	CFUUIDRef		boxUUID = DACAL_BOX_UUID( indexID );
+	CFStringRef		boxUUIDString = CFUUIDCreateString( NULL, boxUUID );
+	CFDataRef		boxXML = NULL;
+	Boolean			goodSave = FALSE;
+	Boolean			infoGood = FALSE;
+	SInt32			saveErr;
+
+	CFMutableDictionaryRef outDict = NULL;
+	
+	infoGood = CFURLCreateDataAndPropertiesFromResource( NULL, savePath, &boxXML, NULL, NULL, &saveErr );
+	if( !infoGood ) {
+		outDict = CFDictionaryCreateMutable( NULL, 1, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks );
+		goto HAVEDICT;
+	}
+	
+	outDict = (CFMutableDictionaryRef)CFPropertyListCreateFromXMLData( NULL, boxXML, kCFPropertyListMutableContainersAndLeaves, NULL );
+	if( !outDict ) goto BAIL;
+	
+	CFRelease( boxXML );
+	boxXML = NULL;
+	
+	// Add keys and values from dict
+HAVEDICT:
+	[(NSMutableDictionary*)outDict addEntriesFromDictionary:(NSDictionary*)keyValueDictionary];
+	
 	// Save the file
 	
 	boxXML = CFPropertyListCreateXMLData( NULL, (CFPropertyListRef)outDict );
@@ -1634,6 +1747,18 @@ void DACALDeviceRelease( DACALDeviceRef inDevice )
 	}
 	
 }
+
+DACALResult			DACALDeviceInfoSetKey( DACALDeviceRef inDevice, CFStringRef inKeyName, CFTypeRef inKeyValue )
+	{ return CarouselWriteInfoFileKey( inDevice, inKeyName, inKeyValue ); }
+
+DACALResult			DACALDeviceInfoAddDictionary( DACALDeviceRef inDevice, CFDictionaryRef keyValueDictionary )
+	{ return CarouselWriteInfoFileWithDictionary( inDevice, keyValueDictionary ); }
+
+CFTypeRef			DACALDeviceInfoCopyKey( DACALDeviceRef deviceID, CFStringRef inKeyName, DACALResult* outResult )
+	{ return CarouselReadInfoFileKey( deviceID, inKeyName, outResult ); }
+
+CFDictionaryRef		DACALDeviceInfoCopyKeys( DACALDeviceRef deviceID, CFArrayRef inKeyNames, DACALResult* outResult )
+	{ return CarouselReadInfoFileKeys( deviceID, inKeyNames, outResult ); }
 
 CFArrayRef	DACALDevicesCopyAllNames( void )
 {

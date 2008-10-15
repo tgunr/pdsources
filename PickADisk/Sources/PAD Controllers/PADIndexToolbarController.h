@@ -19,6 +19,7 @@
 	IBOutlet	NSButton	*resetButton;
 	IBOutlet	NSButton	*playButton;
 	IBOutlet	NSButton	*checkOutButton;
+	IBOutlet	NSButton	*checkInButton;
 	IBOutlet	NSButton	*closeDoorButton;
 	IBOutlet	NSButton	*assignButton;
 	IBOutlet	NSButton	*unassignButton;
@@ -30,6 +31,8 @@
 	IBOutlet	NSSearchField	*homeSearchField;
 	
 	IBOutlet	NSProgressIndicator	*busyProgress;
+	
+	IBOutlet	NSPathControl	*pathControl;
 	
 	IBOutlet	id			indexController;
 	IBOutlet	id			dataController;
@@ -46,6 +49,7 @@
 - (IBAction)clickReset:(id)sender;
 - (IBAction)clickPlay:(id)sender;
 - (IBAction)clickCheckOut:(id)sender;
+- (IBAction)clickCheckIn:(id)sender;
 - (IBAction)clickCloseDoor:(id)sender;
 - (IBAction)clickAssign:(id)sender;
 - (IBAction)clickUnassign:(id)sender;
@@ -60,7 +64,7 @@
 
 - (void)setSelectedDevices: (NSArray*)deviceList;
 - (void)setSelectedDevice: (DACALDeviceRef)theDevice;
-- (void)addSelectedDevice:(DACALDeviceRef)theDevice;
+- (void)addSelectedDevice:(DACALDeviceRef)theDevice adoptSelection:(BOOL)doAdopt;
 - (NSArray*)selectedDevices;
 
 - (void)setSelectedSlots: (NSArray*)slotList;
@@ -73,6 +77,8 @@
 - (NSArray*)selectedNodes;
 - (void)resetSelection;
 - (NSProgressIndicator*)busyProgress;
+
+- (void)unassignNodes:(NSArray*)nodesToDelete;
 
 -(NSString*)checkedOutTitle;
 

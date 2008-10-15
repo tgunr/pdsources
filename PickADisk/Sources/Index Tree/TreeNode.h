@@ -20,6 +20,7 @@
 - (void)insertChildren:(NSArray *)children atIndex:(NSInteger)index;
 
 - (void)removeChild:(TreeNode *)child;
+- (void)removeChildrenIdenticalTo:(NSArray *)childlist;
 - (void)removeFromParent;
 
 - (NSInteger)indexOfChild:(TreeNode *)child;
@@ -46,6 +47,9 @@
 // The nodeData is invalid and needs refreshing, or if necessary replacing
 - (void)reloadData:(id)newData reloadChildren:(BOOL)recurse;
 - (void)reloadDataAndChildren;
+
+//	Sets the order of the childern to the names in the array
+- (void)orderChildrenByName:(NSArray*)childNames removeMissing:(BOOL)doRemove;
 
 // sort children using the compare: method in nodeData
 - (void)recursiveSortChildren;

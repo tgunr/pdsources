@@ -128,13 +128,14 @@ int		DACVolume_nextIconID = 0;
 
 -(NSString*)guessPADFlavor
 {
-	NSString*	outGuess = nil;
-	NSArray*	volumeDirectory = nil;
-	NSInteger	dirIndex = 0;
-	NSInteger	dirCount = 0;
-	NSString*	workString = nil;
-	NSURL*		workURL = nil;
-	Boolean		goodItem = FALSE;
+	NSString*		outGuess = nil;
+	NSArray*		volumeDirectory = nil;
+	NSEnumerator*	volumesEnumAIFF = nil;
+	NSEnumerator*	volumesEnumOnce = nil;
+	NSInteger		dirCount = 0;
+	NSString*		workString = nil;
+	NSURL*			workURL = nil;
+	Boolean			goodItem = FALSE;
 	
 	const	NSString*	aiffExtension = @"aiff";
 	const	NSString*	mp3Folder = @"MP3";
@@ -153,11 +154,10 @@ int		DACVolume_nextIconID = 0;
 
 	//	Music CD?
 	//		Check if all the visible items have an "aiff" extension
-	for( dirIndex=0; dirIndex < dirCount; dirIndex++ )
+	while( workURL = (NSURL*)[volumesEnumAIFF nextObject] )
 	{
 		workString = nil;
 		goodItem = FALSE;
-		workURL = (NSURL*)[volumeDirectory objectAtIndex:dirIndex];
 		if( !workURL ) break;
 		if( !CFURLIsVisible( (CFURLRef)workURL ) ) continue;
 		workString = (NSString*)CFURLCopyPathExtension( (CFURLRef)workURL );
@@ -169,14 +169,12 @@ int		DACVolume_nextIconID = 0;
 		goto HAVEGUESS;
 	}
 	
-	
 	//	One shots
 	//		Check if any item matches a known value
 	goodItem = FALSE;
-	for( dirIndex=0; dirIndex < dirCount; dirIndex++ )
+	while( workURL = (NSURL*)[volumesEnumOnce nextObject] )
 	{
 		workString = nil;
-		workURL = (NSURL*)[volumeDirectory objectAtIndex:dirIndex];
 		if( !workURL ) break;
 		workString = (NSString*)CFURLCopyLastPathComponent( (CFURLRef)workURL );
 		if( [videoFolder isEqual:workString] == YES )		//	is movie?
@@ -273,7 +271,7 @@ HAVEGUESS:
     
  	sleep(3);
 	
-    NSLog(@"getMediaInfo: deviceName = %s", deviceName);
+    // NSLog(@"getMediaInfo: deviceName = %s", deviceName);
     for(n = 0; n < [fFormats count]; n++) {
         int format = [[fFormats objectAtIndex:n] intValue];
         [self readDVDStructure:mmcInterface
@@ -420,6 +418,8 @@ bail:
 		volumeData = DADiskCopyDescription( volumeDiskRef );
 		if( volumeData == NULL ) goto FAILED;
 		
+		//CFShow( volumeData );
+		
 		//	Extract the volume name
 		volumeName = CFDictionaryGetValue( volumeData, CFSTR("DAVolumeName") );
 		if( volumeName != NULL )
@@ -472,6 +472,10 @@ bail:
 			iconResFile = CFDictionaryGetValue( workDict, CFSTR("IOBundleResourceFile") );
 			
 			if( iconResFile && bundleIDString ) {
+				
+				// Lazy Init the kext bundle identifers
+				[[DACVolumeService sharedVolumeService] lazyInitKextBundles];
+				
 				CFBundleRef		theIconBundle = CFBundleGetBundleWithIdentifier( bundleIDString );
 				if( theIconBundle )
 					iconFileURL = CFBundleCopyResourceURL( theIconBundle, iconResFile, NULL, NULL );
@@ -484,14 +488,25 @@ bail:
 				RegisterIconRefFromFSRef( kDACALCarouselsFolderType, DACVolume_nextIconID++, &iconFileRef, &mediaIcon );
 		}
 		
-		if( [self isDVD] == YES )
+		//if( [self isDVD] == YES )
 		{
 			NSDictionary*	dvdInfo = [self getDVDMediaInfo];				// autoreleased
 			if( dvdInfo != nil )
 			{
 				NSLog(@"DVD Info Dict: %@", dvdInfo);
-				// save the id?
+
+				NSEnumerator*		infoEnum = [dvdInfo objectEnumerator];
+				id					infoItem = nil;
+				NSMutableString*	infoString = [NSMutableString stringWithString:@""];
+				NSString*			infoMD5 = nil;
 				
+				while ( infoItem = [infoEnum nextObject] ) 
+					[infoString appendString:[infoItem md5String]];
+				
+				infoMD5 = [infoString md5String];
+				
+				NSLog(@"Disc: %@\nProposed DACKey: %@", self, infoMD5);
+				// save the id?
 			}
 		}
 		
@@ -567,11 +582,9 @@ static id	DACVolumeService_shared = nil;
     }
 	if( self = [super init] )
 	{
-		// Although this might look crazy, it will ultimately give us access to the resources of any kext
-		// simply by referencing the bundle ID. 
-		CFURLRef	allKextURLs = CFURLCreateWithString( kCFAllocatorDefault, CFSTR("file:///System/Library/Extensions/"), NULL );
-		kextBundles = CFBundleCreateBundlesFromDirectory( kCFAllocatorDefault, allKextURLs, NULL );
-		if( allKextURLs != NULL ) CFRelease( allKextURLs );
+		DACVolumeService_shared = [self retain];
+
+		kextBundles = NULL;
 		
 		// Create managed volumes list without autorelease
 		knownVolumes = [[NSMutableArray alloc] initWithCapacity:0];
@@ -579,7 +592,8 @@ static id	DACVolumeService_shared = nil;
 		NSArray*		mediaPaths = [[NSWorkspace sharedWorkspace] mountedRemovableMedia];
 		[knownVolumes	addObjectsFromArray:[DACVolume detectedMounts:[mediaPaths arrayOfURLsFromPaths]]];
 		
-		NSLog(@"Mounted Volumes:%@", knownVolumes);
+		if( knownVolumes && ([knownVolumes count] > 0) )
+			NSLog(@"Mounted Volumes:%@", knownVolumes);
 		
 		// Setup notifications for media changes
 		NSNotificationCenter *noteCenter = [[NSWorkspace sharedWorkspace] notificationCenter];
@@ -591,7 +605,6 @@ static id	DACVolumeService_shared = nil;
 		[noteCenter addObserver:self selector:@selector(existingMediaRemoved:)
 						   name:@"NSWorkspaceWillUnmountNotification" object:nil]; 
 		
-		DACVolumeService_shared = [self retain];
 	}
 	return self;
 }
@@ -606,6 +619,19 @@ static id	DACVolumeService_shared = nil;
 
 -(CFArrayRef)kextBundles
 	{ return kextBundles; }
+
+-(void)lazyInitKextBundles
+{
+	if( kextBundles != NULL ) return;
+	
+	// Although this might look crazy, it will ultimately give us access to the resources of any kext
+	// simply by referencing the bundle ID. It is an expensive transaction, so we save it until we
+	// absolutely must have it.
+	
+	CFURLRef	allKextURLs = CFURLCreateWithString( kCFAllocatorDefault, CFSTR("file:///System/Library/Extensions/"), NULL );
+	kextBundles = CFBundleCreateBundlesFromDirectory( kCFAllocatorDefault, allKextURLs, NULL );
+	if( allKextURLs != NULL ) CFRelease( allKextURLs );
+}
 
 -(NSMutableArray*)knownVolumes
 	{ return knownVolumes; }

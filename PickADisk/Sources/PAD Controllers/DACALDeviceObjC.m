@@ -14,20 +14,101 @@ CFStringRef		kPADClientIdentifier = CFSTR("PAD.DACAL.CLIENT");
 
 //	Externally referenced
 
-NSString*	kDACSlotReservationTime = @"DACResTime";
-NSString*	kDACSlotReservationType = @"DACResType";
-NSString*	kDACSlotReservationUser = @"DACResUser";
-NSString*	kDACSlotReservationHost = @"DACResHost";
+NSString*	kDACSlotReservationKeyTime			= @"DACResTime";
+NSString*	kDACSlotReservationKeyType			= @"DACResType";
+NSString*	kDACSlotReservationKeyUser			= @"DACResUser";
+NSString*	kDACSlotReservationKeyHost			= @"DACResHost";
+NSString*	kDACSlotReservationKeyCountCheckOut	= @"DACResCheckOutCount";
 
-NSString*	kDACSlotReservationTypeCheckOut	= @"DACCheckOut";
-NSString*	kDACSlotReservationTypeCheckIn	= @"DACCheckIn";
+NSString*	kDACSlotReservationTypeCheckOut		= @"DACCheckOut";
+NSString*	kDACSlotReservationTypeCheckIn		= @"DACCheckIn";
+
+NSString*	kDACBookmarkLocationInSidebar		= @"_DACSide";
+NSString*	kDACBookmarkLocationInMenubar		= @"_DACMenu";
+NSString*	kDACBookmarkLocationInBookmarks		= @"_DACBook";
 
 //	Internal constants
 
 NSString*	kDACSlotReservationFileName					= @".reservations";
 NSString*	kDACSlotReservationFileNameWithExtension	= @".reservations.plist";
 
+
 NSMutableArray*		gDACALDevices;
+
+@implementation DACALSlotElementBookmark
+
+-(void)dealloc
+{
+	if( markElement ) markElement = nil;
+	if( markLocation ) [markLocation release];
+	markLocation = nil;
+	[self removeMarkNode];
+
+	[super dealloc];
+}
+
+-(DACALSlotElement*)markElement { return markElement; }
+-(NSString*)markLocation { return markLocation; }
+-(SimpleTreeNode*)markNode { return markNode; }
+
+-(BOOL)isBookmarkLocation:(NSString*)theLocation
+	{ return( BooleanToBOOL([markLocation compare:theLocation] == NSOrderedSame) ); }
+
+-(BOOL)removeBookmark
+	{ return [markElement removeBookmarkForLocation:markLocation]; }
+
+-(void)removeMarkNode
+{
+	if( markNode ) {
+		if( [markNode nodeParent] != nil ) {
+			[markNode removeFromParent];
+			[[DACALTreeDataSource shared] updateChangesWithAction:YES];
+		}
+		markNode = nil;
+	}
+}
+
+-(void)removeBookmarkForLocation
+{
+	[self removeMarkNode];
+	[self autorelease];
+}
+
+-(id)initBookmarkForElement:(DACALSlotElement*)theElement atLocation:(NSString*)theLocation attachNow:(BOOL)doAttach
+{
+	if( self = [super init] )
+	{
+		markElement = theElement;
+		markLocation = theLocation;
+		
+		SimpleTreeNode* newMark = (SimpleTreeNode*)[SimpleTreeNode nodeDataWithURL:[theElement elementURL]];
+		SimpleTreeNode* newMarkTree = (SimpleTreeNode*)[SimpleTreeNode treeOperationFromLocation:[theElement elementURL] forUI:YES];
+		[[newMark nodeData] setItemElement:theElement];
+		[[newMark nodeData] setSubTree:newMarkTree];
+		[[newMark nodeData] setIsLeaf:YES];
+		[[newMark nodeData] setExpandable:NO];
+		[[newMark nodeData] setItemType:kPADTypeIndexFavorites];
+		[[newMarkTree nodeData] setItemElement:theElement];
+		
+		markNode = newMark;
+		
+		if( doAttach == YES )
+			if( [theLocation compare:kDACBookmarkLocationInSidebar] == NSOrderedSame ) {
+				SimpleTreeNode* workNode = [[[[DACALTreeDataSource shared] treeControl] treeRoot] childWithName:PADINDEX_GROUPTITLE_FAVORITES];
+				[workNode insertChild:(TreeNode*)markNode atIndex:[workNode numberOfChildren]];
+				[[DACALTreeDataSource shared] orderForUser:nil];
+				[[[[DACALTreeDataSource shared] treeControl] outlineView] reloadItem:workNode reloadChildren:YES];
+			} else
+				NSLog(@"Unimplemented bookmark location: %@", theLocation);
+	}
+	return self;
+}
+
++(id)bookmarkForElement:(DACALSlotElement*)theElement atLocation:(NSString*)theLocation attachNow:(BOOL)doAttach
+	{ return [[DACALSlotElementBookmark alloc] initBookmarkForElement:theElement atLocation:theLocation attachNow:doAttach]; }
+
+@end	//	DACALSlotElementBookmark
+
 
 @implementation DACALSlotElement
 
@@ -95,6 +176,50 @@ NSMutableArray*		gDACALDevices;
 	return( (FSCompareFSRefs( (const FSRef*)&thisFS, (const FSRef*)&thatFS ) == 0) ? YES : NO ); 
 }
 
+-(BOOL)saveBookmarks
+{
+	BOOL			didSave = NO;
+	NSInteger		markIndex, markCount = [elementBookmarks count];
+	NSMutableArray*	markNames = [NSMutableArray arrayWithCapacity:markCount];
+	
+	for( markIndex=0; markIndex < markCount; markIndex++ )
+		[markNames addObject:[[elementBookmarks objectAtIndex:markIndex] markLocation]];
+	
+	// NSLog(@"Saving Names: %@\nFrom Bookmarks: %@", markNames, elementBookmarks);
+	
+	didSave = (FSSetXattrProperty( kCFAllocatorDefault, &elementFSRef, kDACALCarouselDocumentXAttrBookmarks, markNames ) == 0);
+	
+	return didSave;
+}
+
+-(void)reloadAttributes
+{
+	comments	= (NSString*)FSCopyXattr( kCFAllocatorDefault, &elementFSRef, kDACALCarouselDocumentXAttrUserComments, NULL );
+	tags		= (NSArray*)FSCopyXattrProperty( kCFAllocatorDefault, &elementFSRef, kDACALCarouselDocumentXAttrUserTags, NULL );
+	
+	CFStringRef		newStars = FSCopyXattr( kCFAllocatorDefault, &elementFSRef, kDACALCarouselDocumentXAttrUserStars, NULL );
+	if( newStars != NULL ) {
+		stars = CFStringGetIntValue( newStars );
+		CFRelease( newStars );
+	} else
+		stars = 0;
+	
+	[elementBookmarks removeAllObjects];
+	NSArray*	newMarks = (NSArray*)FSCopyXattrProperty( kCFAllocatorDefault, &elementFSRef, kDACALCarouselDocumentXAttrBookmarks, NULL );
+	NSInteger	markIndex, markCount = [newMarks count];
+	
+	for( markIndex=0; markIndex < markCount; markIndex++ )
+		if( [self bookmarkForLocation:[newMarks objectAtIndex:markIndex]] == nil )
+			[elementBookmarks addObject:[DACALSlotElementBookmark bookmarkForElement:self atLocation:[newMarks objectAtIndex:markIndex] attachNow:YES]];
+	
+	for( markIndex=[elementBookmarks count]-1; markIndex >= 0; markIndex-- )
+		if( [newMarks indexOfObjectIdenticalTo:[[elementBookmarks objectAtIndex:markIndex] markLocation]] == NSNotFound )
+			[elementBookmarks removeObjectAtIndex:markIndex];
+	
+	//if( comments || tags )
+		//NSLog(@"New Element Comment: %@\nTags: %@\nMarks: %@", [comments UTF8String], tags, elementBookmarks );
+}
+
 -(id)initElementForSlot:(DACALSlot*)newSlot atLocation:(NSURL*)newLoc
 {
 	if( self = [super init] )
@@ -106,6 +231,10 @@ NSMutableArray*		gDACALDevices;
 			//return nil;
 		}
 		elementURL = [newLoc retain];
+		elementBookmarks = [[NSMutableArray alloc] initWithCapacity:0];
+		
+		[self reloadAttributes];
+		
 		if( newSlot ) [newSlot addSlotElement:self];
 	}
 	return self;
@@ -129,15 +258,22 @@ NSMutableArray*		gDACALDevices;
 +(id)slotElementForSlot:(DACALSlot*)newSlot atLocation:(NSURL*)newLoc
 	{ return [[DACALSlotElement alloc] initElementForSlot:newSlot atLocation:newLoc]; }
 
+-(void)updateElementChanges:(BOOL)doAction
+	{ [[[[AppController shared] dataView] dataSource] updateChangesForItem:elementNode withAction:doAction]; }
+
 -(void)reloadElement
 {
 	NSURL*		newURL = (NSURL*)CFURLCreateFromFSRef( kCFAllocatorDefault, [self elementFSRef] );
 	
 	if( newURL )
 	{
-		NSLog(@"Reloading Element: %@", newURL);
+		// NSLog(@"Reloading Element: %@", newURL);
+		
 		[[elementNode nodeData] setLocation:newURL];
-		[elementNode reloadData:nil reloadChildren:NO];
+		[elementNode reloadDataAndChildren];
+		[self reloadAttributes];
+		
+		[self updateElementChanges:YES];
 	}
 }
 
@@ -193,6 +329,110 @@ NSMutableArray*		gDACALDevices;
 	return [elementSlot checkedInDate];
 }
 
+-(NSString*)comments 
+{
+	return comments;
+}
+
+-(void)setComments:(NSString*)newComment
+{
+	if( !comments || ![comments isEqual:newComment] )
+	{
+		if( newComment != nil ) [newComment retain];
+		if( comments != nil ) [comments release];
+		comments = newComment;
+
+		FSSetXattr( &elementFSRef, kDACALCarouselDocumentXAttrUserComments, (CFStringRef)newComment );
+		[self updateElementChanges:YES];
+	}
+	
+}
+
+-(NSArray*)tags
+{ return tags; }
+
+-(void)setTags:(NSArray*)newTags
+{
+	if( !tags || ![tags isEqual:newTags] )
+	{
+		if( newTags != nil ) [newTags retain];
+		if( tags != nil ) [tags release];
+		tags = newTags;
+		
+		FSSetXattrProperty( kCFAllocatorDefault, &elementFSRef, kDACALCarouselDocumentXAttrUserTags, (CFPropertyListRef)newTags );
+		[self updateElementChanges:YES];
+	}
+}
+
+-(NSInteger)stars
+	{ return stars; }
+
+-(void)setStars:(NSInteger)starLevel
+{
+	if( stars == starLevel ) return;
+	stars = starLevel;
+	
+	FSSetXattr( &elementFSRef, kDACALCarouselDocumentXAttrUserStars, (CFStringRef)[NSString stringWithFormat:@"%i", starLevel] );
+	[self updateElementChanges:YES];
+}
+
+-(NSMutableArray*)bookmarks { return elementBookmarks; }
+
+-(BOOL)removeBookmarkForLocation:(NSString*)markLocation
+{
+	BOOL		didRemove = NO;
+	DACALSlotElementBookmark*	foundMark = nil;
+	NSInteger	markIndex, markCount = [elementBookmarks count];
+	
+	for( markIndex=0; markIndex < markCount; markIndex++ )
+	{
+		foundMark = [elementBookmarks objectAtIndex:markIndex];
+		if( [foundMark isBookmarkLocation:markLocation] == YES ) {
+			[elementBookmarks removeObject:foundMark];
+			[foundMark removeBookmarkForLocation];
+			didRemove = YES;
+			break;
+		}
+	}
+	
+	if( didRemove )
+		[self saveBookmarks];
+	
+	return didRemove;
+}
+
+-(DACALSlotElementBookmark*)bookmarkForLocation:(NSString*)markLocation
+{
+	DACALSlotElementBookmark*	foundMark = nil;
+	NSInteger	markIndex, markCount = [elementBookmarks count];
+	
+	for( markIndex=0; markIndex < markCount; markIndex++ )
+	{
+		foundMark = [elementBookmarks objectAtIndex:markIndex];
+		if( [foundMark isBookmarkLocation:markLocation] == YES )
+			break;
+		else
+			foundMark = nil;
+	}
+	
+	return foundMark;
+}
+
+-(DACALSlotElementBookmark*)createBookmarkAtLocation:(NSString*)markLocation attachNow:(BOOL)doAttach
+{ 
+	DACALSlotElementBookmark* newMark = [self bookmarkForLocation:markLocation];
+	
+	if( newMark == nil ) {
+		newMark = [DACALSlotElementBookmark bookmarkForElement:self atLocation:markLocation attachNow:doAttach]; 
+		if( newMark != nil ) {
+			[elementBookmarks addObject:newMark];
+			[self saveBookmarks];
+		}
+	}
+	
+	return newMark;
+}
+
 @end		// DACALSlotElement
 
 @implementation DACALSlot
@@ -239,11 +479,27 @@ NSMutableArray*		gDACALDevices;
 	}
 }
 
+-(DACVolume*)slotVolume
+	{ return slotVolume; }
+
+-(void)setSlotVolume:(DACVolume*)newVolume
+{ 
+	if( !slotVolume || slotVolume != newVolume )
+	{
+		if( newVolume ) [newVolume retain];
+		if( slotVolume ) [slotVolume release];
+		slotVolume = newVolume;
+	}
+}
+
 -(FSRef*)slotFSRef
 	{ return &slotFSRef; }
 
 -(BOOL)setSlotFSRefFromURL:(NSURL*)slotURL
 	{ return( (CFURLGetFSRef( (CFURLRef)slotURL, &slotFSRef ) == TRUE) ? YES : NO ); }
+
+-(BOOL)validSlotFSRef
+	{ return( BooleanToBOOL(FSIsFSRefValid(&slotFSRef)) ); }
 
 -(BOOL)setSlotLocation:(NSURL*)slotURL
 {
@@ -359,6 +615,7 @@ NSMutableArray*		gDACALDevices;
 {
 	DACALResult			theErr = kDACALError;
 	SimpleTreeNode*		swapNode = nil;
+	DACVolume*			swapVolume = nil;
 	NSDate*				swapOutDate = nil;
 	NSDate*				swapInDate = nil;
 	NSMutableArray*		swapElements = nil;
@@ -368,6 +625,7 @@ NSMutableArray*		gDACALDevices;
 	if( theErr == 0 )
 	{
 		swapNode = [[self slotNode] retain];
+		swapVolume = [[self slotVolume] retain];
 		swapElements = [[self slotElements] retain];
 		
 		if( [self isCheckedOut] == YES )
@@ -375,11 +633,13 @@ NSMutableArray*		gDACALDevices;
 		swapInDate = [[self checkedInDate] retain];
 		
 		[self setSlotNode:[otherSlot slotNode]];
+		[self setSlotVolume:[otherSlot slotVolume]];
 		[self setSlotElements:[otherSlot slotElements]];
 		[self setCheckedOutDate:[otherSlot checkedOutDate]];
 		[self setCheckedInDate:[otherSlot checkedInDate]];
 		
 		[otherSlot setSlotNode:swapNode];
+		[otherSlot setSlotVolume:swapVolume];
 		[otherSlot setSlotElements:swapElements];
 		[otherSlot setCheckedOutDate:swapOutDate];
 		[otherSlot setCheckedInDate:swapInDate];
@@ -391,13 +651,10 @@ NSMutableArray*		gDACALDevices;
 		[otherSlot reloadSlot];
 	}
 	
-	if( theErr != 0 ) {
+	if( theErr != 0 )
 		NSLog(@"Error:%i Changing Slot", (int)theErr);
-		[AppController playUISound: kASSystemSoundDoink];
-	} else {
-		[AppController playUISound: kASSystemSoundSuccess];
-	}
 	
+	[AppController playUISoundForResult:theErr];
 }
 
 -(void)reloadSlot
@@ -406,7 +663,7 @@ NSMutableArray*		gDACALDevices;
 	
 	if( newURL )
 	{
-		NSLog(@"Reloading Slot: %@", newURL);
+		// NSLog(@"Reloading Slot: %@", newURL);
 		[[slotNode nodeData] setLocation:newURL];
 		[slotNode reloadData:nil reloadChildren:NO];
 		
@@ -415,8 +672,8 @@ NSMutableArray*		gDACALDevices;
 			[slotElements makeObjectsPerformSelector:@selector(reloadElement)];
 			[[PADSearchService sharedSearch] searchDataChanged:slotElements];
 			
-			[[[[AppController shared] dataView] dataSource] sortExpandedChildrenWithCurrentDescriptors:nil];
-			[[[[AppController shared] dataView] outlineView] reloadData];
+			//[[[[AppController shared] dataView] dataSource] sortExpandedChildrenWithCurrentDescriptors:nil];
+			//[[[[AppController shared] dataView] outlineView] reloadData];
 		}
 		//else
 			// NSLog(@"Empty Slot Elements: %@", slotElements);
@@ -431,8 +688,9 @@ NSMutableArray*		gDACALDevices;
 	[theElement reloadElement];
 	[[PADSearchService sharedSearch] searchDataChanged:[NSArray arrayWithObject:theElement]];
 	
-	[[[[AppController shared] dataView] dataSource] sortExpandedChildrenWithCurrentDescriptors:nil];
-	[[[[AppController shared] dataView] outlineView] reloadData];	
+	[[[[AppController shared] dataView] dataSource] updateChangesWithAction:YES];
+	//[[[[AppController shared] dataView] dataSource] sortExpandedChildrenWithCurrentDescriptors:nil];
+	//[[[[AppController shared] dataView] outlineView] reloadData];	
 }
 
 -(NSURL*)fileURL
@@ -530,19 +788,26 @@ NSMutableArray*		gDACALDevices;
 	NSMutableDictionary*	newManDict = [NSMutableDictionary dictionaryWithCapacity:0];
 	NSMutableDictionary*	newManEntry = [NSMutableDictionary dictionaryWithCapacity:0];
 	NSDate*					newDate = [NSDate date];
+	NSInteger				newCount = 0;
 	
 	if( BOOLToBoolean([self isCheckedOut]) ) return didWork;
 	
 	if( manifestURL != nil )
 	{
-		if( manifestDict != nil )
+		if( manifestDict != nil ) {
 			[newManDict addEntriesFromDictionary:manifestDict];
+			newCount = [[newManDict objectForKey:kDACSlotReservationKeyCountCheckOut] integerValue];
+		}
 		
-		[newManEntry setValue:newDate		forKey:kDACSlotReservationTime];
-		[newManEntry setValue:userName		forKey:kDACSlotReservationUser];
-		[newManEntry setValue:userHost		forKey:kDACSlotReservationHost];
+		newCount++;
+		[newManDict setValue:[NSNumber numberWithInteger:newCount]
+					  forKey:kDACSlotReservationKeyCountCheckOut];
+		
+		[newManEntry setValue:newDate		forKey:kDACSlotReservationKeyTime];
+		[newManEntry setValue:userName		forKey:kDACSlotReservationKeyUser];
+		[newManEntry setValue:userHost		forKey:kDACSlotReservationKeyHost];
 		[newManEntry setValue:kDACSlotReservationTypeCheckOut
-					   forKey:kDACSlotReservationType];
+					   forKey:kDACSlotReservationKeyType];
 		
 		[newManDict setValue:newManEntry	forKey:[newDate description]];
 		didWork = [newManDict writeToURL:manifestURL atomically:YES];
@@ -555,7 +820,7 @@ NSMutableArray*		gDACALDevices;
 	
 	[self reloadSlot];
 	
-	NSLog(@"Slot Checkout:%@\nManifset URL:%@\nManifest Dictionary:%@", self, manifestURL, manifestDict);
+	// NSLog(@"Slot Checkout:%@\nManifset URL:%@\nManifest Dictionary:%@", self, manifestURL, manifestDict);
 	
 	return didWork;
 }
@@ -580,11 +845,11 @@ NSMutableArray*		gDACALDevices;
 		if( manifestDict != nil )
 			[newManDict addEntriesFromDictionary:manifestDict];
 		
-		[newManEntry setValue:newDate		forKey:kDACSlotReservationTime];
-		[newManEntry setValue:userName		forKey:kDACSlotReservationUser];
-		[newManEntry setValue:userHost		forKey:kDACSlotReservationHost];
+		[newManEntry setValue:newDate		forKey:kDACSlotReservationKeyTime];
+		[newManEntry setValue:userName		forKey:kDACSlotReservationKeyUser];
+		[newManEntry setValue:userHost		forKey:kDACSlotReservationKeyHost];
 		[newManEntry setValue:kDACSlotReservationTypeCheckIn
-					   forKey:kDACSlotReservationType];
+					   forKey:kDACSlotReservationKeyType];
 		
 		[newManDict setValue:newManEntry	forKey:[newDate description]];
 		didWork = [newManDict writeToURL:manifestURL atomically:YES];
@@ -604,7 +869,7 @@ NSMutableArray*		gDACALDevices;
 	
 	[self reloadSlot];
 	
-	NSLog(@"Slot Check In:%@\nManifset URL:%@\nManifest Dictionary:%@", self, manifestURL, manifestDict);
+	// NSLog(@"Slot Check In:%@\nManifset URL:%@\nManifest Dictionary:%@", self, manifestURL, manifestDict);
 	
 	return didWork;
 }
@@ -727,6 +992,8 @@ NSMutableArray*		gDACALDevices;
 			
 			CFRelease( theSlotTitle );
 			//CFRelease( slotTopURL );
+			
+			slotsUsed++;
 		}
 	}	
 	
@@ -776,10 +1043,12 @@ NSMutableArray*		gDACALDevices;
 		// Create subtree root
 		theSubtreeNode = [[SimpleTreeNode alloc] initWithData:[SimpleNodeData groupDataWithName:boxName] parent:nil children:[[NSArray alloc] init]];
 		[[theSubtreeNode nodeData] setExpanded:YES];														// Root level is always expanded
+		[[theSubtreeNode nodeData] setIconRep:DACALGetIconImageForType( kDACALCarouselsFolderType )];		// Put the icon on it for the path control
 		[[theChildNode nodeData] setSubTree:theSubtreeNode];
 		
 		// Hookup and refresh
 		[theWorkNode insertChild:theChildNode atIndex:[theWorkNode numberOfChildren]];
+		[[DACALTreeDataSource shared] orderForUser:[[[DACALTreeDataSource shared] treeControl] treeRoot]];
 		[[[[DACALTreeDataSource shared] treeControl] outlineView] reloadItem:(id)theWorkNode reloadChildren:YES];
 		[[DACALTreeDataSource shared] setPrompt:[NSString stringWithFormat:@"%@ attached", boxName]];
 		
@@ -797,21 +1066,50 @@ NSMutableArray*		gDACALDevices;
 	[AppController playUISound: kASSystemSoundSuccess];
 }
 
--(void)indexedNewVolume:(NSURL*)newVolume forSlot:(DACALSlotNum)newSlot ofType:(NSString*)newType
+-(void)indexedNewVolume:(DACVolume*)newVolume forSlot:(DACALSlotNum)newSlot ofType:(NSString*)newType
 {
 	CFURLRef		slotURL = DACALSlotCopyPath( deviceRef, newSlot, NULL );
 	
-	if( slotURL ) CFURLSetXattr( slotURL, kDACALCarouselDocumentXAttrSlotAddDate, (CFStringRef)[[NSDate date] description] );
-	if( slotURL ) CFURLSetXattr( slotURL, kDACALCarouselDocumentXAttrSlotKind, (CFStringRef)newType );
-	if( slotURL ) CFRelease( slotURL );
+	if( slotURL ) {
+	//	CFURLSetXattr( slotURL, kDACALCarouselDocumentXAttrSlotAddDate, (CFStringRef)[[NSDate date] description] );
+		CFURLSetXattr( slotURL, kDACALCarouselDocumentXAttrSlotKind, (CFStringRef)newType );
+		
+		NSURL*		iconURL = [NSURL URLWithString:@".DACDiscIcon.icns" relativeToURL:(NSURL*)slotURL];
+		
+		CFDictionaryRef	volumeData = DADiskCopyDescription( [newVolume volumeDiskRef] );
+		if( volumeData == NULL ) goto NOVOLUMEDATA;
+
+		//	Aquire the media "type" icon
+		CFDictionaryRef	workDict = CFDictionaryGetValue( volumeData, CFSTR("DAMediaIcon") );
+		if( workDict )
+		{
+			CFStringRef			bundleIDString = CFDictionaryGetValue( workDict, CFSTR("CFBundleIdentifier") );
+			CFStringRef			iconResFile = CFDictionaryGetValue( workDict, CFSTR("IOBundleResourceFile") );
+			NSURL*				iconFileURL = nil;
+			if( iconResFile && bundleIDString ) {
+				CFBundleRef		theIconBundle = CFBundleGetBundleWithIdentifier( bundleIDString );
+				if( theIconBundle ) 
+					iconFileURL = (NSURL*)CFBundleCopyResourceURL( theIconBundle, iconResFile, NULL, NULL );
+				if( iconFileURL )
+					[[NSFileManager defaultManager] copyItemAtPath:[iconFileURL path] toPath:[iconURL path] error:nil];
+				//else NSLog( @"Bad Icon File URL: Bundle:%@ ID:%@ Name:%@", theIconBundle, bundleIDString, iconResFile );
+			}
+		}
+		CFRelease( volumeData );
+		
+	NOVOLUMEDATA:
+			
+		CFRelease( slotURL );
+	}
 	
 	// Go ahead and check it in
 	[[self slotWithNumber:newSlot] checkInForUser:NSFullUserName() onHost:[[NSHost currentHost] name]];
+	slotsUsed++;
 	
 	[[DACALTreeDataSource shared] slotAddedToDevice: deviceRef forSlot: newSlot];
 	//[[PADSearchService sharedSearch] searchDataChanged:[NSArray array]];
 		
-	[PADOperationControlDevice finishIndexingVolume:[newVolume path] forSlot:newSlot onDevice:self forTarget:self];	
+	[PADOperationControlDevice finishIndexingVolume:[newVolume volumePath] forSlot:newSlot onDevice:self forTarget:self];	
 }
 
 -(NSString*)title
@@ -823,15 +1121,16 @@ NSMutableArray*		gDACALDevices;
 -(void)detachingDevice
 {
 	SimpleTreeNode*		boxNode = deviceNode;
-	SimpleTreeNode*		boxParent = (SimpleTreeNode*)[boxNode nodeParent];
+	//SimpleTreeNode*		boxParent = (SimpleTreeNode*)[boxNode nodeParent];
 
 	[[AppController shared] cancelOperationsForDevice:self];
 	
 	[boxNode removeFromParent];
 	[self setDeviceNode:nil];
 	
-	[[[[DACALTreeDataSource shared] treeControl] outlineView] reloadItem:(id)boxParent reloadChildren:YES];
-	[[DACALTreeDataSource shared] doAction];
+	[[[[AppController shared] dataView] dataSource] updateChangesWithAction:YES];
+	//[[[[DACALTreeDataSource shared] treeControl] outlineView] reloadItem:(id)boxParent reloadChildren:YES];
+	//[[DACALTreeDataSource shared] doAction];
 	
 	NSLog( @"Detached Device: %@", [self title] );
 	[self release];
@@ -860,6 +1159,9 @@ NSMutableArray*		gDACALDevices;
 	[fromSlot swapWithSlot:destSlot];
 	
 }
+
+-(NSInteger)slotsUsed
+	{ return slotsUsed; }
 
 @end		// DACALDevice
 

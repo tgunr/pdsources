@@ -105,14 +105,17 @@
     [children makeObjectsPerformSelector:@selector(setNodeParent:) withObject:self];
 }
 
-- (void)_removeChildrenIdenticalTo:(NSArray *)children {
+- (void)_removeChildrenIdenticalTo:(NSArray *)childlist {
     TreeNode *child;
-    NSEnumerator *childEnumerator = [children objectEnumerator];
-    [children makeObjectsPerformSelector:@selector(setNodeParent:) withObject:nil];
+    NSEnumerator *childEnumerator = [childlist objectEnumerator];
+    [childlist makeObjectsPerformSelector:@selector(setNodeParent:) withObject:nil];
     while ((child = [childEnumerator nextObject])) {
         [nodeChildren removeObjectIdenticalTo:child];
     }
 }
+
+- (void)removeChildrenIdenticalTo:(NSArray *)childlist
+	{ [self _removeChildrenIdenticalTo:childlist]; }
 
 - (void)removeChild:(TreeNode *)child {
     NSInteger index = [self indexOfChild:child];
@@ -207,6 +210,37 @@
 
 - (void)reloadDataAndChildren
 	{ [self reloadData:nil reloadChildren:YES]; }
+
+
+- (void)orderChildrenByName:(NSArray*)childNames removeMissing:(BOOL)doRemove
+{
+	NSMutableArray*		moveNames = [NSMutableArray arrayWithCapacity:0];
+	NSInteger			childIndex, childCount = [childNames count];
+	NSInteger			totalChildren = [self numberOfChildren] - 1;
+	SimpleTreeNode*		workChild = nil;
+	
+	[moveNames addObjectsFromArray:childNames];
+	
+	for ( childIndex=0; childIndex < childCount; childIndex++ ) {
+		if( childIndex > totalChildren ) break;
+		workChild = [(SimpleTreeNode*)self childWithName:[childNames objectAtIndex:childIndex]];
+		if( workChild != nil )
+		{
+			if( [workChild isEqual:[nodeChildren objectAtIndex:childIndex]] == YES )
+				continue;
+			
+			[nodeChildren exchangeObjectAtIndex:childIndex withObjectAtIndex:[nodeChildren indexOfObject:workChild]];
+		}
+		else
+			[moveNames removeObject:[childNames objectAtIndex:childIndex]];
+	}
+	
+	childCount = [moveNames count];
+	
+	if( doRemove && ([self numberOfChildren] >= childCount ) )
+		for ( childIndex = totalChildren; childIndex >= childCount; childIndex-- )
+			[[nodeChildren objectAtIndex:childIndex] removeFromParent];
+}
 
 - (void)recursiveSortChildren {
     [nodeChildren sortUsingSelector:@selector(compare:)];

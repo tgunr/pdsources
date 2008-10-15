@@ -96,4 +96,15 @@
     }
 }
 
+-(NSMutableArray*)reverseObjects
+{
+	NSInteger	arrayIndex, arrayCount = [self count] / 2;
+	NSInteger	arrayOut = [self count] -1;
+	
+	for( arrayIndex=0; arrayIndex < arrayCount; arrayIndex++ )
+		[self exchangeObjectAtIndex:arrayIndex withObjectAtIndex:arrayOut-arrayIndex];
+	
+	return self;
+}
+
 @end

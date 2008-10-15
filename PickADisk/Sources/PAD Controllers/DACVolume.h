@@ -72,6 +72,8 @@
 -(CFArrayRef)kextBundles;
 -(NSMutableArray*)knownVolumes;
 
+-(void)lazyInitKextBundles;
+
 -(DACVolume*)knownVolumeWithURL:(NSURL*)theURL;
 -(DACVolume*)knownVolumeWithPath:(NSString*)thePath;
 -(NSArray*)knownIndexableVolumes:(NSArray*)testVolumeList;
