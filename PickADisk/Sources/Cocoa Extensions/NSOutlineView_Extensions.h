@@ -11,6 +11,7 @@
 
 - (NSArray *)allSelectedItems;
 - (void)selectItems:(NSArray *)items byExtendingSelection:(BOOL)extend;
+- (void)autoExpandItemAndChildren:(id)item;
 
 @end
 

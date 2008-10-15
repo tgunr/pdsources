@@ -72,6 +72,25 @@
     }
 }
 
+- (void)autoExpandItemAndChildren:(id)item
+{
+	if( item == nil )
+		item = [[self dataSource] treeRoot];
+	
+	if( [[(SimpleTreeNode*)item nodeData] isExpanded] )
+	{
+		NSArray*		theKids = [(SimpleTreeNode*)item children];
+		NSEnumerator*	kidEnum = [theKids objectEnumerator];
+		SimpleTreeNode*	thisKid = nil;
+		
+		while ( thisKid = (SimpleTreeNode*)[kidEnum nextObject] )
+			if( [[thisKid nodeData] isExpanded] == YES )
+				[self autoExpandItemAndChildren:thisKid];
+		
+		[self expandItem:item];
+	}
+}
+
 @end
 
 @implementation MyOutlineView

@@ -230,7 +230,9 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 	// Load our initial outline view data from the "InitInfo" dictionary.
 	NSDictionary *initData = [NSDictionary dictionaryWithContentsOfFile: [[NSBundle mainBundle] pathForResource:@"InitInfo" ofType: @"dict"]];
 	if( initData != nil ) theOutputTree = [SimpleTreeNode treeIndexFromDictionary: initData];	
-		
+	
+	[[theOutputTree nodeData] setExpanded:YES];
+	
 	theWorkNode = (SimpleTreeNode*)[theOutputTree childWithName:PADINDEX_GROUPTITLE_DEVICES];											
 	[[theWorkNode nodeData] setItemType: kPADTypeGroupDevices];
 
@@ -315,12 +317,30 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 }
 
 - (void)reinitOutlineView
-	{ [[self outlineView] expandItem:nil expandChildren:YES]; }
+{ 
+	//[[self outlineView] autoExpandItemAndChildren:nil]; 
+	[[self outlineView] expandItem:nil expandChildren:YES];
+
+}
 
 - (void)recreateInitialTree
 {
-	//[self saveUserOrder];
 	[super recreateInitialTree];
+
+	if( [[NSUserDefaults standardUserDefaults] dictionaryForKey:@"PADMainSidebarOrder"] == nil )
+	{	
+		SimpleTreeNode*	workGroupNode = [[[self treeControl] treeRoot] childWithItemType:kPADTypeGroupDevices];
+		NSEnumerator*	deviceEnum = [gDACALDevices objectEnumerator];
+		DACALDevice*	aDevice = nil;
+		
+		if( workGroupNode && ([workGroupNode numberOfChildren] == 0) )
+		{
+			while ( aDevice = [deviceEnum nextObject] ) 
+				[workGroupNode insertChild:[aDevice deviceNode] atIndex:[workGroupNode numberOfChildren]];
+		
+			[[self outlineView] reloadItem:workGroupNode reloadChildren:YES];
+		}
+	}	
 }
 
 - (void)toolbarSearchStart:(id)sender
@@ -778,7 +798,34 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 		if( [[self outlineView] hitTest:localPoint] == nil ) 
 		{
 			//	Actual delete removed because it is too intense!
-			//[super draggedImage:image endedAt:screenPoint operation:NSDragOperationDelete];					
+			//[super draggedImage:image endedAt:screenPoint operation:NSDragOperationDelete];				
+	/*	
+			NSDictionary*			visActDict = [[NSUserDefaults standardUserDefaults] dictionaryForKey:@"PADPrefsTreeIndexAvailability"];
+			NSMutableDictionary*	visDict = [NSMutableDictionary dictionaryWithCapacity:0];
+			
+			if( visActDict != nil )
+				[visDict addEntriesFromDictionary:visActDict];
+			
+			NSArray*		byebye = [[self treeControl] draggedNodes];
+			NSEnumerator*	byeEnum = [byebye objectEnumerator];
+			SimpleTreeNode*	byeNode = nil;
+			SimpleTreeNode*	byeParent = nil;
+			NSMutableDictionary*	byeDict = nil;
+			
+			while ( byeNode = (SimpleTreeNode*)[byeEnum nextObject] )
+			{
+				byeParent = (SimpleTreeNode*)[byeNode nodeParent];
+				
+				byeDict = [NSMutableDictionary dictionaryWithCapacity:0];
+				[byeDict setObject:(id)kCFBooleanFalse forKey:[[byeNode nodeData] name]];
+				
+				[visDict setObject:byeDict forKey:[[byeParent nodeData] name]];
+			}
+			
+			[[NSUserDefaults standardUserDefaults] setObject:visDict forKey:@"PADPrefsTreeIndexAvailability"];
+			
+			[[self treeControl] recreateInitialTree];
+	*/
 			NSShowAnimationEffect(NSAnimationEffectPoof, mousePoint, NSZeroSize, nil, nil, nil);
 			return;
 		}
