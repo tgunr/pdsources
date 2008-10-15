@@ -157,6 +157,10 @@ static AppController *shared;
 		//if( [currentVersion compare:@"0.1"] == NSOrderedSame )
 		//	gotUpdate = YES;
 		
+		//	User upgrading to prefs version 0.5 should get a new toolbar in case they've saved one
+		if( [prefsVersion compare:@"0.5"] == NSOrderedSame )
+			[defaults removeObjectForKey:@"NSToolbar Configuration CBD4AF57-273A-43B1-B47C-55D929D9CF3D"];
+		
 		gotUpdate = YES;
 		
 		if( gotUpdate == YES ) {
