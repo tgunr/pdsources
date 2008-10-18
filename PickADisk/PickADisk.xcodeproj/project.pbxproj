@@ -229,7 +229,6 @@
 		5C76C1310E9ADD0500E363B0 /* NSString_Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSString_Extensions.h; sourceTree = "<group>"; };
 		5C76C1320E9ADD0500E363B0 /* NSString_Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSString_Extensions.m; sourceTree = "<group>"; };
 		5C779BF50EA980E900A61399 /* diamond-colors.qtz */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = "diamond-colors.qtz"; sourceTree = "<group>"; };
-		5C779C640EA9F95E00A61399 /* code snips */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "code snips"; path = "/Users/jaxs/Desktop/code snips"; sourceTree = "<absolute>"; };
 		5C7C4EE80E3C006C00FCEBD8 /* DiscID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DiscID.framework; path = Frameworks/DiscID.framework; sourceTree = SOURCE_ROOT; };
 		5C7C501C0E3D843700FCEBD8 /* hellotag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hellotag.png; sourceTree = "<group>"; };
 		5C7C501D0E3D843700FCEBD8 /* DC300B_Front.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DC300B_Front.png; sourceTree = "<group>"; };
@@ -322,7 +321,6 @@
 		01518911FF1B822411CA0E35 /* Cocoa Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				5C779C640EA9F95E00A61399 /* code snips */,
 				5C76C1240E9AD9FE00E363B0 /* NSData_Extensions.h */,
 				5C76C1250E9AD9FE00E363B0 /* NSData_Extensions.m */,
 				5CBA8FCD0E71DD0F000279A2 /* NSSlider_Animation.m */,
