@@ -26,6 +26,8 @@ int		DACVolume_nextIconID = 0;
 								ReleaseIconRef( mediaIcon );
 	if( mediaUUID != NULL )		CFRelease( mediaUUID );
 	if( padIdentifier != nil )	[padIdentifier release];
+	if( padKnownHost != nil )	[padKnownHost release];
+	if( padKnownSlot != nil )	[padKnownSlot release];
 	
 	volumeDiskRef	= NULL;
 	mediaTitle		= NULL;
@@ -34,6 +36,9 @@ int		DACVolume_nextIconID = 0;
 	mediaIcon		= NULL;
 	mediaUUID		= NULL;
 	padIdentifier	= nil;
+	padKnownHost	= nil;
+	padKnownSlot	= nil;
+	padKnownVolume	= NO;
 	
 	[super dealloc];
 }
@@ -78,6 +83,12 @@ int		DACVolume_nextIconID = 0;
 
 -(BOOL)padKnownVolume
 	{ return padKnownVolume; }
+
+-(DACALSlot*)padKnownSlot
+	{ return padKnownSlot; }
+
+-(NSString*)padKnownHost
+	{ return padKnownHost; }
 
 -(NSArray*)topLevelDirectory
 {
@@ -151,6 +162,8 @@ int		DACVolume_nextIconID = 0;
 		goto HAVEGUESS;
 	}
 	dirCount = [volumeDirectory count];
+	volumesEnumAIFF = [volumeDirectory objectEnumerator];
+	volumesEnumOnce = [volumeDirectory objectEnumerator];
 
 	//	Music CD?
 	//		Check if all the visible items have an "aiff" extension
@@ -289,6 +302,28 @@ bail:
 //	if( service != NULL )
 //		CFRelease( service );
 	
+	
+	{
+		// is really DVD?
+		
+		if( [dict objectForKey:@"ErrorMessage"] == nil )
+			goto HAVEDVD;
+		
+		NSLog(@"May not be DVD!");
+	
+		NSString*	hash255 = [[dict objectForKey:[NSNumber numberWithInt:255]] md5String];
+		
+		NSLog(@"255 Hash: %@", hash255);
+	
+		if( ![hash255 isEqual:@"ffff456fffff0203ff1aff3dffffff72"] )
+			goto HAVEDVD;
+				
+		NSLog(@">>HASH MATCHES FOR CD MEDIA<<");
+		
+		dict = nil;
+	}
+	
+HAVEDVD:	
     return dict;
 }
 
@@ -398,6 +433,7 @@ bail:
 		mediaUUID		= NULL;
 		padIdentifier	= nil;
 		padKnownVolume	= NO;
+		padKnownSlot	= nil;
 		
 		//	The Volume FSRef
 		theErr = !CFURLGetFSRef((CFURLRef)mountURL, &theRef );
@@ -434,7 +470,7 @@ bail:
 		mediaUUID = CFDictionaryGetValue( volumeData, CFSTR("DAVolumeUUID") );
 		if( mediaUUID != NULL ) {
 			mediaUUID = CFUUIDCreateFromUUIDBytes( kCFAllocatorDefault, CFUUIDGetUUIDBytes(mediaUUID) );
-			padIdentifier = (NSString*)CFUUIDCreateString( kCFAllocatorDefault, mediaUUID );
+			//padIdentifier = (NSString*)CFUUIDCreateString( kCFAllocatorDefault, mediaUUID );
 		}
 		
 		//	These things disqualify the volume from our list
@@ -504,14 +540,59 @@ bail:
 					[infoString appendString:[infoItem md5String]];
 				
 				infoMD5 = [infoString md5String];
+				padIdentifier = [[NSString alloc] initWithString:infoMD5];
 				
-				NSLog(@"Disc: %@\nProposed DACKey: %@", self, infoMD5);
+				NSLog(@"Disc: %@\nProposed DACDiscKey: %@", self, infoMD5);
 				// save the id?
+			} else {
+				
+				
+				//	Try a hash of the .TOC.plist if it exists...
+				
+				NSURL*			tocURL = [NSURL URLWithString:@".TOC.plist" relativeToURL:[self volumeURL]];
+				NSError*		tocErr = nil;
+				NSString*		tocFile = nil;
+				
+				if( tocURL != nil ) {
+					tocFile = [NSString stringWithContentsOfURL:tocURL encoding:NSUTF8StringEncoding error:&tocErr];
+					
+					NSString*	hashTOC = [tocFile md5String];
+					padIdentifier = [[NSString alloc] initWithString:hashTOC];
+					
+					NSLog(@"TOC DACDiskKey: %@", hashTOC);
+				}
+				
+				//	Fallback on a hash of the top level directory
+				
+				NSArray*		topLevel = [[self topLevelDirectory] arrayOfPathsFromURLs];
+				
+				if( !padIdentifier && topLevel )
+				{
+					NSData*		outData = (NSData*)CFPropertyListCreateXMLData( kCFAllocatorDefault, (CFPropertyListRef)topLevel );
+
+					if( outData != nil ) {
+						NSString* md5_String = [outData md5String];
+						
+						if( padIdentifier == nil )
+							padIdentifier = [[NSString alloc] initWithString:md5_String];
+						
+						NSLog(@"Fallback DACDiscKey: %@", md5_String);
+					}
+				}
 			}
 		}
 		
+		DACALSlot*	workSlot = nil;
 		
-	}
+		if( padIdentifier )
+			if( workSlot = DACALDeviceSlotForSlotIdentifier((CFStringRef)padIdentifier) ) {
+				padKnownVolume = YES;
+				padKnownHost = [[NSString alloc] initWithString:[[NSHost currentHost] name]];
+				padKnownSlot = [workSlot retain];
+			}
+		
+	}	// (if self =)
+
 	if( volumeData != NULL ) CFRelease( volumeData );
 	return self;
 
@@ -668,17 +749,55 @@ static id	DACVolumeService_shared = nil;
 	if( testVolumeList == nil )
 		testVolumeList = [self knownVolumes];
 
-	NSInteger			buildCount = [testVolumeList count];
-	NSInteger			buildIndex = 0;
-	NSMutableArray*		buildArray = [NSMutableArray arrayWithCapacity:buildCount];
+	NSEnumerator*		listEnum = [testVolumeList objectEnumerator];
+	NSMutableArray*		buildArray = [NSMutableArray arrayWithCapacity:0];
+	DACVolume*			workVolume = nil;
 	
-	for( buildIndex=0; buildIndex < buildCount; buildIndex++ )
-		if( [[testVolumeList objectAtIndex:buildIndex] isIndexable] == YES )
-			[buildArray addObject:[testVolumeList objectAtIndex:buildIndex]];
+	while ( workVolume = [listEnum nextObject] )
+		if( [workVolume isIndexable] == YES )
+			[buildArray addObject:workVolume];
 	
 	return [NSArray arrayWithArray:buildArray]; 
 }
 
+-(NSArray*)knownSlotVolumes:(NSArray*)testVolumeList
+{
+	if( testVolumeList == nil )
+		testVolumeList = [self knownVolumes];
+	
+	NSEnumerator*		listEnum = [testVolumeList objectEnumerator];
+	NSMutableArray*		buildArray = [NSMutableArray arrayWithCapacity:0];
+	DACVolume*			workVolume = nil;
+
+	while ( workVolume = [listEnum nextObject] )
+		if( [workVolume padKnownSlot] != nil )
+			[buildArray addObject:workVolume];
+	
+	return [NSArray arrayWithArray:buildArray]; 
+}
+
+-(void)knownSlotsDetected:(NSArray*)knownSlotsList
+{
+	NSEnumerator*		slotEnum = [knownSlotsList objectEnumerator];
+	DACVolume*			workVolume = nil;
+	BOOL				slotsOK = NO;
+	
+	while ( workVolume = [slotEnum nextObject] ) 
+		slotsOK = [[workVolume padKnownSlot] slotMountedAsVolume:workVolume];
+	
+	[AppController playUISoundForBOOL:slotsOK];
+}
+
+-(void)knownSlotRemoved:(DACVolume*)knownSlotVolume
+{
+	DACALSlot*		slotVolume = [knownSlotVolume padKnownSlot];
+	BOOL			slotsOK = NO;
+	
+	if( slotVolume )
+		slotsOK = [slotVolume slotUnmounted];
+	
+	//[AppController playUISoundForBOOL:slotsOK];	
+}
 
 // Notification methods
 
@@ -689,18 +808,26 @@ static id	DACVolumeService_shared = nil;
 	NSArray*		newVolumes = [DACVolume detectedMounts:[newMounts arrayOfURLsFromPaths]];
 	NSWindow*		mainWindow = [[[[AppController shared] dataView] outlineView] window];
 	
+	NSArray*		knownMounts = [self knownSlotVolumes:newVolumes];
+	NSArray*		indexMounts = [self knownIndexableVolumes:newVolumes];
+	AppController*	AppControl = [AppController shared];
+	
 	NSLog(@"Mounted Volumes: %@", newVolumes);	
 		
 	[knownVolumes addObjectsFromArray:newVolumes];
-
-	if( [mainWindow attachedSheet] == nil )
-		[[[AppController shared] toolbarController] clickAssign:self];
-		//[[[AppController shared] addVolumeController] startSheet:mainWindow];
+	
+	if( ([indexMounts count] > 0) && ([mainWindow attachedSheet] == nil) )
+		[[AppControl toolbarController] clickAssign:self];
 
 	//	Notify the Add Volumes Window
-	[[[AppController shared] addVolumeController] performSelectorOnMainThread:@selector(detectedVolumes:)
-																   withObject:[self knownIndexableVolumes:newVolumes]
-																waitUntilDone:YES];
+	if( [indexMounts count] > 0 )
+		[[AppControl addVolumeController] performSelectorOnMainThread:@selector(detectedVolumes:)
+														   withObject:indexMounts
+														waitUntilDone:YES];
+
+	if( [knownMounts count] > 0 )
+		[self knownSlotsDetected:knownMounts];
+
 }
 
 -(void)existingMediaRemoved:(id)aNotification
@@ -717,6 +844,8 @@ static id	DACVolumeService_shared = nil;
 			[[[AppController shared] addVolumeController] performSelectorOnMainThread:@selector(ejectedVolumes:)
 																		   withObject:[NSArray arrayWithObject:foundMedia]
 																		waitUntilDone:YES];
+		else if( [foundMedia padKnownSlot] != nil )
+				[self knownSlotRemoved:foundMedia];
 		
 		//	Actually remove from our list
 		[knownVolumes removeObject:foundMedia];

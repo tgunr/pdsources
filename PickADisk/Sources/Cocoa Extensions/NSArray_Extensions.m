@@ -47,11 +47,11 @@
 
 @implementation NSArray (MyExtensions)
 
-- (BOOL) containsObjectIdenticalTo: (id)obj { 
+-(BOOL)containsObjectIdenticalTo: (id)obj { 
     return [self indexOfObjectIdenticalTo: obj]!=NSNotFound; 
 }
 
-- (NSArray*) arrayWithSubTrees
+-(NSArray*)arrayWithSubTrees
 {
 	int		aIndex, aCount = [self count];
 	NSMutableArray*		workArray = [NSMutableArray arrayWithCapacity:256];
@@ -64,7 +64,7 @@
 	return outArray;
 }
 
-- (NSArray*) arrayOfURLsFromPaths
+-(NSArray*)arrayOfURLsFromPaths
 {
 	NSInteger		pathCount = [self count];
 	NSInteger		index = 0;
@@ -83,12 +83,71 @@
 	return outArray;
 }
 
+-(NSArray*)arrayOfPathsFromURLs
+{
+	NSInteger		pathCount = [self count];
+	NSInteger		index = 0;
+	NSMutableArray*	urlArray = [NSMutableArray arrayWithCapacity:pathCount];
+	NSString*		workString = nil;
+	NSArray*		outArray = nil;
+	
+	//	Create array of urls from array of paths
+	for( index=0; index < pathCount; index++ ) {
+		workString = [[NSString alloc] initWithString:[[self objectAtIndex:index] path]];
+		if( workString )
+			[urlArray addObject:workString];
+	}
+	
+	outArray = [NSArray arrayWithArray:urlArray];
+	return outArray;
+}
+
+-(NSArray*)arrayOfPathsThatConformToUTIs:(NSArray*)theUTIs resultsAsURL:(BOOL)saveURLs
+{
+	NSArray*			outArray = nil;
+	NSMutableArray*		workArray = [[NSMutableArray alloc] initWithCapacity:0];
+	NSEnumerator*		workEnum = [self objectEnumerator];
+	NSString*			workPath = nil;
+	NSURL*				workURL = nil;
+	
+	if( workArray != nil )
+	{
+		while ( workPath = (NSString*)[workEnum nextObject] ) {
+			workURL = [NSURL fileURLWithPath:workPath];
+			if( workURL != nil )
+				if( CFURLConfromsToUTIs( kCFAllocatorDefault, (CFURLRef)workURL, (CFArrayRef)theUTIs, NULL ) )
+					[workArray addObject:( saveURLs == YES ) ? workURL : [NSString stringWithString:workPath]];
+		}
+	
+		outArray = [NSArray arrayWithArray:workArray];
+		[workArray release];
+	}
+	
+	return outArray;
+}
+
+-(id)randomObject
+{
+	id			outObject = nil;
+	float		randFloat = ( random() / (pow(2, 31) - 1) );
+	NSInteger	selfCount = [self count];
+	NSInteger	randIndex = randFloat * selfCount;
+	
+	if( randIndex == selfCount )
+		randIndex--;
+	
+	if( selfCount > 0 )
+		outObject = [self objectAtIndex:randIndex];
+	
+	return outObject;
+}
+
 
 @end
 
 @implementation NSMutableArray (MyExtensions)
 
-- (void) insertObjectsFromArray:(NSArray *)array atIndex:(NSInteger)index {
+-(void)insertObjectsFromArray:(NSArray *)array atIndex:(NSInteger)index {
     NSObject *entry = nil;
     NSEnumerator *enumerator = [array objectEnumerator];
     while ((entry=[enumerator nextObject])) {

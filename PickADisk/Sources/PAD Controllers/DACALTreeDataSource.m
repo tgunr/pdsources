@@ -210,7 +210,7 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 	
 	[groupList setObject:groupNames forKey:@"Groups"];
 	
-	// NSLog(@"Group List: %@", groupList);
+	NSLog(@"Group List: %@", groupList);
 	
 	[[NSUserDefaults standardUserDefaults] setObject:groupList forKey:@"PADMainSidebarOrder"];
 }
@@ -313,7 +313,8 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 	//[[self treeControl] setAllowOnDropOnGroup:YES];
 	
 	[[self outlineView] expandItem:nil expandChildren:YES];
-	[self saveUserOrder];
+	if( [[NSUserDefaults standardUserDefaults] dictionaryForKey:@"PADMainSidebarOrder"] == nil )
+		[self saveUserOrder];
 }
 
 - (void)reinitOutlineView

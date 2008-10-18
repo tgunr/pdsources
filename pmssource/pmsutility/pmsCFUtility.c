@@ -549,6 +549,34 @@ BAIL:
 	return outUTI;
 }
 
+Boolean		CFURLConfromsToUTIs( CFAllocatorRef inAllocator, CFURLRef testURL, CFArrayRef inUTIs, OSStatus* outError )
+{
+	Boolean		testResult = FALSE;
+	CFIndex		testCount = CFArrayGetCount( inUTIs );
+	CFIndex		testIndex = 0;
+	CFStringRef	testUTI = CFURLCopyUTI( inAllocator, testURL, outError );
+	CFStringRef	checkUTI = NULL;
+	
+	if( testUTI == NULL )
+		testResult = FALSE;
+	else
+		for ( testIndex=0; testIndex < testCount; testIndex++ )
+		{
+			checkUTI = (CFStringRef)CFArrayGetValueAtIndex( inUTIs, testIndex );			
+			if( checkUTI != NULL )
+				if( UTTypeConformsTo( testUTI, checkUTI ) ) {
+					testResult = TRUE;
+					break;
+				}
+		}
+	
+	if( testUTI != NULL )
+		CFRelease( testUTI );
+	
+	return testResult;
+}
+
+
 Boolean		CFAbsoluteTimeBetweenTimes( CFAbsoluteTime lowTime, CFAbsoluteTime unknownTime, CFAbsoluteTime hiTime )
 {
 	CFAbsoluteTime	actualLow = lowTime;
@@ -615,6 +643,8 @@ CFDataRef	CFStringCreateSHA1Digest( CFAllocatorRef inAllocator, CFStringRef inSt
 
 CFStringRef	CFDataCreateHexString( CFAllocatorRef inAllocator, CFDataRef inData )
 {
+	if( inData == (CFDataRef)NULL ) return (CFStringRef)NULL;
+	
 	CFStringRef			outString = NULL;
 	const UInt8*		myBytes = CFDataGetBytePtr( inData );
 	unsigned int		myLength = CFDataGetLength( inData );

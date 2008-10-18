@@ -905,7 +905,6 @@ ELIAAAAAAAgACAAIAAgAAQABAAEAAQ</bytes>
 													</object>
 													<string key="NSFrameSize">{207, 457}</string>
 													<reference key="NSSuperview" ref="413350330"/>
-													<reference key="NSNextKeyView" ref="800879139"/>
 													<reference key="NSDocView" ref="800879139"/>
 													<reference key="NSBGColor" ref="1067545439"/>
 													<int key="NScvFlags">4</int>
@@ -933,7 +932,6 @@ ELIAAAAAAAgACAAIAAgAAQABAAEAAQ</bytes>
 											</object>
 											<string key="NSFrame">{{-1, 1}, {207, 457}}</string>
 											<reference key="NSSuperview" ref="343571003"/>
-											<reference key="NSNextKeyView" ref="168235971"/>
 											<int key="NSsFlags">528</int>
 											<reference key="NSVScroller" ref="706881340"/>
 											<reference key="NSHScroller" ref="245779865"/>
@@ -1754,7 +1752,7 @@ ELIAAAAAAAgACAAIAAgAAQABAAEAAQ</bytes>
 																				<double key="NSRowHeight">1.700000e+01</double>
 																				<int key="NSTvFlags">-608174080</int>
 																				<string key="NSAutosaveName">PADMainDataTable</string>
-																				<int key="NSColumnAutoresizingStyle">2</int>
+																				<int key="NSColumnAutoresizingStyle">3</int>
 																				<int key="NSDraggingSourceMaskForLocal">15</int>
 																				<int key="NSDraggingSourceMaskForNonLocal">0</int>
 																				<bool key="NSAllowsTypeSelect">YES</bool>
@@ -2181,11 +2179,11 @@ ELIAAAAAAAgACAAIAAgAAQABAAEAAQ</bytes>
 										</object>
 										<object class="NSMutableArray" key="dict.values">
 											<bool key="EncodedWithXMLCoder">YES</bool>
-											<reference ref="8"/>
+											<real value="0.000000e+00" id="1188"/>
 											<reference ref="181934731"/>
 											<reference ref="9"/>
 											<real value="1.500000e+02" id="1015741917"/>
-											<reference ref="8"/>
+											<reference ref="1188"/>
 											<integer value="4"/>
 											<reference ref="9"/>
 											<reference ref="9"/>
@@ -2607,7 +2605,7 @@ ELIAAAAAAAgACAAIAAgAAQABAAEAAQ</bytes>
 									<object class="NSMutableArray" key="NSTableColumns">
 										<bool key="EncodedWithXMLCoder">YES</bool>
 										<object class="NSTableColumn">
-											<reference key="NSIdentifier" ref="8"/>
+											<reference key="NSIdentifier" ref="1188"/>
 											<double key="NSWidth">1.200000e+01</double>
 											<double key="NSMinWidth">1.000000e+01</double>
 											<double key="NSMaxWidth">1.000000e+03</double>
@@ -5222,7 +5220,7 @@ ARcABAAAAAEAAAACARwAAwAAAAEAAQAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 					<string>{{322, 599}, {398, 241}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>{{322, 599}, {398, 241}}</string>
-					<reference ref="8"/>
+					<reference ref="1188"/>
 					<string>{{98, 439}, {398, 204}}</string>
 					<reference ref="9"/>
 					<reference ref="9"/>
@@ -5265,10 +5263,10 @@ ARcABAAAAAEAAAACARwAAwAAAAEAAQAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<reference ref="8"/>
+					<reference ref="1188"/>
 					<reference ref="733054399"/>
-					<reference ref="8"/>
-					<reference ref="8"/>
+					<reference ref="1188"/>
+					<reference ref="1188"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -5445,7 +5443,7 @@ ARcABAAAAAEAAAACARwAAwAAAAEAAQAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">528</int>
+			<int key="maxID">538</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">

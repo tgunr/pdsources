@@ -11,6 +11,8 @@
 #import <IOKit/IOKitLib.h>
 #import <IOKit/scsi/SCSITaskLib.h>
 
+@class DACALSlot;
+
 @interface DACVolume : NSObject {
 
 	FSVolumeRefNum		mountVolume;
@@ -24,7 +26,9 @@
 	CFUUIDRef			mediaUUID;
 	
 	NSString*			padIdentifier;
-	BOOL				padKnownVolume;
+	BOOL				padKnownVolume;	
+	DACALSlot*			padKnownSlot;
+	NSString*			padKnownHost;
 }
 
 -(FSVolumeRefNum)mountVolume;
@@ -40,6 +44,8 @@
 
 -(NSString*)padIdentifier;
 -(BOOL)padKnownVolume;
+-(DACALSlot*)padKnownSlot;
+-(NSString*)padKnownHost;
 
 -(NSArray*)topLevelDirectory;
 -(BOOL)isVolumeURL:(NSURL*)otherURL;
@@ -77,6 +83,7 @@
 -(DACVolume*)knownVolumeWithURL:(NSURL*)theURL;
 -(DACVolume*)knownVolumeWithPath:(NSString*)thePath;
 -(NSArray*)knownIndexableVolumes:(NSArray*)testVolumeList;
+-(NSArray*)knownSlotVolumes:(NSArray*)testVolumeList;
 
 +(id)sharedVolumeService;
 

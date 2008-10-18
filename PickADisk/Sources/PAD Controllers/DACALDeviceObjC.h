@@ -36,6 +36,7 @@ extern void					DACALSetup( void );
 extern void					DACALClientInitialize(void);
 extern DACALDevice*			DACALDeviceForDeviceRef(DACALDeviceRef aBoxRef);
 extern DACALSlot*			DACALDeviceSlotForSlotNumber(DACALDeviceRef aBoxRef, DACALSlotNum aSlotNum);
+extern DACALSlot*			DACALDeviceSlotForSlotIdentifier( CFStringRef findID );
 extern DACALSlotElement*	DACALDeviceSlotElementForURL( CFURLRef itemURL );
 
 extern NSMutableArray*		gDACALDevices;
@@ -127,6 +128,8 @@ extern NSMutableArray*		gDACALDevices;
 	DACVolume*			slotVolume;
 	FSRef				slotFSRef;
 	
+	NSString*			slotIdentifier;
+	
 	NSDate*				slotCheckedOut;
 	NSDate*				slotCheckedIn;
 	NSMutableArray*		slotElements;
@@ -151,6 +154,10 @@ extern NSMutableArray*		gDACALDevices;
 
 -(DACALSlotElement*)elementWithFSRef:(const FSRef*)otherFSRef;
 -(DACALSlotElement*)elementWithURL:(NSURL*)otherURL;
+
+-(NSString*)slotIdentifier;
+-(void)setSlotIdentifier:(NSString*)newID;
+-(DACALSlot*)slotWithIdentifier:(NSString*)slotID;
 
 -(id)initSlotForDevice:(DACALDevice*)newDevice inSlot:(DACALSlotNum)newSlot;
 +(id)slotForDevice:(DACALDevice*)newDevice inSlot:(DACALSlotNum)newSlot;
@@ -179,6 +186,14 @@ extern NSMutableArray*		gDACALDevices;
 -(BOOL)checkInForUser:(NSString*)userName onHost:(NSString*)userHost;
 -(BOOL)toggleReservationForUser:(NSString*)userName	onHost:(NSString*)userHost;
 
+-(BOOL)isSlotMounted;
+-(NSString*)slotHost;
+-(BOOL)slotMountedAsVolume:(DACVolume*)mountVolume;
+-(BOOL)slotUnmounted;
+
+
+
+
 @end		// DACALSlot
 
 @interface DACALDevice : NSObject {
@@ -203,6 +218,7 @@ extern NSMutableArray*		gDACALDevices;
 -(NSArray*)deviceSlots;
 
 -(DACALSlot*)slotWithNumber:(DACALSlotNum)aSlot;
+-(DACALSlot*)slotWithIdentifier:(NSString*)slotID;
 -(void)loadSlotIndex;
 -(void)indexedNewVolume:(DACVolume*)newVolume forSlot:(DACALSlotNum)newSlot ofType:(NSString*)newType;
 -(void)swapSlotNumber:(DACALSlotNum)fromSlotNum toDevice:(DACALDevice*)toBox toSlotNumber:(DACALSlotNum)toSlotNum;
@@ -218,6 +234,8 @@ extern NSMutableArray*		gDACALDevices;
 -(void)detachingDevice;
 
 -(NSInteger)slotsUsed;
+
+-(DACALResult)commandCloseDoor;
 
 @end		// DACALDevice
 
