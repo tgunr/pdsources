@@ -72,18 +72,35 @@
 @interface DACVolumeService : NSObject
 {
 	CFArrayRef			kextBundles;
-	NSMutableArray*		knownVolumes;	
+	NSMutableArray*		knownVolumes;
+	
+	NSMutableArray*		pendingMounts;
+	NSMutableArray*		pendingUnmounts;
 }	
 
 -(CFArrayRef)kextBundles;
--(NSMutableArray*)knownVolumes;
-
 -(void)lazyInitKextBundles;
 
+-(NSMutableArray*)pendingMounts;
+-(void)setPendingMounts:(NSMutableArray*)newMounts;
+-(void)addPendingMount:(NSString*)knownDACDiskID;
+-(void)removePendingMount:(NSString*)foundDACDiskID;
+-(BOOL)isPendingMount:(NSString*)aDACDiscID;
+
+-(NSMutableArray*)pendingUnmounts;
+-(void)setPendingUnmounts:(NSMutableArray*)newUnmounts;
+-(void)addPendingUnmount:(NSString*)knownDACDiskID;
+-(void)removePendingUnmount:(NSString*)foundDACDiskID;
+-(BOOL)isPendingUnmount:(NSString*)aDACDiscID;
+
+-(NSMutableArray*)knownVolumes;
 -(DACVolume*)knownVolumeWithURL:(NSURL*)theURL;
 -(DACVolume*)knownVolumeWithPath:(NSString*)thePath;
 -(NSArray*)knownIndexableVolumes:(NSArray*)testVolumeList;
 -(NSArray*)knownSlotVolumes:(NSArray*)testVolumeList;
+
+-(void)newMediaDetected:(NSArray*)newMounts;
+-(void)existingMediaRemoved:(NSString*)oldMediaPath;
 
 +(id)sharedVolumeService;
 

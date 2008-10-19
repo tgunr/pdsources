@@ -130,8 +130,10 @@ extern NSMutableArray*		gDACALDevices;
 	
 	NSString*			slotIdentifier;
 	
+	BOOL				slotIsCheckedOut;
 	NSDate*				slotCheckedOut;
 	NSDate*				slotCheckedIn;
+	
 	NSMutableArray*		slotElements;
 }
 
@@ -176,15 +178,20 @@ extern NSMutableArray*		gDACALDevices;
 -(DACALResult)moveDeviceToSlotWithOptions:(DACALOptionBits)slotOptions;
 
 -(BOOL)isCheckedOut;
+-(void)setIsCheckedOut:(BOOL)isOut;
+
 -(NSDate*)checkedOutDate;
 -(void)setCheckedOutDate:(NSDate*)newDate;
+
 -(NSDate*)checkedInDate;
 -(void)setCheckedInDate:(NSDate*)newDate;
+
 -(NSDictionary*)currentReservation;
 -(NSDictionary*)reservationHistory;
--(BOOL)checkOutForUser:(NSString*)userName onHost:(NSString*)userHost;
--(BOOL)checkInForUser:(NSString*)userName onHost:(NSString*)userHost;
--(BOOL)toggleReservationForUser:(NSString*)userName	onHost:(NSString*)userHost;
+
+-(BOOL)checkOutForUser:(NSString*)userName onHost:(NSString*)userHost withUI:(BOOL)doUI;
+-(BOOL)checkInForUser:(NSString*)userName onHost:(NSString*)userHost withUI:(BOOL)doUI;
+-(BOOL)toggleReservationForUser:(NSString*)userName	onHost:(NSString*)userHost withUI:(BOOL)doUI;
 
 -(BOOL)isSlotMounted;
 -(NSString*)slotHost;

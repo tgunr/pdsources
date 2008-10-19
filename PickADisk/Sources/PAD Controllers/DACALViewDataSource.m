@@ -403,7 +403,7 @@ SLOTTYPEFAILED:
 
 //	DACALCommandMoveToSlotWithOptions( theBox, theSlot, kDACALOptionMoveToggle );
 
-	[[[theData itemElement] elementSlot] toggleReservationForUser:nil onHost:nil];
+	[[[theData itemElement] elementSlot] toggleReservationForUser:nil onHost:nil withUI:YES];
 	
 }
 
@@ -413,9 +413,9 @@ SLOTTYPEFAILED:
 	NSOutlineView	*theView = [[self treeControl] outlineView];
 	
 	if( [theView clickedColumn] == [theView columnWithIdentifier:COLUMNID_CHECKEDOUT] )
-		[[[[item nodeData] itemElement] elementSlot] toggleReservationForUser:nil onHost:nil];
+		[[[[item nodeData] itemElement] elementSlot] toggleReservationForUser:nil onHost:nil withUI:YES];
 	else if( [theView clickedColumn] == [theView columnWithIdentifier:COLUMNID_DATECHECKEDOUT] )
-		[[[[item nodeData] itemElement] elementSlot] toggleReservationForUser:nil onHost:nil];
+		[[[[item nodeData] itemElement] elementSlot] toggleReservationForUser:nil onHost:nil withUI:YES];
 	else if( [theView clickedColumn] == [theView columnWithIdentifier:COLUMNID_TAGS] )
 		[theView editColumn:[theView clickedColumn] row:[theView clickedRow] withEvent:[[NSApplication sharedApplication] currentEvent] select:YES];
 	else 	
@@ -566,7 +566,7 @@ SLOTTYPEFAILED:
 			workItem = [(SearchNodeData*)workItem matchActual];
 		
 		if( [[[workItem nodeData] itemElement] isCheckedOut] == YES )
-			[[[[workItem nodeData] itemElement] elementSlot] toggleReservationForUser:nil onHost:nil];
+			[[[[workItem nodeData] itemElement] elementSlot] toggleReservationForUser:nil onHost:nil withUI:YES];
 	}
 }
 
@@ -582,7 +582,7 @@ SLOTTYPEFAILED:
 			workItem = [(SearchNodeData*)workItem matchActual];
 		
 		if( [[[workItem nodeData] itemElement] isCheckedOut] == NO )
-			[[[[workItem nodeData] itemElement] elementSlot] toggleReservationForUser:nil onHost:nil];
+			[[[[workItem nodeData] itemElement] elementSlot] toggleReservationForUser:nil onHost:nil withUI:YES];
 	}
 }
 

@@ -132,6 +132,7 @@ CFStringRef			kDACALCarouselDocumentXAttrSlot			=CFSTR("com.polymicrosystems.pic
 CFStringRef			kDACALCarouselDocumentXAttrSlotID		=CFSTR("com.polymicrosystems.pickadisk.device.slot.id");
 CFStringRef			kDACALCarouselDocumentXAttrSlotKind		=CFSTR("com.polymicrosystems.pickadisk.device.slot.kind");
 CFStringRef			kDACALCarouselDocumentXAttrSlotAddDate	=CFSTR("com.polymicrosystems.pickadisk.device.slot.added");
+CFStringRef			kDACALCarouselDocumentXAttrSlotIsOut	=CFSTR("com.polymicrosystems.pickadisk.device.slot.isout");
 CFStringRef			kDACALCarouselDocumentXAttrSlotCheckout	=CFSTR("com.polymicrosystems.pickadisk.device.slot.checkout");
 CFStringRef			kDACALCarouselDocumentXAttrSlotCheckIn	=CFSTR("com.polymicrosystems.pickadisk.device.slot.checkin");
 CFStringRef			kDACALCarouselDocumentXAttrVolumeName	=CFSTR("com.polymicrosystems.pickadisk.device.volname");

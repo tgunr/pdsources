@@ -281,9 +281,9 @@ PADSearchRequest* PADIndexToolbarController_LastSearch = nil;
 		
 		[AppController playUISoundForResult: (goodCheck == YES) ? kDACALOK : kDACALError];
  */
-		//[[[aNode itemElement] elementSlot] toggleReservationForUser:nil onHost:nil];
+		//[[[aNode itemElement] elementSlot] toggleReservationForUser:nil onHost:nil doUI:YES];
 		if( [[[aNode itemElement] elementSlot] isCheckedOut] == NO )
-			[[[aNode itemElement] elementSlot] toggleReservationForUser:nil onHost:nil];
+			[[[aNode itemElement] elementSlot] toggleReservationForUser:nil onHost:nil withUI:YES];
 		
 		if( index + 1 < slotCount )
 			sleep( 7.0 );
@@ -304,7 +304,7 @@ PADSearchRequest* PADIndexToolbarController_LastSearch = nil;
 	{
 		aNode = [[[self selectedNodes] objectAtIndex:index] nodeData];
 		if( [[[aNode itemElement] elementSlot] isCheckedOut] == YES )
-			[[[aNode itemElement] elementSlot] toggleReservationForUser:nil onHost:nil];
+			[[[aNode itemElement] elementSlot] toggleReservationForUser:nil onHost:nil withUI:YES];
 		
 		if( index + 1 < slotCount )
 			sleep( 7.0 );
