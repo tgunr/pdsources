@@ -621,6 +621,7 @@
 				735CC2BE049A7E2A00C919A3 /* Rez */,
 				5C7C4E990E3BF70300FCEBD8 /* CopyFiles */,
 				5C2E42670E7451EA00D7DF4A /* CopyFiles */,
+				75E4927B0EACBFB900AC85A0 /* ShellScript */,
 			);
 			buildRules = (
 				734E63B1049E6C2800C919A3 /* PBXBuildRule */,
@@ -725,6 +726,20 @@
 			shellPath = /bin/sh;
 			shellScript = "echo \"Generating English Localized.strings...\"\ngenstrings -u -o ${SRCROOT}/Resources/English.lproj/ ${SRCROOT}/Sources/*/*.[hm]\ntouch -c ${SRCROOT}/Resources/English.lproj/Localizable.strings\n\n\n\n";
 			showEnvVarsInLog = 0;
+		};
+		75E4927B0EACBFB900AC85A0 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			comments = "If you use the \"Development Fresh Prefs\" setting the preference file will be moved aside so that PickADisk can create a new pref file. If you switch back to any other setting, the old pref file will be restored.";
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = "/bin/sh -x";
+			shellScript = "if [[ \"$CONFIGURATION\" == \"Development Fresh Prefs\" ]]; then\n\tif [[ -e \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist\" ]]; then\n\t\tif [[ -e \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist.1\" ]]; then\n\t\t\trm \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist\"\t\telse\n\t\t\tmv \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist\" \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist.1\"\n\t\tfi\n\tfi\nelse\n\tif [[ -e \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist.1\" ]]; then\n\t\tmv \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist.1\" \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist\"\t\n\tfi\n\nfi";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -856,6 +871,73 @@
 			};
 			name = DebugPPC;
 		};
+		75E4927C0EACC04200AC85A0 /* Development Fresh Prefs */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					"$(NATIVE_ARCH)",
+					ppc,
+				);
+				BUILD_VARIANTS = (
+					debug,
+					normal,
+				);
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/Development/$(EFFECTIVE_PLATFORM_NAME)";
+				CONFIGURATION_TEMP_DIR = "$(PROJECT_TEMP_DIR)/Development/$(EFFECTIVE_PLATFORM_NAME)";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = "";
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = PickADisk;
+				SDKROOT = /Developer/SDKs/MacOSX10.5.sdk;
+			};
+			name = "Development Fresh Prefs";
+		};
+		75E4927D0EACC04200AC85A0 /* Development Fresh Prefs */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH)";
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/Frameworks",
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(DEVELOPER_DIR)/SDKs/MacOSX10.5.sdk/System/Library/Frameworks\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../DiscID/build/Release\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_6 = "\"$(SRCROOT)/Frameworks\"";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Sources/Prefix.h;
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
+				GCC_WARN_UNKNOWN_PRAGMAS = NO;
+				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = "Info-PickADisk.plist";
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+				);
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)\"";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = (
+					"-lcrypto",
+					"-seg1addr",
+					0x10000000,
+				);
+				PRODUCT_NAME = PickADisk;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = "";
+				WRAPPER_EXTENSION = app;
+				ZERO_LINK = YES;
+			};
+			name = "Development Fresh Prefs";
+		};
 		B69BDD9508A2EC26008AC9B5 /* Development */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -976,6 +1058,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B69BDD9508A2EC26008AC9B5 /* Development */,
+				75E4927D0EACC04200AC85A0 /* Development Fresh Prefs */,
 				75D3EBAC0E8BF811009A0199 /* DebugPPC */,
 				B69BDD9608A2EC26008AC9B5 /* Release */,
 			);
@@ -986,6 +1069,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B69BDD9908A2EC26008AC9B5 /* Development */,
+				75E4927C0EACC04200AC85A0 /* Development Fresh Prefs */,
 				75D3EBAB0E8BF811009A0199 /* DebugPPC */,
 				B69BDD9A08A2EC26008AC9B5 /* Release */,
 			);
