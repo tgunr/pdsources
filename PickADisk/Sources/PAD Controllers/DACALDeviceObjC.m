@@ -656,6 +656,8 @@ NSMutableArray*		gDACALDevices;
 		slotIsCheckedOut = NO;
 		
 		slotElements = [[NSMutableArray alloc] initWithCapacity:0];
+		
+		[self fileURL];
 	}
 	return self;
 }
@@ -760,11 +762,13 @@ NSMutableArray*		gDACALDevices;
 -(NSURL*)fileURL
 {
 	NSURL*		newURL = nil; // (NSURL*)CFURLCreateFromFSRef( kCFAllocatorDefault, [self slotFSRef] );
-	if( newURL == nil ) 
-	{
-		newURL = (NSURL*)CFURLCreateWithFileSystemPathRelativeToBase( kCFAllocatorDefault, (CFStringRef)[self title], kCFURLPOSIXPathStyle, TRUE, (CFURLRef)[slotDevice fileURL] );
-		CFURLGetFSRef( (CFURLRef)newURL, &slotFSRef );
-	}
+
+	//newURL = [NSURL URLWithString:[self title] relativeToURL:[slotDevice fileURL]];
+	newURL = (NSURL*)CFURLCreateWithFileSystemPathRelativeToBase( kCFAllocatorDefault, (CFStringRef)[self title], kCFURLPOSIXPathStyle, TRUE, (CFURLRef)[slotDevice fileURL] );
+	//newURL = (NSURL*)DACALSlotCopyPath( [self slotDeviceRef], [self slotNumber], NULL );
+	if( newURL != nil )
+		CFURLGetFSRef( (CFURLRef)newURL, &slotFSRef );		// not sure why this happens here
+	
 	return newURL;	
 }
 
@@ -786,6 +790,63 @@ NSMutableArray*		gDACALDevices;
 
 -(DACALResult)moveDeviceToSlotWithOptions:(DACALOptionBits)slotOptions
 	{ return DACALCommandMoveToSlotWithOptions( [self slotDeviceRef], [self slotNumber], slotOptions ); }
+
++(BOOL)moveDevicesToSlotsOfNodes:(NSArray*)theTreeNodes
+{
+	BOOL				outDidMove = NO;
+	NSEnumerator*		nodeEnum = [theTreeNodes objectEnumerator];
+	SimpleTreeNode*		workNode = nil;
+	DACALSlot*			workSlot = nil;
+	DACALSlot*			lastSlot = nil;
+	NSMutableArray*		slotArray = [NSMutableArray arrayWithCapacity:0];
+	NSEnumerator*		slotEnum = nil;
+	BOOL				slotOne = YES;
+	
+	while ( workNode = [nodeEnum nextObject] ) {
+		workSlot = [[[workNode nodeData] itemElement] elementSlot];
+		if( [slotArray indexOfObject:workSlot] == NSNotFound )
+			[slotArray addObject:workSlot];
+	}
+	
+	slotEnum = [slotArray objectEnumerator];
+	
+	while ( workSlot = [slotEnum nextObject] ) {
+		outDidMove = ([workSlot moveDeviceToSlotWithOptions:kDACALOptionMoveDefault] == kDACALOK);
+		if( slotOne )
+			slotOne = NO;
+		else
+			if( lastSlot && [[lastSlot slotDevice] isDeviceRef:[workSlot slotDeviceRef]] )
+				sleep( 7.0 );
+	
+		lastSlot = workSlot;
+	}
+	
+	return outDidMove;
+}
+
++(BOOL)ejectSlotVolumesOfNodes:(NSArray*)theTreeNodes
+{
+	BOOL				outDidEject = NO;
+	NSEnumerator*		nodeEnum = [theTreeNodes objectEnumerator];
+	SimpleTreeNode*		workNode = nil;
+	DACALSlot*			workSlot = nil;
+	NSMutableArray*		slotArray = [NSMutableArray arrayWithCapacity:0];
+	NSEnumerator*		slotEnum = nil;
+	
+	while ( workNode = [nodeEnum nextObject] ) {
+		workSlot = [[[workNode nodeData] itemElement] elementSlot];
+		if( [slotArray indexOfObject:workSlot] == NSNotFound )
+			[slotArray addObject:workSlot];
+	}
+	
+	slotEnum = [slotArray objectEnumerator];
+	
+	while ( workSlot = [slotEnum nextObject] )
+		if( [workSlot slotVolume] )
+			outDidEject = [[workSlot slotVolume] ejectVolume];
+	
+	return outDidEject;
+}
 
 -(BOOL)isCheckedOut
 	{ return slotIsCheckedOut; }
@@ -893,7 +954,7 @@ NSMutableArray*		gDACALDevices;
 	
 	if( doUI )
 		if( didWork && ([self slotVolume] == nil) )
-			didWork = [self moveDeviceToSlotWithOptions:kDACALOptionMoveDefault];
+			didWork = ([self moveDeviceToSlotWithOptions:kDACALOptionMoveDefault] == kDACALOK);
 	
 	return didWork;
 }
@@ -946,7 +1007,7 @@ NSMutableArray*		gDACALDevices;
 	[self reloadSlot];
 	
 	if( doUI && didWork )
-		didWork = [self moveDeviceToSlotWithOptions:kDACALOptionMoveDefault];
+		didWork = ([self moveDeviceToSlotWithOptions:kDACALOptionMoveDefault] == kDACALOK);
 
 	// NSLog(@"Slot Check In:%@\nManifset URL:%@\nManifest Dictionary:%@", self, manifestURL, manifestDict);
 
@@ -989,17 +1050,21 @@ NSMutableArray*		gDACALDevices;
 -(BOOL)slotMountedAsVolume:(DACVolume*)mountVolume
 {
 	BOOL	outClaimedSlot = YES;
+	BOOL	wasCheckedIn = ![self isCheckedOut];
 	BOOL	wasOurRequest = [[DACVolumeService sharedVolumeService] isPendingMount:[mountVolume padIdentifier]];
 	
 	[self setSlotVolume:mountVolume];
 	
-	if( ![self isCheckedOut] )
+	if( wasCheckedIn )
 		[self toggleReservationForUser:nil onHost:nil withUI:NO];
 	else
 		[self reloadSlot];
 	
-//	if( user wants to auto close )
+	if( !wasOurRequest )
 	{
+		[AppController playUISoundForBOOL:[self isCheckedOut]];
+		
+		//	if( user wants to auto close )
 		[[self slotDevice] commandCloseDoor];
 	}
 	
@@ -1031,6 +1096,78 @@ NSMutableArray*		gDACALDevices;
 		NSLog(@"Unmounted Slot (%@)", self);
 	
 	return outReleasedSlot;
+}
+
+- (BOOL)slotAssignedIndexFromVolume:(DACVolume*)indexVolume asType:(NSString*)newType
+{
+	BOOL			outWasAssigned = NO;
+	CFURLRef		slotURL = (CFURLRef)[self fileURL];
+	
+	if( !slotURL ) return outWasAssigned;
+	
+	CFURLSetXattr( slotURL, kDACALCarouselDocumentXAttrSlotKind, (CFStringRef)newType );
+	CFURLSetXattr( slotURL, kDACALCarouselDocumentXAttrSlotID, (CFStringRef)[indexVolume padIdentifier] );
+	
+	[self setSlotIdentifier:[indexVolume padIdentifier]];
+	
+	NSURL*		iconURL = [NSURL URLWithString:@".DACDiscIcon.icns" relativeToURL:(NSURL*)slotURL];
+	
+	CFDictionaryRef	volumeData = DADiskCopyDescription( [indexVolume volumeDiskRef] );
+	if( volumeData != NULL ) {
+		//	Aquire the media "type" icon
+		CFDictionaryRef	workDict = CFDictionaryGetValue( volumeData, CFSTR("DAMediaIcon") );
+		if( workDict )
+		{
+			CFStringRef			bundleIDString = CFDictionaryGetValue( workDict, CFSTR("CFBundleIdentifier") );
+			CFStringRef			iconResFile = CFDictionaryGetValue( workDict, CFSTR("IOBundleResourceFile") );
+			NSURL*				iconFileURL = nil;
+			if( iconResFile && bundleIDString ) {
+				CFBundleRef		theIconBundle = CFBundleGetBundleWithIdentifier( bundleIDString );
+				if( theIconBundle ) 
+					iconFileURL = (NSURL*)CFBundleCopyResourceURL( theIconBundle, iconResFile, NULL, NULL );
+				if( iconFileURL )
+					[[NSFileManager defaultManager] copyItemAtPath:[iconFileURL path] toPath:[iconURL path] error:nil];
+				//else NSLog( @"Bad Icon File URL: Bundle:%@ ID:%@ Name:%@", theIconBundle, bundleIDString, iconResFile );
+			}
+		}
+		CFRelease( volumeData );
+	}
+	
+	//	Configure Slot Subtree
+	
+	NSString*			theSlotTitle = (NSString*)DACALSlotCopyTitle( [self slotDeviceRef], [self slotNumber], NULL );
+	NSURL*				theSlotContentPath = (NSURL*)CFURLCreateCopyAppendingPathComponent( NULL, (CFURLRef)slotURL, (CFStringRef)theSlotTitle, TRUE );
+	SimpleTreeNode*		theSubtreeNode = nil;
+	SimpleTreeNode*		theBoxTreeNode = [[[[self slotDevice] deviceNode] nodeData] subTree]; //[[[self findTreeNodeForDevice:theBoxRef] nodeData] subTree];
+	SimpleTreeNode*		theSubtreeChild = nil;
+	
+	theSubtreeNode = [[[[AppController shared] dataView] dataSource] treeRoot];
+	
+	if( theSlotContentPath != nil )
+	{
+		// Transfer kind xattr to top
+		CFURLSetItemFlavor( (CFURLRef)theSlotContentPath, (CFStringRef)newType );
+		
+		theSubtreeChild = [SimpleTreeNode treeOperationFromLocation:(NSURL*)theSlotContentPath forUI:YES];
+		
+		[(SimpleNodeData*)[theSubtreeChild nodeData] setName: theSlotTitle];
+		[(SimpleNodeData*)[theSubtreeChild nodeData] setItemSlot: [self slotNumber]];
+		[(SimpleNodeData*)[theSubtreeChild nodeData] setItemDevice: [self slotDeviceRef]];
+		
+		
+		[theBoxTreeNode insertChild:theSubtreeChild atIndex:[theBoxTreeNode numberOfChildren]];
+		
+		[[PADSearchService sharedSearch] searchDataChanged:[NSArray arrayWithObject:theSubtreeChild]];
+	}
+	
+	[[[[AppController shared] dataView] dataSource] updateChangesWithAction:YES];
+	
+	// Go ahead and check in
+	[self checkInForUser:NSFullUserName() onHost:[[NSHost currentHost] name] withUI:NO];
+	
+	outWasAssigned = YES;
+	
+	return outWasAssigned;
 }
 
 
@@ -1139,7 +1276,8 @@ NSMutableArray*		gDACALDevices;
 			slotTopURL = CFURLCreateCopyAppendingPathComponent( NULL, (CFURLRef)slotURL, (CFStringRef) theSlotTitle, TRUE );
 			
 			//theSubtreeChild = [SimpleTreeNode treeOperationFromLocation:(NSURL*)slotURL];
-			theSubtreeChild = [SimpleTreeNode treeFromLocation:(NSURL*)slotTopURL];
+			//theSubtreeChild = [SimpleTreeNode treeFromLocation:(NSURL*)slotTopURL];
+			theSubtreeChild = [SimpleTreeNode treeOperationFromLocation:(NSURL*)slotTopURL forUI:YES];
 			[theSlot setSlotNode:theSubtreeChild];
 			
 			[theSubtreeNode insertChild:theSubtreeChild atIndex:[theSubtreeNode numberOfChildren]];
@@ -1222,48 +1360,13 @@ NSMutableArray*		gDACALDevices;
 
 -(void)indexedNewVolume:(DACVolume*)newVolume forSlot:(DACALSlotNum)newSlot ofType:(NSString*)newType
 {
-	CFURLRef		slotURL = DACALSlotCopyPath( deviceRef, newSlot, NULL );
+	DACALSlot*		workSlot = [self slotWithNumber:newSlot];
 	
-	if( slotURL ) {
-	//	CFURLSetXattr( slotURL, kDACALCarouselDocumentXAttrSlotAddDate, (CFStringRef)[[NSDate date] description] );
-		CFURLSetXattr( slotURL, kDACALCarouselDocumentXAttrSlotKind, (CFStringRef)newType );
-		CFURLSetXattr( slotURL, kDACALCarouselDocumentXAttrSlotID, (CFStringRef)[newVolume padIdentifier] );
-		
-		NSURL*		iconURL = [NSURL URLWithString:@".DACDiscIcon.icns" relativeToURL:(NSURL*)slotURL];
-		
-		CFDictionaryRef	volumeData = DADiskCopyDescription( [newVolume volumeDiskRef] );
-		if( volumeData == NULL ) goto NOVOLUMEDATA;
-
-		//	Aquire the media "type" icon
-		CFDictionaryRef	workDict = CFDictionaryGetValue( volumeData, CFSTR("DAMediaIcon") );
-		if( workDict )
-		{
-			CFStringRef			bundleIDString = CFDictionaryGetValue( workDict, CFSTR("CFBundleIdentifier") );
-			CFStringRef			iconResFile = CFDictionaryGetValue( workDict, CFSTR("IOBundleResourceFile") );
-			NSURL*				iconFileURL = nil;
-			if( iconResFile && bundleIDString ) {
-				CFBundleRef		theIconBundle = CFBundleGetBundleWithIdentifier( bundleIDString );
-				if( theIconBundle ) 
-					iconFileURL = (NSURL*)CFBundleCopyResourceURL( theIconBundle, iconResFile, NULL, NULL );
-				if( iconFileURL )
-					[[NSFileManager defaultManager] copyItemAtPath:[iconFileURL path] toPath:[iconURL path] error:nil];
-				//else NSLog( @"Bad Icon File URL: Bundle:%@ ID:%@ Name:%@", theIconBundle, bundleIDString, iconResFile );
-			}
-		}
-		CFRelease( volumeData );
-		
-	NOVOLUMEDATA:
-			
-		CFRelease( slotURL );
-	}
+	[workSlot slotAssignedIndexFromVolume:newVolume asType:newType];
 	
-	// Go ahead and check it in
-	[[self slotWithNumber:newSlot] checkInForUser:NSFullUserName() onHost:[[NSHost currentHost] name] withUI:NO];
+	// Notch belt
 	slotsUsed++;
-	
-	[[DACALTreeDataSource shared] slotAddedToDevice: deviceRef forSlot: newSlot];
-	//[[PADSearchService sharedSearch] searchDataChanged:[NSArray array]];
-		
+			
 	[PADOperationControlDevice finishIndexingVolume:[newVolume volumePath] forSlot:newSlot onDevice:self forTarget:self];	
 }
 
@@ -1275,12 +1378,10 @@ NSMutableArray*		gDACALDevices;
 
 -(void)detachingDevice
 {
-	SimpleTreeNode*		boxNode = deviceNode;
-	//SimpleTreeNode*		boxParent = (SimpleTreeNode*)[boxNode nodeParent];
-
 	[[AppController shared] cancelOperationsForDevice:self];
+	[[DACVolumeService sharedVolumeService] carouselDeviceDetached:self];
 	
-	[boxNode removeFromParent];
+	[deviceNode removeFromParent];
 	[self setDeviceNode:nil];
 	
 	[[[[AppController shared] dataView] dataSource] updateChangesWithAction:YES];
@@ -1293,7 +1394,8 @@ NSMutableArray*		gDACALDevices;
 
 -(void)attachedDevice:(DACALDevice*)newBox
 {	
-
+	[[DACVolumeService sharedVolumeService] carouselDeviceAttached:self];
+	
 	[PADSearchService performSelector:@selector(updateAllSearches) withObject:nil afterDelay:0.42];
 	[[DACALTreeDataSource shared] doAction];
 

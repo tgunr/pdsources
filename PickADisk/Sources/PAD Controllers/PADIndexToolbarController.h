@@ -23,6 +23,8 @@
 	IBOutlet	NSButton	*closeDoorButton;
 	IBOutlet	NSButton	*assignButton;
 	IBOutlet	NSButton	*unassignButton;
+	IBOutlet	NSButton	*ejectButton;
+	IBOutlet	NSButton	*gotoButton;
 	IBOutlet	NSToolbarItem *printButton;
 	
 	IBOutlet	NSImageView	*noBoxIcon;
@@ -55,6 +57,9 @@
 - (IBAction)clickUnassign:(id)sender;
 - (IBAction)clickIdentify:(id)sender;
 - (IBAction)clickPrintReport:(id)sender;
+- (IBAction)clickGotoSlot:(id)sender;
+- (IBAction)clickEject:(id)sender;
+- (IBAction)clickOpen:(id)sender;
 - (IBAction)searchAction:(id)sender;
 - (IBAction)homeSearchAction:(id)sender;
 - (IBAction)provideFeedback:(id)sender;

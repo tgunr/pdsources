@@ -1346,12 +1346,16 @@ NSURL *NewFileURLForWritingFile(NSString *dirpath, NSString *basename, NSString 
 - (void)updateChangesForItems:(NSArray*)changedItems withAction:(BOOL)doAction
 {
 	NSInteger	itemIndex, itemCount = [changedItems count];
+	NSArray*	saveSelection = [[self outlineView] allSelectedItems];
 	
 	if( itemCount == 0 )
 		[self updateChangesForItem:nil withAction:NO];
 	else
 		for( itemIndex=0; itemIndex < itemCount; itemIndex++ )
 			[self updateChangesForItem:[changedItems objectAtIndex:itemIndex] withAction:NO];
+	
+	if( saveSelection )
+		[[self outlineView] selectItems:saveSelection byExtendingSelection:NO];
 	
 	if( doAction == YES )
 		[self outlineViewAction:self];

@@ -118,15 +118,21 @@
 		objectValue = [NSNumber numberWithInt:(int)([Sdata matchScore]*100)];
 	} else if ([[tableColumn identifier] isEqualToString:COLUMNID_CHECKEDOUT]) {
 		SearchNodeData *Sdata = [item nodeData];
-		NSString*	imagePath = nil;
-		NSImage*	theImage = nil;
-		NSBundle*	imageBundle = [NSBundle mainBundle];
+		NSString*	isCOString = nil;
+		//NSString*	imagePath = nil;
+		//NSImage*	theImage = nil;
+		//NSBundle*	imageBundle = [NSBundle mainBundle];
 		
-		if( [Sdata isCheckedOut] )
-			if( imagePath = [imageBundle pathForResource:@"CheckedOut" ofType:@"png"] )
-				theImage = [[NSImage alloc] initByReferencingFile:imagePath]; 
-		
-		objectValue = theImage;
+		if( [Sdata isCheckedOut] ) {
+			//if( imagePath = [imageBundle pathForResource:@"CheckedOut" ofType:@"png"] )		//	or redx.png?
+			//	theImage = [[NSImage alloc] initByReferencingFile:imagePath]; 
+			if( [[[Sdata itemElement] elementSlot] isSlotMounted] )
+				isCOString = @"⏏";
+			else
+				isCOString = @"◎";
+		}
+		//objectValue = theImage;
+		objectValue = isCOString;
 	} else if ([[tableColumn identifier] isEqualToString:COLUMNID_DATECHECKEDOUT]) {
 		objectValue = [data checkedOutDate];
 	} else if ([[tableColumn identifier] isEqualToString:COLUMNID_COMMENT]) {
@@ -395,17 +401,20 @@ SLOTTYPEFAILED:
 	return NO;
 }
 
-- (void)doubleClickImage:(id)item inCell:(NSCell*)cell
+- (void)doubleClickToggleItemReservation:(id)item
 {
-	SimpleNodeData	*theData = [item nodeData];
-//	DACALDeviceRef	theBox = [theData itemDevice];
-//	DACALSlotNum	theSlot = [theData itemSlot];
-
-//	DACALCommandMoveToSlotWithOptions( theBox, theSlot, kDACALOptionMoveToggle );
-
-	[[[theData itemElement] elementSlot] toggleReservationForUser:nil onHost:nil withUI:YES];
+	// Allow power users to goto slots with option key
 	
+	if( [[[NSApplication sharedApplication] currentEvent] modifierFlags] & NSAlternateKeyMask ) {
+		[DACALSlot moveDevicesToSlotsOfNodes:[NSArray arrayWithObject:item]];
+		return;
+	}
+	
+	[[[[item nodeData] itemElement] elementSlot] toggleReservationForUser:nil onHost:nil withUI:YES];
 }
+
+- (void)doubleClickImage:(id)item inCell:(NSCell*)cell
+	{ [self doubleClickToggleItemReservation:item]; }
 
 - (void)doubleClickCellContent:(id)item inCell:(NSCell*)cell
 {
@@ -413,9 +422,9 @@ SLOTTYPEFAILED:
 	NSOutlineView	*theView = [[self treeControl] outlineView];
 	
 	if( [theView clickedColumn] == [theView columnWithIdentifier:COLUMNID_CHECKEDOUT] )
-		[[[[item nodeData] itemElement] elementSlot] toggleReservationForUser:nil onHost:nil withUI:YES];
+		[self doubleClickToggleItemReservation:item];
 	else if( [theView clickedColumn] == [theView columnWithIdentifier:COLUMNID_DATECHECKEDOUT] )
-		[[[[item nodeData] itemElement] elementSlot] toggleReservationForUser:nil onHost:nil withUI:YES];
+		[self doubleClickToggleItemReservation:item];
 	else if( [theView clickedColumn] == [theView columnWithIdentifier:COLUMNID_TAGS] )
 		[theView editColumn:[theView clickedColumn] row:[theView clickedRow] withEvent:[[NSApplication sharedApplication] currentEvent] select:YES];
 	else 	
@@ -517,6 +526,7 @@ SLOTTYPEFAILED:
 {
 	NSArray*		clickedItems = [self ctmClickedRows];
 	NSEnumerator*	clickedEnum = [clickedItems objectEnumerator];
+	NSEnumerator*	menuItemEnum = [[menu itemArray] objectEnumerator];
     NSInteger		clickedRow = [[self outlineView] clickedRow];
 	
     id				item = nil;
@@ -535,7 +545,7 @@ SLOTTYPEFAILED:
     
     if (menu == outlineViewContextMenu) 
 	{
-		while( workItem = (NSMenuItem*)[clickedEnum nextObject] )
+		while( workItem = (NSMenuItem*)[menuItemEnum nextObject] )
 		{
 			workSelector = [workItem action];
 			if( workSelector == @selector(ctmMountOpen:) )						//	Mount & Open
@@ -543,6 +553,8 @@ SLOTTYPEFAILED:
 			if( workSelector == @selector(ctmCheckIn:) )						//	Check In
 				[workItem setEnabled:[nodeData isCheckedOut]];
 			if( workSelector == @selector(ctmCheckOut:) )						//	Check Out
+				[workItem setEnabled:![nodeData isCheckedOut]];
+			if( workSelector == @selector(ctmGotoSlot:) )						//	Go To Slot
 				[workItem setEnabled:![nodeData isCheckedOut]];
 		}
 	}
@@ -588,6 +600,12 @@ SLOTTYPEFAILED:
 
 - (IBAction)ctmDeleteSlot:(id)sender
 	{ [[[AppController shared] toolbarControl] unassignNodes:[self ctmClickedRows]]; }
+
+- (IBAction)ctmGotoSlot:(id)sender
+	{ [DACALSlot moveDevicesToSlotsOfNodes:[self ctmClickedRows]]; }
+
+- (IBAction)ctmEject:(id)sender
+	{ [DACALSlot ejectSlotVolumesOfNodes:[self ctmClickedRows]]; }
 
 @end	// DACALViewDataSource
 

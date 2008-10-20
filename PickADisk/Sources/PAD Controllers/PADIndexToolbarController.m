@@ -44,22 +44,33 @@ PADSearchRequest* PADIndexToolbarController_LastSearch = nil;
 	return allowCheck;
 }
 
+- (BOOL)nodesContainMountedSlotVolumes:(NSArray*)nodeArray
+{
+	BOOL			hasMounts = NO;
+	NSEnumerator*	nodeEnum = [nodeArray objectEnumerator];
+	SimpleTreeNode*	workNode = nil;
+	
+	while ( workNode = [nodeEnum nextObject] ) {
+		hasMounts = [[[[workNode nodeData] itemElement] elementSlot] isSlotMounted];
+		if( hasMounts ) break;
+	}
+	
+	return hasMounts;
+}
+
 - (BOOL)validateMenuItem:(NSMenuItem *)item
 {
 	BOOL		updateIt = NO;
 	BOOL		anyDevicesSelected = [[self selectedDevices] count] > 0;
 	BOOL		anyNodesSelected = [[self selectedNodes] count] > 0;
+	BOOL		anyMountedSlots = [self nodesContainMountedSlotVolumes:[self selectedNodes]];
 	BOOL		anyUnits = DACALDevicesGetCount() > 0;
 	
 	SEL			theItemAction = [item action];
 	
 	if( theItemAction == @selector(addSlot:) ) updateIt = anyUnits;
-	else if( theItemAction == @selector(mountDisc:) ) updateIt = NO; // anyNodesSelected;
-	else if( theItemAction == @selector(checkInOut:) ) 
-	{
-		updateIt = [self allowCheck:YES];
-		//[item setTitle:[self checkedOutTitle]];
-	}
+	else if( theItemAction == @selector(mountDisc:) ) updateIt = anyNodesSelected;
+	else if( theItemAction == @selector(checkInOut:) ) updateIt = [self allowCheck:YES];
 	else if( theItemAction == @selector(checkIn:) ) updateIt = [self allowCheck:NO];
 	else if( theItemAction == @selector(checkOut:) ) updateIt = [self allowCheck:YES];
 	else if( theItemAction == @selector(deleteSlot:) ) updateIt = anyNodesSelected;
@@ -67,7 +78,8 @@ PADSearchRequest* PADIndexToolbarController_LastSearch = nil;
 	else if( theItemAction == @selector(printReport:) ) updateIt = anyDevicesSelected;
 	else if( theItemAction == @selector(retractDoor:) ) updateIt = anyDevicesSelected;
 	else if( theItemAction == @selector(resetCarousel:) ) updateIt = anyDevicesSelected;
-	else if( theItemAction == @selector(gotoSlot:) ) updateIt = NO; // anyDevicesSelected;
+	else if( theItemAction == @selector(gotoSlot:) ) updateIt = anyNodesSelected; // anyDevicesSelected;
+	else if( theItemAction == @selector(ejectVolumes:) ) updateIt = anyMountedSlots;
 	else if( theItemAction == @selector(runLicense:) ) updateIt = NO;
 	
 	return updateIt;
@@ -138,6 +150,7 @@ PADSearchRequest* PADIndexToolbarController_LastSearch = nil;
 -(void)adoptPathSelection
 {
 	SimpleTreeNode*			theNode = nil;
+	SimpleTreeNode*			lastNode = nil;
 	NSMutableArray*			workArray = [NSMutableArray arrayWithCapacity:0];
 	NSPathComponentCell*	workCell = nil;
 	
@@ -160,8 +173,22 @@ PADSearchRequest* PADIndexToolbarController_LastSearch = nil;
 			[workCell setControlSize:NSSmallControlSize];
 			
 			[workArray addObject:workCell];
-		}
+		}// else														// this shouldn't be possible but yet the theNode is occasionally nil?!
+		//	NSLog(@"Nill item name? %@", theNode);
+		if( [theNode nodeParent] != nil )
+			lastNode = theNode;
 		theNode = (SimpleTreeNode*)[theNode nodeParent];
+	}
+	
+	// Insert a slot indicator
+	if( [workArray count] > 1 )
+	{
+		workCell = [[NSPathComponentCell alloc] init];
+		[workCell setStringValue:[[[[lastNode nodeData] itemElement] elementSlot] title]];
+		[workCell setImage:[[lastNode nodeData] iconRep]];
+		[workCell setControlSize:NSSmallControlSize];
+		
+		[workArray insertObject:workCell atIndex:[workArray count] - 1];
 	}
 	
 	[pathControl setPathComponentCells:[NSArray arrayWithArray:[workArray reverseObjects]]];
@@ -173,6 +200,7 @@ PADSearchRequest* PADIndexToolbarController_LastSearch = nil;
 {
 	BOOL			anyBox = NO;
 	BOOL			anySlot = NO;
+	BOOL			anyVolumes = [self nodesContainMountedSlotVolumes:[self selectedNodes]];
 	BOOL			freeSlot = NO;
 	//NSToolbarItem*	checkTBItem = [self checkOutToolbarItem];
 	
@@ -200,10 +228,12 @@ PADSearchRequest* PADIndexToolbarController_LastSearch = nil;
 	if( resetButton )		[resetButton setEnabled:anyBox];
 	if( closeDoorButton )	[closeDoorButton setEnabled:anyBox];
 	if( assignButton )		[assignButton setEnabled:freeSlot];
-	//if( playButton )		[playButton setEnabled:anySlot];
+	if( playButton )		[playButton setEnabled:anySlot];
 	if( checkOutButton )	[checkOutButton setEnabled:[self allowCheck:YES]];
 	if( checkInButton )		[checkInButton setEnabled:[self allowCheck:NO]];
 	if( unassignButton )	[unassignButton setEnabled:anySlot];
+	if( ejectButton )		[ejectButton setEnabled:anyVolumes];
+	if( gotoButton )		[gotoButton setEnabled:anySlot];
 	
 	[self adoptPathSelection];
 	
@@ -228,6 +258,8 @@ PADSearchRequest* PADIndexToolbarController_LastSearch = nil;
 	
 	if ([[toolbarItem itemIdentifier] isEqual:NSToolbarPrintItemIdentifier]) 
 		toolValid = [[self selectedDevices] count] > 0;
+	
+	NSLog(@"Validate Toolbar Item: %@", [toolbarItem label]);
 	
 	return toolValid;	
 }
@@ -418,8 +450,17 @@ PADSearchRequest* PADIndexToolbarController_LastSearch = nil;
 - (IBAction)clickUnassign:(id)sender
 	{ [self unassignNodes:[self selectedNodes]]; }
 
+- (IBAction)clickGotoSlot:(id)sender
+	{ [DACALSlot moveDevicesToSlotsOfNodes:[self selectedNodes]]; }
+
 - (IBAction)clickPrintReport:(id)sender
 	{ [[AppController shared] printReport:self]; }
+
+- (IBAction)clickEject:(id)sender
+	{ [DACALSlot ejectSlotVolumesOfNodes:[self selectedNodes]]; }
+
+- (IBAction)clickOpen:(id)sender
+{ }
 
 - (void)searchFoundResults:(NSArray*)itemsFound forSearch:(PADSearchRequest*)theSearch
 {

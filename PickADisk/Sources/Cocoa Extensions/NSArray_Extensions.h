@@ -19,7 +19,10 @@
 
 -(void)insertObjectsFromArray:(NSArray *)array atIndex:(NSInteger)index;
 
--(NSMutableArray*)reverseObjects;
+-(id)reverseObjects;
+
+-(id)insertUniqueObjectsFromArray:(NSArray*)newArray atIndex:(NSInteger)index;
+-(id)addUniqueObjectsFromArray:(NSArray*)newArray;
 
 @end
 

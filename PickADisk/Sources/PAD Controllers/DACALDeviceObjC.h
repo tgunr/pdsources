@@ -137,8 +137,6 @@ extern NSMutableArray*		gDACALDevices;
 	NSMutableArray*		slotElements;
 }
 
-
-
 -(DACALDevice*)slotDevice;
 -(DACALDeviceRef)slotDeviceRef;
 -(DACALSlotNum)slotNumber;
@@ -177,6 +175,9 @@ extern NSMutableArray*		gDACALDevices;
 
 -(DACALResult)moveDeviceToSlotWithOptions:(DACALOptionBits)slotOptions;
 
++(BOOL)moveDevicesToSlotsOfNodes:(NSArray*)theTreeNodes;
++(BOOL)ejectSlotVolumesOfNodes:(NSArray*)theTreeNodes;
+
 -(BOOL)isCheckedOut;
 -(void)setIsCheckedOut:(BOOL)isOut;
 
@@ -198,8 +199,7 @@ extern NSMutableArray*		gDACALDevices;
 -(BOOL)slotMountedAsVolume:(DACVolume*)mountVolume;
 -(BOOL)slotUnmounted;
 
-
-
+- (BOOL)slotAssignedIndexFromVolume:(DACVolume*)indexVolume asType:(NSString*)newType;
 
 @end		// DACALSlot
 

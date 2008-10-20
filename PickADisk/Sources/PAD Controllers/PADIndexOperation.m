@@ -54,6 +54,8 @@
 	[theNode initFromLocation:[self itemLocation]];
 	[theNode setBusy:NO];
 
+	[PADSearchService updateAllSearches];
+	
 #ifdef __DCDEBUG
 	NSLog(@"Finished location: %@", itemLocation);
 #endif

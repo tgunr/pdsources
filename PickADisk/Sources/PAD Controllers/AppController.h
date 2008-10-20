@@ -50,6 +50,7 @@ BOOL			busyBusy;
 - (IBAction)retractDoor:(id)sender;
 - (IBAction)resetCarousel:(id)sender;
 - (IBAction)gotoSlot:(id)sender;
+- (IBAction)ejectVolumes:(id)sender;
 - (IBAction)runLicense:(id)sender;
 
 - (void)addBusyBody:(id)cell ofView:(id)view;

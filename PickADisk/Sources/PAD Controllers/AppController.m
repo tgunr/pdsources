@@ -316,7 +316,8 @@ static AppController *shared;
 - (IBAction)checkIn:(id)sender { [toolbarController clickCheckIn:self]; }
 - (IBAction)checkOut:(id)sender { [toolbarController clickCheckOut:self]; }
 - (IBAction)retractDoor:(id)sender { [toolbarController clickCloseDoor:self]; }
-- (IBAction)gotoSlot:(id)sender { NSLog(@"Unimplemented feature."); }
+- (IBAction)gotoSlot:(id)sender { [toolbarController clickGotoSlot:self]; }
+- (IBAction)ejectVolumes:(id)sender { [toolbarController clickEject:self]; }
 
 - (IBAction)printReport:(id)sender
 {

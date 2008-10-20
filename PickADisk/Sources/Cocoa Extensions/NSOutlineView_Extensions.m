@@ -119,6 +119,15 @@
 	[super dealloc];
 }
 
+-(void)reloadData
+{
+	NSArray*			saveSelection = [self allSelectedItems];
+
+	[super reloadData];
+
+	[self selectItems:saveSelection byExtendingSelection:NO];
+}
+
 - (id)initWithCoder:(NSCoder *)decoder
 {
 	if( self = [super initWithCoder:decoder] ) {

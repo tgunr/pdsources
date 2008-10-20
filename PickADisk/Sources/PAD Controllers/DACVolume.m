@@ -703,8 +703,7 @@ static id	DACVolumeService_shared = nil;
 		pendingMounts	= [[NSMutableArray alloc] initWithCapacity:0];
 		pendingUnmounts	= [[NSMutableArray alloc] initWithCapacity:0];
 
-		NSArray*		mediaPaths = [[NSWorkspace sharedWorkspace] mountedRemovableMedia];
-		[self newMediaDetected:mediaPaths];
+		[self scanMountedRemovableMedia];
 		
 		if( knownVolumes && ([knownVolumes count] > 0) )
 			NSLog(@"Mounted Volumes:%@", knownVolumes);
@@ -895,9 +894,10 @@ static id	DACVolumeService_shared = nil;
 	BOOL				slotsOK = NO;
 	
 	while ( workVolume = [slotEnum nextObject] ) 
-		slotsOK = [[workVolume padKnownSlot] slotMountedAsVolume:workVolume];
+		if( [[workVolume padKnownSlot] slotVolume] == nil )
+			slotsOK = [[workVolume padKnownSlot] slotMountedAsVolume:workVolume];
 	
-	[AppController playUISoundForBOOL:slotsOK];
+	//[AppController playUISoundForBOOL:slotsOK];
 }
 
 -(void)knownSlotRemoved:(DACVolume*)knownSlotVolume
@@ -910,6 +910,7 @@ static id	DACVolumeService_shared = nil;
 	
 	//[AppController playUISoundForBOOL:slotsOK];	
 }
+
 
 // Notification methods
 
@@ -924,7 +925,7 @@ static id	DACVolumeService_shared = nil;
 	
 	NSLog(@"Mounted Volumes: %@", newVolumes);	
 		
-	[knownVolumes addObjectsFromArray:newVolumes];
+	[knownVolumes addUniqueObjectsFromArray:newVolumes];
 	
 	if( ([indexMounts count] > 0) && (mainWindow != nil) && ([mainWindow attachedSheet] == nil) )
 		[[AppControl toolbarController] clickAssign:self];
@@ -938,6 +939,12 @@ static id	DACVolumeService_shared = nil;
 	if( [knownMounts count] > 0 )
 		[self knownSlotsDetected:knownMounts];
 
+}
+
+-(void)scanMountedRemovableMedia
+{
+	NSArray*		mediaPaths = [[NSWorkspace sharedWorkspace] mountedRemovableMedia];
+	[self newMediaDetected:mediaPaths];
 }
 
 -(void)existingMediaRemoved:(NSString*)oldMediaPath
@@ -964,10 +971,16 @@ static id	DACVolumeService_shared = nil;
 
 
 -(void)newMediaDetectedNotification:(id)aNotification
-{ [self newMediaDetected:[NSArray arrayWithObject:[NSString stringWithString:[[aNotification userInfo] valueForKey:@"NSDevicePath"]]]]; }
+	{ [self newMediaDetected:[NSArray arrayWithObject:[NSString stringWithString:[[aNotification userInfo] valueForKey:@"NSDevicePath"]]]]; }
 
 -(void)existingMediaRemovedNotification:(id)aNotification
-{ [self existingMediaRemoved:[NSString stringWithString:[[aNotification userInfo] valueForKey:@"NSDevicePath"]]]; }
+	{ [self existingMediaRemoved:[NSString stringWithString:[[aNotification userInfo] valueForKey:@"NSDevicePath"]]]; }
+
+-(void)carouselDeviceAttached:(DACALDevice*)aDevice
+	{ [self scanMountedRemovableMedia]; }
+
+-(void)carouselDeviceDetached:(DACALDevice*)aDevice;
+	{ }
 
 @end
 

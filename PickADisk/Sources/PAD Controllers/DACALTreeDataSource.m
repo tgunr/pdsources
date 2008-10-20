@@ -467,6 +467,8 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 	DACALDeviceRef				theDevice;
 	DACALSlotNum				theSlot;
 	PADIndexToolbarController*	toolControl = (PADIndexToolbarController*)[self toolbarControl];
+	NSArray*					dataRowsSelected = [secondaryController selectedNodes];
+	SimpleTreeNode*				originalTree = nil;
 	
 	if( [selectedNodes count] == 0 ) [tabView selectTabViewItemWithIdentifier:@"Home"];
 	else  {
@@ -474,6 +476,7 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 		[self toolbarSearchFinish:tree];
 	}
 	
+	originalTree = [secondaryController treeRoot];
 	[secondaryController setTreeRoot:nil];
 	[toolControl resetSelection];
 	
@@ -504,7 +507,7 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 			}
 		}
 
-		if( subTree != nil)
+		if( subTree != nil )
 			[secondaryController addTreeRoot:subTree];
 		
 		theDevice = [data itemDevice];
@@ -515,6 +518,9 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
  		else if( theDevice != kDACALNullDevice )
 			[toolControl addSelectedDevice:theDevice adoptSelection:YES];
    }
+	
+	if( originalTree && [originalTree isEqual:subTree] )
+		[[secondaryController outlineView] selectItems:dataRowsSelected byExtendingSelection:NO];
 	
 	[secondaryController outlineViewAction:secondaryController];
 	
@@ -691,9 +697,12 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 - (SimpleTreeNode*)findTreeNodeForDevice:(DACALDeviceRef)theBoxRef
 	{ return [[[[self treeControl] treeRoot] childWithItemType:kPADTypeGroupDevices] childWithDevice:theBoxRef]; }
 
-
+// moved to DACALSlot - (BOOL)slotAssignedIndexFromVolume:(DACVolume*)indexVolume asType:(NSString*)newType
 - (void)slotAddedToDevice:(DACALDeviceRef)theBoxRef forSlot:(DACALSlotNum)newSlot
 {
+	NSLog(@"Warning!! Obsolete add method called!?");
+	return;
+	
 	NSURL*				theSlotPath = (NSURL*)DACALSlotCopyPath( theBoxRef, newSlot, NULL );
 	NSString*			theSlotTitle = (NSString*)DACALSlotCopyTitle( theBoxRef, newSlot, NULL );
 	NSURL*				theSlotContentPath = (NSURL*)CFURLCreateCopyAppendingPathComponent( NULL, (CFURLRef)theSlotPath, (CFStringRef)theSlotTitle, TRUE );

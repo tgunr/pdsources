@@ -147,15 +147,16 @@
 
 @implementation NSMutableArray (MyExtensions)
 
--(void)insertObjectsFromArray:(NSArray *)array atIndex:(NSInteger)index {
-    NSObject *entry = nil;
-    NSEnumerator *enumerator = [array objectEnumerator];
-    while ((entry=[enumerator nextObject])) {
-        [self insertObject:entry atIndex:index++];
-    }
+-(void)insertObjectsFromArray:(NSArray *)array atIndex:(NSInteger)index
+{
+	id				entry = nil;
+	NSEnumerator*	enumerator = [array objectEnumerator];
+	
+	while ( entry = [enumerator nextObject] ) 
+		[self insertObject:entry atIndex:index++];
 }
 
--(NSMutableArray*)reverseObjects
+-(id)reverseObjects
 {
 	NSInteger	arrayIndex, arrayCount = [self count] / 2;
 	NSInteger	arrayOut = [self count] -1;
@@ -165,5 +166,20 @@
 	
 	return self;
 }
+
+-(id)insertUniqueObjectsFromArray:(NSArray*)newArray atIndex:(NSInteger)index
+{
+	NSEnumerator*	newEnum = [newArray objectEnumerator];
+	id				newItem = nil;
+	
+	while ( newItem = [newEnum nextObject] )
+		if( [self indexOfObject:newItem] == NSNotFound )
+			[self insertObject:newItem atIndex:index++];
+	
+	return self;
+}
+
+-(id)addUniqueObjectsFromArray:(NSArray*)newArray
+	{ [self insertUniqueObjectsFromArray:newArray atIndex:[self count]]; }
 
 @end

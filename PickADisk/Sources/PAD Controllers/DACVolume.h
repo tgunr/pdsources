@@ -12,6 +12,7 @@
 #import <IOKit/scsi/SCSITaskLib.h>
 
 @class DACALSlot;
+@class DACALDevice;
 
 @interface DACVolume : NSObject {
 
@@ -100,7 +101,11 @@
 -(NSArray*)knownSlotVolumes:(NSArray*)testVolumeList;
 
 -(void)newMediaDetected:(NSArray*)newMounts;
+-(void)scanMountedRemovableMedia;
 -(void)existingMediaRemoved:(NSString*)oldMediaPath;
+
+-(void)carouselDeviceAttached:(DACALDevice*)aDevice;
+-(void)carouselDeviceDetached:(DACALDevice*)aDevice;
 
 +(id)sharedVolumeService;
 
