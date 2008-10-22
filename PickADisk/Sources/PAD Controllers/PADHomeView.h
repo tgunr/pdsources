@@ -33,7 +33,7 @@
 //	Threadplate0102_1_M.jpg
 //	Various0213_M.jpg
 
-#define		PADHomeView_DefaultImageFileName	@"Graid_gray.tif"
+#define		PADHomeView_DefaultImageFileName	@"Gray.tif"
 
 CFAbsoluteTime		gPADHomeView_DefaultTimerTime	= 86400 * 1;
 
