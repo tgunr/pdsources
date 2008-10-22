@@ -97,6 +97,9 @@
 		735CC2BD049A7E2A00C919A3 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 011669A0FFC1E3D311CA0E35 /* Cocoa.framework */; };
 		751C4E2D0E9400250027BC1C /* AquaticPrime.m in Sources */ = {isa = PBXBuildFile; fileRef = 751C4E2C0E9400250027BC1C /* AquaticPrime.m */; };
 		75E667D60E92CA9500A9DA07 /* license.icns in Resources */ = {isa = PBXBuildFile; fileRef = 75E667D50E92CA9500A9DA07 /* license.icns */; };
+		75E815C10EAD5E9000C8562D /* Help in Resources */ = {isa = PBXBuildFile; fileRef = 75E810B10EAD5E8F00C8562D /* Help */; };
+		75E816060EAFB2A100C8562D /* Graid_blue.tif in Resources */ = {isa = PBXBuildFile; fileRef = 75E816050EAFB2A100C8562D /* Graid_blue.tif */; };
+		75E816090EAFB47200C8562D /* Gray.tif in Resources */ = {isa = PBXBuildFile; fileRef = 75E816080EAFB47200C8562D /* Gray.tif */; };
 		75F02D190E954B1400A02B14 /* License.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75F02D180E954B1400A02B14 /* License.xib */; };
 		75F02D240E955A9400A02B14 /* LicenseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 75F02D220E955A9400A02B14 /* LicenseController.m */; };
 /* End PBXBuildFile section */
@@ -277,6 +280,9 @@
 		75E666F60E92A6EB00A9DA07 /* AQDataExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AQDataExtensions.m; path = Sources/License/AQDataExtensions.m; sourceTree = "<group>"; };
 		75E666F90E92A99000A9DA07 /* AquaticPrime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AquaticPrime.h; path = Sources/License/AquaticPrime.h; sourceTree = "<group>"; };
 		75E667D50E92CA9500A9DA07 /* license.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = license.icns; path = ../Resources/license.icns; sourceTree = SOURCE_ROOT; };
+		75E810B20EAD5E8F00C8562D /* English */ = {isa = PBXFileReference; lastKnownFileType = folder; name = English; path = English.lproj/Help; sourceTree = "<group>"; };
+		75E816050EAFB2A100C8562D /* Graid_blue.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Graid_blue.tif; sourceTree = "<group>"; };
+		75E816080EAFB47200C8562D /* Gray.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Gray.tif; sourceTree = "<group>"; };
 		75F02D180E954B1400A02B14 /* License.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = License.xib; sourceTree = "<group>"; };
 		75F02D210E955A9400A02B14 /* LicenseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LicenseController.h; path = Sources/License/LicenseController.h; sourceTree = "<group>"; };
 		75F02D220E955A9400A02B14 /* LicenseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LicenseController.m; path = Sources/License/LicenseController.m; sourceTree = "<group>"; };
@@ -416,6 +422,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				75E810B10EAD5E8F00C8562D /* Help */,
 				75F02D180E954B1400A02B14 /* License.xib */,
 				5CC83EEC0E6F6C81000903AD /* swapslot.sh */,
 				5C4E17EB0E2167580091DD7D /* carousel.sh */,
@@ -534,6 +541,8 @@
 		5C7C501B0E3D843700FCEBD8 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				75E816080EAFB47200C8562D /* Gray.tif */,
+				75E816050EAFB2A100C8562D /* Graid_blue.tif */,
 				5C303C350EA7ED580067A8A8 /* Graid_gray.tif */,
 				5C303C270EA7E7740067A8A8 /* FullskiesAltostratus0007_M.jpg */,
 				5CDAC1E40E9342C3003984E1 /* CheckedOut.png */,
@@ -696,6 +705,9 @@
 				5CDAC1E50E9342C3003984E1 /* CheckedOut.png in Resources */,
 				75F02D190E954B1400A02B14 /* License.xib in Resources */,
 				5C303C360EA7ED580067A8A8 /* Graid_gray.tif in Resources */,
+				75E815C10EAD5E9000C8562D /* Help in Resources */,
+				75E816060EAFB2A100C8562D /* Graid_blue.tif in Resources */,
+				75E816090EAFB47200C8562D /* Gray.tif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -739,7 +751,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/bin/sh -x";
-			shellScript = "if [[ \"$CONFIGURATION\" == \"Development Fresh Prefs\" ]]; then\n\tif [[ -e \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist\" ]]; then\n\t\tif [[ -e \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist.1\" ]]; then\n\t\t\trm \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist\"\t\telse\n\t\t\tmv \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist\" \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist.1\"\n\t\tfi\n\tfi\nelse\n\tif [[ -e \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist.1\" ]]; then\n\t\tmv \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist.1\" \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist\"\t\n\tfi\n\nfi";
+			shellScript = "logger \"Starting\"\nif [[ \"$CONFIGURATION\" == 'Development Fresh Prefs' ]]; then\n\tif [ -e \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist\" ]; then\n\t\tif [ -e \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist.1\" ]; then\n\t\t\tlogger \"Removing prefs aside\"\n\t\t\t/bin/rm \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist\"\t\telse\n\t\t\tlogger \"Moving prefs aside\"\n\t\t\t/bin/mv \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist\" \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist.1\"\n\t\tfi\n\tfi\nfi\n\tif [[ -e \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist.1\" ]]; then\n\t\tlogger \"restoring old pref\"\n\t\t/bin/mv \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist.1\" \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist\"\n\tfi";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -813,6 +826,14 @@
 				5CBA91300E739327000279A2 /* English */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		75E810B10EAD5E8F00C8562D /* Help */ = {
+			isa = PBXVariantGroup;
+			children = (
+				75E810B20EAD5E8F00C8562D /* English */,
+			);
+			name = Help;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
