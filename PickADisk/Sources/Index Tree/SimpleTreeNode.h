@@ -76,6 +76,8 @@ const enum {
 -(SimpleNodeData*)keyStars; 
 -(void)setKeyStars:(NSInteger)starLevel;
 
+-(SimpleTreeNode*)matchActual;
+
 @end	// <<Simple Tree Node>>
 
 @interface SimpleNodeData : NSObject {
@@ -198,6 +200,7 @@ const enum {
 - (NSComparisonResult)compareKeyStars:(SimpleNodeData *)other;
 
 - (NSComparisonResult)compare:(id)otherData;
+- (SimpleTreeNode*)matchActual;
 
 @end
 
