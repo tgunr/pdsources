@@ -44,7 +44,6 @@
 
 #import "NSArray_Extensions.h"
 
-
 @implementation NSArray (MyExtensions)
 
 -(BOOL)containsObjectIdenticalTo: (id)obj { 
@@ -180,6 +179,6 @@
 }
 
 -(id)addUniqueObjectsFromArray:(NSArray*)newArray
-	{ [self insertUniqueObjectsFromArray:newArray atIndex:[self count]]; }
+	{ return [self insertUniqueObjectsFromArray:newArray atIndex:[self count]]; }
 
 @end

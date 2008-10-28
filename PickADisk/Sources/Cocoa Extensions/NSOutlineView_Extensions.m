@@ -72,6 +72,12 @@
     }
 }
 
+- (void)selectItems:(NSArray*)items
+	{ [self selectItems:items byExtendingSelection:NO]; }
+
+- (void)extendSelectItems:(NSArray*)items
+	{ [self selectItems:items byExtendingSelection:YES]; }
+
 - (void)autoExpandItemAndChildren:(id)item
 {
 	if( item == nil )

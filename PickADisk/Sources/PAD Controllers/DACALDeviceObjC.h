@@ -85,6 +85,8 @@ extern NSMutableArray*		gDACALDevices;
 -(SimpleTreeNode*)elementNode;
 -(void)setElementNode:(SimpleTreeNode*)newNode;
 
+//- (NSUndoManager*)undoManager;
+
 -(id)initElementForSlot:(DACALSlot*)newSlot atLocation:(NSURL*)newLoc;
 +(id)slotElementForSlot:(DACALSlot*)newSlot atLocation:(NSURL*)newLoc;
 +(id)slotElementForNode:(SimpleTreeNode*)newNode;
@@ -147,6 +149,8 @@ extern NSMutableArray*		gDACALDevices;
 -(BOOL)setSlotFSRefFromURL:(NSURL*)slotURL;
 -(BOOL)setSlotLocation:(NSURL*)slotURL;
 
+//- (NSUndoManager*)undoManager;
+
 -(NSMutableArray*)slotElements;
 -(void)setSlotElements:(NSMutableArray*)newElements;
 -(void)addSlotElement:(DACALSlotElement*)newElement;
@@ -168,6 +172,7 @@ extern NSMutableArray*		gDACALDevices;
 -(void)swapWithSlot:(DACALSlot*)otherSlot;
 
 -(NSString*)title;
+-(NSString*)displayTitle;
 -(NSURL*)fileURL;
 
 -(NSString*)flavor;
@@ -199,7 +204,9 @@ extern NSMutableArray*		gDACALDevices;
 -(BOOL)slotMountedAsVolume:(DACVolume*)mountVolume;
 -(BOOL)slotUnmounted;
 
-- (BOOL)slotAssignedIndexFromVolume:(DACVolume*)indexVolume asType:(NSString*)newType;
+-(BOOL)isSlotAssigned;
+-(BOOL)slotAssignedIndexFromVolume:(DACVolume*)indexVolume asType:(NSString*)newType;
+-(BOOL)unassignSlotIndex;
 
 @end		// DACALSlot
 
@@ -221,13 +228,16 @@ extern NSMutableArray*		gDACALDevices;
 -(SimpleTreeNode*)deviceNode;
 -(void)setDeviceNode:(SimpleTreeNode*)newNode;
 
+//- (NSUndoManager*)undoManager;
+
 -(FSRef*)deviceFSRef;
 -(NSArray*)deviceSlots;
 
 -(DACALSlot*)slotWithNumber:(DACALSlotNum)aSlot;
 -(DACALSlot*)slotWithIdentifier:(NSString*)slotID;
 -(void)loadSlotIndex;
--(void)indexedNewVolume:(DACVolume*)newVolume forSlot:(DACALSlotNum)newSlot ofType:(NSString*)newType;
+-(void)indexedNewVolume:(DACVolume*)newVolume forSlot:(DACALSlotNum)newSlot ofType:(NSString*)newTypem forTarget:(id)finishedTarget;
+-(void)indexUnassignedForSlot:(DACALSlot*)oldSlot;
 -(void)swapSlotNumber:(DACALSlotNum)fromSlotNum toDevice:(DACALDevice*)toBox toSlotNumber:(DACALSlotNum)toSlotNum;
 
 -(id)initDeviceWithDeviceRef:(DACALDeviceRef)newDeviceRef;

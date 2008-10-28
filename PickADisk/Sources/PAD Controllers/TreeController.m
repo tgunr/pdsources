@@ -133,6 +133,16 @@ AFTERRELOAD:
 	outlineView = view;
 }
 
+//	Returns the NSUndoManager for the outline view
+- (NSUndoManager*)undoManager
+{
+	NSOutlineView*		ourView = [self outlineView];
+	
+	if( ourView )
+		return [ourView undoManager];
+	
+	return nil; 
+}
 
 // ================================================================
 // Target / action methods. (most wired up in IB)
@@ -201,6 +211,11 @@ AFTERRELOAD:
     
     // Tell all of the selected nodes to remove themselves from the model.
     [selection makeObjectsPerformSelector: @selector(removeFromParent)];
+	[self deletedSelections];
+}
+
+- (void)deletedSelections
+{
     [outlineView deselectAll:nil];
     [outlineView reloadData];
 }
@@ -868,6 +883,16 @@ NSURL *NewFileURLForWritingFile(NSString *dirpath, NSString *basename, NSString 
 	return nil;
 }
 
+//	Returns the NSUndoManager for the tree outline view
+- (NSUndoManager*)undoManager
+{
+	NSOutlineView*		ourView = [self outlineView];
+	
+	if( ourView )
+		return [ourView undoManager];
+	
+	return nil; 
+}
 
 - (void)removeAllChildren
 {
@@ -1006,9 +1031,11 @@ NSURL *NewFileURLForWritingFile(NSString *dirpath, NSString *basename, NSString 
 
 -(void)setObjectValue:(id)object forTableColumn:(NSTableColumn *)tableColumn byItem:(id)item
 {
+	SimpleTreeNode*	actual = [item matchActual];
+
     // Here, we manipulate the name data stored in the node.
     if ((tableColumn == nil) || [[tableColumn identifier] isEqualToString:COLUMNID_NAME]) {
-		[self nodeNameChanged:item toName:object];
+		[self nodeNameChanged:actual toName:object];
 		return;
 	}
 

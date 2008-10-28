@@ -162,13 +162,14 @@
 - (void)drawRect:(NSRect)rect
 {
 	NSImage*		drawImage = [self selectDrawImage];
+	NSRect			drawRect = [self bounds];
 	
 	if( drawImage != nil )
-		[drawImage drawInRect:rect fromRect:NSZeroRect operation:NSCompositeSourceAtop fraction:1.0];
+		[drawImage drawInRect:drawRect fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
 	else 
 	{
 		[[self backColor] setFill];
-		NSRectFill( rect );
+		NSRectFill( drawRect );
 	}
 }
 

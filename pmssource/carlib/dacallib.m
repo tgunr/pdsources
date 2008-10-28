@@ -136,6 +136,7 @@ CFStringRef			kDACALCarouselDocumentXAttrSlotIsOut	=CFSTR("com.polymicrosystems.
 CFStringRef			kDACALCarouselDocumentXAttrSlotCheckout	=CFSTR("com.polymicrosystems.pickadisk.device.slot.checkout");
 CFStringRef			kDACALCarouselDocumentXAttrSlotCheckIn	=CFSTR("com.polymicrosystems.pickadisk.device.slot.checkin");
 CFStringRef			kDACALCarouselDocumentXAttrVolumeName	=CFSTR("com.polymicrosystems.pickadisk.device.volname");
+CFStringRef			kDACALCarouselDocumentXAttrVolumeSize	=CFSTR("com.polymicrosystems.pickadisk.device.vol.size");
 
 CFStringRef			kDACALCarouselDocumentXAttrUserTitle	=CFSTR("com.polymicrosystems.pickadisk.item.usertitle");
 CFStringRef			kDACALCarouselDocumentXAttrUserComments	=CFSTR("com.polymicrosystems.pickadisk.item.user.description");
@@ -881,7 +882,12 @@ CFUUIDRef		DACALCommandCopyUUID( DACALDeviceRef deviceID, DACALResult* outError 
 	
 	deviceUUID = DACAL_BOX_UUID(indexID);
 	
-	if( deviceUUID != NULL ) return ( CFUUIDCreateFromUUIDBytes(gDACALDefaultCFAllocator, CFUUIDGetUUIDBytes(deviceUUID)) );
+	if( deviceUUID != NULL )
+	{
+		if( outError ) 
+			*outError = kDACALOK;	
+		return ( CFUUIDCreateFromUUIDBytes(gDACALDefaultCFAllocator, CFUUIDGetUUIDBytes(deviceUUID)) );
+	}
 	
 	bzero(&ourResult, sizeof(ourResult));
 	theErr = DACALCommandRequest( deviceID, cmdGetUUID, &ourResult );
@@ -889,7 +895,7 @@ CFUUIDRef		DACALCommandCopyUUID( DACALDeviceRef deviceID, DACALResult* outError 
 		*outError = theErr;
 	if( theErr ) 
 		return( (CFUUIDRef)NULL );
-	
+/*	
 	{
 		// DAC-2008-09-25 This should be changed to use CFSwapInt16BigToHost or something similar
 		// also, result has to even or swab will fail
@@ -907,7 +913,7 @@ CFUUIDRef		DACALCommandCopyUUID( DACALDeviceRef deviceID, DACALResult* outError 
 		showIt = CFStringCreateWithFormat( NULL, NULL, CFSTR("UUID(%i) %#llX"),(int)indexID, showlong );
 		//CFShow( showIt );	// this is the hex node id?
 	}
-	
+*/	
 	bytes = (CFUUIDBytes*)ourResult.uniString;	
 	deviceUUID = CFUUIDCreateFromUUIDBytes(gDACALDefaultCFAllocator, *bytes);
 	if( deviceUUID ) DACAL_BOX_UUID(indexID) = deviceUUID;

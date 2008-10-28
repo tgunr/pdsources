@@ -514,6 +514,9 @@
 	return slotResult;
 }
 
+-(SimpleTreeNode*)matchActual
+{ return nil; }
+
 - (NSNumber*)searchForName:(NSString*)other withOptions:(NSMutableDictionary*)options
 {
 	NSString*	ourName = [self name];
@@ -1076,6 +1079,16 @@ FOUND:
 -(SimpleNodeData*)keyStars { return [self nodeData]; }
 -(void)setKeyStars:(NSInteger)starLevel
 	{ [[self nodeData] setKeyStars:starLevel]; }
+
+-(SimpleTreeNode*)matchActual
+{
+	SimpleTreeNode*		realNode = [[self nodeData] matchActual];
+	
+	if( realNode == nil )
+		realNode = self;
+	
+	return realNode; 
+}
 
 - (NSString*)localPathName { return [[self nodeData] name]; }
 

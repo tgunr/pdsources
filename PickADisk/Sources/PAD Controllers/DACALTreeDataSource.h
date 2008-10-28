@@ -30,6 +30,9 @@
 #define		PADINDEX_FLAVORTITLE_MUSIC			@"Music"
 #define		PADINDEX_FLAVORTITLE_MOVIE			@"Movies"
 
+NSString*	DACALFlavorToFlavorValue( NSString* flavor );
+NSString*	DACALFlavorToFlavorTitle( NSString* flavor );
+
 @interface DACALIndexState : NSObject
 {
 	NSMutableDictionary*	savedViewData;	
@@ -72,6 +75,8 @@
 
 -(void)orderForUser:(SimpleTreeNode*)treeNode;
 -(void)saveUserOrder;
+
+-(id)secondaryController;
 
 @end
 

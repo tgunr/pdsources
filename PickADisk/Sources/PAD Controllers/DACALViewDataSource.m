@@ -153,36 +153,35 @@
 
 -(void)setObjectValue:(id)object forTableColumn:(NSTableColumn *)tableColumn byItem:(id)item
 {
-	SimpleNodeData *data = [item nodeData];
+	SimpleTreeNode*	actual = [item matchActual];
     
    // Here, we manipulate the slot data stored in the node.
     if ((tableColumn == nil) || [[tableColumn identifier] isEqualToString:COLUMNID_SLOT]) {
-		[self nodeSlotChanged:item toSlot:object];
+		[self nodeSlotChanged:actual toSlot:object];
 		return;
 	}
 	
     // Here, we manipulate the type/flavor data stored in the node.
     if ((tableColumn == nil) || [[tableColumn identifier] isEqualToString:COLUMNID_TYPE]) {
-		[self nodeTypeChanged:item toType:object];
+		[self nodeTypeChanged:actual toType:object];
 		return;
 	}
 
 	// Here, we manipulate the comment data stored in the node.
     if ((tableColumn == nil) || [[tableColumn identifier] isEqualToString:COLUMNID_COMMENT]) {
-		[data setKeyComments:object];
+		[self nodeCommentChanged:actual toComment:object];
 		return;
 	}
 	
 	// Here, we manipulate the tag data stored in the node.
     if ((tableColumn == nil) || [[tableColumn identifier] isEqualToString:COLUMNID_TAGS]) {
-		[data setKeyTags:object];
+		[self nodeTagsChanged:actual toTags:object];
 		return;
 	}
 
 	// Here, we manipulate the stars data stored in the node.
     if ((tableColumn == nil) || [[tableColumn identifier] isEqualToString:COLUMNID_STARS]) {
-		NSInteger	newStars = [object intValue];
-		[item setKeyStars:newStars];
+		[self nodeStarsChanged:actual toStars:object];
 		return;
 	}
 	
@@ -192,19 +191,18 @@
 
 - (void)outlineViewAction:(id)tree
 {
-	NSArray*		selectedNodes = [treeControl selectedNodes];
+	NSArray*		selectedNodes = [NSArray arrayWithArray:[treeControl selectedNodes]];
 	NSEnumerator*	selectedEnum = [selectedNodes objectEnumerator];
 	SimpleTreeNode*	item = nil;
 	int				count = [selectedNodes count];
 
-	DACALSlotNum	theSlot;
 	PADIndexToolbarController* toolControl = (PADIndexToolbarController*)[self toolbarControl];
 	
-	[toolControl setSelectedNode:nil];
+	[toolControl resetSelectedNodesAndAdoptSelection:(count == 0)];
 	
 	while( item = [selectedEnum nextObject] )
 		if( [[item nodeData] itemSlot] != 0 ) 
-			[toolControl addSelectedNode:item];
+			[toolControl addSelectedNode:item adoptSelection:([item isEqual:[selectedNodes lastObject]])];
 
 	[self updatePrompt];
 
@@ -213,21 +211,25 @@
 
 - (void)nodeNameChanged:(SimpleTreeNode*)theNode toName:(NSString*)theName
 {
-	SimpleNodeData	*theData = [theNode nodeData];
-	DACALSlotElement*	theElement = DACALDeviceSlotElementForURL( (CFURLRef)[theData location] );
-
+	NSUndoManager*		undo = [self undoManager];
+	SimpleNodeData*		theData = [theNode nodeData];
+	DACALSlotElement*	theElement = [theData itemElement]; //	DACALDeviceSlotElementForURL( (CFURLRef)[theData location] );
+	NSString*			nowName = nil;
+	
 	if( [[theData name] compare:theName] == NSOrderedSame ) return;
 	if( [theName length] == 0 ) goto SLOTNAMEFAILED;
 	if( theElement == nil ) goto SLOTNAMEFAILED;
 	
-	[theElement setTitle:theName];
+	nowName = [NSString stringWithString:[theData name]];
 	
-	[AppController playUISound: kASSystemSoundSuccess];
-	return;
+	[[undo prepareWithInvocationTarget:self] nodeNameChanged:theNode toName:nowName];
+	[undo setActionName:NSLocalizedString(@"Change Name", @"Undo Action when name column is changed")];
+
+	[theElement setTitle:theName];
+	[[PADSearchService sharedSearch] searchDataChanged:[NSArray arrayWithObject:theNode]];
 	
 SLOTNAMEFAILED:
 	
-	[AppController playUISound: kASSystemSoundDoink];
 	return;
 }
 
@@ -290,33 +292,91 @@ SLOTNAMEFAILED:
 
 - (void)nodeSlotChanged:(SimpleTreeNode*)node toSlot:(NSString*)slotString
 {
+	NSUndoManager*	undo = [self undoManager];
+//	SimpleNodeData*	theData = [node nodeData];
 	DACALSlotNum	oldSlot = [[node nodeData] itemSlot];
 	DACALSlotNum	newSlot = [slotString intValue];
 	DACALDevice*	oldBox = DACALDeviceForDeviceRef( [[node nodeData] itemDevice] );
+	NSString*		nowSlot = nil;
 	
 	if( oldSlot == newSlot ) return;
 	
+	nowSlot = [NSString stringWithFormat:@"%i", oldSlot];
+	
+	[[undo prepareWithInvocationTarget:self] nodeSlotChanged:node toSlot:nowSlot];
+	[undo setActionName:NSLocalizedString(@"Change Slot", @"Undo Action when slot number column is changed")];
+	
 	[oldBox swapSlotNumber:oldSlot toDevice:nil toSlotNumber:newSlot];
+	[[PADSearchService sharedSearch] searchDataChanged:[NSArray arrayWithObject:node]];
 }
 
 - (void)nodeTypeChanged:(SimpleTreeNode*)theNode toType:(NSString*)theName
 {
-	SimpleNodeData	*theData = [theNode nodeData];
-	DACALSlotElement*	theElement = DACALDeviceSlotElementForURL( (CFURLRef)[theData location] );
+	NSUndoManager*		undo = [self undoManager];
+	SimpleNodeData*		theData = [theNode nodeData];
+	DACALSlotElement*	theElement = [theData itemElement];	// DACALDeviceSlotElementForURL( (CFURLRef)[theData location] );
+	NSString*			nowType = nil;
 	
-	if( [[theData name] compare:theName] == NSOrderedSame ) return;
+	if( [[theData itemFlavor] compare:theName] == NSOrderedSame ) return;
 	if( [theName length] == 0 ) goto SLOTNAMEFAILED;
 	if( theElement == nil ) goto SLOTNAMEFAILED;
 	
-	[theElement setFlavor:theName];
+	nowType = [NSString stringWithString:[theData itemFlavor]];
 	
-	[AppController playUISound: kASSystemSoundSuccess];
-	return;
+	[[undo prepareWithInvocationTarget:self] nodeTypeChanged:theNode toType:nowType];
+	[undo setActionName:NSLocalizedString(@"Change Type", @"Undo Action when flavor type column is changed")];
+	
+	[theElement setFlavor:theName];
+	[[PADSearchService sharedSearch] searchDataChanged:[NSArray arrayWithObject:theNode]];
 	
 SLOTNAMEFAILED:
 	
-	[AppController playUISound: kASSystemSoundDoink];
 	return;
+}
+
+- (void)nodeCommentChanged:(SimpleTreeNode*)theNode toComment:(NSString*)theComment
+{
+	NSUndoManager*	undo = [self undoManager];
+	SimpleNodeData*	data = [theNode nodeData];
+	NSString*		nowComment = [NSString stringWithString:[data keyComments]];
+	
+	[[undo prepareWithInvocationTarget:self] nodeCommentChanged:theNode toComment:nowComment];
+	[undo setActionName:NSLocalizedString(@"Change Comment", @"Undo Action when comment column is changed")];
+	
+	[data setKeyComments:theComment];
+	[[PADSearchService sharedSearch] searchDataChanged:[NSArray arrayWithObject:theNode]];
+}
+
+- (void)nodeTagsChanged:(SimpleTreeNode*)theNode toTags:(NSArray*)theTags
+{
+	NSUndoManager*	undo = [self undoManager];
+	SimpleNodeData*	data = [theNode nodeData];
+	NSArray*		nowTags = nil;
+	
+	if( [data keyTags] )
+		nowTags = [NSArray arrayWithArray:[data keyTags]];
+	else
+		nowTags = [NSArray array];
+	
+	[[undo prepareWithInvocationTarget:self] nodeTagsChanged:theNode toTags:nowTags];
+	[undo setActionName:NSLocalizedString(@"Change Tags", @"Undo Action when tags column is changed")];
+	
+	[data setKeyTags:theTags];
+	[[PADSearchService sharedSearch] searchDataChanged:[NSArray arrayWithObject:theNode]];
+}
+
+- (void)nodeStarsChanged:(SimpleTreeNode*)theNode toStars:(id)theRating
+{
+	NSUndoManager*	undo = [self undoManager];
+	SimpleNodeData*	data = [theNode nodeData];
+	NSInteger		newStars = [theRating intValue];
+	NSNumber*		nowStars = [NSNumber numberWithInt:[data keyStars]];
+	
+	[[undo prepareWithInvocationTarget:self] nodeStarsChanged:theNode toStars:nowStars];
+	[undo setActionName:NSLocalizedString(@"Change Rating", @"Undo Action when stars column is changed")];
+	
+	[data setKeyStars:newStars];
+	[[PADSearchService sharedSearch] searchDataChanged:[NSArray arrayWithObject:theNode]];
 }
 
 /*
@@ -449,50 +509,69 @@ SLOTTYPEFAILED:
 		NSMutableArray*		viewNewSorts = nil;
 		NSInteger			workIndex = 0;
 		NSString*			workKey = nil;
+		NSString*			workName = nil;
 		BOOL				isVisible = NO;
 		
 		if( [keyPath hasSuffix:@"PADColumnDateAdded"] ) {
 			workColumn = [[[self treeControl] outlineView] tableColumnWithIdentifier:COLUMNID_MODDATE];
 			workKey = @"PADColumnDateAdded";
+			workName = @"Date Added";
 		}
 		
 		if( [keyPath hasSuffix:@"PADColumnSlotNum"] ) {
 			workColumn = [[[self treeControl] outlineView] tableColumnWithIdentifier:COLUMNID_SLOT];
 			workKey = @"PADColumnSlotNum";
+			workName = @"Slot Number";
 		}
 		
 		if( [keyPath hasSuffix:@"PADColumnSlotType"] ) {
 			workColumn = [[[self treeControl] outlineView] tableColumnWithIdentifier:COLUMNID_TYPE];
 			workKey = @"PADColumnSlotType";
+			workName = @"Type";
 		}
 		
 		if( [keyPath hasSuffix:@"PADColumnCheckedOut"] ) {
 			workColumn = [[[self treeControl] outlineView] tableColumnWithIdentifier:COLUMNID_CHECKEDOUT];
 			workKey = @"PADColumnCheckedOut";
+			workName = @"Checked Out?";
 		}
 
 		if( [keyPath hasSuffix:@"PADColumnDateCheckedOut"] ) {
 			workColumn = [[[self treeControl] outlineView] tableColumnWithIdentifier:COLUMNID_DATECHECKEDOUT];
 			workKey = @"PADColumnDateCheckedOut";
+			workName = @"Check Out Date";
 		}
 
 		if( [keyPath hasSuffix:@"PADColumnComments"] ) {
 			workColumn = [[[self treeControl] outlineView] tableColumnWithIdentifier:COLUMNID_COMMENT];
 			workKey = @"PADColumnComments";
+			workName = @"Comments";
 		}
 
 		if( [keyPath hasSuffix:@"PADColumnTags"] ) {
 			workColumn = [[[self treeControl] outlineView] tableColumnWithIdentifier:COLUMNID_TAGS];
 			workKey = @"PADColumnTags";
+			workName = @"Tags";
 		}
 
 		if( [keyPath hasSuffix:@"PADColumnRating"] ) {
 			workColumn = [[[self treeControl] outlineView] tableColumnWithIdentifier:COLUMNID_STARS];
 			workKey = @"PADColumnRating";
+			workName = @"Rating";
 		}
 		
 		if( workKey ) isVisible = [[NSUserDefaults standardUserDefaults] boolForKey:workKey];
 		if( workColumn ) {
+			
+			NSUndoManager*		undo = [self undoManager];
+			NSUserDefaults*		defaults = [NSUserDefaults standardUserDefaults];
+			BOOL				whichAction = [undo isUndoing] ? !isVisible : isVisible;					// Redo the other thing
+			NSString*			actionName = whichAction ? @"Show" : @"Hide";
+			NSString*			undoName = [NSString stringWithFormat:@"%@ %@", actionName, workName];		// All these should be localized!
+			
+			[[undo prepareWithInvocationTarget:defaults] setBool:!isVisible forKey:workKey];
+			[undo setActionName:undoName];
+			
 			[workColumn setHidden:!isVisible];
 
 			workSorter = [workColumn sortDescriptorPrototype];
@@ -525,7 +604,7 @@ SLOTTYPEFAILED:
 - (void)menuNeedsUpdate:(NSMenu *)menu
 {
 	NSArray*		clickedItems = [self ctmClickedRows];
-	NSEnumerator*	clickedEnum = [clickedItems objectEnumerator];
+//	NSEnumerator*	clickedEnum = [clickedItems objectEnumerator];
 	NSEnumerator*	menuItemEnum = [[menu itemArray] objectEnumerator];
     NSInteger		clickedRow = [[self outlineView] clickedRow];
 	
@@ -534,7 +613,6 @@ SLOTTYPEFAILED:
 	
 	NSMenuItem*		workItem = nil;
 	SEL				workSelector = nil;
-	NSInteger		itemCount = [menu numberOfItems];
 	
     if( clickedRow != -1 ) 
         item = [[self outlineView] itemAtRow:clickedRow];

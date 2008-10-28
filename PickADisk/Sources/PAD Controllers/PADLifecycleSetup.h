@@ -12,8 +12,8 @@
 
 #define PADBOX_EXPIRE_CHECK		1
 
-// Fri 31 Oct 2008 00:00:00 PDT
-#define	PADBOX_EXPIRE_DATE		247129200.0000
+//	Thr 04 Nov 2008 00:00:00 PST
+#define	PADBOX_EXPIRE_DATE		247478400.0000
 
 // Use this date to test
 //#define PADBOX_EXPIRE_DATE		22.0

@@ -13,6 +13,30 @@
 
 PADSearchRequest* PADIndexToolbarController_LastSearch = nil;
 
+- (void)dealloc
+{
+	if( selectedDevices )	[selectedDevices release];
+//	if( selectedSlots )		[selectedSlots release];
+	if( selectedNodes )		[selectedNodes release];
+
+	selectedDevices = nil;
+//	selectedSlots = nil;
+	selectedNodes = nil;
+	
+	[super dealloc];
+}
+
+- (id)init
+{
+	if( self = [super init] )
+	{
+		selectedDevices	= [[NSMutableArray alloc] initWithCapacity:0];
+//		selectedSlots	= [[NSMutableArray alloc] initWithCapacity:0];
+		selectedNodes	= [[NSMutableArray alloc] initWithCapacity:0];
+	}
+	return self;
+}
+
 - (void)awakeFromNib 
 {
 	
@@ -24,39 +48,8 @@ PADSearchRequest* PADIndexToolbarController_LastSearch = nil;
 - (NSProgressIndicator*)busyProgress
 	{ return busyProgress; }
 
-- (BOOL)allowCheck:(BOOL)inOrOut;
-{
-	BOOL	allowCheck = NO;
-	
-	if( !selectedNodes || [selectedNodes count] == 0 )
-		return NO;
-	
-	NSInteger	nodeCount = [[self selectedNodes] count];
-	NSInteger	nodeIndex;
-	
-	for( nodeIndex=0; nodeIndex < nodeCount; nodeIndex++ )
-		if( [[[[self selectedNodes] objectAtIndex:nodeIndex] nodeData] isCheckedOut] != inOrOut )
-		{
-			allowCheck = YES;
-			break;
-		}
-	
-	return allowCheck;
-}
+#pragma mark ###	Delegate methods	###
 
-- (BOOL)nodesContainMountedSlotVolumes:(NSArray*)nodeArray
-{
-	BOOL			hasMounts = NO;
-	NSEnumerator*	nodeEnum = [nodeArray objectEnumerator];
-	SimpleTreeNode*	workNode = nil;
-	
-	while ( workNode = [nodeEnum nextObject] ) {
-		hasMounts = [[[[workNode nodeData] itemElement] elementSlot] isSlotMounted];
-		if( hasMounts ) break;
-	}
-	
-	return hasMounts;
-}
 
 - (BOOL)validateMenuItem:(NSMenuItem *)item
 {
@@ -85,6 +78,69 @@ PADSearchRequest* PADIndexToolbarController_LastSearch = nil;
 	return updateIt;
 }
 
+-(void)toolbarWillAddItem:(NSNotification *)notification
+{
+	NSToolbarItem*	toolbarItem = [[notification userInfo] objectForKey:@"item"];
+	
+	if ([[toolbarItem itemIdentifier] isEqual:NSToolbarPrintItemIdentifier])
+	{
+		[toolbarItem setTarget:self];
+		[toolbarItem setAction:@selector(clickPrintReport:)];
+	}
+	
+}
+
+-(BOOL)validateToolbarItem:(NSToolbarItem *)toolbarItem
+{
+	BOOL	toolValid = NO;
+	
+	if ([[toolbarItem itemIdentifier] isEqual:NSToolbarPrintItemIdentifier]) 
+		toolValid = [[self selectedDevices] count] > 0;
+	
+	NSLog(@"Validate Toolbar Item: %@", [toolbarItem label]);
+	
+	return toolValid;	
+}
+
+
+#pragma mark ###	State access methods	###
+
+- (BOOL)allowCheck:(BOOL)inOrOut
+{
+	BOOL	allowCheck = NO;
+	
+	if( !selectedNodes || [selectedNodes count] == 0 )
+		return NO;
+	
+	NSInteger	nodeCount = [[self selectedNodes] count];
+	NSInteger	nodeIndex;
+	
+	for( nodeIndex=0; nodeIndex < nodeCount; nodeIndex++ )
+		if( [[[[self selectedNodes] objectAtIndex:nodeIndex] nodeData] isCheckedOut] != inOrOut )
+		{
+			allowCheck = YES;
+			break;
+		}
+	
+	return allowCheck;
+}
+
+//	Filters a list of SimpleTreeNodes to find if it contains a mounted slot volume
+- (BOOL)nodesContainMountedSlotVolumes:(NSArray*)nodeArray
+{
+	BOOL			hasMounts = NO;
+	NSEnumerator*	nodeEnum = [nodeArray objectEnumerator];
+	SimpleTreeNode*	workNode = nil;
+	
+	while ( workNode = [nodeEnum nextObject] ) {
+		hasMounts = [[[[workNode nodeData] itemElement] elementSlot] isSlotMounted];
+		if( hasMounts ) break;
+	}
+	
+	return hasMounts;
+}
+
+//	Utility function to return a toolbar item with a specific identifer
 -(NSToolbarItem*)toobarItemWithIdentifier:(NSString*)identifier
 {
 	NSToolbarItem*	outItem = nil;
@@ -103,11 +159,13 @@ PADSearchRequest* PADIndexToolbarController_LastSearch = nil;
 	return outItem;
 }
 
+//	No longer used
 -(NSToolbarItem*)checkOutToolbarItem
 {
 	return [self toobarItemWithIdentifier:@"D9318872-BA3F-47C5-AF8E-B794018E8C85"];
 }
 
+//	No longer used
 -(NSString*)checkedOutTitle
 {
 	NSString*	outCheckedTitle = nil;
@@ -147,6 +205,7 @@ PADSearchRequest* PADIndexToolbarController_LastSearch = nil;
 	return outCheckedTitle;
 }
 
+//	This method sets the path item to reflect the current selection
 -(void)adoptPathSelection
 {
 	SimpleTreeNode*			theNode = nil;
@@ -162,8 +221,7 @@ PADSearchRequest* PADIndexToolbarController_LastSearch = nil;
 	if( theNode == nil )
 		theNode = [dataController treeRoot];
 	
-	if( [[theNode nodeData] respondsToSelector:@selector(matchActual)] )
-		theNode = [[theNode nodeData] matchActual];
+	theNode = [theNode matchActual];
 	
 	while (theNode != nil) {
 		if( [theNode localPathName] != nil ) {
@@ -173,8 +231,8 @@ PADSearchRequest* PADIndexToolbarController_LastSearch = nil;
 			[workCell setControlSize:NSSmallControlSize];
 			
 			[workArray addObject:workCell];
-		}// else														// this shouldn't be possible but yet the theNode is occasionally nil?!
-		//	NSLog(@"Nill item name? %@", theNode);
+		} //else															// this shouldn't be possible but yet the theNode is occasionally == nil?!
+			//NSLog(@"Nill item name? %@", theNode);
 		if( [theNode nodeParent] != nil )
 			lastNode = theNode;
 		theNode = (SimpleTreeNode*)[theNode nodeParent];
@@ -196,6 +254,8 @@ PADSearchRequest* PADIndexToolbarController_LastSearch = nil;
 	[[pathControl cell] setFont:[NSFont controlContentFontOfSize:10.0]];
 }
 
+//	This method activates the various toolbar item states depending on the current selection
+//	in the tree/data view
 -(void)adoptSelection
 {
 	BOOL			anyBox = NO;
@@ -240,29 +300,16 @@ PADSearchRequest* PADIndexToolbarController_LastSearch = nil;
 	if( dataController )	[[dataController dataSource] updatePrompt];
 }
 
--(void)toolbarWillAddItem:(NSNotification *)notification
+- (void)reportNoDevice:(BOOL)hasBox
 {
-	NSToolbarItem*	toolbarItem = [[notification userInfo] objectForKey:@"item"];
+	hasBoxes = hasBox;
 	
-	if ([[toolbarItem itemIdentifier] isEqual:NSToolbarPrintItemIdentifier])
-	{
-		[toolbarItem setTarget:self];
-		[toolbarItem setAction:@selector(clickPrintReport:)];
-	}
-	
+	[noBoxIcon setHidden:hasBox];
+	[[dataController dataSource] setPrompt:(hasBox==YES) ? @"Ready" : @"No carousels detected"];	
 }
 
--(BOOL)validateToolbarItem:(NSToolbarItem *)toolbarItem
-{
-	BOOL	toolValid = NO;
-	
-	if ([[toolbarItem itemIdentifier] isEqual:NSToolbarPrintItemIdentifier]) 
-		toolValid = [[self selectedDevices] count] > 0;
-	
-	NSLog(@"Validate Toolbar Item: %@", [toolbarItem label]);
-	
-	return toolValid;	
-}
+
+#pragma mark ###	IBAction methods	###
 
 - (IBAction)clickReset:(id)sender
 {
@@ -376,31 +423,29 @@ PADSearchRequest* PADIndexToolbarController_LastSearch = nil;
 	NSLog(@"Unimplemented Feature");
 }
 
-- (void)unassignAlertDidEnd:(NSAlert *)alert returnCode:(int)rc contextInfo:(void *)ci
+- (void)unassignAlertDidEnd:(NSAlert *)alert returnCode:(int)buttonPushed contextInfo:(void *)ci
 {
-	NSArray*	slotArray = [self selectedNodes];
-	NSInteger	buttonPushed = rc;
+	NSArray*	slotArray = nil;
 	NSInteger	index;
-	DACALDeviceRef	aBox;
-	DACALSlotNum	aSlot;
+	DACALSlot*	workSlot = nil;
 
 	const int	kDeleteButton = 0;
 	const int	kCancelButton = 1;
 
     if ( buttonPushed == kDeleteButton )
 	{
+		slotArray = [self selectedNodes];
 		for( index=0; index < [slotArray count]; index++ )
 		{
-			aBox = (DACALDeviceRef)[[[slotArray objectAtIndex:index] nodeData] itemDevice];
-			aSlot = (DACALSlotNum)[[[slotArray objectAtIndex:index] nodeData] itemSlot];
-			DACALSlotDeleteIndex( aBox, aSlot );
+			workSlot = [[[[slotArray objectAtIndex:index] nodeData] itemElement] elementSlot];
+			[workSlot unassignSlotIndex];
 		}
 
-		if( dataController ) [(TreeController*)dataController deleteSelections:self];
-		//[self setSelectedSlots:nil];
-		[self setSelectedNodes:nil];
+		[self resetSelectedNodesAndAdoptSelection:NO];
+		[(TreeController*)dataController deletedSelections];
 		
 		[AppController playUISound:kASSystemSoundShred];
+		[[dataController undoManager] removeAllActions];			// Seriously, you can not undo anything after this!
     }
 	
 	if ( buttonPushed == kCancelButton )
@@ -461,6 +506,14 @@ PADSearchRequest* PADIndexToolbarController_LastSearch = nil;
 
 - (IBAction)clickOpen:(id)sender
 { }
+
+- (IBAction)provideFeedback:(id)sender
+{
+	return [[AppController shared] provideFeedback:sender];
+}
+
+
+#pragma mark ###	Toolbar Search	###
 
 - (void)searchFoundResults:(NSArray*)itemsFound forSearch:(PADSearchRequest*)theSearch
 {
@@ -586,25 +639,18 @@ PADSearchRequest* PADIndexToolbarController_LastSearch = nil;
 	[self searchAction:sender];
 }
 
-- (IBAction)provideFeedback:(id)sender
-{
-	return [[AppController shared] provideFeedback:sender];
-}
 
-- (void)reportNoDevice:(BOOL)hasBox
-{
-	hasBoxes = hasBox;
-	
-	[noBoxIcon setHidden:hasBox];
-	[[dataController dataSource] setPrompt:(hasBox==YES) ? @"Ready" : @"No carousels detected"];	
-}
+#pragma mark ###	Selection Management	###
 
-- (void)setSelectedDevices: (NSArray*)deviceList
+- (NSMutableArray*)selectedDevices { return selectedDevices; }
+
+- (void)setSelectedDevices: (NSMutableArray*)deviceList
 {
     if (!selectedDevices || ![selectedDevices isEqual:deviceList]) {
-		[selectedDevices release];
-		selectedDevices = [deviceList retain];
-		[addVolumeController deviceSelectionChanged:deviceList];
+		if( deviceList ) [deviceList retain];
+		if( selectedDevices ) [selectedDevices release];
+		selectedDevices = deviceList;
+		//[addVolumeController deviceSelectionChanged:deviceList];
 	}	
 }
 
@@ -612,14 +658,22 @@ PADSearchRequest* PADIndexToolbarController_LastSearch = nil;
 {
 	if( theDevice != kDACALNullDevice )
 		if( ![selectedDevices containsObject:(id)theDevice]) {
-			[self setSelectedDevices:[selectedDevices arrayByAddingObject:(id)theDevice]];
+			[selectedDevices addObject:(id)theDevice];
+			[addVolumeController deviceSelectionChanged:selectedDevices];
 			if( doAdopt )
 				[self adoptSelection];
 		}
 }
 
-- (void)setSelectedDevice: (DACALDeviceRef)theDevice
+- (void)setSelectedDevice: (DACALDeviceRef)theDevice adoptSelection:(BOOL)doAdopt
 {
+	[selectedDevices removeAllObjects];
+	if( theDevice != kDACALNullDevice )
+		[self addSelectedDevice:theDevice adoptSelection:doAdopt];
+	else if( doAdopt )
+			[self adoptSelection];
+}	
+/*	
 	NSArray*	newList;
 	
 	if( theDevice == kDACALNullDevice ) newList = [NSArray array];
@@ -627,14 +681,15 @@ PADSearchRequest* PADIndexToolbarController_LastSearch = nil;
 
 	[self setSelectedDevices:newList];
 	[self adoptSelection];
-}
-- (NSArray*)selectedDevices { return selectedDevices; }
+*/
 
-- (void)setSelectedSlots: (NSArray*)slotList
+/*
+- (void)setSelectedSlots: (NSMutableArray*)slotList
 {
     if (!selectedSlots || ![selectedSlots isEqual:slotList]) {
-	[selectedSlots release];
-	selectedSlots = [slotList retain];
+		if( slotList ) [slotList retain];
+		if( selectedSlots ) [selectedSlots release];
+		selectedSlots = slotList;
     }
 	// [self adoptSelection];
 }
@@ -645,43 +700,67 @@ PADSearchRequest* PADIndexToolbarController_LastSearch = nil;
 	[self setSelectedSlots:newList];
 }
 
-- (NSArray*)selectedSlots; { return selectedSlots; }
+- (NSMutableArray*)selectedSlots; { return selectedSlots; }
+*/
 
-- (void)setSelectedNodes: (NSArray*)nodeList
+- (NSMutableArray*)selectedNodes; { return selectedNodes; }
+
+- (void)setSelectedNodes: (NSMutableArray*)nodeList
 {
+    if (!selectedNodes || ![selectedNodes isEqual:nodeList]) {
+		if( nodeList ) [nodeList retain];
+		if( selectedNodes ) [selectedNodes release];
+		selectedNodes = nodeList;
+    }
+}
+
+- (void)addSelectedNode:(SimpleTreeNode*)theNode adoptSelection:(BOOL)doUI
+{
+	if( [selectedNodes indexOfObject:theNode] == NSNotFound )
+		[selectedNodes addObject:theNode];
+	
 	int	nIndex = 0;
 	
-    if (!selectedNodes || ![selectedNodes isEqual:nodeList]) {
-		[selectedNodes release];
-		selectedNodes = [nodeList retain];
-    }
+	[self setSelectedDevice:kDACALNullDevice adoptSelection:NO];
+	for( nIndex = 0; nIndex < [selectedNodes count]; nIndex++ )
+		[self addSelectedDevice:[[[selectedNodes objectAtIndex:nIndex] nodeData] itemDevice] adoptSelection:NO];
 	
-	if( nodeList != nil )
-		for( nIndex = 0; nIndex < [nodeList count]; nIndex++ )
-			[self addSelectedDevice:[[[selectedNodes objectAtIndex:nIndex] nodeData] itemDevice] adoptSelection:NO];
-	
-	[self adoptSelection];
+	if( doUI )
+		[self adoptSelection];
 }
 
-- (void)setSelectedNode: (SimpleTreeNode*)theNode
+- (void)setSelectedNode: (SimpleTreeNode*)theNode adoptSelection:(BOOL)doUI
 {
-	NSArray*	newList = (theNode) ? [NSArray arrayWithObject:theNode] : [NSArray array];	
-	[self setSelectedNodes:newList];
-}
+	[selectedNodes removeAllObjects];
+	
+	if( theNode )
+		[self addSelectedNode:theNode adoptSelection:doUI];
+	else if( doUI )
+		[self adoptSelection];
+}	
+//	NSArray*	newList = (theNode) ? [NSArray arrayWithObject:theNode] : [NSArray array];	
+//	[self setSelectedNodes:newList];
 
-- (NSArray*)selectedNodes; { return selectedNodes; }
-
+/*
 - (void)addSelectedNode:(SimpleTreeNode*)theNode
 {
-	if( !selectedNodes ) [self addSelectedNode:theNode];
+		if( !selectedNodes ) [self addSelectedNode:theNode];
 	else if( ![selectedNodes containsObject:(id)theNode])
 			[self setSelectedNodes:[selectedNodes arrayByAddingObject:(id)theNode]];
+}
+*/
+
+- (void)resetSelectedNodesAndAdoptSelection:(BOOL)doUI
+{
+	[self setSelectedNode:nil adoptSelection:doUI];
 }
 
 - (void)resetSelection
 {
-	[self setSelectedDevice:kDACALNullDevice];
-	[self setSelectedNode:nil];	
+	[selectedDevices removeAllObjects];
+	[self resetSelectedNodesAndAdoptSelection:NO];
+//	[self setSelectedDevice:kDACALNullDevice];
+//	[self setSelectedNode:nil];	
 }
 
 @end

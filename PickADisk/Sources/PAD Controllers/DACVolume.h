@@ -27,9 +27,11 @@
 	CFUUIDRef			mediaUUID;
 	
 	NSString*			padIdentifier;
+	NSString*			padKnownHost;
 	BOOL				padKnownVolume;	
 	DACALSlot*			padKnownSlot;
-	NSString*			padKnownHost;
+	
+	NSString*			padFlavorGuess;
 }
 
 -(FSVolumeRefNum)mountVolume;
@@ -44,12 +46,18 @@
 -(CFUUIDRef)mediaUUID;
 
 -(NSString*)padIdentifier;
+-(NSString*)padKnownHost;
+
 -(BOOL)padKnownVolume;
 -(DACALSlot*)padKnownSlot;
--(NSString*)padKnownHost;
+-(void)setPadKnownSlot:(DACALSlot*)newSlot;
+
+-(NSString*)padFlavorGuess;
+-(void)setPadFlavorGuess:(NSString*)guessFlavor;
 
 -(NSArray*)topLevelDirectory;
 -(BOOL)isVolumeURL:(NSURL*)otherURL;
+-(BOOL)isIdentifiedAs:(NSString*)testID;
 -(BOOL)isIndexable;
 -(BOOL)isCD;
 -(BOOL)isDVD;
@@ -105,6 +113,7 @@
 -(void)existingMediaRemoved:(NSString*)oldMediaPath;
 
 -(void)carouselDeviceAttached:(DACALDevice*)aDevice;
+-(void)carouselDeviceSlotAttached:(DACALSlot*)aSlot;
 -(void)carouselDeviceDetached:(DACALDevice*)aDevice;
 
 +(id)sharedVolumeService;

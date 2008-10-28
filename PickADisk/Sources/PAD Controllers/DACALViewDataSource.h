@@ -28,7 +28,10 @@
 - (void)updatePrompt;
 - (void)doubleClickCellContent:(id)item inCell:(NSCell*)cell;
 
-- (void)nodeSlotChanged:(SimpleTreeNode*)node toSlot:(NSString*)slotString;
-- (void)nodeTypeChanged:(SimpleTreeNode*)theNode toType:(NSString*)theName;
+- (void)nodeSlotChanged:(SimpleTreeNode*)node		toSlot:(NSString*)slotString;
+- (void)nodeTypeChanged:(SimpleTreeNode*)theNode	toType:(NSString*)theName;
+- (void)nodeCommentChanged:(SimpleTreeNode*)theNode	toComment:(NSString*)theComment;
+- (void)nodeTagsChanged:(SimpleTreeNode*)theNode	toTags:(NSArray*)theTags;
+- (void)nodeStarsChanged:(SimpleTreeNode*)theNode	toStars:(id)theRating;
 
 @end

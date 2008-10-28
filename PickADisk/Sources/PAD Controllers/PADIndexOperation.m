@@ -16,10 +16,13 @@
 
 - (id)initWithLocation:(NSURL*)url forChild:(SimpleTreeNode*)child completionTarget:(id)target;
 {
-    if (![super init]) return nil;
-	[self setSubtreeChild:child];
-    [self setItemLocation:url];
-	[self setFinishTarget:target];
+    if( self = [super init] )
+	{
+		[self setSubtreeChild:child];
+		[self setItemLocation:url];
+		[self setFinishTarget:target];
+		[child setBusy:YES];
+	}
     return self;
 }
 
@@ -50,7 +53,7 @@
 	SimpleTreeNode*		theNode = [self subtreeChild];
 	id					theTarget = [self finishTarget];
 	
-	[theNode setBusy:YES];
+//	[theNode setBusy:YES];
 	[theNode initFromLocation:[self itemLocation]];
 	[theNode setBusy:NO];
 

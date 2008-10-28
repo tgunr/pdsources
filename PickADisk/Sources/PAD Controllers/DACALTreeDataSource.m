@@ -10,6 +10,52 @@
 #import "PADSearchRequest.h"
 #import "pmsDACALUtility.h"
 
+NSString*	DACALFlavorToFlavorValue( NSString* flavor )
+{
+	NSString*	theFlavorValue = nil;
+	
+	if( flavor )
+		if(	[flavor isEqual:PADINDEX_FLAVORVALUE_FILES] ||
+		   [flavor isEqual:PADINDEX_FLAVORTITLE_FILES] )
+			theFlavorValue = PADINDEX_FLAVORVALUE_FILES;
+		else if( [flavor isEqual:PADINDEX_FLAVORVALUE_IMAGE] ||
+				[flavor isEqual:PADINDEX_FLAVORTITLE_IMAGE] )
+			theFlavorValue = PADINDEX_FLAVORVALUE_IMAGE;
+		else if( [flavor isEqual:PADINDEX_FLAVORVALUE_MOVIE] ||
+				[flavor isEqual:PADINDEX_FLAVORTITLE_MOVIE] )
+			theFlavorValue = PADINDEX_FLAVORVALUE_MOVIE;
+		else if( [flavor isEqual:PADINDEX_FLAVORVALUE_MUSIC] ||
+				[flavor isEqual:PADINDEX_FLAVORTITLE_MUSIC] )
+			theFlavorValue = PADINDEX_FLAVORVALUE_MUSIC;
+		else if( [flavor isEqual:@"data"] )
+			theFlavorValue = PADINDEX_FLAVORVALUE_FILES;
+	
+	return theFlavorValue;
+}
+
+NSString*	DACALFlavorToFlavorTitle( NSString* flavor )
+{
+	NSString*	theFlavorTitle = nil;
+	
+	if( flavor )
+		if(	[flavor isEqual:PADINDEX_FLAVORVALUE_FILES] ||
+		   [flavor isEqual:PADINDEX_FLAVORTITLE_FILES] )
+			theFlavorTitle = PADINDEX_FLAVORTITLE_FILES;
+		else if( [flavor isEqual:PADINDEX_FLAVORVALUE_IMAGE] ||
+				[flavor isEqual:PADINDEX_FLAVORTITLE_IMAGE] )
+			theFlavorTitle = PADINDEX_FLAVORTITLE_IMAGE;
+		else if( [flavor isEqual:PADINDEX_FLAVORVALUE_MOVIE] ||
+				[flavor isEqual:PADINDEX_FLAVORTITLE_MOVIE] )
+			theFlavorTitle = PADINDEX_FLAVORTITLE_MOVIE;
+		else if( [flavor isEqual:PADINDEX_FLAVORVALUE_MUSIC] ||
+				[flavor isEqual:PADINDEX_FLAVORTITLE_MUSIC] )
+			theFlavorTitle = PADINDEX_FLAVORTITLE_MUSIC;
+		else if( [flavor isEqual:@"data"] )
+			theFlavorTitle = PADINDEX_FLAVORTITLE_FILES;
+	
+	return theFlavorTitle;
+}
+
 @implementation DACALIndexState
 
 -(void)dealloc
@@ -100,6 +146,9 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 	DACALTreeDataSource_shared = self;
 	return self;
 }
+
+-(id)secondaryController
+	{ return secondaryController; }
 
 -(void)orderForUser:(SimpleTreeNode*)treeNode
 {
@@ -460,12 +509,12 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 - (void)outlineViewAction:(id)tree
 {
 	NSArray*					selectedNodes = [treeControl selectedNodes];
-	IndexNodeData*				data;
-	SimpleTreeNode*				subTree;
-	PADSearchRequest*			itemSearch;
-	int							index;
-	DACALDeviceRef				theDevice;
-	DACALSlotNum				theSlot;
+	IndexNodeData*				data =nil;
+	SimpleTreeNode*				subTree = nil;
+	PADSearchRequest*			itemSearch = nil;
+	int							index = 0;
+	DACALDeviceRef				theDevice = kDACALNullDevice;
+	DACALSlotNum				theSlot = 0;
 	PADIndexToolbarController*	toolControl = (PADIndexToolbarController*)[self toolbarControl];
 	NSArray*					dataRowsSelected = [secondaryController selectedNodes];
 	SimpleTreeNode*				originalTree = nil;
@@ -511,12 +560,13 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 			[secondaryController addTreeRoot:subTree];
 		
 		theDevice = [data itemDevice];
-		
 		theSlot = [data itemSlot];
 		if( theSlot != 0 )
-			[toolControl addSelectedNode:[selectedNodes objectAtIndex:index]];
+			[toolControl addSelectedNode:[selectedNodes objectAtIndex:index] adoptSelection:YES];
  		else if( theDevice != kDACALNullDevice )
 			[toolControl addSelectedDevice:theDevice adoptSelection:YES];
+		//else
+		//	[toolControl resetSelectedNodesAndAdoptSelection:YES];
    }
 	
 	if( originalTree && [originalTree isEqual:subTree] )
@@ -529,9 +579,14 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 
 - (void)nodeNameChanged:(SimpleTreeNode*)theNode toName:(NSString*)theName
 {
+	NSUndoManager*		undo = [self undoManager];
 	SimpleNodeData*		theData = [theNode nodeData];
 	DACALDeviceRef		theDevice = [theData itemDevice];
 	NSInteger			theType = [theData itemType];
+	NSString*			nowName = [NSString stringWithString:[theData name]];
+
+	[[undo prepareWithInvocationTarget:self] nodeNameChanged:theNode toName:nowName];
+	[undo setActionName:NSLocalizedString(@"Change Name", @"Undo Action when sidebar name column is changed")];
 
 	[theData setName:theName];
 	
@@ -550,8 +605,9 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 
 - (void)dropNodesOntoLibraryGroup:(id <NSDraggingInfo>)info onNode:(TreeNode *)parentNode atIndex:(NSInteger)childIndex 
 {
-    NSPasteboard*	pboard = [info draggingPasteboard];	
-	NSString*		destinationFlavor = [[parentNode nodeData] itemFlavor];
+ 	NSUndoManager*		undo = [self undoManager];
+	NSPasteboard*		pboard = [info draggingPasteboard];	
+	NSString*			destinationFlavor = [[parentNode nodeData] itemFlavor];
     
     if ([pboard availableTypeFromArray:[NSArray arrayWithObjects:DragDropSimplePboardType, nil]] != nil) {
         TreeController *dragDataSource = [[info draggingSource] dataSource];
@@ -561,6 +617,8 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 //		SimpleTreeNode *_bioParent = nil;
 //		int				itemRow = 0;
         
+		[undo beginUndoGrouping];
+		
         while ((_draggedNode = [draggedNodesEnum nextObject])) {
 			
 			if( [dragDataSource dataSource] != nil )
@@ -571,7 +629,10 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 			//[[dragDataSource outlineView] reloadItem:_draggedNode];
 		}
 		//[[dragDataSource outlineView] reloadData];
-		[[PADSearchService sharedSearch] searchDataChanged:_draggedNodes];
+		//[[PADSearchService sharedSearch] searchDataChanged:_draggedNodes];
+		
+		[undo endUndoGrouping];
+		[undo setActionName:NSLocalizedString(@"Change Type", @"Undo Group Action when flavor type is changed for items in a drag")];
 		
 		[AppController playUISound: kASSystemSoundSuccess];
 	}

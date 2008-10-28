@@ -59,6 +59,7 @@ extern CFStringRef		kDACALCarouselDocumentXAttrSlotIsOut;
 extern CFStringRef		kDACALCarouselDocumentXAttrSlotCheckout;
 extern CFStringRef		kDACALCarouselDocumentXAttrSlotCheckIn;
 extern CFStringRef		kDACALCarouselDocumentXAttrVolumeName;
+extern CFStringRef		kDACALCarouselDocumentXAttrVolumeSize;
 
 extern CFStringRef		kDACALCarouselDocumentXAttrUserTitle;
 extern CFStringRef		kDACALCarouselDocumentXAttrUserComments;
@@ -135,6 +136,7 @@ extern DACALSlotNum		DACALSlotNextFreeNumber( DACALDeviceRef deviceID, DACALSlot
 extern DACALResult		DACALDevicesInitialize( void );
 extern DACALResult		DACALDevicesFinalize( void );
 extern DACALCount		DACALDevicesGetCount( void );
+extern DACALDeviceRef	DACALDevicesCopyDeviceRefForIndex( DACALCount deviceID, DACALResult* outError );
 extern CFArrayRef		DACALDevicesCopyAllNames( void );
 extern DACALCount		DACALDevicesGetCountForModel( CFStringRef aDeviceType );
 extern DACALSlotNum		DACALDevicesGetSlotCount( CFStringRef aDeviceType );

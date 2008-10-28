@@ -6,6 +6,7 @@
 @implementation PADPrefsController
 
 static Boolean	PADPrefsControllerB = false;
+#pragma unused (PADPrefsControllerB)
 
 - (void)awakeFromNib {
 	
@@ -68,6 +69,11 @@ static Boolean	PADPrefsControllerB = false;
 	}
 	
 	return outToolbarItem;
+}
+
+- (NSUndoManager*)windowWillReturnUndoManager:(NSWindow*)window
+{
+	return [[[AppController shared] dataView] undoManager];
 }
 
 - (IBAction)runPreferences:(id)sender

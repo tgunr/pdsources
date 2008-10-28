@@ -64,6 +64,8 @@
 - (IBAction)sortData:(id)sender;
 - (IBAction)expandableMenuItemAction:(id)sender;
 
+- (void)deletedSelections;
+
 - (SimpleTreeNode*)treeRoot ;
 - (void)setTreeRoot:(SimpleTreeNode*)root;
 - (void)addTreeRoot:(SimpleTreeNode*)newChild;
@@ -74,6 +76,7 @@
 
 - (NSOutlineView*)outlineView;
 - (void)setOutlineView:(NSOutlineView*)view;
+- (NSUndoManager*)undoManager;
 
 - (NSArray*)draggedNodes;
 - (NSArray*)selectedNodes;
@@ -109,6 +112,7 @@
 - (void)setTreeControl:(id)tree;
 
 - (NSOutlineView*)outlineView;
+- (NSUndoManager*)undoManager;
 
 - (void)removeAllChildren;
 

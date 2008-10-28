@@ -14,38 +14,37 @@
 
 @interface PADIndexToolbarController : NSObject {
 	
-	IBOutlet	NSToolbar	*indexToolbar;
+	IBOutlet	NSToolbar*				indexToolbar;
 	
-	IBOutlet	NSButton	*resetButton;
-	IBOutlet	NSButton	*playButton;
-	IBOutlet	NSButton	*checkOutButton;
-	IBOutlet	NSButton	*checkInButton;
-	IBOutlet	NSButton	*closeDoorButton;
-	IBOutlet	NSButton	*assignButton;
-	IBOutlet	NSButton	*unassignButton;
-	IBOutlet	NSButton	*ejectButton;
-	IBOutlet	NSButton	*gotoButton;
-	IBOutlet	NSToolbarItem *printButton;
+	IBOutlet	NSButton*				resetButton;
+	IBOutlet	NSButton*				playButton;
+	IBOutlet	NSButton*				checkOutButton;
+	IBOutlet	NSButton*				checkInButton;
+	IBOutlet	NSButton*				closeDoorButton;
+	IBOutlet	NSButton*				assignButton;
+	IBOutlet	NSButton*				unassignButton;
+	IBOutlet	NSButton*				ejectButton;
+	IBOutlet	NSButton*				gotoButton;
+	IBOutlet	NSToolbarItem*			printButton;
 	
-	IBOutlet	NSImageView	*noBoxIcon;
+	IBOutlet	NSImageView*			noBoxIcon;
 	
-	IBOutlet	NSSearchField	*searchField;
-	IBOutlet	NSSearchField	*homeSearchField;
+	IBOutlet	NSSearchField*			searchField;
+	IBOutlet	NSSearchField*			homeSearchField;
 	
-	IBOutlet	NSProgressIndicator	*busyProgress;
+	IBOutlet	NSProgressIndicator*	busyProgress;
 	
-	IBOutlet	NSPathControl	*pathControl;
+	IBOutlet	NSPathControl*			pathControl;
 	
-	IBOutlet	id			indexController;
-	IBOutlet	id			dataController;
-	IBOutlet	id			addVolumeController;
+	IBOutlet	id						indexController;
+	IBOutlet	id						dataController;
+	IBOutlet	id						addVolumeController;
 	
-	NSArray					*selectedDevices;
-	NSArray					*selectedSlots;
-	NSArray					*selectedNodes;
+				NSMutableArray*			selectedDevices;
+//				NSMutableArray*			selectedSlots;
+				NSMutableArray*			selectedNodes;
 	
-	BOOL					hasBoxes;
-
+				BOOL					hasBoxes;
 }
 
 - (IBAction)clickReset:(id)sender;
@@ -64,27 +63,32 @@
 - (IBAction)homeSearchAction:(id)sender;
 - (IBAction)provideFeedback:(id)sender;
 
+- (void)unassignNodes:(NSArray*)nodesToDelete;
+
+- (BOOL)allowCheck:(BOOL)inOrOut;
+- (BOOL)nodesContainMountedSlotVolumes:(NSArray*)nodeArray;
+
+- (NSString*)checkedOutTitle;
 - (void)reportNoDevice:(BOOL)hasBox;
 - (BOOL)validateMenuItem:(NSMenuItem *)item;
 
-- (void)setSelectedDevices: (NSArray*)deviceList;
-- (void)setSelectedDevice: (DACALDeviceRef)theDevice;
-- (void)addSelectedDevice:(DACALDeviceRef)theDevice adoptSelection:(BOOL)doAdopt;
-- (NSArray*)selectedDevices;
-
-- (void)setSelectedSlots: (NSArray*)slotList;
-- (void)setSelectedSlot: (DACALSlotNum)theSlot;
-- (NSArray*)selectedSlots;
-
-- (void)setSelectedNodes: (NSArray*)nodeList;
-- (void)setSelectedNode: (SimpleTreeNode*)theNode;
-- (void)addSelectedNode:(SimpleTreeNode*)theNode;
-- (NSArray*)selectedNodes;
-- (void)resetSelection;
 - (NSProgressIndicator*)busyProgress;
 
-- (void)unassignNodes:(NSArray*)nodesToDelete;
+- (NSMutableArray*)selectedDevices;
+- (void)setSelectedDevices: (NSMutableArray*)deviceList;
+- (void)setSelectedDevice: (DACALDeviceRef)theDevice adoptSelection:(BOOL)doAdopt;
+- (void)addSelectedDevice:(DACALDeviceRef)theDevice adoptSelection:(BOOL)doAdopt;
 
--(NSString*)checkedOutTitle;
+//- (void)setSelectedSlots: (NSMutableArray*)slotList;
+//- (void)setSelectedSlot: (DACALSlotNum)theSlot;
+//- (NSMutableArray*)selectedSlots;
+
+- (NSMutableArray*)selectedNodes;
+- (void)setSelectedNodes: (NSMutableArray*)nodeList;
+- (void)setSelectedNode: (SimpleTreeNode*)theNode adoptSelection:(BOOL)doAdopt;
+- (void)addSelectedNode:(SimpleTreeNode*)theNode adoptSelection:(BOOL)doAdopt;
+- (void)resetSelectedNodesAndAdoptSelection:(BOOL)doAdopt;
+
+- (void)resetSelection;
 
 @end

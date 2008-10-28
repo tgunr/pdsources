@@ -25,7 +25,8 @@
 //	Camouflage0016_M.jpg
 //	FullskiesAltostratus0007_M.jpg
 //	Graid_blue.tif
-//	Graid_gray.tif*
+//	Graid_gray.tif
+//	Gray.tif*
 //	Leather0048_M.jpg
 //	Paper0015_M.jpg
 //	Sepia Marble Paper.jpg

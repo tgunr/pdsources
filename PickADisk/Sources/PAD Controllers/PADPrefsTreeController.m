@@ -41,7 +41,7 @@ static PADPrefsTreeController *PADPrefsTreeController_shared;
 - (SimpleTreeNode*)createInitialTree:(id)tree
 {
 	SimpleTreeNode*		theOutputTree = nil;
-	SimpleTreeNode*		theGroupNode = nil;
+//	SimpleTreeNode*		theGroupNode = nil;
 	IndexNodeData*		theWorkData = nil;
 	NSArray*			tempChildren = nil;
 	

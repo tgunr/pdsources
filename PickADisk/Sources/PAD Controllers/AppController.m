@@ -461,7 +461,10 @@ static AppController *shared;
 		NSLog(@"Warning! Could not load License file.\n");
 	
 	// Validate pref license
-	BOOL *valid = [[License shared] licenseValid];
+	BOOL*	valid = [[License shared] licenseValid];
+	
+#pragma unused (valid)
+	
 }
 
 - (void)doCheckWork:(NSTimer*)checkTimer {
