@@ -23,7 +23,6 @@
 		5C2EBE960E2979B3009BAF4C /* sidebarpref.icns in Resources */ = {isa = PBXBuildFile; fileRef = 5C2EBE950E2979B3009BAF4C /* sidebarpref.icns */; };
 		5C2EBE9C0E2991BF009BAF4C /* PADPrefsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C2EBE9A0E2991BF009BAF4C /* PADPrefsController.m */; };
 		5C30383C0EA5C8CE0067A8A8 /* PADPrefsTreeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C30383A0EA5C8CE0067A8A8 /* PADPrefsTreeController.m */; };
-		5C303C360EA7ED580067A8A8 /* Graid_gray.tif in Resources */ = {isa = PBXBuildFile; fileRef = 5C303C350EA7ED580067A8A8 /* Graid_gray.tif */; };
 		5C438A5A0E8E825F0070CF56 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0247A8BE007179D411CA0E35 /* Foundation.framework */; };
 		5C440D750E5C27DF0020A588 /* Generic_Music.icns in Resources */ = {isa = PBXBuildFile; fileRef = 5C440D720E5C27DF0020A588 /* Generic_Music.icns */; };
 		5C440D760E5C27DF0020A588 /* Generic_Files.icns in Resources */ = {isa = PBXBuildFile; fileRef = 5C440D730E5C27DF0020A588 /* Generic_Files.icns */; };
@@ -65,6 +64,9 @@
 		5C7C50260E3D850800FCEBD8 /* CarouselBatch.nib in Resources */ = {isa = PBXBuildFile; fileRef = 5C7C50250E3D850800FCEBD8 /* CarouselBatch.nib */; };
 		5C7C51130E3DEC4D00FCEBD8 /* carousel.sh in Resources */ = {isa = PBXBuildFile; fileRef = 5C4E17EB0E2167580091DD7D /* carousel.sh */; };
 		5C7C51140E3DEC4D00FCEBD8 /* xattr in Resources */ = {isa = PBXBuildFile; fileRef = 5C6657010E3822D400414ECB /* xattr */; };
+		5C88C0100EB7B7CA005D267C /* PADFlavorImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C88C00E0EB7B7CA005D267C /* PADFlavorImageView.m */; };
+		5C88C0110EB7B7CA005D267C /* PADFlavorImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C88C00F0EB7B7CA005D267C /* PADFlavorImageView.h */; };
+		5C88C0130EB7B826005D267C /* Gray.tif in Resources */ = {isa = PBXBuildFile; fileRef = 75E816080EAFB47200C8562D /* Gray.tif */; };
 		5C8B8BB60E3FCCFA007A1505 /* PADCarouselOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8B8BB40E3FCCF9007A1505 /* PADCarouselOperation.m */; };
 		5C8E54F60E6A1D690029D83A /* DACALViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8E54F40E6A1D690029D83A /* DACALViewDataSource.m */; };
 		5C90847E0E2D748800162C13 /* PADIndexOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C90847C0E2D748800162C13 /* PADIndexOperation.m */; };
@@ -97,9 +99,6 @@
 		735CC2BD049A7E2A00C919A3 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 011669A0FFC1E3D311CA0E35 /* Cocoa.framework */; };
 		751C4E2D0E9400250027BC1C /* AquaticPrime.m in Sources */ = {isa = PBXBuildFile; fileRef = 751C4E2C0E9400250027BC1C /* AquaticPrime.m */; };
 		75E667D60E92CA9500A9DA07 /* license.icns in Resources */ = {isa = PBXBuildFile; fileRef = 75E667D50E92CA9500A9DA07 /* license.icns */; };
-		75E815C10EAD5E9000C8562D /* Help in Resources */ = {isa = PBXBuildFile; fileRef = 75E810B10EAD5E8F00C8562D /* Help */; };
-		75E816060EAFB2A100C8562D /* Graid_blue.tif in Resources */ = {isa = PBXBuildFile; fileRef = 75E816050EAFB2A100C8562D /* Graid_blue.tif */; };
-		75E816090EAFB47200C8562D /* Gray.tif in Resources */ = {isa = PBXBuildFile; fileRef = 75E816080EAFB47200C8562D /* Gray.tif */; };
 		75F02D190E954B1400A02B14 /* License.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75F02D180E954B1400A02B14 /* License.xib */; };
 		75F02D240E955A9400A02B14 /* LicenseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 75F02D220E955A9400A02B14 /* LicenseController.m */; };
 /* End PBXBuildFile section */
@@ -179,7 +178,6 @@
 		5C3038390EA5C8CE0067A8A8 /* PADPrefsTreeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PADPrefsTreeController.h; sourceTree = "<group>"; };
 		5C30383A0EA5C8CE0067A8A8 /* PADPrefsTreeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PADPrefsTreeController.m; sourceTree = "<group>"; };
 		5C303C270EA7E7740067A8A8 /* FullskiesAltostratus0007_M.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = FullskiesAltostratus0007_M.jpg; sourceTree = "<group>"; };
-		5C303C350EA7ED580067A8A8 /* Graid_gray.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Graid_gray.tif; sourceTree = "<group>"; };
 		5C440D720E5C27DF0020A588 /* Generic_Music.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Generic_Music.icns; sourceTree = "<group>"; };
 		5C440D730E5C27DF0020A588 /* Generic_Files.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Generic_Files.icns; sourceTree = "<group>"; };
 		5C440D740E5C27DF0020A588 /* Generic_Movie.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Generic_Movie.icns; sourceTree = "<group>"; };
@@ -238,6 +236,8 @@
 		5C7C50250E3D850800FCEBD8 /* CarouselBatch.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; path = CarouselBatch.nib; sourceTree = "<group>"; };
 		5C7C50280E3DA51C00FCEBD8 /* blueplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueplate.png; sourceTree = "<group>"; };
 		5C829C750E46AC730069483D /* PADLifecycleSetup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PADLifecycleSetup.h; sourceTree = "<group>"; };
+		5C88C00E0EB7B7CA005D267C /* PADFlavorImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PADFlavorImageView.m; sourceTree = "<group>"; };
+		5C88C00F0EB7B7CA005D267C /* PADFlavorImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PADFlavorImageView.h; sourceTree = "<group>"; };
 		5C8B8BB30E3FCCF9007A1505 /* PADCarouselOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PADCarouselOperation.h; sourceTree = "<group>"; };
 		5C8B8BB40E3FCCF9007A1505 /* PADCarouselOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PADCarouselOperation.m; sourceTree = "<group>"; };
 		5C8E54F30E6A1D690029D83A /* DACALViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DACALViewDataSource.h; sourceTree = "<group>"; };
@@ -280,8 +280,6 @@
 		75E666F60E92A6EB00A9DA07 /* AQDataExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AQDataExtensions.m; path = Sources/License/AQDataExtensions.m; sourceTree = "<group>"; };
 		75E666F90E92A99000A9DA07 /* AquaticPrime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AquaticPrime.h; path = Sources/License/AquaticPrime.h; sourceTree = "<group>"; };
 		75E667D50E92CA9500A9DA07 /* license.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = license.icns; path = ../Resources/license.icns; sourceTree = SOURCE_ROOT; };
-		75E810B20EAD5E8F00C8562D /* English */ = {isa = PBXFileReference; lastKnownFileType = folder; name = English; path = English.lproj/Help; sourceTree = "<group>"; };
-		75E816050EAFB2A100C8562D /* Graid_blue.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Graid_blue.tif; sourceTree = "<group>"; };
 		75E816080EAFB47200C8562D /* Gray.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Gray.tif; sourceTree = "<group>"; };
 		75F02D180E954B1400A02B14 /* License.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = License.xib; sourceTree = "<group>"; };
 		75F02D210E955A9400A02B14 /* LicenseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LicenseController.h; path = Sources/License/LicenseController.h; sourceTree = "<group>"; };
@@ -422,7 +420,6 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				75E810B10EAD5E8F00C8562D /* Help */,
 				75F02D180E954B1400A02B14 /* License.xib */,
 				5CC83EEC0E6F6C81000903AD /* swapslot.sh */,
 				5C4E17EB0E2167580091DD7D /* carousel.sh */,
@@ -527,6 +524,8 @@
 				5C829C750E46AC730069483D /* PADLifecycleSetup.h */,
 				5CD985150E4E60A700441ED7 /* PADHomeView.h */,
 				5CD985160E4E60A700441ED7 /* PADHomeView.m */,
+				5C88C00E0EB7B7CA005D267C /* PADFlavorImageView.m */,
+				5C88C00F0EB7B7CA005D267C /* PADFlavorImageView.h */,
 				5C8E54F30E6A1D690029D83A /* DACALViewDataSource.h */,
 				5C8E54F40E6A1D690029D83A /* DACALViewDataSource.m */,
 				5C2E40E00E73FBD300D7DF4A /* DACDriverInstaller.h */,
@@ -542,8 +541,6 @@
 			isa = PBXGroup;
 			children = (
 				75E816080EAFB47200C8562D /* Gray.tif */,
-				75E816050EAFB2A100C8562D /* Graid_blue.tif */,
-				5C303C350EA7ED580067A8A8 /* Graid_gray.tif */,
 				5C303C270EA7E7740067A8A8 /* FullskiesAltostratus0007_M.jpg */,
 				5CDAC1E40E9342C3003984E1 /* CheckedOut.png */,
 				5C6CC5490E4FD604000EE6B3 /* BlackPlus.png */,
@@ -612,6 +609,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C88C0110EB7B7CA005D267C /* PADFlavorImageView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -704,10 +702,7 @@
 				5CDAC1C50E934054003984E1 /* success.icns in Resources */,
 				5CDAC1E50E9342C3003984E1 /* CheckedOut.png in Resources */,
 				75F02D190E954B1400A02B14 /* License.xib in Resources */,
-				5C303C360EA7ED580067A8A8 /* Graid_gray.tif in Resources */,
-				75E815C10EAD5E9000C8562D /* Help in Resources */,
-				75E816060EAFB2A100C8562D /* Graid_blue.tif in Resources */,
-				75E816090EAFB47200C8562D /* Gray.tif in Resources */,
+				5C88C0130EB7B826005D267C /* Gray.tif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -798,6 +793,7 @@
 				5C76C1270E9AD9FE00E363B0 /* NSData_Extensions.m in Sources */,
 				5C76C1340E9ADD0500E363B0 /* NSString_Extensions.m in Sources */,
 				5C30383C0EA5C8CE0067A8A8 /* PADPrefsTreeController.m in Sources */,
+				5C88C0100EB7B7CA005D267C /* PADFlavorImageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -826,14 +822,6 @@
 				5CBA91300E739327000279A2 /* English */,
 			);
 			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
-		75E810B10EAD5E8F00C8562D /* Help */ = {
-			isa = PBXVariantGroup;
-			children = (
-				75E810B20EAD5E8F00C8562D /* English */,
-			);
-			name = Help;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
