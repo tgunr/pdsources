@@ -113,6 +113,8 @@ extern NSMutableArray*		gDACALDevices;
 -(NSInteger)stars;
 -(void)setStars:(NSInteger)starLevel;
 
+-(BOOL)openMountedElement;
+
 -(NSMutableArray*)bookmarks;
 -(BOOL)removeBookmarkForLocation:(NSString*)markLocation;
 -(DACALSlotElementBookmark*)bookmarkForLocation:(NSString*)markLocation;

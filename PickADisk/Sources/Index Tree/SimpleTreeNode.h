@@ -60,6 +60,9 @@ const enum {
 - (SimpleTreeNode*)childWithItemType:(NSInteger)theItemType;
 
 - (NSString*)localPathName;
+- (NSString*)localPathString;
+- (NSString*)absolutePathName;
+- (NSString*)absolutePathString;
 - (NSString*)urlString;
 - (NSString *)tooltip;
 //-(NSString*)name;

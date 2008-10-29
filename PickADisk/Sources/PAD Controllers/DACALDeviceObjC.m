@@ -189,6 +189,34 @@ NSMutableArray*		gDACALDevices;
 	return( (FSCompareFSRefs( (const FSRef*)&thisFS, (const FSRef*)&thatFS ) == 0) ? YES : NO ); 
 }
 
+-(NSURL*)mountedURL
+{
+	NSURL*		outURL = nil;
+	DACVolume*	ourVolume = [[self elementSlot] slotVolume];
+	NSString*	relPathStr = [elementNode absolutePathString];
+	NSString*	wholePath = nil;
+	
+	if( ourVolume && relPathStr ) {
+		wholePath = [NSString stringWithFormat:@"%@/%@", [ourVolume volumePath], relPathStr];
+		outURL = [NSURL fileURLWithPath:wholePath];
+	}
+	
+	return outURL;
+}
+
+-(BOOL)openMountedElement
+{
+	BOOL		outGoodMount = NO;
+	NSURL*		mountURL = [self mountedURL];
+	
+//	NSLog(@"URL: %@", mountURL);
+	
+	if( mountURL )
+		outGoodMount = (LSOpenCFURLRef( (CFURLRef)mountURL, NULL ) == 0);
+	
+	return outGoodMount;
+}
+
 -(BOOL)saveBookmarks
 {
 	BOOL			didSave = NO;
@@ -1027,7 +1055,7 @@ NSMutableArray*		gDACALDevices;
 	if( doUI && didWork )
 		didWork = ([self moveDeviceToSlotWithOptions:kDACALOptionMoveDefault] == kDACALOK);
 
-	 NSLog(@"Slot Check In:%@\nManifset URL:%@\nManifest Dictionary:%@", self, manifestURL, manifestDict);
+	// NSLog(@"Slot Check In:%@\nManifset URL:%@\nManifest Dictionary:%@", self, manifestURL, manifestDict);
 
 	return didWork;
 }

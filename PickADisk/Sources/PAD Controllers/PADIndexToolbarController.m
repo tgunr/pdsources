@@ -326,7 +326,15 @@ PADSearchRequest* PADIndexToolbarController_LastSearch = nil;
 	}
 }
 
-- (IBAction)clickPlay:(id)sender { return [self clickCheckOut:sender]; }
+- (IBAction)clickPlay:(id)sender
+{ 
+	NSEnumerator*		nodeEnum = [selectedNodes objectEnumerator];
+	SimpleTreeNode*		workNode = nil;
+	
+	while ( workNode = [nodeEnum nextObject] )
+		[[[workNode nodeData] itemElement] openMountedElement];
+
+}
 
 - (IBAction)clickCheckOut:(id)sender
 {

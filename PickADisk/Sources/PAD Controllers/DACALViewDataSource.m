@@ -470,7 +470,10 @@ SLOTTYPEFAILED:
 		return;
 	}
 	
-	[[[[item nodeData] itemElement] elementSlot] toggleReservationForUser:nil onHost:nil withUI:YES];
+	if( [[[[item nodeData] itemElement] elementSlot] isSlotMounted] && ([[[NSApplication sharedApplication] currentEvent] modifierFlags] & NSCommandKeyMask) )
+		[[[item nodeData] itemElement] openMountedElement];
+	else
+		[[[[item nodeData] itemElement] elementSlot] toggleReservationForUser:nil onHost:nil withUI:YES];
 }
 
 - (void)doubleClickImage:(id)item inCell:(NSCell*)cell
@@ -489,12 +492,18 @@ SLOTTYPEFAILED:
 		[theView editColumn:[theView clickedColumn] row:[theView clickedRow] withEvent:[[NSApplication sharedApplication] currentEvent] select:YES];
 	else 	
 	{	
-		if([theData isExpandable] == YES ) 
-			if( [theView isItemExpanded:item] == YES ) {
+		if([theData isExpandable] == YES ) {
+			if( [[[[item nodeData] itemElement] elementSlot] isSlotMounted] && ([[[NSApplication sharedApplication] currentEvent] modifierFlags] & NSCommandKeyMask) )
+					[[[item nodeData] itemElement] openMountedElement];
+			else if( [theView isItemExpanded:item] == YES ) {
 				[theView collapseItem:item];
 			} else {
 				[theView expandItem:item];
 			}
+		} else {
+			if( [[[[item nodeData] itemElement] elementSlot] isSlotMounted] )
+				[[[item nodeData] itemElement] openMountedElement];
+		}
 	} 
 		
 }
@@ -627,13 +636,13 @@ SLOTTYPEFAILED:
 		{
 			workSelector = [workItem action];
 			if( workSelector == @selector(ctmMountOpen:) )						//	Mount & Open
-				[workItem setEnabled:NO];	// ![nodeData isCheckedOut]
+				[workItem setEnabled:[nodeData isCheckedOut]];
 			if( workSelector == @selector(ctmCheckIn:) )						//	Check In
 				[workItem setEnabled:[nodeData isCheckedOut]];
 			if( workSelector == @selector(ctmCheckOut:) )						//	Check Out
 				[workItem setEnabled:![nodeData isCheckedOut]];
 			if( workSelector == @selector(ctmGotoSlot:) )						//	Go To Slot
-				[workItem setEnabled:![nodeData isCheckedOut]];
+				[workItem setEnabled:YES];
 		}
 	}
 	
@@ -641,7 +650,17 @@ SLOTTYPEFAILED:
 
 - (IBAction)ctmMountOpen:(id)sender
 {
-	NSLog(@"Mount and Open: Unimplemented feature!");	
+	NSArray*		theItems = [self ctmClickedRows];
+	NSEnumerator*	arrayEnum = [theItems objectEnumerator];
+	SimpleTreeNode*	workItem = nil;
+	
+	while( workItem = [arrayEnum nextObject] )
+	{
+		workItem = [workItem matchActual];
+		
+		if( [[[workItem nodeData] itemElement] isCheckedOut] == YES )
+			[[[workItem nodeData] itemElement] openMountedElement];
+	}
 }
 
 - (IBAction)ctmCheckIn:(id)sender

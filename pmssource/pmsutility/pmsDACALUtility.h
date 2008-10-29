@@ -27,6 +27,7 @@ NSImage*		CFURLGetIconAsNSImage( CFAllocatorRef allocator, CFURLRef url, OSStatu
 
 Boolean			CFURLIsVisible( CFURLRef url );
 CFStringRef		CFURLCopyDisplayName( CFAllocatorRef allocator, CFURLRef url, OSStatus* outError );
+CFStringRef		CFURLCopyActualName( CFAllocatorRef allocator, CFURLRef url, OSStatus* outError );
 CFDateRef		CFURLCopyDateSlotAdded( CFAllocatorRef inAllocator, CFURLRef url, SInt32* outError );
 CFStringRef		CFURLCopyItemFlavor( CFURLRef url, OSStatus* outError );
 OSStatus		CFURLSetItemFlavor( CFURLRef url, CFStringRef newFlavor );

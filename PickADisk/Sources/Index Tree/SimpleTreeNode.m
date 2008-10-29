@@ -94,6 +94,10 @@
 			itemType = kPADTypeDataMuisc;
 		else if( [itemFlavor compare:PADINDEX_FLAVORVALUE_MOVIE] == NSOrderedSame )
 			itemType = kPADTypeDataMovie;
+		else if( [(NSString*)@"Images" compare:itemFlavor] == NSOrderedSame )
+			itemType = kPADTypeDataImage;
+		else if( [(NSString*)@"Files" compare:itemFlavor] == NSOrderedSame )
+			itemType = kPADTypeDataFiles;
 	}
     return self;
 }
@@ -123,6 +127,10 @@
 			itemType = kPADTypeDataMuisc;
 		else if( [(NSString*)@"Movie" compare:itemFlavor] == NSOrderedSame )
 			itemType = kPADTypeDataMovie;
+		else if( [(NSString*)@"Images" compare:itemFlavor] == NSOrderedSame )
+			itemType = kPADTypeDataImage;
+		else if( [(NSString*)@"Files" compare:itemFlavor] == NSOrderedSame )
+			itemType = kPADTypeDataFiles;
    }	
 	return self;
 }
@@ -1092,21 +1100,62 @@ FOUND:
 
 - (NSString*)localPathName { return [[self nodeData] name]; }
 
-- (NSMutableString*)localPathString {
+- (NSString*)localPathString {
 	
 	if( [[self nodeData] itemDevice] == kDACALNullDevice ) return nil;
 	
-	NSMutableString*		outNames = [NSMutableString stringWithCapacity:0];
+	NSString*				outName = nil;
+	NSMutableString*		workNames = [NSMutableString stringWithCapacity:0];
 	SimpleTreeNode*			aParent = (SimpleTreeNode*)self;	//[self nodeParent];
 	
 	while ([aParent nodeParent] != nil) {
-		[outNames setString:[NSString stringWithFormat:@"%@/%@",[aParent localPathName],outNames]];
+		[workNames setString:[NSString stringWithFormat:@"%@/%@",[aParent localPathName],workNames]];
 		aParent = (SimpleTreeNode*)[aParent nodeParent];
 	}
 	
-	if( [outNames length] > 0 ) outNames = (NSMutableString*)[outNames substringToIndex:[outNames length]-1];
+	if( [workNames length] > 0 )
+		outName = [workNames substringToIndex:[workNames length]-1];
 	
-	return outNames;
+	return outName;
+}
+
+- (NSString*)absolutePathName
+{
+	NSString*	outName = nil;
+	CFStringRef	workName = CFURLCopyActualName( kCFAllocatorDefault, (CFURLRef)[(SimpleNodeData*)[self nodeData] location], NULL );
+	
+	if( workName != NULL )
+	{
+		outName = [NSString stringWithString:(NSString*)workName];
+		CFRelease( workName );
+	}
+	
+	return outName;
+}
+
+- (NSString*)absolutePathString
+{
+	if( [[self nodeData] itemDevice] == kDACALNullDevice ) return nil;
+	
+	NSString*				outName = nil;
+	NSMutableString*		workNames = [NSMutableString stringWithCapacity:0];
+	SimpleTreeNode*			aParent = [self matchActual];
+	CFURLRef				aSpot = (CFURLRef)[(SimpleNodeData*)[aParent nodeData] location];
+	
+	if( CFURLIsTopInSlot( kCFAllocatorDefault, aSpot ) || CFURLIsSlot( aSpot ) )
+		[workNames setString:@"/"];
+	else 
+		while ([aParent nodeParent] != nil) {
+			[workNames setString:[NSString stringWithFormat:@"%@/%@",[aParent absolutePathName],workNames]];
+			aParent = (SimpleTreeNode*)[aParent nodeParent];
+			aSpot = (CFURLRef)[(SimpleNodeData*)[aParent nodeData] location];
+			if( CFURLIsTopInSlot( kCFAllocatorDefault, aSpot ) || CFURLIsSlot( aSpot ) ) break;
+		}
+	
+	if( [workNames length] > 0 ) outName = [workNames substringToIndex:[workNames length]-1];
+	else outName = nil;
+	
+	return outName;
 }
 
 - (NSString *)description
@@ -1115,7 +1164,7 @@ FOUND:
 	if( [[self nodeData] itemDevice] == kDACALNullDevice ) return [[self nodeData] name];
 	if( [[self nodeData] itemSlot] == 0 ) return [[self nodeData] name];
 	
-	NSMutableString*	localPath = [self localPathString];
+	NSString*			localPath = [self localPathString];
 	NSString*			localDevice = (NSString*)DACALCommandCopyName([[self nodeData] itemDevice], NULL );
 	NSString*			outString = [NSString stringWithFormat:NSLocalizedString(@"“%@” Slot %i: %@", @"Element Node Description Format with device, slot num and item path"), localDevice, [[self nodeData] itemSlot], localPath];
 
@@ -1128,7 +1177,7 @@ FOUND:
 	
 	if( [[self nodeData] itemDevice] == kDACALNullDevice ) return [[self nodeData] name];
 	
-	NSMutableString*	localPath = [self localPathString];
+	NSString*			localPath = [self localPathString];
 	NSString*			localHost = @"";
 	NSString*			localDevice = (NSString*)CFUUIDCreateString( kCFAllocatorDefault, (CFUUIDRef)[[self nodeData] itemDevice] );
 	NSString*			urlString = [NSString stringWithFormat:@"carousel://%@/%@/%i/%@", localHost, localDevice, [[self nodeData] itemSlot], localPath];
@@ -1142,7 +1191,7 @@ FOUND:
 	if( [[self nodeData] itemDevice] == kDACALNullDevice ) return [[self nodeData] name];
 	if( [[self nodeData] itemSlot] == 0 ) return [[self nodeData] name];
 	
-	NSMutableString*	localPath = [self localPathString];
+	NSString*			localPath = [self localPathString];
 	NSDate*				checkOutDate = [[self nodeData] checkedOutDate];
 	NSString*			checkedOutString = NSLocalizedString(@"", @"Element Node Tooltip Format for items checked in");
 	

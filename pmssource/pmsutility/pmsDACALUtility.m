@@ -52,6 +52,8 @@ Boolean	CFURLIsSlot( CFURLRef url )
 
 Boolean			CFURLIsTopInSlot( CFAllocatorRef inAllocator, CFURLRef url )
 {
+	if( url == NULL) return FALSE;
+	
 	Boolean			isSlot = FALSE;
 	CFURLRef		actualSlot = CFURLCreateCopyDeletingLastPathComponent( inAllocator, url );
 
@@ -224,28 +226,29 @@ CFStringRef	CFURLCopyDisplayName( CFAllocatorRef allocator, CFURLRef url, OSStat
 	return( theOutputName );
 }	
 
-/*	
- {
- FSRef			theFileRef;
- Boolean			isGoodFile = FALSE;
- OSStatus		outResult = paramErr;
- FSCatalogInfo	theCatInfo;
- HFSUniStr255	theFileName;
+CFStringRef	CFURLCopyActualName( CFAllocatorRef allocator, CFURLRef url, OSStatus* outError )
+{
+	FSRef			theFileRef;
+	Boolean			isGoodFile = FALSE;
+	OSStatus		outResult = paramErr;
+	FSCatalogInfo	theCatInfo;
+	HFSUniStr255	theFileName;
+
+	CFStringRef		theOutputName = NULL;
+
+	isGoodFile = CFURLGetFSRef( url, &theFileRef );
+	if( !isGoodFile ) goto BAIL;	
+
+	outResult = FSGetCatalogInfo(&theFileRef, kFSCatInfoNone, &theCatInfo, &theFileName, NULL, NULL);
+	if( outResult != 0 ) goto BAIL;
+
+	theOutputName = CFStringCreateWithCharacters(allocator, (const UniChar*)&theFileName.unicode, theFileName.length);
+
+BAIL:
+	if( outError != NULL ) *outError = outResult;
+	return( theOutputName );
+}
  
- CFStringRef		theOutputName = NULL;
- 
- isGoodFile = CFURLGetFSRef( url, &theFileRef );
- if( !isGoodFile ) goto BAIL;	
- outResult = FSGetCatalogInfo(&theFileRef, kFSCatInfoNone, &theCatInfo, &theFileName, NULL, NULL);
- if( outResult != 0 ) goto BAIL;
- 
- theOutputName = CFStringCreateWithCharacters(allocator, (const UniChar*)&theFileName.unicode, theFileName.length);
- 
- BAIL:
- if( outError != NULL ) *outError = outResult;
- return( theOutputName );
- }
- */
 
 CFStringRef	CFURLCopyReferenceTitle( CFAllocatorRef inAllocator, CFURLRef url, OSStatus* outError )
 {
