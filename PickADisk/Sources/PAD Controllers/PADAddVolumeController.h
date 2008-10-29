@@ -109,4 +109,6 @@
 -(void) startIndexProgress:(NSTimer*)timer;
 -(void)indexDeviceControlFinished:(id)sender;
 
+-(NSUndoManager*)undoManager;
+
 @end

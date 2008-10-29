@@ -1146,8 +1146,7 @@ FOUND:
 	NSDate*				checkOutDate = [[self nodeData] checkedOutDate];
 	NSString*			checkedOutString = NSLocalizedString(@"", @"Element Node Tooltip Format for items checked in");
 	
-	if( [[self nodeData] respondsToSelector:@selector(matchActual)] )
-		localPath = [[[self nodeData] matchActual] localPathString];
+	localPath = [[self matchActual] localPathString];
 	
 	if( checkOutDate != nil )
 		checkedOutString = [NSString stringWithFormat:NSLocalizedString(@"Checked out on %@\n", @"Element Node Tooltip Format for date checked out"), [checkOutDate description]];

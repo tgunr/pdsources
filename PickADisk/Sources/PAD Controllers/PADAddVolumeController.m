@@ -33,6 +33,11 @@
 {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 
+	[[NSUserDefaultsController sharedUserDefaultsController] removeObserver:self forKeyPath:@"values.PADScanDepthVideo"];
+	[[NSUserDefaultsController sharedUserDefaultsController] removeObserver:self forKeyPath:@"values.PADScanDepthAudio"];
+	[[NSUserDefaultsController sharedUserDefaultsController] removeObserver:self forKeyPath:@"values.PADScanDepthImage"];
+	[[NSUserDefaultsController sharedUserDefaultsController] removeObserver:self forKeyPath:@"values.PADScanDepthData"];
+	
     [pendingVolumes release];
 	[self setCustomTitle:nil];
 	[self setCustomFlavor:nil];
@@ -45,10 +50,15 @@
 	[[AppController shared] setAddVolumeController:self];
 	
 	[self syncMediaTitles];
+	
+	[[NSUserDefaultsController sharedUserDefaultsController] addObserver:self forKeyPath:@"values.PADScanDepthVideo" options:0 context:NULL];
+	[[NSUserDefaultsController sharedUserDefaultsController] addObserver:self forKeyPath:@"values.PADScanDepthAudio" options:0 context:NULL];
+	[[NSUserDefaultsController sharedUserDefaultsController] addObserver:self forKeyPath:@"values.PADScanDepthImage" options:0 context:NULL];
+	[[NSUserDefaultsController sharedUserDefaultsController] addObserver:self forKeyPath:@"values.PADScanDepthData" options:0 context:NULL];	
 }
 
 
-#pragma mark ###	Delegate Methods	###
+#pragma mark ###	Delegate & Notification Methods	###
 
 //	This is called by the alternateTitle NSTextField
 //	as the content changes
@@ -75,6 +85,55 @@
 - (void)assignSheetDidEnd:(NSWindow *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo
 {	
 	[sheet orderOut:self];
+	[cancelButton setEnabled:YES];
+	[self activeItemState:YES];
+	[volumeIcon changeCurrentRotation:0.0];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+	NSString*	doType = nil;
+	NSString*	workKey = nil;
+	BOOL		didType = NO;
+	
+	if (object == [NSUserDefaultsController sharedUserDefaultsController] )
+	{
+		if( [keyPath hasSuffix:@"PADScanDepthVideo"] ) {
+			doType = PADINDEX_FLAVORTITLE_MOVIE;
+			workKey = @"PADScanDepthVideo";
+		} else if( [keyPath hasSuffix:@"PADScanDepthAudio"] ) {
+			doType = PADINDEX_FLAVORTITLE_MUSIC;
+			workKey = @"PADScanDepthAudio";
+		} else if( [keyPath hasSuffix:@"PADScanDepthImage"] ) {
+			doType = PADINDEX_FLAVORTITLE_IMAGE;
+			workKey = @"PADScanDepthImage";
+		} else if( [keyPath hasSuffix:@"PADScanDepthData"] ) {
+			doType = PADINDEX_FLAVORTITLE_FILES;
+			workKey = @"PADScanDepthData";
+		}
+	}
+	
+	if( doType != nil )
+		if( [[self customFlavor] isEqual:doType] )
+		{
+			//NSUndoManager*		undo = [self undoManager];
+			//NSUserDefaults*		defaults = [NSUserDefaults standardUserDefaults];
+			//float				nowLevel = [depthLevel floatValue];
+			//NSString*			undoName = [NSString stringWithFormat:@"Change %@ Scan Level", doType];
+			
+			//[[undo prepareWithInvocationTarget:defaults] setFloat:nowLevel forKey:workKey];
+			//[undo setActionName:undoName];
+			
+			[self setCustomFlavor:nil];
+			[self changeToFlavor:doType];
+
+			didType = YES;
+		} 
+	
+	if( !didType ) 
+	{
+		[super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+	}
 }
 
 //	Not used?
@@ -320,6 +379,8 @@ void MyNavEventProc (NavEventCallbackMessage callBackSelector, NavCBRecPtr callB
 	return currentURL; 
 }
 
+-(NSUndoManager*)undoManager
+	{ return [parentWindow undoManager]; }
 
 #pragma mark ###	Window State Methods	###
 
@@ -355,7 +416,7 @@ void MyNavEventProc (NavEventCallbackMessage callBackSelector, NavCBRecPtr callB
 	float			doLevel = 5.0;
 	NSString*		actualFlavor = DACALFlavorToFlavorValue( slotType );
 	
-	if( !slotType || ([slotType isEqual:[self customFlavor]]) )
+	if( slotType && ([slotType isEqual:[self customFlavor]]) )
 		return;
 	
 	[self setCustomFlavor:slotType];
@@ -475,12 +536,16 @@ void MyNavEventProc (NavEventCallbackMessage callBackSelector, NavCBRecPtr callB
 
 -(void)activeItemState:(BOOL)dataItemEnabled
 {
+	BOOL	needProgressSpinner = ([self pendingVolume] != nil);
+	
 	//	Deactivate everything!
 	[okButton			setEnabled: dataItemEnabled];
 //	[cancelButton		setEnabled: dataItemEnabled];		//	Cancel is handled manually
 	[depthLevel			setEnabled: dataItemEnabled];
 	[slotTypeList		setEnabled: dataItemEnabled];
 	[volumeList			setEnabled: dataItemEnabled];
+	[alternateTitle		setDrawsBackground: dataItemEnabled];
+	[alternateTitle		setEditable: dataItemEnabled];
 	[alternateTitle		setEnabled: dataItemEnabled];
 	[ejectButton		setHidden: !dataItemEnabled];	
 	[clearTitleButton	setHidden: !dataItemEnabled];
@@ -492,18 +557,19 @@ void MyNavEventProc (NavEventCallbackMessage callBackSelector, NavCBRecPtr callB
 	[volumeList			setEnabled: dataItemEnabled];
 	
 	//	Become Busy
-	[indexProgressBar	setHidden: !dataItemEnabled];
 	if( dataItemEnabled ) {
 		[indexProgressBar stopAnimation:self];
 	} else {
 		[indexProgressBar startAnimation:self];
 		[volumeIcon spinUpInDirection:kPADVIVStateRotateClockwise];		//	Run spin-up effect
 	}
+	[indexProgressBar	setHidden: dataItemEnabled ? YES : needProgressSpinner];
 	
 	//	Clean ups for reset
 	if( dataItemEnabled ) {
 		[self setPrompt:@"Please select a destination device slot\nand a CD or DVD to index."];
 		[self setCustomTitle:@""];
+		[self setCustomFlavor:@""];
 	}
 }
 
@@ -530,7 +596,10 @@ void MyNavEventProc (NavEventCallbackMessage callBackSelector, NavCBRecPtr callB
 	NSString*		deviceUUIDString = (NSString*)CFUUIDCreateString( NULL, (CFUUIDRef)deviceID );
 	NSString*		doCmd = [[NSBundle mainBundle] pathForResource:@"carousel" ofType:@"sh"];
 	NSMutableArray*	doArgs = [NSMutableArray arrayWithCapacity:6];	
-	int				doLevel = [depthLevel intValue];												
+	int				doLevel = [depthLevel intValue];
+	
+	if( doLevel == [depthLevel maxValue] )			// For "max" setting we do "all"
+		doLevel = 0;
 	
 	if( newPath != nil )
 		doPath = [NSString stringWithFormat:@"-d%@", [newPath path]];
@@ -569,6 +638,7 @@ void MyNavEventProc (NavEventCallbackMessage callBackSelector, NavCBRecPtr callB
 		[self setPrompt:@"Indexing error #%ld.\nCancelling request."]; 
 	
 	[volumeIcon spinDown];
+	[indexProgressBar setHidden:NO];
 	
 	if( taskResult == 0 ) {
 		//[self setPrompt:@"Indexing complete.\nAdding configuration to carousel."];	
@@ -595,8 +665,6 @@ void MyNavEventProc (NavEventCallbackMessage callBackSelector, NavCBRecPtr callB
 	[indexProgressBar stopAnimation:self];
 	
 	[NSApp endSheet:sheetWindow];
-	[cancelButton setEnabled:YES];
-	[self activeItemState:YES];
 }
 
 
@@ -604,9 +672,10 @@ void MyNavEventProc (NavEventCallbackMessage callBackSelector, NavCBRecPtr callB
 
 -(IBAction) clickCancel:(id)sender 
 {
-	if( indexProgressTask != nil )
+	if( indexProgressTask != nil ) {
+		[self setPrompt:@"Cancelling request..."];
 		[indexProgressTask interrupt];
-	else
+	} else
 		[NSApp endSheet:sheetWindow];
 }
 
@@ -818,6 +887,7 @@ NAVERR:
 	[self syncMediaTitles];
 	
 	// Set Level
+	[self setCustomFlavor:nil];
 	[self changeToFlavor:[slotTypeList titleOfSelectedItem]];
 	
 	// Be Changed

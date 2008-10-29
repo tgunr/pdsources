@@ -441,11 +441,17 @@ PADSearchRequest* PADIndexToolbarController_LastSearch = nil;
 			[workSlot unassignSlotIndex];
 		}
 
-		[self resetSelectedNodesAndAdoptSelection:NO];
-		[(TreeController*)dataController deletedSelections];
+		[(TreeController*)dataController deleteSelections:self];
+		
+		[self resetSelection];
+		[self adoptSelection];
+		//[self resetSelectedNodesAndAdoptSelection:YES];
+		//[(TreeController*)dataController deletedSelections];
 		
 		[AppController playUISound:kASSystemSoundShred];
 		[[dataController undoManager] removeAllActions];			// Seriously, you can not undo anything after this!
+		
+		[PADSearchService updateAllSearches];
     }
 	
 	if ( buttonPushed == kCancelButton )

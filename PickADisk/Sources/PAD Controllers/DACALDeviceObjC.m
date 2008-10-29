@@ -1027,7 +1027,7 @@ NSMutableArray*		gDACALDevices;
 	if( doUI && didWork )
 		didWork = ([self moveDeviceToSlotWithOptions:kDACALOptionMoveDefault] == kDACALOK);
 
-	// NSLog(@"Slot Check In:%@\nManifset URL:%@\nManifest Dictionary:%@", self, manifestURL, manifestDict);
+	 NSLog(@"Slot Check In:%@\nManifset URL:%@\nManifest Dictionary:%@", self, manifestURL, manifestDict);
 
 	return didWork;
 }
@@ -1153,6 +1153,12 @@ NSMutableArray*		gDACALDevices;
 		}
 		CFRelease( volumeData );
 	}
+	NSLog(@"Did Icon");
+
+	// Go ahead and check in
+	[self checkInForUser:NSFullUserName() onHost:[[NSHost currentHost] name] withUI:NO];
+	
+	NSLog(@"Checked in");
 	
 	//	Configure Slot Subtree
 	
@@ -1170,12 +1176,13 @@ NSMutableArray*		gDACALDevices;
 		// Transfer kind xattr to top
 		CFURLSetItemFlavor( (CFURLRef)theSlotContentPath, (CFStringRef)newType );
 		
-		theSubtreeChild = [SimpleTreeNode treeOperationFromLocation:(NSURL*)theSlotContentPath forUI:YES];
+		theSubtreeChild = [SimpleTreeNode treeOperationFromLocation:(NSURL*)theSlotContentPath forUI:NO];
 		
 		[(SimpleNodeData*)[theSubtreeChild nodeData] setName: theSlotTitle];
 		[(SimpleNodeData*)[theSubtreeChild nodeData] setItemSlot: [self slotNumber]];
 		[(SimpleNodeData*)[theSubtreeChild nodeData] setItemDevice: [self slotDeviceRef]];
 		
+		NSLog(@"Node established");
 		
 		[theBoxTreeNode insertChild:theSubtreeChild atIndex:[theBoxTreeNode numberOfChildren]];
 		
@@ -1191,9 +1198,7 @@ NSMutableArray*		gDACALDevices;
 																			   afterDelay:0.2];
 	
 //		[[[[DACALTreeDataSource shared] secondaryController] outlineView] selectItems:[NSArray arrayWithObject:theSubtreeChild] byExtendingSelection:NO];
-
-	// Go ahead and check in
-	[self checkInForUser:NSFullUserName() onHost:[[NSHost currentHost] name] withUI:NO];
+	NSLog(@"Updated and selected");
 	
 	outWasAssigned = YES;
 	
@@ -1210,6 +1215,8 @@ NSMutableArray*		gDACALDevices;
 	{
 		[slotNode removeFromParent];
 		[slotElements removeAllObjects];
+		if( slotVolume )
+			[slotVolume setPadKnownSlot:nil];
 
 		[self setSlotNode:nil];	
 		[self setSlotVolume:nil];
@@ -1414,13 +1421,16 @@ NSMutableArray*		gDACALDevices;
 -(void)indexedNewVolume:(DACVolume*)newVolume forSlot:(DACALSlotNum)newSlot ofType:(NSString*)newType forTarget:(id)finishedTarget
 {
 	DACALSlot*		workSlot = [self slotWithNumber:newSlot];
+	NSString*		thePath = [newVolume volumePath];
 	
 	[workSlot slotAssignedIndexFromVolume:newVolume asType:newType];
 	
 	// Notch belt
 	slotsUsed++;
-			
-	[PADOperationControlDevice finishIndexingVolume:[newVolume volumePath] forSlot:newSlot onDevice:self forTarget:finishedTarget];	
+	
+	NSLog(@"assigned slot");
+	
+	[PADOperationControlDevice finishIndexingVolume:thePath forSlot:newSlot onDevice:self forTarget:finishedTarget];	
 }
 
 -(void)indexUnassignedForSlot:(DACALSlot*)oldSlot

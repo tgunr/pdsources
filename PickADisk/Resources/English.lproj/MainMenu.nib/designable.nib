@@ -2495,11 +2495,11 @@
 																		<int key="NSfFlags">16</int>
 																	</object>
 																	<reference key="NSControlView" ref="708284370"/>
-																	<double key="NSMaxValue">5.000000e+00</double>
+																	<double key="NSMaxValue">1.000000e+01</double>
 																	<double key="NSMinValue">1.000000e+00</double>
-																	<double key="NSValue">5.000000e+00</double>
+																	<double key="NSValue">9.000000e+00</double>
 																	<double key="NSAltIncValue">0.000000e+00</double>
-																	<int key="NSNumberOfTickMarks">5</int>
+																	<int key="NSNumberOfTickMarks">10</int>
 																	<int key="NSTickMarkPosition">0</int>
 																	<bool key="NSAllowsTickMarkValuesOnly">YES</bool>
 																	<bool key="NSVertical">NO</bool>
@@ -2601,11 +2601,11 @@
 																	<string key="NSContents"/>
 																	<reference key="NSSupport" ref="1063389510"/>
 																	<reference key="NSControlView" ref="785055497"/>
-																	<double key="NSMaxValue">5.000000e+00</double>
+																	<double key="NSMaxValue">1.000000e+01</double>
 																	<double key="NSMinValue">1.000000e+00</double>
-																	<double key="NSValue">3.000000e+00</double>
+																	<double key="NSValue">5.000000e+00</double>
 																	<double key="NSAltIncValue">0.000000e+00</double>
-																	<int key="NSNumberOfTickMarks">5</int>
+																	<int key="NSNumberOfTickMarks">10</int>
 																	<int key="NSTickMarkPosition">0</int>
 																	<bool key="NSAllowsTickMarkValuesOnly">YES</bool>
 																	<bool key="NSVertical">NO</bool>
@@ -2687,11 +2687,11 @@
 																	<string key="NSContents"/>
 																	<reference key="NSSupport" ref="1063389510"/>
 																	<reference key="NSControlView" ref="188073521"/>
-																	<double key="NSMaxValue">5.000000e+00</double>
+																	<double key="NSMaxValue">1.000000e+01</double>
 																	<double key="NSMinValue">1.000000e+00</double>
 																	<double key="NSValue">1.000000e+00</double>
 																	<double key="NSAltIncValue">0.000000e+00</double>
-																	<int key="NSNumberOfTickMarks">5</int>
+																	<int key="NSNumberOfTickMarks">10</int>
 																	<int key="NSTickMarkPosition">0</int>
 																	<bool key="NSAllowsTickMarkValuesOnly">YES</bool>
 																	<bool key="NSVertical">NO</bool>
@@ -2805,11 +2805,11 @@
 																	<string key="NSContents"/>
 																	<reference key="NSSupport" ref="1063389510"/>
 																	<reference key="NSControlView" ref="433715035"/>
-																	<double key="NSMaxValue">5.000000e+00</double>
+																	<double key="NSMaxValue">1.000000e+01</double>
 																	<double key="NSMinValue">1.000000e+00</double>
-																	<double key="NSValue">2.000000e+00</double>
+																	<double key="NSValue">5.000000e+00</double>
 																	<double key="NSAltIncValue">0.000000e+00</double>
-																	<int key="NSNumberOfTickMarks">5</int>
+																	<int key="NSNumberOfTickMarks">10</int>
 																	<int key="NSTickMarkPosition">0</int>
 																	<bool key="NSAllowsTickMarkValuesOnly">YES</bool>
 																	<bool key="NSVertical">NO</bool>
@@ -2824,7 +2824,7 @@
 																<object class="NSTextFieldCell" key="NSCell" id="376079449">
 																	<int key="NSCellFlags">68288064</int>
 																	<int key="NSCellFlags2">272630784</int>
-																	<string key="NSContents">Image:</string>
+																	<string key="NSContents">Images:</string>
 																	<reference key="NSSupport" ref="535736222"/>
 																	<reference key="NSControlView" ref="585203693"/>
 																	<reference key="NSBackgroundColor" ref="591678401"/>

@@ -732,8 +732,10 @@ PADSearchTerm*	PADCopySearchTermWithTitleOrID( NSString* aTermName )
 	for( parentIndex=0; parentIndex < parentCount; parentIndex++ )
 	{
 		indexParent = [parentQueue objectAtIndex:parentIndex];
-		testParent = [[indexParent nodeData] matchActual];
-		testChild = [[child nodeData] matchActual];
+		testParent = [indexParent matchActual];
+		testChild = [child matchActual];
+		//testParent = [[indexParent nodeData] matchActual];
+		//testChild = [[child nodeData] matchActual];
 		parentActual = [[testParent children] indexOfObjectIdenticalTo:testChild];
 		if( parentActual != NSNotFound ) {
 			foundParent = indexParent;

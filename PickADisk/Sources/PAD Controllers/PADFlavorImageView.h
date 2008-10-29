@@ -78,6 +78,7 @@ extern	const	CGFloat		kPADVIVStateRotateCounterClockwise;
 }
 
 +(void)runSpinForIcon:(PADVolumeIconView*)aniIcon spinUp:(BOOL)isStarting;
++(void)runSpinUpForIcon:(PADVolumeIconView*)aniIcon;
 
 @end
 

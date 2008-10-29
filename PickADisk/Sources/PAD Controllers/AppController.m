@@ -22,7 +22,7 @@
 #import "LicenseController.h"
 
 #define PAD_BUSYBODY_DELAY	0.1
-#define PAD_PREFS_VERSION	(const char*)"0.5"
+#define PAD_PREFS_VERSION	(const char*)"0.6"
 
 @implementation AppController
 static AppController *shared;
@@ -129,9 +129,9 @@ static AppController *shared;
 	[defaultPrefs setObject:boolTRUE forKey:@"PADEjectOnIndex"];
 	[defaultPrefs setObject:boolTRUE forKey:@"PADCheckInOnIndex"];
 	
-	[defaultPrefs setObject:[NSNumber numberWithInt:5] forKey:@"PADScanDepthData"];
-	[defaultPrefs setObject:[NSNumber numberWithInt:3] forKey:@"PADScanDepthAudio"];
-	[defaultPrefs setObject:[NSNumber numberWithInt:2] forKey:@"PADScanDepthImage"];
+	[defaultPrefs setObject:[NSNumber numberWithInt:7] forKey:@"PADScanDepthData"];
+	[defaultPrefs setObject:[NSNumber numberWithInt:5] forKey:@"PADScanDepthAudio"];
+	[defaultPrefs setObject:[NSNumber numberWithInt:5] forKey:@"PADScanDepthImage"];
 	[defaultPrefs setObject:[NSNumber numberWithInt:1] forKey:@"PADScanDepthVideo"];
 	
 	[defaultPrefs setObject:boolFALSE forKey:@"PADColumnDateAdded"];

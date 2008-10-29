@@ -652,8 +652,7 @@ SLOTTYPEFAILED:
 	
 	while( workItem = [arrayEnum nextObject] )
 	{
-		if( [workItem respondsToSelector:@selector(matchActual)] )
-			workItem = [(SearchNodeData*)workItem matchActual];
+		workItem = [workItem matchActual];
 		
 		if( [[[workItem nodeData] itemElement] isCheckedOut] == YES )
 			[[[[workItem nodeData] itemElement] elementSlot] toggleReservationForUser:nil onHost:nil withUI:YES];
@@ -668,8 +667,7 @@ SLOTTYPEFAILED:
 	
 	while( workItem = [arrayEnum nextObject] )
 	{
-		if( [workItem respondsToSelector:@selector(matchActual)] )
-			workItem = [(SearchNodeData*)workItem matchActual];
+		workItem = [workItem matchActual];
 		
 		if( [[[workItem nodeData] itemElement] isCheckedOut] == NO )
 			[[[[workItem nodeData] itemElement] elementSlot] toggleReservationForUser:nil onHost:nil withUI:YES];

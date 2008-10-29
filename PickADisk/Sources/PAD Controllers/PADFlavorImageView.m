@@ -279,8 +279,8 @@ const	CGFloat		kPADVIVStateRotateCounterClockwise		= 1.0f;
 
 -(void)drawSelfBeginInRect:(NSRect)rect InContext:(CGContextRef)cgPort
 {
-	CGFloat			drawWidthHalf = [self bounds].size.width / 2.0f;
-	CGFloat			drawHeightHalf = [self bounds].size.height / 2.0f;
+	CGFloat			drawWidthHalf = ([self bounds].size.width / 2.0f);
+	CGFloat			drawHeightHalf = ([self bounds].size.height / 2.0f) + 2;
 	
 	//	Rotate around center
 	CGContextSaveGState( cgPort );
@@ -310,8 +310,9 @@ const	CGFloat		kPADVIVStateRotateCounterClockwise		= 1.0f;
 -(void)spinUpInDirection:(CGFloat)spinDirection
 {
 	spinsPerSecond = 0.0;
-	[self setSpinsState:spinDirection];
-	[PADVolumeIconViewSpinAnimation runSpinForIcon:self spinUp:YES];
+	[PADVolumeIconViewSpinAnimation performSelector:@selector(runSpinUpForIcon:) withObject:(id)self afterDelay:0.5];
+	//[self setSpinsState:spinDirection];
+	//[PADVolumeIconViewSpinAnimation runSpinForIcon:self spinUp:YES];
 	//spinsPerSecond = 1.0;
 }
 
@@ -323,7 +324,11 @@ const	CGFloat		kPADVIVStateRotateCounterClockwise		= 1.0f;
 }
 
 -(BOOL)changeToVolumeIcon:(DACVolume*)theVolume
-	{ return [self changeToIconRef:[theVolume mediaIcon]]; }
+{
+	[self changeCurrentRotation:0.0];
+
+	return [self changeToIconRef:[theVolume mediaIcon]]; 
+}
 
 @end	//	PADVolumeIconView
 
@@ -360,6 +365,12 @@ const	CGFloat		kPADVIVStateRotateCounterClockwise		= 1.0f;
 	
 	[goAni startAnimation];
 	[goAni release];
+}
+
++(void)runSpinUpForIcon:(PADVolumeIconView*)aniIcon
+{
+	[aniIcon setSpinsState:kPADVIVStateRotateClockwise];
+	[PADVolumeIconViewSpinAnimation runSpinForIcon:aniIcon spinUp:YES];
 }
 
 @end	//	PADVolumeIconViewSpinAnimation
