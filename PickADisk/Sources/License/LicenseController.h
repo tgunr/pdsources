@@ -1,48 +1,70 @@
 #import <Cocoa/Cocoa.h>
 #import "AquaticPrime.h"
 
-@interface LicenseController : NSWindowController {
+@interface LicenseController : NSWindowController
+{
 	IBOutlet NSWindow*			notLicensedWindow;
 	IBOutlet NSWindow*			enterLicenseWindow;
 	IBOutlet NSWindow*			requestLicenseWindow;
 	IBOutlet NSWindow*			licenseWindow;
 
-	IBOutlet NSTextField*		licenseeField;
-	IBOutlet NSTextField*		licenseMailField;
-
-	IBOutlet NSButton*			cancelBtn;
 	IBOutlet NSButton*			okBtn;
+	
 	// License Notice
 	IBOutlet NSButton*			enterLicenseBtn;
+	IBOutlet NSButton*			demoLicenseBtn;
 	IBOutlet NSButton*			visitLicenseBtn;
+	
 	// Enter License
 	IBOutlet NSButton*			selectLicenseFileBtn;
-	IBOutlet NSButton*			lostLicenseBtn;
+	IBOutlet NSButton*			requestLicenseBtn;
 	IBOutlet NSPathControl*		licensePathControl;
-	// Request License
-	IBOutlet NSButton*			submitRequestBtn;
-
 	
+	// Request License
+	IBOutlet NSTextField*		licenseeField;
+	IBOutlet NSTextField*		licenseMailField;
+	IBOutlet NSTextField*		licenseInvoiceCode;
+	IBOutlet NSButton*			submitRequestBtn;
+	
+	// Valid License
+	IBOutlet NSTextField*		validUserName;
+	IBOutlet NSTextField*		validUserMail;
+	IBOutlet NSTextField*		validUserMessage;
+	
+	NSString*					controllerState;
 }
  
-+ (id)shared;
++ (id)sharedLicenseController;
 - (id)init;
 
-- (IBAction)cancelBtn:(id)sender;	
+- (void)runNotLicensedModalWindow;
+- (void)runChooseLicenseWindow;
+- (void)runHaveLicenseWindow;
+
+- (IBAction)chooseAppLicensedMenu:(id)sender;
+- (IBAction)chooseRequestLicenseMenu:(id)sender;
+
+- (IBAction)cancelLicenseBtn:(id)sender;	
 - (IBAction)okBtn:(id)sender;	
+
 // License Notice
 - (IBAction)enterLicenseBtn:(id)sender;
 - (IBAction)visitLicenseBtn:(id)sender;	
+- (IBAction)demoLicenseBtn:(id)sender;
+
 // Enter License
 - (IBAction)selectLicenseFileBtn:(id)sender;
 - (void)pathControlDoubleClick:(id)sender;	
-- (IBAction)lostLicenseBtn:(id)sender;	
+- (IBAction)requestLicensePressed:(id)sender;	
+
 // Request License
-- (IBAction)submitRequestBtn:(id)sender;	
+- (IBAction)submitBtnPressed:(id)sender;	
 - (void)updateLicensePanel;
 - (void)showNotLicensed;
+
 // Licensed
 - (IBAction)closeLicensedSheet: (id)sender;
+
 @end
 
 @interface License : NSObject
@@ -62,7 +84,7 @@
 - (void)setLicenseData:(NSData *)data;
 - (NSDictionary*)checkLicenseFile:(NSString*)licensePath;
 - (BOOL)openLicenseFile:(NSString*)licensePath ;
-- (BOOL*)licenseValid;
+- (BOOL)licenseValid;
 - (int)limit;
 - (BOOL*)checkV;
 - (BOOL)registerLicenseFromFile:(NSString*)licensePath;

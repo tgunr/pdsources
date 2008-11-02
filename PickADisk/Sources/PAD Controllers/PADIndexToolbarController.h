@@ -67,6 +67,7 @@
 
 - (BOOL)allowCheck:(BOOL)inOrOut;
 - (BOOL)nodesContainMountedSlotVolumes:(NSArray*)nodeArray;
+- (BOOL)countFreeSlots:(NSInteger*)slotCount;
 
 - (NSString*)checkedOutTitle;
 - (void)reportNoDevice:(BOOL)hasBox;

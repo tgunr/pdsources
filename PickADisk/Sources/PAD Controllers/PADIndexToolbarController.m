@@ -7,7 +7,7 @@
 //
 
 #import "PADIndexToolbarController.h"
-#import "LicenseController.h"
+#import "LicenseService.h"
 
 @implementation PADIndexToolbarController
 
@@ -58,22 +58,24 @@ PADSearchRequest* PADIndexToolbarController_LastSearch = nil;
 	BOOL		anyNodesSelected = [[self selectedNodes] count] > 0;
 	BOOL		anyMountedSlots = [self nodesContainMountedSlotVolumes:[self selectedNodes]];
 	BOOL		anyUnits = DACALDevicesGetCount() > 0;
+	BOOL		anyFreeSlots = [self countFreeSlots:NULL];
 	
 	SEL			theItemAction = [item action];
 	
-	if( theItemAction == @selector(addSlot:) ) updateIt = anyUnits;
-	else if( theItemAction == @selector(mountDisc:) ) updateIt = anyNodesSelected;
-	else if( theItemAction == @selector(checkInOut:) ) updateIt = [self allowCheck:YES];
-	else if( theItemAction == @selector(checkIn:) ) updateIt = [self allowCheck:NO];
-	else if( theItemAction == @selector(checkOut:) ) updateIt = [self allowCheck:YES];
-	else if( theItemAction == @selector(deleteSlot:) ) updateIt = anyNodesSelected;
-	else if( theItemAction == @selector(idUnits:) ) updateIt = NO; // anyUnits;
-	else if( theItemAction == @selector(printReport:) ) updateIt = anyDevicesSelected;
-	else if( theItemAction == @selector(retractDoor:) ) updateIt = anyDevicesSelected;
-	else if( theItemAction == @selector(resetCarousel:) ) updateIt = anyDevicesSelected;
-	else if( theItemAction == @selector(gotoSlot:) ) updateIt = anyNodesSelected; // anyDevicesSelected;
-	else if( theItemAction == @selector(ejectVolumes:) ) updateIt = anyMountedSlots;
-	else if( theItemAction == @selector(runLicense:) ) updateIt = NO;
+	if( theItemAction == @selector(addSlot:) )				updateIt = anyUnits && anyFreeSlots;
+	else if( theItemAction == @selector(mountDisc:) )		updateIt = anyNodesSelected;
+	else if( theItemAction == @selector(checkInOut:) )		updateIt = [self allowCheck:YES];
+	else if( theItemAction == @selector(checkIn:) )			updateIt = [self allowCheck:NO];
+	else if( theItemAction == @selector(checkOut:) )		updateIt = [self allowCheck:YES];
+	else if( theItemAction == @selector(deleteSlot:) )		updateIt = anyNodesSelected;
+	else if( theItemAction == @selector(idUnits:) )			updateIt = NO; // anyUnits;
+	else if( theItemAction == @selector(printReport:) )		updateIt = anyDevicesSelected;
+	else if( theItemAction == @selector(retractDoor:) )		updateIt = anyDevicesSelected;
+	else if( theItemAction == @selector(resetCarousel:) )	updateIt = anyDevicesSelected;
+	else if( theItemAction == @selector(gotoSlot:) )		updateIt = anyNodesSelected; // anyDevicesSelected;
+	else if( theItemAction == @selector(ejectVolumes:) )	updateIt = anyMountedSlots;
+	else if( theItemAction == @selector(runLicense:) )		updateIt = YES;
+	else if( theItemAction == @selector(requestLicense:) )	updateIt = YES;
 	
 	return updateIt;
 }
@@ -254,6 +256,26 @@ PADSearchRequest* PADIndexToolbarController_LastSearch = nil;
 	[[pathControl cell] setFont:[NSFont controlContentFontOfSize:10.0]];
 }
 
+-(BOOL)countFreeSlots:(NSInteger*)slotCount
+{
+	BOOL				freeSlot = NO;
+	NSInteger			outCount = 0;
+	NSEnumerator*		deviceEnum = [gDACALDevices objectEnumerator];
+	DACALDevice*		workDevice = nil;
+	
+	while ( workDevice = [deviceEnum nextObject] ) 
+		outCount += [workDevice slotsUsed];
+
+	if( [[PADLicenseService sharedLicenseService] licenseValid] != YES )
+		freeSlot = ([[PADLicenseService sharedLicenseService] licenseLimit] <= outCount);
+	else
+		freeSlot = ([gDACALDevices count] > 0);
+	
+	if( slotCount != NULL )
+		*slotCount = outCount;
+	return freeSlot;
+}
+
 //	This method activates the various toolbar item states depending on the current selection
 //	in the tree/data view
 -(void)adoptSelection
@@ -261,29 +283,12 @@ PADSearchRequest* PADIndexToolbarController_LastSearch = nil;
 	BOOL			anyBox = NO;
 	BOOL			anySlot = NO;
 	BOOL			anyVolumes = [self nodesContainMountedSlotVolumes:[self selectedNodes]];
-	BOOL			freeSlot = NO;
-	//NSToolbarItem*	checkTBItem = [self checkOutToolbarItem];
+	BOOL			freeSlot = [self countFreeSlots:NULL];
 	
 	if( [self selectedDevices] )
 		anyBox = [[self selectedDevices] count] > 0;
 	if( [self selectedNodes] )	
 		anySlot = [[self selectedNodes] count] > 0;
-	
-	//if( checkTBItem != nil )
-	//	[checkTBItem setLabel:[self checkedOutTitle]];
-	
-	if( *[[License shared] checkV] != YES )
-	{
-		NSInteger	boxIndex, boxCount = [gDACALDevices count];
-		NSInteger	slotCount = 0;
-		
-		for( boxIndex=0; boxIndex < boxCount; boxIndex++ )
-			slotCount += [[gDACALDevices objectAtIndex:boxIndex] slotsUsed];
-		
-		freeSlot = BooleanToBOOL( ([[License shared] limit] <= slotCount) );
-		
-	} else
-		freeSlot = anyBox;
 	
 	if( resetButton )		[resetButton setEnabled:anyBox];
 	if( closeDoorButton )	[closeDoorButton setEnabled:anyBox];

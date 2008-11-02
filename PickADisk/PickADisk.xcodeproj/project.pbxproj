@@ -23,6 +23,7 @@
 		5C2EBE960E2979B3009BAF4C /* sidebarpref.icns in Resources */ = {isa = PBXBuildFile; fileRef = 5C2EBE950E2979B3009BAF4C /* sidebarpref.icns */; };
 		5C2EBE9C0E2991BF009BAF4C /* PADPrefsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C2EBE9A0E2991BF009BAF4C /* PADPrefsController.m */; };
 		5C30383C0EA5C8CE0067A8A8 /* PADPrefsTreeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C30383A0EA5C8CE0067A8A8 /* PADPrefsTreeController.m */; };
+		5C3FAEE80EBA6FB30048BBA1 /* LicenseService.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C3FAEE60EBA6FB30048BBA1 /* LicenseService.m */; };
 		5C438A5A0E8E825F0070CF56 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0247A8BE007179D411CA0E35 /* Foundation.framework */; };
 		5C440D750E5C27DF0020A588 /* Generic_Music.icns in Resources */ = {isa = PBXBuildFile; fileRef = 5C440D720E5C27DF0020A588 /* Generic_Music.icns */; };
 		5C440D760E5C27DF0020A588 /* Generic_Files.icns in Resources */ = {isa = PBXBuildFile; fileRef = 5C440D730E5C27DF0020A588 /* Generic_Files.icns */; };
@@ -80,7 +81,6 @@
 		5CBA913B0E739484000279A2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5CBA913A0E739484000279A2 /* Localizable.strings */; };
 		5CBA91670E73D380000279A2 /* driver.icns in Resources */ = {isa = PBXBuildFile; fileRef = 5CBA91660E73D380000279A2 /* driver.icns */; };
 		5CC83EED0E6F6C81000903AD /* swapslot.sh in Resources */ = {isa = PBXBuildFile; fileRef = 5CC83EEC0E6F6C81000903AD /* swapslot.sh */; };
-		5CC83F710E6F957B000903AD /* PADURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CC83F6F0E6F957B000903AD /* PADURL.m */; };
 		5CC83FC70E6FB34C000903AD /* DACALDeviceObjC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CC83FC50E6FB34C000903AD /* DACALDeviceObjC.m */; };
 		5CD985180E4E60A700441ED7 /* PADHomeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CD985160E4E60A700441ED7 /* PADHomeView.m */; };
 		5CDAC1C50E934054003984E1 /* success.icns in Resources */ = {isa = PBXBuildFile; fileRef = 5CDAC1C40E934054003984E1 /* success.icns */; };
@@ -179,6 +179,8 @@
 		5C3038390EA5C8CE0067A8A8 /* PADPrefsTreeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PADPrefsTreeController.h; sourceTree = "<group>"; };
 		5C30383A0EA5C8CE0067A8A8 /* PADPrefsTreeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PADPrefsTreeController.m; sourceTree = "<group>"; };
 		5C303C270EA7E7740067A8A8 /* FullskiesAltostratus0007_M.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = FullskiesAltostratus0007_M.jpg; sourceTree = "<group>"; };
+		5C3FAEE50EBA6FB30048BBA1 /* LicenseService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LicenseService.h; path = Sources/License/LicenseService.h; sourceTree = "<group>"; };
+		5C3FAEE60EBA6FB30048BBA1 /* LicenseService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LicenseService.m; path = Sources/License/LicenseService.m; sourceTree = "<group>"; };
 		5C440D720E5C27DF0020A588 /* Generic_Music.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Generic_Music.icns; sourceTree = "<group>"; };
 		5C440D730E5C27DF0020A588 /* Generic_Files.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Generic_Files.icns; sourceTree = "<group>"; };
 		5C440D740E5C27DF0020A588 /* Generic_Movie.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Generic_Movie.icns; sourceTree = "<group>"; };
@@ -597,6 +599,8 @@
 		75E6672A0E92AC3000A9DA07 /* License */ = {
 			isa = PBXGroup;
 			children = (
+				5C3FAEE50EBA6FB30048BBA1 /* LicenseService.h */,
+				5C3FAEE60EBA6FB30048BBA1 /* LicenseService.m */,
 				75F02D210E955A9400A02B14 /* LicenseController.h */,
 				75F02D220E955A9400A02B14 /* LicenseController.m */,
 				75E666F90E92A99000A9DA07 /* AquaticPrime.h */,
@@ -789,7 +793,6 @@
 				5CE577300E590C230086A57F /* PADOperationControlDevice.m in Sources */,
 				5C57B6300E6635600063190F /* PADIndexNodeData.m in Sources */,
 				5C8E54F60E6A1D690029D83A /* DACALViewDataSource.m in Sources */,
-				5CC83F710E6F957B000903AD /* PADURL.m in Sources */,
 				5CC83FC70E6FB34C000903AD /* DACALDeviceObjC.m in Sources */,
 				5CBA8FCF0E71DD0F000279A2 /* NSSlider_Animation.m in Sources */,
 				5C2E40E30E73FBD300D7DF4A /* DACDriverInstaller.m in Sources */,
@@ -800,6 +803,7 @@
 				5C76C1340E9ADD0500E363B0 /* NSString_Extensions.m in Sources */,
 				5C30383C0EA5C8CE0067A8A8 /* PADPrefsTreeController.m in Sources */,
 				5C88C0100EB7B7CA005D267C /* PADFlavorImageView.m in Sources */,
+				5C3FAEE80EBA6FB30048BBA1 /* LicenseService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

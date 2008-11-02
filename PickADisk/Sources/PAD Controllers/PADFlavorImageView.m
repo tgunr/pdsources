@@ -375,6 +375,68 @@ const	CGFloat		kPADVIVStateRotateCounterClockwise		= 1.0f;
 
 @end	//	PADVolumeIconViewSpinAnimation
 
+@implementation PADNamedImageView
+
+-(id)initSelfWithFrame:(NSRect)newFrame
+{
+	resourceAlpha = 0.42;
+	resourceName = @"PAD4.icns";
+	
+	[super initSelfWithFrame:newFrame];
+}
+
+-(BOOL)loadResourceImage
+{
+	CGFloat		newAlpha = [self resourceAlpha];
+	NSString*	newName = [self resourceName];
+	BOOL		newImage = (newName != nil);
+	
+	if( newImage ) {
+		[self setCurrentAlpha:newAlpha];
+		[self setCurrentImage:[NSImage imageNamed:newName]];
+	}
+	
+	return newImage;
+}
+
+-(BOOL)changeToDefaultImage
+	{ return [self loadResourceImage]; }
+
+-(NSString*)resourceName
+	{ return resourceName; }
+
+-(void)setResourceName:(NSString*)newName
+{
+	if( !resourceName || ![resourceName isEqual:newName] )
+	{
+		if( newName ) [newName retain];
+		if( resourceName ) [resourceName release];
+		resourceName = newName;
+	}	
+}
+
+-(void)changeResourceName:(NSString*)newName
+{
+	[self setResourceName:newName];
+	[self loadResourceImage];
+	[self setNeedsDisplay:YES];
+}
+
+
+-(CGFloat)resourceAlpha
+{ return resourceAlpha; }
+
+-(void)setResourceAlpha:(CGFloat)newAlpha
+	{ resourceAlpha = newAlpha; }
+
+-(void)changeResourceAlpha:(CGFloat)newAlpha 
+{
+	[self setResourceAlpha:newAlpha];
+	[self setCurrentAlpha:newAlpha];
+	[self setNeedsDisplay:YES];
+}
+
+@end
 
 
 

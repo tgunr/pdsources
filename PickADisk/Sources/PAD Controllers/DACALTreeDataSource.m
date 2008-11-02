@@ -454,10 +454,13 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 
 - (void)updatePrompt
 {
-	NSString*	promptData;
+	NSString*		promptData;
 	DACALSlotNum	count = DACALDevicesGetCount();
-	NSString*	carouselString;
-	NSString*	itemString;
+	NSString*		carouselString;
+	NSString*		itemString;
+	NSString*		slotString;
+	NSInteger		freeCount = 0;
+	BOOL			canAdd = [[[AppController shared] toolbarController] countFreeSlots:&freeCount];
 	
 	if( count == 1 ) {
 		carouselString = NSLocalizedString(@"carousel", @"Data View Prompt Singular form of carousel device");
@@ -467,11 +470,16 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 		itemString = NSLocalizedString(@"items", @"DataView Prompt Plural form of data view elements");
 	}
 	
+	if( freeCount == 1 )
+		slotString = NSLocalizedString(@"slot", @"Data View Prompt Singular form of carousel device slot");
+	else 
+		slotString = NSLocalizedString(@"slots", @"Dava View Prompt Plural form of carousel device slots");
+	
 	if( [[[tabView selectedTabViewItem] identifier] compare:@"Home"] == NSOrderedSame )
 	{
 		if( count == 0) promptData = NSLocalizedString(@"No carousels detected", @"Data View Prompt when no carousel devices are currently detected");
-		else promptData = [NSString stringWithFormat:NSLocalizedString(@"%i %@ online", @"Data View Prompt Format for number of carousel devices attached"),
-						   count, carouselString];
+		else promptData = [NSString stringWithFormat:NSLocalizedString(@"%i %@ with %i %@", @"Data View Prompt Format for number of carousel devices attached and number of free slots"),
+						   count, carouselString, freeCount, slotString];
 	} else {
 		NSArray *selectedNodes = [secondaryController selectedNodes];
 		
@@ -483,7 +491,10 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 		if( count ) promptData = [NSString stringWithFormat:NSLocalizedString(@"%i of %i selected", @"Data View Standard Prompt Format for number of elements selected of total count"), count, index];
 		else		promptData = [NSString stringWithFormat:NSLocalizedString(@"%i %@", @"Data View Prompt Format for total count of visible elements"), index, itemString];
 	}
-	   
+	
+	if( !canAdd )
+		promptData = NSLocalizedString(@"Please purchase PickADisk to add more slots", @"Data View Prompt when max slots in demo mode");
+	
 	   [self setPrompt:promptData];
 }
 	   	   

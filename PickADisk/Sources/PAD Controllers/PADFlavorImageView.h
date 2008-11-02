@@ -82,4 +82,19 @@ extern	const	CGFloat		kPADVIVStateRotateCounterClockwise;
 
 @end
 
+@interface PADNamedImageView : PADSimpleImageView
+{
+	NSString*		resourceName;
+	CGFloat			resourceAlpha;
+}
+
+-(NSString*)resourceName;
+-(void)setResourceName:(NSString*)newName;
+-(void)changeResourceName:(NSString*)newName;
+
+-(CGFloat)resourceAlpha;
+-(void)setResourceAlpha:(CGFloat)newAlpha;
+-(void)changeResourceAlpha:(CGFloat)newAlpha;
+
+@end	//	PADNamedImageView
 

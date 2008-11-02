@@ -20,6 +20,7 @@
 #import "DACDriverInstaller.h"
 #import "DACVolume.h"
 #import "LicenseController.h"
+#import "LicenseService.h"
 
 #define PAD_BUSYBODY_DELAY	0.1
 #define PAD_PREFS_VERSION	(const char*)"0.6"
@@ -177,6 +178,10 @@ static AppController *shared;
 	
 	PADBOX_VALID_BEGIN
 	
+	// First wake up the License Controller which may show modal UI
+	// Since we're not requiring the license we can start it here instead of in the init
+	[PADLicenseService sharedLicenseService];
+	
 	// Register for 'GURL' Apple Event to handle URL opening
 	[[NSAppleEventManager sharedAppleEventManager] setEventHandler:self andSelector:@selector(handleOpenLocationAppleEvent:withReplyEvent:) forEventClass:kInternetEventClass andEventID:kAEGetURL];
 	
@@ -223,7 +228,7 @@ static AppController *shared;
 - (BOOL)application:(NSApplication *)theApplication openFile:(NSString *)filename
 {
 	if( [filename hasSuffix:@"padlicense"] == YES )
-		return [[LicenseController shared] registerLicenseFromFile:filename];
+		return [[PADLicenseService sharedLicenseService] registerLicenseFromFile:filename];
 	
 	return YES;
 }
@@ -456,33 +461,28 @@ static AppController *shared;
 	busyBusy = NO;
 }
 
-- (IBAction)runLicense:(id)sender {
-    if (![NSBundle loadNibNamed:@"License" owner:self]) 
-		NSLog(@"Warning! Could not load License file.\n");
-	
-	// Validate pref license
-	BOOL*	valid = [[License shared] licenseValid];
-	
-#pragma unused (valid)
-	
-}
+- (IBAction)runLicense:(id)sender 
+	{ [[LicenseController sharedLicenseController] chooseAppLicensedMenu:self]; }
+
+- (IBAction)requestLicense:(id)sender 
+	{ [[LicenseController sharedLicenseController] chooseRequestLicenseMenu:self]; }
 
 - (void)doCheckWork:(NSTimer*)checkTimer {
 	// Validate pref license
-	BOOL *valid = [[License shared] licenseValid];
-	if (! *valid)  {
+	BOOL valid = [[License shared] licenseValid];
+	if (!valid)  {
 		if (![NSBundle loadNibNamed:@"License" owner:self]) 
 			NSLog(@"Warning! Could not load License file.\n");
-		[[LicenseController shared] showNotLicensed];
+		[[LicenseController sharedLicenseController] showNotLicensed];
 	}
 }
 
 - (void)doCheckCarousels:(NSTimer*)checkTimer {
-	BOOL *valid = [[License shared] checkV];
-	if (! *valid)  {
+	BOOL* valid = [[License shared] checkV];
+	if (!*valid)  {
 		if (![NSBundle loadNibNamed:@"License" owner:self]) 
 			NSLog(@"Warning! Could not load License file.\n");
-		[[LicenseController shared] showNotLicensed];
+		[[LicenseController sharedLicenseController] showNotLicensed];
 	}
 }
 

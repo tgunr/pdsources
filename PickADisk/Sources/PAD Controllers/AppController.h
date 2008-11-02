@@ -52,6 +52,7 @@ BOOL			busyBusy;
 - (IBAction)gotoSlot:(id)sender;
 - (IBAction)ejectVolumes:(id)sender;
 - (IBAction)runLicense:(id)sender;
+- (IBAction)requestLicense:(id)sender;
 
 - (void)addBusyBody:(id)cell ofView:(id)view;
 - (void)addBusyBody:(id)item;

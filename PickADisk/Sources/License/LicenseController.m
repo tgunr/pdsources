@@ -8,12 +8,31 @@
 
 #import "PADPrefsController.h"
 #import "LicenseController.h"
+#import "LicenseService.h"
+
+//	License Controller State values
+
+NSString*		kPADLicenseStateLaunching		= @"Init";
+NSString*		kPADLicenseStateFirstAnnounce	= @"DemoAnnounce";
+NSString*		kPADLicenseStateRunningDemo		= @"Demo";
+NSString*		kPADLicenseStateEnterLicense	= @"DemoLicense";
+NSString*		kPADLicenseStateRequestLicense	= @"RequestLicense";
+NSString*		kPADLicenseStateShowLicense		= @"ShowLicense";
+
 
 @implementation LicenseController
 static LicenseController*	shared_LicenseController = nil;
 static BOOL	shared_LicenseControllerB = false;
 
-+ (id)shared {
+- (void)dealloc
+{
+	[[NSUserDefaultsController sharedUserDefaultsController] removeObserver:self forKeyPath:@"values.licenseDict"];
+	
+	[super dealloc];
+}
+
++ (id)sharedLicenseController
+{
     if (!shared_LicenseController)
         [[LicenseController alloc] init];
     return shared_LicenseController;
@@ -27,6 +46,9 @@ static BOOL	shared_LicenseControllerB = false;
 	if( self = [super init] ) {
 		NSLog(@"LicenseController Created");
 		shared_LicenseController = (LicenseController*)self;
+		controllerState = kPADLicenseStateLaunching;
+		[[NSUserDefaultsController sharedUserDefaultsController] addObserver:self forKeyPath:@"values.licenseDict" options:0 context:NULL];
+
 	}
 	
 	return self;
@@ -36,7 +58,133 @@ static BOOL	shared_LicenseControllerB = false;
     [licensePathControl setTarget:self];
     [licensePathControl setDoubleAction:@selector(pathControlDoubleClick:)];
 	[licensePathControl setDelegate:self];
+	
+	if( ![[PADLicenseService sharedLicenseService] licenseValid] )
+	{
+		BOOL	haveFirstRun = [[NSUserDefaults standardUserDefaults] boolForKey:kPADLicenseFirstRunPrefKey];
+		
+		if( !haveFirstRun )
+		{
+			[[NSUserDefaults standardUserDefaults] setBool:YES forKey:kPADLicenseFirstRunPrefKey];
+			[self runNotLicensedModalWindow];
+		}
+		
+	}
 }
+
+- (void)closeNotLicensedWindow
+{
+	[notLicensedWindow close];
+	[NSApp stopModal]; 
+}
+
+- (void)closeStateWindow
+{
+	if( controllerState )
+		if( [controllerState isEqual:kPADLicenseStateFirstAnnounce] )
+			[self closeNotLicensedWindow];
+		else if( [controllerState isEqual:kPADLicenseStateEnterLicense] )
+			[enterLicenseWindow performClose:self];
+		else if( [controllerState isEqual:kPADLicenseStateRequestLicense] )
+			[requestLicenseWindow performClose:self];
+		else if( [controllerState isEqual:kPADLicenseStateShowLicense] )
+			[licenseWindow performClose:self];
+
+	// Note this leaves the state unchanged so the caller is responsible for updating it
+}
+
+- (void)runNotLicensedModalWindow
+{
+	NSModalSession	demoSession;
+
+	controllerState = kPADLicenseStateFirstAnnounce;
+	if( demoSession = [[NSApplication sharedApplication] beginModalSessionForWindow:notLicensedWindow] )
+	{
+		while ([NSApp runModalSession:demoSession] == NSRunContinuesResponse) {
+			;
+			// Tight loop
+		}
+		[[NSApplication sharedApplication] endModalSession:demoSession];
+	}
+}
+
+- (void)runChooseLicenseWindow
+{
+	controllerState = kPADLicenseStateEnterLicense;
+	[enterLicenseWindow setDelegate:self];
+	[enterLicenseWindow makeKeyAndOrderFront:self];
+}
+
+- (void)runRequestLicenseWindow
+{
+	controllerState = kPADLicenseStateRequestLicense;
+
+	NSString*	userName = [[PADLicenseService sharedLicenseService] stringForLicenseKey:kPADLicenseDictKeyUserName];
+	NSString*	userMail = [[PADLicenseService sharedLicenseService] stringForLicenseKey:kPADLicenseDictKeyUserEmail];
+	NSString*	invoiceN = [[PADLicenseService sharedLicenseService] stringForLicenseKey:kPADLicenseDictKeyInvoiceNum];
+
+	if( userName )
+		[licenseeField setStringValue:userName];
+	if( userMail )
+		[licenseMailField setStringValue:userMail];
+	if( invoiceN )
+		[licenseInvoiceCode setStringValue:invoiceN];
+	
+	[requestLicenseWindow makeKeyAndOrderFront:self];
+}
+
+- (void)runHaveLicenseWindow
+{
+	controllerState = kPADLicenseStateShowLicense;
+
+	NSString*	userName = [[PADLicenseService sharedLicenseService] stringForLicenseKey:kPADLicenseDictKeyUserName];
+	NSString*	userMail = [[PADLicenseService sharedLicenseService] stringForLicenseKey:kPADLicenseDictKeyUserEmail];
+	NSString*	userNote = [[PADLicenseService sharedLicenseService] stringForLicenseKey:kPADLicenseDictKeyComment];
+	
+	if( userNote == nil )
+		userNote = @"";
+	
+	[validUserName setStringValue:userName];
+	[validUserMail setStringValue:userMail];
+	[validUserMessage setStringValue:userNote];
+	
+	[licenseWindow center];
+	[licenseWindow makeKeyAndOrderFront:self];
+}
+
+- (IBAction)chooseAppLicensedMenu:(id)sender
+{
+	if( [[PADLicenseService sharedLicenseService] licenseValid] )
+		[self runHaveLicenseWindow];
+	else
+		[self runChooseLicenseWindow];
+}
+
+- (IBAction)chooseRequestLicenseMenu:(id)sender
+{
+	[self closeStateWindow];
+	[self runRequestLicenseWindow];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+	if (object == [NSUserDefaultsController sharedUserDefaultsController] )
+	{
+		if( [keyPath hasSuffix:kPADLicenseDataPrefKey] )
+		{
+			[self closeStateWindow];
+			
+			if( [[PADLicenseService sharedLicenseService] licenseValid] )
+				[self runHaveLicenseWindow];
+		}
+	}
+	else
+	{
+		[super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+	}
+}
+
+
 
 - (void)didEndLicensedSheet:(NSWindow *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo {
     [sheet orderOut:self];
@@ -48,7 +196,7 @@ static BOOL	shared_LicenseControllerB = false;
 }
 
 - (void) updateLicensePanel {
-	BOOL *valid = [[License shared] licenseValid];
+	BOOL valid = [[License shared] licenseValid];
 	if (valid) {
 		[licenseeField setStringValue: [[[License shared] licenseDict] objectForKey: @"Name"]];
 		[licenseMailField setStringValue: [[[License shared] licenseDict] objectForKey: @"Email"]];
@@ -123,7 +271,15 @@ static BOOL	shared_LicenseControllerB = false;
 // -------------------------------------------------------------------------------
 - (NSDragOperation)pathControl:(NSPathControl*)pathControl validateDrop:(id <NSDraggingInfo>)info
 {
-	return NSDragOperationCopy;
+	NSDragOperation		doOp = NSDragOperationNone;
+	NSURL*				url = [NSURL URLFromPasteboard:[info draggingPasteboard]];
+	NSString*			licenseUTI = @"com.polymicrosystems.pickadisk.documents.license";
+
+	if( url != nil )
+		if( CFURLConfromsToUTIs( kCFAllocatorDefault, (CFURLRef)url, (CFArrayRef)[NSArray arrayWithObject:licenseUTI], NULL ) )
+			doOp = NSDragOperationCopy;
+	
+	return doOp;
 }
 
 // -------------------------------------------------------------------------------
@@ -140,8 +296,9 @@ static BOOL	shared_LicenseControllerB = false;
 	NSURL* url = [NSURL URLFromPasteboard:[info draggingPasteboard]];
 	if (url != nil)
 	{
-		[licensePathControl setURL: url];
-		result = YES;
+		result = [[PADLicenseService sharedLicenseService] registerLicenseFromFileURL:url];
+		if( result )
+			[licensePathControl setURL: url];
 	}
 	
 	return result;
@@ -177,11 +334,12 @@ static BOOL	shared_LicenseControllerB = false;
 {
 	NSOpenPanel* panel = [NSOpenPanel openPanel];
 	[panel setAllowsMultipleSelection:NO];
-	[panel setCanChooseDirectories:YES];
+	[panel setCanChooseDirectories:NO];
 	[panel setCanChooseFiles:YES];
 	[panel setResolvesAliases:YES];
-	[panel setTitle:@"Choose a file object"];
-	[panel setPrompt:@"Choose"];
+	[panel setTitle:@"Choose PickADisk License"];
+	[panel setMessage:@"Please locate your PickADisk license document."];
+	[panel setPrompt:@"Register"];
 	
 	NSArray * licenseFiles;
 	NSURL * url;
@@ -191,16 +349,17 @@ static BOOL	shared_LicenseControllerB = false;
 		licenseFiles = [panel filenames];
 		url = [NSURL fileURLWithPath: [licenseFiles objectAtIndex: 0]];
 		[licensePathControl setURL: url];
-		License *validator =  [License shared];
-		NSDictionary *licenseDict = [validator checkLicenseFile: [url path]];
-		if (licenseDict) {
-			NSData * licenseData = [NSData dataWithContentsOfFile:[url path]];
-			//NSString * licenseSignature = [licenseDict objectForKey: @"Signature"];
-			//const void * data = [licenseData bytes];
-			[[NSUserDefaults standardUserDefaults] setObject: licenseData forKey:@"licenseDict"];
-			[validator setLicenseData: licenseData];
-			[self updateLicensePanel];
-		}
+		[[PADLicenseService sharedLicenseService] registerLicenseFromFileURL:url];
+	//	License *validator =  [License shared];
+	//	NSDictionary *licenseDict = [validator checkLicenseFile: [url path]];
+	//	if (licenseDict) {
+	//		NSData * licenseData = [NSData dataWithContentsOfFile:[url path]];
+	//		//NSString * licenseSignature = [licenseDict objectForKey: @"Signature"];
+	//		//const void * data = [licenseData bytes];
+	//		[[NSUserDefaults standardUserDefaults] setObject: licenseData forKey:@"licenseDict"];
+	//		[validator setLicenseData: licenseData];
+	//		[self updateLicensePanel];
+	//	}
 	}
 	
 	//	[panel beginSheetForDirectory:nil file:nil types:nil modalForWindow:[self window]
@@ -232,25 +391,46 @@ static BOOL	shared_LicenseControllerB = false;
 - (IBAction)okBtn:(id)sender {
 }
 
-- (IBAction)cancelBtn:(id)sender {
+- (IBAction)cancelLicenseBtn:(id)sender {
+	
+	[enterLicenseWindow performClose: self];
+	controllerState = @"Demo";
 }
 
 - (IBAction)submitLicense:(id)sender {
 }
 
-- (IBAction)lostLicenseBtn:(id)sender {
+- (IBAction)requestLicensePressed:(id)sender
+{
+	[enterLicenseWindow performClose:self];
+	[self runRequestLicenseWindow];
 }
 
-- (IBAction)submitRequestBtn:(id)sender {
+- (IBAction)submitBtnPressed:(id)sender {
 }
 
 - (IBAction)visitLicenseBtn:(id)sender {
+	
+	NSURL*		buyPADURL = [NSURL URLWithString:NSLocalizedString(@"http://pickadisk.com/purchase/", @"License Controller Literal URL String when user clicks Purchase")];
+	
+	LSOpenCFURLRef( (CFURLRef)buyPADURL, NULL );
+	
+	if( [controllerState isEqual:kPADLicenseStateFirstAnnounce] )
+		controllerState = kPADLicenseStateRunningDemo;
+	[self closeStateWindow];
+}
+
+- (IBAction)demoLicenseBtn:(id)sender {
+	
+	controllerState = kPADLicenseStateRunningDemo;
+	[self closeNotLicensedWindow];
 }
 
 - (IBAction)enterLicenseBtn:(id)sender {
-	[enterLicenseWindow makeKeyAndOrderFront: self];
+	[self closeNotLicensedWindow];
+	controllerState = kPADLicenseStateEnterLicense;
 	[enterLicenseWindow setDelegate: self];
-	[notLicensedWindow performClose: self];
+	[enterLicenseWindow performSelector:@selector(makeKeyAndOrderFront:) withObject:self afterDelay:0.42];
 }
 
 - (IBAction)requestLicenseBtn:(id)sender {
@@ -356,8 +536,8 @@ static BOOL *PADCS[5];
 	
 #pragma unused ( len, data )
 	
-	if (!licenseDict)
-		return self;
+//	if (!licenseDict)
+//		return self;
 	return self;
 }
 
@@ -380,7 +560,7 @@ static BOOL *PADCS[5];
 
 static BOOL isValid = false;
 
-- (BOOL*)licenseValid {
+- (BOOL)licenseValid {
 //	[self limit];
 	isValid = false;
 	*PADCS[(int)PADCS[4]] = false;
@@ -390,10 +570,10 @@ static BOOL isValid = false;
 	if (licenseDict)
 		if( [licenseValidator verifyLicenseData: licenseData] ) {
 			*PADCS[r] = true;
-			return PADCS[r];
+			return *PADCS[r];
 		}
 	
-	return &isValid;
+	return isValid;
 }
 
 - (NSDictionary*)checkLicenseFile:(NSString*)licensePath {
@@ -442,7 +622,7 @@ static BOOL isValid = false;
 
 - (BOOL)registerLicenseFromFile:(NSString*)licensePath {
 	
-	if( *[self licenseValid] == YES )
+	if( [self licenseValid] == YES )
 		return NO;
 	
 	BOOL			goodRegister = NO;

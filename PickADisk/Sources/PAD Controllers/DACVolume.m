@@ -562,7 +562,7 @@ bail:
 		volumeData = DADiskCopyDescription( volumeDiskRef );
 		if( volumeData == NULL ) goto FAILED;
 		
-		//CFShow( volumeData );
+		CFShow( volumeData );
 		
 		//	Extract the volume name
 		volumeName = CFDictionaryGetValue( volumeData, CFSTR("DAVolumeName") );
@@ -641,6 +641,7 @@ bail:
 			NSDictionary*	dvdInfo = [self getDVDMediaInfo];				// autoreleased
 			if( dvdInfo != nil )
 			{
+				NSLog(@"DVD Info Dict: %@", dvdInfo);
 				NSLog(@"DVD Info Dict Key Count: %i", [dvdInfo count]);
 
 				NSEnumerator*		infoEnum = [dvdInfo objectEnumerator];
