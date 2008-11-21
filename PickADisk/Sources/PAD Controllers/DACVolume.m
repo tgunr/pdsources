@@ -562,7 +562,7 @@ bail:
 		volumeData = DADiskCopyDescription( volumeDiskRef );
 		if( volumeData == NULL ) goto FAILED;
 		
-		CFShow( volumeData );
+		//CFShow( volumeData );
 		
 		//	Extract the volume name
 		volumeName = CFDictionaryGetValue( volumeData, CFSTR("DAVolumeName") );
@@ -612,6 +612,9 @@ bail:
 		mediaSize = (NSNumber*)CFDictionaryGetValue( volumeData, CFSTR("DAMediaSize") );
 		if( mediaSize ) mediaSize = (NSNumber*)CFRetain( mediaSize );
 		
+		if( mediaSize )
+			NSLog(@"Media Size: %@", [NSString stringFromByteCount:mediaSize]);
+		
 		//	Aquire the media "type" icon
 		workDict = CFDictionaryGetValue( volumeData, CFSTR("DAMediaIcon") );
 		if( workDict )
@@ -641,7 +644,7 @@ bail:
 			NSDictionary*	dvdInfo = [self getDVDMediaInfo];				// autoreleased
 			if( dvdInfo != nil )
 			{
-				NSLog(@"DVD Info Dict: %@", dvdInfo);
+				//NSLog(@"DVD Info Dict: %@", dvdInfo);
 				NSLog(@"DVD Info Dict Key Count: %i", [dvdInfo count]);
 
 				NSEnumerator*		infoEnum = [dvdInfo objectEnumerator];
@@ -771,8 +774,6 @@ FAILED:
 
 @implementation DACVolumeService
 
-static id	DACVolumeService_shared = nil;
-
 -(void)dealloc
 {
 	if( knownVolumes != nil ) [knownVolumes release];
@@ -786,47 +787,36 @@ static id	DACVolumeService_shared = nil;
 	[super dealloc];
 }
 
--(id)init
+-(void)initSelf
 {
-    if (DACVolumeService_shared) 
-	{
-        [self autorelease];
-        return DACVolumeService_shared;
-    }
-	if( self = [super init] )
-	{
-		DACVolumeService_shared = [self retain];
+	kextBundles = NULL;
+	
+	// Create managed volumes list without autorelease
+	knownVolumes	= [[NSMutableArray alloc] initWithCapacity:0];
+	pendingMounts	= [[NSMutableArray alloc] initWithCapacity:0];
+	pendingUnmounts	= [[NSMutableArray alloc] initWithCapacity:0];		
+}
 
-		kextBundles = NULL;
-		
-		// Create managed volumes list without autorelease
-		knownVolumes	= [[NSMutableArray alloc] initWithCapacity:0];
-		pendingMounts	= [[NSMutableArray alloc] initWithCapacity:0];
-		pendingUnmounts	= [[NSMutableArray alloc] initWithCapacity:0];
+-(id)initializeService
+{ 
+	[self scanMountedRemovableMedia];
 
-		[self scanMountedRemovableMedia];
-		
-		// Setup notifications for media changes
-		NSNotificationCenter *noteCenter = [[NSWorkspace sharedWorkspace] notificationCenter];
-		
-		// Register for all mount notifications
-		[noteCenter addObserver:self selector:@selector(newMediaDetectedNotification:)
-						   name:@"NSWorkspaceDidMountNotification" object:nil]; 
-		// Register for all unmount notifications
-		[noteCenter addObserver:self selector:@selector(existingMediaRemovedNotification:)
-						   name:@"NSWorkspaceWillUnmountNotification" object:nil]; 
-		
-	}
+	// Setup notifications for media changes
+	NSNotificationCenter *noteCenter = [[NSWorkspace sharedWorkspace] notificationCenter];
+	
+	// Register for all mount notifications
+	[noteCenter addObserver:self selector:@selector(newMediaDetectedNotification:)
+					   name:@"NSWorkspaceDidMountNotification" object:nil]; 
+	// Register for all unmount notifications
+	[noteCenter addObserver:self selector:@selector(existingMediaRemovedNotification:)
+					   name:@"NSWorkspaceWillUnmountNotification" object:nil]; 
+	
 	return self;
 }
 
+
 +(id)sharedVolumeService
-{
-	if (!DACVolumeService_shared) {
-		[[DACVolumeService alloc] init];
-	}
-	return DACVolumeService_shared;
-}
+	{ return [DACVolumeService sharedService]; }
 
 -(CFArrayRef)kextBundles
 	{ return kextBundles; }
@@ -1007,6 +997,10 @@ static id	DACVolumeService_shared = nil;
 	NSEnumerator*		slotEnum = [knownSlotsList objectEnumerator];
 	DACVolume*			workVolume = nil;
 	BOOL				slotsOK = NO;
+	NSInteger			recognizedAction = [[NSUserDefaults standardUserDefaults] integerForKey:kDACDiscKeyRecognized];
+	
+	if( recognizedAction != kDACDVKnownIDAutoCheckIn )
+		return;
 	
 	while ( workVolume = [slotEnum nextObject] ) 
 		if( [[workVolume padKnownSlot] slotVolume] == nil )
@@ -1019,7 +1013,7 @@ static id	DACVolumeService_shared = nil;
 {
 	DACALSlot*		slotVolume = [knownSlotVolume padKnownSlot];
 	BOOL			slotsOK = NO;
-	
+
 	if( slotVolume )
 		slotsOK = [slotVolume slotUnmounted];
 	
@@ -1037,13 +1031,15 @@ static id	DACVolumeService_shared = nil;
 	NSArray*		knownMounts = [self knownSlotVolumes:newVolumes];
 	NSArray*		indexMounts = [self knownIndexableVolumes:newVolumes];
 	AppController*	AppControl = [AppController shared];
+	NSInteger		unrecogAction = [[NSUserDefaults standardUserDefaults] integerForKey:kDACDiscKeyUnrecognized];
 	
 	NSLog(@"Mounted Volumes: %@", newVolumes);	
 		
 	[knownVolumes addUniqueObjectsFromArray:newVolumes];
 	
-	if( ([indexMounts count] > 0) && (mainWindow != nil) && ([mainWindow attachedSheet] == nil) )
-		[[AppControl toolbarController] clickAssign:self];
+	if( (unrecogAction == kDACDVUnknownIDDisplayAddWindow ) )
+		if( ([indexMounts count] > 0) && (mainWindow != nil) && ([mainWindow attachedSheet] == nil) )
+			[[AppControl toolbarController] clickAssign:self];
 
 	//	Notify the Add Volumes Window
 	if( [indexMounts count] > 0 )

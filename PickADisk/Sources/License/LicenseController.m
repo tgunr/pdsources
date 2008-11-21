@@ -44,7 +44,7 @@ static BOOL	shared_LicenseControllerB = false;
 		return (id)shared_LicenseController;
 	
 	if( self = [super init] ) {
-		NSLog(@"LicenseController Created");
+		//NSLog(@"LicenseController Created");
 		shared_LicenseController = (LicenseController*)self;
 		controllerState = kPADLicenseStateLaunching;
 		[[NSUserDefaultsController sharedUserDefaultsController] addObserver:self forKeyPath:@"values.licenseDict" options:0 context:NULL];
@@ -66,7 +66,8 @@ static BOOL	shared_LicenseControllerB = false;
 		if( !haveFirstRun )
 		{
 			[[NSUserDefaults standardUserDefaults] setBool:YES forKey:kPADLicenseFirstRunPrefKey];
-			[self runNotLicensedModalWindow];
+			//[self runNotLicensedModalWindow];
+			[self performSelectorOnMainThread:@selector(runNotLicensedModalWindow) withObject:nil waitUntilDone:NO];
 		}
 		
 	}
@@ -175,7 +176,10 @@ static BOOL	shared_LicenseControllerB = false;
 			[self closeStateWindow];
 			
 			if( [[PADLicenseService sharedLicenseService] licenseValid] )
+			{
 				[self runHaveLicenseWindow];
+				[[DACALTreeDataSource shared] updatePrompt];
+			}
 		}
 	}
 	else
@@ -184,7 +188,7 @@ static BOOL	shared_LicenseControllerB = false;
 	}
 }
 
-
+/*
 
 - (void)didEndLicensedSheet:(NSWindow *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo {
     [sheet orderOut:self];
@@ -194,23 +198,7 @@ static BOOL	shared_LicenseControllerB = false;
     [NSApp endSheet:licenseWindow];
 	[NSApp stopModal];
 }
-
-- (void) updateLicensePanel {
-	BOOL valid = [[License shared] licenseValid];
-	if (valid) {
-		[licenseeField setStringValue: [[[License shared] licenseDict] objectForKey: @"Name"]];
-		[licenseMailField setStringValue: [[[License shared] licenseDict] objectForKey: @"Email"]];
-		[NSApp runModalForWindow: enterLicenseWindow];
-		[NSApp beginSheet: enterLicenseWindow
-		   modalForWindow: licenseWindow 
-            modalDelegate: self
-		   didEndSelector: @selector(didEndLicensedSheet:returnCode:contextInfo:)
-			  contextInfo: nil];
-	} else {
-		[licenseeField setStringValue: @""];
-		[licenseMailField setStringValue: @""];
-	}
-}
+*/
 
 // -------------------------------------------------------------------------------
 //	pathControlDoubleClick:sender:
@@ -231,11 +219,12 @@ static BOOL	shared_LicenseControllerB = false;
 - (void)pathControl:(NSPathControl*)pathControl willDisplayOpenPanel:(NSOpenPanel*)openPanel {	
 	// change the wind title and choose buttons titles
 	[openPanel setAllowsMultipleSelection:NO];
-	[openPanel setCanChooseDirectories:YES];
+	[openPanel setCanChooseDirectories:NO];
 	[openPanel setCanChooseFiles:YES];
 	[openPanel setResolvesAliases:YES];
-	[openPanel setTitle:@"Choose a license file"];
-	[openPanel setPrompt:@"Choose"];
+	[openPanel setTitle:@"Choose PickADisk License"];
+	[openPanel setMessage:@"Please locate your PickADisk license document."];
+	[openPanel setPrompt:@"Register"];
 }
 
 // -------------------------------------------------------------------------------
@@ -350,22 +339,8 @@ static BOOL	shared_LicenseControllerB = false;
 		url = [NSURL fileURLWithPath: [licenseFiles objectAtIndex: 0]];
 		[licensePathControl setURL: url];
 		[[PADLicenseService sharedLicenseService] registerLicenseFromFileURL:url];
-	//	License *validator =  [License shared];
-	//	NSDictionary *licenseDict = [validator checkLicenseFile: [url path]];
-	//	if (licenseDict) {
-	//		NSData * licenseData = [NSData dataWithContentsOfFile:[url path]];
-	//		//NSString * licenseSignature = [licenseDict objectForKey: @"Signature"];
-	//		//const void * data = [licenseData bytes];
-	//		[[NSUserDefaults standardUserDefaults] setObject: licenseData forKey:@"licenseDict"];
-	//		[validator setLicenseData: licenseData];
-	//		[self updateLicensePanel];
-	//	}
 	}
 	
-	//	[panel beginSheetForDirectory:nil file:nil types:nil modalForWindow:[self window]
-	//					modalDelegate:self
-	//				   didEndSelector:@selector(openPanelDidEnd:returnCode:contextInfo:)
-	//					  contextInfo:self];
 }
 
 // -------------------------------------------------------------------------------
@@ -388,16 +363,10 @@ static BOOL	shared_LicenseControllerB = false;
 	[licensePathControl setURL: url];
 }
 
-- (IBAction)okBtn:(id)sender {
-}
-
 - (IBAction)cancelLicenseBtn:(id)sender {
 	
 	[enterLicenseWindow performClose: self];
 	controllerState = @"Demo";
-}
-
-- (IBAction)submitLicense:(id)sender {
 }
 
 - (IBAction)requestLicensePressed:(id)sender
@@ -436,36 +405,9 @@ static BOOL	shared_LicenseControllerB = false;
 - (IBAction)requestLicenseBtn:(id)sender {
 }
 
-- (void)alertDidEnd:(NSAlert *)alert returnCode:(int)returnCode contextInfo:(void *)contextInfo {
-    if (returnCode == NSAlertFirstButtonReturn) {
-    }
-}
-
-- (void)showNotLicensed {
-	NSWindow *parentWindow = [NSApp mainWindow];
-	[NSApp beginSheet: notLicensedWindow
-	   modalForWindow: parentWindow
-		modalDelegate: nil
-	   didEndSelector: nil
-		  contextInfo: nil];
-	[notLicensedWindow makeKeyAndOrderFront: self];
-	[notLicensedWindow setDelegate: self];
-	[NSApp runModalForWindow:notLicensedWindow];
-	[NSApp endSheet:notLicensedWindow];
-	[notLicensedWindow orderOut:self];
-	NSAlert *alert = [[[NSAlert alloc] init] autorelease];
-	[alert addButtonWithTitle:@"View Site"];
-	[alert addButtonWithTitle:@"Cancel"];
-	[alert addButtonWithTitle:@"Enter License"];
-	[alert setMessageText:@"PickADisk Not Licensed"];
-	[alert setInformativeText:@"You may use PickADisk without a license but are limited to 50 disks. To purchase a license for PickADisk, click the Visit Site button where you may make a purchase.erscore "];
-	[alert setAlertStyle:NSWarningAlertStyle];
-	[alert beginSheetModalForWindow:[[[[AppController shared] dataView] outlineView] window] modalDelegate:self didEndSelector:@selector(alertDidEnd:returnCode:contextInfo:) contextInfo:nil];
-
-}
-
 @end
 
+/*
 @implementation License
 
 static License*	shared_License = nil;
@@ -643,6 +585,6 @@ static BOOL isValid = false;
 }
 
 @end
-
+*/
 
 

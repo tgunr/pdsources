@@ -17,14 +17,24 @@
 BOOL		gPADBOX_EXPIRED = NO;
 
 @implementation PADBOXController
+
 static	CFAbsoluteTime PADBOXController_Token = 0;
 
--(id)init
+-(void)initSelf
 {
-	if( self = [super init] ) {
-		boxToken = PADBOX_EXPIRE_DATE;
-		foundUpdate = NO;
-	}
+	boxToken = PADBOX_EXPIRE_DATE;
+	foundUpdate = NO;
+}
+
+-(id)initializeService
+{
+
+#if PADBOX_EXPIRE_CHECK != 0
+	[self	performSelectorOnMainThread:@selector(initBOXWithToken:)
+						   withObject:[NSNumber numberWithDouble:PADBOX_EXPIRE_DATE]
+						waitUntilDone:YES];
+#endif		
+	
 	return self;
 }
 
@@ -58,23 +68,21 @@ BUMMER:
 	
  }
 
-+(id)startBOXWithToken:(NSNumber*)token
+-(id)initBOXWithToken:(NSNumber*)token
 {
 	CFAbsoluteTime		tokenNum = [token doubleValue];
-	PADBOXController*	newLife = [[PADBOXController alloc] init];
 	
 	PADBOXController_Token = tokenNum;
-	[newLife checkBOX:nil];
+	[self checkBOX:nil];
 	
 	[NSTimer scheduledTimerWithTimeInterval:PADBOX_DELAY
-									 target:newLife
+									 target:self
 								   selector:@selector(checkBOX:)
 								   userInfo:nil
 									repeats:YES];		
-	self = newLife;	
+
 	return self;
 }
-
 
 - (void)didFindValidUpdate:(SUAppcastItem *)update toHostBundle:(NSBundle *)bundle
 {

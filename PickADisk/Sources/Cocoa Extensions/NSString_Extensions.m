@@ -63,4 +63,19 @@
 	return rank;
 }
 
++(NSString*)stringFromByteCount:(NSNumber*)inBytes
+{
+	double		bytesLeft = [inBytes doubleValue];
+	int			reductionCount = 0;
+	NSArray*	abvrArray = [NSArray arrayWithObjects:@"B", @"KB", @"MB", @"GB", @"TB", @"PB", @"EB", @"ZB", @"YB", nil];
+	
+	while ( bytesLeft > 1024 ) {
+		reductionCount++;
+		bytesLeft /= 1024.0f;
+		if( reductionCount == 8 ) break;
+	}
+	
+	return [NSString stringWithFormat:@"%.02f %@", bytesLeft, [abvrArray objectAtIndex:reductionCount]];
+}
+
 @end

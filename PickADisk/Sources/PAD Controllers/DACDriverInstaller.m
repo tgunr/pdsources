@@ -194,7 +194,7 @@ static DACDriverInstaller*	DACDriverInstaller_shared = nil;
 	
 	if( self = [super init] )
 	{
-		NSLog(@"DACDriver Installer Created");
+		//NSLog(@"DACDriver Installer Created");
 		DACDriverInstaller_shared = (DACDriverInstaller*)self;
 	}
 	return self;

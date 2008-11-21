@@ -27,19 +27,46 @@ extern	NSString*	kDACBookmarkLocationInSidebar;
 extern	NSString*	kDACBookmarkLocationInMenubar;
 extern	NSString*	kDACBookmarkLocationInBookmarks;
 
+//	Discovery Keys
+extern	NSString*	kDACDiscKeyCheckIn;
+extern	NSString*	kDACDiscKeyCheckOut;
+extern	NSString*	kDACDiscKeyRecognized;
+extern	NSString*	kDACDiscKeyUnrecognized;
+
+//	Discovery Values
+extern	NSInteger	kDACDVCheckInOpenToSlot;
+extern	NSInteger	kDACDVCheckInDisplayDetails;				//	Display Not Implemented
+extern	NSInteger	kDACDVCheckInOpenAndDisplay;				//	Display Not Implemented
+extern	NSInteger	kDACDVCheckInDoNothing;
+extern	NSInteger	kDACDVCheckOutAutoMatch;
+extern	NSInteger	kDACDVCheckOutCloseDoor;
+extern	NSInteger	kDACDVCheckOutMatchAndCloseDoor;
+extern	NSInteger	kDACDVCheckOutDoNothing;
+extern	NSInteger	kDACDVKnownIDAutoCheckIn;
+extern	NSInteger	kDACDVKnownIDDoNothing;
+extern	NSInteger	kDACDVUnknownIDDisplayAddWindow;
+extern	NSInteger	kDACDVUnknownIDAutoAssignToNextSlot;		//	Auto Index Not Implemented
+extern	NSInteger	kDACDVUnknownIDBeginBatchMode;				//	Batch Mode Not Implemented
+extern	NSInteger	kDACDVUnknownIDDoNothing;
+
+//	Slot File Names
+
+extern NSString*	kDACSlotIconFileNameWithExtension;
 
 @class DACALSlotElement;
 @class DACALSlot;
 @class DACALDevice;
 
-extern void					DACALSetup( void );
-extern void					DACALClientInitialize(void);
+//extern void					DACALSetup( void );
+//extern void					DACALClientInitialize(void);
 extern DACALDevice*			DACALDeviceForDeviceRef(DACALDeviceRef aBoxRef);
 extern DACALSlot*			DACALDeviceSlotForSlotNumber(DACALDeviceRef aBoxRef, DACALSlotNum aSlotNum);
 extern DACALSlot*			DACALDeviceSlotForSlotIdentifier( CFStringRef findID );
 extern DACALSlotElement*	DACALDeviceSlotElementForURL( CFURLRef itemURL );
 
-extern NSMutableArray*		gDACALDevices;
+extern void					DACALNotification( void* inData, DACALDeviceRef inBox, CFStringRef inMessage, CFDictionaryRef inParam );
+
+//extern NSMutableArray*		gDACALDevices;
 
 @interface DACALSlotElementBookmark : NSObject
 {
@@ -120,7 +147,7 @@ extern NSMutableArray*		gDACALDevices;
 -(DACALSlotElementBookmark*)bookmarkForLocation:(NSString*)markLocation;
 -(DACALSlotElementBookmark*)createBookmarkAtLocation:(NSString*)markLocation attachNow:(BOOL)doAttach;
 
-@end		// DACALSlotElement
+@end		//	DACALSlotElement
 
 
 @interface DACALSlot : NSObject {
@@ -210,7 +237,7 @@ extern NSMutableArray*		gDACALDevices;
 -(BOOL)slotAssignedIndexFromVolume:(DACVolume*)indexVolume asType:(NSString*)newType;
 -(BOOL)unassignSlotIndex;
 
-@end		// DACALSlot
+@end		//	DACALSlot
 
 @interface DACALDevice : NSObject {
 	
@@ -256,5 +283,26 @@ extern NSMutableArray*		gDACALDevices;
 
 -(DACALResult)commandCloseDoor;
 
-@end		// DACALDevice
+@end		//	DACALDevice
 
+@interface DACALDeviceService : JSServiceAbstract
+{
+	NSMutableArray*			deviceList;
+}
+
+-(NSMutableArray*)deviceList;
+-(NSInteger)deviceCount;
+
+-(void)addDACALDevice:(DACALDevice*)newDevice;
+
+-(DACALDevice*)DACALDeviceForDeviceRef:(DACALDeviceRef)aBoxRef;
+-(DACALSlot*)DACALDeviceSlotForDeviceRef:(DACALDeviceRef)aBoxRef andSlotNum:(DACALSlotNum)aSlotNum;
+-(DACALSlot*)DACALDeviceSlotForSlotIdentifier:(NSString*)findID;
+-(DACALSlotElement*)DACALDeviceSlotElementForURL:(NSURL*)itemURL;
+
+-(BOOL)countUsedSlots:(NSInteger*)outUsedSlotCount;
+
+-(void)notificationDeviceAttached:(DACALDeviceRef)inBoxRef;
+-(void)notificationDeviceDetached:(DACALDeviceRef)inBoxRef;
+
+@end		//	DACALDeviceService

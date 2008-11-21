@@ -16,4 +16,6 @@
 
 -(float)rankWithString:(NSString*)other compareOptions:(NSStringCompareOptions)findOptions;
 
++(NSString*)stringFromByteCount:(NSNumber*)inBytes;
+
 @end

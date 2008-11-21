@@ -27,7 +27,7 @@ BOOL			busyBusy;
 + (void)playUISoundForBOOL:(BOOL)wasSuccess;
 
 - (IBAction)provideFeedback:(id)sender;			// Now unused - sent to prefs controller instead
-- (void)initCrashReport;
+//- (void)initCrashReport;
 - (void)initPreferences;
 - (void)queueOperation:(NSOperation*)op;
 - (void)queueUIOperation:(NSOperation*)op;
@@ -66,5 +66,5 @@ BOOL			busyBusy;
 - (PADAddVolumeController*)addVolumeController;
 - (void)setAddVolumeController:(PADAddVolumeController*)inAVC;
 - (IBAction)runLicense:(id)sender;
-- (void)doCheckWork:(NSTimer*)checkTimer;
+
 @end

@@ -9,6 +9,7 @@
 //#import "pmsDACALUtility.h"
 //#import "DACALDeviceObjC.h"
 #import "PADAddVolumeController.h"
+#import "LicenseController.h"
 
 @implementation PADAddVolumeController
 
@@ -872,6 +873,12 @@ NAVERR:
 //	NSInteger	index;
 //	NSInteger	count = DACALDevicesGetCount();
 	NSInteger	node = DACALCommandCopyNode( currentDevice, NULL );
+	
+	if( ![[DACALDeviceService sharedService] countUsedSlots:NULL] )
+	{
+		[[LicenseController sharedLicenseController] runNotLicensedModalWindow];
+		return;
+	}
 	
 	// Do Carousels
 	

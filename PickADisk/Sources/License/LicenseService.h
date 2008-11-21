@@ -7,6 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "JSServiceManager.h"
 #import "AquaticPrime.h"
 
 extern NSString*		kPADLicenseDataPrefKey;
@@ -46,8 +47,8 @@ extern NSString*		kPADLicenseDictKeyInvoiceNum;
 
 typedef	PADLicense*		PADLicenseRef;
 
-@interface PADLicenseService : NSObject {
-
+@interface PADLicenseService : JSServiceAbstract
+{
 	AquaticPrime*		licenseValidator;
 	NSMutableString*	licenseKey;
 	PADLicenseRef		licenseProof;
@@ -56,7 +57,6 @@ typedef	PADLicense*		PADLicenseRef;
 }
 
 + (id)sharedLicenseService;
-- (id)init;
 
 - (AquaticPrime*)licenseValidator;
 - (void)setLicenseValidator:(AquaticPrime*)newValidator;

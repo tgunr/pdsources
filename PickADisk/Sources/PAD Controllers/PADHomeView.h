@@ -36,7 +36,7 @@
 
 #define		PADHomeView_DefaultImageFileName	@"Gray.tif"
 
-CFAbsoluteTime		gPADHomeView_DefaultTimerTime	= 86400 * 1;
+CFAbsoluteTime		gPADHomeView_DefaultTimerTime	= 60.0 * 2;			// Default slide change every two minutes.  Override with pref "PADHomeViewDelay".
 
 @interface PADHomeView : NSView
 {
@@ -47,6 +47,8 @@ CFAbsoluteTime		gPADHomeView_DefaultTimerTime	= 86400 * 1;
 	
 	NSMutableArray*		backImageList;
 	NSTimer*			backImageTimer;
+	
+	NSURL*				currentURL;
 }
 
 -(NSImage*)backImage;
@@ -60,9 +62,22 @@ CFAbsoluteTime		gPADHomeView_DefaultTimerTime	= 86400 * 1;
 
 -(NSMutableArray*)backImageList;
 -(void)setBackImageList:(NSMutableArray*)newImageList;
+-(BOOL)deleteBackImageURL:(NSURL*)oldURL;
+-(BOOL)resetBackImageList;
 -(NSInteger)backImageListCount;
+
+-(NSURL*)currentURL;
+-(void)setCurrentURL:(NSURL*)newURL;
+
+-(void)resetBackground;
+-(void)useDefaultBackground;
+-(BOOL)isCustomUserBackground;
 
 -(BOOL)saveBackImageList;
 -(BOOL)loadBackImageList;
+
+-(IBAction)randomBackground:(id)sender;
+-(IBAction)deleteCurrentURL:(id)sender;
+-(IBAction)restoreDefaultBackground:(id)sender;
 
 @end

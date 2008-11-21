@@ -45,7 +45,6 @@
 - (IBAction)chooseRequestLicenseMenu:(id)sender;
 
 - (IBAction)cancelLicenseBtn:(id)sender;	
-- (IBAction)okBtn:(id)sender;	
 
 // License Notice
 - (IBAction)enterLicenseBtn:(id)sender;
@@ -59,14 +58,10 @@
 
 // Request License
 - (IBAction)submitBtnPressed:(id)sender;	
-- (void)updateLicensePanel;
-- (void)showNotLicensed;
-
-// Licensed
-- (IBAction)closeLicensedSheet: (id)sender;
 
 @end
 
+/*
 @interface License : NSObject
 {
 	NSDictionary *			licenseDict;
@@ -89,4 +84,4 @@
 - (BOOL*)checkV;
 - (BOOL)registerLicenseFromFile:(NSString*)licensePath;
 @end
-
+*/

@@ -16,9 +16,13 @@
 #import "pmsCFUtility.h"
 #import "pmsDACALUtility.h"
 #import "PADOperationOpenDevice.h"
-#import <ILCrashReporter/ILCrashReporter.h>
-#import "DACDriverInstaller.h"
-#import "DACVolume.h"
+
+//#import <ILCrashReporter/ILCrashReporter.h>
+#import "JSServiceManager.h"
+//#import "JSTestService.h"
+
+//#import "DACDriverInstaller.h"
+//#import "DACVolume.h"
 #import "LicenseController.h"
 #import "LicenseService.h"
 
@@ -36,20 +40,10 @@ static AppController *shared;
         return shared;
     }
     if (self = [super init])
-	{	// Initializtion 
-		
-#if PADBOX_EXPIRE_CHECK != 0
-		[PADBOXController	performSelectorOnMainThread:@selector(startBOXWithToken:)
-										   withObject:[NSNumber numberWithDouble:PADBOX_EXPIRE_DATE]
-										waitUntilDone:YES];
-#endif		
-		
-		PADBOX_VALID_BEGIN
-		
-		[self initCrashReport];
-		[self initPreferences];
-		DACALSetup();
-		
+	{	
+		//	Initializtion 
+		shared = self;
+
 		queue = [[NSOperationQueue alloc] init];
 		[queue setMaxConcurrentOperationCount:6];
 		
@@ -59,15 +53,28 @@ static AppController *shared;
 		queueUI = [[NSOperationQueue alloc] init];
 		[queueUI setMaxConcurrentOperationCount:1];
 		
-		//busyBodies = [NSMutableDictionary dictionaryWithCapacity:1000];
-		//busyBodies = [NSMutableArray arrayWithCapacity:0];
 		busyBodies = [[NSMutableArray alloc] initWithCapacity:8192];
 		busyBusy = NO;
 		jPADBusyBodyBeat = 0;
 		
-		PADBOX_VALID_END
+		[self initPreferences];
+
+		[[JSServiceManager sharedServices] initializeServices];
 		
-		shared = self;
+//#if PADBOX_EXPIRE_CHECK != 0
+//		[PADBOXController	performSelectorOnMainThread:@selector(startBOXWithToken:)
+//										   withObject:[NSNumber numberWithDouble:PADBOX_EXPIRE_DATE]
+//										waitUntilDone:YES];
+//#endif		
+		
+//		PADBOX_VALID_BEGIN
+				
+//		[self initCrashReport];
+//		[self initPreferences];
+//		DACALSetup();
+				
+//		PADBOX_VALID_END
+
 	}
     return self; 
 }
@@ -100,12 +107,14 @@ static AppController *shared;
     [super dealloc];
 }
 
+/*
 - (void)initCrashReport
 {
 	[[ILCrashReporter defaultReporter]
 	 launchReporterForCompany:@"PickADisk"
 	 reportAddr:@"crashreport@pickadisk.com"];	
 }
+*/
 
 - (void)initPreferences
 {
@@ -176,26 +185,25 @@ static AppController *shared;
 
 - (void)awakeFromNib {
 	
+	[[JSServiceManager sharedServices] openServices];
+
 	PADBOX_VALID_BEGIN
-	
+		
 	// First wake up the License Controller which may show modal UI
 	// Since we're not requiring the license we can start it here instead of in the init
-	[PADLicenseService sharedLicenseService];
+//	[PADLicenseService sharedLicenseService];
 	
 	// Register for 'GURL' Apple Event to handle URL opening
 	[[NSAppleEventManager sharedAppleEventManager] setEventHandler:self andSelector:@selector(handleOpenLocationAppleEvent:withReplyEvent:) forEventClass:kInternetEventClass andEventID:kAEGetURL];
 	
 	// *** new nibs
 	[NSBundle loadNibNamed:@"CarouselIndex" owner:[NSApplication sharedApplication]];
-//	[NSBundle loadNibNamed:@"License" owner:[NSApplication sharedApplication]];
 	//[NSBundle loadNibNamed:@"CarouselProgress" owner:[NSApplication sharedApplication]];
 	
 	// Add busy body heartbeat
 	[NSTimer scheduledTimerWithTimeInterval:PAD_BUSYBODY_DELAY target:self selector:@selector(doBusyWork:) userInfo:nil repeats:YES];
-	//	[NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(doCheckWork:) userInfo:nil repeats:YES];
-	//	[NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(doCheckCarousels:) userInfo:nil repeats:YES];
 	
-	DACALClientInitialize();
+//	DACALClientInitialize();
 	
 	//[[LicenseController shared] showNotLicensed];
 	
@@ -466,25 +474,6 @@ static AppController *shared;
 
 - (IBAction)requestLicense:(id)sender 
 	{ [[LicenseController sharedLicenseController] chooseRequestLicenseMenu:self]; }
-
-- (void)doCheckWork:(NSTimer*)checkTimer {
-	// Validate pref license
-	BOOL valid = [[License shared] licenseValid];
-	if (!valid)  {
-		if (![NSBundle loadNibNamed:@"License" owner:self]) 
-			NSLog(@"Warning! Could not load License file.\n");
-		[[LicenseController sharedLicenseController] showNotLicensed];
-	}
-}
-
-- (void)doCheckCarousels:(NSTimer*)checkTimer {
-	BOOL* valid = [[License shared] checkV];
-	if (!*valid)  {
-		if (![NSBundle loadNibNamed:@"License" owner:self]) 
-			NSLog(@"Warning! Could not load License file.\n");
-		[[LicenseController sharedLicenseController] showNotLicensed];
-	}
-}
 
 @end
 

@@ -146,7 +146,7 @@ IconRef	CFURLGetIcon( CFAllocatorRef allocator, CFURLRef url, OSStatus* outError
 	
 	if( CFURLIsSlot(url) ) {
 		
-		NSURL*		iconURL = [NSURL URLWithString:@".DACDiscIcon.icns" relativeToURL:(NSURL*)url];
+		NSURL*		iconURL = [NSURL URLWithString:kDACSlotIconFileNameWithExtension relativeToURL:(NSURL*)url];
 		FSRef		iconFileRef;
 
 		if( iconURL ) CFURLGetFSRef( (CFURLRef)iconURL, &iconFileRef );
@@ -163,7 +163,8 @@ IconRef	CFURLGetIcon( CFAllocatorRef allocator, CFURLRef url, OSStatus* outError
 	
 	if( (theSlotTopPath != NULL ) && CFURLIsSlot( theSlotTopPath ) ) {
 
-		NSURL*		iconURL = [NSURL URLWithString:@"../.DACDiscIcon.icns" relativeToURL:(NSURL*)url];
+		NSString*	iconPath = [NSString stringWithFormat:@"../%@", kDACSlotIconFileNameWithExtension];
+		NSURL*		iconURL = [NSURL URLWithString:iconPath relativeToURL:(NSURL*)url];
 		FSRef		iconFileRef;
 		
 		if( iconURL ) CFURLGetFSRef( (CFURLRef)iconURL, &iconFileRef );

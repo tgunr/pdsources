@@ -188,9 +188,12 @@ static NSMutableArray*		gPADSearchTerms = nil;
 
 @end		// PADSearchTerm
 
+/*
 void			PADSearchTermSetup()
 {
-	[PADSearchService sharedSearch];
+	NSLog(@"PADSearchTermSetup: No Longer Called");
+	
+//	[PADSearchService sharedSearch];
 	
 	PADAddSearchTerm( kPADSearchByTitle, kPADSearchByTitleID, @selector(nodeData), @selector(searchForName:withOptions:), nil, nil );
 	PADAddSearchTerm( kPADSearchBySlot, kPADSearchBySlotID, @selector(nodeData), @selector(searchForSlot:withOptions:), nil, nil );
@@ -239,6 +242,7 @@ PADSearchTerm*	PADCopySearchTermWithTitleOrID( NSString* aTermName )
 	
 	return outTerm;
 }
+*/
 
 @implementation PADSearchRequest
 
@@ -490,7 +494,7 @@ PADSearchTerm*	PADCopySearchTermWithTitleOrID( NSString* aTermName )
 		[newTerms addObject:[NSNull null]];
 		
 	while ((keyName = (NSString*)[termEnumerator nextObject])) {
-		tempTerm = PADCopySearchTermWithTitleOrID( keyName );
+		tempTerm = [[PADSearchService sharedService] copySearchTermWithTitleOrID:keyName];
 
 		keyDict = [searchTermDictionary objectForKey:keyName];
 		keyValue = [keyDict objectForKey:kPADSearchTermKeyValue];
@@ -890,10 +894,11 @@ STARTSEARCH:
 @end		// PADSearchTermOperation
 
 @implementation PADSearchService
-static PADSearchService* PADSearchService_shared;
 
 -(void)dealloc
 {
+	if( searchTerms != nil ) [searchTerms release];
+	searchTerms = nil;
 	if( activeSearches != nil ) [activeSearches release];
 	activeSearches = nil;
 	if( activeWatchers != nil ) [activeWatchers release];
@@ -902,35 +907,66 @@ static PADSearchService* PADSearchService_shared;
 	[super dealloc];
 }
 
--(id)init
+-(void)initSelf
 {
-    if (PADSearchService_shared) 
-	{
-		[self autorelease];
-		return PADSearchService_shared;
-	}
-	
-	if( self = [super init] )
-	{
-		activeSearches = [[NSMutableArray alloc] initWithCapacity:0];
-		activeWatchers = [[NSMutableArray alloc] initWithCapacity:0];
-		
-		PADSearchService_shared = [self retain];
-	}
-	return self;
+	searchTerms = [[NSMutableArray alloc] initWithCapacity:0];
+	activeSearches = [[NSMutableArray alloc] initWithCapacity:0];
+	activeWatchers = [[NSMutableArray alloc] initWithCapacity:0];
+}
+
+-(void)openService
+{
+	[self addSearchTermWithTitle:kPADSearchByTitle andTermID:kPADSearchByTitleID getSelector:@selector(nodeData) compareSelector:@selector(searchForName:withOptions:) compareData:nil andOptions:nil];
+	[self addSearchTermWithTitle:kPADSearchBySlot andTermID:kPADSearchBySlotID getSelector:@selector(nodeData) compareSelector:@selector(searchForSlot:withOptions:) compareData:nil andOptions:nil];
+	[self addSearchTermWithTitle:kPADSearchByType andTermID:kPADSearchByTypeID getSelector:@selector(nodeData) compareSelector:@selector(searchForFlavor:withOptions:) compareData:nil andOptions:nil];
+	[self addSearchTermWithTitle:kPADSearchByDateAdded andTermID:kPADSearchByDateAddedID getSelector:@selector(nodeData) compareSelector:@selector(searchForDateAdded:withOptions:) compareData:nil andOptions:nil];
+	[self addSearchTermWithTitle:kPADSearchByFileUTI andTermID:kPADSearchByFileUTIID getSelector:@selector(nodeData) compareSelector:@selector(searchForFileUTI:withOptions:) compareData:nil andOptions:nil];
+	[self addSearchTermWithTitle:kPADSearchByDateCheckedIn andTermID:kPADSearchByDateCheckedInID getSelector:@selector(nodeData) compareSelector:@selector(searchForDateCheckedIn:withOptions:) compareData:nil andOptions:nil];
+	[self addSearchTermWithTitle:kPADSearchByDateCheckedOut andTermID:kPADSearchByDateCheckedOutID getSelector:@selector(nodeData) compareSelector:@selector(searchForDateCheckedOut:withOptions:) compareData:nil andOptions:nil];
+	[self addSearchTermWithTitle:kPADSearchByDateCheckedInOut andTermID:kPADSearchByDateCheckedInOutID getSelector:@selector(nodeData) compareSelector:@selector(searchForDateCheckedInOut:withOptions:) compareData:nil andOptions:nil];
+	[self addSearchTermWithTitle:kPADSearchByComments andTermID:kPADSearchByCommentsID getSelector:@selector(nodeData) compareSelector:@selector(searchForComments:withOptions:) compareData:nil andOptions:nil];
+	[self addSearchTermWithTitle:kPADSearchByTags andTermID:kPADSearchByTagsID getSelector:@selector(nodeData) compareSelector:@selector(searchForTags:withOptions:) compareData:nil andOptions:nil];
+	[self addSearchTermWithTitle:kPADSearchByStars andTermID:kPADSearchByStarsID getSelector:@selector(nodeData) compareSelector:@selector(searchForStars:withOptions:) compareData:nil andOptions:nil];
 }
 
 +(id)sharedSearch
-{
-    if (!PADSearchService_shared) {
-        [[PADSearchService alloc] init];
-    }
-    return PADSearchService_shared;
-}
+	{ return [PADSearchService sharedService]; }
 
 +(void)updateAllSearches
-	{ [[PADSearchService sharedSearch] searchDataChanged:nil]; }
+	{ [[PADSearchService sharedService] searchDataChanged:nil]; }
 
+-(void)addSearchTermWithTitle:(const NSString*)title andTermID:(const NSString*)newID getSelector:(SEL)getSel compareSelector:(SEL)cmpSel compareData:(id)data andOptions:(NSDictionary*)options
+{
+	PADSearchTerm*		newTerm = [PADSearchTerm termWithTitle:(NSString*)title
+													termID:(NSString*)newID
+											   getSelector:getSel
+										   compareSelector:cmpSel
+											   compareData:data
+												andOptions:options];
+	
+	[searchTerms addObject:newTerm];
+}
+
+-(PADSearchTerm*)copySearchTermWithTitleOrID:(NSString*)aTermName
+{
+	int				termIndex, termCount = (searchTerms != nil) ? [searchTerms count] : 0;
+	PADSearchTerm*	workTerm = nil;
+	PADSearchTerm*	outTerm = nil;
+	
+	if( termCount == 0 ) return outTerm;
+	
+	for( termIndex=0; termIndex < termCount; termIndex++ )
+	{
+		workTerm = [searchTerms objectAtIndex:termIndex];
+		
+		if( [[workTerm termTitle] compare:aTermName] == NSOrderedSame ) outTerm = [workTerm termWithTerm];
+		else if( [[workTerm termID] compare:aTermName] == NSOrderedSame ) outTerm = [workTerm termWithTerm];
+		
+		if( outTerm != nil ) break;
+	}
+	
+	return outTerm;
+}
 
 -(void)addActiveSearch:(PADSearchRequest*)newRequest
 {
@@ -972,6 +1008,7 @@ static PADSearchService* PADSearchService_shared;
 {
 	[activeWatchers makeObjectsPerformSelector:@selector(searchStarted:) withObject:(id)aRequest];	
 }
+
 -(void)searchFinished:(PADSearchRequest*)aRequest
 {
 	[activeWatchers makeObjectsPerformSelector:@selector(searchFinished:) withObject:(id)aRequest];	
@@ -982,7 +1019,6 @@ static PADSearchService* PADSearchService_shared;
 	[activeSearches makeObjectsPerformSelector:@selector(searchDataChanged:) withObject:(id)theItems]; 
 	[activeWatchers makeObjectsPerformSelector:@selector(searchDataChanged:) withObject:(id)theItems];
 }
-
 
 @end		// PADSearchService
 

@@ -20,8 +20,9 @@
 	#import "NSString_Extensions.h"
 	#import "NSSlider_Animation.h"
 	#import "AppController.h"
+	#import "JSServicesSetup.h"
 	#import "PADLifecycleSetup.h"
-	
+
 	#if MAC_OS_X_VERSION_MIN_REQUIRED < MAC_OS_X_VERSION_10_5
 		typedef float CGFloat;
 		enum {

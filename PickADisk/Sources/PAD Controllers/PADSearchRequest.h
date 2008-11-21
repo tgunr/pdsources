@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
+#import "JSServiceManager.h"
 #import "AppController.h"
 #import "SimpleTreeNode.h"
 
@@ -90,13 +91,13 @@ extern const	NSString*			kPADSearchOptionResultTypeItem;
 @end		// PADSearchTerm
 
 //	This function should be called during initialization to setup the search categories
-void			PADSearchTermSetup();
+//void			PADSearchTermSetup();
 
 //	This function is called during setup to create known search terms
-void			PADAddSearchTerm( const NSString* title, const NSString* newID, SEL getSel, SEL cmpSel, id data, NSDictionary* options );
+//void			PADAddSearchTerm( const NSString* title, const NSString* newID, SEL getSel, SEL cmpSel, id data, NSDictionary* options );
 
 //	This function is called internally in PADSearchRequest -createTermsForKeys to create local copies of search terms.
-PADSearchTerm*	PADCopySearchTermWithTitleOrID( NSString* aTitle );
+//PADSearchTerm*	PADCopySearchTermWithTitleOrID( NSString* aTitle );
 
 
 @interface PADSearchRequest : NSObject {
@@ -191,14 +192,25 @@ PADSearchTerm*	PADCopySearchTermWithTitleOrID( NSString* aTitle );
 
 @end	// PADSearchTermOperation
 
-@interface PADSearchService : NSObject
+@interface PADSearchService : JSServiceAbstract
 {
+	NSMutableArray*		searchTerms;
+	
 	NSMutableArray*		activeSearches;
 	NSMutableArray*		activeWatchers;
 }
 
 +(id)sharedSearch;
 +(void)updateAllSearches;
+
+-(void)addSearchTermWithTitle:(const NSString*)title
+					andTermID:(const NSString*)newID
+				  getSelector:(SEL)getSel
+			  compareSelector:(SEL)cmpSel
+				  compareData:(id)data
+				   andOptions:(NSDictionary*)options;
+
+-(PADSearchTerm*)copySearchTermWithTitleOrID:(NSString*)aTermName;
 
 -(void)addActiveSearch:(PADSearchRequest*)newRequest;
 -(void)removeActiveSearch:(PADSearchRequest*)oldRequest;

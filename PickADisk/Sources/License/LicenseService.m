@@ -127,21 +127,11 @@ NSString*		kPADLicenseDictKeyInvoiceNum	=	@"Invoice";
 
 @implementation PADLicenseService
 
-static	PADLicenseService*		PADLicenseService_shared = nil;
++ (id)sharedLicenseService { return [PADLicenseService sharedService]; }
 
-+ (id)sharedLicenseService {
-    if (!PADLicenseService_shared)
-        [[PADLicenseService alloc] init];
-    return PADLicenseService_shared;
-}
-
--(id)init {
-	if (PADLicenseService_shared)
-		return (id)PADLicenseService_shared;
-	
-	if( self = [super init] ) {
-		NSLog(@"LicenseService Created");
-		PADLicenseService_shared = self;
+-(void)initSelf
+{	
+	//NSLog(@"LicenseService Created");
 	
 	// This string is specially constructed to prevent key replacement 	
 	// *** Begin Public Key ***
@@ -177,15 +167,20 @@ static	PADLicenseService*		PADLicenseService_shared = nil;
 	
 	// Blacklist bad licenses
 	[licenseValidator setBlacklist:[NSArray arrayWithObject:@"56237cb06e032ba9d7ed5c4b5f5f89790493386e"]];
+}
+
+-(void)openService
+{
+	PADBOX_VALID_BEGIN
 
 	// init from prefs if possible
 	[self changeLicenseProof:[PADLicense licenseFromPrefsKey:kPADLicenseDataPrefKey] saveAsKey:nil];
-
-	// load UI nib
-	[NSBundle loadNibNamed:@"License" owner:[NSApplication sharedApplication]];
-	}	
 	
-	return self;
+	// Wake up the License Controller which may show modal UI
+	// Since we're not requiring the license we can start it here instead of in the init
+	[NSBundle loadNibNamed:@"License" owner:[NSApplication sharedApplication]];	
+	
+	PADBOX_VALID_END
 }
 
 - (AquaticPrime*)licenseValidator

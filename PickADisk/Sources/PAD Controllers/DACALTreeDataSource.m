@@ -217,7 +217,7 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 				[workGroupNode removeFromParent];
 			else if( [[workGroupNode nodeData] itemType] == kPADTypeGroupDevices )
 			{
-				NSEnumerator*	deviceEnum = [gDACALDevices objectEnumerator];
+				NSEnumerator*	deviceEnum = [[[DACALDeviceService sharedService] deviceList] objectEnumerator];
 				DACALDevice*	aDevice = nil;
 				
 				while ( aDevice = [deviceEnum nextObject] ) 
@@ -259,7 +259,7 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 	
 	[groupList setObject:groupNames forKey:@"Groups"];
 	
-	NSLog(@"Group List: %@", groupList);
+	//NSLog(@"Group List: %@", groupList);
 	
 	[[NSUserDefaults standardUserDefaults] setObject:groupList forKey:@"PADMainSidebarOrder"];
 }
@@ -380,7 +380,7 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 	if( [[NSUserDefaults standardUserDefaults] dictionaryForKey:@"PADMainSidebarOrder"] == nil )
 	{	
 		SimpleTreeNode*	workGroupNode = [[[self treeControl] treeRoot] childWithItemType:kPADTypeGroupDevices];
-		NSEnumerator*	deviceEnum = [gDACALDevices objectEnumerator];
+		NSEnumerator*	deviceEnum = [[[DACALDeviceService sharedService] deviceList] objectEnumerator];
 		DACALDevice*	aDevice = nil;
 		
 		if( workGroupNode && ([workGroupNode numberOfChildren] == 0) )
@@ -459,8 +459,8 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 	NSString*		carouselString;
 	NSString*		itemString;
 	NSString*		slotString;
-	NSInteger		freeCount = 0;
-	BOOL			canAdd = [[[AppController shared] toolbarController] countFreeSlots:&freeCount];
+	NSInteger		usedCount = 0;
+	BOOL			canAdd = [[DACALDeviceService sharedService] countUsedSlots:&usedCount];
 	
 	if( count == 1 ) {
 		carouselString = NSLocalizedString(@"carousel", @"Data View Prompt Singular form of carousel device");
@@ -470,7 +470,7 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 		itemString = NSLocalizedString(@"items", @"DataView Prompt Plural form of data view elements");
 	}
 	
-	if( freeCount == 1 )
+	if( usedCount == 1 )
 		slotString = NSLocalizedString(@"slot", @"Data View Prompt Singular form of carousel device slot");
 	else 
 		slotString = NSLocalizedString(@"slots", @"Dava View Prompt Plural form of carousel device slots");
@@ -478,8 +478,8 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 	if( [[[tabView selectedTabViewItem] identifier] compare:@"Home"] == NSOrderedSame )
 	{
 		if( count == 0) promptData = NSLocalizedString(@"No carousels detected", @"Data View Prompt when no carousel devices are currently detected");
-		else promptData = [NSString stringWithFormat:NSLocalizedString(@"%i %@ with %i %@", @"Data View Prompt Format for number of carousel devices attached and number of free slots"),
-						   count, carouselString, freeCount, slotString];
+		else promptData = [NSString stringWithFormat:NSLocalizedString(@"%i %@ with %i %@", @"Data View Prompt Format for number of carousel devices attached and number of used slots"),
+						   count, carouselString, usedCount, slotString];
 	} else {
 		NSArray *selectedNodes = [secondaryController selectedNodes];
 		

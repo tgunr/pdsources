@@ -9,6 +9,7 @@
 #import "DACALDeviceObjC.h"
 #import "PADOperationOpenDevice.h"
 #import "PADOperationControlDevice.h"
+#import "LicenseService.h"
 
 CFStringRef		kPADClientIdentifier = CFSTR("PAD.DACAL.CLIENT");
 
@@ -27,13 +28,43 @@ NSString*	kDACBookmarkLocationInSidebar		= @"_DACSide";
 NSString*	kDACBookmarkLocationInMenubar		= @"_DACMenu";
 NSString*	kDACBookmarkLocationInBookmarks		= @"_DACBook";
 
-//	Internal constants
+//	Discovery Keys
+
+NSString*	kDACDiscKeyCheckIn					= @"PADCheckInEject";
+NSString*	kDACDiscKeyCheckOut					= @"PADCheckOutMount";
+NSString*	kDACDiscKeyRecognized				= @"PADKnownDiscEject";
+NSString*	kDACDiscKeyUnrecognized				= @"PADNewDiscMounted";
+
+//	Discovery Values
+
+NSInteger	kDACDVCheckInOpenToSlot				= 0;
+NSInteger	kDACDVCheckInDisplayDetails			= 1;
+NSInteger	kDACDVCheckInOpenAndDisplay			= 2;
+NSInteger	kDACDVCheckInDoNothing				= 4;
+
+NSInteger	kDACDVCheckOutAutoMatch				= 0;
+NSInteger	kDACDVCheckOutCloseDoor				= 1;
+NSInteger	kDACDVCheckOutMatchAndCloseDoor		= 2;
+NSInteger	kDACDVCheckOutDoNothing				= 4;
+
+NSInteger	kDACDVKnownIDAutoCheckIn			= 0;
+NSInteger	kDACDVKnownIDDoNothing				= 2;
+
+NSInteger	kDACDVUnknownIDDisplayAddWindow		= 0;
+NSInteger	kDACDVUnknownIDAutoAssignToNextSlot	= 1;
+NSInteger	kDACDVUnknownIDBeginBatchMode		= 2;
+NSInteger	kDACDVUnknownIDDoNothing			= 4;
+
+//	Slot Files
 
 NSString*	kDACSlotReservationFileName					= @".reservations";
 NSString*	kDACSlotReservationFileNameWithExtension	= @".reservations.plist";
 
+NSString*	kDACSlotIconFileNameWithExtension			= @".DACDiscIcon.icns";
 
-NSMutableArray*		gDACALDevices;
+//	Device Array
+
+//NSMutableArray*		gDACALDevices;
 
 @implementation DACALSlotElementBookmark
 
@@ -1017,6 +1048,7 @@ NSMutableArray*		gDACALDevices;
 	NSMutableDictionary*	newManDict = [NSMutableDictionary dictionaryWithCapacity:0];
 	NSMutableDictionary*	newManEntry = [NSMutableDictionary dictionaryWithCapacity:0];
 	NSDate*					newDate = [NSDate date];
+	NSInteger				checkInAction = [[NSUserDefaults standardUserDefaults] integerForKey:kDACDiscKeyCheckIn];
 	
 	if( manifestURL == nil ) return didWork;
 	
@@ -1053,7 +1085,8 @@ NSMutableArray*		gDACALDevices;
 	[self reloadSlot];
 	
 	if( doUI && didWork )
-		didWork = ([self moveDeviceToSlotWithOptions:kDACALOptionMoveDefault] == kDACALOK);
+		if( (checkInAction == kDACDVCheckInOpenToSlot) || (checkInAction == kDACDVCheckInOpenAndDisplay) )
+			didWork = ([self moveDeviceToSlotWithOptions:kDACALOptionMoveDefault] == kDACALOK);
 
 	// NSLog(@"Slot Check In:%@\nManifset URL:%@\nManifest Dictionary:%@", self, manifestURL, manifestDict);
 
@@ -1094,24 +1127,28 @@ NSMutableArray*		gDACALDevices;
 
 -(BOOL)slotMountedAsVolume:(DACVolume*)mountVolume
 {
-	BOOL	outClaimedSlot = YES;
-	BOOL	wasCheckedIn = ![self isCheckedOut];
-	BOOL	wasOurRequest = [[DACVolumeService sharedVolumeService] isPendingMount:[mountVolume padIdentifier]];
-	
-	[self setSlotVolume:mountVolume];
-	
-	if( wasCheckedIn )
-		[self toggleReservationForUser:nil onHost:nil withUI:NO];
-	else
-		[self reloadSlot];
+	BOOL		outClaimedSlot = NO;
+	BOOL		wasCheckedIn = ![self isCheckedOut];
+	BOOL		wasOurRequest = [[DACVolumeService sharedVolumeService] isPendingMount:[mountVolume padIdentifier]];
+	NSInteger	checkOutAction = [[NSUserDefaults standardUserDefaults] integerForKey:kDACDiscKeyCheckOut];
+
+	if( wasOurRequest || ((checkOutAction == kDACDVCheckOutAutoMatch ) || (checkOutAction == kDACDVCheckOutMatchAndCloseDoor)) )
+	{
+		outClaimedSlot = YES;
+		[self setSlotVolume:mountVolume];
+		
+		if( wasCheckedIn )
+			[self toggleReservationForUser:nil onHost:nil withUI:NO];
+		else
+			[self reloadSlot];
+
+		if( !wasOurRequest )
+			[AppController playUISoundForBOOL:[self isCheckedOut]];
+	}
 	
 	if( !wasOurRequest )
-	{
-		[AppController playUISoundForBOOL:[self isCheckedOut]];
-		
-		//	if( user wants to auto close )
-		[[self slotDevice] commandCloseDoor];
-	}
+		if( (checkOutAction == kDACDVCheckOutCloseDoor ) || (checkOutAction == kDACDVCheckOutMatchAndCloseDoor) )
+			[[self slotDevice] commandCloseDoor];
 	
 	if( outClaimedSlot )
 		NSLog(@"Mounted Slot (%@)\nAs Volume: %@", self, mountVolume);
@@ -1159,7 +1196,7 @@ NSMutableArray*		gDACALDevices;
 	
 	[self setSlotIdentifier:[indexVolume padIdentifier]];
 	
-	NSURL*		iconURL = [NSURL URLWithString:@".DACDiscIcon.icns" relativeToURL:(NSURL*)slotURL];
+	NSURL*		iconURL = [NSURL URLWithString:kDACSlotIconFileNameWithExtension relativeToURL:(NSURL*)slotURL];
 	
 	CFDictionaryRef	volumeData = DADiskCopyDescription( [indexVolume volumeDiskRef] );
 	if( volumeData != NULL ) {
@@ -1377,6 +1414,9 @@ NSMutableArray*		gDACALDevices;
 			
 			[[DACVolumeService sharedVolumeService] carouselDeviceSlotAttached:theSlot];
 			
+			if( fmodf( (float)slotindex, 5.0f ) == 0.0 )
+				[[DACALTreeDataSource shared] updatePrompt];
+			
 			slotsUsed++;
 		}
 	}	
@@ -1393,8 +1433,9 @@ NSMutableArray*		gDACALDevices;
 	{
 		deviceRef = newDeviceRef;
 		
-		if( !gDACALDevices ) gDACALDevices = [[NSMutableArray alloc] initWithCapacity:0];
-		[gDACALDevices addObject:self];
+		//if( !gDACALDevices ) gDACALDevices = [[NSMutableArray alloc] initWithCapacity:0];
+		//[gDACALDevices addObject:self];
+		[[DACALDeviceService sharedService] addDACALDevice:self];
 		
 		int					tempIndex, tempCount = DACALCommandGetSlotCount( newDeviceRef );
 		NSMutableArray*		tempArray = [NSMutableArray arrayWithCapacity:tempCount];
@@ -1521,29 +1562,30 @@ NSMutableArray*		gDACALDevices;
 
 @end		// DACALDevice
 
-void DACALNotification( void* inData, DACALDeviceRef inBox, CFStringRef inMessage, CFDictionaryRef inParam );
-void DACALNotification( void* inData, DACALDeviceRef inBox, CFStringRef inMessage, CFDictionaryRef inParam )
+@implementation DACALDeviceService
+
+-(NSMutableArray*)deviceList
+	{ return deviceList; }
+
+-(NSInteger)deviceCount
+	{ return [deviceList count]; }
+
+-(void)dealloc
 {
-	DACALDevice*	inDevice = nil;
-	
-	//NSLog( @"Client Notification: Device: %@ Message: %@", inBox, inMessage );
-	
-	if( CFStringHasPrefix( inMessage, kDACALCarouselNoticeDeviceOpen ) )
-	{
-		inDevice = [DACALDevice deviceWithDeviceRef:inBox];
-		[inDevice attachingDevice];
-		
-		//NSLog(@"isDriverKextLoaded: %@", [DACDriverInstaller versionOfDriverKextLoaded]);
-	} 
-	else if( CFStringHasPrefix( inMessage, kDACALCarouselNoticeDeviceClose ) )
-	{
-		inDevice = DACALDeviceForDeviceRef(inBox);
-		[inDevice detachingDevice];
-	}
+	[deviceList release];
+	[super dealloc];
 }
 
-void DACALSetup( void )
+-(void)initSelf
 {
+//	gDACALDevices = [[NSMutableArray alloc] initWithCapacity:0];
+	deviceList = [[NSMutableArray alloc] initWithCapacity:0];
+}
+
+-(id)initializeService
+{
+	PADBOX_VALID_BEGIN
+
 	DACALRegisterIconResource( CFSTR("DC300Black"), kDACALCarouselsFolderType );
 	DACALRegisterIconResource( CFSTR("CDAudio"), 'cdda' );
 	DACALRegisterIconResource( CFSTR("DVD-Video"), 'dvd ' );
@@ -1553,23 +1595,31 @@ void DACALSetup( void )
 	DACALRegisterIconResource( CFSTR("Generic_Music"), 'gMus' );
 	DACALRegisterIconResource( CFSTR("Generic_Movie"), 'gMov' );
 	DACALRegisterIconResource( CFSTR("Generic_Image"), 'gImg' );
+		
+	DACALClientCreate( kCFAllocatorDefault, kPADClientIdentifier, (void*)self, DACALNotification );	
+
+	PADBOX_VALID_END
 	
-	[DACVolumeService sharedVolumeService];
-	
-	DACALClientCreate( kCFAllocatorDefault, kPADClientIdentifier, NULL, DACALNotification );
+	return self;
 }
 
-void			DACALClientInitialize(void)
+-(void)openService
 {
-	gDACALDevices = [[NSMutableArray alloc] initWithCapacity:0];
+	PADBOX_VALID_BEGIN
+	
 	DACALDevicesInitialize();
+
+	PADBOX_VALID_END
 }
 
-DACALDevice*	DACALDeviceForDeviceRef(DACALDeviceRef aBoxRef)
+-(void)addDACALDevice:(DACALDevice*)newDevice
+	{ [deviceList addObject:newDevice]; }
+
+-(DACALDevice*)DACALDeviceForDeviceRef:(DACALDeviceRef)aBoxRef
 {
 	DACALDevice*	foundBox = nil;
-	int				boxIndex, boxCount = [gDACALDevices count];
-
+	int				boxIndex, boxCount = [deviceList count];
+	
 	if( aBoxRef < kDACALIllegalDevice )
 		aBoxRef = DACALDevicesCopyDeviceRefForIndex( aBoxRef, NULL );
 	else
@@ -1577,7 +1627,7 @@ DACALDevice*	DACALDeviceForDeviceRef(DACALDeviceRef aBoxRef)
 	
 	for( boxIndex=0; boxIndex < boxCount; boxIndex++ )
 	{
-		foundBox = [gDACALDevices objectAtIndex:boxIndex];
+		foundBox = [deviceList objectAtIndex:boxIndex];
 		if( [foundBox isDeviceRef:aBoxRef] ) break;
 		foundBox = nil;
 	}
@@ -1585,11 +1635,11 @@ DACALDevice*	DACALDeviceForDeviceRef(DACALDeviceRef aBoxRef)
 	DACALDeviceRelease( aBoxRef );
 	
 	return foundBox;
- }
- 
-DACALSlot*		DACALDeviceSlotForSlotNumber(DACALDeviceRef aBoxRef, DACALSlotNum aSlotNum)
+}
+
+-(DACALSlot*)DACALDeviceSlotForDeviceRef:(DACALDeviceRef)aBoxRef andSlotNum:(DACALSlotNum)aSlotNum
 {
-	DACALDevice*	slotBox = DACALDeviceForDeviceRef( aBoxRef );
+	DACALDevice*	slotBox = [self DACALDeviceForDeviceRef:aBoxRef];
 	DACALSlot*		foundSlot = nil;
 	
 	if( slotBox )
@@ -1598,38 +1648,97 @@ DACALSlot*		DACALDeviceSlotForSlotNumber(DACALDeviceRef aBoxRef, DACALSlotNum aS
 	return foundSlot;
 }
 
-DACALSlot*		DACALDeviceSlotForSlotIdentifier( CFStringRef findID )
+-(DACALSlot*)DACALDeviceSlotForSlotIdentifier:(NSString*)findID
 {
 	DACALSlot*		foundSlot = nil;
 	DACALDevice*	workBox = nil;
-	NSEnumerator*	boxEnum = [gDACALDevices objectEnumerator];
+	NSEnumerator*	boxEnum = [deviceList objectEnumerator];
 	
 	while ( workBox = [boxEnum nextObject] )
-		if( foundSlot = [workBox slotWithIdentifier:(NSString*)findID] )
+		if( foundSlot = [workBox slotWithIdentifier:findID] )
 			break;
 	
 	return foundSlot;
 }
 
-DACALSlotElement*	DACALDeviceSlotElementForURL( CFURLRef itemURL )
+-(DACALSlotElement*)DACALDeviceSlotElementForURL:(NSURL*)itemURL
 {
-	DACALDeviceRef		searchDevice = CFURLCopyCarouselUUID( kCFAllocatorDefault, itemURL );
-	DACALSlotNum		searchSlotNum = CFURLGetSlotNumber( itemURL, FALSE );
-	DACALSlot*			searchSlot = DACALDeviceSlotForSlotNumber( searchDevice, searchSlotNum );
-	//	FSRef				searchFSRef;
-	//	Boolean				searchFound = FALSE;
+	DACALDeviceRef		searchDevice = CFURLCopyCarouselUUID( kCFAllocatorDefault, (CFURLRef)itemURL );
+	DACALSlotNum		searchSlotNum = CFURLGetSlotNumber( (CFURLRef)itemURL, FALSE );
+	DACALSlot*			searchSlot = [self DACALDeviceSlotForDeviceRef:searchDevice andSlotNum:searchSlotNum];
 	DACALSlotElement*	foundElement = nil;
 	
 	if(searchSlot != nil )
 	{
-		foundElement = [searchSlot elementWithURL:(NSURL*)itemURL];
+		foundElement = [searchSlot elementWithURL:itemURL];
 		if( foundElement == nil ) {
-			foundElement = [DACALSlotElement slotElementForSlot:searchSlot atLocation:(NSURL*)itemURL];
+			foundElement = [DACALSlotElement slotElementForSlot:searchSlot atLocation:itemURL];
 		}
 	}
 	
 	if( searchDevice ) CFRelease( (CFTypeRef)searchDevice );
 	return foundElement;
 }
+
+-(BOOL)countUsedSlots:(NSInteger*)outUsedSlotCount
+{
+	BOOL				freeSlot = NO;
+	NSInteger			outCount = 0;
+	NSEnumerator*		deviceEnum = [deviceList objectEnumerator];
+	DACALDevice*		workDevice = nil;
+	
+	while ( workDevice = [deviceEnum nextObject] ) 
+		outCount += [workDevice slotsUsed];
+	
+	if( [[PADLicenseService sharedLicenseService] licenseValid] != YES )
+		freeSlot = ([[PADLicenseService sharedLicenseService] licenseLimit] <= outCount);
+	else
+		freeSlot = ([deviceList count] > 0);
+	
+	if( outUsedSlotCount != NULL )
+		*outUsedSlotCount = outCount;
+	
+	return freeSlot;
+}
+
+-(void)notificationDeviceAttached:(DACALDeviceRef)inBoxRef
+{
+	[[DACALDevice deviceWithDeviceRef:inBoxRef] attachingDevice];
+
+	//NSLog(@"isDriverKextLoaded: %@", [DACDriverInstaller versionOfDriverKextLoaded]);
+}
+
+-(void)notificationDeviceDetached:(DACALDeviceRef)inBoxRef
+{
+	[[self DACALDeviceForDeviceRef:inBoxRef] detachingDevice];
+}
+
+
+@end	//	DACALDeviceService
+
+
+void DACALNotification( void* inData, DACALDeviceRef inBox, CFStringRef inMessage, CFDictionaryRef inParam )
+{
+	DACALDeviceService*	deviceService = (DACALDeviceService*)inData;
+	
+	//NSLog( @"Client Notification: Device: %@ Message: %@", inBox, inMessage );
+	
+	if( CFStringHasPrefix( inMessage, kDACALCarouselNoticeDeviceOpen ) )
+		[deviceService notificationDeviceAttached:inBox];
+	else if( CFStringHasPrefix( inMessage, kDACALCarouselNoticeDeviceClose ) )
+		[deviceService notificationDeviceDetached:inBox];
+}
+
+DACALDevice*	DACALDeviceForDeviceRef(DACALDeviceRef aBoxRef)
+	{ return [[DACALDeviceService sharedService] DACALDeviceForDeviceRef:aBoxRef]; }
+ 
+DACALSlot*		DACALDeviceSlotForSlotNumber(DACALDeviceRef aBoxRef, DACALSlotNum aSlotNum)
+	{ return [[DACALDeviceService sharedService] DACALDeviceSlotForDeviceRef:aBoxRef andSlotNum:aSlotNum]; }
+
+DACALSlot*		DACALDeviceSlotForSlotIdentifier( CFStringRef findID )
+	{ return [[DACALDeviceService sharedService] DACALDeviceSlotForSlotIdentifier:(NSString*)findID]; }
+
+DACALSlotElement*	DACALDeviceSlotElementForURL( CFURLRef itemURL )
+	{ return [[DACALDeviceService sharedService] DACALDeviceSlotElementForURL:(NSURL*)itemURL]; }
 
 

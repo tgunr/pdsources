@@ -10,6 +10,7 @@
 #import <DiskArbitration/DiskArbitration.h>
 #import <IOKit/IOKitLib.h>
 #import <IOKit/scsi/SCSITaskLib.h>
+#import "JSServiceManager.h"
 
 @class DACALSlot;
 @class DACALDevice;
@@ -78,7 +79,7 @@
 
 @end		//	DACVolume
 
-@interface DACVolumeService : NSObject
+@interface DACVolumeService : JSServiceAbstract
 {
 	CFArrayRef			kextBundles;
 	NSMutableArray*		knownVolumes;

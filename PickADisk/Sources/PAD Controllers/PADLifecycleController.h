@@ -7,6 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "JSServiceManager.h"
 
 #if PADBOX_EXPIRE_CHECK == 0
 	#define		PADBOX_VALID_BEGIN
@@ -16,8 +17,8 @@
 #else
 	extern BOOL		gPADBOX_EXPIRED;
 
-	#define		PADBOX_VALID_BEGIN		if( gPADBOX_EXPIRED == YES ) goto PADBOXBUMMER;
-	#define		PADBOX_VALID_END		PADBOXBUMMER:
+	#define		PADBOX_VALID_BEGIN		if( gPADBOX_EXPIRED == NO ) {
+	#define		PADBOX_VALID_END		}
 	#define		PADBOX_VALIDATED		(gPADBOX_EXPIRED == NO)
 	#define		PADBOX_VALIDATED_BOOL	(gPADBOX_EXPIRED)
 
@@ -25,16 +26,16 @@
 	#define		PADBOX_DELAY	86400.0
 
 	#define		PADBOX_PRIMARY_MESSAGE		CFSTR("PickADisk has expired.")
-	#define		PADBOX_SECONDARY_MESSAGE	CFSTR("This version of PickADisk will no longer function.  Try using software update under the 'File' menu to get a newer version or contact ployMicro Systems for instructions.")
+	#define		PADBOX_SECONDARY_MESSAGE	CFSTR("This version of PickADisk will no longer function.  Try using the “Check For Update” button below to get a newer version or contact ployMicro Systems for instructions.")
 
-	@interface PADBOXController : NSObject {
+	@interface PADBOXController : JSServiceAbstract {
 
 		CFAbsoluteTime		boxToken;
 		BOOL				foundUpdate;
 		
 	}
 
-	+(id)startBOXWithToken:(NSNumber*)token;
+	-(id)initBOXWithToken:(NSNumber*)token;
 
 	@end
 

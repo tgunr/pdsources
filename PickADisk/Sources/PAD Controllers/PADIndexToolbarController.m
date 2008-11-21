@@ -42,7 +42,7 @@ PADSearchRequest* PADIndexToolbarController_LastSearch = nil;
 	
 	[[AppController shared] setToolbarController:self];
 	
-	PADSearchTermSetup();
+//	PADSearchTermSetup();
 }
 
 - (NSProgressIndicator*)busyProgress
@@ -58,7 +58,7 @@ PADSearchRequest* PADIndexToolbarController_LastSearch = nil;
 	BOOL		anyNodesSelected = [[self selectedNodes] count] > 0;
 	BOOL		anyMountedSlots = [self nodesContainMountedSlotVolumes:[self selectedNodes]];
 	BOOL		anyUnits = DACALDevicesGetCount() > 0;
-	BOOL		anyFreeSlots = [self countFreeSlots:NULL];
+	BOOL		anyFreeSlots = [self countUsedSlots:NULL];
 	
 	SEL			theItemAction = [item action];
 	
@@ -76,6 +76,7 @@ PADSearchRequest* PADIndexToolbarController_LastSearch = nil;
 	else if( theItemAction == @selector(ejectVolumes:) )	updateIt = anyMountedSlots;
 	else if( theItemAction == @selector(runLicense:) )		updateIt = YES;
 	else if( theItemAction == @selector(requestLicense:) )	updateIt = YES;
+	else return [super validateMenuItem:item];
 	
 	return updateIt;
 }
@@ -256,25 +257,8 @@ PADSearchRequest* PADIndexToolbarController_LastSearch = nil;
 	[[pathControl cell] setFont:[NSFont controlContentFontOfSize:10.0]];
 }
 
--(BOOL)countFreeSlots:(NSInteger*)slotCount
-{
-	BOOL				freeSlot = NO;
-	NSInteger			outCount = 0;
-	NSEnumerator*		deviceEnum = [gDACALDevices objectEnumerator];
-	DACALDevice*		workDevice = nil;
-	
-	while ( workDevice = [deviceEnum nextObject] ) 
-		outCount += [workDevice slotsUsed];
-
-	if( [[PADLicenseService sharedLicenseService] licenseValid] != YES )
-		freeSlot = ([[PADLicenseService sharedLicenseService] licenseLimit] <= outCount);
-	else
-		freeSlot = ([gDACALDevices count] > 0);
-	
-	if( slotCount != NULL )
-		*slotCount = outCount;
-	return freeSlot;
-}
+-(BOOL)countUsedSlots:(NSInteger*)slotCount
+	{ return [[DACALDeviceService sharedService] countUsedSlots:slotCount]; }
 
 //	This method activates the various toolbar item states depending on the current selection
 //	in the tree/data view
@@ -283,7 +267,7 @@ PADSearchRequest* PADIndexToolbarController_LastSearch = nil;
 	BOOL			anyBox = NO;
 	BOOL			anySlot = NO;
 	BOOL			anyVolumes = [self nodesContainMountedSlotVolumes:[self selectedNodes]];
-	BOOL			freeSlot = [self countFreeSlots:NULL];
+	BOOL			freeSlot = [self countUsedSlots:NULL];
 	
 	if( [self selectedDevices] )
 		anyBox = [[self selectedDevices] count] > 0;

@@ -94,8 +94,8 @@
 	{
 		[newList addObjectsFromArray:saveURLs];
 		[self setBackImageList:newList];
-		[self setCustomBackground:YES];
-		goodLoad = YES;
+		goodLoad = ([backImageList count] > 0);
+		[self setCustomBackground:goodLoad];
 	}
 	
 	return goodLoad;
@@ -107,6 +107,60 @@
 		return 0;
 	else
 		return [backImageList count];
+}
+
+-(NSURL*)currentURL
+	{ return currentURL; }
+
+-(void)setCurrentURL:(NSURL*)newURL
+{ 
+	if( !currentURL || ![currentURL isEqual:newURL] )
+	{
+		if( newURL ) [newURL retain];
+		if( currentURL ) [currentURL release];
+		currentURL = newURL;
+	}
+}
+
+-(BOOL)isCustomUserBackground
+	{ return( currentURL != nil ); }
+
+-(BOOL)deleteBackImageURL:(NSURL*)oldURL
+{
+	BOOL		didDelete = NO;
+	
+	if( [backImageList containsObject:oldURL] )
+	{
+		[backImageList removeObject:oldURL];
+		[self resetBackground];
+		didDelete = YES;
+	}
+
+	return didDelete;
+}
+
+-(BOOL)resetBackImageList
+{
+	BOOL	anyChange = NO;
+	
+	if( [backImageList count] > 0 )
+	{
+		[backImageList removeAllObjects];
+		[self setCurrentURL:nil];
+		[self useDefaultBackground];
+		[self setNeedsDisplay:YES];
+		[self saveBackImageList];
+		anyChange = YES;
+	}
+	
+	return anyChange;
+}
+
+-(void)resetBackground
+{
+	[self setBackImage:nil];
+	[self setCurrentURL:nil];
+	[self setNeedsDisplay:YES]; 
 }
 
 -(void)useDefaultBackground
@@ -123,23 +177,25 @@
 - (void)fireImageTimer:(NSTimer*)inTimer
 {
 	if( [self backImageListCount] > 1 )
-	{
-		[self setBackImage:nil];
-		[self setNeedsDisplay:YES]; 
-	}
+		[self resetBackground];
 }
 
 - (id)initWithFrame:(NSRect)frame
 {
     if( self = [super initWithFrame:frame] )
     {
+		NSNumber*	prefFireTime = [[NSUserDefaults standardUserDefaults] objectForKey:@"PADHomeViewDelay"];
 		NSArray*	dropTypes = [NSArray arrayWithObjects: NSFilenamesPboardType, NSColorPboardType, nil];
 		[self registerForDraggedTypes:dropTypes];
 		
 		if( ![self loadBackImageList] )
 			[self useDefaultBackground];
 		
-		backImageTimer = [NSTimer scheduledTimerWithTimeInterval:gPADHomeView_DefaultTimerTime target:self selector:@selector(fireImageTimer:) userInfo:nil repeats:YES];
+		if( prefFireTime != nil )
+			gPADHomeView_DefaultTimerTime = [prefFireTime doubleValue];
+		
+		if( gPADHomeView_DefaultTimerTime )
+			backImageTimer = [NSTimer scheduledTimerWithTimeInterval:gPADHomeView_DefaultTimerTime target:self selector:@selector(fireImageTimer:) userInfo:nil repeats:YES];
     }
     return self;
 }
@@ -153,8 +209,10 @@
 		if( [self backImageListCount] > 0 ) {
 			workImage = [backImageList randomObject];
 			outImage = [[NSImage alloc] initWithContentsOfURL:workImage];
-			if( outImage != nil )
+			if( outImage != nil ) {
 				[self setBackImage:outImage];
+				[self setCurrentURL:workImage];
+			}
 		}
 	return outImage;
 }
@@ -171,6 +229,14 @@
 		[[self backColor] setFill];
 		NSRectFill( drawRect );
 	}
+}
+
+- (BOOL)validateMenuItem:(NSMenuItem *)item
+{
+	if( [item action] == @selector(restoreDefaultBackground:) )
+		return [self isCustomUserBackground];
+	
+	return [super validateMenuItem:item];
 }
 
 - (NSDragOperation)draggingSourceOperationMaskForLocal:(BOOL)isLocal
@@ -290,8 +356,13 @@
     return goodDrop;
 }
 
+-(IBAction)deleteCurrentURL:(id)sender
+	{ [self deleteBackImageURL:[self currentURL]]; }
 
+-(IBAction)randomBackground:(id)sender
+	{ [self resetBackground]; }
 
-
+-(IBAction)restoreDefaultBackground:(id)sender
+	{ [self resetBackImageList]; }
 
 @end
