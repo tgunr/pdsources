@@ -64,7 +64,7 @@
 -(BOOL)isDVD;
 -(BOOL)isBD;
 -(NSString*)guessPADFlavor;
--(NSDictionary*)getDVDMediaInfo;
+-(NSMutableDictionary*)getDVDMediaInfo;
 -(BOOL)ejectVolume;
 
 - (void) readDVDStructure:(MMCDeviceInterface**)mmcInterface

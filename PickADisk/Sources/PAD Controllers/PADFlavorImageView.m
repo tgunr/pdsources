@@ -382,7 +382,7 @@ const	CGFloat		kPADVIVStateRotateCounterClockwise		= 1.0f;
 	resourceAlpha = 0.42;
 	resourceName = @"PAD4.icns";
 	
-	[super initSelfWithFrame:newFrame];
+	return [super initSelfWithFrame:newFrame];
 }
 
 -(BOOL)loadResourceImage

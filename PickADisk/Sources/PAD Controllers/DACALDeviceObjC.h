@@ -104,6 +104,7 @@ extern void					DACALNotification( void* inData, DACALDeviceRef inBox, CFStringR
 }
 
 -(DACALSlot*)elementSlot;
+-(DACALDevice*)elementDevice;
 -(FSRef*)elementFSRef;
 -(NSURL*)elementURL;
 -(BOOL)isElementFSRef:(const FSRef*)otherFSRef;
@@ -237,6 +238,8 @@ extern void					DACALNotification( void* inData, DACALDeviceRef inBox, CFStringR
 -(BOOL)slotAssignedIndexFromVolume:(DACVolume*)indexVolume asType:(NSString*)newType;
 -(BOOL)unassignSlotIndex;
 
+-(NSNumber*)volumeSize;
+
 @end		//	DACALSlot
 
 @interface DACALDevice : NSObject {
@@ -280,6 +283,7 @@ extern void					DACALNotification( void* inData, DACALDeviceRef inBox, CFStringR
 -(void)detachingDevice;
 
 -(NSInteger)slotsUsed;
+-(NSNumber*)totalVolumeSize;
 
 -(DACALResult)commandCloseDoor;
 
@@ -301,6 +305,7 @@ extern void					DACALNotification( void* inData, DACALDeviceRef inBox, CFStringR
 -(DACALSlotElement*)DACALDeviceSlotElementForURL:(NSURL*)itemURL;
 
 -(BOOL)countUsedSlots:(NSInteger*)outUsedSlotCount;
+-(NSNumber*)totalVolumeSize;
 
 -(void)notificationDeviceAttached:(DACALDeviceRef)inBoxRef;
 -(void)notificationDeviceDetached:(DACALDeviceRef)inBoxRef;

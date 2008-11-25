@@ -174,6 +174,11 @@ NSString*	kDACSlotIconFileNameWithExtension			= @".DACDiscIcon.icns";
  */
 }
 
+-(DACALDevice*)elementDevice
+{
+	return [[self elementSlot] slotDevice];
+}
+
 -(SimpleTreeNode*)elementNode
 	{ return elementNode; }
 
@@ -1298,6 +1303,22 @@ NSString*	kDACSlotIconFileNameWithExtension			= @".DACDiscIcon.icns";
 	return goodBye;
 }
 
+-(NSNumber*)volumeSize 
+{
+	CFStringRef		itemName = NULL;
+	NSNumber*		outSize = nil;
+	
+	itemName = FSCopyXattr( kCFAllocatorDefault, &slotFSRef, kDACALCarouselDocumentXAttrVolumeSize, NULL );
+
+	if( itemName == NULL ) 
+		outSize = [NSNumber zero];
+	else
+		outSize = [NSNumber numberWithLongLong:[(NSString*)itemName longLongValue]];
+	
+	return( outSize );
+}
+
+
 @end		// DACALSlot
 
 
@@ -1557,6 +1578,18 @@ NSString*	kDACSlotIconFileNameWithExtension			= @".DACDiscIcon.icns";
 -(NSInteger)slotsUsed
 	{ return slotsUsed; }
 
+-(NSNumber*)totalVolumeSize
+{
+	NSEnumerator*	slotEnum = [deviceSlots objectEnumerator];
+	DACALSlot*		workSlot = nil;
+	NSNumber*		workNumber = [NSNumber zero];
+	
+	while ( workSlot = [slotEnum nextObject] ) 
+		workNumber = [workNumber addToNumber:[workSlot volumeSize]];
+	
+	return workNumber;
+}
+
 -(DACALResult)commandCloseDoor
 	{ return DACALCommandCloseDoor( deviceRef ); }
 
@@ -1700,6 +1733,19 @@ NSString*	kDACSlotIconFileNameWithExtension			= @".DACDiscIcon.icns";
 	
 	return freeSlot;
 }
+
+-(NSNumber*)totalVolumeSize
+{
+	NSEnumerator*	slotEnum = [deviceList objectEnumerator];
+	DACALDevice*	workDevice = nil;
+	NSNumber*		workNumber = [NSNumber zero];
+	
+	while ( workDevice = [slotEnum nextObject] ) 
+		workNumber = [workNumber addToNumber:[workDevice totalVolumeSize]];
+	
+	return workNumber;
+}
+
 
 -(void)notificationDeviceAttached:(DACALDeviceRef)inBoxRef
 {

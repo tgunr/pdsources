@@ -13,7 +13,9 @@
 
 -(id)randomObject;
 
-@end
+-(NSString*)md5String;
+
+@end	//	NSArray(MyExtensions)
 
 @interface NSMutableArray(MyExtensions)
 
@@ -24,5 +26,26 @@
 -(id)insertUniqueObjectsFromArray:(NSArray*)newArray atIndex:(NSInteger)index;
 -(id)addUniqueObjectsFromArray:(NSArray*)newArray;
 
-@end
+@end	//	NSMutableArray(MyExtensions)
 
+@interface NSDictionary(StandardDigest)
+
+-(NSString*)md5String;
+
+@end	//	NSDictionary(StandardDigest)
+
+@interface NSMutableDictionary(MyExtensions)
+
+-(void)addEntryFromDictionary:(NSDictionary*)otherDict forKey:(id)otherKey;
+
+@end	//	NSMutableDictionary(MyExtensions)
+
+
+@interface NSNumber(StandardDigest)
+
++(NSNumber*)zero;
+
+-(NSString*)md5String;
+-(NSNumber*)addToNumber:(NSNumber*)otherNum;
+
+@end	//	NSNumber(StandardDigest)

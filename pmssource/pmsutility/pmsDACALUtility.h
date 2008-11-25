@@ -41,4 +41,6 @@ CFBooleanRef	BooleanToCFBoolean	(Boolean		inBoolean);
 CFBooleanRef	BOOLToCFBoolean		(BOOL			inBool);
 BOOL			CFBooleanToBOOL		(CFBooleanRef	inCFBoolean);
 Boolean			CFBooleanToBoolean	(CFBooleanRef	inCFBoolean);
+CFBooleanRef	NSNumberToCFBoolean	(NSNumber*		inNSNum);
+NSNumber*		CFBooleanToNSNumber	(CFBooleanRef	inCFBoolean);
 

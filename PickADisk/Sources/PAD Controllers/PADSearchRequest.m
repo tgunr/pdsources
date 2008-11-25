@@ -48,7 +48,7 @@ const	NSString*			kPADSearchOptionResultTypeLeaf	= @"Leaf";
 const	NSString*			kPADSearchOptionResultTypeItem	= @"Default";
 
 @implementation PADSearchTerm
-static NSMutableArray*		gPADSearchTerms = nil;
+//static NSMutableArray*		gPADSearchTerms = nil;
 
 - (void)dealloc
 {

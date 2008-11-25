@@ -22,7 +22,7 @@ NSString*		kPADLicenseStateShowLicense		= @"ShowLicense";
 
 @implementation LicenseController
 static LicenseController*	shared_LicenseController = nil;
-static BOOL	shared_LicenseControllerB = false;
+//static BOOL	shared_LicenseControllerB = false;
 
 - (void)dealloc
 {

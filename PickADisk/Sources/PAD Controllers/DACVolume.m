@@ -315,7 +315,7 @@ HAVEGUESS:
 
 
 
--(NSDictionary*)getDVDMediaInfo
+-(NSMutableDictionary*)getDVDMediaInfo
 {
     HRESULT             herror            = S_OK;
     IOReturn            error             = kIOReturnSuccess;
@@ -400,10 +400,11 @@ bail:
 	{
 		// is really DVD?
 		
-		if( [dict objectForKey:@"ErrorMessage"] == nil )
-			goto HAVEDVD;
+	//	if( [dict objectForKey:@"ErrorMessage"] == nil )
+	//		goto HAVEDVD;
 		
-		NSData*		data255 = [dict objectForKey:[NSNumber numberWithInt:255]];
+	//	NSData*		data255 = [dict objectForKey:[NSNumber numberWithInt:255]];
+		NSData*		data255 = [dict objectForKey:@"255"];
 		if( data255 )
 		{
 			NSString*	hash255 = [data255 md5String];
@@ -485,7 +486,9 @@ HAVEDVD:
 	
     data = [[[NSData alloc] initWithBytes:buffer length:bufferSize] autorelease];
     if(data != NULL) {
-        [dict setObject:data forKey:[NSNumber numberWithInt:format]];
+       // [dict setObject:data forKey:[NSNumber numberWithInt:format]];
+		//	Modified by Jack to emit a string key
+		 [dict setObject:data forKey:[NSString stringWithFormat:@"%ld",format]];
     }
     
 bail:
@@ -503,10 +506,10 @@ bail:
                 errorMsg = [NSString stringWithFormat: @"No support for format %i on this drive", format];
             }
         }
-        if(errorMsg == nil)
-            errorMsg = @"Could not read DVD structure from the media";
-        if(errorMsg != nil) 
-			[dict setObject:errorMsg forKey:@"ErrorMessage"];
+        //if(errorMsg == nil)
+        //    errorMsg = @"Could not read DVD structure from the media";
+        //if(errorMsg != nil) 
+		//	[dict setObject:errorMsg forKey:@"ErrorMessage"];
     }
 }
 
@@ -641,23 +644,35 @@ bail:
 		
 		//if( [self isDVD] == YES )
 		{
-			NSDictionary*	dvdInfo = [self getDVDMediaInfo];				// autoreleased
+			NSMutableDictionary*	dvdInfo = [self getDVDMediaInfo];				// autoreleased
 			if( dvdInfo != nil )
 			{
-				//NSLog(@"DVD Info Dict: %@", dvdInfo);
+				//	First add in some others for more uniqueness
+				//	[dvdInfo addEntryFromDictionary:volumeData forKey:@""];
+				
+				//[dvdInfo addEntryFromDictionary:(NSDictionary*)volumeData forKey:@"DAMediaBSDMajor"];
+				//[dvdInfo addEntryFromDictionary:(NSDictionary*)volumeData forKey:@"DAMediaBSDMinor"];
+				[dvdInfo addEntryFromDictionary:(NSDictionary*)volumeData forKey:@"DAMediaBlockSize"];
+				[dvdInfo addEntryFromDictionary:(NSDictionary*)volumeData forKey:@"DAMediaContent"];
+				[dvdInfo addEntryFromDictionary:(NSDictionary*)volumeData forKey:@"DAMediaName"];
+				[dvdInfo addEntryFromDictionary:(NSDictionary*)volumeData forKey:@"DAMediaSize"];
+				[dvdInfo addEntryFromDictionary:(NSDictionary*)volumeData forKey:@"DAMediaWhole"];
+				[dvdInfo addEntryFromDictionary:(NSDictionary*)volumeData forKey:@"DAMediaWritable"];
+				[dvdInfo addEntryFromDictionary:(NSDictionary*)volumeData forKey:@"DAVolumeKind"];
+				[dvdInfo addEntryFromDictionary:(NSDictionary*)volumeData forKey:@"DAVolumeMountable"];
+				[dvdInfo addEntryFromDictionary:(NSDictionary*)volumeData forKey:@"DAVolumeName"];
+				[dvdInfo addEntryFromDictionary:(NSDictionary*)volumeData forKey:@"DAVolumeUUID"];
+				//[dvdInfo addEntryFromDictionary:volumeData forKey:@""];
+				//[dvdInfo addEntryFromDictionary:volumeData forKey:@""];
+				//[dvdInfo addEntryFromDictionary:volumeData forKey:@""];
+
+				CFShow( volumeData );
+				NSLog(@"DVD Info Dict: %@", dvdInfo);
 				NSLog(@"DVD Info Dict Key Count: %i", [dvdInfo count]);
 
-				NSEnumerator*		infoEnum = [dvdInfo objectEnumerator];
-				id					infoItem = nil;
-				NSMutableString*	infoString = [NSMutableString stringWithString:@""];
-				NSString*			infoMD5 = nil;
+				NSString*			infoMD5 = [dvdInfo md5String];
 				
-				while ( infoItem = [infoEnum nextObject] ) 
-					[infoString appendString:[infoItem md5String]];
-				
-				infoMD5 = [infoString md5String];
 				padIdentifier = [[NSString alloc] initWithString:infoMD5];
-				
 				NSLog(@"Disc: %@\nProposed DACDiscKey: %@", self, infoMD5);
 				// save the id?
 			} else {
@@ -681,28 +696,28 @@ bail:
 					}
 				}
 				
-				//	Fallback on a hash of the top level directory
-				
-				if( !padIdentifier )
-				{
-					NSArray*	topLevel = [[self topLevelDirectory] arrayOfPathsFromURLs];
-					NSData*		outData = (NSData*)CFPropertyListCreateXMLData( kCFAllocatorDefault, (CFPropertyListRef)topLevel );
+			}
+			
+		}
 
-					if( outData != nil ) {
-						NSString* md5_String = [outData md5String];
-						
-						if( padIdentifier == nil )
-							padIdentifier = [[NSString alloc] initWithString:md5_String];
-						
-						NSLog(@"Fallback DACDiscKey: %@", md5_String);
-					}
-				}
+		//	Fallback on a hash of the top level directory
+		if( !padIdentifier )
+		{
+			NSArray*	topLevel = [[self topLevelDirectory] arrayOfPathsFromURLs];
+			NSData*		outData = (NSData*)CFPropertyListCreateXMLData( kCFAllocatorDefault, (CFPropertyListRef)topLevel );
+
+			if( outData != nil ) {
+				NSString* md5_String = [outData md5String];
 				
 				if( padIdentifier == nil )
-					NSLog(@"Warning!! Nil Identifier! Volume: %@", self);
+					padIdentifier = [[NSString alloc] initWithString:md5_String];
 				
+				NSLog(@"Fallback DACDiscKey: %@", md5_String);
 			}
 		}
+		
+		if( padIdentifier == nil )
+			NSLog(@"Warning!! Nil Identifier! Volume: %@", self);
 		
 		DACALSlot*	workSlot = nil;
 		

@@ -395,3 +395,10 @@ BOOL			CFBooleanToBOOL(CFBooleanRef inCFBoolean)
 Boolean			CFBooleanToBoolean(CFBooleanRef inCFBoolean)
 	{ return( CFBooleanGetValue(inCFBoolean) ); }
 
+CFBooleanRef	NSNumberToCFBoolean(NSNumber*	inNSNum)
+{ return( BOOLToCFBoolean([inNSNum boolValue]) ); }
+
+NSNumber*		CFBooleanToNSNumber(CFBooleanRef inCFBoolean)
+	{ return [NSNumber numberWithBool:CFBooleanToBOOL(inCFBoolean)]; }
+
+

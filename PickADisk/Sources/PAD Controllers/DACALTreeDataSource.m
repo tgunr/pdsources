@@ -459,6 +459,8 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 	NSString*		carouselString;
 	NSString*		itemString;
 	NSString*		slotString;
+	DACALDevice*	sizeDevice = nil;
+	NSString*		sizeString = @"";
 	NSInteger		usedCount = 0;
 	BOOL			canAdd = [[DACALDeviceService sharedService] countUsedSlots:&usedCount];
 	
@@ -478,8 +480,8 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 	if( [[[tabView selectedTabViewItem] identifier] compare:@"Home"] == NSOrderedSame )
 	{
 		if( count == 0) promptData = NSLocalizedString(@"No carousels detected", @"Data View Prompt when no carousel devices are currently detected");
-		else promptData = [NSString stringWithFormat:NSLocalizedString(@"%i %@ with %i %@", @"Data View Prompt Format for number of carousel devices attached and number of used slots"),
-						   count, carouselString, usedCount, slotString];
+		else promptData = [NSString stringWithFormat:NSLocalizedString(@"%i %@ with %i %@ storing %@", @"Data View Prompt Format for number of carousel devices attached and number of used slots"),
+						   count, carouselString, usedCount, slotString, [NSString stringFromByteCount:[[DACALDeviceService sharedService] totalVolumeSize]]];
 	} else {
 		NSArray *selectedNodes = [secondaryController selectedNodes];
 		
@@ -488,8 +490,13 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 
 		index = [[secondaryController outlineView] numberOfRows];
 		
+		if( [[[self treeControl] selectedNodes] count] > 0 ) {
+			if( sizeDevice = DACALDeviceForDeviceRef( [[[[[self treeControl] selectedNodes] objectAtIndex:0] nodeData] itemDevice]) )
+				sizeString = [NSString stringFromByteCount:[sizeDevice totalVolumeSize]];
+		}		
+		
 		if( count ) promptData = [NSString stringWithFormat:NSLocalizedString(@"%i of %i selected", @"Data View Standard Prompt Format for number of elements selected of total count"), count, index];
-		else		promptData = [NSString stringWithFormat:NSLocalizedString(@"%i %@", @"Data View Prompt Format for total count of visible elements"), index, itemString];
+		else		promptData = [NSString stringWithFormat:NSLocalizedString(@"%i %@ %@", @"Data View Prompt Format for total count of visible elements"), index, itemString, sizeString];
 	}
 	
 	if( !canAdd )
