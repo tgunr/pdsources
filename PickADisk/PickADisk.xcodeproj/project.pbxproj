@@ -65,7 +65,6 @@
 		5C7C51140E3DEC4D00FCEBD8 /* xattr in Resources */ = {isa = PBXBuildFile; fileRef = 5C6657010E3822D400414ECB /* xattr */; };
 		5C81A0EB0EC39D9B00E75319 /* JSServiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C81A0E80EC39D9B00E75319 /* JSServiceManager.m */; };
 		5C81A2280EC585CB00E75319 /* PADCrashReportService.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C81A2260EC585CB00E75319 /* PADCrashReportService.m */; };
-		5C81BE490ED0F186002A5A60 /* KeyEquiv.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5C81BE480ED0F186002A5A60 /* KeyEquiv.plist */; };
 		5C88C0100EB7B7CA005D267C /* PADFlavorImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C88C00E0EB7B7CA005D267C /* PADFlavorImageView.m */; };
 		5C88C0130EB7B826005D267C /* Gray.tif in Resources */ = {isa = PBXBuildFile; fileRef = 75E816080EAFB47200C8562D /* Gray.tif */; };
 		5C88C18A0EB83A51005D267C /* BlueSearch.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C88C1880EB83A51005D267C /* BlueSearch.png */; };
@@ -100,6 +99,8 @@
 		735CC2BA049A7E2A00C919A3 /* ImageAndTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 02AAE104FF38CCE111CA0E35 /* ImageAndTextCell.m */; settings = {ATTRIBUTES = (); }; };
 		735CC2BD049A7E2A00C919A3 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 011669A0FFC1E3D311CA0E35 /* Cocoa.framework */; };
 		751C4E2D0E9400250027BC1C /* AquaticPrime.m in Sources */ = {isa = PBXBuildFile; fileRef = 751C4E2C0E9400250027BC1C /* AquaticPrime.m */; };
+		75B2FCB30EDDA9A1007356FD /* BlackPlus1.png in Resources */ = {isa = PBXBuildFile; fileRef = 75B2FCB20EDDA9A1007356FD /* BlackPlus1.png */; };
+		75B2FCB50EDDA9AD007356FD /* BlackSearch1.png in Resources */ = {isa = PBXBuildFile; fileRef = 75B2FCB40EDDA9AD007356FD /* BlackSearch1.png */; };
 		75E667D60E92CA9500A9DA07 /* license.icns in Resources */ = {isa = PBXBuildFile; fileRef = 75E667D50E92CA9500A9DA07 /* license.icns */; };
 		75F02D190E954B1400A02B14 /* License.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75F02D180E954B1400A02B14 /* License.xib */; };
 		75F02D240E955A9400A02B14 /* LicenseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 75F02D220E955A9400A02B14 /* LicenseController.m */; };
@@ -246,7 +247,6 @@
 		5C81A1640EC3BBD000E75319 /* JSTestService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSTestService.m; sourceTree = "<group>"; };
 		5C81A2250EC585CB00E75319 /* PADCrashReportService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PADCrashReportService.h; sourceTree = "<group>"; };
 		5C81A2260EC585CB00E75319 /* PADCrashReportService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PADCrashReportService.m; sourceTree = "<group>"; };
-		5C81BE480ED0F186002A5A60 /* KeyEquiv.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = KeyEquiv.plist; path = "../../../../../Hot Projects/Cocoa Projects/SaverJack/KeyEquiv.plist"; sourceTree = SOURCE_ROOT; };
 		5C829C750E46AC730069483D /* PADLifecycleSetup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PADLifecycleSetup.h; path = "../PAD Controllers/PADLifecycleSetup.h"; sourceTree = "<group>"; };
 		5C88C00E0EB7B7CA005D267C /* PADFlavorImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PADFlavorImageView.m; path = "Sources/PAD Controllers/PADFlavorImageView.m"; sourceTree = "<group>"; };
 		5C88C00F0EB7B7CA005D267C /* PADFlavorImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PADFlavorImageView.h; path = "Sources/PAD Controllers/PADFlavorImageView.h"; sourceTree = "<group>"; };
@@ -290,6 +290,8 @@
 		735CC2C0049A7E2A00C919A3 /* Info-PickADisk.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-PickADisk.plist"; sourceTree = SOURCE_ROOT; };
 		735CC2C1049A7E2A00C919A3 /* PickADisk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PickADisk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		751C4E2C0E9400250027BC1C /* AquaticPrime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AquaticPrime.m; path = Sources/License/AquaticPrime.m; sourceTree = "<group>"; };
+		75B2FCB20EDDA9A1007356FD /* BlackPlus1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlackPlus1.png; sourceTree = "<group>"; };
+		75B2FCB40EDDA9AD007356FD /* BlackSearch1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlackSearch1.png; sourceTree = "<group>"; };
 		75E666F50E92A6EB00A9DA07 /* AQDataExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AQDataExtensions.h; path = Sources/License/AQDataExtensions.h; sourceTree = "<group>"; };
 		75E666F60E92A6EB00A9DA07 /* AQDataExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AQDataExtensions.m; path = Sources/License/AQDataExtensions.m; sourceTree = "<group>"; };
 		75E666F90E92A99000A9DA07 /* AquaticPrime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AquaticPrime.h; path = Sources/License/AquaticPrime.h; sourceTree = "<group>"; };
@@ -446,7 +448,6 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				5C81BE480ED0F186002A5A60 /* KeyEquiv.plist */,
 				75F02D180E954B1400A02B14 /* License.xib */,
 				5CC83EEC0E6F6C81000903AD /* swapslot.sh */,
 				5C4E17EB0E2167580091DD7D /* carousel.sh */,
@@ -536,6 +537,8 @@
 		5C7C501B0E3D843700FCEBD8 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				75B2FCB20EDDA9A1007356FD /* BlackPlus1.png */,
+				75B2FCB40EDDA9AD007356FD /* BlackSearch1.png */,
 				5C88C1880EB83A51005D267C /* BlueSearch.png */,
 				5C88C1890EB83A51005D267C /* BluePlus.png */,
 				75E816080EAFB47200C8562D /* Gray.tif */,
@@ -762,7 +765,8 @@
 				5C88C0130EB7B826005D267C /* Gray.tif in Resources */,
 				5C88C18A0EB83A51005D267C /* BlueSearch.png in Resources */,
 				5C88C18B0EB83A51005D267C /* BluePlus.png in Resources */,
-				5C81BE490ED0F186002A5A60 /* KeyEquiv.plist in Resources */,
+				75B2FCB30EDDA9A1007356FD /* BlackPlus1.png in Resources */,
+				75B2FCB50EDDA9AD007356FD /* BlackSearch1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
