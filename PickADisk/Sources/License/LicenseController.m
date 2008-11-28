@@ -382,7 +382,7 @@ static LicenseController*	shared_LicenseController = nil;
 	NSString*	requestCode = [licenseInvoiceCode stringValue];
 	
 	if( ([requestUser isEqual:@""]) || ([requestEmail isEqual:@""]) ) {
-		AudioServicesPlayAlertSound();
+		AudioServicesPlayAlertSound(kUserPreferredAlert);
 		return;
 	} else
 		[requestLicenseWindow orderOut:self];

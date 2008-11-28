@@ -1,4 +1,5 @@
 #import <Cocoa/Cocoa.h>
+#import <AudioToolBox/AudioServices.h>
 #import "AquaticPrime.h"
 
 @interface LicenseController : NSWindowController
