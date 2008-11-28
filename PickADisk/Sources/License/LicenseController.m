@@ -376,6 +376,27 @@ static LicenseController*	shared_LicenseController = nil;
 }
 
 - (IBAction)submitBtnPressed:(id)sender {
+
+	NSString*	requestUser = [licenseeField stringValue];
+	NSString*	requestEmail = [licenseMailField stringValue];
+	NSString*	requestCode = [licenseInvoiceCode stringValue];
+	
+	if( ([requestUser isEqual:@""]) || ([requestEmail isEqual:@""]) ) {
+		AudioServicesPlayAlertSound();
+		return;
+	} else
+		[requestLicenseWindow orderOut:self];
+	
+	if( [requestCode isEqual:@""] )
+		requestCode = @"<none>";
+	
+	NSString*	bodyText = [[NSString stringWithFormat:@"Please send a replacement license for\n\nLicensed Name: %@\nLicensed Email: %@\nLicensed Invoice: %@\n\nThanks!\n\n\n", requestUser, requestEmail, requestCode] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+	NSString*	urlString = [NSString stringWithFormat:@"mailto:license.request@pickadisk.com?subject=Request%%20License&body=%@", bodyText];
+	
+	NSURL*		buyPADURL = [NSURL URLWithString:urlString];
+	
+	LSOpenCFURLRef( (CFURLRef)buyPADURL, NULL );
+	
 }
 
 - (IBAction)visitLicenseBtn:(id)sender {
@@ -403,6 +424,8 @@ static LicenseController*	shared_LicenseController = nil;
 }
 
 - (IBAction)requestLicenseBtn:(id)sender {
+
+	
 }
 
 @end

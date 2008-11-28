@@ -499,8 +499,10 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 		else		promptData = [NSString stringWithFormat:NSLocalizedString(@"%i %@ %@", @"Data View Prompt Format for total count of visible elements"), index, itemString, sizeString];
 	}
 	
-	if( !canAdd )
+	if( !canAdd ) {
 		promptData = NSLocalizedString(@"Please purchase PickADisk to add more slots", @"Data View Prompt when max slots in demo mode");
+		[noBoxIcon setHidden:NO];
+	}
 	
 	   [self setPrompt:promptData];
 }

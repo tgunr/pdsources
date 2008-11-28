@@ -1717,6 +1717,7 @@ NSString*	kDACSlotIconFileNameWithExtension			= @".DACDiscIcon.icns";
 {
 	BOOL				freeSlot = NO;
 	NSInteger			outCount = 0;
+	NSInteger			limitCount = 50;	// [[PADLicenseService sharedLicenseService] licenseLimit];
 	NSEnumerator*		deviceEnum = [deviceList objectEnumerator];
 	DACALDevice*		workDevice = nil;
 	
@@ -1724,7 +1725,7 @@ NSString*	kDACSlotIconFileNameWithExtension			= @".DACDiscIcon.icns";
 		outCount += [workDevice slotsUsed];
 	
 	if( [[PADLicenseService sharedLicenseService] licenseValid] != YES )
-		freeSlot = ([[PADLicenseService sharedLicenseService] licenseLimit] <= outCount);
+		freeSlot = (limitCount >= outCount);
 	else
 		freeSlot = ([deviceList count] > 0);
 	
