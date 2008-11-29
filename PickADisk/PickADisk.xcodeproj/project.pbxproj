@@ -810,7 +810,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/bin/sh -x";
-			shellScript = "logger \"Starting\"\nif [[ \"$CONFIGURATION\" == 'Development Fresh Prefs' ]]; then\n\tif [ -e \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist\" ]; then\n\t\tif [ -e \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist.1\" ]; then\n\t\t\tlogger \"Removing prefs aside\"\n\t\t\t/bin/rm \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist\"\t\telse\n\t\t\tlogger \"Moving prefs aside\"\n\t\t\t/bin/mv \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist\" \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist.1\"\n\t\tfi\n\tfi\nfi\n\tif [[ -e \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist.1\" ]]; then\n\t\tlogger \"restoring old pref\"\n\t\t/bin/mv \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist.1\" \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist\"\n\tfi";
+			shellScript = "logger \"Starting\"\nif [[ \"$CONFIGURATION\" == 'Development Fresh Prefs' ]]; then\n\tif [ -e \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist\" ]; then\n\t\tif [ -e \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist.1\" ]; then\n\t\t\tlogger \"Removing prefs aside\"\n\t\t\t/bin/rm \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist\"\t\telse\n\t\t\tlogger \"Moving prefs aside\"\n\t\t\t/bin/mv \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist\" \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist.1\"\n\t\tfi\n\tfi\nfi\n\tif [[ -e \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist.1\" ]]; then\n\t\tlogger \"restoring old pref\"\n\t\t/bin/mv \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist.1\" \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist\"\n\tfi\nif [[ \"$CONFIGURATION\" == 'Deploy' ]]; then\n    echo \"zipping $CONFIGURATION_BUILD_DIR/${PRODUCT_NAME}_${VERSIONSTRING}.zip\"\n\tpushd $CONFIGURATION_BUILD_DIR/\n\tif [[ -e ${PRODUCT_NAME}_${VERSIONSTRING}.zip ]] ; then\n\t\trm ${PRODUCT_NAME}_${VERSIONSTRING}.zip\n\tfi\n    zip -r ${PRODUCT_NAME}_${VERSIONSTRING}.zip ${PRODUCT_NAME}.app\n\tscp ${PRODUCT_NAME}_${VERSIONSTRING}.zip polymicrosystems.com:pickadisk.com/updates/trunk/archives/\n\tgrowlnotify -m \"Upload complete\" -I /Developer/Applications/Xcode.app/\n\nfi";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -893,6 +893,62 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		759BBD0B0EE0A60000AEC210 /* Deploy */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					"$(NATIVE_ARCH)",
+					x86_64,
+					ppc,
+				);
+				FRAMEWORK_SEARCH_PATHS = "";
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
+				SDKROOT = /Developer/SDKs/MacOSX10.5.sdk;
+			};
+			name = Deploy;
+		};
+		759BBD0C0EE0A60000AEC210 /* Deploy */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1 = "ppc i386";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/Frameworks",
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(DEVELOPER_DIR)/SDKs/MacOSX10.5.sdk/System/Library/Frameworks\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../DiscID/build/Release\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_5 = "\"$(SRCROOT)/Frameworks\"";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Sources/Prefix.h;
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
+				GCC_WARN_UNKNOWN_PRAGMAS = NO;
+				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = "Info-PickADisk.plist";
+				INSTALL_PATH = /Applications;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+				);
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)\"";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = (
+					"-lcrypto",
+					"-seg1addr",
+					0x10000000,
+				);
+				PRODUCT_NAME = PickADisk;
+				SECTORDER_FLAGS = "";
+				VERSIONSTRING = 1.0_1040;
+				WARNING_CFLAGS = "-Wmost";
+				WRAPPER_EXTENSION = app;
+				ZERO_LINK = NO;
+			};
+			name = Deploy;
+		};
 		75D3EBAB0E8BF811009A0199 /* DebugPPC */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1136,6 +1192,7 @@
 				75E4927D0EACC04200AC85A0 /* Development Fresh Prefs */,
 				75D3EBAC0E8BF811009A0199 /* DebugPPC */,
 				B69BDD9608A2EC26008AC9B5 /* Release */,
+				759BBD0C0EE0A60000AEC210 /* Deploy */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Development;
@@ -1147,6 +1204,7 @@
 				75E4927C0EACC04200AC85A0 /* Development Fresh Prefs */,
 				75D3EBAB0E8BF811009A0199 /* DebugPPC */,
 				B69BDD9A08A2EC26008AC9B5 /* Release */,
+				759BBD0B0EE0A60000AEC210 /* Deploy */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Development;
