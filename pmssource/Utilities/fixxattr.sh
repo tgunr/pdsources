@@ -29,6 +29,8 @@ xattrkind="$xattrslot.kind"
 xattradded="$xattrslot.added"
 xattrcheckout="$xattrslot.checkout"
 
+dateadded=`date "+%Y-%m-%d% %H:%M:%S -0700"`
+
 function del-xattr {
 	xattrs=`$XATTRCMD -l "$1" | awk 'BEGIN{FS=":"}; {print $2}'`
 	for xattr in $xattrs ; do
@@ -46,6 +48,20 @@ function del-xattr {
 	done
 }
 
+function check-xattr {
+    added=0
+    xattrs=`$XATTRCMD -l "$1" | awk 'BEGIN{FS=":"}; {print $2}'`
+    for xattr in $xattrs ; do
+	if [[ "${xattr}" == "com.polymicrosystems.pickadisk.device.slot.added" ]] ; then
+	    added=1
+	fi
+    done
+    if [[ $added == 0 ]] ; then 
+	echo "Slot $2 not added"
+	exit 1
+    fi
+}
+
 function del-all-xattr {
 	xattrs=`$XATTRCMD -l "$1" | awk 'BEGIN{FS=":"}; {print $2}'`
 	for xattr in $xattrs ; do
@@ -58,43 +74,55 @@ if [[ ! -e "$CAROUSELPATH" ]] ; then
 	exit 1
 fi
 
-dateadded=`date "+%Y-%m-%d% %H:%M:%S -0700"`
-pushd "$CAROUSELPATH"
+function dofile {
+#     echo "dofile: $1 $2"
+    # add in new ones
+#     $DEBUGCMD $XATTRCMD -w "$xattrcarousel" $currentCarousel "$filename"
+#     $DEBUGCMD $XATTRCMD -w "$xattrslot" $currentSlot "$filename"
+    $XATTRCMD -l "$1"
+
+}
+
+function doslot {
+    echo "doslot: $1 $2"
+    check-xattr "$1" "$2"
+	# add in new ones
+# 	    $DEBUGCMD $XATTRCMD -w "$xattrcarousel"  $currentCarousel "$slot"
+# 	    $DEBUGCMD $XATTRCMD -w "$xattrslot" $currentSlot "$slot"
+# 	    $DEBUGCMD $XATTRCMD -w "$xattrkind" data "$slot"
+# 	    $DEBUGCMD $XATTRCMD -w "$xattradded" "$dateadded" "$slot"
+	# $XATTRCMD -l "$slot"
+}
+
+function rebuild-xattr {
+    pushd "$CAROUSELPATH"
 
 # for carousel in "Carousel 1" ; do 
-for carousel in *.carousel; do 
-    pushd "$carousel" >/dev/null
-    export currentCarousel="${carousel#Carousel }"
-    for slot in Slot*[0-9] ; do
+    for carousel in *.carousel; do 
+	pushd "$carousel" >/dev/null
+	export currentCarousel="${carousel#Carousel }"
+	for slot in Slot*[0-9] ; do
 		# for slot in "Slot 54" ; do
-	pushd "$slot" > /dev/null
-	export currentSlot="${slot#Slot }"
-	echo "Checking slot $slot"
+	    pushd "$slot" > /dev/null
+	    export currentSlot="${slot#Slot }"
+	    echo "Checking slot $slot"
 	# run thru the slots
-	for file in * ; do
+	    for file in * ; do
 		# go thru all files
-	    find "$file" -print0 | while read -d $'\0' filename ; do
+		find "$file" -print0 | while read -d $'\0' filename ; do
 		# echo "`pwd`/$filename: C=$currentCarousel S=$currentSlot"
 		# delete specified attributes 
-		del-all-xattr "$filename" "$currentSlot"
-		# add in new ones
-		$DEBUGCMD $XATTRCMD -w "$xattrcarousel" $currentCarousel "$filename"
-		$DEBUGCMD $XATTRCMD -w "$xattrslot" $currentSlot "$filename"
-		# $XATTRCMD -l "$filename"
-	    done # with files in slot
-	done # with slot
-	popd > /dev/null 
-	echo "Setting slot $slot"
-	# delete specified attributes 
-	del-all-xattr "$slot"	"$currentSlot"		
-	# add in new ones
-	$DEBUGCMD $XATTRCMD -w "$xattrcarousel"  $currentCarousel "$slot"
-	$DEBUGCMD $XATTRCMD -w "$xattrslot" $currentSlot "$slot"
-	$DEBUGCMD $XATTRCMD -w "$xattrkind" data "$slot"
-	$DEBUGCMD $XATTRCMD -w "$xattradded" "$dateadded" "$slot"
-	# $XATTRCMD -l "$slot"
+		#    dofile "$filename" "$currentSlot"
+		    break
+		done # with files in slot
+	    done # with slot
+	    popd > /dev/null 
+	    doslot "$slot" "$currentSlot"		
+	done
+	popd > /dev/null # back to carousels
+	break
     done
-    popd > /dev/null # back to carousels
-done
-popd
+    popd
+}
 
+rebuild-xattr
