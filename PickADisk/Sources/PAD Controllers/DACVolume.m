@@ -669,7 +669,8 @@ bail:
 				CFShow( volumeData );
 				NSLog(@"DVD Info Dict: %@", dvdInfo);
 				NSLog(@"DVD Info Dict Key Count: %i", [dvdInfo count]);
-
+				NSLog(@"DVD Info Dict: %@", dvdInfo);
+				
 				NSString*			infoMD5 = [dvdInfo md5String];
 				
 				padIdentifier = [[NSString alloc] initWithString:infoMD5];
