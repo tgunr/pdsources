@@ -1935,10 +1935,17 @@ DACALDeviceRef	DACALDeviceCreateWithService( io_service_t ioDeviceObj, DACALResu
 		}
 	}
 	
-	
-	err = CarouselEstablishInfoFile( newID );
-	if (err) {
-		if( gDACALVerbose ) printf("dacal: unable to create a device file. ret = %i, dev = %p\n", err, (void*)ioDeviceObj);
+	CFComparisonResult modelDC300Check = CFStringCompare(newModel, CFSTR("DC-300"), 0);
+	CFComparisonResult modelDC101Check = CFStringCompare(newModel, CFSTR("DC-101"), 0);
+	if (modelDC300Check == 0 | modelDC101Check == 0) {
+		err = CarouselEstablishInfoFile( newID );
+		if (err) {
+			if( gDACALVerbose ) printf("dacal: unable to create a device file. ret = %i, dev = %p\n", err, (void*)ioDeviceObj);
+			if( outErr != NULL ) *outErr = err;
+			return( thisRef );
+		}
+	} else {
+		if( gDACALVerbose ) printf("dacal: unknown device: %s ,unable to create a device file. ret = %i, dev = %p\n", newModel, err, (void*)ioDeviceObj);
 		if( outErr != NULL ) *outErr = err;
 		return( thisRef );
 	}
