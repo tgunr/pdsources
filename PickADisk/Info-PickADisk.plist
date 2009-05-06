@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CFAppleHelpAnchor</key>
+	<string>PickADiskHelp</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleDocumentTypes</key>
@@ -49,6 +51,8 @@
 	<string>PickADisk</string>
 	<key>CFBundleGetInfoString</key>
 	<string>PickADisk, ©2008 polyMicro Systems</string>
+	<key>CFBundleHelpBookFolder</key>
+	<string>Help</string>
 	<key>CFBundleIconFile</key>
 	<string>PAD4</string>
 	<key>CFBundleIdentifier</key>
@@ -60,7 +64,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>1.0.2</string>
 	<key>CFBundleSignature</key>
 	<string>PADA</string>
 	<key>CFBundleURLTypes</key>
@@ -79,9 +83,9 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1040</string>
+	<string>2200</string>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2008, polyMicro Systems</string>
+	<string>Copyright © 2009, 2008 polyMicro Systems</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
@@ -133,9 +137,5 @@
 			</dict>
 		</dict>
 	</array>
-	<key>CFBundleHelpBookFolder</key>
-	<string>Help</string>
-	<key>CFAppleHelpAnchor</key>
-	<string>PickADiskHelp</string>
 </dict>
 </plist>
