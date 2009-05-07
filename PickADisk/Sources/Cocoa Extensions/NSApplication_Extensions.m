@@ -53,8 +53,36 @@ const	time_t	kTimeOneDayInSeconds = 86400.0;
 	return isBetween;
 }
 
--(NSString*)naturalDateString
+-(NSString*)formatDateString:(NSString*)dateFormat useNatural:(BOOL)doNatural
 {
+	NSString*			outDateString = nil;
+	NSDateFormatter*	formatFormatter = nil;
+	
+	if( doNatural == YES )
+		formatFormatter = [[NSDateFormatter alloc] initWithDateFormat:dateFormat allowNaturalLanguage:doNatural];
+	else 
+	{
+		formatFormatter = [[NSDateFormatter alloc] init];
+		[formatFormatter setDateFormat:dateFormat];
+	}
+	
+	if( formatFormatter != nil )
+		outDateString = [formatFormatter stringFromDate:self];
+	
+	return outDateString;
+}
+
+-(NSString*)naturalDateString
+	{	return [self formatDateString:@"%c" useNatural:YES];	}
+
+-(NSString*)shorterDateString
+{	return [self formatDateString:@"MMM d, yyyy h:mm a" useNatural:NO];	}
+
+-(NSString*)longerDateString
+{	return [self formatDateString:@"EEEE, MMMM d, yyyy h:mm a, z" useNatural:NO];	}
+
+
+/*{
 	NSString*			outDateString = nil;
 	NSDateFormatter*	naturalFormatter = [[NSDateFormatter alloc] initWithDateFormat:@"%c" allowNaturalLanguage:YES];
 	
@@ -63,7 +91,7 @@ const	time_t	kTimeOneDayInSeconds = 86400.0;
 	
 	return outDateString;
 }
-
+*/
 
 // if other == nil then the current time is used.
 // if other = @"Yesterday" then yesterday is used.

@@ -48,6 +48,18 @@ PADSearchRequest* PADIndexToolbarController_LastSearch = nil;
 - (NSProgressIndicator*)busyProgress
 	{ return busyProgress; }
 
+/*
+- (void)setInspectorController:(PADInspectorController*)infoWin
+{
+	if( !inspectorController || ![inspectorController isEqual:infoWin] )
+	{
+		[infoWin retain];
+		[inspectorController release];
+		inspectorController = infoWin;
+	}
+}
+*/
+
 #pragma mark ###	Delegate methods	###
 
 
@@ -76,7 +88,7 @@ PADSearchRequest* PADIndexToolbarController_LastSearch = nil;
 	else if( theItemAction == @selector(ejectVolumes:) )	updateIt = anyMountedSlots;
 	else if( theItemAction == @selector(runLicense:) )		updateIt = YES;
 	else if( theItemAction == @selector(requestLicense:) )	updateIt = YES;
-	else return [super validateMenuItem:item];
+	else													updateIt = [super validateMenuItem:item];
 	
 	return updateIt;
 }
@@ -100,6 +112,9 @@ PADSearchRequest* PADIndexToolbarController_LastSearch = nil;
 	if ([[toolbarItem itemIdentifier] isEqual:NSToolbarPrintItemIdentifier]) 
 		toolValid = [[self selectedDevices] count] > 0;
 	
+	if ( [toolbarItem tag] == 22 )		// Inspector Item
+		toolValid = YES;	// [[self selectedDevices] count] > 0;
+
 	NSLog(@"Validate Toolbar Item: %@", [toolbarItem label]);
 	
 	return toolValid;	
@@ -285,6 +300,7 @@ PADSearchRequest* PADIndexToolbarController_LastSearch = nil;
 	if( gotoButton )		[gotoButton setEnabled:anySlot];
 	
 	[self adoptPathSelection];
+	[[PADInspectorController sharedInspector] adoptInspectorSelection:[self selectedNodes]];
 	
 	if( dataController )	[[dataController dataSource] updatePrompt];
 }
@@ -509,6 +525,11 @@ PADSearchRequest* PADIndexToolbarController_LastSearch = nil;
 
 - (IBAction)clickOpen:(id)sender
 { }
+
+- (IBAction)clickInspector:(id)sender
+{
+	[[PADInspectorController sharedInspector] toggleInspectorPanel:sender];
+}
 
 - (IBAction)provideFeedback:(id)sender
 {

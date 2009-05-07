@@ -117,6 +117,8 @@ extern const	NSString*			kPADSearchOptionResultTypeItem;
 	id						searchNode;
 	id						searchSubTree;
 	NSMutableArray*			searchTermParents;
+	
+	NSArray*				searchOriginalSelection;
 }
 
 // This function is used to add terms to a search.  Unrecognized terms are ignored during the search.
@@ -144,6 +146,9 @@ extern const	NSString*			kPADSearchOptionResultTypeItem;
 
 -(BOOL)searchResultsDirty;
 -(void)dirtySearchResults;
+
+-(NSArray*)searchOriginalSelection;
+-(void)setSearchOriginalSelection:(NSArray*)selection;
 
 // Called internally
 -(void)createTermsForKeys;

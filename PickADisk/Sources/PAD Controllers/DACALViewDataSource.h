@@ -24,6 +24,7 @@
 - (IBAction)ctmDeleteSlot:(id)sender;
 - (IBAction)ctmGotoSlot:(id)sender;
 - (IBAction)ctmEject:(id)sender;
+- (IBAction)ctmInspector:(id)sender;
 
 - (void)updatePrompt;
 - (void)doubleClickCellContent:(id)item inCell:(NSCell*)cell;

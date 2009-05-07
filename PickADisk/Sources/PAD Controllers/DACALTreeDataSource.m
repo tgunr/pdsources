@@ -536,7 +536,7 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 	DACALDeviceRef				theDevice = kDACALNullDevice;
 	DACALSlotNum				theSlot = 0;
 	PADIndexToolbarController*	toolControl = (PADIndexToolbarController*)[self toolbarControl];
-	NSArray*					dataRowsSelected = [secondaryController selectedNodes];
+//	NSArray*					dataRowsSelected = [secondaryController selectedNodes];
 	SimpleTreeNode*				originalTree = nil;
 	
 	if( [selectedNodes count] == 0 ) [tabView selectTabViewItemWithIdentifier:@"Home"];
@@ -557,6 +557,7 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 		{
 			itemSearch = [data itemSearch];
 			[(MyOutlineView*)[self outlineView] setCurrentSearch:itemSearch];
+			//[(MyOutlineView*)[[[self secondaryController] dataSource] outlineView] setCurrentSearch:itemSearch];
 			if( itemSearch != nil )
 			{
 				if( subTree == nil ) {
@@ -589,8 +590,8 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 		//	[toolControl resetSelectedNodesAndAdoptSelection:YES];
    }
 	
-	if( originalTree && [originalTree isEqual:subTree] )
-		[[secondaryController outlineView] selectItems:dataRowsSelected byExtendingSelection:NO];
+	//if( originalTree && [originalTree isEqual:subTree] )
+	//	[[secondaryController outlineView] selectItems:dataRowsSelected byExtendingSelection:NO];
 	
 	[secondaryController outlineViewAction:secondaryController];
 	

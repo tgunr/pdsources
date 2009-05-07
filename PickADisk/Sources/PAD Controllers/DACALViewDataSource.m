@@ -338,7 +338,8 @@ SLOTNAMEFAILED:
 {
 	NSUndoManager*	undo = [self undoManager];
 	SimpleNodeData*	data = [theNode nodeData];
-	NSString*		nowComment = [NSString stringWithString:[data keyComments]];
+	NSString*		nowActual = [data keyComments];
+	NSString*		nowComment = (nowActual != nil) ? [NSString stringWithString:nowActual] : nil;
 	
 	[[undo prepareWithInvocationTarget:self] nodeCommentChanged:theNode toComment:nowComment];
 	[undo setActionName:NSLocalizedString(@"Change Comment", @"Undo Action when comment column is changed")];
@@ -450,10 +451,10 @@ SLOTTYPEFAILED:
 	}
 	
 	if([[tc identifier] compare:COLUMNID_COMMENT] == NSOrderedSame) 
-		return YES;	
+		return NO;	
 
 	if([[tc identifier] compare:COLUMNID_TAGS] == NSOrderedSame) 
-		return YES;	
+		return NO;	
 
 	if([[tc identifier] compare:COLUMNID_STARS] == NSOrderedSame) 
 		return YES;	
@@ -488,8 +489,8 @@ SLOTTYPEFAILED:
 		[self doubleClickToggleItemReservation:item];
 	else if( [theView clickedColumn] == [theView columnWithIdentifier:COLUMNID_DATECHECKEDOUT] )
 		[self doubleClickToggleItemReservation:item];
-	else if( [theView clickedColumn] == [theView columnWithIdentifier:COLUMNID_TAGS] )
-		[theView editColumn:[theView clickedColumn] row:[theView clickedRow] withEvent:[[NSApplication sharedApplication] currentEvent] select:YES];
+//	else if( [theView clickedColumn] == [theView columnWithIdentifier:COLUMNID_TAGS] )
+//		[theView editColumn:[theView clickedColumn] row:[theView clickedRow] withEvent:[[NSApplication sharedApplication] currentEvent] select:YES];
 	else 	
 	{	
 		if([theData isExpandable] == YES ) {
@@ -629,12 +630,14 @@ SLOTTYPEFAILED:
 		item = [clickedItems objectAtIndex:0];
 	
 	nodeData = [item nodeData];
-    
+   
     if (menu == outlineViewContextMenu) 
 	{
 		while( workItem = (NSMenuItem*)[menuItemEnum nextObject] )
 		{
 			workSelector = [workItem action];
+			//NSLog(@"Testing Item: %@", NSStringFromSelector(workSelector));
+			
 			if( workSelector == @selector(ctmMountOpen:) )						//	Mount & Open
 				[workItem setEnabled:[nodeData isCheckedOut]];
 			if( workSelector == @selector(ctmCheckIn:) )						//	Check In
@@ -643,6 +646,9 @@ SLOTTYPEFAILED:
 				[workItem setEnabled:![nodeData isCheckedOut]];
 			if( workSelector == @selector(ctmGotoSlot:) )						//	Go To Slot
 				[workItem setEnabled:YES];
+			if( workSelector == @selector(ctmInspector:) )	{					//	Show/Hide Inspector
+				[workItem setEnabled:[[PADInspectorController sharedInspector] validateContextualMenuItem:workItem withSelection:clickedItems]];
+			}
 		}
 	}
 	
@@ -701,6 +707,9 @@ SLOTTYPEFAILED:
 
 - (IBAction)ctmEject:(id)sender
 	{ [DACALSlot ejectSlotVolumesOfNodes:[self ctmClickedRows]]; }
+
+- (IBAction)ctmInspector:(id)sender
+	{ [[PADInspectorController sharedInspector] dispatchInspectorPanelTo:[sender title] withSelection:[self ctmClickedRows]]; }
 
 @end	// DACALViewDataSource
 

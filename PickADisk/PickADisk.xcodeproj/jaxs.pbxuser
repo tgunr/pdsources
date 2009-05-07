@@ -34,10 +34,10 @@
 	};
 	06AA3D13FF0C15B911CA0E35 /* NSOutlineView_Extensions.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1100, 2996}}";
-			sepNavSelRange = "{4026, 10}";
-			sepNavVisRange = "{5609, 1322}";
-			sepNavWindowFrame = "{{229, 76}, {1147, 776}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1070, 3458}}";
+			sepNavSelRange = "{3506, 0}";
+			sepNavVisRange = "{3010, 991}";
+			sepNavWindowFrame = "{{451, 113}, {1147, 776}}";
 		};
 	};
 	089C165DFE840E0CC02AAC07 /* English */ = {
@@ -58,33 +58,33 @@
 	};
 	08DC403CFF0C20FA11CA0E35 /* TreeNode.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {2118, 4326}}";
-			sepNavSelRange = "{5674, 0}";
-			sepNavVisRange = "{5026, 1155}";
+			sepNavIntBoundsRect = "{{0, 0}, {2118, 4186}}";
+			sepNavSelRange = "{7717, 40}";
+			sepNavVisRange = "{6925, 1618}";
 			sepNavWindowFrame = "{{230, 73}, {1147, 776}}";
 		};
 	};
 	08DC4041FF0C22D111CA0E35 /* SimpleTreeNode.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1100, 2940}}";
-			sepNavSelRange = "{1889, 0}";
-			sepNavVisRange = "{1708, 1108}";
+			sepNavIntBoundsRect = "{{0, 0}, {1100, 2856}}";
+			sepNavSelRange = "{545, 8}";
+			sepNavVisRange = "{2706, 1205}";
 			sepNavWindowFrame = "{{37, 77}, {1147, 776}}";
 		};
 	};
 	08DC4042FF0C22D111CA0E35 /* SimpleTreeNode.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1100, 16968}}";
-			sepNavSelRange = "{9108, 52}";
-			sepNavVisRange = "{8421, 1208}";
+			sepNavIntBoundsRect = "{{0, 0}, {1070, 16982}}";
+			sepNavSelRange = "{12351, 26}";
+			sepNavVisRange = "{11111, 1319}";
 			sepNavWindowFrame = "{{138, 40}, {1147, 776}}";
 		};
 	};
 	08DC4048FF0C3BD211CA0E35 /* NSArray_Extensions.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1109, 728}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1100, 728}}";
 			sepNavSelRange = "{1001, 0}";
-			sepNavVisRange = "{321, 790}";
+			sepNavVisRange = "{68, 1010}";
 			sepNavWindowFrame = "{{15, 97}, {1147, 776}}";
 		};
 	};
@@ -97,7 +97,7 @@
 		};
 	};
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
-		activeBuildConfigurationName = Development;
+		activeBuildConfigurationName = Release;
 		activeExecutable = 5CDEBFB00E15BBA800732C82 /* PickADisk */;
 		activeTarget = 735CC299049A7E2A00C919A3 /* PickADisk */;
 		addToTargets = (
@@ -238,42 +238,42 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 249562341;
-			PBXWorkspaceStateSaveDate = 249562341;
+			PBXPerProjectTemplateStateSaveDate = 256693485;
+			PBXWorkspaceStateSaveDate = 256693485;
 		};
 		perUserProjectItems = {
-			5C1ECDC60E419C980091B446 = 5C1ECDC60E419C980091B446 /* PlistBookmark */;
-			5C3FB04B0EBD39330048BBA1 = 5C3FB04B0EBD39330048BBA1 /* PBXBookmark */;
-			5C3FB04C0EBD39330048BBA1 = 5C3FB04C0EBD39330048BBA1 /* PBXBookmark */;
-			5C3FB04D0EBD39330048BBA1 = 5C3FB04D0EBD39330048BBA1 /* PBXBookmark */;
-			5C3FB04E0EBD39330048BBA1 = 5C3FB04E0EBD39330048BBA1 /* PBXBookmark */;
-			5C3FB04F0EBD39330048BBA1 = 5C3FB04F0EBD39330048BBA1 /* PBXBookmark */;
-			5C3FB0500EBD39330048BBA1 = 5C3FB0500EBD39330048BBA1 /* PBXBookmark */;
-			5C3FB0510EBD39330048BBA1 = 5C3FB0510EBD39330048BBA1 /* PBXBookmark */;
-			5C3FB0520EBD39330048BBA1 = 5C3FB0520EBD39330048BBA1 /* PBXBookmark */;
-			5C3FB0530EBD39330048BBA1 = 5C3FB0530EBD39330048BBA1 /* PBXBookmark */;
-			5C3FB0540EBD39330048BBA1 = 5C3FB0540EBD39330048BBA1 /* PBXBookmark */;
-			5C3FB0550EBD39330048BBA1 = 5C3FB0550EBD39330048BBA1 /* PBXBookmark */;
-			5C3FB0560EBD39330048BBA1 = 5C3FB0560EBD39330048BBA1 /* PBXBookmark */;
-			5C3FB0570EBD39330048BBA1 = 5C3FB0570EBD39330048BBA1 /* PBXBookmark */;
-			5C3FB05C0EBD39330048BBA1 = 5C3FB05C0EBD39330048BBA1 /* PBXBookmark */;
-			5C3FB05D0EBD39330048BBA1 = 5C3FB05D0EBD39330048BBA1 /* PBXBookmark */;
-			5C3FB05E0EBD39330048BBA1 = 5C3FB05E0EBD39330048BBA1 /* PBXBookmark */;
-			5C3FB05F0EBD39330048BBA1 = 5C3FB05F0EBD39330048BBA1 /* PBXBookmark */;
-			5C3FB0600EBD39330048BBA1 = 5C3FB0600EBD39330048BBA1 /* PBXBookmark */;
-			5C3FB0610EBD39330048BBA1 = 5C3FB0610EBD39330048BBA1 /* PBXBookmark */;
-			5C3FB0620EBD39330048BBA1 = 5C3FB0620EBD39330048BBA1 /* PBXBookmark */;
-			5C3FB0630EBD39330048BBA1 = 5C3FB0630EBD39330048BBA1 /* PBXBookmark */;
-			5C3FB0650EBD39330048BBA1 = 5C3FB0650EBD39330048BBA1 /* PBXBookmark */;
-			5C46ADE20E96E37100DFAC67 = 5C46ADE20E96E37100DFAC67 /* PBXBookmark */;
-			5C46ADE30E96E37100DFAC67 = 5C46ADE30E96E37100DFAC67 /* PBXBookmark */;
-			5C819FDA0EBEF7EF00E75319 = 5C819FDA0EBEF7EF00E75319 /* PBXBookmark */;
-			5C819FDC0EBEF7EF00E75319 = 5C819FDC0EBEF7EF00E75319 /* PBXBookmark */;
-			5C88C18F0EB83A68005D267C = 5C88C18F0EB83A68005D267C /* PBXBookmark */;
-			5C88C1900EB83A68005D267C = 5C88C1900EB83A68005D267C /* PBXBookmark */;
-			5CB083BD0EDFED6300C29FE6 = 5CB083BD0EDFED6300C29FE6 /* PBXBookmark */;
-			5CC83FA50E6FAD4F000903AD = 5CC83FA50E6FAD4F000903AD /* PBXTextBookmark */;
-			5CDAC1FA0E935B3C003984E1 = 5CDAC1FA0E935B3C003984E1 /* PBXTextBookmark */;
+			5C1ECDC60E419C980091B446 /* PlistBookmark */ = 5C1ECDC60E419C980091B446 /* PlistBookmark */;
+			5C3FB04B0EBD39330048BBA1 /* PBXBookmark */ = 5C3FB04B0EBD39330048BBA1 /* PBXBookmark */;
+			5C3FB04C0EBD39330048BBA1 /* PBXBookmark */ = 5C3FB04C0EBD39330048BBA1 /* PBXBookmark */;
+			5C3FB04D0EBD39330048BBA1 /* PBXBookmark */ = 5C3FB04D0EBD39330048BBA1 /* PBXBookmark */;
+			5C3FB04E0EBD39330048BBA1 /* PBXBookmark */ = 5C3FB04E0EBD39330048BBA1 /* PBXBookmark */;
+			5C3FB04F0EBD39330048BBA1 /* PBXBookmark */ = 5C3FB04F0EBD39330048BBA1 /* PBXBookmark */;
+			5C3FB0500EBD39330048BBA1 /* PBXBookmark */ = 5C3FB0500EBD39330048BBA1 /* PBXBookmark */;
+			5C3FB0510EBD39330048BBA1 /* PBXBookmark */ = 5C3FB0510EBD39330048BBA1 /* PBXBookmark */;
+			5C3FB0520EBD39330048BBA1 /* PBXBookmark */ = 5C3FB0520EBD39330048BBA1 /* PBXBookmark */;
+			5C3FB0530EBD39330048BBA1 /* PBXBookmark */ = 5C3FB0530EBD39330048BBA1 /* PBXBookmark */;
+			5C3FB0540EBD39330048BBA1 /* PBXBookmark */ = 5C3FB0540EBD39330048BBA1 /* PBXBookmark */;
+			5C3FB0550EBD39330048BBA1 /* PBXBookmark */ = 5C3FB0550EBD39330048BBA1 /* PBXBookmark */;
+			5C3FB0560EBD39330048BBA1 /* PBXBookmark */ = 5C3FB0560EBD39330048BBA1 /* PBXBookmark */;
+			5C3FB0570EBD39330048BBA1 /* PBXBookmark */ = 5C3FB0570EBD39330048BBA1 /* PBXBookmark */;
+			5C3FB05C0EBD39330048BBA1 /* PBXBookmark */ = 5C3FB05C0EBD39330048BBA1 /* PBXBookmark */;
+			5C3FB05D0EBD39330048BBA1 /* PBXBookmark */ = 5C3FB05D0EBD39330048BBA1 /* PBXBookmark */;
+			5C3FB05E0EBD39330048BBA1 /* PBXBookmark */ = 5C3FB05E0EBD39330048BBA1 /* PBXBookmark */;
+			5C3FB05F0EBD39330048BBA1 /* PBXBookmark */ = 5C3FB05F0EBD39330048BBA1 /* PBXBookmark */;
+			5C3FB0600EBD39330048BBA1 /* PBXBookmark */ = 5C3FB0600EBD39330048BBA1 /* PBXBookmark */;
+			5C3FB0610EBD39330048BBA1 /* PBXBookmark */ = 5C3FB0610EBD39330048BBA1 /* PBXBookmark */;
+			5C3FB0620EBD39330048BBA1 /* PBXBookmark */ = 5C3FB0620EBD39330048BBA1 /* PBXBookmark */;
+			5C3FB0630EBD39330048BBA1 /* PBXBookmark */ = 5C3FB0630EBD39330048BBA1 /* PBXBookmark */;
+			5C3FB0650EBD39330048BBA1 /* PBXBookmark */ = 5C3FB0650EBD39330048BBA1 /* PBXBookmark */;
+			5C46ADE20E96E37100DFAC67 /* PBXBookmark */ = 5C46ADE20E96E37100DFAC67 /* PBXBookmark */;
+			5C46ADE30E96E37100DFAC67 /* PBXBookmark */ = 5C46ADE30E96E37100DFAC67 /* PBXBookmark */;
+			5C819FDA0EBEF7EF00E75319 /* PBXBookmark */ = 5C819FDA0EBEF7EF00E75319 /* PBXBookmark */;
+			5C819FDC0EBEF7EF00E75319 /* PBXBookmark */ = 5C819FDC0EBEF7EF00E75319 /* PBXBookmark */;
+			5C88C18F0EB83A68005D267C /* PBXBookmark */ = 5C88C18F0EB83A68005D267C /* PBXBookmark */;
+			5C88C1900EB83A68005D267C /* PBXBookmark */ = 5C88C1900EB83A68005D267C /* PBXBookmark */;
+			5CB083BD0EDFED6300C29FE6 /* PBXBookmark */ = 5CB083BD0EDFED6300C29FE6 /* PBXBookmark */;
+			5CC83FA50E6FAD4F000903AD /* PBXTextBookmark */ = 5CC83FA50E6FAD4F000903AD /* PBXTextBookmark */;
+			5CDAC1FA0E935B3C003984E1 /* PBXTextBookmark */ = 5CDAC1FA0E935B3C003984E1 /* PBXTextBookmark */;
 		};
 		sourceControlManager = 5CDEBFC00E15BBB700732C82 /* Source Control */;
 		userBuildSettings = {
@@ -281,25 +281,33 @@
 	};
 	29B97316FDCFA39411CA2CEA /* main.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1323, 269}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1071, 344}}";
 			sepNavSelRange = "{66, 0}";
 			sepNavVisRange = "{0, 110}";
 			sepNavWindowFrame = "{{84, 34}, {1147, 776}}";
 		};
 	};
+	5C1A101F0F4018A4004F3605 /* IconFamily.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {2796, 22162}}";
+			sepNavSelRange = "{13691, 0}";
+			sepNavVisRange = "{13338, 1070}";
+			sepNavWindowFrame = "{{84, 132}, {1285, 828}}";
+		};
+	};
 	5C1ECC0D0E4120050091B446 /* PADSearchRequest.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1070, 3626}}";
-			sepNavSelRange = "{3170, 0}";
-			sepNavVisRange = "{6686, 889}";
+			sepNavIntBoundsRect = "{{0, 0}, {1092, 3416}}";
+			sepNavSelRange = "{5016, 91}";
+			sepNavVisRange = "{3585, 2451}";
 			sepNavWindowFrame = "{{362, -16}, {1035, 861}}";
 		};
 	};
 	5C1ECC0E0E4120050091B446 /* PADSearchRequest.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1109, 15526}}";
-			sepNavSelRange = "{2666, 49}";
-			sepNavVisRange = "{2047, 1089}";
+			sepNavIntBoundsRect = "{{0, 0}, {1086, 15204}}";
+			sepNavSelRange = "{10964, 0}";
+			sepNavVisRange = "{9775, 1350}";
 			sepNavWindowFrame = "{{22, 25}, {963, 785}}";
 		};
 	};
@@ -325,15 +333,15 @@
 	};
 	5C2D25F30E304B1C005F9FB5 /* PADIndexProgressController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1176, 2128}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1176, 2058}}";
 			sepNavSelRange = "{2867, 0}";
-			sepNavVisRange = "{2675, 1152}";
+			sepNavVisRange = "{2675, 1150}";
 			sepNavWindowFrame = "{{61, 44}, {1223, 622}}";
 		};
 	};
 	5C2D25F40E304B1C005F9FB5 /* PADIndexProgressController.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {992, 671}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1004, 657}}";
 			sepNavSelRange = "{1029, 0}";
 			sepNavVisRange = "{0, 1219}";
 			sepNavWindowFrame = "{{270, 22}, {1051, 799}}";
@@ -369,7 +377,7 @@
 		ignoreCount = 0;
 		lineNumber = 61;
 		location = PickADisk;
-		modificationTime = 249281430.660643;
+		modificationTime = 256272761.915466;
 		state = 0;
 	};
 	5C2E42470E74504900D7DF4A /* DACDriverInstaller.m:41 */ = {
@@ -386,7 +394,7 @@
 		ignoreCount = 0;
 		lineNumber = 41;
 		location = PickADisk;
-		modificationTime = 249281430.6606761;
+		modificationTime = 256272761.915494;
 		state = 0;
 	};
 	5C2E42490E74504900D7DF4A /* DACDriverInstaller.m:44 */ = {
@@ -403,7 +411,7 @@
 		ignoreCount = 0;
 		lineNumber = 44;
 		location = PickADisk;
-		modificationTime = 249281430.660693;
+		modificationTime = 256272761.915502;
 		state = 0;
 	};
 	5C2E424B0E74504B00D7DF4A /* DACDriverInstaller.m:52 */ = {
@@ -420,7 +428,7 @@
 		ignoreCount = 0;
 		lineNumber = 52;
 		location = PickADisk;
-		modificationTime = 249281430.660715;
+		modificationTime = 256272761.9155089;
 		state = 0;
 	};
 	5C2E424D0E74504C00D7DF4A /* DACDriverInstaller.m:55 */ = {
@@ -437,7 +445,7 @@
 		ignoreCount = 0;
 		lineNumber = 55;
 		location = PickADisk;
-		modificationTime = 249281430.660731;
+		modificationTime = 256272761.915516;
 		state = 0;
 	};
 	5C2E424F0E74504E00D7DF4A /* DACDriverInstaller.m:58 */ = {
@@ -454,28 +462,28 @@
 		ignoreCount = 0;
 		lineNumber = 58;
 		location = PickADisk;
-		modificationTime = 249281430.660754;
+		modificationTime = 256272761.915524;
 		state = 0;
 	};
 	5C2EBE990E2991BF009BAF4C /* PADPrefsController.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1088, 648}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1100, 657}}";
 			sepNavSelRange = "{337, 12}";
-			sepNavVisRange = "{0, 655}";
+			sepNavVisRange = "{0, 664}";
 			sepNavWindowFrame = "{{293, 71}, {1147, 776}}";
 		};
 	};
 	5C2EBE9A0E2991BF009BAF4C /* PADPrefsController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1111, 2870}}";
-			sepNavSelRange = "{127, 0}";
-			sepNavVisRange = "{0, 1364}";
+			sepNavIntBoundsRect = "{{0, 0}, {1111, 3038}}";
+			sepNavSelRange = "{1825, 0}";
+			sepNavVisRange = "{1671, 1034}";
 			sepNavWindowFrame = "{{277, 59}, {1158, 702}}";
 		};
 	};
 	5C3038390EA5C8CE0067A8A8 /* PADPrefsTreeController.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1029, 660}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1029, 669}}";
 			sepNavSelRange = "{306, 0}";
 			sepNavVisRange = "{0, 383}";
 			sepNavWindowFrame = "{{61, 43}, {1076, 788}}";
@@ -493,15 +501,15 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {914, 1218}}";
 			sepNavSelRange = "{1324, 0}";
-			sepNavVisRange = "{0, 1266}";
+			sepNavVisRange = "{24, 1271}";
 			sepNavWindowFrame = "{{579, 2}, {961, 874}}";
 		};
 	};
 	5C3FAEE60EBA6FB30048BBA1 /* LicenseService.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1216, 4368}}";
-			sepNavSelRange = "{4474, 19}";
-			sepNavVisRange = "{3800, 1485}";
+			sepNavIntBoundsRect = "{{0, 0}, {1216, 4858}}";
+			sepNavSelRange = "{6945, 11}";
+			sepNavVisRange = "{6443, 1403}";
 			sepNavWindowFrame = "{{226, 10}, {1263, 786}}";
 		};
 	};
@@ -616,7 +624,7 @@
 	};
 	5C48B4260E444E27005795F7 /* PADLayoutView.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1294, 4130}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1306, 4172}}";
 			sepNavSelRange = "{8270, 5}";
 			sepNavVisRange = "{7267, 1078}";
 			sepNavWindowFrame = "{{41, 98}, {1353, 747}}";
@@ -656,9 +664,9 @@
 	};
 	5C57B62E0E6635600063190F /* PADIndexNodeData.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1021, 1386}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1070, 1442}}";
 			sepNavSelRange = "{1392, 41}";
-			sepNavVisRange = "{40, 1462}";
+			sepNavVisRange = "{136, 1079}";
 			sepNavWindowFrame = "{{115, 30}, {1068, 792}}";
 		};
 	};
@@ -672,9 +680,9 @@
 	};
 	5C5F7DBD0E771E83003111DF /* DACVolume.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1070, 15666}}";
-			sepNavSelRange = "{18656, 0}";
-			sepNavVisRange = "{18236, 1843}";
+			sepNavIntBoundsRect = "{{0, 0}, {1070, 16856}}";
+			sepNavSelRange = "{5726, 26}";
+			sepNavVisRange = "{3520, 752}";
 			sepNavWindowFrame = "{{552, 44}, {983, 834}}";
 		};
 	};
@@ -686,65 +694,65 @@
 	5C6C12E80E240BEA0097CC7A /* AppController.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {724, 994}}";
-			sepNavSelRange = "{2110, 0}";
-			sepNavVisRange = "{690, 1425}";
+			sepNavSelRange = "{1676, 0}";
+			sepNavVisRange = "{534, 1428}";
 			sepNavWindowFrame = "{{512, 118}, {771, 724}}";
 		};
 	};
 	5C6C12E90E240BEA0097CC7A /* AppController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {943, 7000}}";
-			sepNavSelRange = "{4543, 45}";
-			sepNavVisRange = "{3042, 2007}";
-			sepNavWindowFrame = "{{437, 82}, {990, 789}}";
+			sepNavIntBoundsRect = "{{0, 0}, {943, 6944}}";
+			sepNavSelRange = "{4216, 0}";
+			sepNavVisRange = "{2875, 2124}";
+			sepNavWindowFrame = "{{564, 89}, {990, 789}}";
 		};
 	};
 	5C6C12EA0E240BEA0097CC7A /* DACALTreeDataSource.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1100, 1218}}";
-			sepNavSelRange = "{1483, 19}";
-			sepNavVisRange = "{1113, 1314}";
+			sepNavIntBoundsRect = "{{0, 0}, {1070, 1246}}";
+			sepNavSelRange = "{596, 26}";
+			sepNavVisRange = "{153, 961}";
 			sepNavWindowFrame = "{{223, 14}, {1147, 776}}";
 		};
 	};
 	5C6C12EB0E240BEA0097CC7A /* DACALTreeDataSource.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1206, 13986}}";
-			sepNavSelRange = "{17246, 0}";
-			sepNavVisRange = "{18120, 1504}";
-			sepNavWindowFrame = "{{9, 30}, {1471, 837}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1070, 13678}}";
+			sepNavSelRange = "{257, 24}";
+			sepNavVisRange = "{54, 1091}";
+			sepNavWindowFrame = "{{501, 41}, {1471, 837}}";
 		};
 	};
 	5C6C12EC0E240BEA0097CC7A /* PADAddVolumeController.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1100, 1610}}";
-			sepNavSelRange = "{3151, 29}";
-			sepNavVisRange = "{148, 1357}";
+			sepNavSelRange = "{803, 37}";
+			sepNavVisRange = "{1943, 1244}";
 			sepNavWindowFrame = "{{287, 66}, {1147, 776}}";
 		};
 	};
 	5C6C12ED0E240BEA0097CC7A /* PADAddVolumeController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1368, 14896}}";
-			sepNavSelRange = "{21406, 34}";
-			sepNavVisRange = "{21126, 854}";
+			sepNavIntBoundsRect = "{{0, 0}, {1368, 14812}}";
+			sepNavSelRange = "{13311, 26}";
+			sepNavVisRange = "{12594, 1244}";
 			sepNavWindowFrame = "{{499, 88}, {1147, 776}}";
 		};
 	};
 	5C6C12EE0E240BEA0097CC7A /* PADIndexToolbarController.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1100, 1344}}";
-			sepNavSelRange = "{1961, 0}";
-			sepNavVisRange = "{1235, 1640}";
+			sepNavIntBoundsRect = "{{0, 0}, {1070, 1414}}";
+			sepNavSelRange = "{1958, 0}";
+			sepNavVisRange = "{1915, 1186}";
 			sepNavWindowFrame = "{{52, 66}, {1147, 776}}";
 		};
 	};
 	5C6C12EF0E240BEA0097CC7A /* PADIndexToolbarController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1100, 11130}}";
-			sepNavSelRange = "{21874, 60}";
-			sepNavVisRange = "{21177, 1312}";
-			sepNavWindowFrame = "{{125, 65}, {1147, 776}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1100, 11536}}";
+			sepNavSelRange = "{9377, 22}";
+			sepNavVisRange = "{8686, 1478}";
+			sepNavWindowFrame = "{{348, 69}, {1147, 776}}";
 		};
 	};
 	5C6C12F00E240BEA0097CC7A /* TreeController.h */ = {
@@ -757,26 +765,26 @@
 	};
 	5C6C12F10E240BEA0097CC7A /* TreeController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1277, 19950}}";
-			sepNavSelRange = "{32381, 38}";
-			sepNavVisRange = "{29318, 1914}";
+			sepNavIntBoundsRect = "{{0, 0}, {1071, 19698}}";
+			sepNavSelRange = "{34585, 0}";
+			sepNavVisRange = "{34269, 431}";
 			sepNavWindowFrame = "{{85, 60}, {1324, 778}}";
 		};
 	};
 	5C6C14DC0E2B9FE60081A7B1 /* NSApplication_Extensions.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {580, 534}}";
-			sepNavSelRange = "{526, 0}";
-			sepNavVisRange = "{0, 636}";
+			sepNavIntBoundsRect = "{{0, 0}, {580, 532}}";
+			sepNavSelRange = "{770, 0}";
+			sepNavVisRange = "{0, 777}";
 			sepNavWindowFrame = "{{789, 137}, {627, 653}}";
 		};
 	};
 	5C6C14DD0E2B9FE60081A7B1 /* NSApplication_Extensions.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1091, 1568}}";
-			sepNavSelRange = "{1645, 73}";
-			sepNavVisRange = "{0, 1069}";
-			sepNavWindowFrame = "{{98, 60}, {1138, 787}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1091, 2086}}";
+			sepNavSelRange = "{1899, 0}";
+			sepNavVisRange = "{963, 1262}";
+			sepNavWindowFrame = "{{376, 65}, {1138, 787}}";
 		};
 	};
 	5C76C0F00E999A4500E363B0 /* asm NSPopAutoreleasePool  0x94e3d135 */ = {
@@ -797,7 +805,7 @@
 		hitCount = 0;
 		ignoreCount = 0;
 		lineNumber = 1;
-		modificationTime = 249281430.660776;
+		modificationTime = 256272761.915542;
 		state = 1;
 	};
 	5C76C0F30E999A4600E363B0 /* asm NSPopAutoreleasePool  0x94e3d135 */ = {
@@ -818,7 +826,7 @@
 		hitCount = 0;
 		ignoreCount = 0;
 		lineNumber = 1;
-		modificationTime = 249281430.6607861;
+		modificationTime = 256272761.915561;
 		state = 1;
 	};
 	5C76C1240E9AD9FE00E363B0 /* NSData_Extensions.h */ = {
@@ -848,14 +856,30 @@
 	5C76C1320E9ADD0500E363B0 /* NSString_Extensions.m */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {988, 1148}}";
-			sepNavSelRange = "{971, 15}";
-			sepNavVisRange = "{0, 1327}";
+			sepNavSelRange = "{1650, 50}";
+			sepNavVisRange = "{172, 1461}";
 			sepNavWindowFrame = "{{302, 17}, {1035, 861}}";
 		};
 	};
 	5C7C501C0E3D843700FCEBD8 /* hellotag.png */ = {
 		uiCtxt = {
 			sepNavWindowFrame = "{{84, 110}, {1016, 700}}";
+		};
+	};
+	5C7F73F90F3934B30053681D /* PADInspectorController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1238, 1134}}";
+			sepNavSelRange = "{1439, 26}";
+			sepNavVisRange = "{477, 1530}";
+			sepNavWindowFrame = "{{316, 51}, {1285, 828}}";
+		};
+	};
+	5C7F73FA0F3934B30053681D /* PADInspectorController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1109, 6874}}";
+			sepNavSelRange = "{8879, 0}";
+			sepNavVisRange = "{8509, 1240}";
+			sepNavWindowFrame = "{{783, 73}, {1285, 828}}";
 		};
 	};
 	5C819FDA0EBEF7EF00E75319 /* PBXBookmark */ = {
@@ -932,17 +956,17 @@
 	};
 	5C88C00E0EB7B7CA005D267C /* PADFlavorImageView.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1109, 6174}}";
-			sepNavSelRange = "{8571, 2}";
-			sepNavVisRange = "{8174, 776}";
+			sepNavIntBoundsRect = "{{0, 0}, {1070, 6174}}";
+			sepNavSelRange = "{3534, 26}";
+			sepNavVisRange = "{3169, 982}";
 			sepNavWindowFrame = "{{65, 4}, {961, 874}}";
 		};
 	};
 	5C88C00F0EB7B7CA005D267C /* PADFlavorImageView.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {914, 1414}}";
-			sepNavSelRange = "{2038, 17}";
-			sepNavVisRange = "{1227, 1165}";
+			sepNavSelRange = "{198, 6}";
+			sepNavVisRange = "{84, 1391}";
 			sepNavWindowFrame = "{{335, 4}, {961, 874}}";
 		};
 	};
@@ -972,18 +996,18 @@
 	};
 	5C8E54F30E6A1D690029D83A /* DACALViewDataSource.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {801, 507}}";
-			sepNavSelRange = "{325, 24}";
-			sepNavVisRange = "{0, 783}";
+			sepNavIntBoundsRect = "{{0, 0}, {801, 546}}";
+			sepNavSelRange = "{608, 36}";
+			sepNavVisRange = "{3, 1120}";
 			sepNavWindowFrame = "{{556, 46}, {848, 635}}";
 		};
 	};
 	5C8E54F40E6A1D690029D83A /* DACALViewDataSource.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {998, 9060}}";
-			sepNavSelRange = "{6065, 8}";
-			sepNavVisRange = "{5196, 2003}";
-			sepNavWindowFrame = "{{345, 47}, {1045, 679}}";
+			sepNavIntBoundsRect = "{{0, 0}, {998, 9520}}";
+			sepNavSelRange = "{1204, 20}";
+			sepNavVisRange = "{1307, 3125}";
+			sepNavWindowFrame = "{{357, 220}, {1045, 679}}";
 		};
 	};
 	5C90847B0E2D748800162C13 /* PADIndexOperation.h */ = {
@@ -1036,15 +1060,15 @@
 	};
 	5CAFCCA50E2EB77300A7BEA4 /* dacallib.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {975, 2590}}";
+			sepNavIntBoundsRect = "{{0, 0}, {978, 2254}}";
 			sepNavSelRange = "{1693, 0}";
-			sepNavVisRange = "{0, 1280}";
+			sepNavVisRange = "{4298, 3714}";
 			sepNavWindowFrame = "{{339, 50}, {1022, 796}}";
 		};
 	};
 	5CAFCCA60E2EB77300A7BEA4 /* dacallib.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1218, 31444}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1218, 30912}}";
 			sepNavSelRange = "{5134, 37}";
 			sepNavVisRange = "{0, 1791}";
 			sepNavWindowFrame = "{{137, 55}, {1265, 797}}";
@@ -1053,41 +1077,41 @@
 	5CAFCCA80E2EB77300A7BEA4 /* pms.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {975, 677}}";
-			sepNavSelRange = "{0, 138}";
+			sepNavSelRange = "{285, 19}";
 			sepNavVisRange = "{0, 428}";
 			sepNavWindowFrame = "{{38, 56}, {1022, 796}}";
 		};
 	};
 	5CAFCCEC0E2EC1E900A7BEA4 /* pmsCFUtility.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1014, 840}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1014, 826}}";
 			sepNavSelRange = "{1137, 0}";
-			sepNavVisRange = "{339, 2804}";
+			sepNavVisRange = "{135, 3120}";
 			sepNavWindowFrame = "{{355, 56}, {1022, 796}}";
 		};
 	};
 	5CAFCCED0E2EC1E900A7BEA4 /* pmsCFUtility.c */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1109, 9870}}";
-			sepNavSelRange = "{0, 0}";
-			sepNavVisRange = "{0, 904}";
+			sepNavIntBoundsRect = "{{0, 0}, {1079, 10010}}";
+			sepNavSelRange = "{17453, 113}";
+			sepNavVisRange = "{16740, 1296}";
 			sepNavWindowFrame = "{{257, 69}, {1126, 809}}";
 		};
 	};
 	5CAFCD1A0E2ED18200A7BEA4 /* pmsDACALUtility.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {975, 677}}";
-			sepNavSelRange = "{2046, 0}";
-			sepNavVisRange = "{0, 2046}";
+			sepNavIntBoundsRect = "{{0, 0}, {975, 686}}";
+			sepNavSelRange = "{902, 27}";
+			sepNavVisRange = "{0, 2263}";
 			sepNavWindowFrame = "{{132, 6}, {1022, 796}}";
 		};
 	};
 	5CAFCD1B0E2ED18200A7BEA4 /* pmsDACALUtility.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {975, 5726}}";
-			sepNavSelRange = "{13315, 0}";
-			sepNavVisRange = "{11580, 1735}";
-			sepNavWindowFrame = "{{381, 71}, {1022, 796}}";
+			sepNavIntBoundsRect = "{{0, 0}, {975, 6538}}";
+			sepNavSelRange = "{13754, 26}";
+			sepNavVisRange = "{12599, 1938}";
+			sepNavWindowFrame = "{{602, 134}, {1022, 796}}";
 		};
 	};
 	5CB083BD0EDFED6300C29FE6 /* PBXBookmark */ = {
@@ -1154,17 +1178,17 @@
 	};
 	5CC83FC40E6FB34C000903AD /* DACALDeviceObjC.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1079, 4298}}";
-			sepNavSelRange = "{3322, 29}";
-			sepNavVisRange = "{2895, 1174}";
-			sepNavWindowFrame = "{{219, 61}, {1126, 809}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1079, 4424}}";
+			sepNavSelRange = "{4561, 0}";
+			sepNavVisRange = "{7472, 1540}";
+			sepNavWindowFrame = "{{106, 185}, {1126, 809}}";
 		};
 	};
 	5CC83FC50E6FB34C000903AD /* DACALDeviceObjC.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1079, 25326}}";
-			sepNavSelRange = "{14775, 24}";
-			sepNavVisRange = "{14100, 943}";
+			sepNavIntBoundsRect = "{{0, 0}, {1079, 24178}}";
+			sepNavSelRange = "{34368, 86}";
+			sepNavVisRange = "{34133, 2015}";
 			sepNavWindowFrame = "{{65, 14}, {1126, 809}}";
 		};
 	};
@@ -1178,9 +1202,9 @@
 	};
 	5CD985160E4E60A700441ED7 /* PADHomeView.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1209, 5418}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1209, 5432}}";
 			sepNavSelRange = "{2101, 0}";
-			sepNavVisRange = "{1363, 1020}";
+			sepNavVisRange = "{1338, 1077}";
 			sepNavWindowFrame = "{{203, 24}, {1256, 745}}";
 		};
 	};
@@ -1257,6 +1281,22 @@
 			sepNavWindowFrame = "{{513, 68}, {1086, 725}}";
 		};
 	};
+	5CF962510F37E042009D2A9B /* PADExpandingView.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1238, 709}}";
+			sepNavSelRange = "{562, 0}";
+			sepNavVisRange = "{0, 814}";
+			sepNavWindowFrame = "{{352, 77}, {1285, 828}}";
+		};
+	};
+	5CF962520F37E042009D2A9B /* PADExpandingView.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1109, 2044}}";
+			sepNavSelRange = "{2255, 0}";
+			sepNavVisRange = "{1952, 1474}";
+			sepNavWindowFrame = "{{326, 90}, {1285, 828}}";
+		};
+	};
 	735CC297049A7E1F00C919A3 /* Prefix.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1100, 920}}";
@@ -1282,9 +1322,9 @@
 	};
 	751C4E2C0E9400250027BC1C /* AquaticPrime.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {914, 4956}}";
-			sepNavSelRange = "{2558, 30}";
-			sepNavVisRange = "{473, 1772}";
+			sepNavIntBoundsRect = "{{0, 0}, {914, 5152}}";
+			sepNavSelRange = "{4012, 18}";
+			sepNavVisRange = "{3322, 1217}";
 			sepNavWindowFrame = "{{178, -4}, {961, 874}}";
 		};
 	};
@@ -1305,15 +1345,15 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1111, 1232}}";
 			sepNavSelRange = "{1229, 0}";
-			sepNavVisRange = "{773, 1011}";
+			sepNavVisRange = "{1187, 1014}";
 			sepNavWindowFrame = "{{246, 93}, {1158, 702}}";
 		};
 	};
 	75F02D220E955A9400A02B14 /* LicenseController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1698, 8624}}";
-			sepNavSelRange = "{706, 49}";
-			sepNavVisRange = "{0, 1451}";
+			sepNavIntBoundsRect = "{{0, 0}, {1698, 8120}}";
+			sepNavSelRange = "{11425, 26}";
+			sepNavVisRange = "{9800, 1947}";
 			sepNavWindowFrame = "{{118, 45}, {1183, 833}}";
 		};
 	};

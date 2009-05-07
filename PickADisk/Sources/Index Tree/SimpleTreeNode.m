@@ -387,7 +387,7 @@
 	
 	name = (NSString*)CFURLCopyReferenceTitle( NULL, (CFURLRef)loc, NULL);
 	//isLeaf = !isAFolder;
-	iconRep = CFURLGetIconAsNSImage( NULL, (CFURLRef)loc, NULL);
+	[self setIconRep:CFURLGetIconAsNSImage( NULL, (CFURLRef)loc, NULL)];
 	//isExpandable = isAFolder;
 	itemDevice = CFURLCopyCarouselUUID( kCFAllocatorDefault, (CFURLRef)loc );
 	itemSlot = CFURLGetSlotNumber( (CFURLRef)loc, FALSE );

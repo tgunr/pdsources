@@ -11,6 +11,7 @@
 #import "DACALTreeDataSource.h"
 #import "PADAddVolumeController.h"
 #import "PADSearchRequest.h"
+#import "PADInspectorController.h"
 
 @interface PADIndexToolbarController : NSObject {
 	
@@ -26,6 +27,7 @@
 	IBOutlet	NSButton*				ejectButton;
 	IBOutlet	NSButton*				gotoButton;
 	IBOutlet	NSToolbarItem*			printButton;
+	IBOutlet	NSToolbarItem*			inspectorButton;
 	
 	IBOutlet	NSImageView*			noBoxIcon;
 	
@@ -39,6 +41,7 @@
 	IBOutlet	id						indexController;
 	IBOutlet	id						dataController;
 	IBOutlet	id						addVolumeController;
+//	IBOutlet	id						inspectorController;
 	
 				NSMutableArray*			selectedDevices;
 //				NSMutableArray*			selectedSlots;
@@ -59,10 +62,12 @@
 - (IBAction)clickGotoSlot:(id)sender;
 - (IBAction)clickEject:(id)sender;
 - (IBAction)clickOpen:(id)sender;
+- (IBAction)clickInspector:(id)sender;
 - (IBAction)searchAction:(id)sender;
 - (IBAction)homeSearchAction:(id)sender;
 - (IBAction)provideFeedback:(id)sender;
 
+//- (void)setInspectorController:(PADInspectorController*)infoWin;
 - (void)unassignNodes:(NSArray*)nodesToDelete;
 
 - (BOOL)allowCheck:(BOOL)inOrOut;

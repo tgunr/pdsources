@@ -59,6 +59,21 @@
     return items;
 }
 
+- (NSArray *)allSelectedNodes {
+    NSMutableArray *items = [NSMutableArray array];
+    NSEnumerator *selectedRows = [self selectedRowEnumerator];
+    NSNumber *selRow = nil;
+	SimpleTreeNode* selItem = nil;
+	
+    while( (selRow = [selectedRows nextObject]) ) {
+		selItem = [self itemAtRow:[selRow integerValue]];
+        if (selItem) 
+            [items addObject: [selItem matchActual]];
+    }
+	//NSLog(@"Items: %@", items);
+    return items;
+}
+
 - (void)selectItems:(NSArray *)items byExtendingSelection:(BOOL)extend {
 #if MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5
     NSUInteger i, totalCount = [items count];
@@ -69,6 +84,31 @@
     for (i = 0; i < totalCount; i++) {
 		NSInteger row = [self rowForItem:[items objectAtIndex:i]];
         if(row>=0) [self selectRow: row byExtendingSelection:YES];
+    }
+}
+
+- (void)selectNodes:(NSArray *)items byExtendingSelection:(BOOL)extend {
+    NSUInteger i, totalCount = [self numberOfRows];
+	SimpleTreeNode*		actualItem = nil;
+	NSMutableArray*		itemsLeft = [NSMutableArray arrayWithCapacity:[items count]];
+	
+	[itemsLeft addObjectsFromArray:items];
+    if (extend==NO) [self deselectAll:nil];
+
+    for (i = 0; i < totalCount; i++) {
+		if( [itemsLeft count] == 0 ) break;
+		if( i > [self numberOfRows] ) {
+			NSLog(@"number changed!");
+			break;
+		}
+		actualItem = [[self itemAtRow:i] matchActual];
+//		NSLog(@"Actual Item: %@", actualItem);
+		
+		if( [itemsLeft indexOfObject:actualItem] != NSNotFound ) {
+			[itemsLeft removeObject:actualItem];
+			[self selectRowIndexes:[NSIndexSet indexSetWithIndex:i] byExtendingSelection:YES];
+			NSLog(@"Actual Item: %@", actualItem);
+		}
     }
 }
 
@@ -127,11 +167,25 @@
 
 -(void)reloadData
 {
-	NSArray*			saveSelection = [self allSelectedItems];
-
+	
+	PADSearchRequest*	ourSearch = [self currentSearch];
+	NSArray*			saveSelection = nil;
+	
+	saveSelection = [self allSelectedNodes];
 	[super reloadData];
+	[self selectNodes:saveSelection byExtendingSelection:NO];
+	return;
 
-	[self selectItems:saveSelection byExtendingSelection:NO];
+	if( ourSearch != nil ) {
+		NSLog(@"Our Search: %@", ourSearch);
+		saveSelection = [self allSelectedNodes];
+		[super reloadData];
+		[self selectNodes:saveSelection byExtendingSelection:NO];
+	} else {
+		saveSelection = [self allSelectedItems];
+		[super reloadData];
+		[self selectItems:saveSelection byExtendingSelection:NO];
+	}
 }
 
 - (id)initWithCoder:(NSCoder *)decoder
@@ -165,6 +219,10 @@
 	
 	if( ourSearch == newSearch )
 	{
+		if( [ourSearch searchOriginalSelection] == nil ) {
+			[ourSearch setSearchOriginalSelection:[self allSelectedNodes]];
+			NSLog(@"Selected Nodes: %@", [ourSearch searchOriginalSelection]);
+		}
 		//[self reloadData];
 	}
 
@@ -179,6 +237,11 @@
 	if( ourSearch == newSearch )
 	{
 		[self reloadData];
+		if( [ourSearch searchOriginalSelection] != nil )
+		{
+			[self selectNodes:[ourSearch searchOriginalSelection] byExtendingSelection:NO];
+			[ourSearch setSearchOriginalSelection:nil];
+		}
 	}
 //	NSLog(@"Search Finished: %@", ourSearch);
 }

@@ -28,6 +28,10 @@ extern const	time_t	kTimeOneDayInSeconds;
 
 -(BOOL)isBetweenStartDate:(NSDate*)startDate andEndDate:(NSDate*)endDate;
 -(float)rankWithDate:(id)other withOptions:(NSMutableDictionary*)options;
+
+-(NSString*)formatDateString:(NSString*)dateFormat useNatural:(BOOL)doNatural;
 -(NSString*)naturalDateString;
+-(NSString*)shorterDateString;
+-(NSString*)longerDateString;
 
 @end

@@ -643,7 +643,7 @@ void MyNavEventProc (NavEventCallbackMessage callBackSelector, NavCBRecPtr callB
 	
 	if( taskResult == 0 ) {
 		//[self setPrompt:@"Indexing complete.\nAdding configuration to carousel."];	
-		[destDevice indexedNewVolume:newVolume forSlot:[slotNumber intValue] ofType:[slotTypeList titleOfSelectedItem] forTarget:self]; 
+		[destDevice indexedNewVolume:newVolume forSlot:[slotNumber intValue] ofType:DACALFlavorToFlavorValue([slotTypeList titleOfSelectedItem]) forTarget:self]; 
 	} else {
 		//[self setPrompt:@"Indexing error #%ld.\nCancelling request."]; 
 		[self indexDeviceControlFinished:self];

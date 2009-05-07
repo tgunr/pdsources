@@ -67,6 +67,4 @@ BOOL			busyBusy;
 - (void)setAddVolumeController:(PADAddVolumeController*)inAVC;
 - (IBAction)runLicense:(id)sender;
 
-
-- (OSStatus)RegisterMyHelpBook;
 @end

@@ -280,6 +280,20 @@ PADSearchTerm*	PADCopySearchTermWithTitleOrID( NSString* aTermName )
 -(NSMutableDictionary*)searchTermDictionary
 	{ return searchTermDictionary; }
 
+-(NSArray*)searchOriginalSelection
+	{ return searchOriginalSelection; }
+
+-(void)setSearchOriginalSelection:(NSArray*)selection
+{ 
+	if( !searchOriginalSelection || ![searchOriginalSelection isEqual:selection] )
+	{
+		[selection retain];
+		[searchOriginalSelection release];
+		searchOriginalSelection = selection;
+	}
+}
+
+
 - (NSArray*)insertMatchesIntoSubTree:(PADSearchTermOperation*)theSearch
 {
 	NSArray*		newResults = [theSearch pullMatchQueue];

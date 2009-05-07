@@ -148,8 +148,8 @@ static AppController *shared;
 	[defaultPrefs setObject:boolTRUE forKey:@"PADColumnSlotNum"];
 	[defaultPrefs setObject:boolTRUE forKey:@"PADColumnSlotType"];
 	[defaultPrefs setObject:boolTRUE forKey:@"PADColumnCheckedOut"];
-	[defaultPrefs setObject:boolTRUE forKey:@"PADColumnDateCheckedOut"];
-	[defaultPrefs setObject:boolTRUE forKey:@"PADColumnComments"];
+	[defaultPrefs setObject:boolFALSE forKey:@"PADColumnDateCheckedOut"];
+	[defaultPrefs setObject:boolFALSE forKey:@"PADColumnComments"];
 	[defaultPrefs setObject:boolFALSE forKey:@"PADColumnTags"];
 	[defaultPrefs setObject:boolFALSE forKey:@"PADColumnRating"];
 	
@@ -204,7 +204,7 @@ static AppController *shared;
 	[NSTimer scheduledTimerWithTimeInterval:PAD_BUSYBODY_DELAY target:self selector:@selector(doBusyWork:) userInfo:nil repeats:YES];
 	
 //	DACALClientInitialize();
-	[self RegisterMyHelpBook];
+	
 	//[[LicenseController shared] showNotLicensed];
 	
 	//	if (!valid)
@@ -474,28 +474,6 @@ static AppController *shared;
 
 - (IBAction)requestLicense:(id)sender 
 	{ [[LicenseController sharedLicenseController] chooseRequestLicenseMenu:self]; }
-
-- (OSStatus)RegisterMyHelpBook {
-    CFBundleRef myApplicationBundle;
-    CFURLRef myBundleURL;
-    FSRef myBundleRef;
-    OSStatus err = noErr;
-	
-    myApplicationBundle = NULL;
-    myBundleURL = NULL;
-	
-    myApplicationBundle = CFBundleGetMainBundle();
-    if (myApplicationBundle == NULL) {err = fnfErr; goto bail;}
-	
-    myBundleURL = CFBundleCopyBundleURL(myApplicationBundle);
-    if (myBundleURL == NULL) {err = fnfErr; goto bail;}
-	
-    if (!CFURLGetFSRef(myBundleURL, &myBundleRef)) err = fnfErr;
-	
-    if (err == noErr) err = AHRegisterHelpBook(&myBundleRef);
-bail:
-    return err;
-}	
 
 @end
 

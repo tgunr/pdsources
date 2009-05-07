@@ -9,6 +9,7 @@
 #import "PADPrefsController.h"
 #import "LicenseController.h"
 #import "LicenseService.h"
+#import <AudioToolbox/AudioToolbox.h>
 
 //	License Controller State values
 
@@ -382,7 +383,7 @@ static LicenseController*	shared_LicenseController = nil;
 	NSString*	requestCode = [licenseInvoiceCode stringValue];
 	
 	if( ([requestUser isEqual:@""]) || ([requestEmail isEqual:@""]) ) {
-		AudioServicesPlayAlertSound(kUserPreferredAlert);
+		AudioServicesPlayAlertSound( kUserPreferredAlert );
 		return;
 	} else
 		[requestLicenseWindow orderOut:self];

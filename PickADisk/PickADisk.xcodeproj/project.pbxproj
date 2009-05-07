@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		5C0884420E26CFCA0052D931 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C0884410E26CFCA0052D931 /* AudioToolbox.framework */; };
+		5C1A0F6B0F3FC1B9004F3605 /* ToolbarInfo.icns in Resources */ = {isa = PBXBuildFile; fileRef = 5C1A0F6A0F3FC1B9004F3605 /* ToolbarInfo.icns */; };
+		5C1A10230F4018A4004F3605 /* IconFamily.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1A101F0F4018A4004F3605 /* IconFamily.m */; };
+		5C1A10250F4018A4004F3605 /* NSString+CarbonFSRefCreation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1A10210F4018A4004F3605 /* NSString+CarbonFSRefCreation.m */; };
 		5C1ECC100E4120050091B446 /* PADSearchRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1ECC0E0E4120050091B446 /* PADSearchRequest.m */; };
 		5C1ECD080E4154790091B446 /* PAD4.icns in Resources */ = {isa = PBXBuildFile; fileRef = 5C1ECD070E4154790091B446 /* PAD4.icns */; };
 		5C1ECE5B0E41B5C80091B446 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C1ECE5A0E41B5C80091B446 /* Sparkle.framework */; };
@@ -63,6 +66,7 @@
 		5C7C501F0E3D843700FCEBD8 /* DC300B_Front.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C7C501D0E3D843700FCEBD8 /* DC300B_Front.png */; };
 		5C7C51130E3DEC4D00FCEBD8 /* carousel.sh in Resources */ = {isa = PBXBuildFile; fileRef = 5C4E17EB0E2167580091DD7D /* carousel.sh */; };
 		5C7C51140E3DEC4D00FCEBD8 /* xattr in Resources */ = {isa = PBXBuildFile; fileRef = 5C6657010E3822D400414ECB /* xattr */; };
+		5C7F73FC0F3934B30053681D /* PADInspectorController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C7F73FA0F3934B30053681D /* PADInspectorController.m */; };
 		5C81A0EB0EC39D9B00E75319 /* JSServiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C81A0E80EC39D9B00E75319 /* JSServiceManager.m */; };
 		5C81A2280EC585CB00E75319 /* PADCrashReportService.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C81A2260EC585CB00E75319 /* PADCrashReportService.m */; };
 		5C88C0100EB7B7CA005D267C /* PADFlavorImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C88C00E0EB7B7CA005D267C /* PADFlavorImageView.m */; };
@@ -88,6 +92,8 @@
 		5CE577300E590C230086A57F /* PADOperationControlDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE5772E0E590C230086A57F /* PADOperationControlDevice.m */; };
 		5CF4D9810E68E6DF0091A77F /* ILCrashReporter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CF4D9800E68E6DF0091A77F /* ILCrashReporter.framework */; };
 		5CF4D98E0E68E9300091A77F /* ILCrashReporter.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5CF4D9800E68E6DF0091A77F /* ILCrashReporter.framework */; };
+		5CF9624D0F37BE5A009D2A9B /* PADInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CF9624C0F37BE5A009D2A9B /* PADInspector.xib */; };
+		5CF962540F37E042009D2A9B /* PADExpandingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF962520F37E042009D2A9B /* PADExpandingView.m */; };
 		735CC2A3049A7E2A00C919A3 /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 29B97318FDCFA39411CA2CEA /* MainMenu.nib */; };
 		735CC2A4049A7E2A00C919A3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		735CC2A5049A7E2A00C919A3 /* InitInfo.dict in Resources */ = {isa = PBXBuildFile; fileRef = 0405E529FF13D2D511CA0E35 /* InitInfo.dict */; };
@@ -161,6 +167,11 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Sources/main.m; sourceTree = SOURCE_ROOT; };
 		29B97319FDCFA39411CA2CEA /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/MainMenu.nib; sourceTree = "<group>"; };
 		5C0884410E26CFCA0052D931 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = /System/Library/Frameworks/AudioToolbox.framework; sourceTree = "<absolute>"; };
+		5C1A0F6A0F3FC1B9004F3605 /* ToolbarInfo.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = ToolbarInfo.icns; sourceTree = "<group>"; };
+		5C1A101E0F4018A4004F3605 /* IconFamily.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IconFamily.h; path = Sources/IconFamily/IconFamily.h; sourceTree = SOURCE_ROOT; };
+		5C1A101F0F4018A4004F3605 /* IconFamily.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IconFamily.m; path = Sources/IconFamily/IconFamily.m; sourceTree = SOURCE_ROOT; };
+		5C1A10200F4018A4004F3605 /* NSString+CarbonFSRefCreation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+CarbonFSRefCreation.h"; path = "Sources/IconFamily/NSString+CarbonFSRefCreation.h"; sourceTree = SOURCE_ROOT; };
+		5C1A10210F4018A4004F3605 /* NSString+CarbonFSRefCreation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+CarbonFSRefCreation.m"; path = "Sources/IconFamily/NSString+CarbonFSRefCreation.m"; sourceTree = SOURCE_ROOT; };
 		5C1ECC0D0E4120050091B446 /* PADSearchRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PADSearchRequest.h; path = "../PAD Controllers/PADSearchRequest.h"; sourceTree = "<group>"; };
 		5C1ECC0E0E4120050091B446 /* PADSearchRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PADSearchRequest.m; path = "../PAD Controllers/PADSearchRequest.m"; sourceTree = "<group>"; };
 		5C1ECD070E4154790091B446 /* PAD4.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = PAD4.icns; sourceTree = "<group>"; };
@@ -240,6 +251,8 @@
 		5C7C501D0E3D843700FCEBD8 /* DC300B_Front.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DC300B_Front.png; sourceTree = "<group>"; };
 		5C7C50250E3D850800FCEBD8 /* CarouselBatch.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; path = CarouselBatch.nib; sourceTree = "<group>"; };
 		5C7C50280E3DA51C00FCEBD8 /* blueplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueplate.png; sourceTree = "<group>"; };
+		5C7F73F90F3934B30053681D /* PADInspectorController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PADInspectorController.h; sourceTree = "<group>"; };
+		5C7F73FA0F3934B30053681D /* PADInspectorController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PADInspectorController.m; sourceTree = "<group>"; };
 		5C81A0E70EC39D9B00E75319 /* JSServiceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSServiceManager.h; sourceTree = "<group>"; };
 		5C81A0E80EC39D9B00E75319 /* JSServiceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSServiceManager.m; sourceTree = "<group>"; };
 		5C81A0E90EC39D9B00E75319 /* JSServicesSetup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSServicesSetup.h; sourceTree = "<group>"; };
@@ -286,6 +299,9 @@
 		5CE5772D0E590C230086A57F /* PADOperationControlDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PADOperationControlDevice.h; path = "Sources/PAD Controllers/PADOperationControlDevice.h"; sourceTree = "<group>"; };
 		5CE5772E0E590C230086A57F /* PADOperationControlDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PADOperationControlDevice.m; path = "Sources/PAD Controllers/PADOperationControlDevice.m"; sourceTree = "<group>"; };
 		5CF4D9800E68E6DF0091A77F /* ILCrashReporter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ILCrashReporter.framework; path = Frameworks/ILCrashReporter.framework; sourceTree = SOURCE_ROOT; };
+		5CF9624C0F37BE5A009D2A9B /* PADInspector.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PADInspector.xib; sourceTree = "<group>"; };
+		5CF962510F37E042009D2A9B /* PADExpandingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PADExpandingView.h; path = "Sources/PAD Controllers/PADExpandingView.h"; sourceTree = "<group>"; };
+		5CF962520F37E042009D2A9B /* PADExpandingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PADExpandingView.m; path = "Sources/PAD Controllers/PADExpandingView.m"; sourceTree = "<group>"; };
 		735CC297049A7E1F00C919A3 /* Prefix.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Prefix.h; path = Sources/Prefix.h; sourceTree = SOURCE_ROOT; };
 		735CC2C0049A7E2A00C919A3 /* Info-PickADisk.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-PickADisk.plist"; sourceTree = SOURCE_ROOT; };
 		735CC2C1049A7E2A00C919A3 /* PickADisk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PickADisk.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -439,6 +455,7 @@
 			children = (
 				5CAFCCA20E2EB77300A7BEA4 /* pmssource */,
 				5C81A0E60EC39D9B00E75319 /* jsutility */,
+				5C1A101D0F4018A4004F3605 /* IconFamily */,
 				735CC297049A7E1F00C919A3 /* Prefix.h */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
 			);
@@ -463,6 +480,7 @@
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				0405E529FF13D2D511CA0E35 /* InitInfo.dict */,
 				735CC2C0049A7E2A00C919A3 /* Info-PickADisk.plist */,
+				5CF9624C0F37BE5A009D2A9B /* PADInspector.xib */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -474,6 +492,18 @@
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5C1A101D0F4018A4004F3605 /* IconFamily */ = {
+			isa = PBXGroup;
+			children = (
+				5C1A101E0F4018A4004F3605 /* IconFamily.h */,
+				5C1A101F0F4018A4004F3605 /* IconFamily.m */,
+				5C1A10200F4018A4004F3605 /* NSString+CarbonFSRefCreation.h */,
+				5C1A10210F4018A4004F3605 /* NSString+CarbonFSRefCreation.m */,
+			);
+			name = IconFamily;
+			path = Sources/IconFamily;
 			sourceTree = "<group>";
 		};
 		5C2E42530E7450F600D7DF4A /* Executables */ = {
@@ -509,6 +539,7 @@
 				5C6C12DA0E240AAC0097CC7A /* minus.icns */,
 				5C6C12DB0E240AAC0097CC7A /* plus.icns */,
 				5C6C12DC0E240AAC0097CC7A /* SmartFolder.icns */,
+				5C1A0F6A0F3FC1B9004F3605 /* ToolbarInfo.icns */,
 			);
 			name = Icons;
 			path = Resources/Icons;
@@ -529,6 +560,8 @@
 				5C30383A0EA5C8CE0067A8A8 /* PADPrefsTreeController.m */,
 				5C2D25F30E304B1C005F9FB5 /* PADIndexProgressController.m */,
 				5C2D25F40E304B1C005F9FB5 /* PADIndexProgressController.h */,
+				5C7F73F90F3934B30053681D /* PADInspectorController.h */,
+				5C7F73FA0F3934B30053681D /* PADInspectorController.m */,
 			);
 			name = "PAD Controllers";
 			path = "Sources/PAD Controllers";
@@ -613,6 +646,8 @@
 				5CD985160E4E60A700441ED7 /* PADHomeView.m */,
 				5C48B4250E444E27005795F7 /* PADLayoutView.h */,
 				5C48B4260E444E27005795F7 /* PADLayoutView.m */,
+				5CF962510F37E042009D2A9B /* PADExpandingView.h */,
+				5CF962520F37E042009D2A9B /* PADExpandingView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -767,6 +802,8 @@
 				5C88C18B0EB83A51005D267C /* BluePlus.png in Resources */,
 				75B2FCB30EDDA9A1007356FD /* BlackPlus1.png in Resources */,
 				75B2FCB50EDDA9AD007356FD /* BlackSearch1.png in Resources */,
+				5CF9624D0F37BE5A009D2A9B /* PADInspector.xib in Resources */,
+				5C1A0F6B0F3FC1B9004F3605 /* ToolbarInfo.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -810,7 +847,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/bin/sh -x";
-			shellScript = "logger \"Starting\"\nif [[ \"$CONFIGURATION\" == 'Development Fresh Prefs' ]]; then\n\tif [ -e \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist\" ]; then\n\t\tif [ -e \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist.1\" ]; then\n\t\t\tlogger \"Removing prefs aside\"\n\t\t\t/bin/rm \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist\"\t\telse\n\t\t\tlogger \"Moving prefs aside\"\n\t\t\t/bin/mv \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist\" \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist.1\"\n\t\tfi\n\tfi\nfi\n\tif [[ -e \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist.1\" ]]; then\n\t\tlogger \"restoring old pref\"\n\t\t/bin/mv \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist.1\" \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist\"\n\tfi\nif [[ \"$CONFIGURATION\" == 'Deploy' ]]; then\n    echo \"zipping $CONFIGURATION_BUILD_DIR/${PRODUCT_NAME}_${VERSIONSTRING}.zip\"\n\tpushd $CONFIGURATION_BUILD_DIR/\n\tif [[ -e ${PRODUCT_NAME}_${VERSIONSTRING}.zip ]] ; then\n\t\trm ${PRODUCT_NAME}_${VERSIONSTRING}.zip\n\tfi\n    zip -r ${PRODUCT_NAME}_${VERSIONSTRING}.zip ${PRODUCT_NAME}.app\n\tscp ${PRODUCT_NAME}_${VERSIONSTRING}.zip polymicrosystems.com:pickadisk.com/updates/trunk/archives/\n\tgrowlnotify -m \"Upload complete\" -I /Developer/Applications/Xcode.app/\n\nfi";
+			shellScript = "logger \"Starting\"\nif [[ \"$CONFIGURATION\" == 'Development Fresh Prefs' ]]; then\n\tif [ -e \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist\" ]; then\n\t\tif [ -e \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist.1\" ]; then\n\t\t\tlogger \"Removing prefs aside\"\n\t\t\t/bin/rm \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist\"\t\telse\n\t\t\tlogger \"Moving prefs aside\"\n\t\t\t/bin/mv \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist\" \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist.1\"\n\t\tfi\n\tfi\nfi\n\tif [[ -e \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist.1\" ]]; then\n\t\tlogger \"restoring old pref\"\n\t\t/bin/mv \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist.1\" \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist\"\n\tfi";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -860,6 +897,10 @@
 				5C3FAEE80EBA6FB30048BBA1 /* LicenseService.m in Sources */,
 				5C81A0EB0EC39D9B00E75319 /* JSServiceManager.m in Sources */,
 				5C81A2280EC585CB00E75319 /* PADCrashReportService.m in Sources */,
+				5CF962540F37E042009D2A9B /* PADExpandingView.m in Sources */,
+				5C7F73FC0F3934B30053681D /* PADInspectorController.m in Sources */,
+				5C1A10230F4018A4004F3605 /* IconFamily.m in Sources */,
+				5C1A10250F4018A4004F3605 /* NSString+CarbonFSRefCreation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -893,62 +934,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		759BBD0B0EE0A60000AEC210 /* Deploy */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = (
-					"$(NATIVE_ARCH)",
-					x86_64,
-					ppc,
-				);
-				FRAMEWORK_SEARCH_PATHS = "";
-				MACOSX_DEPLOYMENT_TARGET = 10.5;
-				SDKROOT = /Developer/SDKs/MacOSX10.5.sdk;
-			};
-			name = Deploy;
-		};
-		759BBD0C0EE0A60000AEC210 /* Deploy */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1)";
-				ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1 = "ppc i386";
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/Frameworks",
-				);
-				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(DEVELOPER_DIR)/SDKs/MacOSX10.5.sdk/System/Library/Frameworks\"";
-				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../DiscID/build/Release\"";
-				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_5 = "\"$(SRCROOT)/Frameworks\"";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = Sources/Prefix.h;
-				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
-				GCC_WARN_UNKNOWN_PRAGMAS = NO;
-				HEADER_SEARCH_PATHS = "";
-				INFOPLIST_FILE = "Info-PickADisk.plist";
-				INSTALL_PATH = /Applications;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
-				);
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)\"";
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = (
-					"-lcrypto",
-					"-seg1addr",
-					0x10000000,
-				);
-				PRODUCT_NAME = PickADisk;
-				SECTORDER_FLAGS = "";
-				VERSIONSTRING = 1.0_1040;
-				WARNING_CFLAGS = "-Wmost";
-				WRAPPER_EXTENSION = app;
-				ZERO_LINK = NO;
-			};
-			name = Deploy;
-		};
 		75D3EBAB0E8BF811009A0199 /* DebugPPC */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1192,7 +1177,6 @@
 				75E4927D0EACC04200AC85A0 /* Development Fresh Prefs */,
 				75D3EBAC0E8BF811009A0199 /* DebugPPC */,
 				B69BDD9608A2EC26008AC9B5 /* Release */,
-				759BBD0C0EE0A60000AEC210 /* Deploy */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Development;
@@ -1204,7 +1188,6 @@
 				75E4927C0EACC04200AC85A0 /* Development Fresh Prefs */,
 				75D3EBAB0E8BF811009A0199 /* DebugPPC */,
 				B69BDD9A08A2EC26008AC9B5 /* Release */,
-				759BBD0B0EE0A60000AEC210 /* Deploy */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Development;

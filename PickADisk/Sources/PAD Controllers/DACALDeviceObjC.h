@@ -148,6 +148,8 @@ extern void					DACALNotification( void* inData, DACALDeviceRef inBox, CFStringR
 -(DACALSlotElementBookmark*)bookmarkForLocation:(NSString*)markLocation;
 -(DACALSlotElementBookmark*)createBookmarkAtLocation:(NSString*)markLocation attachNow:(BOOL)doAttach;
 
+-(BOOL)changeElementIconRep:(NSImage*)newIcon;
+
 @end		//	DACALSlotElement
 
 

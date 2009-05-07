@@ -269,7 +269,11 @@ NSString*		kPADLicenseDictKeyInvoiceNum	=	@"Invoice";
 	//	to open the Valid License Window if appropriate.
 	
 	[AppController playUISoundForBOOL:goodRegister];
-	
+	if( goodRegister == YES ) {
+		[[DACALTreeDataSource shared] updatePrompt];
+		[[DACALTreeDataSource shared] setPrompt:NSLocalizedString(@"Thank you for registering PickADisk!", @"Prompt text for data window when a valid license is entered")];
+	}
+		 
 	return goodRegister;
 }
 

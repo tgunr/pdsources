@@ -10,6 +10,7 @@
 #import "PADOperationOpenDevice.h"
 #import "PADOperationControlDevice.h"
 #import "LicenseService.h"
+#import "IconFamily.h"
 
 CFStringRef		kPADClientIdentifier = CFSTR("PAD.DACAL.CLIENT");
 
@@ -347,7 +348,7 @@ NSString*	kDACSlotIconFileNameWithExtension			= @".DACDiscIcon.icns";
 		// NSLog(@"Reloading Element: %@", newURL);
 		
 		[[elementNode nodeData] setLocation:newURL];
-		[elementNode reloadDataAndChildren];
+		[elementNode reloadData:nil reloadChildren:NO];
 		[self reloadAttributes];
 		
 		[self updateElementChanges:YES];
@@ -508,6 +509,17 @@ NSString*	kDACSlotIconFileNameWithExtension			= @".DACDiscIcon.icns";
 	}
 	
 	return newMark;
+}
+
+-(BOOL)changeElementIconRep:(NSImage*)newIcon
+{	
+//	BOOL didChange =  CFURLSetIconFromNSImage( kCFAllocatorDefault, (CFURLRef)[self elementURL], newIcon );
+	BOOL didChange =  TRUE;
+	
+	if( didChange )
+		[self reloadElement];
+	
+	return didChange;
 }
 
 @end		// DACALSlotElement
@@ -1156,7 +1168,7 @@ NSString*	kDACSlotIconFileNameWithExtension			= @".DACDiscIcon.icns";
 			[[self slotDevice] commandCloseDoor];
 	
 	if( outClaimedSlot )
-		NSLog(@"Mounted Slot (%@)\nAs Volume: %@", self, mountVolume);
+		NSLog(@"Mounted %@ As Volume: %@", [self title], [[mountVolume mediaTitle] autorelease]);
 	
 	return outClaimedSlot;
 }
@@ -1180,7 +1192,7 @@ NSString*	kDACSlotIconFileNameWithExtension			= @".DACDiscIcon.icns";
 	[self reloadSlot];
 
 	if( outReleasedSlot )
-		NSLog(@"Unmounted Slot (%@)", self);
+		NSLog(@"Unmounted %@", [self title]);
 	
 	return outReleasedSlot;
 }
@@ -1202,6 +1214,7 @@ NSString*	kDACSlotIconFileNameWithExtension			= @".DACDiscIcon.icns";
 	[self setSlotIdentifier:[indexVolume padIdentifier]];
 	
 	NSURL*		iconURL = [NSURL URLWithString:kDACSlotIconFileNameWithExtension relativeToURL:(NSURL*)slotURL];
+	NSError*	iconError = nil;
 	
 	CFDictionaryRef	volumeData = DADiskCopyDescription( [indexVolume volumeDiskRef] );
 	if( volumeData != NULL ) {
@@ -1217,7 +1230,9 @@ NSString*	kDACSlotIconFileNameWithExtension			= @".DACDiscIcon.icns";
 				if( theIconBundle ) 
 					iconFileURL = (NSURL*)CFBundleCopyResourceURL( theIconBundle, iconResFile, NULL, NULL );
 				if( iconFileURL )
-					[[NSFileManager defaultManager] copyItemAtPath:[iconFileURL path] toPath:[iconURL path] error:nil];
+					[[NSFileManager defaultManager] copyItemAtPath:[iconFileURL path] toPath:[iconURL path] error:&iconError];
+				if( iconError )
+					NSLog(@"Copy Icon Error: %@", iconError);
 				//else NSLog( @"Bad Icon File URL: Bundle:%@ ID:%@ Name:%@", theIconBundle, bundleIDString, iconResFile );
 			}
 		}
