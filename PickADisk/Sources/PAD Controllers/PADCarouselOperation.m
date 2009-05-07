@@ -44,7 +44,7 @@
 
 -(BOOL)cancelOperationForDevice:(DACALDevice*)oldBox
 {
-	return [[self theBoxRef] isEqual:oldBox];
+	return [[self theBoxRef] isEqual:oldBox];	//[oldBox isDeviceRef:[self theBoxRef]];
 }
 
 -(id)startNewOperationForTarget:(id)theTarget endSelector:(SEL)theSelector
@@ -120,10 +120,14 @@
 	SEL		theSelector = [self finishSelector];
 	id		returnValue = nil;
 	
-	while( !finished )
+	while( !finished && ![self isCancelled] )
 		finished = [[self thisOperation] runTaskForOperation:self];
 	
+	if( [self isCancelled] ) return;
+	
 	returnValue = [[self thisOperation] endTaskForOperation:self];
+
+	if( [self isCancelled] ) return;
 	
 	if( (theTarget != nil) && (theSelector != nil) )
 		[theTarget	performSelectorOnMainThread:theSelector
