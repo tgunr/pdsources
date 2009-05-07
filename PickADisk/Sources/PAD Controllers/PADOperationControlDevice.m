@@ -81,6 +81,7 @@
 {
 	if( ([[NSUserDefaults standardUserDefaults] boolForKey:@"PADEjectOnIndex"] == YES ) && (ejectVolume != nil) )
 		[[NSWorkspace sharedWorkspace] unmountAndEjectDeviceAtPath: ejectVolume];
+	if( [ownerOp isCancelled] ) return YES;
 	if( ([[NSUserDefaults standardUserDefaults] boolForKey:@"PADCheckInOnIndex"] == YES ) && (workSlot != 0) )
 		DACALCommandMoveToSlotWithOptions( [theBoxRef deviceRef], workSlot, kDACALOptionMoveDefault );
 	
