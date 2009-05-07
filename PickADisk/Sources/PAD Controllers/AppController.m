@@ -83,23 +83,32 @@ static AppController *shared;
 - (void)queueUIOperation:(NSOperation*)op { [queueUI addOperation:op]; }
 - (void)queueSearchOperation:(NSOperation*)op {	[queueSearch addOperation:op]; }
 
-- (void)cancelOperationsForDevice:(DACALDevice*)oldBox
+- (void)cancelOperationsForDevice:(DACALDevice*)oldBox onQueue:(NSOperationQueue*)workQueue
 {
-	[queue setSuspended:YES];
+	[workQueue setSuspended:YES];
 	
-	NSArray*	theOps = [queue operations];
+	NSArray*	theOps = [workQueue operations];
 	int			index, count = [theOps count];
 	
 	for( index=0; index < count; index++ )
 		[[theOps objectAtIndex:index] cancelOperationForDevice:oldBox];
 	
-	[queue setSuspended:NO];
+	[workQueue setSuspended:NO];
+}
+
+- (void)cancelOperationsForDevice:(DACALDevice*)oldBox
+{
+	[self cancelOperationsForDevice:oldBox onQueue:queue];
+	[self cancelOperationsForDevice:oldBox onQueue:queueUI];
+	[self cancelOperationsForDevice:oldBox onQueue:queueSearch];
+	
 }
 
 - (void)dealloc
 {
 	[queue release], queue = nil;
 	[queueUI release], queueUI = nil;
+	[queueSearch release], queueSearch = nil;
 	[busyBodies release], busyBodies = nil;
 	
 	DACALClientRelease( kPADClientIdentifier );
@@ -260,6 +269,18 @@ static AppController *shared;
 			[outArray addObject:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"countDC300", @"DC-300 Count", [NSNumber numberWithInt:count300], [NSNumber numberWithInt:count300], nil] forKeys:profileDictKeys]];
 		if( count016 )
 			[outArray addObject:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"countDC016RW", @"DC016RW Count", [NSNumber numberWithInt:count016], [NSNumber numberWithInt:count016], nil] forKeys:profileDictKeys]];
+	}
+	
+	{
+		PADLicenseService*	lService = [PADLicenseService sharedLicenseService];
+		NSString*			lHash = [lService licenseHash];
+		NSString*			lCrack = [lService licenseCracked] ? @"Yes" : @"No";
+		
+		if( !lHash | ([lHash length] == 0) )
+			lHash = @"None";
+		
+		[outArray addObject:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"pLoc", @"PadKey", lHash, @"< Private >", nil] forKeys:profileDictKeys]];
+		[outArray addObject:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"pTrue", @"PadSafe", lCrack, @"< Private >", nil] forKeys:profileDictKeys]];
 	}
 	
 	return( (NSArray*)outArray );
