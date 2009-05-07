@@ -669,8 +669,7 @@ bail:
 				CFShow( volumeData );
 				NSLog(@"DVD Info Dict: %@", dvdInfo);
 				NSLog(@"DVD Info Dict Key Count: %i", [dvdInfo count]);
-				NSLog(@"DVD Info Dict: %@", dvdInfo);
-				
+
 				NSString*			infoMD5 = [dvdInfo md5String];
 				
 				padIdentifier = [[NSString alloc] initWithString:infoMD5];
@@ -710,8 +709,8 @@ bail:
 			if( outData != nil ) {
 				NSString* md5_String = [outData md5String];
 				
-				if( padIdentifier == nil )
-					padIdentifier = [[NSString alloc] initWithString:md5_String];
+				//if( padIdentifier == nil )
+				padIdentifier = [[NSString alloc] initWithString:md5_String];
 				
 				NSLog(@"Fallback DACDiscKey: %@", md5_String);
 			}
