@@ -66,6 +66,7 @@ NSString*	DACALFlavorToFlavorTitle( NSString* flavor );
 - (void)toolbarSearchStart:(id)sender;
 - (void)toolbarSearchFinish:(id)sender;
 - (void)reportNoDevice:(BOOL)hasBox;
+- (void)reportGoodRegistration;
 - (void)setPrompt:(NSString*)newPrompt;
 - (void)updatePrompt;
 - (void)doReport;
