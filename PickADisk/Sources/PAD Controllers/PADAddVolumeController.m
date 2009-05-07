@@ -445,7 +445,7 @@ void MyNavEventProc (NavEventCallbackMessage callBackSelector, NavCBRecPtr callB
 	if( selectedIndex >= 0 )
 	{
 		canEject = YES;
-		guessFlavor = [[pendingVolumes objectAtIndex:selectedIndex] guessPADFlavor];
+		guessFlavor = DACALFlavorToFlavorTitle( [[pendingVolumes objectAtIndex:selectedIndex] guessPADFlavor] );
 		if( guessFlavor ) {
 			[slotTypeList selectItemWithTitle:guessFlavor];
 			[self changeToFlavor:guessFlavor];
@@ -910,8 +910,38 @@ NAVERR:
 			  contextInfo: nil];
 }
 
+#pragma mark ###	Device Notifications	###
 
-#pragma mark ###	Volume Notifications	###
+- (void)carouselListChanged
+{
+	NSString*		theSel = nil;// [carouselList titleOfSelectedItem];
+	NSArray*		newTitles = (NSArray*)DACALDevicesCopyAllNames();
+	NSInteger		goneNode = 0;
+	
+	if( (newTitles == nil) || ([newTitles count] == 0) )
+	{
+		if( [sheetWindow isVisible] == YES )
+			[self clickCancel:self];
+		
+		return;
+	}
+	
+	if( [sheetWindow isVisible] == NO ) return;
+	
+	theSel = [carouselList titleOfSelectedItem];
+	
+	[carouselList removeAllItems];
+	[carouselList addItemsWithTitles:newTitles];
+
+	goneNode = [carouselList indexOfItemWithTitle:theSel];
+	
+	if( (currentDevice == kDACALNullDevice) || (theSel == nil) || (goneNode == NSNotFound) )
+		[carouselList selectItemAtIndex:0];
+	else
+		[carouselList selectItemWithTitle:theSel];
+	
+	[self carouselChanged:self];
+}
 
 - (void)detectedVolumes:(NSArray *)newVolumes
 {
