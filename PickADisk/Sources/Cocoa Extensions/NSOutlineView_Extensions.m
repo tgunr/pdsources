@@ -107,7 +107,7 @@
 		if( [itemsLeft indexOfObject:actualItem] != NSNotFound ) {
 			[itemsLeft removeObject:actualItem];
 			[self selectRowIndexes:[NSIndexSet indexSetWithIndex:i] byExtendingSelection:YES];
-			NSLog(@"Actual Item: %@", actualItem);
+			//NSLog(@"Actual Item: %@", actualItem);
 		}
     }
 }
@@ -221,7 +221,7 @@
 	{
 		if( [ourSearch searchOriginalSelection] == nil ) {
 			[ourSearch setSearchOriginalSelection:[self allSelectedNodes]];
-			NSLog(@"Selected Nodes: %@", [ourSearch searchOriginalSelection]);
+			// NSLog(@"Selected Nodes: %@", [ourSearch searchOriginalSelection]);
 		}
 		//[self reloadData];
 	}
