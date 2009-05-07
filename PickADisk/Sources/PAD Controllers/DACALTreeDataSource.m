@@ -442,8 +442,20 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 
 - (void)reportNoDevice:(BOOL)hasBox
 {
+	[noBoxIcon setImage:[NSImage imageNamed:@"noBox.png"]];
 	[noBoxIcon setHidden:hasBox];
 	[self updatePrompt];	
+}
+
+- (void)reportGoodRegistration
+{
+	NSImage*	bigPic = [NSImage imageNamed:@"success.icns"];
+	
+	[bigPic setSize:NSSizeFromString(@"16,16")];
+	[noBoxIcon setImage:bigPic];
+	[noBoxIcon setHidden:FALSE];
+	[self updatePrompt];
+	[promptText setStringValue: NSLocalizedString(@"Thank you for registering PickADisk!", @"Prompt text for data window when a valid license is entered")];
 }
 
 - (void)setPrompt:(NSString*)newPrompt
@@ -480,27 +492,33 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 	if( [[[tabView selectedTabViewItem] identifier] compare:@"Home"] == NSOrderedSame )
 	{
 		if( count == 0) promptData = NSLocalizedString(@"No carousels detected", @"Data View Prompt when no carousel devices are currently detected");
-		else promptData = [NSString stringWithFormat:NSLocalizedString(@"%i %@ with %i %@ storing %@", @"Data View Prompt Format for number of carousel devices attached and number of used slots"),
+		else promptData = [NSString stringWithFormat:NSLocalizedString(@"%i %@ using %i %@ storing %@", @"Data View Prompt Format for number of carousel devices attached and number of used slots"),
 						   count, carouselString, usedCount, slotString, [NSString stringFromByteCount:[[DACALDeviceService sharedService] totalVolumeSize]]];
 	} else {
 		NSArray *selectedNodes = [secondaryController selectedNodes];
 		
 		int			index = 0;
 		int			count = [selectedNodes count];
+		bool		isSearch = FALSE;
 
 		index = [[secondaryController outlineView] numberOfRows];
 		
 		if( [[[self treeControl] selectedNodes] count] > 0 ) {
 			if( sizeDevice = DACALDeviceForDeviceRef( [[[[[self treeControl] selectedNodes] objectAtIndex:0] nodeData] itemDevice]) )
 				sizeString = [NSString stringFromByteCount:[sizeDevice totalVolumeSize]];
+			
+			if( [[[[[self treeControl] selectedNodes] objectAtIndex:0] nodeData] respondsToSelector:@selector(itemSearch)] )
+				isSearch = TRUE;
 		}		
 		
-		if( count ) promptData = [NSString stringWithFormat:NSLocalizedString(@"%i of %i selected", @"Data View Standard Prompt Format for number of elements selected of total count"), count, index];
-		else		promptData = [NSString stringWithFormat:NSLocalizedString(@"%i %@ %@", @"Data View Prompt Format for total count of visible elements"), index, itemString, sizeString];
+		if( count )			promptData = [NSString stringWithFormat:NSLocalizedString(@"%i of %i selected", @"Data View Standard Prompt Format for number of elements selected of total count"), count, index];
+		else if( isSearch )	promptData = [NSString stringWithFormat:NSLocalizedString(@"%i %@", @"Data View Prompt Format for total count of visible elements of a search"), index, itemString, sizeString];
+		else				promptData = [NSString stringWithFormat:NSLocalizedString(@"%i %@ %@", @"Data View Prompt Format for total count of visible elements and device total size"), index, itemString, sizeString];
 	}
 	
-	if( !canAdd ) {
+	if( (!canAdd) && (count > 0) ) {
 		promptData = NSLocalizedString(@"Please purchase PickADisk to add more slots", @"Data View Prompt when max slots in demo mode");
+		[noBoxIcon setImage:[NSImage imageNamed:@"noBox.png"]];
 		[noBoxIcon setHidden:NO];
 	}
 	
