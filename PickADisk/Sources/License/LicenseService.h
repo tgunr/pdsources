@@ -68,6 +68,7 @@ typedef	PADLicense*		PADLicenseRef;
 - (BOOL)licenseValid;
 - (BOOL)licenseExists;
 - (BOOL)licenseCracked;
+- (NSString*)licenseHash;
 - (NSInteger)licenseLimit;
 
 - (void)reportCrackWithReason:(NSString*)howCracked;
