@@ -100,6 +100,8 @@
 - (void)windowWillBeginSheet:(NSNotification *)notification;
 - (void)syncMediaTitles;
 
+- (void)carouselListChanged;
+
 - (void)detectedVolumes:(NSArray *)newVolumes;
 - (void)ejectedVolumes:(NSArray*)oldVolumes;
 //- (void)detectedMounts:(NSArray *)newMounts;
