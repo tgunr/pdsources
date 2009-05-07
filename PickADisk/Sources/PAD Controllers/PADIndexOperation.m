@@ -41,9 +41,13 @@
 - (BOOL)cancelOperationForDevice:(DACALDevice*)oldBox
 {
 	DACALDeviceRef		ourBox = CFURLCopyCarouselUUID( kCFAllocatorDefault, (CFURLRef)itemLocation );
-	BOOL				sameBox = [oldBox isEqual:DACALDeviceForDeviceRef( ourBox )];
-		
-	if( ourBox ) CFRelease( (CFTypeRef)ourBox );
+	BOOL				sameBox = [oldBox isDeviceRef:ourBox]; // [oldBox isEqual:DACALDeviceForDeviceRef( ourBox )];
+	
+	if( ourBox != kDACALNullDevice ) CFRelease( (CFTypeRef)ourBox );
+	else sameBox = YES;
+	
+	if( sameBox == YES )
+		[self cancel];
 	
 	return sameBox;
 }
@@ -53,16 +57,24 @@
 	SimpleTreeNode*		theNode = [self subtreeChild];
 	id					theTarget = [self finishTarget];
 	
+	if( [self isCancelled] ) return;
+	
 //	[theNode setBusy:YES];
 	[theNode initFromLocation:[self itemLocation]];
+
+	if( [self isCancelled] ) return;
+
 	[theNode setBusy:NO];
 
+	if( [self isCancelled] ) return;
 	[PADSearchService updateAllSearches];
 	
 #ifdef __DCDEBUG
 	NSLog(@"Finished location: %@", itemLocation);
 #endif
 	
+	if( [self isCancelled] ) return;
+
 	if( theTarget != nil )
 		[theTarget	performSelectorOnMainThread:@selector(subTreeCompletedLoad:)
 									 withObject:subtreeChild
