@@ -238,6 +238,9 @@ NSString*		kPADLicenseDictKeyInvoiceNum	=	@"Invoice";
 - (BOOL)licenseCracked
 	{ return licenseCracked; }
 
+- (NSString*)licenseHash
+	{	return [licenseValidator hash];	}
+
 - (NSInteger)licenseLimit
 {
 	NSString*	pkey = [licenseValidator key];
@@ -269,10 +272,8 @@ NSString*		kPADLicenseDictKeyInvoiceNum	=	@"Invoice";
 	//	to open the Valid License Window if appropriate.
 	
 	[AppController playUISoundForBOOL:goodRegister];
-	if( goodRegister == YES ) {
-		[[DACALTreeDataSource shared] updatePrompt];
-		[[DACALTreeDataSource shared] setPrompt:NSLocalizedString(@"Thank you for registering PickADisk!", @"Prompt text for data window when a valid license is entered")];
-	}
+	if( goodRegister == YES )
+		[[DACALTreeDataSource shared] reportGoodRegistration];
 		 
 	return goodRegister;
 }
