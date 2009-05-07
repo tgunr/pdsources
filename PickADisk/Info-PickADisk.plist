@@ -50,7 +50,7 @@
 	<key>CFBundleExecutable</key>
 	<string>PickADisk</string>
 	<key>CFBundleGetInfoString</key>
-	<string>PickADisk, ©2008 polyMicro Systems</string>
+	<string>PickADisk, ©2009, 2008 polyMicro Systems</string>
 	<key>CFBundleHelpBookFolder</key>
 	<string>Help</string>
 	<key>CFBundleIconFile</key>
@@ -83,9 +83,9 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>2200</string>
+	<string>5061</string>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2009, 2008 polyMicro Systems</string>
+	<string>Copyright © 2009, 2008, polyMicro Systems</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
