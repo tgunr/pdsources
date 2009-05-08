@@ -1,0 +1,23 @@
+/* <html><head><meta name="robots" content="noindex"></head></html> */
+/* @override http://pickadisk.com/updates/trunk/support/css/report.css */
+
+.colname {
+	text-align: left;
+	background-color: #83fece;
+	font-variant: small-caps;
+	text-transform: capitalize;
+}
+
+.row {
+	text-align: left;
+	background-color: #edf8fe;
+	font: 9pt "Courier New", Courier, mono;
+}
+
+#colname3 {
+	width: 160px;
+}
+
+#colname4 {
+	width: 109px;
+}

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle">
+    <channel>
+        <title>PickADisk Software Updates</title>
+        <link>http://updates.pickadisk.com/trunk/updates.xml</link>
+        <description>Most recent changes with links to updates.</description>
+        <language>en</language>
+		<item>
+			<title>Version 1.0.1 Build 2142</title>
+			<sparkle:releaseNotesLink>http://updates.pickadisk.com/trunk/support/releasenotes/PAD_1.0.1_2142.html</sparkle:releaseNotesLink>
+			<description>Version 1.0.1 Build 2142</description>
+			<pubDate>Mon, 16 Feb 2009 12:53:22 -0800</pubDate>
+			<enclosure sparkle:shortVersionString="1.0.1" sparkle:version="2142" url="http://updates.pickadisk.com/trunk/archives/PickADisk_1.0.1_2142.zip" type="application/octet-stream"/>
+		</item>
+		<item>
+			<title>Version 1.0 Build 1040</title>
+			<sparkle:releaseNotesLink>http://updates.pickadisk.com/trunk/support/releasenotes/PAD_1.0_1040.html</sparkle:releaseNotesLink>
+			<description>Version 1.0 Build 1040</description>
+			<pubDate>Wed, 26 Nov 2008 08:53:22 -0800</pubDate>
+			<enclosure sparkle:shortVersionString="1.0" sparkle:version="1040" url="http://updates.pickadisk.com/trunk/archives/PickADisk_1.0_1040.zip" type="application/octet-stream"/>
+		</item>
+		<item>
+			<title>Version 1.0.0b4 Build 1030</title>
+			<sparkle:releaseNotesLink>http://updates.pickadisk.com/trunk/support/releasenotes/PAD_1.0.0b4_1030.html</sparkle:releaseNotesLink>
+			<description>Version 1.0.0b4 Build 1030</description>
+			<pubDate>Thu, 16 Oct 2008 07:58:00 -0800</pubDate>
+			<enclosure sparkle:shortVersionString="1.0.0b4" sparkle:version="1030" url="http://updates.pickadisk.com/trunk/archives/PickADisk_1.0.0b4_1030.zip" type="application/octet-stream"/>
+		</item>
+		<item>
+			<title>Version 1.0.0b3 Build 1022</title>
+			<sparkle:releaseNotesLink>http://updates.pickadisk.com/trunk/support/releasenotes/PAD_1.0.0b3_1022.html</sparkle:releaseNotesLink>
+			<description>Version 1.0.0b3 Build 1022</description>
+			<pubDate>Wed, 24 Sep 2008 12:35:00 -0800</pubDate>
+			<enclosure sparkle:shortVersionString="1.0.0b3" sparkle:version="1022" url="http://updates.pickadisk.com/trunk/archives/PickADisk_1.0.0b3_1022.zip" type="application/octet-stream"/>
+		</item>
+		<item>
+			<title>Version 1.0.0b2 Build 1021</title>
+			<sparkle:releaseNotesLink>http://updates.pickadisk.com/trunk/support/releasenotes/PAD_1.0.0b2_1021.html</sparkle:releaseNotesLink>
+			<description>Version 1.0.0b2 Build 1021</description>
+			<pubDate>Fri, 22 Aug 2008 22:22:22 -0800</pubDate>
+			<enclosure sparkle:shortVersionString="1.0.0b2" sparkle:version="1021" url="http://updates.pickadisk.com/trunk/archives/PickADisk_1.0.0b2_1021.zip" type="application/octet-stream"/>
+		</item>
+		<item>
+			<title>Version 1.0.0b1 Build 1016</title>
+			<sparkle:releaseNotesLink>http://updates.pickadisk.com/trunk/support/releasenotes/PAD_1.0.0b1_1016.html</sparkle:releaseNotesLink>
+			<description>Version 1.0.0b1 Build 1016</description>
+			<pubDate>Fri, 22 Aug 2008 22:22:22 -0800</pubDate>
+			<enclosure sparkle:shortVersionString="1.0.0b1" sparkle:version="1016" url="http://updates.pickadisk.com/trunk/archives/PickADisk_1.0.0b1_1016.zip" type="application/octet-stream"/>
+		</item>
+		<item>
+			<title>Version 1.0.0b Build 1012</title>
+			<sparkle:releaseNotesLink>http://updates.pickadisk.com/trunk/support/releasenotes/PAD_1.0.0b_1012.html</sparkle:releaseNotesLink>
+			<description>Version 1.0.0b Build 1012</description>
+			<pubDate>Fri, 15 Aug 2008 04:11:22 -0800</pubDate>
+			<enclosure sparkle:shortVersionString="1.0.0b" sparkle:version="1012" url="http://updates.pickadisk.com/trunk/archives/PickADisk_1.0.0b_1012.zip" type="application/octet-stream"/>
+		</item>
+		<item>
+			<title>Version 1.0.0a Build 1006</title>
+			<description><![CDATA[PickADisk Proof of Concept Release
+			<ul>
+				<li>This version expires on September 5, 2008.</li>
+				<li>Bug fixes!</li>
+				<li>New stuff!</li>
+			</ul>
+			]]></description>
+			<pubDate>Mon, 04 Aug 2008 06:10:22 -0800</pubDate>
+			<enclosure sparkle:shortVersionString="1.0.0a" sparkle:version="1006" url="http://updates.pickadisk.com/trunk/archives/PickADisk_1.0.0a_1006.zip" type="application/octet-stream"/>
+		</item>
+		<item>
+			<title>Version 0.1 Build 1004</title>
+			<description><![CDATA[Added basic print of carousels!
+			<ul>
+				<li>Print now works for a selected carousel.</li>
+				<li>New stuff!</li>
+			</ul>
+			]]></description>
+			<pubDate>Sat, 02 Aug 2008 09:38:22 -0800</pubDate>
+			<enclosure sparkle:shortVersionString="0.1" sparkle:version="1004" url="http://updates.pickadisk.com/trunk/archives/PickADisk_0.1_1004.zip" type="application/octet-stream"/>
+		 </item>
+		 <item>
+			<title>Version 0.1b</title>
+			<description><![CDATA[PickADisk Organizer For Mac OS X
+			<ul>
+				<li>This is a test of the update mechanism.</li>
+				<li>New bundle information!</li>
+				<li>Fully enables .carousel bundles</li>
+			</ul>
+			]]></description>
+			<pubDate>Fri, 01 Aug 2008 02:22:22 -0800</pubDate>
+			<enclosure sparkle:shortVersionString="0.1" sparkle:version="1002" url="http://updates.pickadisk.com/trunk/archives/PickADisk_0.1_1002.zip" type="application/octet-stream"/>
+		</item>
+    </channel>
+</rss>
