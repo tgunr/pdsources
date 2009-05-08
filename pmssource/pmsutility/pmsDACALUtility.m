@@ -8,6 +8,7 @@
  */
 
 #include "pmsDACALUtility.h"
+#include "IconFamily.h"
 
 OSStatus DACALRegisterIconResource( CFStringRef theIconFile, OSType theIconType )
 {
@@ -202,19 +203,66 @@ BAIL:
 	return( theOutputIcon );
 }
 
-NSImage*	CFURLGetIconAsNSImage( CFAllocatorRef allocator, CFURLRef url, OSStatus* outError )
+NSImage*	CFURLGetIconAsNSImageAtSize( CFAllocatorRef allocator, CFURLRef url, NSSizePointer newSize, OSStatus* outError )
 {
 	IconRef	theItemIcon = CFURLGetIcon(allocator, url, outError);
 	NSImage*	theItemImage = NULL;
 	
 	if( theItemIcon != NULL ) theItemImage = [[NSImage alloc]initWithIconRef:theItemIcon];
-	if( theItemImage != NULL ) {
+	if( (theItemImage != NULL) && (newSize != NULL) ) {
 		[theItemImage setScalesWhenResized:YES];
-		[theItemImage setSize:NSMakeSize( 16.0, 16.0 )];
+		[theItemImage setSize:*newSize];
 	}
 	
 	return( theItemImage );
 }
+
+NSImage*	CFURLGetIconAsNSImage( CFAllocatorRef allocator, CFURLRef url, OSStatus* outError )
+{
+	NSSize		littleIconSize = NSMakeSize( 16.0, 16.0 );
+	
+	return CFURLGetIconAsNSImageAtSize( allocator, url, &littleIconSize, outError );
+}
+
+BOOL		CFURLSetIconFromNSImage( CFAllocatorRef allocator, CFURLRef url, NSImage* theImage )
+{
+	BOOL			goodChange = NO;
+	id				iconActual = [IconFamily iconFamilyWithThumbnailsOfImage:theImage];
+	NSURL*			ourURL = (NSURL*)url;
+//	NSString*		ourPath = [ourURL path];
+	NSString*		filePath = nil;
+	
+	CFURLRef		theSlotTopPath = CFURLCreateCopyDeletingLastPathComponent( kCFAllocatorDefault, url );
+	
+	if( CFURLIsSlot(url) ) {
+		
+		NSURL*		iconURL = [NSURL URLWithString:kDACSlotIconFileNameWithExtension relativeToURL:ourURL];
+		
+		if( iconURL ) 
+			filePath = [iconURL path];
+		goto SAVE;
+	}
+	
+	if( (theSlotTopPath != NULL ) && CFURLIsSlot( theSlotTopPath ) ) {
+		
+		NSString*	iconPath = [NSString stringWithFormat:@"../%@", kDACSlotIconFileNameWithExtension];
+		NSURL*		iconURL = [NSURL URLWithString:iconPath relativeToURL:ourURL];
+		
+		if( iconURL )
+			filePath = [iconURL path];
+		goto SAVE;
+	}
+		
+SAVE:
+	if( filePath )
+		goodChange = [iconActual writeToFile:filePath];
+	else
+		goodChange = [[NSWorkspace sharedWorkspace] setIcon:theImage forFile:[ourURL path] options:0];
+		//goodChange = [iconActual setAsCustomIconForFile:ourPath];
+	
+	return goodChange;	
+}
+
 
 CFStringRef	CFURLCopyDisplayName( CFAllocatorRef allocator, CFURLRef url, OSStatus* outError )
 {

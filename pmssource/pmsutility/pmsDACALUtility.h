@@ -23,7 +23,9 @@ Boolean			CFURLIsTopInSlot( CFAllocatorRef inAllocator, CFURLRef url );
 DACALDeviceRef	CFURLCopyCarouselUUID(  CFAllocatorRef inAllocator, CFURLRef url );
 DACALSlotNum	CFURLGetSlotNumber( CFURLRef url, Boolean onlySlotFolders );
 IconRef			CFURLGetIcon( CFAllocatorRef allocator, CFURLRef url, OSStatus* outError );
+NSImage*		CFURLGetIconAsNSImageAtSize( CFAllocatorRef allocator, CFURLRef url, NSSizePointer newSize, OSStatus* outError );
 NSImage*		CFURLGetIconAsNSImage( CFAllocatorRef allocator, CFURLRef url, OSStatus* outError );
+BOOL			CFURLSetIconFromNSImage( CFAllocatorRef allocator, CFURLRef url, NSImage* theImage );
 
 Boolean			CFURLIsVisible( CFURLRef url );
 CFStringRef		CFURLCopyDisplayName( CFAllocatorRef allocator, CFURLRef url, OSStatus* outError );
