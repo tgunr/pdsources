@@ -115,11 +115,11 @@
 		7504AE700FB380E700FFAA84 /* PAD_1.0.1_2142.html in Resources */ = {isa = PBXBuildFile; fileRef = 7504AE650FB380E700FFAA84 /* PAD_1.0.1_2142.html */; };
 		7504AE710FB380E700FFAA84 /* PAD_1.0_1040.html in Resources */ = {isa = PBXBuildFile; fileRef = 7504AE660FB380E700FFAA84 /* PAD_1.0_1040.html */; };
 		7504AE720FB380E700FFAA84 /* supportConfig.php in Resources */ = {isa = PBXBuildFile; fileRef = 7504AE670FB380E700FFAA84 /* supportConfig.php */; };
-		7504AE810FB3825A00FFAA84 /* ChangeLog in Resources */ = {isa = PBXBuildFile; fileRef = 7504AE800FB3825A00FFAA84 /* ChangeLog */; };
 		7504AEA40FB389E600FFAA84 /* buildnumber.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 7504AEA30FB389E600FFAA84 /* buildnumber.xcconfig */; };
 		7504AEBC0FB38F7400FFAA84 /* releasenumber.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 7504AEBB0FB38F7400FFAA84 /* releasenumber.xcconfig */; };
 		7504AF270FB3A1F900FFAA84 /* updates.xml in Resources */ = {isa = PBXBuildFile; fileRef = 7504AF260FB3A1F900FFAA84 /* updates.xml */; };
 		7504AFDD0FB3AEBB00FFAA84 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 7504AFDC0FB3AEBB00FFAA84 /* Credits.rtf */; };
+		7504B0050FB4724F00FFAA84 /* DACALDriver.kext in Resources */ = {isa = PBXBuildFile; fileRef = 7504B0040FB4724300FFAA84 /* DACALDriver.kext */; };
 		751C4E2D0E9400250027BC1C /* AquaticPrime.m in Sources */ = {isa = PBXBuildFile; fileRef = 751C4E2C0E9400250027BC1C /* AquaticPrime.m */; };
 		75B2FCB30EDDA9A1007356FD /* BlackPlus1.png in Resources */ = {isa = PBXBuildFile; fileRef = 75B2FCB20EDDA9A1007356FD /* BlackPlus1.png */; };
 		75B2FCB50EDDA9AD007356FD /* BlackSearch1.png in Resources */ = {isa = PBXBuildFile; fileRef = 75B2FCB40EDDA9AD007356FD /* BlackSearch1.png */; };
@@ -138,6 +138,16 @@
 			);
 		};
 /* End PBXBuildRule section */
+
+/* Begin PBXContainerItemProxy section */
+		7504B0030FB4724300FFAA84 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7504AFFC0FB4724300FFAA84 /* DACALDriver.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 32D94FD00562CBF700B6AF17 /* DACALDriver.kext */;
+			remoteInfo = DACALDriver;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		5C2E42670E7451EA00D7DF4A /* CopyFiles */ = {
@@ -332,11 +342,11 @@
 		7504AE650FB380E700FFAA84 /* PAD_1.0.1_2142.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = PAD_1.0.1_2142.html; sourceTree = "<group>"; };
 		7504AE660FB380E700FFAA84 /* PAD_1.0_1040.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = PAD_1.0_1040.html; sourceTree = "<group>"; };
 		7504AE670FB380E700FFAA84 /* supportConfig.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = supportConfig.php; sourceTree = "<group>"; };
-		7504AE800FB3825A00FFAA84 /* ChangeLog */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ChangeLog; path = ../ChangeLog; sourceTree = SOURCE_ROOT; };
 		7504AEA30FB389E600FFAA84 /* buildnumber.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = buildnumber.xcconfig; sourceTree = "<group>"; };
 		7504AEBB0FB38F7400FFAA84 /* releasenumber.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = releasenumber.xcconfig; sourceTree = "<group>"; };
 		7504AF260FB3A1F900FFAA84 /* updates.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = updates.xml; sourceTree = "<group>"; };
 		7504AFDC0FB3AEBB00FFAA84 /* Credits.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
+		7504AFFC0FB4724300FFAA84 /* DACALDriver.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = DACALDriver.xcodeproj; path = ../DACALDriver/DACALDriver.xcodeproj; sourceTree = SOURCE_ROOT; };
 		751C4E2C0E9400250027BC1C /* AquaticPrime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AquaticPrime.m; path = Sources/License/AquaticPrime.m; sourceTree = "<group>"; };
 		75B2FCB20EDDA9A1007356FD /* BlackPlus1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlackPlus1.png; sourceTree = "<group>"; };
 		75B2FCB40EDDA9AD007356FD /* BlackSearch1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlackSearch1.png; sourceTree = "<group>"; };
@@ -472,6 +482,7 @@
 		29B97314FDCFA39411CA2CEA /* CocoaApp */ = {
 			isa = PBXGroup;
 			children = (
+				7504AFFB0FB4722D00FFAA84 /* Other Projects */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				5C2E42530E7450F600D7DF4A /* Executables */,
@@ -485,7 +496,6 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
-				7504AE800FB3825A00FFAA84 /* ChangeLog */,
 				7504AEA20FB389E600FFAA84 /* Misc */,
 				7504AE590FB380E700FFAA84 /* sparkle */,
 				5CAFCCA20E2EB77300A7BEA4 /* pmssource */,
@@ -775,6 +785,22 @@
 			path = Misc;
 			sourceTree = "<group>";
 		};
+		7504AFFB0FB4722D00FFAA84 /* Other Projects */ = {
+			isa = PBXGroup;
+			children = (
+				7504AFFC0FB4724300FFAA84 /* DACALDriver.xcodeproj */,
+			);
+			name = "Other Projects";
+			sourceTree = "<group>";
+		};
+		7504AFFD0FB4724300FFAA84 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7504B0040FB4724300FFAA84 /* DACALDriver.kext */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		75E6672A0E92AC3000A9DA07 /* License */ = {
 			isa = PBXGroup;
 			children = (
@@ -838,12 +864,28 @@
 			hasScannedForEncodings = 1;
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CocoaApp */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 7504AFFD0FB4724300FFAA84 /* Products */;
+					ProjectRef = 7504AFFC0FB4724300FFAA84 /* DACALDriver.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				735CC299049A7E2A00C919A3 /* PickADisk */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		7504B0040FB4724300FFAA84 /* DACALDriver.kext */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = DACALDriver.kext;
+			remoteRef = 7504B0030FB4724300FFAA84 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		735CC2A2049A7E2A00C919A3 /* Resources */ = {
@@ -905,11 +947,11 @@
 				7504AE700FB380E700FFAA84 /* PAD_1.0.1_2142.html in Resources */,
 				7504AE710FB380E700FFAA84 /* PAD_1.0_1040.html in Resources */,
 				7504AE720FB380E700FFAA84 /* supportConfig.php in Resources */,
-				7504AE810FB3825A00FFAA84 /* ChangeLog in Resources */,
 				7504AEA40FB389E600FFAA84 /* buildnumber.xcconfig in Resources */,
 				7504AEBC0FB38F7400FFAA84 /* releasenumber.xcconfig in Resources */,
 				7504AF270FB3A1F900FFAA84 /* updates.xml in Resources */,
 				7504AFDD0FB3AEBB00FFAA84 /* Credits.rtf in Resources */,
+				7504B0050FB4724F00FFAA84 /* DACALDriver.kext in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -953,7 +995,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/bin/sh -x";
-			shellScript = "logger \"Starting PickADisk Xcode Script\"\nif [[ \"$CONFIGURATION\" == 'Development Fresh Prefs' ]]; then\n\tif [ -e \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist\" ]; then\n\t\tif [ -e \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist.1\" ]; then\n\t\t\tlogger \"Removing prefs aside\"\n\t\t\t/bin/rm \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist\"\t\telse\n\t\t\tlogger \"Moving prefs aside\"\n\t\t\t/bin/mv \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist\" \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist.1\"\n\t\tfi\n\tfi\nfi\n\tif [[ -e \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist.1\" ]]; then\n\t\tlogger \"restoring old pref\"\n\t\t/bin/mv \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist.1\" \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist\"\n\tfi\n\n/usr/bin/perl -pe 's/(BUILD_NUMBER = )(\\d+)/$1.($2+1)/eg' -i \"$SRCROOT/Misc/buildnumber.xcconfig\"\n\n\nif [[ \"$CONFIGURATION\" == 'Release Test' ]]; then\n\tRELEASE_NOTES=`echo \"PAD-$VERSION_NUMBER-$BUILD_NUMBER.html\" | tr \"-\" \"_\"`\n\tRELEASE_NOTES_PATH=$SRCROOT/Sources/sparkle/support/releasenotes\n\tif [ ! -e \"$RELEASE_NOTES_PATH/$RELEASE_NOTES\" ] ; then\n\nNEWXMLITEM=<<End-of-item\n\t\t<item>\n\t\t\t<title>Version 1.0.1 Build 2142</title>\n\t\t\t<sparkle:releaseNotesLink>http://updates.pickadisk.com/trunk/support/releasenotes/PAD_1.0.1_2142.html</sparkle:releaseNotesLink>\n\t\t\t<description>Version 1.0.1 Build 2142</description>\n\t\t\t<pubDate>Mon, 16 Feb 2009 12:53:22 -0800</pubDate>\n\t\t\t<enclosure sparkle:shortVersionString=\"1.0.1\" sparkle:version=\"2142\" url=\"http://updates.pickadisk.com/trunk/archives/PickADisk_1.0.1_2142.zip\" type=\"application/octet-stream\"/>\n\t\t</item>\nEnd-of-item\n\ncat >  \"$RELEASE_NOTES_PATH/$RELEASE_NOTES\" <<End-of-message\n<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 TRANSITIONAL//EN\">\n<html>\n\n\t<head>\n\t\t<title>Version $VERSION_NUMBER Build $BUILD_NUMBER</title>\n\t\t<link href=\"../css/simplelist.css\" type=\"text/css\" rel=\"stylesheet\" media=\"all\">\n\t</head>\n\t<body>\n\t\t<p class=\"p1\" align=\"center\">PickADisk Version $VERSION_NUMBER Build $BUILD_NUMBER </p>\n\t\t<ul class=\"ul1\">\n\t\t\t<li class=\"li1\">Item1</li>\n\t\t</ul>\n\t</body>\n</html>\nEnd-of-message\nfi\n#open -e \"$RELEASE_NOTES_PATH/$RELEASE_NOTES\"\nfi\n\nif [[ \"$CONFIGURATION\" == 'Release' ]]; then\n\tZIP_FILE=`echo \"$PRODUCT_NAME-$VERSION_NUMBER-$BUILD_NUMBER.zip\" | tr \"-\" \"_\"`\n\trsync -auv \"$SRCROOT/Sources/sparkle/\" polymicrosystems.com:pickadisk.com/updates/trunk/ --exclude=\".*\"\n\tzip -r -q \"$TARGET_BUILD_DIR/$ZIP_FILE\" \"$TARGET_BUILD_DIR/$WRAPPER_NAME\"\n\trsync -auv \"$TARGET_BUILD_DIR/$ZIP_FILE\" polymicrosystems.com:pickadisk.com/updates/trunk/archives/ --exclude=\".*\"\nfi\n";
+			shellScript = "logger \"Starting PickADisk Xcode Script\"\nif [[ \"$CONFIGURATION\" == 'Development Fresh Prefs' ]]; then\n\tif [ -e \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist\" ]; then\n\t\tif [ -e \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist.1\" ]; then\n\t\t\tlogger \"Removing prefs aside\"\n\t\t\t/bin/rm \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist\"\t\telse\n\t\t\tlogger \"Moving prefs aside\"\n\t\t\t/bin/mv \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist\" \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist.1\"\n\t\tfi\n\tfi\nfi\n\tif [[ -e \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist.1\" ]]; then\n\t\tlogger \"restoring old pref\"\n\t\t/bin/mv \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist.1\" \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist\"\n\tfi\n\n/usr/bin/perl -pe 's/(BUILD_NUMBER = )(\\d+)/$1.($2+1)/eg' -i \"$SRCROOT/Misc/buildnumber.xcconfig\"\n\nZIP_FILE=`echo \"$PRODUCT_NAME-$VERSION_NUMBER-$BUILD_NUMBER.zip\" | tr \"-\" \"_\"`\nHTML_FILE=`echo \"PAD-$VERSION_NUMBER-$BUILD_NUMBER.html\" | tr \"-\" \"_\"`\n\nif [[ \"$CONFIGURATION\" == 'Release Test' ]]; then\n\tRELEASE_NOTES_PATH=$SRCROOT/Sources/sparkle/support/releasenotes\n\tif [ ! -e \"$RELEASE_NOTES_PATH/$HTML_FILE\" ] ; then\n\n\ncat >  \"$RELEASE_NOTES_PATH/$HTML_FILE\" <<End-of-html\n<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 TRANSITIONAL//EN\">\n<html>\n\n\t<head>\n\t\t<title>Version $VERSION_NUMBER Build $BUILD_NUMBER</title>\n\t\t<link href=\"../css/simplelist.css\" type=\"text/css\" rel=\"stylesheet\" media=\"all\">\n\t</head>\n\t<body>\n\t\t<p class=\"p1\" align=\"center\">PickADisk Version $VERSION_NUMBER Build $BUILD_NUMBER </p>\n\t\t<ul class=\"ul1\">\n\t\t\t<li class=\"li1\">Item1</li>\n\t\t</ul>\n\t</body>\n</html>\nEnd-of-html\nfi\nopen -e \"$RELEASE_NOTES_PATH/$HTML_FILE\"\n\nXML_UPDATE_FILE=$SRCROOT/Sources/sparkle/updates.xml\n\nTODAY_DATE=`date`\n\npbcopy<<End-of-item\n\t\t<item>\n\t\t\t<title>Version $VERSION_NUMBER Build $BUILD_NUMBER</title>\n\t\t\t<sparkle:releaseNotesLink>http://updates.pickadisk.com/trunk/support/releasenotes/$HTML_FILE</sparkle:releaseNotesLink>\n\t\t\t<description>Version $VERSION_NUMBER Build $BUILD_NUMBER </description>\n\t\t\t<pubDate>$TODAY_DATE</pubDate>\n\t\t\t<enclosure sparkle:shortVersionString=\"$VERSION_NUMBER\" sparkle:version=\"$BUILD_NUMBER\" url=\"http://updates.pickadisk.com/trunk/archives/$ZIP_FILE\" type=\"application/octet-stream\"/>\n\t\t</item>\nEnd-of-item\n\nopen \"$XML_UPDATE_FILE\"\n\nfi\n\nif [[ \"$CONFIGURATION\" == 'Release' ]]; then\n\trsync -auv \"$SRCROOT/Sources/sparkle/\" polymicrosystems.com:pickadisk.com/updates/trunk/ --exclude=\".*\"\n\tzip -r -q \"$TARGET_BUILD_DIR/$ZIP_FILE\" \"$TARGET_BUILD_DIR/$WRAPPER_NAME\"\n\trsync -auv \"$TARGET_BUILD_DIR/$ZIP_FILE\" polymicrosystems.com:pickadisk.com/updates/trunk/archives/ --exclude=\".*\"\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
