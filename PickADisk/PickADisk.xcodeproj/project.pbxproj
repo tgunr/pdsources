@@ -104,6 +104,22 @@
 		735CC2B9049A7E2A00C919A3 /* TreeNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 08DC403CFF0C20FA11CA0E35 /* TreeNode.m */; settings = {ATTRIBUTES = (); }; };
 		735CC2BA049A7E2A00C919A3 /* ImageAndTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 02AAE104FF38CCE111CA0E35 /* ImageAndTextCell.m */; settings = {ATTRIBUTES = (); }; };
 		735CC2BD049A7E2A00C919A3 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 011669A0FFC1E3D311CA0E35 /* Cocoa.framework */; };
+		7504AE680FB380E700FFAA84 /* report.css in Resources */ = {isa = PBXBuildFile; fileRef = 7504AE5C0FB380E700FFAA84 /* report.css */; };
+		7504AE690FB380E700FFAA84 /* simplelist.css in Resources */ = {isa = PBXBuildFile; fileRef = 7504AE5D0FB380E700FFAA84 /* simplelist.css */; };
+		7504AE6A0FB380E700FFAA84 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 7504AE5E0FB380E700FFAA84 /* index.html */; };
+		7504AE6B0FB380E700FFAA84 /* PAD_1.0.0b1_1016.html in Resources */ = {isa = PBXBuildFile; fileRef = 7504AE600FB380E700FFAA84 /* PAD_1.0.0b1_1016.html */; };
+		7504AE6C0FB380E700FFAA84 /* PAD_1.0.0b2_1021.html in Resources */ = {isa = PBXBuildFile; fileRef = 7504AE610FB380E700FFAA84 /* PAD_1.0.0b2_1021.html */; };
+		7504AE6D0FB380E700FFAA84 /* PAD_1.0.0b3_1022.html in Resources */ = {isa = PBXBuildFile; fileRef = 7504AE620FB380E700FFAA84 /* PAD_1.0.0b3_1022.html */; };
+		7504AE6E0FB380E700FFAA84 /* PAD_1.0.0b4_1030.html in Resources */ = {isa = PBXBuildFile; fileRef = 7504AE630FB380E700FFAA84 /* PAD_1.0.0b4_1030.html */; };
+		7504AE6F0FB380E700FFAA84 /* PAD_1.0.0b_1012.html in Resources */ = {isa = PBXBuildFile; fileRef = 7504AE640FB380E700FFAA84 /* PAD_1.0.0b_1012.html */; };
+		7504AE700FB380E700FFAA84 /* PAD_1.0.1_2142.html in Resources */ = {isa = PBXBuildFile; fileRef = 7504AE650FB380E700FFAA84 /* PAD_1.0.1_2142.html */; };
+		7504AE710FB380E700FFAA84 /* PAD_1.0_1040.html in Resources */ = {isa = PBXBuildFile; fileRef = 7504AE660FB380E700FFAA84 /* PAD_1.0_1040.html */; };
+		7504AE720FB380E700FFAA84 /* supportConfig.php in Resources */ = {isa = PBXBuildFile; fileRef = 7504AE670FB380E700FFAA84 /* supportConfig.php */; };
+		7504AE810FB3825A00FFAA84 /* ChangeLog in Resources */ = {isa = PBXBuildFile; fileRef = 7504AE800FB3825A00FFAA84 /* ChangeLog */; };
+		7504AEA40FB389E600FFAA84 /* buildnumber.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 7504AEA30FB389E600FFAA84 /* buildnumber.xcconfig */; };
+		7504AEBC0FB38F7400FFAA84 /* releasenumber.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 7504AEBB0FB38F7400FFAA84 /* releasenumber.xcconfig */; };
+		7504AF270FB3A1F900FFAA84 /* updates.xml in Resources */ = {isa = PBXBuildFile; fileRef = 7504AF260FB3A1F900FFAA84 /* updates.xml */; };
+		7504AFDD0FB3AEBB00FFAA84 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 7504AFDC0FB3AEBB00FFAA84 /* Credits.rtf */; };
 		751C4E2D0E9400250027BC1C /* AquaticPrime.m in Sources */ = {isa = PBXBuildFile; fileRef = 751C4E2C0E9400250027BC1C /* AquaticPrime.m */; };
 		75B2FCB30EDDA9A1007356FD /* BlackPlus1.png in Resources */ = {isa = PBXBuildFile; fileRef = 75B2FCB20EDDA9A1007356FD /* BlackPlus1.png */; };
 		75B2FCB50EDDA9AD007356FD /* BlackSearch1.png in Resources */ = {isa = PBXBuildFile; fileRef = 75B2FCB40EDDA9AD007356FD /* BlackSearch1.png */; };
@@ -305,6 +321,22 @@
 		735CC297049A7E1F00C919A3 /* Prefix.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Prefix.h; path = Sources/Prefix.h; sourceTree = SOURCE_ROOT; };
 		735CC2C0049A7E2A00C919A3 /* Info-PickADisk.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-PickADisk.plist"; sourceTree = SOURCE_ROOT; };
 		735CC2C1049A7E2A00C919A3 /* PickADisk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PickADisk.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7504AE5C0FB380E700FFAA84 /* report.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = report.css; sourceTree = "<group>"; };
+		7504AE5D0FB380E700FFAA84 /* simplelist.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = simplelist.css; sourceTree = "<group>"; };
+		7504AE5E0FB380E700FFAA84 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
+		7504AE600FB380E700FFAA84 /* PAD_1.0.0b1_1016.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = PAD_1.0.0b1_1016.html; sourceTree = "<group>"; };
+		7504AE610FB380E700FFAA84 /* PAD_1.0.0b2_1021.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = PAD_1.0.0b2_1021.html; sourceTree = "<group>"; };
+		7504AE620FB380E700FFAA84 /* PAD_1.0.0b3_1022.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = PAD_1.0.0b3_1022.html; sourceTree = "<group>"; };
+		7504AE630FB380E700FFAA84 /* PAD_1.0.0b4_1030.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = PAD_1.0.0b4_1030.html; sourceTree = "<group>"; };
+		7504AE640FB380E700FFAA84 /* PAD_1.0.0b_1012.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = PAD_1.0.0b_1012.html; sourceTree = "<group>"; };
+		7504AE650FB380E700FFAA84 /* PAD_1.0.1_2142.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = PAD_1.0.1_2142.html; sourceTree = "<group>"; };
+		7504AE660FB380E700FFAA84 /* PAD_1.0_1040.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = PAD_1.0_1040.html; sourceTree = "<group>"; };
+		7504AE670FB380E700FFAA84 /* supportConfig.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = supportConfig.php; sourceTree = "<group>"; };
+		7504AE800FB3825A00FFAA84 /* ChangeLog */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ChangeLog; path = ../ChangeLog; sourceTree = SOURCE_ROOT; };
+		7504AEA30FB389E600FFAA84 /* buildnumber.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = buildnumber.xcconfig; sourceTree = "<group>"; };
+		7504AEBB0FB38F7400FFAA84 /* releasenumber.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = releasenumber.xcconfig; sourceTree = "<group>"; };
+		7504AF260FB3A1F900FFAA84 /* updates.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = updates.xml; sourceTree = "<group>"; };
+		7504AFDC0FB3AEBB00FFAA84 /* Credits.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 		751C4E2C0E9400250027BC1C /* AquaticPrime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AquaticPrime.m; path = Sources/License/AquaticPrime.m; sourceTree = "<group>"; };
 		75B2FCB20EDDA9A1007356FD /* BlackPlus1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlackPlus1.png; sourceTree = "<group>"; };
 		75B2FCB40EDDA9AD007356FD /* BlackSearch1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlackSearch1.png; sourceTree = "<group>"; };
@@ -453,6 +485,9 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
+				7504AE800FB3825A00FFAA84 /* ChangeLog */,
+				7504AEA20FB389E600FFAA84 /* Misc */,
+				7504AE590FB380E700FFAA84 /* sparkle */,
 				5CAFCCA20E2EB77300A7BEA4 /* pmssource */,
 				5C81A0E60EC39D9B00E75319 /* jsutility */,
 				5C1A101D0F4018A4004F3605 /* IconFamily */,
@@ -465,6 +500,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				7504AFDC0FB3AEBB00FFAA84 /* Credits.rtf */,
 				75F02D180E954B1400A02B14 /* License.xib */,
 				5CC83EEC0E6F6C81000903AD /* swapslot.sh */,
 				5C4E17EB0E2167580091DD7D /* carousel.sh */,
@@ -685,6 +721,60 @@
 			path = ../pmssource/pmsutility;
 			sourceTree = SOURCE_ROOT;
 		};
+		7504AE590FB380E700FFAA84 /* sparkle */ = {
+			isa = PBXGroup;
+			children = (
+				7504AF260FB3A1F900FFAA84 /* updates.xml */,
+				7504AE5A0FB380E700FFAA84 /* support */,
+				7504AE670FB380E700FFAA84 /* supportConfig.php */,
+			);
+			comments = "This is the Sparkle update folder, anything in here will be mirrored to the server on a Release.";
+			name = sparkle;
+			path = Sources/sparkle;
+			sourceTree = "<group>";
+		};
+		7504AE5A0FB380E700FFAA84 /* support */ = {
+			isa = PBXGroup;
+			children = (
+				7504AE5B0FB380E700FFAA84 /* css */,
+				7504AE5E0FB380E700FFAA84 /* index.html */,
+				7504AE5F0FB380E700FFAA84 /* releasenotes */,
+			);
+			path = support;
+			sourceTree = "<group>";
+		};
+		7504AE5B0FB380E700FFAA84 /* css */ = {
+			isa = PBXGroup;
+			children = (
+				7504AE5C0FB380E700FFAA84 /* report.css */,
+				7504AE5D0FB380E700FFAA84 /* simplelist.css */,
+			);
+			path = css;
+			sourceTree = "<group>";
+		};
+		7504AE5F0FB380E700FFAA84 /* releasenotes */ = {
+			isa = PBXGroup;
+			children = (
+				7504AE600FB380E700FFAA84 /* PAD_1.0.0b1_1016.html */,
+				7504AE610FB380E700FFAA84 /* PAD_1.0.0b2_1021.html */,
+				7504AE620FB380E700FFAA84 /* PAD_1.0.0b3_1022.html */,
+				7504AE630FB380E700FFAA84 /* PAD_1.0.0b4_1030.html */,
+				7504AE640FB380E700FFAA84 /* PAD_1.0.0b_1012.html */,
+				7504AE650FB380E700FFAA84 /* PAD_1.0.1_2142.html */,
+				7504AE660FB380E700FFAA84 /* PAD_1.0_1040.html */,
+			);
+			path = releasenotes;
+			sourceTree = "<group>";
+		};
+		7504AEA20FB389E600FFAA84 /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				7504AEBB0FB38F7400FFAA84 /* releasenumber.xcconfig */,
+				7504AEA30FB389E600FFAA84 /* buildnumber.xcconfig */,
+			);
+			path = Misc;
+			sourceTree = "<group>";
+		};
 		75E6672A0E92AC3000A9DA07 /* License */ = {
 			isa = PBXGroup;
 			children = (
@@ -804,6 +894,22 @@
 				75B2FCB50EDDA9AD007356FD /* BlackSearch1.png in Resources */,
 				5CF9624D0F37BE5A009D2A9B /* PADInspector.xib in Resources */,
 				5C1A0F6B0F3FC1B9004F3605 /* ToolbarInfo.icns in Resources */,
+				7504AE680FB380E700FFAA84 /* report.css in Resources */,
+				7504AE690FB380E700FFAA84 /* simplelist.css in Resources */,
+				7504AE6A0FB380E700FFAA84 /* index.html in Resources */,
+				7504AE6B0FB380E700FFAA84 /* PAD_1.0.0b1_1016.html in Resources */,
+				7504AE6C0FB380E700FFAA84 /* PAD_1.0.0b2_1021.html in Resources */,
+				7504AE6D0FB380E700FFAA84 /* PAD_1.0.0b3_1022.html in Resources */,
+				7504AE6E0FB380E700FFAA84 /* PAD_1.0.0b4_1030.html in Resources */,
+				7504AE6F0FB380E700FFAA84 /* PAD_1.0.0b_1012.html in Resources */,
+				7504AE700FB380E700FFAA84 /* PAD_1.0.1_2142.html in Resources */,
+				7504AE710FB380E700FFAA84 /* PAD_1.0_1040.html in Resources */,
+				7504AE720FB380E700FFAA84 /* supportConfig.php in Resources */,
+				7504AE810FB3825A00FFAA84 /* ChangeLog in Resources */,
+				7504AEA40FB389E600FFAA84 /* buildnumber.xcconfig in Resources */,
+				7504AEBC0FB38F7400FFAA84 /* releasenumber.xcconfig in Resources */,
+				7504AF270FB3A1F900FFAA84 /* updates.xml in Resources */,
+				7504AFDD0FB3AEBB00FFAA84 /* Credits.rtf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -847,7 +953,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/bin/sh -x";
-			shellScript = "logger \"Starting\"\nif [[ \"$CONFIGURATION\" == 'Development Fresh Prefs' ]]; then\n\tif [ -e \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist\" ]; then\n\t\tif [ -e \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist.1\" ]; then\n\t\t\tlogger \"Removing prefs aside\"\n\t\t\t/bin/rm \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist\"\t\telse\n\t\t\tlogger \"Moving prefs aside\"\n\t\t\t/bin/mv \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist\" \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist.1\"\n\t\tfi\n\tfi\nfi\n\tif [[ -e \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist.1\" ]]; then\n\t\tlogger \"restoring old pref\"\n\t\t/bin/mv \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist.1\" \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist\"\n\tfi";
+			shellScript = "logger \"Starting PickADisk Xcode Script\"\nif [[ \"$CONFIGURATION\" == 'Development Fresh Prefs' ]]; then\n\tif [ -e \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist\" ]; then\n\t\tif [ -e \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist.1\" ]; then\n\t\t\tlogger \"Removing prefs aside\"\n\t\t\t/bin/rm \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist\"\t\telse\n\t\t\tlogger \"Moving prefs aside\"\n\t\t\t/bin/mv \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist\" \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist.1\"\n\t\tfi\n\tfi\nfi\n\tif [[ -e \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist.1\" ]]; then\n\t\tlogger \"restoring old pref\"\n\t\t/bin/mv \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist.1\" \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist\"\n\tfi\n\n/usr/bin/perl -pe 's/(BUILD_NUMBER = )(\\d+)/$1.($2+1)/eg' -i \"$SRCROOT/Misc/buildnumber.xcconfig\"\n\n\nif [[ \"$CONFIGURATION\" == 'Release Test' ]]; then\n\tRELEASE_NOTES=`echo \"PAD-$VERSION_NUMBER-$BUILD_NUMBER.html\" | tr \"-\" \"_\"`\n\tRELEASE_NOTES_PATH=$SRCROOT/Sources/sparkle/support/releasenotes\n\tif [ ! -e \"$RELEASE_NOTES_PATH/$RELEASE_NOTES\" ] ; then\n\nNEWXMLITEM=<<End-of-item\n\t\t<item>\n\t\t\t<title>Version 1.0.1 Build 2142</title>\n\t\t\t<sparkle:releaseNotesLink>http://updates.pickadisk.com/trunk/support/releasenotes/PAD_1.0.1_2142.html</sparkle:releaseNotesLink>\n\t\t\t<description>Version 1.0.1 Build 2142</description>\n\t\t\t<pubDate>Mon, 16 Feb 2009 12:53:22 -0800</pubDate>\n\t\t\t<enclosure sparkle:shortVersionString=\"1.0.1\" sparkle:version=\"2142\" url=\"http://updates.pickadisk.com/trunk/archives/PickADisk_1.0.1_2142.zip\" type=\"application/octet-stream\"/>\n\t\t</item>\nEnd-of-item\n\ncat >  \"$RELEASE_NOTES_PATH/$RELEASE_NOTES\" <<End-of-message\n<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 TRANSITIONAL//EN\">\n<html>\n\n\t<head>\n\t\t<title>Version $VERSION_NUMBER Build $BUILD_NUMBER</title>\n\t\t<link href=\"../css/simplelist.css\" type=\"text/css\" rel=\"stylesheet\" media=\"all\">\n\t</head>\n\t<body>\n\t\t<p class=\"p1\" align=\"center\">PickADisk Version $VERSION_NUMBER Build $BUILD_NUMBER </p>\n\t\t<ul class=\"ul1\">\n\t\t\t<li class=\"li1\">Item1</li>\n\t\t</ul>\n\t</body>\n</html>\nEnd-of-message\nfi\n#open -e \"$RELEASE_NOTES_PATH/$RELEASE_NOTES\"\nfi\n\nif [[ \"$CONFIGURATION\" == 'Release' ]]; then\n\tZIP_FILE=`echo \"$PRODUCT_NAME-$VERSION_NUMBER-$BUILD_NUMBER.zip\" | tr \"-\" \"_\"`\n\trsync -auv \"$SRCROOT/Sources/sparkle/\" polymicrosystems.com:pickadisk.com/updates/trunk/ --exclude=\".*\"\n\tzip -r -q \"$TARGET_BUILD_DIR/$ZIP_FILE\" \"$TARGET_BUILD_DIR/$WRAPPER_NAME\"\n\trsync -auv \"$TARGET_BUILD_DIR/$ZIP_FILE\" polymicrosystems.com:pickadisk.com/updates/trunk/archives/ --exclude=\".*\"\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -934,8 +1040,64 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		7504AE840FB3837C00FFAA84 /* Release Test */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7504AEBB0FB38F7400FFAA84 /* releasenumber.xcconfig */;
+			buildSettings = {
+				ARCHS = (
+					"$(NATIVE_ARCH)",
+					x86_64,
+					ppc,
+				);
+				FRAMEWORK_SEARCH_PATHS = "";
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
+				SDKROOT = /Developer/SDKs/MacOSX10.5.sdk;
+			};
+			name = "Release Test";
+		};
+		7504AE850FB3837C00FFAA84 /* Release Test */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1 = "ppc i386";
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/Frameworks",
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(DEVELOPER_DIR)/SDKs/MacOSX10.5.sdk/System/Library/Frameworks\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../DiscID/build/Release\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_5 = "\"$(SRCROOT)/Frameworks\"";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Sources/Prefix.h;
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
+				GCC_WARN_UNKNOWN_PRAGMAS = NO;
+				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = "Info-PickADisk.plist";
+				INSTALL_PATH = /Applications;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+				);
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)\"";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = (
+					"-lcrypto",
+					"-seg1addr",
+					0x10000000,
+				);
+				PRODUCT_NAME = PickADisk;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = "-Wmost";
+				WRAPPER_EXTENSION = app;
+				ZERO_LINK = NO;
+			};
+			name = "Release Test";
+		};
 		75D3EBAB0E8BF811009A0199 /* DebugPPC */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7504AEA30FB389E600FFAA84 /* buildnumber.xcconfig */;
 			buildSettings = {
 				ARCHS = ppc;
 				FRAMEWORK_SEARCH_PATHS = "";
@@ -989,6 +1151,7 @@
 		};
 		75E4927C0EACC04200AC85A0 /* Development Fresh Prefs */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7504AEA30FB389E600FFAA84 /* buildnumber.xcconfig */;
 			buildSettings = {
 				ARCHS = (
 					"$(NATIVE_ARCH)",
@@ -1140,6 +1303,7 @@
 		};
 		B69BDD9908A2EC26008AC9B5 /* Development */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7504AEA30FB389E600FFAA84 /* buildnumber.xcconfig */;
 			buildSettings = {
 				ARCHS = (
 					"$(NATIVE_ARCH)",
@@ -1155,6 +1319,7 @@
 		};
 		B69BDD9A08A2EC26008AC9B5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7504AEBB0FB38F7400FFAA84 /* releasenumber.xcconfig */;
 			buildSettings = {
 				ARCHS = (
 					"$(NATIVE_ARCH)",
@@ -1162,6 +1327,7 @@
 					ppc,
 				);
 				FRAMEWORK_SEARCH_PATHS = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				SDKROOT = /Developer/SDKs/MacOSX10.5.sdk;
 			};
@@ -1177,6 +1343,7 @@
 				75E4927D0EACC04200AC85A0 /* Development Fresh Prefs */,
 				75D3EBAC0E8BF811009A0199 /* DebugPPC */,
 				B69BDD9608A2EC26008AC9B5 /* Release */,
+				7504AE850FB3837C00FFAA84 /* Release Test */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Development;
@@ -1188,6 +1355,7 @@
 				75E4927C0EACC04200AC85A0 /* Development Fresh Prefs */,
 				75D3EBAB0E8BF811009A0199 /* DebugPPC */,
 				B69BDD9A08A2EC26008AC9B5 /* Release */,
+				7504AE840FB3837C00FFAA84 /* Release Test */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Development;
