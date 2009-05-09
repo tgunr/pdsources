@@ -1945,7 +1945,7 @@ DACALDeviceRef	DACALDeviceCreateWithService( io_service_t ioDeviceObj, DACALResu
 			return( thisRef );
 		}
 	} else {
-		if( gDACALVerbose ) printf("dacal: unknown device: %s ,unable to create a device file. ret = %i, dev = %p\n", newModel, err, (void*)ioDeviceObj);
+		if( gDACALVerbose ) printf("dacal: unknown device: %@ ,unable to create a device file. ret = %i, dev = %p\n", newModel, err, (void*)ioDeviceObj);
 		if( outErr != NULL ) *outErr = err;
 		return( thisRef );
 	}
