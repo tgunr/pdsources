@@ -11,7 +11,7 @@ $appcastKeys = array('appName' => 1, 'appVersion' => 1, 'cpuFreqMHz' => 1, 'cpus
 // Database connectivity
 $db_host		= "mysql.polymicrosystems.com";
 $db_user		= "sparkle";
-$db_password	= "osh-erp-ob-taf";
+$db_password	        = "osh-erp-ob-taf";
 $db_name		= "pad_sparkle";
 // end configuration
 ?>
