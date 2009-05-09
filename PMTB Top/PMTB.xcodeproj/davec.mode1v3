@@ -208,6 +208,8 @@
 		<dict>
 			<key>ChosenToolbarItems</key>
 			<array>
+				<string>XCToolbarPerspectiveControl</string>
+				<string>NSToolbarSeparatorItem</string>
 				<string>active-target-popup</string>
 				<string>active-buildstyle-popup</string>
 				<string>action</string>
@@ -280,7 +282,6 @@
 								<string>7543D4E60E3BBBFC009A8AF3</string>
 								<string>7543D5C10E3BDB17009A8AF3</string>
 								<string>1C37FBAC04509CD000000102</string>
-								<string>754003000E3E3C5D0043D098</string>
 								<string>1C37FABC05509CD000000102</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
@@ -350,11 +351,7 @@
 										</array>
 										<key>prevStack</key>
 										<array>
-											<string>759BCBDC0DB5408B0039608A</string>
 											<string>7521EDE00DD5303700C1C0C8</string>
-											<string>75AEC5280DDCC3BA0090DE55</string>
-											<string>75AEC65B0DDE0E040090DE55</string>
-											<string>75AEC65C0DDE0E040090DE55</string>
 											<string>756836800DEA41F8001C6F01</string>
 										</array>
 									</dict>
@@ -404,11 +401,7 @@
 										</array>
 										<key>prevStack</key>
 										<array>
-											<string>759BCBDC0DB5408B0039608A</string>
 											<string>7521EDE00DD5303700C1C0C8</string>
-											<string>75AEC5280DDCC3BA0090DE55</string>
-											<string>75AEC65B0DDE0E040090DE55</string>
-											<string>75AEC65C0DDE0E040090DE55</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -467,9 +460,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>754003150E3E5D020043D098</string>
+				<string>75C9C74F0FB4EC80008522FB</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>754003160E3E5D020043D098</string>
+				<string>75C9C7500FB4EC80008522FB</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
@@ -629,8 +622,7 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>759BCA000DB4A8AC0039608A</string>
-		<string>/Users/davec/Desktop/PMTB/trunk/PMTB Top/PMTB.xcodeproj</string>
+		<string>/Volumes/leopard/Projects/PMTB/trunk/PMTB Top/PMTB.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
 	<string>977 394 1014 1164 0 0 2560 1578 </string>
