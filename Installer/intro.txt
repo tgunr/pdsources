@@ -1,3 +1,0 @@
-This installer will guide you thru the steps necessary to install your software.
-
-Please follow the instructions carefully as this is beta software.
