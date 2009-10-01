@@ -10,6 +10,8 @@
 #include <ApplicationServices/ApplicationServices.h>
 #include <CoreFoundation/CoreFoundation.h>
 
+#ifndef _pmsCFUtility
+
 extern OSStatus		FSPathSetXattr( UInt8* pathText, CFStringRef inKeyName, CFStringRef inKeyValue );
 extern size_t		FSPathGetXattrSize( UInt8* pathText, CFStringRef inKeyName );
 extern CFStringRef	FSPathCopyXattr( CFAllocatorRef inAllocator, UInt8* pathText, CFStringRef inKeyName, OSStatus* outError );
@@ -54,6 +56,7 @@ CFDataRef	CFStringCreateSHA1Digest( CFAllocatorRef inAllocator, CFStringRef inSt
 CFStringRef	CFDataCreateHexString( CFAllocatorRef inAllocator, CFDataRef inData );
 CFDataRef	CFStringCreateDataForHex( CFAllocatorRef inAllocator, CFStringRef inHexString );
 
+#endif
 
 
 

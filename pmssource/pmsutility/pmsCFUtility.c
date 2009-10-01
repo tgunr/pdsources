@@ -7,7 +7,7 @@
  *
  */
 
-#include "pmsCFUtility.h"
+#import "pmsCFUtility.h"
 #include <sys/xattr.h>
 #include <sys/stat.h>
 #include <sys/errno.h>
