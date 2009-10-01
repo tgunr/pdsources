@@ -17,7 +17,6 @@
 				7543D5CE0E3BDB4D009A8AF3 /* PBXTargetDependency */,
 				7543D5D00E3BDB56009A8AF3 /* PBXTargetDependency */,
 				7543D5D20E3BDB5E009A8AF3 /* PBXTargetDependency */,
-				7543D5D40E3BDB81009A8AF3 /* PBXTargetDependency */,
 			);
 			name = PAD;
 			productName = PAD;
@@ -74,13 +73,6 @@
 			remoteGlobalIDString = 32D94FD00562CBF700B6AF17;
 			remoteInfo = DACALDriver;
 		};
-		7543D5C90E3BDB17009A8AF3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7543D5C10E3BDB17009A8AF3 /* PickADisc.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 735CC2C1049A7E2A00C919A3;
-			remoteInfo = PickADisc;
-		};
 		7543D5CB0E3BDB40009A8AF3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7543D5870E3BD53C009A8AF3 /* DACALDriver.xcodeproj */;
@@ -109,19 +101,19 @@
 			remoteGlobalIDString = 751FBA420E39063900D64628;
 			remoteInfo = xattr;
 		};
-		7543D5D30E3BDB81009A8AF3 /* PBXContainerItemProxy */ = {
+		75C21892105AB1620083590F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 7543D5C10E3BDB17009A8AF3 /* PickADisc.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 735CC299049A7E2A00C919A3;
-			remoteInfo = PickADisc;
+			containerPortal = 7543D5C10E3BDB17009A8AF3 /* PickADisk.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 735CC2C1049A7E2A00C919A3 /* PickADisk.app */;
+			remoteInfo = PickADisk;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		7543D4E60E3BBBFC009A8AF3 /* CLI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CLI.xcodeproj; path = ../CLI/CLI.xcodeproj; sourceTree = SOURCE_ROOT; };
 		7543D5870E3BD53C009A8AF3 /* DACALDriver.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = DACALDriver.xcodeproj; path = ../DACALDriver/DACALDriver.xcodeproj; sourceTree = SOURCE_ROOT; };
-		7543D5C10E3BDB17009A8AF3 /* PickADisc.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PickADisc.xcodeproj; path = ../PickADisc/PickADisc.xcodeproj; sourceTree = SOURCE_ROOT; };
+		7543D5C10E3BDB17009A8AF3 /* PickADisk.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PickADisk.xcodeproj; path = ../PickADisk/PickADisk.xcodeproj; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -130,7 +122,7 @@
 			children = (
 				7543D5870E3BD53C009A8AF3 /* DACALDriver.xcodeproj */,
 				7543D4E60E3BBBFC009A8AF3 /* CLI.xcodeproj */,
-				7543D5C10E3BDB17009A8AF3 /* PickADisc.xcodeproj */,
+				7543D5C10E3BDB17009A8AF3 /* PickADisk.xcodeproj */,
 				75AEC4320DDB91A10090DE55 /* Documentation */,
 			);
 			name = PMTB;
@@ -157,19 +149,19 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		7543D5C20E3BDB17009A8AF3 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				7543D5CA0E3BDB17009A8AF3 /* PickADisc.app */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		75AEC4320DDB91A10090DE55 /* Documentation */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			name = Documentation;
+			sourceTree = "<group>";
+		};
+		75C2188F105AB1620083590F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				75C21893105AB1620083590F /* PickADisk.app */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -192,8 +184,8 @@
 					ProjectRef = 7543D5870E3BD53C009A8AF3 /* DACALDriver.xcodeproj */;
 				},
 				{
-					ProductGroup = 7543D5C20E3BDB17009A8AF3 /* Products */;
-					ProjectRef = 7543D5C10E3BDB17009A8AF3 /* PickADisc.xcodeproj */;
+					ProductGroup = 75C2188F105AB1620083590F /* Products */;
+					ProjectRef = 7543D5C10E3BDB17009A8AF3 /* PickADisk.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -253,11 +245,11 @@
 			remoteRef = 7543D58B0E3BD53C009A8AF3 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		7543D5CA0E3BDB17009A8AF3 /* PickADisc.app */ = {
+		75C21893105AB1620083590F /* PickADisk.app */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.application;
-			path = PickADisc.app;
-			remoteRef = 7543D5C90E3BDB17009A8AF3 /* PBXContainerItemProxy */;
+			path = PickADisk.app;
+			remoteRef = 75C21892105AB1620083590F /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -282,11 +274,6 @@
 			isa = PBXTargetDependency;
 			name = xattr;
 			targetProxy = 7543D5D10E3BDB5E009A8AF3 /* PBXContainerItemProxy */;
-		};
-		7543D5D40E3BDB81009A8AF3 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = PickADisc;
-			targetProxy = 7543D5D30E3BDB81009A8AF3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
