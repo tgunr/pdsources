@@ -1,0 +1,59 @@
+<lesson><title>PickADisk QuickStart</title><detail></detail><directory>PickADisk_QuickStart</directory><step position="1"><title>Organize your disc collection</title><detail>PickADisk is a application to store and index your disc collection into DC-101 and DC-300 carousels.&lt;br>
+</detail><image>1_Organize_your_disc_c.png</image></step><step position="2"><title>PickADisk Startup Window</title><detail>This is the PickADisk startup window.&lt;br>
+&lt;br>
+Some of the more non-obvious parts are described and will be discussed in later slides.
+</detail><image>2_PickADisk_Startup_Wi.png</image></step><step position="3"><title>License Notice</title><detail>Upon first startup of PickADisk you will receive this dialog. Click on the appropriate button.
+</detail><image>3_License_Notice.png</image></step><step position="4"><title>Check for updates window</title><detail>This dialog will be shown on the 2nd launch of the application.
+</detail><image>4_Check_for_updates_wi.png</image></step><lesson><title>Adding a disc</title><detail></detail><directory>Adding_a_disc</directory><lesson><title>Basic steps for adding</title><detail></detail><directory>Basic_steps_for_adding</directory><step position="1"><title>PickADisk Startup Window</title><detail>Click either add button to begin the process.
+</detail><image>1_PickADisk_Startup_Wi.png</image></step><step position="2"><title>Select strorage device</title><detail>Select a storage device to be used.&lt;br>
+</detail><image>2_Select_strorage_devi.png</image></step><step position="3"><title>Select slot number</title><detail>The next available slot number will be entered automatically.&lt;br>
+&lt;br>
+If you desire a specific slot, you may enter the number in one of two ways.&lt;br>
+	Type in the slot number using the keyboard.&lt;br>
+	Click on the wheel and drag to select the number.&lt;br>
+If the slot number already contains a disc you will see the title in the title box.&lt;br>
+If you click on the arrow the device will go to the numbered slot and eject the disc.
+</detail><image>3_Select_slot_number.png</image></step><step position="4"><title>Select disc</title><detail>Select the disc to be added.&amp;nbsp;&lt;br>
+Use the popup menu to select the drive to be used, the title box will be filled in automatically.
+</detail><image>4_Select_disc.png</image></step><step position="5"><title>Enter a title for the disc</title><detail>Enter the title manually if you don't like the automatic generated name.
+</detail><image>5_Enter_a_title_for_th.png</image></step><step position="6"><title>Select the type of disc</title><detail>The type of disc is detected automatically.&lt;br>
+If you prefer a different type, use the popup menu to select the type of disc.
+</detail><image>6_Select_the_type_of_d.png</image></step><step position="7"><title>Set the scanning level</title><detail>Set the desired scanning level. This will control how much detail of the content of the disc will be included in the index.&lt;br>
+The far left setting will only scan the top level content of the disc.&lt;br>
+The far right setting will index the entire disc.&lt;br>
+&lt;br>
+The settings default value can be controlled for different types of discs in the preferences panel.
+</detail><image>7_Set_the_scanning_lev.png</image></step><step position="8"><title>Add the disc to the device</title><detail>Click on the Add button to add the disc.&lt;br>
+&lt;br>
+Repeat the steps to keep adding discs to the device.
+</detail><image>8_Add_the_disc_to_the_.png</image></step></lesson><lesson><title>Adding additional information</title><detail>After adding a disc you may desire to add additional information to make subsequent search and retrieval easier.
+</detail><directory>Adding_additional_information</directory><step position="1"><title>Select storage device</title><detail>To enter additional information, select the storage device from the side panel.&lt;br>
+The contents of the device will be displayed.
+</detail><image>1_Select_storage_devic.png</image></step><step position="2"><title>Locate the disc</title><detail>Since you generally add discs in incrementing values, click on the Slot column to sort the list by slot number.&lt;br>
+If the most recent disc is not at the top, click the SSlot column again to sort in the opposite direction.&lt;br>
+&lt;br>
+Select the disc you wish to add additional information.
+</detail><image>2_Locate_the_disc.png</image></step><step position="3"><title>Select the disc</title><detail>Click and select the disc you wish to modify.
+</detail><image>3_Select_the_disc.png</image></step><step position="4"><title>Select the Inspector panel</title><detail>Open the Inspector panel
+</detail><image>4_Select_the_Inspector.png</image></step><step position="5"><title>Inspector Panel</title><detail>Change the indicated fields as you desire.
+</detail><image>5_Inspector_Panel.png</image></step></lesson></lesson><lesson><title>Find a disc</title><detail></detail><directory>Find_a_disc</directory><step position="1"><title>Enter search criteria</title><detail></detail><image>1_Enter_search_criteri.png</image></step><step position="2"><title>Select Result</title><detail>Results are displayed.&amp;nbsp;&lt;br>
+&lt;br>
+Click on column headings to sort the results.&lt;br>
+</detail><image>2_Select_Result.png</image></step><step position="3"><title>Retreive disc</title><detail>Results are displayed.&amp;nbsp;&lt;br>
+&lt;br>
+Click on column headings to sort the results.&lt;br>
+</detail><image>3_Retreive_disc.png</image></step></lesson><lesson><title>Preferences</title><detail></detail><directory>Preferences</directory><step position="1"><title>General preference pane</title><detail></detail><image>1_General_preference_p.png</image></step><step position="2"><title>Discovery pane</title><detail>Controls behavior when discs are mounted and ejected
+</detail><image>2_Discovery_pane.png</image></step><step position="3"><title>Discovery on Check In</title><detail>If you have a recognized disc mount and you select Check In you may have the device go to the assigned slot or simply do nothing,
+</detail><image>3_Discovery_on_Check_I.png</image></step><step position="4"><title>Discovery for Check Out</title><detail>Controls behavior when you select Check Out.
+</detail><image>4_Discovery_for_Check_.png</image></step><step position="5"><title>Discovery for recognized discs</title><detail></detail><image>5_Discovery_for_recogn.png</image></step><step position="6"><title>Discovery for unrecognized dics</title><detail></detail><image>6_Discovery_for_unreco.png</image></step><step position="7"><title>Sidebar Pane</title><detail></detail><image>7_Sidebar_Pane.png</image></step><step position="8"><title>Update pane</title><detail>Controls the automatic updating of the application.
+</detail><image>8_Update_pane.png</image></step><step position="9"><title>Driver pane</title><detail>The driver should be installed automatically, if for some reason know only to the Gods it is not, use this pane to install and remove the driver as directed by PickADisk support.
+</detail><image>9_Driver_pane.png</image></step><step position="10"><title>Scanning pane</title><detail>Controls the depth of folder scanning for various types of files.&lt;br>
+Left most setting is top level only, rightmost is entire content of disc (can be slow on large content discs)
+</detail><image>10_Scanning_pane.png</image></step></lesson><lesson><title>Main window view</title><detail></detail><directory>Main_window_view</directory><step position="1"><title>Window details</title><detail>Widen the window if you have all columns turned on
+</detail><image>1_Window_details.png</image></step><step position="2"><title>Widened window to view data</title><detail></detail><image>2_Widened_window_to_vi.png</image></step><step position="3"><title>Main window change values</title><detail></detail><image>3_Main_window_change_v.png</image></step><step position="4"><title>Main window view contents</title><detail></detail><image>4_Main_window_view_con.png</image></step><step position="5"><title>Main window contextual meu</title><detail></detail><image>5_Main_window_contextu.png</image></step></lesson><lesson><title>License</title><detail></detail><directory>License</directory><step position="1"><title>Select license menu item</title><detail></detail><image>1_Select_license_menu_.png</image></step><step position="2"><title>Enter License</title><detail>There are several ways to enter your license.&lt;br>
+&lt;br>
+Double click on the attachment in the license email (assumes you are using Apple Mail)&lt;br>
+Double click on the license file (sent as an email attachment)&lt;br>
+Drag the license file to the window&lt;br>
+Click the &lt;b>Choose&lt;/b> button and navigate to the license file.
+</detail><image>2_Enter_License.png</image></step></lesson></lesson>

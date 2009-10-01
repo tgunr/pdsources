@@ -1,0 +1,23 @@
+<lesson><title>Basic steps for adding</title><detail></detail><directory>Basic_steps_for_adding</directory><step position="1"><title>PickADisk Startup Window</title><detail>Click either add button to begin the process.
+</detail><image>1_PickADisk_Startup_Wi.png</image></step><step position="2"><title>Select strorage device</title><detail>Select a storage device to be used.&lt;br>
+</detail><image>2_Select_strorage_devi.png</image></step><step position="3"><title>Select slot number</title><detail>The next available slot number will be entered automatically.&lt;br>
+&lt;br>
+If you desire a specific slot, you may enter the number in one of two ways.&lt;br>
+	Type in the slot number using the keyboard.&lt;br>
+	Click on the wheel and drag to select the number.&lt;br>
+If the slot number already contains a disc you will see the title in the title box.&lt;br>
+If you click on the arrow the device will go to the numbered slot and eject the disc.
+</detail><image>3_Select_slot_number.png</image></step><step position="4"><title>Select disc</title><detail>Select the disc to be added.&amp;nbsp;&lt;br>
+Use the popup menu to select the drive to be used, the title box will be filled in automatically.
+</detail><image>4_Select_disc.png</image></step><step position="5"><title>Enter a title for the disc</title><detail>Enter the title manually if you don't like the automatic generated name.
+</detail><image>5_Enter_a_title_for_th.png</image></step><step position="6"><title>Select the type of disc</title><detail>The type of disc is detected automatically.&lt;br>
+If you prefer a different type, use the popup menu to select the type of disc.
+</detail><image>6_Select_the_type_of_d.png</image></step><step position="7"><title>Set the scanning level</title><detail>Set the desired scanning level. This will control how much detail of the content of the disc will be included in the index.&lt;br>
+The far left setting will only scan the top level content of the disc.&lt;br>
+The far right setting will index the entire disc.&lt;br>
+&lt;br>
+The settings default value can be controlled for different types of discs in the preferences panel.
+</detail><image>7_Set_the_scanning_lev.png</image></step><step position="8"><title>Add the disc to the device</title><detail>Click on the Add button to add the disc.&lt;br>
+&lt;br>
+Repeat the steps to keep adding discs to the device.
+</detail><image>8_Add_the_disc_to_the_.png</image></step></lesson>

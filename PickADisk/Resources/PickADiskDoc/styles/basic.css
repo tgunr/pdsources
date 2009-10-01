@@ -1,0 +1,171 @@
+body {
+	font-family: Helvetica;
+	font-size: 14px;
+	background-color: #FFF;
+/*	background-image: url(../images/gray.png);*/
+	color: #333;
+}
+
+#lesson {
+	margin: 0 auto;
+	width: 821px;
+	padding: 20px;
+}
+
+#lesson-interior {
+	padding: 20px;
+}
+
+#lesson-top {
+	width: 821px;
+	height: 62px;
+	background-image: url(../images/top-black.png);
+	margin:0px;
+}
+
+#lesson-title {
+	margin: 10px;
+	padding-left: 20px;
+	height: 55px;
+	line-height: 60px;
+	border: 1px solid #AAA;
+	background-color: #777;
+}
+
+#lesson-title h1 {
+	margin: 0px;
+	font-size: 26px;
+	font-weight: bold;
+	color: #FFF;
+	padding-left: 40px;
+}
+
+#lesson-title .icon {
+	float:left;
+	margin-left: -20px;
+	
+	height: 55px;
+	width: 50px;
+	background-color: #333;
+	background-image: url(../images/lesson.png);
+	background-repeat: no-repeat;
+}
+
+#lesson-detail {
+	margin: 10px;
+	padding-left: 20px;
+	padding-right: 40px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background-color: #F3F3F3;
+	border: 1px solid #AAA;
+}
+
+#sublessons-toc {
+	padding: 0px 0px;
+	margin: 10px 10px 10px 10px;
+	background-color: #F3F3F3;
+	border: 1px solid #AAA;
+}
+
+#sublessons-toc ul {
+	list-style-type: none;
+}
+
+#sublessons-toc ul li {
+	font-weight: bold;
+	padding-left: 24px;
+	height: 20px;
+	line-height: 20px;
+	background-image: url(../images/lesson-bullet.png);
+	background-repeat: no-repeat;
+}
+
+#sublessons-toc a {
+	color: #333;
+}
+
+
+#steps-toc {
+	padding: 5px;
+	margin: 10px 10px 10px 10px;
+	background-color: #F3F3F3;
+	border: 1px solid #AAA;
+}
+
+#steps-toc ul {
+	list-style: none;
+}
+
+#steps-toc ul li {
+	font-weight: bold;
+	padding: 2px 0px;
+}
+
+#steps-toc a {
+	color: #333;
+}
+
+.step {
+	margin: 10px 10px 10px 10px;
+	background-color: #F3F3F3;
+	border: 1px solid #AAA;
+	
+	padding-left: 20px;
+}
+
+.step-title-container {
+	height: 36px;
+	padding: 10px 5px 5px 20px;
+	background-color: #777;
+	margin-left: -20px;
+}
+
+.step-number {
+	float:left;
+	width: 30px;
+	height: 30px;
+	background-color: #333;
+	text-align: center;
+	color: #FFF;
+	font-size: 24px;
+	font-weight: bold;
+	line-height: 50px;
+	margin-left: -20px;
+	margin-top: -10px;
+	height: 51px;
+	width: 50px;
+}
+
+.step-title {
+	float:left;
+	font-weight: bold;
+	padding-left: 10px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	font-size: 22px;
+	color: #FFF;
+	line-height: 30px;
+}
+
+.step-detail {
+	padding: 20px 20px 20px 10px;
+}
+
+.step-image {
+	border: 1px solid #222;
+	margin: 5px;
+}
+
+.step .image {
+	clear: both;	
+}
+
+.attach {
+	float: right;
+	width: 60px;
+	height: 60px;
+	background-image: url(../images/attach.png);
+	margin-top: -15px;
+	margin-right: 10px;
+}

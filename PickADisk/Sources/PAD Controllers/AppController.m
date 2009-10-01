@@ -496,6 +496,16 @@ static AppController *shared;
 - (IBAction)requestLicense:(id)sender 
 	{ [[LicenseController sharedLicenseController] chooseRequestLicenseMenu:self]; }
 
+- (IBAction)showHelp:(id)sender {
+	CFBundleRef mainBundle = CFBundleGetMainBundle();
+	CFURLRef helpURL = CFBundleCopyResourceURL(mainBundle, CFSTR("index"), CFSTR("html"), CFSTR("PickADiskDoc"));
+	//helpURL = CFBundleCopyResourcesDirectoryURL(mainBundle);
+	CFStringRef urlString = CFURLGetString (helpURL);
+	OSStatus result = LSOpenCFURLRef(helpURL, NULL);
+	return;
+}
+
 @end
+
 
 
