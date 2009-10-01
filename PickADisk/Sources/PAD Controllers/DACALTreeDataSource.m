@@ -9,6 +9,7 @@
 #import "DACALTreeDataSource.h"
 #import "PADSearchRequest.h"
 #import "pmsDACALUtility.h"
+#import "daclconstants.h"
 
 NSString*	DACALFlavorToFlavorValue( NSString* flavor )
 {

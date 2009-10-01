@@ -9,6 +9,7 @@
 #import "DACVolume.h"
 #import <IOKit/IOMessage.h>
 #import <IOKit/storage/IODVDMedia.h>
+#import "daclconstants.h"
 
 
 @implementation DACVolume
