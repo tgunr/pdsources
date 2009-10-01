@@ -36,3 +36,5 @@
 - (void)nodeStarsChanged:(SimpleTreeNode*)theNode	toStars:(id)theRating;
 
 @end
+
+NSImage*		DACALCreateImageRefForFlavor( NSString* flavorName );

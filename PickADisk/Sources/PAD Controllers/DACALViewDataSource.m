@@ -713,4 +713,18 @@ SLOTTYPEFAILED:
 
 @end	// DACALViewDataSource
 
+NSImage*		DACALCreateImageRefForFlavor( NSString* flavorName )
+{
+	OSType			genericIconType = 'gFil';
+	
+	if( [(NSString*)PADINDEX_FLAVORVALUE_MUSIC compare:(NSString*)flavorName] == NSOrderedSame )
+		genericIconType = 'gMus';				// CDAudioVolume
+	else if( [(NSString*)PADINDEX_FLAVORVALUE_MOVIE compare:(NSString*)flavorName] == NSOrderedSame )
+		genericIconType = 'gMov';				// public.dvd-media
+	else if( [(NSString*)PADINDEX_FLAVORVALUE_IMAGE compare:(NSString*)flavorName] == NSOrderedSame )
+		genericIconType = 'gImg';				// generic-image
+	
+	return( DACALGetIconImageForType(genericIconType) );
+}
+
 
