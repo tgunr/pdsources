@@ -7,8 +7,8 @@
  *
  */
 
-#include "dacallib.h"
-#include "../pmsutility/pmsDACALUtility.h"
+#import "dacallib.h"
+#import "pmsDACALUtility.h"
 
 //#define __DCDEBUG												// define this in your pch to go verbose debug
 
@@ -127,7 +127,9 @@ CFStringRef			kDACALCarouselDocumentInfoKeyName			=CFSTR("Name");
 CFStringRef			kDACALCarouselDocumentInfoKeyUUID			=CFSTR("UUID");
 //CFStringRef			kDACALCarouselDocumentInfoKeyNode			=CFSTR("Node")
 
-CFStringRef			kDACALCarouselDocumentXAttrCarousel		=CFSTR("com.polymicrosystems.pickadisk.device");
+#define	kSTRDACALCarouselDocumentXAttrCarousel "com.polymicrosystems.pickadisk.device"
+
+CFStringRef			kDACALCarouselDocumentXAttrCarousel		=CFSTR(kSTRDACALCarouselDocumentXAttrCarousel);
 CFStringRef			kDACALCarouselDocumentXAttrSlot			=CFSTR("com.polymicrosystems.pickadisk.device.slot");
 CFStringRef			kDACALCarouselDocumentXAttrSlotID		=CFSTR("com.polymicrosystems.pickadisk.device.slot.id");
 CFStringRef			kDACALCarouselDocumentXAttrSlotKind		=CFSTR("com.polymicrosystems.pickadisk.device.slot.kind");

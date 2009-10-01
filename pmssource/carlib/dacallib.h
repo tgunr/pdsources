@@ -21,7 +21,7 @@
 #include <IOKit/usb/IOUSBLib.h>
 
 #include <CoreFoundation/CoreFoundation.h>
-#include "../pmsutility/pmsCFUtility.h"
+#import "pmsCFUtility.h"
 
 extern const SInt32		kDACALVendorID;
 extern const SInt32		kDACALProductID;
