@@ -7,8 +7,9 @@
  *
  */
 
-#include "pmsDACALUtility.h"
+#import "pmsDACALUtility.h"
 #include "IconFamily.h"
+#import "daclconstants.h"
 
 OSStatus DACALRegisterIconResource( CFStringRef theIconFile, OSType theIconType )
 {
@@ -358,7 +359,7 @@ NSImage*	DACALGetIconImageForType( int	theType )
 	
 	if( theType == 0 ) goto BAIL;
 	
-	if( theType == 'morI' ) theType = 'morÄ';
+	if( theType == 'morI' ) theType = 'morÆ’';
 	
 	outResult = GetIconRef( kOnSystemDisk, kDACALCreatorType, theType, &theOutputIcon );
 	if( outResult != 0 ) outResult = GetIconRef( kOnSystemDisk, kSystemIconsCreator, theType, &theOutputIcon );
@@ -410,20 +411,6 @@ CFStringRef	CFURLCopyItemFlavor( CFURLRef url, OSStatus* outError )
 
 OSStatus		CFURLSetItemFlavor( CFURLRef url, CFStringRef newFlavor )
 {	return CFURLSetXattr( url, kDACALCarouselDocumentXAttrSlotKind, newFlavor ); }
-
-NSImage*		DACALCreateImageRefForFlavor( NSString* flavorName )
-{
-	OSType			genericIconType = 'gFil';
-
-	if( [(NSString*)PADINDEX_FLAVORVALUE_MUSIC compare:(NSString*)flavorName] == NSOrderedSame )
-		genericIconType = 'gMus';				// CDAudioVolume
-	else if( [(NSString*)PADINDEX_FLAVORVALUE_MOVIE compare:(NSString*)flavorName] == NSOrderedSame )
-		genericIconType = 'gMov';				// public.dvd-media
-	else if( [(NSString*)PADINDEX_FLAVORVALUE_IMAGE compare:(NSString*)flavorName] == NSOrderedSame )
-		genericIconType = 'gImg';				// generic-image
-
-	return( DACALGetIconImageForType(genericIconType) );
-}
 
 BOOL			BooleanToBOOL(Boolean	inBoolean)
 	{ return (inBoolean == TRUE) ? YES : NO; }

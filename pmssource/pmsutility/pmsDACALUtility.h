@@ -9,12 +9,12 @@
 
 #import <Cocoa/Cocoa.h>
 #import <CoreFoundation/CoreFoundation.h>
-#import "../carlib/dacallib.h"
+#import "dacallib.h"
 
+#ifndef _pmsDACALUtility
 OSStatus		DACALRegisterIconResource( CFStringRef theIconFile, OSType theIconType );
 NSImage*		DACALGetIconImageForType( int	theType );
 IconRef			DACALGetIconRefForType( int	theType );
-NSImage*		DACALCreateImageRefForFlavor( NSString* flavorName );
 
 
 Boolean			CFURLIsCarousel( CFURLRef url );
@@ -46,3 +46,4 @@ Boolean			CFBooleanToBoolean	(CFBooleanRef	inCFBoolean);
 CFBooleanRef	NSNumberToCFBoolean	(NSNumber*		inNSNum);
 NSNumber*		CFBooleanToNSNumber	(CFBooleanRef	inCFBoolean);
 
+#endif
