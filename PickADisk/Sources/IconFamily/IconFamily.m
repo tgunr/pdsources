@@ -1511,12 +1511,12 @@ enum {
     int i = 0;
     BOOL canInit = NO;
 
-    GetCurrentScrap(&scrap);
-
-    GetScrapFlavorCount(scrap,&numInfos);
+// DAC-2009-07-25 replace with pasteboard calls   GetCurrentScrap(&scrap);
+//
+//  DAC-2009-07-25 replace with pasteboard calls  GetScrapFlavorCount(scrap,&numInfos);
     scrapInfos = malloc( sizeof(ScrapFlavorInfo)*numInfos );
     if (scrapInfos) {
-      GetScrapFlavorInfoList(scrap, &numInfos, scrapInfos);
+//  DAC-2009-07-25 replace with pasteboard calls    GetScrapFlavorInfoList(scrap, &numInfos, scrapInfos);
 
       for( i=0; i<numInfos; i++ )
       {
@@ -1545,13 +1545,13 @@ enum {
 
     if( self )
     {
-        GetCurrentScrap(&scrap);
-
-        GetScrapFlavorSize( scrap, 'icns', &amountMem );
+//  DAC-2009-07-25 replace with pasteboard calls      GetCurrentScrap(&scrap);
+//
+//  DAC-2009-07-25 replace with pasteboard calls      GetScrapFlavorSize( scrap, 'icns', &amountMem );
 
         storageMem = NewHandle(amountMem);
 
-        GetScrapFlavorData( scrap, 'icns', &amountMem, *storageMem );
+ //   DAC-2009-07-25 replace with pasteboard calls    GetScrapFlavorData( scrap, 'icns', &amountMem, *storageMem );
 
         hIconFamily = (IconFamilyHandle)storageMem;
     }
@@ -1562,11 +1562,11 @@ enum {
 {
     ScrapRef scrap = NULL;
 
-    ClearCurrentScrap();
-    GetCurrentScrap(&scrap);
+//  DAC-2009-07-25 replace with pasteboard calls  ClearCurrentScrap();
+// DAC-2009-07-25 replace with pasteboard calls   GetCurrentScrap(&scrap);
 
 //    HLock((Handle)hIconFamily); // Handle-based memory isn't compacted anymore, so calling HLock()/HUnlock() is unnecessary.
-    PutScrapFlavor( scrap, 'icns', kScrapFlavorMaskNone, GetHandleSize((Handle)hIconFamily), *hIconFamily);
+// DAC-2009-07-25 replace with pasteboard calls   PutScrapFlavor( scrap, 'icns', kScrapFlavorMaskNone, GetHandleSize((Handle)hIconFamily), *hIconFamily);
 //    HUnlock((Handle)hIconFamily); // Handle-based memory isn't compacted anymore, so calling HLock()/HUnlock() is unnecessary.
     return YES;
 }
