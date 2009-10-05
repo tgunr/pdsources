@@ -130,7 +130,7 @@ static AppController *shared;
 	NSMutableDictionary*	defaultPrefs = [NSMutableDictionary dictionaryWithCapacity:0];
 	NSNumber*				boolTRUE = [NSNumber numberWithInt:1];
 	NSNumber*				boolFALSE = [NSNumber numberWithInt:0];
-	NSString*				prefsVersion = [NSString stringWithCString:PAD_PREFS_VERSION];
+	NSString*				prefsVersion = [NSString stringWithCString:PAD_PREFS_VERSION encoding:NSUTF8StringEncoding];
 	NSString*				currentVersion = nil;
 	BOOL					needsUpdate = NO;
 	BOOL					gotUpdate = NO;
@@ -185,7 +185,7 @@ static AppController *shared;
 		if( gotUpdate == YES ) {
 			[defaults setObject:prefsVersion forKey:@"PADPrefsVersion"];
 			[defaults synchronize];
-			if( currentVersion == nil ) currentVersion = [NSString stringWithCString:(const char*)"0.0"];
+			if( currentVersion == nil ) currentVersion = [NSString stringWithCString:(const char*)"0.0" encoding:NSUTF8StringEncoding];
 			NSLog(@"Updated preferences from version %@ to version %@", currentVersion, prefsVersion);
 		}
 	}
