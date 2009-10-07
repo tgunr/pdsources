@@ -1505,7 +1505,7 @@ enum {
 
 + (BOOL) canInitWithScrap
 {
-    ScrapRef scrap = NULL;
+//    ScrapRef scrap = NULL;
     ScrapFlavorInfo* scrapInfos = NULL;
     UInt32 numInfos = 0;
     int i = 0;
@@ -1539,7 +1539,7 @@ enum {
 {
     Handle storageMem = NULL;
     Size amountMem = 0;
-    ScrapRef scrap;
+//    ScrapRef scrap;
 
     self = [super init];
 
@@ -1560,7 +1560,7 @@ enum {
 
 - (BOOL) putOnScrap
 {
-    ScrapRef scrap = NULL;
+//    ScrapRef scrap = NULL;
 
 //  DAC-2009-07-25 replace with pasteboard calls  ClearCurrentScrap();
 // DAC-2009-07-25 replace with pasteboard calls   GetCurrentScrap(&scrap);

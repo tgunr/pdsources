@@ -500,8 +500,8 @@ static AppController *shared;
 	CFBundleRef mainBundle = CFBundleGetMainBundle();
 	CFURLRef helpURL = CFBundleCopyResourceURL(mainBundle, CFSTR("index"), CFSTR("html"), CFSTR("PickADiskDoc"));
 	//helpURL = CFBundleCopyResourcesDirectoryURL(mainBundle);
-	CFStringRef urlString = CFURLGetString (helpURL);
-	OSStatus result = LSOpenCFURLRef(helpURL, NULL);
+	//CFStringRef urlString = CFURLGetString (helpURL);
+	LSOpenCFURLRef(helpURL, NULL);
 	return;
 }
 

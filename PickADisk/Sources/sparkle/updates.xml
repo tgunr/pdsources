@@ -2,9 +2,16 @@
 <rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle">
     <channel>
         <title>PickADisk Software Updates</title>
-        <link>http://updates.pickadisk.com/trunk/updates.xml</link>
+        <link>http://updates.pickadisk.com/updates/updates.xml</link>
         <description>Most recent changes with links to updates.</description>
         <language>en</language>
+		<item>
+			<title>Version 1.0.4 Build 50816</title>
+			<sparkle:releaseNotesLink>http://updates.pickadisk.com/trunk/support/releasenotes/PAD_1.0.4_50816.html</sparkle:releaseNotesLink>
+			<description>Version 1.0.4 Build 50816 </description>
+			<pubDate>Wed Oct  7 07:24:55 PDT 2009</pubDate>
+			<enclosure sparkle:shortVersionString="1.0.4" sparkle:version="50816" url="http://updates.pickadisk.com/trunk/archives/PickADisk_1.0.4_50816.zip" type="application/octet-stream"/>
+		</item>
 		<item>
 			<title>Version 1.0.3 Build 50805</title>
 			<sparkle:releaseNotesLink>http://updates.pickadisk.com/trunk/support/releasenotes/PAD_1.0.3_50805.html</sparkle:releaseNotesLink>
