@@ -16,5 +16,6 @@ int main(int argc, const char *argv[]) {
 	if (dflag) {
 		system("rm $HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist");
 	}
+	NSLog(@"The epoch");
     return NSApplicationMain(argc, argv);
 }

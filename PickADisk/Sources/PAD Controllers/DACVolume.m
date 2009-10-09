@@ -549,22 +549,26 @@ bail:
 		
 		//	The Volume FSRef
 		theErr = !CFURLGetFSRef((CFURLRef)mountURL, &theRef );
-		if( theErr != 0 ) goto FAILED;
+		if( theErr != 0 ) 
+			goto FAILED;
 
 		//	The Volume URL
 		volumeURL = [mountURL copy];
 
 		//	The FSVolumeRefNum
 		theErr = FSGetCatalogInfo( &theRef, kFSCatInfoVolume, &theInfo, NULL, NULL, NULL );
-		if( theErr != 0 ) goto FAILED;
+		if( theErr != 0 ) 
+			goto FAILED;
 		mountVolume = theInfo.volume;
 		
 		//	Locate volume DADisk info
 		theErr = FSCopyDADiskForVolume( mountVolume, &volumeDiskRef );
-		if( theErr != 0 ) goto FAILED;
+		if( theErr != 0 ) 
+			goto FAILED;
 		
 		volumeData = DADiskCopyDescription( volumeDiskRef );
-		if( volumeData == NULL ) goto FAILED;
+		if( volumeData == NULL ) 
+			goto FAILED;
 		
 		//CFShow( volumeData );
 		
@@ -596,20 +600,23 @@ bail:
 			//if( CFEqual( wholeMedia, kCFBooleanFalse ) ) goto MISMATCH;
 			
 			deviceModel = (NSString*)CFDictionaryGetValue( volumeData, CFSTR("DADeviceModel") );
-			if( deviceModel == NULL ) goto MISMATCH;
+			if( deviceModel == NULL ) 
+				goto MISMATCH;
 			
 			//	Primitive but effective, only allow devices that have discs
 			if( [deviceModel rangeOfString:@"CD"].length > 0 ) goodModel = TRUE;
 			else if( [deviceModel rangeOfString:@"DVD"].length > 0 ) goodModel = TRUE;
 			else if( [deviceModel rangeOfString:@"BD"].length > 0 ) goodModel = TRUE;
 
-			if( !goodModel ) goto MISMATCH;
+			if( !goodModel ) 
+				goto MISMATCH;
 			
 			//	Grab a nonautoreleased copy of the media kind
 			mediaName = CFDictionaryGetValue( volumeData, CFSTR("DAMediaKind") );
 			if( mediaName != NULL )
 				mediaType = [[NSString alloc] initWithString:(NSString*)mediaName];
-			else goto MISMATCH;
+			else 
+				goto MISMATCH;
 		}
 		
 		//	Save the disc size

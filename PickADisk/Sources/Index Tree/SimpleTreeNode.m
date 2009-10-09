@@ -678,7 +678,7 @@
 	}
 	//if( rank )
 	//	NSLog(@"Search UTI for:%@ in %@ score:%f", other, ourUTI, rank);
-	
+	CFRelease(ourUTI);
 	return( [NSNumber numberWithFloat:rank] );
 }
 

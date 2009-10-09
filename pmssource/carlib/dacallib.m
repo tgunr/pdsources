@@ -234,17 +234,20 @@ CFTypeRef		CarouselReadInfoFileKey( DACALDeviceRef deviceID, CFStringRef inKeyNa
 	}
 	
 	infoData = (CFDictionaryRef)CFPropertyListCreateFromXMLData( NULL, infoText, kCFPropertyListImmutable, NULL );
-	if( !infoData ) goto BAIL;
+	if( !infoData ) 
+		goto BAIL;
 	
 	outData = (CFTypeRef)CFDictionaryGetValue( infoData, (const void*)inKeyName );
-	if( !outData ) goto BAIL;
+	if( !outData ) 
+		goto BAIL;
 	
-	CFRetain( outData );
+	CFRetain( outData ); 
 	returnResult = 0;
 	
 	//CFShow( outData );
 	
 BAIL:
+	CFRelease(infoData);
 	if( infoText ) CFRelease( infoText );
 //	if( docURL ) CFRelease( docURL );
 	if( infoURL ) CFRelease( infoURL );
@@ -2180,6 +2183,7 @@ DACALResult		DACALDevicesInitialize( void )
         return kIOReturnNoDevice;
     }
 	
+	DACALSetVerbose(TRUE);
 	// Setup vendorID
 		numberRef = CFNumberCreate(gDACALDefaultCFAllocator, kCFNumberSInt32Type, &kDACALVendorID);
 		if (!numberRef) {
@@ -2193,7 +2197,8 @@ DACALResult		DACALDevicesInitialize( void )
 	
 	// Setup productID
 		numberRef = CFNumberCreate(gDACALDefaultCFAllocator, kCFNumberSInt32Type, &kDACALProductID);
-		if (!numberRef) {
+		NSLog(@"numberRef = %@", numberRef);
+		if (numberRef == NULL) {
 			if( gDACALVerbose ) 
 				printf("dacal: could not create CFNumberRef for product\n");
 			return kIOReturnNoMemory;
@@ -2206,7 +2211,7 @@ DACALResult		DACALDevicesInitialize( void )
 	//	numberRef = CFNumberCreate(gDACALDefaultCFAllocator, kCFNumberSInt32Type, &kDACALReleaseID);
 	//	if (!numberRef) {
 	//		if( gDACALVerbose ) 
-				printf("dacal: could not create CFNumberRef for product\n");
+	//				printf("dacal: could not create CFNumberRef for product\n");
 	//		return kIOReturnNoMemory;
 	//	}
 	//	CFDictionaryAddValue(matchingDictionary, CFSTR(kUSBDeviceReleaseNumber), numberRef);
