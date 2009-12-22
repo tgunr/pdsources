@@ -1,21 +1,23 @@
 #import <Cocoa/Cocoa.h>
 
 int main(int argc, const char *argv[]) {
-	int dflag, ch;
+	int killflag, ch;
 	
-	dflag = 0;
+	killflag = 0;
 	while ((ch = getopt(argc, (char * const*)argv, "d")) != -1) {
 		switch (ch) {
+			case 'k':
+				killflag = 1;
+				break;
 			case 'd':
-				dflag = 1;
+				PMLOGSetVerbose(TRUE);
 				break;
 		}
 	}
 	argc -= optind;
 	argv += optind;
-	if (dflag) {
+	if (killflag) {
 		system("rm $HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist");
 	}
-	NSLog(@"The epoch");
     return NSApplicationMain(argc, argv);
 }

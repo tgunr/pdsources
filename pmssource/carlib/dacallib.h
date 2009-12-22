@@ -102,7 +102,7 @@ const enum {								// This constant can be used with FSFindFolder()
 typedef void *DACALClientNotificationCallback( void* clientData, DACALDeviceRef noticeDevice, CFStringRef noticeMessage, CFDictionaryRef noticeData );
 
 // Public Functions
-extern void				DACALSetVerbose(Boolean value);
+extern void				PMLOGSetVerbose(Boolean value);
 extern CFStringRef		DACALCommandCopyName( DACALDeviceRef deviceID, DACALResult* outError );
 extern DACALResult		DACALCommandSetName( DACALDeviceRef deviceID, CFStringRef deviceName );
 extern CFStringRef		DACALSlotCopyType( DACALDeviceRef deviceID, DACALSlotNum slotNum, DACALResult* outError );

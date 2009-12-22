@@ -141,7 +141,8 @@ IconRef	CFURLGetIcon( CFAllocatorRef allocator, CFURLRef url, OSStatus* outError
 	
 	if( CFURLIsCarousel(url) ) {
 		outResult = GetIconRef( kOnSystemDisk, kDACALCreatorType, kDACALCarouselsFolderType, &theOutputIcon );
-		if( outResult != 0 ) printf( "GetIconRef: %d\n", (int)outResult );
+		if( outResult != 0 ) 
+			PMLOG(1, "GetIconRef: %d\n", (int)outResult );
 		AcquireIconRef(theOutputIcon);
 		goto BAIL;
 	}
@@ -157,8 +158,10 @@ IconRef	CFURLGetIcon( CFAllocatorRef allocator, CFURLRef url, OSStatus* outError
 			outResult = RegisterIconRefFromFSRef( kDACALCarouselsFolderType, DACUtility_nextIconID++, &iconFileRef, &theOutputIcon );
 		if( outResult != 0 )
 			outResult = GetIconRef( kOnSystemDisk, kDACALCreatorType, kGenericCDROMIcon, &theOutputIcon );
-		if( outResult != 0 ) printf( "GetIconRef: %d\n", (int)outResult );
-		//else printf("Assigned disc icon!\n");
+		if( outResult != 0 ) 
+			PMLOG(1, "GetIconRef: %d\n", (int)outResult );
+		else 
+			PMLOG(2, "Assigned disc icon!\n");
 		AcquireIconRef(theOutputIcon);
 		goto BAIL;
 	}

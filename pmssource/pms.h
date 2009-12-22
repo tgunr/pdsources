@@ -7,7 +7,11 @@
  *
  */
 
-#ifdef __DCDEBUG
+extern Boolean			gVerbose;
+extern int				gDebugLevel;
+extern int				gVerboseIndex;
+extern Boolean			gVerboseStack[256];
+
 
 #define NSLogF(a) \
 do { NSString *logstring = @"%s: "; \
@@ -17,10 +21,7 @@ NSLog(logstring, __PRETTY_FUNCTION__); \
 
 #define NSLogFunc	NSLog(@"%s", __PRETTY_FUNCTION__)
 
-#else
+#define PMLOG(ARGS...) PM_LogInternal(__FILE__, __PRETTY_FUNCTION__, ## ARGS)
+#define NSLOGVF(x)	if (gVerbose) NSLog(@"%s: %s: %d", __PRETTY_FUNCTION__, x)
 
-#define NSLogF(a) 
-#define NSLogFunc	
-
-#endif
 

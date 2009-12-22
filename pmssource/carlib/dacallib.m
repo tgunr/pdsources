@@ -160,11 +160,6 @@ const DACALDeviceRef	kDACALIllegalDevice = DACAL_MAXDEVICE_COUNT+1;
 const DACALDeviceRef	kDACALDevicesMaxCount = DACAL_MAXDEVICE_COUNT;
 const DACALDeviceRef	kDACALNullDevice = (DACALDeviceRef)NULL;
 
-#ifdef __DCDEBUG
-Boolean			gDACALVerbose = TRUE;
-#else
-Boolean			gDACALVerbose = FALSE;
-#endif
 
 //static	mach_port_t				masterPort = 0;				// requires <mach/mach.h>
 static	io_iterator_t			gDACALAddedIter;
@@ -208,8 +203,6 @@ CFStringRef		DACALCommandRequestCFString( DACALDeviceRef deviceID, DACALCommand 
 
 DACALDeviceRef	DACALDeviceCreateWithService( io_service_t ioDeviceObj, DACALResult* outError );
 DACALResult		DACALDeviceClose( DACALDeviceRef deviceID );
-
-void			DACALSetVerbose(Boolean value) { gDACALVerbose = value; }
 
 CFTypeRef		CarouselReadInfoFileKey( DACALDeviceRef deviceID, CFStringRef inKeyName, DACALResult* outResult )
 {
@@ -517,10 +510,13 @@ DACALResult		CarouselEstablishInfoFile( CFUUIDRef boxUUID )
 	OSErr			theErr;
 
 	theErr = FSFindFolder( kUserDomain, kDACALCarouselsFolderType, TRUE, &userLibraryFolder );
-	if( theErr != 0 ) printf( "CarouselEstablishInfoFile Could not find user library! Error:%i\n", theErr );
-	else dataURL = CFURLCreateFromFSRef(NULL, &userLibraryFolder);
+	if( theErr != 0 ) 
+		PMLOG(1, "CarouselEstablishInfoFile Could not find user library! Error:%i\n", theErr );
+	else 
+		dataURL = CFURLCreateFromFSRef(NULL, &userLibraryFolder);
 	
-	if( dataURL ) fileURL = CFURLCreateWithString( NULL, fileTitle, dataURL );
+	if( dataURL ) 
+		fileURL = CFURLCreateWithString( NULL, fileTitle, dataURL );
 	if( fileURL ) {
 		DACAL_BOX_PATH(indexID) = CFRetain( fileURL );
 		
@@ -736,7 +732,7 @@ IOReturn		dacalDoRequest(IOUSBDeviceInterface245** indeviceIntf, dacalCmd cmd, d
 	dacalString	uniBuf;
 	char	cmdStr[128];
 	
-	if( gDACALVerbose ) {
+	if( gVerbose ) {
 		switch (cmd) {
 			case undocManufacturer:
 				strcpy(cmdStr, "undocManufacturer");
@@ -803,47 +799,44 @@ IOReturn		dacalDoRequest(IOUSBDeviceInterface245** indeviceIntf, dacalCmd cmd, d
 		}
 	}		
 	
-	if( gDACALVerbose ) 
-		printf("dacal: DoCmd %d - %s\n", cmd, cmdStr);
+	PMLOG(1, "dacal: DoCmd %d - %s\n", cmd, cmdStr);
 	
 	waitTime = time(NULL);
 	if (waitTime == -1) {
-		printf("dacal: internal error, could not get time value\n");
+		PMLOG(1, "dacal: internal error, could not get time value\n");
 		return (IOReturn)kIOReturnError;
 	}
 	waitTime += 2;
 	while( true ) {
 	tryagain:
+		PMLOG(1, "Trying cmd %d", cmd);
 		if (time(NULL) > waitTime) {
-			if( gDACALVerbose ) 
-				printf("dacal: DoCmd timed out\n");
+			PMLOG(1, "dacal: DoCmd timed out\n");
 			return (IOReturn)kIOReturnError;
 		}
 		err = dacalGetDescriptor(indeviceIntf, 0x0409, kUSBStringDesc, cmdGetStatus, &uniBuf, sizeof(uniBuf), &result);
 		if (err == kIOReturnNotResponding) {
-			usleep(500);
+			PMLOG(1, "Device not responding");
+			usleep(5000);
 			goto tryagain;
 		}
 		if (err) {
-			if( gDACALVerbose ) 
-				printf("dacal: DoCmd reporting error from device: %x\n", err);
+			PMLOG(1, "dacal: DoCmd reporting error from device: %x\n", err);
 			return err;
 		}
 		descriptorStr = CFStringCreateFromDacalString(&uniBuf);
-#ifdef __DCDEBUG			
-		/NSLog( @"Device Status: %@\n", descriptorStr );		
-#endif
+		
+		PMLOG( @"Device Status: %@\n", descriptorStr );		
+
 		compareResult = CFStringCompareWithOptions(descriptorStr, dacalERROR, CFRangeMake(0,CFStringGetLength(dacalERROR)), kCFCompareCaseInsensitive);
 		if (compareResult == kCFCompareEqualTo) {
-			if( gDACALVerbose ) 
-				printf("dacal: DoCmd reporting error from device\n");
+			PMLOG(1, "dacal: DoCmd reporting error from device\n");
 			return (IOReturn)kDACALError;
 		}
 		
 		compareResult = CFStringCompareWithOptions(descriptorStr, dacalBUSY, CFRangeMake(0,CFStringGetLength(dacalBUSY)), kCFCompareCaseInsensitive);
 		if (compareResult == kCFCompareEqualTo) {
-			if( gDACALVerbose ) 
-				printf("dacal: DoCmd reporting busy\n");
+			PMLOG(1, "DoCmd reporting busy");
 			return (IOReturn)kDACALBusy;
 		}
 
@@ -1517,7 +1510,7 @@ DACALResult		DACALSlotSetTitle( DACALDeviceRef deviceID, DACALSlotNum slotNum, C
 										   boxUUID, slotNum, slotTitle );
 	if( doCFCommand == NULL ) goto BAIL;
 	
-	if( gDACALVerbose )
+	if( gVerbose )
 	{
 		CFShow(CFSTR("Driver call DACALSlotSetTitle:"));
 		CFShow( doCFCommand );
@@ -1649,7 +1642,7 @@ BAIL:
 										   boxUUID, slotNum, slotType );
 	if( doCFCommand == NULL ) goto BAIL;
 	
-	if( gDACALVerbose )
+	if( gVerbose )
 	{
 		CFShow(CFSTR("Driver call DACALSlotSetType:"));
 		CFShow( doCFCommand );
@@ -1885,8 +1878,7 @@ DACALResult		DACALDeviceClose( DACALDeviceRef deviceID )
 	err = (*theInterface)->USBDeviceClose(theInterface);
 	if (err) {
 		if( err != kIOReturnNoDevice ) {
-			if( gDACALVerbose ) 
-				printf("dacal: Unable to close device: %08x\n", err);
+			PMLOG(1, "dacal: Unable to close device: %08x\n", err);
 			return( err );
 		}
 	}
@@ -1962,8 +1954,7 @@ DACALDeviceRef	DACALDeviceCreateWithService( io_service_t ioDeviceObj, DACALResu
 	err = IOCreatePlugInInterfaceForService(ioDeviceObj, kIOUSBDeviceUserClientTypeID, kIOCFPlugInInterfaceID, &ioPlugin, &score);
 	if (err || !ioPlugin) {
 		IOObjectRelease( ioDeviceObj );
-		if( gDACALVerbose ) 
-			printf("dacal: unable to create plugin. ret = %08x, iodev = %p\n", err, ioPlugin);
+		PMLOG(1, "dacal: unable to create plugin. ret = %08x, iodev = %p\n", err, ioPlugin);
 		if( outErr != NULL ) 
 			*outErr = err;
 		return( thisRef );
@@ -1973,20 +1964,17 @@ DACALDeviceRef	DACALDeviceCreateWithService( io_service_t ioDeviceObj, DACALResu
 	ioPlugin = NULL;
 	
 	if (err || !deviceIntf) {
-		if( gDACALVerbose ) 
-			printf("dacal: unable to create a device interface. ret = %08x, dev = %p\n", err, ioPlugin);
+		PMLOG("dacal: unable to create a device interface. ret = %08x, dev = %p\n", err, ioPlugin);
 		if( outErr != NULL ) 
 			*outErr = err;
 		return( thisRef );
 	}
 		
-	if( gDACALVerbose ) 
-		printf("dacal: Found device %p\n", (void*)ioDeviceObj);
+	PMLOG(1, "dacal: Found device %p\n", (void*)ioDeviceObj);
 		
 	err = (*deviceIntf)->USBDeviceOpen(deviceIntf);
 	if (err) {
-		if( gDACALVerbose ) 
-			printf("dacal: Unable to open device: %08x\n", err);
+		PMLOG(1, "dacal: Unable to open device: %08x\n", err);
 		(void) (*deviceIntf)->Release(deviceIntf);
 		if( outErr != NULL ) 
 			*outErr = err;
@@ -2016,8 +2004,7 @@ DACALDeviceRef	DACALDeviceCreateWithService( io_service_t ioDeviceObj, DACALResu
 		
 		if( newID == NULL ) {
 			err = kDACALError;
-			if( gDACALVerbose ) 
-				printf("dacal: Could Not Identify Device %p\n", (void*)ioDeviceObj);
+			PMLOG(1, "dacal: Could Not Identify Device %p\n", (void*)ioDeviceObj);
 			if( outErr != NULL ) 
 				*outErr = err;
 			return( thisRef );
@@ -2029,14 +2016,15 @@ DACALDeviceRef	DACALDeviceCreateWithService( io_service_t ioDeviceObj, DACALResu
 	if (modelDC300Check == 0 | modelDC101Check == 0) {
 		err = CarouselEstablishInfoFile( newID );
 		if (err) {
-			if( gDACALVerbose ) 
-				printf("dacal: unable to create a device file. ret = %i, dev = %p\n", err, (void*)ioDeviceObj);
-			if( outErr != NULL ) *outErr = err;
+			PMLOG(1, "dacal: unable to create a device file. ret = %i, dev = %p\n", err, (void*)ioDeviceObj);
+				if( outErr != NULL ) 
+					*outErr = err;
 			return( thisRef );
 		}
 	} else {
-		if( gDACALVerbose ) 
-			printf("dacal: unknown device: %@ ,unable to create a device file. ret = %i, dev = %p\n", newModel, err, (void*)ioDeviceObj);
+			PMLOG(1, "dacal: unknown device: %@ ,unable to create a device file. ret = %i, dev = %p\n", newModel, err, (void*)ioDeviceObj);
+			CFRelease(newID);
+			CFRelease(newModel);
 		if( outErr != NULL ) 
 			*outErr = err;
 		return( thisRef );
@@ -2170,25 +2158,22 @@ DACALResult		DACALDevicesInitialize( void )
 														// Find USB Interface
     err = IOMasterPort(MACH_PORT_NULL, &masterPort);				
     if (err) {
-        if( gDACALVerbose ) 
-			printf("dacal: could not create master port, err = %08x\n", err);
+		PMLOG(1, "dacal: could not create master port, err = %08x\n", err);
         return err;
     }
 																	// Looking for USBD device
     matchingDictionary = IOServiceMatching(kIOUSBDeviceClassName);	// requires <IOKit/usb/IOUSBLib.h>
 																	// Specifiy vendor, product and revision
     if (!matchingDictionary) {
-        if( gDACALVerbose ) 
-			printf("dacal: could not create matching dictionary\n");
+		PMLOG(1, "dacal: could not create matching dictionary\n");
         return kIOReturnNoDevice;
     }
 	
-	DACALSetVerbose(TRUE);
+	PMLOGPushVerbose(TRUE);
 	// Setup vendorID
 		numberRef = CFNumberCreate(gDACALDefaultCFAllocator, kCFNumberSInt32Type, &kDACALVendorID);
 		if (!numberRef) {
-			if( gDACALVerbose ) 
-				printf("dacal: could not create CFNumberRef for vendor\n");
+			PMLOG(1, "dacal: could not create CFNumberRef for vendor\n");
 			return kIOReturnNoMemory;
 		}
 		CFDictionaryAddValue(matchingDictionary, CFSTR(kUSBVendorID), numberRef);
@@ -2197,11 +2182,10 @@ DACALResult		DACALDevicesInitialize( void )
 	
 	// Setup productID
 		numberRef = CFNumberCreate(gDACALDefaultCFAllocator, kCFNumberSInt32Type, &kDACALProductID);
-		NSLog(@"numberRef = %@", numberRef);
+		PMLOG(1, @"numberRef = %@", numberRef);
 		if (numberRef == NULL) {
-			if( gDACALVerbose ) 
-				printf("dacal: could not create CFNumberRef for product\n");
-			return kIOReturnNoMemory;
+		    PMLOG(1, "dacal: could not create CFNumberRef for product\n");
+		    return kIOReturnNoMemory;
 		}
 		CFDictionaryAddValue(matchingDictionary, CFSTR(kUSBProductID), numberRef);
 		CFRelease(numberRef);
@@ -2210,7 +2194,7 @@ DACALResult		DACALDevicesInitialize( void )
 	// Setup bRelease
 	//	numberRef = CFNumberCreate(gDACALDefaultCFAllocator, kCFNumberSInt32Type, &kDACALReleaseID);
 	//	if (!numberRef) {
-	//		if( gDACALVerbose ) 
+	//		if( gVerbose ) 
 	//				printf("dacal: could not create CFNumberRef for product\n");
 	//		return kIOReturnNoMemory;
 	//	}
@@ -2230,6 +2214,8 @@ DACALResult		DACALDevicesInitialize( void )
 	//	DACALDeviceCreateWithService( ioDeviceObj, NULL );
 	
 	err = IOServiceAddMatchingNotification( gDACALNotifyPort, kIOFirstMatchNotification, matchingDictionary, DACALDevicesAdded, NULL, &gDACALAddedIter);
+	if (err)
+		PMLOG(1, "IOServiceAddMatchingNotification returned err: %x", err);
 	
 	DACALDevicesAdded( NULL, gDACALAddedIter );
 	
@@ -2239,6 +2225,8 @@ DACALResult		DACALDevicesInitialize( void )
     mach_port_deallocate(mach_task_self(), masterPort);			// Don't do this in the future so we can get hot plugs.
 	masterPort = 0;
 	
+	PMLOGPopVerbose();
+
     return kIOReturnSuccess;	
 }
 
@@ -2259,7 +2247,7 @@ void			DACALClientNotify( CFStringRef noticeClient, DACALDeviceRef noticeDevice,
 	DACALClientRef							clientIndex = DACALClientGetIndexForID( noticeClient );
 	DACALClientNotificationCallback*		userCallback = DACAL_CLIENT_CALLBACK(clientIndex);
 	
-	if( gDACALVerbose ) 
+	if( gVerbose ) 
 		NSLog( @"DACALClientNotify: Device: %i Message: %@", (int)noticeDevice, noticeMessage );
 
 	if( userCallback != NULL ) userCallback( DACAL_CLIENT_USERDATA(clientIndex), noticeDevice, noticeMessage, noticeData );
