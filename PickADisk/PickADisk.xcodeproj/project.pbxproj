@@ -117,6 +117,7 @@
 		751C4E2D0E9400250027BC1C /* AquaticPrime.m in Sources */ = {isa = PBXBuildFile; fileRef = 751C4E2C0E9400250027BC1C /* AquaticPrime.m */; };
 		75339121101B99470007F931 /* daclconstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 7533911F101B99470007F931 /* daclconstants.h */; };
 		75339122101B99470007F931 /* daclconstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 75339120101B99470007F931 /* daclconstants.m */; };
+		75AF25ED1083A66B004D1F99 /* pms.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AF25EC1083A66B004D1F99 /* pms.m */; };
 		75B2FCB30EDDA9A1007356FD /* BlackPlus1.png in Resources */ = {isa = PBXBuildFile; fileRef = 75B2FCB20EDDA9A1007356FD /* BlackPlus1.png */; };
 		75B2FCB50EDDA9AD007356FD /* BlackSearch1.png in Resources */ = {isa = PBXBuildFile; fileRef = 75B2FCB40EDDA9AD007356FD /* BlackSearch1.png */; };
 		75E0D61C1073EF620012897D /* Multi-Folder.icns in Resources */ = {isa = PBXBuildFile; fileRef = 75E0D61B1073EF620012897D /* Multi-Folder.icns */; };
@@ -360,8 +361,10 @@
 		751C4E2C0E9400250027BC1C /* AquaticPrime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AquaticPrime.m; path = Sources/License/AquaticPrime.m; sourceTree = "<group>"; };
 		7533911F101B99470007F931 /* daclconstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = daclconstants.h; sourceTree = "<group>"; };
 		75339120101B99470007F931 /* daclconstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = daclconstants.m; sourceTree = "<group>"; };
+		75AF25EC1083A66B004D1F99 /* pms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = pms.m; sourceTree = "<group>"; };
 		75B2FCB20EDDA9A1007356FD /* BlackPlus1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlackPlus1.png; sourceTree = "<group>"; };
 		75B2FCB40EDDA9AD007356FD /* BlackSearch1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlackSearch1.png; sourceTree = "<group>"; };
+		75D1ED2A1085236600DE7820 /* _doprnt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _doprnt.m; sourceTree = "<group>"; };
 		75E0D61B1073EF620012897D /* Multi-Folder.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = "Multi-Folder.icns"; path = "../Resources/Multi-Folder.icns"; sourceTree = SOURCE_ROOT; };
 		75E0D70C1074330E0012897D /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		75E0D70D1074330E0012897D /* lesson.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = lesson.xml; sourceTree = "<group>"; };
@@ -776,8 +779,9 @@
 		5CAFCCA20E2EB77300A7BEA4 /* pmssource */ = {
 			isa = PBXGroup;
 			children = (
-				5CAFCCA30E2EB77300A7BEA4 /* carlib */,
 				5CAFCCA80E2EB77300A7BEA4 /* pms.h */,
+				75AF25EC1083A66B004D1F99 /* pms.m */,
+				5CAFCCA30E2EB77300A7BEA4 /* carlib */,
 				5CAFCCA90E2EB77300A7BEA4 /* pmsutility */,
 			);
 			name = pmssource;
@@ -799,6 +803,7 @@
 		5CAFCCA90E2EB77300A7BEA4 /* pmsutility */ = {
 			isa = PBXGroup;
 			children = (
+				75D1ED2A1085236600DE7820 /* _doprnt.m */,
 				5CAFCD1A0E2ED18200A7BEA4 /* pmsDACALUtility.h */,
 				5CAFCD1B0E2ED18200A7BEA4 /* pmsDACALUtility.m */,
 				5CAFCCEC0E2EC1E900A7BEA4 /* pmsCFUtility.h */,
@@ -1341,6 +1346,7 @@
 				5C1A10230F4018A4004F3605 /* IconFamily.m in Sources */,
 				5C1A10250F4018A4004F3605 /* NSString+CarbonFSRefCreation.m in Sources */,
 				75339122101B99470007F931 /* daclconstants.m in Sources */,
+				75AF25ED1083A66B004D1F99 /* pms.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1483,7 +1489,7 @@
 			};
 			name = DebugPPC;
 		};
-		75DFAC86107FF40F0076E115 /* Development Remote */ = {
+		75DFAC86107FF40F0076E115 /* DebugRemote */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7504AEA30FB389E600FFAA84 /* buildnumber.xcconfig */;
 			buildSettings = {
@@ -1498,11 +1504,11 @@
 				PRODUCT_NAME = PickADisk;
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = /Developer/SDKs/MacOSX10.5.sdk;
-				SYMROOT = /Users/Shared/RemoteDebug/PickADisk/build;
+				SYMROOT = /Users/Shared/RemoteDebugDAC/PickADisk/build;
 			};
-			name = "Development Remote";
+			name = DebugRemote;
 		};
-		75DFAC87107FF40F0076E115 /* Development Remote */ = {
+		75DFAC87107FF40F0076E115 /* DebugRemote */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(NATIVE_ARCH)";
@@ -1551,7 +1557,7 @@
 				WRAPPER_EXTENSION = app;
 				ZERO_LINK = NO;
 			};
-			name = "Development Remote";
+			name = DebugRemote;
 		};
 		75E4927C0EACC04200AC85A0 /* Development Fresh Prefs */ = {
 			isa = XCBuildConfiguration;
@@ -1754,7 +1760,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B69BDD9508A2EC26008AC9B5 /* Development */,
-				75DFAC87107FF40F0076E115 /* Development Remote */,
+				75DFAC87107FF40F0076E115 /* DebugRemote */,
 				75E4927D0EACC04200AC85A0 /* Development Fresh Prefs */,
 				75D3EBAC0E8BF811009A0199 /* DebugPPC */,
 				B69BDD9608A2EC26008AC9B5 /* Release */,
@@ -1767,7 +1773,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B69BDD9908A2EC26008AC9B5 /* Development */,
-				75DFAC86107FF40F0076E115 /* Development Remote */,
+				75DFAC86107FF40F0076E115 /* DebugRemote */,
 				75E4927C0EACC04200AC85A0 /* Development Fresh Prefs */,
 				75D3EBAB0E8BF811009A0199 /* DebugPPC */,
 				B69BDD9A08A2EC26008AC9B5 /* Release */,
