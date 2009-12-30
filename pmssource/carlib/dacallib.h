@@ -24,6 +24,8 @@
 #import "pmsCFUtility.h"
 
 extern const SInt32		kDACALVendorID;
+extern const SInt32		kDACALDC300ProductID;
+extern const SInt32		kDACALDC016ProductID;
 extern const SInt32		kDACALProductID;
 extern const SInt32		kDACALReleaseID;
 
@@ -155,6 +157,5 @@ extern CFDictionaryRef	DACALDeviceInfoCopyKeys( DACALDeviceRef deviceID, CFArray
 extern DACALResult		DACALClientCreate( CFAllocatorRef useAllocator, CFStringRef clientID, void* useDataRef, void* useCallback);
 extern void				DACALClientRelease( CFStringRef clientID );
 extern void				DACALClientNotifyAll( DACALDeviceRef noticeDevice, CFStringRef noticeMessage, CFDictionaryRef noticeData );
-
 
 #endif // __dacallib__
