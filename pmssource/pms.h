@@ -1,5 +1,5 @@
 /*
- *  davec.h
+ *  pms.h
  *  Carousel
  *
  *  Created by Dave Carlton on 05/27/08.
@@ -20,8 +20,14 @@ NSLog(logstring, __PRETTY_FUNCTION__); \
 } while(0)
 
 #define NSLogFunc	NSLog(@"%s", __PRETTY_FUNCTION__)
-
-#define PMLOG(ARGS...) PM_LogInternal(__FILE__, __PRETTY_FUNCTION__, ## ARGS)
 #define NSLOGVF(x)	if (gVerbose) NSLog(@"%s: %s: %d", __PRETTY_FUNCTION__, x)
+
+void _PMLOGSELF(id self, NSString * format, ...);
+void _PMLOG(const char *file, const char *function, int inLevel, NSString * format, ...);
+void _PMERR(const char *file, const char *function, int err, NSString * format, ...);
+	
+//#define PMLOG(ARGS...) PM_LogInternal(__FILE__, __PRETTY_FUNCTION__, ## ARGS)
+#define PMLOG(...) _PMLOG(__FILE__, __PRETTY_FUNCTION__, __VA_ARGS__)
+#define PMERR(...) if (err) _PMERR(__FILE__, __PRETTY_FUNCTION__, (int)err, __VA_ARGS__)
 
 

@@ -48,6 +48,7 @@ void PMLOGPopVerbose() {
 		gVerboseIndex = 0;
 }
 
+	// Old C style logging
 void PM_LogInternal(const char *file, const char *function, int inLevel, char *fmt, ... )
 {	
     UInt64			elapsedTime, nowTime;
@@ -72,11 +73,11 @@ void PM_LogInternal(const char *file, const char *function, int inLevel, char *f
 		int result;
 		
 		if (startTime == 0) {
-			result = gettimeofday(&theTime, NULL);
+			gettimeofday(&theTime, NULL);
 			startTime = (theTime.tv_sec*1000000) + (theTime.tv_usec);
 		}
 		
-		result = gettimeofday(&theTime, NULL);
+		gettimeofday(&theTime, NULL);
 		
 		nowTime = (theTime.tv_sec*1000000) + (theTime.tv_usec);
 		elapsedTime = nowTime - startTime;
@@ -122,21 +123,55 @@ void PM_LogInternal(const char *file, const char *function, int inLevel, char *f
 	}
 }
 
-void PM_LogArgs(NSString * arg1, ...) { /* print all int type args, finishing with -1 */
-
-	const char here[] = __FILE__ ":__FUNCTION__: ";
-	va_list ap;
-	int i;
-	NSMutableString *logstring;
-	NSString *appendString;
-	
-	[logstring stringWithCString:here encoding:NSUTF8StringEncoding];
-	
-	va_start( ap, arg1 );
-//	_doprnt( inFormatString, &ap, conslog_putc, 16 );
-	appendString = [NSString stringWithString:arg1];
-	[logstring appendString:appendString];
-	va_end(ap);
-	NSLog(@"%s", logstring);
+static NSString* 
+_PMLOGFormat(id self, NSString * prefix, NSString * format) {
+	if(self != nil)
+	{
+		return [NSString stringWithFormat:@"%@ self(%@) %@", prefix, self, format];
+	}
+	else
+	{
+		return [NSString stringWithFormat:@"%@ %@", prefix, format];
+	}
 }
 
+void _PMLOGSELF(id self, NSString * format, ...)
+{
+	NSString * finalFormat = _PMLOGFormat(self, @"PMLOG", format);
+	va_list ap;
+	va_start(ap, format);
+	NSLogv(finalFormat, ap);
+	va_end(ap);
+}
+
+void _PMLOG(const char *file, const char *function,  int inLevel, NSString * format, ...)
+{
+    if( inLevel > gDebugLevel )
+    {
+		// The level is not high enough to be displayed, we're skipping this item.
+        return;
+    }
+    else
+    {
+		NSString *		pathString = [NSString stringWithCString:file encoding:NSUTF8StringEncoding];
+	const char *	fileString = [[pathString lastPathComponent] cStringUsingEncoding: NSUTF8StringEncoding];
+	NSString *		finalFormat =  [NSString stringWithFormat:@"PMLOG %s: %s: %@", fileString, function, format];
+	
+	va_list ap;
+	va_start(ap, format);
+	NSLogv(finalFormat, ap);
+	va_end(ap);
+}
+}
+
+void _PMERR(const char *file, const char *function, int err, NSString * format, ...) {
+	NSString *		pathString = [NSString stringWithCString:file encoding:NSUTF8StringEncoding];
+	const char *	fileString = [[pathString lastPathComponent] cStringUsingEncoding: NSUTF8StringEncoding];
+	NSString *		finalFormat =  [NSString stringWithFormat:@"PMLOG %s: %s: %@ - err: %x", fileString, function, format, err];
+	
+	va_list ap;
+	va_start(ap, format);
+	NSLogv(finalFormat, ap);
+	va_end(ap);
+	
+}
