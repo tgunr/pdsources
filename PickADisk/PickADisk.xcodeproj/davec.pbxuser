@@ -1,0 +1,1214 @@
+// !$*UTF8*$!
+{
+	0405E529FF13D2D511CA0E35 /* InitInfo.dict */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {879, 1183}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1378}";
+		};
+	};
+	06AA3D12FF0C15B911CA0E35 /* NSOutlineView_Extensions.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {887, 1013}}";
+			sepNavSelRange = "{470, 34}";
+			sepNavVisRange = "{0, 708}";
+			sepNavWindowFrame = "{{61, 390}, {946, 1141}}";
+		};
+	};
+	06AA3D13FF0C15B911CA0E35 /* NSOutlineView_Extensions.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {969, 3445}}";
+			sepNavSelRange = "{2853, 21}";
+			sepNavVisRange = "{1037, 2963}";
+		};
+	};
+	089C165DFE840E0CC02AAC07 /* English */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {879, 882}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 73}";
+		};
+	};
+	08DC403BFF0C20FA11CA0E35 /* TreeNode.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {911, 1239}}";
+			sepNavSelRange = "{112, 8}";
+			sepNavVisRange = "{0, 2440}";
+			sepNavWindowFrame = "{{61, 141}, {970, 1390}}";
+		};
+	};
+	08DC403CFF0C20FA11CA0E35 /* TreeNode.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {2469, 3965}}";
+			sepNavSelRange = "{4162, 8}";
+			sepNavVisRange = "{2344, 3179}";
+			sepNavWindowFrame = "{{107, 99}, {970, 1390}}";
+		};
+	};
+	08DC4041FF0C22D111CA0E35 /* SimpleTreeNode.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {911, 2756}}";
+			sepNavSelRange = "{2626, 10}";
+			sepNavVisRange = "{1708, 2458}";
+			sepNavWindowFrame = "{{211, 164}, {970, 1390}}";
+		};
+	};
+	08DC4042FF0C22D111CA0E35 /* SimpleTreeNode.m */ = {
+		uiCtxt = {
+			sepNavFolds = "{\n    c =     (\n                {\n            r = \"{6773, 327}\";\n            s = 0;\n        },\n                {\n            r = \"{7136, 97}\";\n            s = 0;\n        },\n                {\n            r = \"{7256, 20}\";\n            s = 0;\n        },\n                {\n            r = \"{7309, 22}\";\n            s = 0;\n        },\n                {\n            r = \"{7350, 22}\";\n            s = 0;\n        },\n                {\n            r = \"{7392, 23}\";\n            s = 0;\n        },\n                {\n            r = \"{7452, 96}\";\n            s = 0;\n        },\n                {\n            r = \"{7572, 21}\";\n            s = 0;\n        },\n                {\n            r = \"{7631, 27}\";\n            s = 0;\n        },\n                {\n            r = \"{7683, 26}\";\n            s = 0;\n        },\n                {\n            r = \"{7745, 25}\";\n            s = 0;\n        },\n                {\n            r = \"{7793, 24}\";\n            s = 0;\n        },\n                {\n            r = \"{7842, 26}\";\n            s = 0;\n        },\n                {\n            r = \"{7906, 27}\";\n            s = 0;\n        },\n                {\n            r = \"{7963, 20}\";\n            s = 0;\n        },\n                {\n            r = \"{8372, 111}\";\n            s = 0;\n        },\n                {\n            r = \"{8506, 22}\";\n            s = 0;\n        },\n                {\n            r = \"{8571, 235}\";\n            s = 0;\n        },\n                {\n            r = \"{8855, 250}\";\n            s = 0;\n        },\n                {\n            r = \"{9138, 20}\";\n            s = 0;\n        },\n                {\n            r = \"{9201, 18}\";\n            s = 0;\n        },\n                {\n            r = \"{9247, 18}\";\n            s = 0;\n        },\n                {\n            r = \"{9302, 50}\";\n            s = 0;\n        },\n                {\n            r = \"{9499, 128}\";\n            s = 0;\n        },\n                {\n            r = \"{9655, 20}\";\n            s = 0;\n        },\n                {\n            r = \"{9720, 101}\";\n            s = 0;\n        },\n                {\n            r = \"{9849, 21}\";\n            s = 0;\n        },\n                {\n            r = \"{9914, 122}\";\n            s = 0;\n        },\n                {\n            r = \"{10067, 17}\";\n            s = 0;\n        },\n                {\n            r = \"{10123, 126}\";\n            s = 0;\n        },\n                {\n            r = \"{10271, 21}\";\n            s = 0;\n        },\n                {\n            r = \"{10309, 16}\";\n            s = 0;\n        },\n                {\n            r = \"{10356, 17}\";\n            s = 0;\n        },\n                {\n            r = \"{10397, 68}\";\n            s = 0;\n        },\n                {\n            r = \"{10494, 71}\";\n            s = 0;\n        },\n                {\n            r = \"{10593, 70}\";\n            s = 0;\n        },\n                {\n            r = \"{10691, 65}\";\n            s = 0;\n        },\n                {\n            r = \"{10804, 67}\";\n            s = 0;\n        },\n                {\n            r = \"{10894, 61}\";\n            s = 0;\n        },\n                {\n            r = \"{10995, 60}\";\n            s = 0;\n        },\n                {\n            r = \"{11080, 60}\";\n            s = 0;\n        },\n                {\n            r = \"{11184, 63}\";\n            s = 0;\n        },\n                {\n            r = \"{11265, 1182}\";\n            s = 0;\n        },\n                {\n            r = \"{12480, 151}\";\n            s = 0;\n        },\n                {\n            r = \"{12700, 94}\";\n            s = 0;\n        },\n                {\n            r = \"{12860, 110}\";\n            s = 0;\n        },\n                {\n            r = \"{13036, 247}\";\n            s = 0;\n        },\n                {\n            r = \"{13351, 91}\";\n            s = 0;\n        },\n                {\n            r = \"{13510, 23}\";\n            s = 0;\n        },\n                {\n            r = \"{13604, 480}\";\n            s = 0;\n        },\n                {\n            r = \"{14156, 107}\";\n            s = 0;\n        },\n                {\n            r = \"{14331, 129}\";\n            s = 0;\n        },\n                {\n            r = \"{14525, 242}\";\n            s = 0;\n        },\n                {\n            r = \"{14834, 228}\";\n            s = 0;\n        },\n                {\n            r = \"{15110, 404}\";\n            s = 0;\n        },\n                {\n            r = \"{15548, 13}\";\n            s = 0;\n        },\n                {\n            r = \"{15651, 825}\";\n            s = 0;\n        },\n                {\n            r = \"{16559, 336}\";\n            s = 0;\n        },\n                {\n            r = \"{16987, 292}\";\n            s = 0;\n        },\n                {\n            r = \"{17367, 1384}\";\n            s = 0;\n        },\n                {\n            r = \"{18843, 199}\";\n            s = 0;\n        },\n                {\n            r = \"{19135, 199}\";\n            s = 0;\n        },\n                {\n            r = \"{19429, 292}\";\n            s = 0;\n        },\n                {\n            r = \"{19814, 734}\";\n            s = 0;\n        },\n                {\n            r = \"{20642, 637}\";\n            s = 0;\n        },\n                {\n            r = \"{21369, 878}\";\n            s = 0;\n        },\n                {\n            r = \"{22331, 354}\";\n            s = 0;\n        },\n                {\n            r = \"{22739, 48}\";\n            s = 0;\n        },\n                {\n            r = \"{22818, 93}\";\n            s = 0;\n        },\n                {\n            r = \"{22960, 1448}\";\n            s = 0;\n        },\n                {\n            r = \"{27028, 2092}\";\n            s = 0;\n        },\n                {\n            r = \"{29140, 45}\";\n            s = 0;\n        },\n                {\n            r = \"{29466, 62}\";\n            s = 0;\n        },\n                {\n            r = \"{29568, 59}\";\n            s = 0;\n        },\n                {\n            r = \"{29696, 466}\";\n            s = 0;\n        },\n                {\n            r = \"{30211, 66}\";\n            s = 0;\n        },\n                {\n            r = \"{30327, 218}\";\n            s = 0;\n        },\n                {\n            r = \"{30622, 211}\";\n            s = 0;\n        },\n                {\n            r = \"{30851, 34}\";\n            s = 0;\n        },\n                {\n            r = \"{30918, 526}\";\n            s = 0;\n        },\n                {\n            r = \"{31500, 455}\";\n            s = 0;\n        },\n                {\n            r = \"{32020, 459}\";\n            s = 0;\n        },\n                {\n            r = \"{32544, 430}\";\n            s = 0;\n        },\n                {\n            r = \"{33038, 431}\";\n            s = 0;\n        },\n                {\n            r = \"{33507, 47}\";\n            s = 0;\n        },\n                {\n            r = \"{33584, 25}\";\n            s = 0;\n        },\n                {\n            r = \"{33644, 25}\";\n            s = 0;\n        },\n                {\n            r = \"{33701, 25}\";\n            s = 0;\n        },\n                {\n            r = \"{33757, 25}\";\n            s = 0;\n        },\n                {\n            r = \"{33817, 25}\";\n            s = 0;\n        },\n                {\n            r = \"{33881, 25}\";\n            s = 0;\n        },\n                {\n            r = \"{33939, 25}\";\n            s = 0;\n        },\n                {\n            r = \"{33993, 25}\";\n            s = 0;\n        },\n                {\n            r = \"{34048, 25}\";\n            s = 0;\n        },\n                {\n            r = \"{34117, 42}\";\n            s = 0;\n        },\n                {\n            r = \"{34193, 126}\";\n            s = 0;\n        },\n                {\n            r = \"{34350, 32}\";\n            s = 0;\n        },\n                {\n            r = \"{34415, 551}\";\n            s = 0;\n        },\n                {\n            r = \"{35000, 293}\";\n            s = 0;\n        },\n                {\n            r = \"{35329, 901}\";\n            s = 0;\n        },\n                {\n            r = \"{36260, 572}\";\n            s = 0;\n        },\n                {\n            r = \"{36859, 484}\";\n            s = 0;\n        },\n                {\n            r = \"{37369, 1035}\";\n            s = 0;\n        }\n    );\n    r = \"{0, 38414}\";\n    s = 0;\n}";
+			sepNavIntBoundsRect = "{{0, 0}, {985, 6201}}";
+			sepNavSelRange = "{8220, 0}";
+			sepNavVisRange = "{7331, 1143}";
+			sepNavWindowFrame = "{{681, 181}, {970, 1390}}";
+		};
+	};
+	08DC4049FF0C3BD211CA0E35 /* NSArray_Extensions.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1283, 3120}}";
+			sepNavSelRange = "{4055, 10}";
+			sepNavVisRange = "{2630, 2202}";
+		};
+	};
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeBuildConfigurationName = DebugRemote;
+		activeExecutable = 75D30F0310F1D72D0036862D /* RemotePAD */;
+		activeTarget = 735CC299049A7E2A00C919A3 /* PickADisk */;
+		addToTargets = (
+			735CC299049A7E2A00C919A3 /* PickADisk */,
+		);
+		breakpoints = (
+			7545AC0D10F2C060001E73C5 /* DACALDeviceObjC.m:1744 */,
+			75A5B42110F735E2001A674A /* dacallib.m:2515 */,
+		);
+		codeSenseManager = 7592E147107ACDCE00A52EB4 /* Code sense */;
+		executables = (
+			7592E11C107ACDCA00A52EB4 /* PickADisk */,
+			75D30F0310F1D72D0036862D /* RemotePAD */,
+		);
+		expressions = (
+			gDACALVerbose,
+		);
+		ignoreBreakpointsInProjectsDict = {
+			Deva = Ignored;
+			USBProber = Ignored;
+		};
+		perUserDictionary = {
+			"PBXConfiguration.PBXBreakpointsDataSource.v1:1CA1AED706398EBD00589147" = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXBreakpointsDataSource_ContinueID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					20,
+					257,
+					20,
+					158,
+					158,
+					88,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXBreakpointsDataSource_ActionID,
+					PBXBreakpointsDataSource_TypeID,
+					PBXBreakpointsDataSource_BreakpointID,
+					PBXBreakpointsDataSource_UseID,
+					PBXBreakpointsDataSource_LocationID,
+					PBXBreakpointsDataSource_ConditionID,
+					PBXBreakpointsDataSource_IgnoreCountID,
+					PBXBreakpointsDataSource_ContinueID,
+				);
+			};
+			"PBXConfiguration.PBXBreakpointsDataSource.v1:1CA23EDF0692099D00951B8B" = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXBreakpointsDataSource_BreakpointID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					20,
+					203,
+					20,
+					202,
+					202,
+					204,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXBreakpointsDataSource_ActionID,
+					PBXBreakpointsDataSource_TypeID,
+					PBXBreakpointsDataSource_BreakpointID,
+					PBXBreakpointsDataSource_UseID,
+					PBXBreakpointsDataSource_LocationID,
+					PBXBreakpointsDataSource_ConditionID,
+					PBXBreakpointsDataSource_IgnoreCountID,
+					PBXBreakpointsDataSource_ContinueID,
+				);
+			};
+			PBXConfiguration.PBXFileTableDataSource3.PBXBookmarksDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXBookmarksDataSource_NameID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					200,
+					200,
+					821,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXBookmarksDataSource_LocationID,
+					PBXBookmarksDataSource_NameID,
+					PBXBookmarksDataSource_CommentsID,
+				);
+			};
+			PBXConfiguration.PBXFileTableDataSource3.PBXExecutablesDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXExecutablesDataSource_NameID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					22,
+					300,
+					589,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXExecutablesDataSource_ActiveFlagID,
+					PBXExecutablesDataSource_NameID,
+					PBXExecutablesDataSource_CommentsID,
+				);
+			};
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					701,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXConfiguration.PBXTargetDataSource.PBXTargetDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					661,
+					60,
+					20,
+					48,
+					43,
+					43,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXTargetDataSource_PrimaryAttribute,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 284843928;
+			PBXWorkspaceStateSaveDate = 284843928;
+		};
+		perUserProjectItems = {
+			757DC3C610EC1585009AA1BB /* PBXTextBookmark */ = 757DC3C610EC1585009AA1BB /* PBXTextBookmark */;
+			757DC44E10EC3AD4009AA1BB /* PBXTextBookmark */ = 757DC44E10EC3AD4009AA1BB /* PBXTextBookmark */;
+			757DC45810EC3B7E009AA1BB /* PBXTextBookmark */ = 757DC45810EC3B7E009AA1BB /* PBXTextBookmark */;
+			757DC56310ED09BA009AA1BB /* PBXTextBookmark */ = 757DC56310ED09BA009AA1BB /* PBXTextBookmark */;
+			757DC56410ED09BA009AA1BB /* PBXTextBookmark */ = 757DC56410ED09BA009AA1BB /* PBXTextBookmark */;
+			757DC56510ED09BA009AA1BB /* PBXTextBookmark */ = 757DC56510ED09BA009AA1BB /* PBXTextBookmark */;
+			757DC58310ED0BBA009AA1BB /* PBXTextBookmark */ = 757DC58310ED0BBA009AA1BB /* PBXTextBookmark */;
+			757DC5F110ED12AD009AA1BB /* PBXTextBookmark */ = 757DC5F110ED12AD009AA1BB /* PBXTextBookmark */;
+			757DCACB10EE99DA009AA1BB /* PBXTextBookmark */ = 757DCACB10EE99DA009AA1BB /* PBXTextBookmark */;
+			757DCACC10EE99DA009AA1BB /* PBXTextBookmark */ = 757DCACC10EE99DA009AA1BB /* PBXTextBookmark */;
+			757DCBBC10EFB1A3009AA1BB /* PBXTextBookmark */ = 757DCBBC10EFB1A3009AA1BB /* PBXTextBookmark */;
+			757DCBD510EFC61A009AA1BB /* PBXTextBookmark */ = 757DCBD510EFC61A009AA1BB /* PBXTextBookmark */;
+			757DCC3110EFF116009AA1BB /* PBXTextBookmark */ = 757DCC3110EFF116009AA1BB /* PBXTextBookmark */;
+			757DCCBC10F02C23009AA1BB /* PBXTextBookmark */ = 757DCCBC10F02C23009AA1BB /* PBXTextBookmark */;
+			757DCF9E10F15CC8009AA1BB /* PBXTextBookmark */ = 757DCF9E10F15CC8009AA1BB /* PBXTextBookmark */;
+			757DCFA210F15CC8009AA1BB /* PBXTextBookmark */ = 757DCFA210F15CC8009AA1BB /* PBXTextBookmark */;
+			759087AE10DDC4D200BB52DB /* PBXTextBookmark */ = 759087AE10DDC4D200BB52DB /* PBXTextBookmark */;
+			7596FA9B10F167300015E7FB /* PBXTextBookmark */ = 7596FA9B10F167300015E7FB /* PBXTextBookmark */;
+			7596FA9C10F167300015E7FB /* PBXTextBookmark */ = 7596FA9C10F167300015E7FB /* PBXTextBookmark */;
+			75A5B4DC10FA5FD2001A674A /* PBXTextBookmark */ = 75A5B4DC10FA5FD2001A674A /* PBXTextBookmark */;
+			75A5B4DD10FA5FD2001A674A /* PBXTextBookmark */ = 75A5B4DD10FA5FD2001A674A /* PBXTextBookmark */;
+			75CAD3A610EACC77005C4294 /* PBXTextBookmark */ = 75CAD3A610EACC77005C4294 /* PBXTextBookmark */;
+			75CAD3A810EACC77005C4294 /* PBXTextBookmark */ = 75CAD3A810EACC77005C4294 /* PBXTextBookmark */;
+			75CAD3A910EACC77005C4294 /* PBXTextBookmark */ = 75CAD3A910EACC77005C4294 /* PBXTextBookmark */;
+			75CAD3AC10EACC77005C4294 /* PBXTextBookmark */ = 75CAD3AC10EACC77005C4294 /* PBXTextBookmark */;
+			75CAD3B010EACC77005C4294 /* PBXTextBookmark */ = 75CAD3B010EACC77005C4294 /* PBXTextBookmark */;
+			75CAD3EF10EADB2C005C4294 /* PBXTextBookmark */ = 75CAD3EF10EADB2C005C4294 /* PBXTextBookmark */;
+			75CAD3FA10EADBC5005C4294 /* PlistBookmark */ = 75CAD3FA10EADBC5005C4294 /* PlistBookmark */;
+			75EA734810E94D8B00DD6F15 /* PBXTextBookmark */ = 75EA734810E94D8B00DD6F15 /* PBXTextBookmark */;
+		};
+		sourceControlManager = 7592E146107ACDCE00A52EB4 /* Source Control */;
+		userBookmarkGroup = 7581E56310DAA8D30043A8EB /* PBXBookmarkGroup */;
+		userBuildSettings = {
+		};
+	};
+	29B97316FDCFA39411CA2CEA /* main.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {879, 590}}";
+			sepNavSelRange = "{318, 0}";
+			sepNavVisRange = "{0, 503}";
+			sepNavWindowFrame = "{{1260, 330}, {946, 1141}}";
+		};
+	};
+	5C1A101E0F4018A4004F3605 /* IconFamily.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {3260, 2418}}";
+			sepNavSelRange = "{2496, 3}";
+			sepNavVisRange = "{0, 3499}";
+		};
+	};
+	5C1A101F0F4018A4004F3605 /* IconFamily.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {3260, 20306}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 3435}";
+		};
+	};
+	5C1A10210F4018A4004F3605 /* NSString+CarbonFSRefCreation.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {3260, 880}}";
+			sepNavSelRange = "{1354, 3}";
+			sepNavVisRange = "{0, 2650}";
+		};
+	};
+	5C1ECC0E0E4120050091B446 /* PADSearchRequest.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1230, 14521}}";
+			sepNavSelRange = "{18832, 0}";
+			sepNavVisRange = "{17509, 2408}";
+		};
+	};
+	5C2D25F30E304B1C005F9FB5 /* PADIndexProgressController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1024, 2119}}";
+			sepNavSelRange = "{64, 8}";
+			sepNavVisRange = "{0, 1347}";
+		};
+	};
+	5C2E40E10E73FBD300D7DF4A /* DACDriverInstaller.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1188, 3822}}";
+			sepNavSelRange = "{138, 31}";
+			sepNavVisRange = "{0, 3513}";
+			sepNavWindowFrame = "{{61, 141}, {970, 1390}}";
+		};
+	};
+	5C2EBE9A0E2991BF009BAF4C /* PADPrefsController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1024, 2821}}";
+			sepNavSelRange = "{254, 12}";
+			sepNavVisRange = "{0, 2150}";
+		};
+	};
+	5C30383A0EA5C8CE0067A8A8 /* PADPrefsTreeController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1237, 2678}}";
+			sepNavSelRange = "{379, 0}";
+			sepNavVisRange = "{0, 2488}";
+		};
+	};
+	5C3FAEE60EBA6FB30048BBA1 /* LicenseService.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {992, 4212}}";
+			sepNavSelRange = "{4793, 0}";
+			sepNavVisRange = "{3681, 2464}";
+		};
+	};
+	5C48B4260E444E27005795F7 /* PADLayoutView.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1442, 3679}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 2331}";
+		};
+	};
+	5C48B6920E453D98005795F7 /* PADLifecycleController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1552, 990}}";
+			sepNavSelRange = "{225, 29}";
+			sepNavVisRange = "{0, 1062}";
+			sepNavWindowFrame = "{{84, 369}, {946, 1141}}";
+		};
+	};
+	5C4E17EB0E2167580091DD7D /* carousel.sh */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1377, 3601}}";
+			sepNavSelRange = "{7985, 6}";
+			sepNavVisRange = "{6625, 1892}";
+		};
+	};
+	5C5F7DBC0E771E83003111DF /* DACVolume.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {933, 1781}}";
+			sepNavSelRange = "{650, 9}";
+			sepNavVisRange = "{197, 1726}";
+			sepNavWindowFrame = "{{761, 165}, {992, 1083}}";
+		};
+	};
+	5C5F7DBD0E771E83003111DF /* DACVolume.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {943, 15093}}";
+			sepNavSelRange = "{23642, 95}";
+			sepNavVisRange = "{17792, 995}";
+			sepNavWindowFrame = "{{654, 262}, {944, 1253}}";
+		};
+	};
+	5C6C12E80E240BEA0097CC7A /* AppController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {954, 1180}}";
+			sepNavSelRange = "{1322, 34}";
+			sepNavVisRange = "{0, 2149}";
+			sepNavWindowFrame = "{{15, 242}, {1013, 1331}}";
+		};
+	};
+	5C6C12E90E240BEA0097CC7A /* AppController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1384, 6669}}";
+			sepNavSelRange = "{5760, 0}";
+			sepNavVisRange = "{5206, 1432}";
+			sepNavWindowFrame = "{{107, 348}, {946, 1141}}";
+		};
+	};
+	5C6C12EB0E240BEA0097CC7A /* DACALTreeDataSource.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1531, 13416}}";
+			sepNavSelRange = "{23252, 0}";
+			sepNavVisRange = "{21329, 2289}";
+		};
+	};
+	5C6C12EC0E240BEA0097CC7A /* PADAddVolumeController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {911, 1547}}";
+			sepNavSelRange = "{985, 39}";
+			sepNavVisRange = "{0, 2637}";
+			sepNavWindowFrame = "{{61, 141}, {970, 1390}}";
+		};
+	};
+	5C6C12ED0E240BEA0097CC7A /* PADAddVolumeController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {992, 15002}}";
+			sepNavSelRange = "{28317, 45}";
+			sepNavVisRange = "{29904, 2259}";
+			sepNavWindowFrame = "{{528, 210}, {1013, 1331}}";
+		};
+	};
+	5C6C12EE0E240BEA0097CC7A /* PADIndexToolbarController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {911, 1300}}";
+			sepNavSelRange = "{1212, 39}";
+			sepNavVisRange = "{0, 3070}";
+			sepNavWindowFrame = "{{107, 99}, {970, 1390}}";
+		};
+	};
+	5C6C12EF0E240BEA0097CC7A /* PADIndexToolbarController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1160, 10582}}";
+			sepNavSelRange = "{22258, 15}";
+			sepNavVisRange = "{20615, 2284}";
+			sepNavWindowFrame = "{{84, 120}, {970, 1390}}";
+		};
+	};
+	5C6C12F00E240BEA0097CC7A /* TreeController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {775, 2145}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 2331}";
+			sepNavWindowFrame = "{{222, 157}, {834, 1227}}";
+		};
+	};
+	5C6C12F10E240BEA0097CC7A /* TreeController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1440, 18564}}";
+			sepNavSelRange = "{578, 71}";
+			sepNavVisRange = "{0, 1449}";
+		};
+	};
+	5C76C1250E9AD9FE00E363B0 /* NSData_Extensions.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {908, 981}}";
+			sepNavSelRange = "{1095, 7}";
+			sepNavVisRange = "{0, 1673}";
+		};
+	};
+	5C76C1310E9ADD0500E363B0 /* NSString_Extensions.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {996, 779}}";
+			sepNavSelRange = "{140, 24}";
+			sepNavVisRange = "{0, 395}";
+		};
+	};
+	5C81A0E80EC39D9B00E75319 /* JSServiceManager.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1206, 2223}}";
+			sepNavSelRange = "{2691, 0}";
+			sepNavVisRange = "{2245, 969}";
+		};
+	};
+	5C88C00E0EB7B7CA005D267C /* PADFlavorImageView.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1024, 5707}}";
+			sepNavSelRange = "{7962, 17}";
+			sepNavVisRange = "{7355, 1367}";
+		};
+	};
+	5C88C00F0EB7B7CA005D267C /* PADFlavorImageView.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {762, 1313}}";
+			sepNavSelRange = "{1899, 14}";
+			sepNavVisRange = "{139, 2253}";
+			sepNavWindowFrame = "{{638, 203}, {821, 1349}}";
+		};
+	};
+	5C8B8BB40E3FCCF9007A1505 /* PADCarouselOperation.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1135, 1820}}";
+			sepNavSelRange = "{1487, 0}";
+			sepNavVisRange = "{1595, 1270}";
+		};
+	};
+	5C8E54F40E6A1D690029D83A /* DACALViewDataSource.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1171, 9334}}";
+			sepNavSelRange = "{18373, 0}";
+			sepNavVisRange = "{17126, 1822}";
+		};
+	};
+	5C90847C0E2D748800162C13 /* PADIndexOperation.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1442, 1105}}";
+			sepNavSelRange = "{1471, 0}";
+			sepNavVisRange = "{289, 1644}";
+		};
+	};
+	5C9C3E710E5796720004DA00 /* PADOperationOpenDevice.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1442, 895}}";
+			sepNavSelRange = "{278, 0}";
+			sepNavVisRange = "{0, 969}";
+		};
+	};
+	5CAFCCA50E2EB77300A7BEA4 /* dacallib.h */ = {
+		uiCtxt = {
+			sepNavFolds = "{\n    c =     (\n                {\n            r = \"{1, 134}\";\n            s = 0;\n        }\n    );\n    r = \"{0, 8126}\";\n    s = 0;\n}";
+			sepNavIntBoundsRect = "{{0, 0}, {710, 2431}}";
+			sepNavSelRange = "{605, 6}";
+			sepNavVisRange = "{0, 2484}";
+			sepNavWindowFrame = "{{56, 437}, {769, 1045}}";
+		};
+	};
+	5CAFCCA60E2EB77300A7BEA4 /* dacallib.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1237, 34697}}";
+			sepNavSelRange = "{79499, 96}";
+			sepNavVisRange = "{79348, 801}";
+			sepNavWindowFrame = "{{1522, 99}, {963, 1275}}";
+		};
+	};
+	5CAFCCA80E2EB77300A7BEA4 /* pms.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {879, 599}}";
+			sepNavSelRange = "{768, 0}";
+			sepNavVisRange = "{0, 1047}";
+			sepNavWindowFrame = "{{149, 833}, {1158, 745}}";
+		};
+	};
+	5CAFCCED0E2EC1E900A7BEA4 /* pmsCFUtility.c */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1118, 8970}}";
+			sepNavSelRange = "{18701, 7}";
+			sepNavVisRange = "{17426, 1836}";
+		};
+	};
+	5CAFCD1A0E2ED18200A7BEA4 /* pmsDACALUtility.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {915, 721}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 2220}";
+		};
+	};
+	5CAFCD1B0E2ED18200A7BEA4 /* pmsDACALUtility.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1006, 5954}}";
+			sepNavSelRange = "{208, 13}";
+			sepNavVisRange = "{0, 1430}";
+		};
+	};
+	5CC83FC40E6FB34C000903AD /* DACALDeviceObjC.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {936, 3666}}";
+			sepNavSelRange = "{5562, 14}";
+			sepNavVisRange = "{5451, 1929}";
+			sepNavWindowFrame = "{{345, 381}, {992, 1083}}";
+		};
+	};
+	5CC83FC50E6FB34C000903AD /* DACALDeviceObjC.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1206, 23504}}";
+			sepNavSelRange = "{47455, 0}";
+			sepNavVisRange = "{46901, 1032}";
+			sepNavWindowFrame = "{{447, 159}, {1013, 1331}}";
+		};
+	};
+	5CD985160E4E60A700441ED7 /* PADHomeView.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1223, 4849}}";
+			sepNavSelRange = "{6085, 0}";
+			sepNavVisRange = "{5218, 1749}";
+		};
+	};
+	5CE5772E0E590C230086A57F /* PADOperationControlDevice.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {880, 1495}}";
+			sepNavSelRange = "{653, 25}";
+			sepNavVisRange = "{0, 1469}";
+		};
+	};
+	735CC297049A7E1F00C919A3 /* Prefix.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {996, 779}}";
+			sepNavSelRange = "{477, 19}";
+			sepNavVisRange = "{0, 1368}";
+		};
+	};
+	735CC299049A7E2A00C919A3 /* PickADisk */ = {
+		activeExec = 0;
+		executables = (
+			7592E11C107ACDCA00A52EB4 /* PickADisk */,
+		);
+	};
+	735CC2C0049A7E2A00C919A3 /* Info-PickADisk.plist */ = {
+		uiCtxt = {
+			sepNavWindowFrame = "{{38, 191}, {900, 1361}}";
+		};
+	};
+	7504AEA30FB389E600FFAA84 /* buildnumber.xcconfig */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {879, 882}}";
+			sepNavSelRange = "{46, 0}";
+			sepNavVisRange = "{0, 46}";
+		};
+	};
+	7504AEBB0FB38F7400FFAA84 /* releasenumber.xcconfig */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {879, 882}}";
+			sepNavSelRange = "{45, 0}";
+			sepNavVisRange = "{0, 46}";
+		};
+	};
+	7533911F101B99470007F931 /* daclconstants.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {892, 901}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1814}";
+		};
+	};
+	75339120101B99470007F931 /* daclconstants.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {879, 806}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1490}";
+		};
+	};
+	7545AC0D10F2C060001E73C5 /* DACALDeviceObjC.m:1744 */ = {
+		isa = PBXFileBreakpoint;
+		actions = (
+		);
+		breakpointStyle = 0;
+		continueAfterActions = 0;
+		countType = 0;
+		delayBeforeContinue = 0;
+		fileReference = 5CC83FC50E6FB34C000903AD /* DACALDeviceObjC.m */;
+		functionName = "DACALNotification()";
+		hitCount = 0;
+		ignoreCount = 0;
+		lineNumber = 1744;
+		modificationTime = 284760616.568091;
+		originalNumberOfMultipleMatches = 1;
+		state = 0;
+	};
+	757DC3A010EC1397009AA1BB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5C6C12EF0E240BEA0097CC7A /* PADIndexToolbarController.m */;
+		name = clickPlay;
+		rLen = 9;
+		rLoc = 10417;
+		rType = 0;
+		vrLen = 2026;
+		vrLoc = 8980;
+	};
+	757DC3C610EC1585009AA1BB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 08DC4042FF0C22D111CA0E35 /* SimpleTreeNode.m */;
+		name = "SimpleTreeNode.m: 54";
+		rLen = 0;
+		rLoc = 2814;
+		rType = 0;
+		vrLen = 3154;
+		vrLoc = 740;
+	};
+	757DC44E10EC3AD4009AA1BB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5C6C12E90E240BEA0097CC7A /* AppController.m */;
+		name = "AppController.m: 354";
+		rLen = 5;
+		rLoc = 11968;
+		rType = 0;
+		vrLen = 2456;
+		vrLoc = 10861;
+	};
+	757DC45810EC3B7E009AA1BB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5C6C12EC0E240BEA0097CC7A /* PADAddVolumeController.h */;
+		name = "PADAddVolumeController.h: 29";
+		rLen = 11;
+		rLoc = 788;
+		rType = 0;
+		vrLen = 1983;
+		vrLoc = 0;
+	};
+	757DC4D310ECF6AB009AA1BB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5C5F7DBD0E771E83003111DF /* DACVolume.m */;
+		name = existingMediaRemoved;
+		rLen = 0;
+		rLoc = 30799;
+		rType = 0;
+		vrLen = 2343;
+		vrLoc = 30479;
+	};
+	757DC56310ED09BA009AA1BB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5C90847C0E2D748800162C13 /* PADIndexOperation.m */;
+		name = "PADIndexOperation.m: 63";
+		rLen = 0;
+		rLoc = 1471;
+		rType = 0;
+		vrLen = 1644;
+		vrLoc = 289;
+	};
+	757DC56410ED09BA009AA1BB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5C9C3E710E5796720004DA00 /* PADOperationOpenDevice.m */;
+		name = "PADOperationOpenDevice.m: 16";
+		rLen = 0;
+		rLoc = 278;
+		rType = 0;
+		vrLen = 969;
+		vrLoc = 0;
+	};
+	757DC56510ED09BA009AA1BB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5C48B4260E444E27005795F7 /* PADLayoutView.m */;
+		name = "PADLayoutView.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 2331;
+		vrLoc = 0;
+	};
+	757DC58310ED0BBA009AA1BB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5C8E54F40E6A1D690029D83A /* DACALViewDataSource.m */;
+		name = "DACALViewDataSource.m: 439";
+		rLen = 0;
+		rLoc = 18373;
+		rType = 0;
+		vrLen = 1958;
+		vrLoc = 16992;
+	};
+	757DC5F110ED12AD009AA1BB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5C6C12EB0E240BEA0097CC7A /* DACALTreeDataSource.m */;
+		name = "DACALTreeDataSource.m: 567";
+		rLen = 0;
+		rLoc = 21824;
+		rType = 0;
+		vrLen = 2461;
+		vrLoc = 21329;
+	};
+	757DCACB10EE99DA009AA1BB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 06AA3D13FF0C15B911CA0E35 /* NSOutlineView_Extensions.m */;
+		name = "NSOutlineView_Extensions.m: 53";
+		rLen = 21;
+		rLoc = 2853;
+		rType = 0;
+		vrLen = 2963;
+		vrLoc = 1037;
+	};
+	757DCACC10EE99DA009AA1BB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5CC83FC40E6FB34C000903AD /* DACALDeviceObjC.h */;
+		name = "DACALDeviceObjC.h: 209";
+		rLen = 14;
+		rLoc = 5562;
+		rType = 0;
+		vrLen = 1842;
+		vrLoc = 5478;
+	};
+	757DCBBC10EFB1A3009AA1BB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 08DC4049FF0C3BD211CA0E35 /* NSArray_Extensions.m */;
+		name = "NSArray_Extensions.m: 95";
+		rLen = 10;
+		rLoc = 4055;
+		rType = 0;
+		vrLen = 2202;
+		vrLoc = 2630;
+	};
+	757DCBD510EFC61A009AA1BB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5CE5772E0E590C230086A57F /* PADOperationControlDevice.m */;
+		name = "PADOperationControlDevice.m: 31";
+		rLen = 25;
+		rLoc = 653;
+		rType = 0;
+		vrLen = 1469;
+		vrLoc = 0;
+	};
+	757DCC3110EFF116009AA1BB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5C5F7DBC0E771E83003111DF /* DACVolume.h */;
+		name = "DACVolume.h: 120";
+		rLen = 22;
+		rLoc = 3029;
+		rType = 0;
+		vrLen = 2073;
+		vrLoc = 1142;
+	};
+	757DCCBC10F02C23009AA1BB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5C6C12F10E240BEA0097CC7A /* TreeController.m */;
+		name = "TreeController.m: 328";
+		rLen = 0;
+		rLoc = 11189;
+		rType = 0;
+		vrLen = 2113;
+		vrLoc = 10069;
+	};
+	757DCF9E10F15CC8009AA1BB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 75D1ED2A1085236600DE7820 /* _doprnt.m */;
+		name = "_doprnt.m: 150";
+		rLen = 0;
+		rLoc = 3963;
+		rType = 0;
+		vrLen = 1057;
+		vrLoc = 3242;
+	};
+	757DCFA210F15CC8009AA1BB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5CAFCCED0E2EC1E900A7BEA4 /* pmsCFUtility.c */;
+		name = "pmsCFUtility.c: 618";
+		rLen = 7;
+		rLoc = 18701;
+		rType = 0;
+		vrLen = 1836;
+		vrLoc = 17426;
+	};
+	7581E56310DAA8D30043A8EB /* PBXBookmarkGroup */ = {
+		isa = PBXBookmarkGroup;
+		children = (
+			7581E5CB10DB097E0043A8EB /* PBXTextBookmark */,
+			75A0D25A10DDA1CC003A69A1 /* PBXTextBookmark */,
+			75CAD3A410EACC76005C4294 /* PBXTextBookmark */,
+			75CAD3C910EAD25A005C4294 /* PBXTextBookmark */,
+			75CAD3CC10EAD281005C4294 /* PBXTextBookmark */,
+			75CAD40510EADFE8005C4294 /* PBXTextBookmark */,
+			757DC3A010EC1397009AA1BB /* PBXTextBookmark */,
+			757DC4D310ECF6AB009AA1BB /* PBXTextBookmark */,
+		);
+		name = Root;
+	};
+	7581E5CB10DB097E0043A8EB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5CAFCCA60E2EB77300A7BEA4 /* dacallib.m */;
+		name = "dacallib.m: 846";
+		rLen = 0;
+		rLoc = 207;
+		rType = 0;
+		vrLen = 2939;
+		vrLoc = 28790;
+	};
+	759087AE10DDC4D200BB52DB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5C4E17EB0E2167580091DD7D /* carousel.sh */;
+		name = "carousel.sh: 271";
+		rLen = 6;
+		rLoc = 7985;
+		rType = 0;
+		vrLen = 1892;
+		vrLoc = 6625;
+	};
+	7592E11C107ACDCA00A52EB4 /* PickADisk */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+			YES,
+			NO,
+		);
+		argumentStrings = (
+			"-d",
+			"-k",
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+			"PBXLSLaunchAction-1" = {
+				PBXLSLaunchAction = 1;
+				PBXLSLaunchStartAction = 1;
+				PBXLSLaunchStdioStyle = 1;
+				PBXLSLaunchStyle = 0;
+				class = PBXGDB_LaunchConfig;
+				commandLineArgs = (
+				);
+				displayName = GDB;
+				environment = {
+				};
+				identifier = com.apple.Xcode.launch.GDBMI_Config;
+				remoteHostInfo = 10.0.1.253;
+				startActionInfo = "";
+			};
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = PickADisk;
+		savedGlobals = {
+		};
+		showTypeColumn = 1;
+		sourceDirectories = (
+		);
+		variableFormatDictionary = {
+			"bRequest-UInt8-dacalGetDescriptor" = 1;
+			"bmRequestType-UInt8-dacalGetDescriptor" = 1;
+			"descIndex-UInt8-dacalGetDescriptor" = 1;
+			"descType-UInt8-dacalGetDescriptor" = 1;
+			"deviceCommand-DACALCommand-DACALCommandRequest" = 1;
+			"deviceRef-DACALDeviceRef--[DACVolumeService carouselDeviceSlotAttached:]" = 1;
+			"err-IOReturn-dacalDoRequest" = 1;
+			"err-IOReturn-dacalGetDescriptor" = 1;
+			"index-UInt16-dacalGetDescriptor" = 1;
+			"itemDevice-DACALDeviceRef--[TreeNode nodeData]" = 1;
+			"newDevice-DACALDeviceRef--[DACVolume setPadKnownDevice:]" = 1;
+			"padKnownDevice-DACALDeviceRef--[DACVolume setPadKnownDevice:]" = 1;
+			"wIndex-UInt16-dacalGetDescriptor" = 1;
+			"wLength-UInt16-dacalGetDescriptor" = 1;
+			"wValue-UInt16-dacalGetDescriptor" = 1;
+		};
+	};
+	7592E146107ACDCE00A52EB4 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = pms;
+			};
+		};
+	};
+	7592E147107ACDCE00A52EB4 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	7596FA9B10F167300015E7FB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5C76C1250E9AD9FE00E363B0 /* NSData_Extensions.m */;
+		name = "NSData_Extensions.m: 47";
+		rLen = 7;
+		rLoc = 1095;
+		rType = 0;
+		vrLen = 1673;
+		vrLoc = 0;
+	};
+	7596FA9C10F167300015E7FB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5C6C12EF0E240BEA0097CC7A /* PADIndexToolbarController.m */;
+		name = "PADIndexToolbarController.m: 715";
+		rLen = 15;
+		rLoc = 22258;
+		rType = 0;
+		vrLen = 2284;
+		vrLoc = 20615;
+	};
+	75A0D25A10DDA1CC003A69A1 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5C5F7DBD0E771E83003111DF /* DACVolume.m */;
+		name = ejectVolume;
+		rLen = 11;
+		rLoc = 23476;
+		rType = 0;
+		vrLen = 2087;
+		vrLoc = 22510;
+	};
+	75A5B42110F735E2001A674A /* dacallib.m:2515 */ = {
+		isa = PBXFileBreakpoint;
+		actions = (
+		);
+		breakpointStyle = 0;
+		continueAfterActions = 0;
+		countType = 0;
+		delayBeforeContinue = 0;
+		fileReference = 5CAFCCA60E2EB77300A7BEA4 /* dacallib.m */;
+		functionName = "DACALDevicesInitialize()";
+		hitCount = 0;
+		ignoreCount = 0;
+		lineNumber = 2515;
+		modificationTime = 284760616.568599;
+		originalNumberOfMultipleMatches = 1;
+		state = 0;
+	};
+	75A5B4DC10FA5FD2001A674A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5C5F7DBD0E771E83003111DF /* DACVolume.m */;
+		name = "DACVolume.m: 809";
+		rLen = 95;
+		rLoc = 23642;
+		rType = 0;
+		vrLen = 1976;
+		vrLoc = 17401;
+	};
+	75A5B4DD10FA5FD2001A674A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 29B97316FDCFA39411CA2CEA /* main.m */;
+		name = "main.m: 17";
+		rLen = 0;
+		rLoc = 318;
+		rType = 0;
+		vrLen = 503;
+		vrLoc = 0;
+	};
+	75AF25EC1083A66B004D1F99 /* pms.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {961, 2314}}";
+			sepNavSelRange = "{3988, 0}";
+			sepNavVisRange = "{2274, 2149}";
+			sepNavWindowFrame = "{{232, 219}, {1020, 1192}}";
+		};
+	};
+	75CAD3A410EACC76005C4294 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5CAFCCA60E2EB77300A7BEA4 /* dacallib.m */;
+		name = DACALDevicesInitialize;
+		rLen = 0;
+		rLoc = 16981;
+		rType = 0;
+		vrLen = 2212;
+		vrLoc = 80251;
+	};
+	75CAD3A610EACC77005C4294 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5C1ECC0E0E4120050091B446 /* PADSearchRequest.m */;
+		name = "PADSearchRequest.m: 546";
+		rLen = 0;
+		rLoc = 18832;
+		rType = 0;
+		vrLen = 2408;
+		vrLoc = 17509;
+	};
+	75CAD3A810EACC77005C4294 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5C30383A0EA5C8CE0067A8A8 /* PADPrefsTreeController.m */;
+		name = "PADPrefsTreeController.m: 18";
+		rLen = 0;
+		rLoc = 379;
+		rType = 0;
+		vrLen = 2488;
+		vrLoc = 0;
+	};
+	75CAD3A910EACC77005C4294 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5CD985160E4E60A700441ED7 /* PADHomeView.m */;
+		name = "PADHomeView.m: 266";
+		rLen = 0;
+		rLoc = 6085;
+		rType = 0;
+		vrLen = 1749;
+		vrLoc = 5218;
+	};
+	75CAD3AC10EACC77005C4294 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5C1A10210F4018A4004F3605 /* NSString+CarbonFSRefCreation.m */;
+		name = "NSString+CarbonFSRefCreation.m: 17";
+		rLen = 3;
+		rLoc = 1354;
+		rType = 0;
+		vrLen = 2650;
+		vrLoc = 0;
+	};
+	75CAD3B010EACC77005C4294 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5C81A0E80EC39D9B00E75319 /* JSServiceManager.m */;
+		name = "JSServiceManager.m: 94";
+		rLen = 0;
+		rLoc = 1441;
+		rType = 0;
+		vrLen = 1799;
+		vrLoc = 1997;
+	};
+	75CAD3C910EAD25A005C4294 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5CAFCCA60E2EB77300A7BEA4 /* dacallib.m */;
+		name = DACALDevicesFinalize;
+		rLen = 0;
+		rLoc = 16981;
+		rType = 0;
+		vrLen = 2106;
+		vrLoc = 79985;
+	};
+	75CAD3CC10EAD281005C4294 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5CAFCCA60E2EB77300A7BEA4 /* dacallib.m */;
+		name = DACALDeviceCreateWithService;
+		rLen = 0;
+		rLoc = 207;
+		rType = 0;
+		vrLen = 2086;
+		vrLoc = 74319;
+	};
+	75CAD3EF10EADB2C005C4294 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 29B97316FDCFA39411CA2CEA /* main.m */;
+		name = "main.m: 17";
+		rLen = 0;
+		rLoc = 318;
+		rType = 0;
+		vrLen = 503;
+		vrLoc = 0;
+	};
+	75CAD3FA10EADBC5005C4294 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 735CC2C0049A7E2A00C919A3 /* Info-PickADisk.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = "/Volumes/leopard/Projects/PMTB/trunk/PickADisk/Info-PickADisk.plist";
+		rLen = 0;
+		rLoc = 9223372036854775808;
+	};
+	75CAD40510EADFE8005C4294 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5CAFCCA60E2EB77300A7BEA4 /* dacallib.m */;
+		name = useUSBDevice;
+		rLen = 0;
+		rLoc = 16981;
+		rType = 0;
+		vrLen = 2002;
+		vrLoc = 72606;
+	};
+	75D1ED2A1085236600DE7820 /* _doprnt.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {908, 4251}}";
+			sepNavSelRange = "{3963, 0}";
+			sepNavVisRange = "{3242, 1057}";
+			sepNavWindowFrame = "{{130, 403}, {1075, 1065}}";
+		};
+	};
+	75D30F0310F1D72D0036862D /* RemotePAD */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 1;
+		configStateDict = {
+			"PBXLSLaunchAction-0" = {
+				PBXLSLaunchAction = 0;
+				PBXLSLaunchStartAction = 1;
+				PBXLSLaunchStdioStyle = 2;
+				PBXLSLaunchStyle = 0;
+				class = PBXLSRunLaunchConfig;
+				commandLineArgs = (
+				);
+				displayName = "Executable Runner";
+				environment = {
+				};
+				identifier = com.apple.Xcode.launch.runConfig;
+				remoteHostInfo = "";
+				startActionInfo = "";
+			};
+			"PBXLSLaunchAction-1" = {
+				PBXLSLaunchAction = 1;
+				PBXLSLaunchStartAction = 1;
+				PBXLSLaunchStdioStyle = 1;
+				PBXLSLaunchStyle = 1;
+				class = PBXGDB_LaunchConfig;
+				commandLineArgs = (
+				);
+				displayName = GDB;
+				environment = {
+				};
+				identifier = com.apple.Xcode.launch.GDBMI_Config;
+				remoteHostInfo = mp.local;
+				startActionInfo = "";
+			};
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		launchableReference = 75D30F0410F1D72D0036862D /* PickADisk.app */;
+		libgmallocEnabled = 0;
+		name = RemotePAD;
+		savedGlobals = {
+		};
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+		startupPath = /Users/Shared/PickADisk/build/DebugRemote;
+		variableFormatDictionary = {
+		};
+	};
+	75D30F0410F1D72D0036862D /* PickADisk.app */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = wrapper.application;
+		name = PickADisk.app;
+		path = /Users/Shared/PickADisk/build/DebugRemote/PickADisk.app;
+		sourceTree = "<absolute>";
+	};
+	75EA734810E94D8B00DD6F15 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5C8B8BB40E3FCCF9007A1505 /* PADCarouselOperation.m */;
+		name = "PADCarouselOperation.m: 75";
+		rLen = 0;
+		rLoc = 1487;
+		rType = 0;
+		vrLen = 1270;
+		vrLoc = 1595;
+	};
+	75F02D220E955A9400A02B14 /* LicenseController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {985, 8138}}";
+			sepNavSelRange = "{3187, 0}";
+			sepNavVisRange = "{1759, 2781}";
+		};
+	};
+}
