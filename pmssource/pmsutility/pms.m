@@ -10,7 +10,6 @@
 
 #include <stdio.h>
 #include <stdarg.h>
-#import <Cocoa/Cocoa.h>
 #include <sys/time.h>
 #include <CoreServices/CoreServices.h>
 #include "pms.h"
@@ -53,7 +52,6 @@ void PM_LogInternal(const char *file, const char *function, int inLevel, char *f
 {	
     UInt64			elapsedTime, nowTime;
     UInt64			milliSecs;
-	NSString *		logString;
 	NSString *		pathString = [NSString stringWithCString:file encoding:NSUTF8StringEncoding];
 	const char *	fileString = [[pathString lastPathComponent] cStringUsingEncoding: NSUTF8StringEncoding];
 	
@@ -70,7 +68,6 @@ void PM_LogInternal(const char *file, const char *function, int inLevel, char *f
 		int d;
 		char c, *s;
 		void *p;
-		int result;
 		
 		if (startTime == 0) {
 			gettimeofday(&theTime, NULL);
@@ -82,7 +79,7 @@ void PM_LogInternal(const char *file, const char *function, int inLevel, char *f
 		nowTime = (theTime.tv_sec*1000000) + (theTime.tv_usec);
 		elapsedTime = nowTime - startTime;
 		milliSecs = (elapsedTime / 1000);
-		printf("%s:%s: %0u\n\t", fileString, function, milliSecs);
+		printf("%s:%s: %0u\n\t", fileString, function, (unsigned int)milliSecs);
 		
 		va_start(ap, fmt);
 		va_copy(ap2, ap);

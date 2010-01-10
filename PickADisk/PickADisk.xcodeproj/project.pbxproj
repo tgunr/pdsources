@@ -148,6 +148,48 @@
 			remoteGlobalIDString = 32D94FD00562CBF700B6AF17;
 			remoteInfo = DACALDriver;
 		};
+		75A5B3DD10F72A20001A674A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 75A5B3D310F72A20001A674A /* CLI.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 751FB9FC0E39046200D64628;
+			remoteInfo = dacal;
+		};
+		75A5B3DF10F72A20001A674A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 75A5B3D310F72A20001A674A /* CLI.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 751FBA060E3904AB00D64628;
+			remoteInfo = dacallib;
+		};
+		75A5B3E110F72A20001A674A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 75A5B3D310F72A20001A674A /* CLI.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 751FBA0E0E39054600D64628;
+			remoteInfo = fabricate;
+		};
+		75A5B3E310F72A20001A674A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 75A5B3D310F72A20001A674A /* CLI.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 751FBA170E39057100D64628;
+			remoteInfo = find;
+		};
+		75A5B3E510F72A20001A674A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 75A5B3D310F72A20001A674A /* CLI.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 751FBA430E39063900D64628;
+			remoteInfo = xattr;
+		};
+		75A5B3E710F72A20001A674A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 75A5B3D310F72A20001A674A /* CLI.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 751FBC9E0E393EDE00D64628;
+			remoteInfo = xargs;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -315,7 +357,7 @@
 		5CA07A700E2E274900F71FA7 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
 		5CAFCCA50E2EB77300A7BEA4 /* dacallib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dacallib.h; path = ../pmssource/carlib/dacallib.h; sourceTree = SOURCE_ROOT; };
 		5CAFCCA60E2EB77300A7BEA4 /* dacallib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = dacallib.m; path = ../pmssource/carlib/dacallib.m; sourceTree = SOURCE_ROOT; };
-		5CAFCCA80E2EB77300A7BEA4 /* pms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pms.h; path = ../pmssource/pms.h; sourceTree = SOURCE_ROOT; };
+		5CAFCCA80E2EB77300A7BEA4 /* pms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pms.h; path = pmsutility/pms.h; sourceTree = "<group>"; };
 		5CAFCCEC0E2EC1E900A7BEA4 /* pmsCFUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pmsCFUtility.h; sourceTree = "<group>"; };
 		5CAFCCED0E2EC1E900A7BEA4 /* pmsCFUtility.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pmsCFUtility.c; sourceTree = "<group>"; };
 		5CAFCD1A0E2ED18200A7BEA4 /* pmsDACALUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pmsDACALUtility.h; sourceTree = "<group>"; };
@@ -361,7 +403,8 @@
 		751C4E2C0E9400250027BC1C /* AquaticPrime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AquaticPrime.m; path = Sources/License/AquaticPrime.m; sourceTree = "<group>"; };
 		7533911F101B99470007F931 /* daclconstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = daclconstants.h; sourceTree = "<group>"; };
 		75339120101B99470007F931 /* daclconstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = daclconstants.m; sourceTree = "<group>"; };
-		75AF25EC1083A66B004D1F99 /* pms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = pms.m; sourceTree = "<group>"; };
+		75A5B3D310F72A20001A674A /* CLI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CLI.xcodeproj; path = ../CLI/CLI.xcodeproj; sourceTree = SOURCE_ROOT; };
+		75AF25EC1083A66B004D1F99 /* pms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = pms.m; path = pmsutility/pms.m; sourceTree = "<group>"; };
 		75B2FCB20EDDA9A1007356FD /* BlackPlus1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlackPlus1.png; sourceTree = "<group>"; };
 		75B2FCB40EDDA9AD007356FD /* BlackSearch1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlackSearch1.png; sourceTree = "<group>"; };
 		75D1ED2A1085236600DE7820 /* _doprnt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _doprnt.m; sourceTree = "<group>"; };
@@ -871,6 +914,7 @@
 		7504AFFB0FB4722D00FFAA84 /* Other Projects */ = {
 			isa = PBXGroup;
 			children = (
+				75A5B3D310F72A20001A674A /* CLI.xcodeproj */,
 				7504AFFC0FB4724300FFAA84 /* DACALDriver.xcodeproj */,
 			);
 			name = "Other Projects";
@@ -880,6 +924,19 @@
 			isa = PBXGroup;
 			children = (
 				7504B0040FB4724300FFAA84 /* DACALDriver.kext */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		75A5B3D410F72A20001A674A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				75A5B3DE10F72A20001A674A /* dacal */,
+				75A5B3E010F72A20001A674A /* dacallib.dylib */,
+				75A5B3E210F72A20001A674A /* fabricate */,
+				75A5B3E410F72A20001A674A /* find */,
+				75A5B3E610F72A20001A674A /* xattr */,
+				75A5B3E810F72A20001A674A /* xargs */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1152,6 +1209,10 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
+					ProductGroup = 75A5B3D410F72A20001A674A /* Products */;
+					ProjectRef = 75A5B3D310F72A20001A674A /* CLI.xcodeproj */;
+				},
+				{
 					ProductGroup = 7504AFFD0FB4724300FFAA84 /* Products */;
 					ProjectRef = 7504AFFC0FB4724300FFAA84 /* DACALDriver.xcodeproj */;
 				},
@@ -1169,6 +1230,48 @@
 			fileType = wrapper.cfbundle;
 			path = DACALDriver.kext;
 			remoteRef = 7504B0030FB4724300FFAA84 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		75A5B3DE10F72A20001A674A /* dacal */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = dacal;
+			remoteRef = 75A5B3DD10F72A20001A674A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		75A5B3E010F72A20001A674A /* dacallib.dylib */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.dylib";
+			path = dacallib.dylib;
+			remoteRef = 75A5B3DF10F72A20001A674A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		75A5B3E210F72A20001A674A /* fabricate */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = fabricate;
+			remoteRef = 75A5B3E110F72A20001A674A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		75A5B3E410F72A20001A674A /* find */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = find;
+			remoteRef = 75A5B3E310F72A20001A674A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		75A5B3E610F72A20001A674A /* xattr */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = xattr;
+			remoteRef = 75A5B3E510F72A20001A674A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		75A5B3E810F72A20001A674A /* xargs */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = xargs;
+			remoteRef = 75A5B3E710F72A20001A674A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -1558,6 +1661,7 @@
 				);
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/Shared/PickADisk/build;
 				WARNING_CFLAGS = "";
 				WRAPPER_EXTENSION = app;
 				ZERO_LINK = NO;
