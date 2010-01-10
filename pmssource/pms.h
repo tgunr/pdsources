@@ -6,6 +6,7 @@
  *  Copyright 2008 Polymicro Systems. All rights reserved.
  *
  */
+#import <Cocoa/Cocoa.h>
 
 extern Boolean			gVerbose;
 extern int				gDebugLevel;
