@@ -10,7 +10,7 @@
 				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
 				PBXFileTableDataSourceColumnWidthsKey = (
 					20,
-					840,
+					855,
 					20,
 					48,
 					43,
@@ -61,8 +61,14 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 284586566;
-			PBXWorkspaceStateSaveDate = 284586566;
+			PBXPerProjectTemplateStateSaveDate = 291247044;
+			PBXWorkspaceStateSaveDate = 291247044;
+		};
+		perUserProjectItems = {
+			7565F1A4115C153900D0725D /* PBXTextBookmark */ = 7565F1A4115C153900D0725D /* PBXTextBookmark */;
+			7565F1A6115C153900D0725D /* PBXTextBookmark */ = 7565F1A6115C153900D0725D /* PBXTextBookmark */;
+			7565F1AA115C153900D0725D /* PBXBookmark */ = 7565F1AA115C153900D0725D /* PBXBookmark */;
+			7565F1AB115C153900D0725D /* PBXTextBookmark */ = 7565F1AB115C153900D0725D /* PBXTextBookmark */;
 		};
 		sourceControlManager = 7545AC9010F2CDC4001E73C5 /* Source Control */;
 		userBuildSettings = {
@@ -89,5 +95,61 @@
 	7545AC9110F2CDC4001E73C5 /* Code sense */ = {
 		isa = PBXCodeSenseManager;
 		indexTemplatePath = "";
+	};
+	7565F1A4115C153900D0725D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 7565F1A5115C153900D0725D /* dacauthorize.c */;
+		rLen = 0;
+		rLoc = 9223372036854775807;
+		rType = 0;
+	};
+	7565F1A5115C153900D0725D /* dacauthorize.c */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.c;
+		name = dacauthorize.c;
+		path = /Volumes/leopard/Projects/PMTB/branches/davec/PickADisk/DACALDriver/dacauthorize.c;
+		sourceTree = "<absolute>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1092, 2176}}";
+			sepNavSelRange = "{243, 1}";
+			sepNavVisRange = "{0, 2535}";
+			sepNavWindowFrame = "{{15, 432}, {852, 1141}}";
+		};
+	};
+	7565F1A6115C153900D0725D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 7565F1A7115C153900D0725D /* dacauthorize.c */;
+		name = "dacauthorize.c: 9";
+		rLen = 1;
+		rLoc = 243;
+		rType = 0;
+		vrLen = 2535;
+		vrLoc = 0;
+	};
+	7565F1A7115C153900D0725D /* dacauthorize.c */ = {
+		isa = PBXFileReference;
+		name = dacauthorize.c;
+		path = /Volumes/leopard/Projects/PMTB/branches/davec/PickADisk/DACALDriver/dacauthorize.c;
+		sourceTree = "<absolute>";
+	};
+	7565F1AA115C153900D0725D /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 7565F1A5115C153900D0725D /* dacauthorize.c */;
+	};
+	7565F1AB115C153900D0725D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 7565F1AC115C153900D0725D /* dacauthorize.c */;
+		name = "dacauthorize.c: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 2351;
+		vrLoc = 0;
+	};
+	7565F1AC115C153900D0725D /* dacauthorize.c */ = {
+		isa = PBXFileReference;
+		name = dacauthorize.c;
+		path = /Volumes/leopard/Projects/PMTB/branches/davec/PickADisk/DACALDriver/dacauthorize.c;
+		sourceTree = "<absolute>";
 	};
 }
