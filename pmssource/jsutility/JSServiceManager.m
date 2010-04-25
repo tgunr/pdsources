@@ -6,8 +6,10 @@
 //  Copyright 2008 Jack Small. All rights reserved.
 //
 
-#import "JSServiceManager.h"
 #import <Foundation/Foundation.h>
+#import "JSServiceManager.h"
+#import "JSServicesSetup.h"
+#import "pms.h"
 
 @implementation JSServiceAbstract
 
@@ -20,9 +22,7 @@
 {
 	id	existingSelf = JSFindService( [self serviceName] );
 	
-	if( existingSelf && (existingSelf != self) ) 
-	{
-        [self autorelease];
+	if( existingSelf && (existingSelf != self) )  {        [self autorelease];
         return existingSelf;
     }
 	if( self = [super init] )
@@ -79,18 +79,15 @@ static id	JSServiceManager_appServiceManager = nil;
 	[super dealloc];
 }
 
--(id)init
-{
-    if (JSServiceManager_appServiceManager) 
-	{
-        [self autorelease];
+-(id)init {
+    if (JSServiceManager_appServiceManager) {
+		[self autorelease];
         return JSServiceManager_appServiceManager;
     }
-	if( self = [super init] )
-	{
+	if( self = [super init] ) {
 		JSServiceManager_appServiceManager = [self retain];
 		activeServices = [[NSMutableArray alloc] initWithCapacity:0];
-//		NSLog(@"JSService Manager Created");
+		PMLOG(3, @"JSService Manager Created");
 	}
 	return self;
 }
@@ -133,12 +130,15 @@ static id	JSServiceManager_appServiceManager = nil;
 	while ( workName = [workEnum nextObject] )
 	{
 		serviceClass = NSClassFromString( workName );
-		if( serviceClass == nil ) continue;
+		if( serviceClass == nil ) 
+			continue;
 		
-		if( serviceInstance = [self findServiceWithName:workName] ) continue;
+		if( serviceInstance = [self findServiceWithName:workName] ) 
+			continue;
 		else serviceInstance = [[serviceClass alloc] init];
 		
-		if( serviceInstance == nil ) continue;
+		if( serviceInstance == nil ) 
+			continue;
 		
 		if( serviceInstance = [serviceInstance initializeService] )
 			[activeServices addObject:serviceInstance];

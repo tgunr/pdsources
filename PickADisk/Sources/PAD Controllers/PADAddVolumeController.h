@@ -3,16 +3,18 @@
 //  PickADisc
 //
 //  Created by Jack Small on 7/7/08.
-//  Copyright 2008 __MyCompanyName__. All rights reserved.
+//  Copyright 2008 polyMicro Systems. All rights reserved.
 //
 
 #import <Cocoa/Cocoa.h>
 #import "SimpleTreeNode.h"
 #import "PADIndexProgressController.h"
 #import "DACALTreeDataSource.h"
-#import "DACALDeviceObjC.h"
-#import "DACVolume.h"
+#import "DACALDevice.h"
 #import "PADFlavorImageView.h"
+
+@class DACALVolume;
+@class DACALSlot;
 
 @interface PADAddVolumeController : NSObject {
 
@@ -74,7 +76,7 @@
 -(NSString*)customFlavor;
 -(void)setCustomFlavor:(NSString*)newFlavor;
 
--(DACVolume*)pendingVolume;
+-(DACALVolume*)pendingVolume;
 
 -(DACALSlot*)currentSlot;
 -(DACALDeviceRef)currentDeviceRef;

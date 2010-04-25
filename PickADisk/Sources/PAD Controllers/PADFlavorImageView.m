@@ -7,7 +7,8 @@
 //
 
 #import "PADFlavorImageView.h"
-
+#import "DACALTreeDataSource.h"
+#import "DACALVolume.h"
 
 @implementation PADSimpleImageView
 
@@ -323,7 +324,7 @@ const	CGFloat		kPADVIVStateRotateCounterClockwise		= 1.0f;
 //	[self changeCurrentRotation:0.0];
 }
 
--(BOOL)changeToVolumeIcon:(DACVolume*)theVolume
+-(BOOL)changeToVolumeIcon:(DACALVolume*)theVolume
 {
 	[self changeCurrentRotation:0.0];
 

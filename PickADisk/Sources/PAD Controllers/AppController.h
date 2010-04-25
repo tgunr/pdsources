@@ -1,10 +1,12 @@
 //
 //  AppController.h
 
-#import <Cocoa/Cocoa.h>
-#import "PADAddVolumeController.h"
-#import "TreeController.h"
 #import "PADLayoutView.h"
+
+@class TreeController;
+@class PADIndexToolbarController;
+@class PADAddVolumeController;
+@class DACALDeviceNode;
 
 int				jPADBusyBodyBeat;			// Used internally as the counter for row spinning arrows
 BOOL			busyBusy;
@@ -32,7 +34,7 @@ BOOL			busyBusy;
 - (void)queueOperation:(NSOperation*)op;
 - (void)queueUIOperation:(NSOperation*)op;
 - (void)queueSearchOperation:(NSOperation*)op;
-- (void)cancelOperationsForDevice:(DACALDevice*)oldBox;
+- (void)cancelOperationsForDevice:(DACALDeviceNode*)oldBox;
 
 - (id)dataView;
 - (void)setDataView:(TreeController*)tc;

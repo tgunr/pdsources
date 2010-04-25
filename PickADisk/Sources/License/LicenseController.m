@@ -10,6 +10,7 @@
 #import "LicenseController.h"
 #import "LicenseService.h"
 #import <AudioToolbox/AudioToolbox.h>
+#import "DACALTreeDataSource.h"
 
 //	License Controller State values
 

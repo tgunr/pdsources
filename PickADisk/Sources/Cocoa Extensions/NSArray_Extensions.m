@@ -43,6 +43,9 @@
 */
 
 #import "NSArray_Extensions.h"
+#import "NSString_Extensions.h"
+#import "SimpleTreeNode.h"
+#import "pmsDACALUtility.h"
 
 @implementation NSArray (MyExtensions)
 
@@ -77,7 +80,6 @@
 		if( workURL )
 			[urlArray addObject:workURL];
 	}
-	
 	outArray = [NSArray arrayWithArray:urlArray];
 	return outArray;
 }
@@ -96,7 +98,6 @@
 		if( workString )
 			[urlArray addObject:workString];
 	}
-	
 	outArray = [NSArray arrayWithArray:urlArray];
 	return outArray;
 }
@@ -214,7 +215,7 @@
 		else [infoString appendString:[infoItem md5String]];
 		[infoString appendString:[infoKey md5String]];
 	}
-
+	[infoKey release];
 	return [infoString md5String];
 }
 

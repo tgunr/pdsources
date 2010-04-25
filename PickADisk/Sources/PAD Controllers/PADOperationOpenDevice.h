@@ -8,7 +8,9 @@
 
 #import <Cocoa/Cocoa.h>
 #import "PADCarouselOperation.h"
-#import "SimpleTreeNode.h"
+
+@class SimpleTreeNode;
+@class DACALDeviceNode;
 
 @interface PADOperationOpenDevice : PADOperationTask {
 
@@ -18,6 +20,6 @@
 -(SimpleTreeNode*)theDeviceNode;
 -(void)setTheDeviceNode:(SimpleTreeNode*)newNode;
 
-+(BOOL)addDeviceToSourceTree:(DACALDevice*)newBox;
++(BOOL)addDeviceToSourceTree:(DACALDeviceNode*)newBox;
 
 @end

@@ -3,12 +3,14 @@
 //  DragNDropOutlineView
 //
 //  Created by Jack Small on 7/4/08.
-//  Copyright 2008 __MyCompanyName__. All rights reserved.
+//  Copyright 2008 polyMicro Systems. All rights reserved.
 //
 
 #import "TreeController.h"
 
 #import <CoreFoundation/CoreFoundation.h>
+#import "ImageAndTextCell.h"
+#import "NSOutlineView_Extensions.h"
 
 @interface TreeController(Private)
 - (void)_addNewDataToSelection:(SimpleTreeNode *)newChild;
@@ -324,6 +326,7 @@ AFTERRELOAD:
 // To get the "group row" look, we implement this method.
 - (BOOL)outlineView:ov isGroupItem:(id)item {
 	if( dataSource != nil )
+			// !!DAC-2009-12-28 - App broke here on hot plug
 		return [dataSource outlineView:ov isGroupItem:item];
 	else
 		return [[item nodeData] isGroup] && [self allowGroupRowLook];
@@ -346,7 +349,7 @@ AFTERRELOAD:
 - (void)outlineViewItemWillExpand:(NSNotification *)notification {
 	SimpleTreeNode*		theItem = [[notification userInfo] valueForKey:@"NSObject"];
 	
-	if( theItem ) 
+	if( theItem )  
 	{
 		[[theItem nodeData] setExpanded:YES];
 		[theItem sortChildrenUsingDescriptors:[[self outlineView] sortDescriptors]];
@@ -412,8 +415,7 @@ AFTERRELOAD:
 	return YES;
 }
 
-- (BOOL)outlineView:(NSTableView *)outView shouldSelectTableColumn:(NSTableColumn *)tc
-{
+- (BOOL)outlineView:(NSOutlineView *)outView shouldSelectTableColumn:(NSTableColumn *)tc {
 	if( dataSource != nil )
 		if( [dataSource performSelector:@selector(shouldSelectColumn:) withObject:tc] == 0 ) return NO;
 	return YES;

@@ -6,7 +6,13 @@
 //  Copyright 2008 Jack Small. All rights reserved.
 //
 
+#import <Cocoa/Cocoa.h>
 #import "PADSearchRequest.h"
+#import "NSApplication_Extensions.h"
+#import "NSString_Extensions.h"
+#import "NSArray_Extensions.h"
+#import "AppController.h"
+#import "DACALTreeDataSource.h"
 
 // Default # of matches before notifying target
 #define PADMATCHQUEUE_THRESHOLD		22

@@ -1,12 +1,12 @@
 //
-//  daclstrings.m
+//  dacalstrings.m
 //  PickADisk
 //
 //  Created by Dave Carlton on 07/25/09.
 //  Copyright 2009 PolyMicro Systems. All rights reserved.
 //
 
-#import "daclconstants.h"
+#import "dacalconstants.h"
 
 
 //	Externally referenced

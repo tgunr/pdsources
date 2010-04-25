@@ -41,6 +41,8 @@
 
 #import "TreeController.h"
 #import "NSOutlineView_Extensions.h"
+#import "SimpleTreeNode.h"
+#import "PADSearchRequest.h";
 
 @implementation NSOutlineView(MyExtensions)
 

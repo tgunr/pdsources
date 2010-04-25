@@ -7,17 +7,19 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "TreeNode.h"
 #import "SimpleTreeNode.h"
 #import "PADSearchRequest.h"
 
-@interface IndexNodeData : SimpleNodeData {
+PADSearchRequest* PADCreateSearchForType( OSType aType );
 
+@class PADSearchRequest;
+
+@interface IndexNodeData : SimpleNodeData {
 	PADSearchRequest*		itemSearch;
 }
 
 -(PADSearchRequest*)itemSearch;
--(void)setItemSearch:(PADSearchRequest*)newSearch;
+-(void)setItemSearch:       (PADSearchRequest*)newSearch;
 
 @end
 

@@ -3,7 +3,7 @@
 //  PickADisk
 //
 //  Created by Jack Small on 10/6/08.
-//  Copyright 2008 Jack Small. All rights reserved.
+//  Copyright 2008 PolyMicro Systems. All rights reserved.
 //
 
 #import <Cocoa/Cocoa.h>
@@ -15,6 +15,7 @@
 -(NSString*)md5String;
 
 -(float)rankWithString:(NSString*)other compareOptions:(NSStringCompareOptions)findOptions;
+
 
 +(NSString*)stringFromByteCount:(NSNumber*)inBytes;
 

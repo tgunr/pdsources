@@ -1,3 +1,10 @@
+//
+//  NSArray_Extensions.h
+//  PickADisk
+//
+//  Created by Jack Small on 10/6/08.
+//  Copyright 2008 PolyMicro Systems. All rights reserved.
+
 #import <Foundation/Foundation.h>
 
 @interface NSArray(MyExtensions)

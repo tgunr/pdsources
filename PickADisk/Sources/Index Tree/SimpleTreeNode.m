@@ -45,8 +45,12 @@
 #import "SimpleTreeNode.h"
 #import "PADIndexOperation.h"
 #import "DACALTreeDataSource.h"
+#import "DACALSlot.h"
 #import "pmsDACALUtility.h"
-
+#import "PADSearchRequest.h"
+#import "NSString_Extensions.h"
+#import "NSApplication_Extensions.h"
+#import "AppController.h"
 
 @implementation SimpleNodeData
 
@@ -551,7 +555,7 @@
 - (NSNumber*)searchForSlot:(id)other withOptions:(NSMutableDictionary*)options
 {
 	NSString*			ourSlot = [NSString stringWithFormat:@"%i", [self itemSlot]];
-	PADSearchRelevance	rank = 0.0;
+	float	rank = 0.0;
 	
 	if( ourSlot != nil )
 		rank = [ourSlot rankWithString:other compareOptions:NSNumericSearch];
@@ -594,8 +598,9 @@
 		CFTimeInterval	dayCount = [[options objectForKey:@"Days"] doubleValue];
 		CFTimeInterval	daySeconds = dayCount * 86400;
 		
-		if( other == nil ) other = [NSDate date];
-		if( ([other isKindOfClass:[NSString class]] ) && ([other compare:@"Yesterday"] == NSOrderedSame) )
+		if( other == nil ) 
+			other = [NSDate date];
+		if( ([other isKindOfClass:[NSString class]] ) && ([(NSString *)other compare:@"Yesterday"] == NSOrderedSame) )
 			other = [NSDate yesterday];
 		
 		if( (other != nil) && (ourDate != nil) )
@@ -799,7 +804,7 @@
 	CFArrayRef			folderList = NULL;
 	Boolean				wasFound = FALSE;
 	Boolean				isSlot = CFURLIsSlot( (CFURLRef)loc );
-	DACALSlotElement*	ourElement = DACALDeviceSlotElementForURL( (CFURLRef)loc );
+	DACALSlotElement*	ourElement = (DACALSlotElement *)DACALDeviceSlotElementForURL( (CFURLRef)loc );
 	DACALSlotElement*	anElement = nil;
 	
 	wasFound = CFURLCreateDataAndPropertiesFromResource(NULL, (CFURLRef)loc, NULL, &dataDict, dataProps, NULL);
@@ -932,7 +937,8 @@
 	self = ourNode;	
 
 	PADIndexOperation *indexOp = [[PADIndexOperation alloc] initWithLocation:loc forChild:ourNode];
-	if( uiQueue ) [[AppController shared] queueUIOperation:indexOp];
+	if( uiQueue ) 
+		[[AppController shared] queueUIOperation:indexOp];
 	else [[AppController shared] queueOperation:indexOp];
 
 	[indexOp release];

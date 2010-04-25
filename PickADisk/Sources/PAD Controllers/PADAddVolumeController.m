@@ -3,13 +3,19 @@
 //  PickADisc
 //
 //  Created by Jack Small on 7/7/08.
-//  Copyright 2008 __MyCompanyName__. All rights reserved.
+//  Copyright 2008 polyMicro Systems. All rights reserved.
 //
 
-//#import "pmsDACALUtility.h"
-//#import "DACALDeviceObjC.h"
+#import <Cocoa/Cocoa.h>
 #import "PADAddVolumeController.h"
+#import "NSSlider_Animation.h"
+#import "DACALSlot.h"
 #import "LicenseController.h"
+#import "DACALDeviceSerivce.h"
+#import "DACALDeviceNode.h"
+#import "AppController.h"
+#import "DACALVolume.h"
+#import "DACALVolumeService.h"
 
 @implementation PADAddVolumeController
 
@@ -150,10 +156,10 @@
 
 -(void) indexProgressComplete:(PADIndexProgressController*)progress
 {
-	int				result = [progress taskResult];
-//	DACALDeviceRef  currentBox= (DACALDeviceRef)DACALCommandCopyUUID( [carouselList indexOfSelectedItem]+1, NULL );
-//	DACALDevice*	thisDevice = DACALDeviceForDeviceRef( currentBox );
-	DACALDevice*	thisDevice = DACALDeviceForDeviceRef( [carouselList indexOfSelectedItem]+1 );
+	int					result = [progress taskResult];
+//	DACALDeviceRef		currentBox= (DACALDeviceRef)DACALCommandCopyUUID( [carouselList indexOfSelectedItem]+1, NULL );
+//	DACALDevice*		thisDevice = DACALDeviceNodeForDeviceRef( currentBox );
+	DACALDeviceNode*	thisDevice = DACALDeviceNodeForDeviceRef( [carouselList indexOfSelectedItem]+1 );
 	
 	if( (result == 0) && thisDevice )
 		[thisDevice indexedNewVolume:[self pendingVolume] forSlot:[slotNumber intValue] ofType:[slotTypeList titleOfSelectedItem] forTarget:self]; 
@@ -315,11 +321,11 @@ void MyNavEventProc (NavEventCallbackMessage callBackSelector, NavCBRecPtr callB
 	return theCount;
 }	
 
-//	Returns the DACVolume that corresponds to the volumeList NSPopUpButton
+//	Returns the DACALVolume that corresponds to the volumeList NSPopUpButton
 //	user selection
--(DACVolume*)pendingVolume
+-(DACALVolume*)pendingVolume
 { 
-	DACVolume*	currentVolume = nil;
+	DACALVolume*	currentVolume = nil;
 	int			selectedIndex = [volumeList indexOfSelectedItem] - 2;
 	
 	if( selectedIndex >= 0 )
@@ -359,7 +365,7 @@ void MyNavEventProc (NavEventCallbackMessage callBackSelector, NavCBRecPtr callB
 -(NSString*) pendingTitle
 {
 	NSString*	newTitle = nil;
-	DACVolume*	theVolume = [self pendingVolume];
+	DACALVolume*	theVolume = [self pendingVolume];
 	
 	if( theVolume != nil )
 		newTitle = [theVolume mediaTitle];
@@ -372,7 +378,7 @@ void MyNavEventProc (NavEventCallbackMessage callBackSelector, NavCBRecPtr callB
 -(NSURL*) pendingURL 
 { 
 	NSURL*		currentURL = nil;
-	DACVolume*	theVolume = [self pendingVolume];
+	DACALVolume*	theVolume = [self pendingVolume];
 	
 	if( theVolume != nil )
 		currentURL = [theVolume volumeURL];
@@ -403,7 +409,8 @@ void MyNavEventProc (NavEventCallbackMessage callBackSelector, NavCBRecPtr callB
 	[slotTypeList setEnabled: !isExistingSlot];
 	[volumeList setEnabled: !isExistingSlot];
 	[alternateTitle setEnabled: !isExistingSlot];
-	[ejectButton setHidden:([volumeList indexOfSelectedItem] < 2)];
+//	[ejectButton setHidden:([volumeList indexOfSelectedItem] < 2)];
+	[ejectButton setHidden: FALSE];
 	
 	if( !isExistingSlot )
 		[clearTitleButton setHidden:!(!isBlankBlank && !isExistingTitle)];
@@ -455,14 +462,14 @@ void MyNavEventProc (NavEventCallbackMessage callBackSelector, NavCBRecPtr callB
 		//	[volumeList selectItemAtIndex:actualIndex];
 	}
 	
-	[ejectButton setHidden: !canEject];
+//	[ejectButton setHidden: !canEject];
 }
 
 - (void)syncMediaTitles
 {
-	NSArray*		mediaVolumes = [[DACVolumeService sharedVolumeService] knownIndexableVolumes:nil];
+	NSArray*		mediaVolumes = [[DACALVolumeService sharedVolumeService] knownIndexableVolumes:nil];
 	NSEnumerator*	mediaEnum = [mediaVolumes objectEnumerator];
-	DACVolume*		workVolume = nil;
+	DACALVolume*		workVolume = nil;
 	
 	NSString*		selectedMedia = nil;
 	//Boolean			isBlankBlank = FALSE;
@@ -548,9 +555,9 @@ void MyNavEventProc (NavEventCallbackMessage callBackSelector, NavCBRecPtr callB
 	[alternateTitle		setDrawsBackground: dataItemEnabled];
 	[alternateTitle		setEditable: dataItemEnabled];
 	[alternateTitle		setEnabled: dataItemEnabled];
-	[ejectButton		setHidden: !dataItemEnabled];	
-	[clearTitleButton	setHidden: !dataItemEnabled];
-	[gotoSlotButton		setHidden: !dataItemEnabled];
+	[ejectButton		setHidden:	FALSE];	
+	[clearTitleButton	setHidden:	dataItemEnabled];
+	[gotoSlotButton		setHidden:	dataItemEnabled];
 	
 	[carouselList		setEnabled: dataItemEnabled];
 	[slotDial			setEnabled: dataItemEnabled];
@@ -627,8 +634,8 @@ void MyNavEventProc (NavEventCallbackMessage callBackSelector, NavCBRecPtr callB
 	if( [aNotice object] != indexProgressTask ) return;
 	
 	NSInteger		taskResult = [[aNotice object] terminationStatus];
-	DACALDevice*	destDevice = [[self pendingSlot] slotDevice];
-	DACVolume*		newVolume = [self pendingVolume];
+	DACALDeviceNode*	destDevice = [[self pendingSlot] slotDevice];
+	DACALVolume*		newVolume = [self pendingVolume];
 
 	[cancelButton setEnabled:NO];
 	indexProgressTask = nil;
@@ -749,7 +756,7 @@ NAVERR:
 -(IBAction) clickEject:(id)sender
 {
 	BOOL		goodE = NO;
-	DACVolume*	theV = [self pendingVolume];
+	DACALVolume*	theV = [self pendingVolume];
 	
 	if( theV )
 		goodE = [theV ejectVolume];

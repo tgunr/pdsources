@@ -7,44 +7,48 @@
 //
 
 #import "PADOperationOpenDevice.h"
-
+#import "DACALDeviceNode.h"
 
 @implementation PADOperationOpenDevice
 
--(SimpleTreeNode*)theDeviceNode
-{ return theDeviceNode; }
--(void)setTheDeviceNode:(SimpleTreeNode*)newNode
-{ theDeviceNode = newNode; }
+-(SimpleTreeNode *)theDeviceNode
+{
+	return theDeviceNode;
+}
+
+-(void)setTheDeviceNode : (SimpleTreeNode *)newNode
+{
+	theDeviceNode = newNode;
+}
 
 -(void)dealloc
 {
-	[self setTheDeviceNode:nil];
-	[self setTheBoxRef:nil];
-	
+	[self setTheDeviceNode : nil];
+	[self setTheBoxRef : nil];
+
 	[super dealloc];
 }
 
--(id)endTaskForOperation:(PADCarouselOperation*)ownerOp
-{ 
+-(id)endTaskForOperation : (PADCarouselOperation *)ownerOp
+{
 	return (id)theBoxRef;
 }
 
-+(BOOL)addDeviceToSourceTree:(DACALDevice*)newBox
++(BOOL)addDeviceToSourceTree : (DACALDeviceNode *)newBox
 {
-	PADOperationOpenDevice*	newSelf = [[PADOperationOpenDevice alloc] init];
-	
-	[newSelf setTheBoxRef:newBox];
-	[newSelf setTheDeviceNode:[newBox deviceNode]];
+	PADOperationOpenDevice * newSelf = [[PADOperationOpenDevice alloc] init];
 
-	[newSelf startNewOperationForTarget:newBox endSelector:@selector(attachedDevice:)];
-	return YES; 
+	[newSelf setTheBoxRef : newBox];
+	[newSelf setTheDeviceNode :[newBox deviceNode]];
+	[newSelf startNewOperationForTarget : newBox endSelector : @selector(attachedDevice:)];
+	return YES;
 }
 
--(BOOL)runTaskForOperation:(PADCarouselOperation*)ownerOp
+-(BOOL)runTaskForOperation : (PADCarouselOperation *)ownerOp
 {
 	[[self theBoxRef] loadSlotIndex];
-	
-	return YES; 
+
+	return YES;
 }
 
 @end

@@ -8,6 +8,9 @@
 
 #import <Cocoa/Cocoa.h>
 #import "PADCarouselOperation.h"
+#import "dacallib.h"
+
+@class DACALDeviceNode;
 
 @interface PADOperationControlDevice : PADOperationTask {
 	DACALSlotNum		workSlot;
@@ -31,8 +34,8 @@
 -(NSString*)ejectVolume;
 -(void)setEjectVolume:(NSString*)volumePath;
 
--(id)initForBox:(DACALDevice*)newBox forSlot:(DACALSlotNum)newSlot ejectVolume:(NSString*)volumePath;
+-(id)initForBox:(DACALDeviceNode*)newBox forSlot:(DACALSlotNum)newSlot ejectVolume:(NSString*)volumePath;
 
-+(PADOperationControlDevice*)finishIndexingVolume:(NSString*)volumePath forSlot:(DACALSlotNum)newSlot onDevice:(DACALDevice*)newBox forTarget:(id)theTarget;
++(PADOperationControlDevice*)finishIndexingVolume:(NSString*)volumePath forSlot:(DACALSlotNum)newSlot onDevice:(DACALDeviceNode*)newBox forTarget:(id)theTarget;
 
 @end

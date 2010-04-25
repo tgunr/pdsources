@@ -9,6 +9,14 @@
 #import <Cocoa/Cocoa.h>
 #import "PADFlavorImageView.h"
 
+@class SimpleTreeNode;
+@class PADSearchRequest;
+@class PADSearchService;
+@class AppController;
+@class DACALTreeDataSource;
+@class SimpleNodeData;
+@class DACALViewDataSource;
+
 @interface PADInspectorController : NSWindowController
 {
 	IBOutlet	NSImageView*			topIcon;
@@ -64,6 +72,8 @@
 - (void)searchStarted:(PADSearchRequest*)newSearch;
 - (void)searchFinished:(PADSearchRequest*)newSearch;
 - (void)searchDataChanged:(NSArray*)theItems;
+
+- (NSString *)windowFrameAutosaveName ;
 
 @end	//	PADInspectorController
 

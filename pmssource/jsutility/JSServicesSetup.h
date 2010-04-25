@@ -18,7 +18,7 @@
 #define		JSServicesManagerInitialServices		 [NSArray arrayWithObjects: @"PADBOXController", \
 																				@"PADLicenseService", \
 																				@"PADCrashReportService", \
-																				@"DACVolumeService", \
+																				@"DACALVolumeService", \
 																				@"DACALDeviceService", \
 																				@"PADSearchService", \
 																				nil]

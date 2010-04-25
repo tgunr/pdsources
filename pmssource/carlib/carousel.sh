@@ -1,5 +1,5 @@
 #!/bin/bash
-#  $Id$
+#  $Id: carousel.sh 443 2008-08-23 05:35:13Z jaxs $
 #
 #  Created by Dave Carlton on 2008-05-31.
 #  Copyright (c) 2008 polyMicro Systems. All rights reserved.
@@ -100,7 +100,7 @@ do
 	K ) kind="$OPTARG";;
 	L ) listslots=1;;
 	f ) findslot="$OPTARG";;
-	V ) echo '$Id$'
+	V ) echo '$Id: carousel.sh 443 2008-08-23 05:35:13Z jaxs $'
 		exit 0;;
 	R ) rename="$OPTARG" ;;
 	* ) echo "Unimplemented option chosen." 

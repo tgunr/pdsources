@@ -7,7 +7,8 @@
 //
 
 #import "PADOperationControlDevice.h"
-
+#import "DACALDeviceNode.h"
+#import "AppController.h"
 
 @implementation PADOperationControlDevice
 
@@ -63,7 +64,7 @@
 	[super dealloc];
 }
 
--(id)initForBox:(DACALDevice*)newBox forSlot:(DACALSlotNum)newSlot ejectVolume:(NSString*)volumePath
+-(id)initForBox:(DACALDeviceNode*)newBox forSlot:(DACALSlotNum)newSlot ejectVolume:(NSString*)volumePath
 {
 	if( self = [self init] )
 	{
@@ -88,7 +89,7 @@
 	return YES; 
 }
 
-+(PADOperationControlDevice*)finishIndexingVolume:(NSString*)volumePath forSlot:(DACALSlotNum)newSlot onDevice:(DACALDevice*)newBox forTarget:(id)theTarget
++(PADOperationControlDevice*)finishIndexingVolume:(NSString*)volumePath forSlot:(DACALSlotNum)newSlot onDevice:(DACALDeviceNode*)newBox forTarget:(id)theTarget
 {
 	PADOperationControlDevice*	newSelf = [[PADOperationControlDevice alloc] initForBox:newBox forSlot:newSlot ejectVolume:volumePath];
 	

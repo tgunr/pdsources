@@ -1,4 +1,5 @@
 #import <Cocoa/Cocoa.h>
+#import "pms.h"
 
 int main(int argc, const char *argv[]) {
 	int killflag, ch;
