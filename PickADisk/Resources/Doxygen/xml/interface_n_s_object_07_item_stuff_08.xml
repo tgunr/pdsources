@@ -1,0 +1,283 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.6.2">
+  <compounddef id="interface_n_s_object_07_item_stuff_08" kind="class" prot="public">
+    <compoundname>NSObject(ItemStuff)</compoundname>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="interface_n_s_object_07_item_stuff_08_1adab026851c6e7881b0a132d9b98c2847" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void NSObject(ItemStuff)::insertChildItem:atIndex:</definition>
+        <argsstring>(id item,[atIndex] NSInteger index)</argsstring>
+        <name>insertChildItem:atIndex:</name>
+        <param>
+          <type>id</type>
+          <declname>item</declname>
+        </param>
+        <param>
+          <attributes>[atIndex]</attributes>
+          <type>NSInteger</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/Item_Extensions.h" line="12"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_n_s_object_07_item_stuff_08_1aa8d0dd1809324ffbad02d3faa81ed1ac" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void NSObject(ItemStuff)::removeChildItem:</definition>
+        <argsstring>(id item)</argsstring>
+        <name>removeChildItem:</name>
+        <param>
+          <type>id</type>
+          <declname>item</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/Item_Extensions.h" line="13"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_n_s_object_07_item_stuff_08_1a2839cda4c5cb97b7d2d31aab6620da91" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void NSObject(ItemStuff)::replaceChildAtIndex:withItem:</definition>
+        <argsstring>(NSUInteger index,[withItem] id replacment)</argsstring>
+        <name>replaceChildAtIndex:withItem:</name>
+        <param>
+          <type>NSUInteger</type>
+          <declname>index</declname>
+        </param>
+        <param>
+          <attributes>[withItem]</attributes>
+          <type>id</type>
+          <declname>replacment</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/Item_Extensions.h" line="14"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_n_s_object_07_item_stuff_08_1aee77a9df12a22278f87681032fb828c5" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>id</type>
+        <definition>id NSObject(ItemStuff)::childItemAtIndex:</definition>
+        <argsstring>(NSInteger index)</argsstring>
+        <name>childItemAtIndex:</name>
+        <param>
+          <type>NSInteger</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/Item_Extensions.h" line="15"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_n_s_object_07_item_stuff_08_1a054ab2120ad46a96c1e61c78908080fa" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>NSInteger</type>
+        <definition>NSInteger NSObject(ItemStuff)::indexOfChildItem:</definition>
+        <argsstring>(id item)</argsstring>
+        <name>indexOfChildItem:</name>
+        <param>
+          <type>id</type>
+          <declname>item</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/Item_Extensions.h" line="16"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_n_s_object_07_item_stuff_08_1ae3c8e963eeaf78dbc64730a74fcabbe7" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>NSInteger</type>
+        <definition>NSInteger NSObject(ItemStuff)::numberOfChildItems</definition>
+        <argsstring>()</argsstring>
+        <name>numberOfChildItems</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/Item_Extensions.h" line="17"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_n_s_object_07_item_stuff_08_1a69e7ef2711fd61842b9d77070a992ce9" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>id</type>
+        <definition>id NSObject(ItemStuff)::itemDescription</definition>
+        <argsstring>()</argsstring>
+        <name>itemDescription</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/Item_Extensions.h" line="18"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_n_s_object_07_item_stuff_08_1a7f431bf85b628cf2d03efd1d99fd8b6e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void NSObject(ItemStuff)::setItemDescription:</definition>
+        <argsstring>(NSString *desc)</argsstring>
+        <name>setItemDescription:</name>
+        <param>
+          <type><ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+          <declname>desc</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/Item_Extensions.h" line="19"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_n_s_object_07_item_stuff_08_1a01778e9d5963ae281e97121a2295eb75" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>BOOL</type>
+        <definition>BOOL NSObject(ItemStuff)::isExpandable</definition>
+        <argsstring>()</argsstring>
+        <name>isExpandable</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/Item_Extensions.h" line="20"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_n_s_object_07_item_stuff_08_1a4d1ecfe09b70fa8d6a7070ab599b9cc0" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>BOOL</type>
+        <definition>BOOL NSObject(ItemStuff)::isLeaf</definition>
+        <argsstring>()</argsstring>
+        <name>isLeaf</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/Item_Extensions.h" line="21"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_n_s_object_07_item_stuff_08_1af513a7a09e89df9a961cb57b276b2c92" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="class_n_s_array" kindref="compound">NSArray</ref> *</type>
+        <definition>NSArray * NSObject(ItemStuff)::itemsByFlattening</definition>
+        <argsstring>()</argsstring>
+        <name>itemsByFlattening</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/Item_Extensions.h" line="22"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_n_s_object_07_item_stuff_08_1a1fdef07add725e4262971fd78a5c5cbe" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>id</type>
+        <definition>id NSObject(ItemStuff)::deepMutableCopy</definition>
+        <argsstring>()</argsstring>
+        <name>deepMutableCopy</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/Item_Extensions.h" line="23"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_n_s_object_07_item_stuff_08_1aa0803c2e181dca5c7577150629d94fec" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void NSObject(ItemStuff)::sortRecursively:</definition>
+        <argsstring>(BOOL recurse)</argsstring>
+        <name>sortRecursively:</name>
+        <param>
+          <type>BOOL</type>
+          <declname>recurse</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/Item_Extensions.h" line="27"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="interface_n_s_object_07_item_stuff_08_1a189d262d9d68628cacafbe04a6751477" prot="public" static="yes" const="no" explicit="no" inline="no" virt="virtual">
+        <type>id</type>
+        <definition>id NSObject(ItemStuff)::newGroup</definition>
+        <argsstring>()</argsstring>
+        <name>newGroup</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/Item_Extensions.h" line="24"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_n_s_object_07_item_stuff_08_1a281197c3bfb530f82f82105c6a579f2e" prot="public" static="yes" const="no" explicit="no" inline="no" virt="virtual">
+        <type>id</type>
+        <definition>id NSObject(ItemStuff)::newLeaf</definition>
+        <argsstring>()</argsstring>
+        <name>newLeaf</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/Item_Extensions.h" line="25"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_n_s_object_07_item_stuff_08_1acffdd509184567522fad15f14e0fdb4a" prot="public" static="yes" const="no" explicit="no" inline="no" virt="virtual">
+        <type>id</type>
+        <definition>id NSObject(ItemStuff)::newGroupFromLeaf:</definition>
+        <argsstring>(id leaf)</argsstring>
+        <name>newGroupFromLeaf:</name>
+        <param>
+          <type>id</type>
+          <declname>leaf</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/Item_Extensions.h" line="26"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/Item_Extensions.h" line="11" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/Item_Extensions.h" bodystart="11" bodyend="-1"/>
+    <listofallmembers>
+      <member refid="interface_n_s_object_07_item_stuff_08_1aee77a9df12a22278f87681032fb828c5" prot="public" virt="virtual"><scope>NSObject(ItemStuff)</scope><name>childItemAtIndex:</name></member>
+      <member refid="interface_n_s_object_07_item_stuff_08_1a1fdef07add725e4262971fd78a5c5cbe" prot="public" virt="virtual"><scope>NSObject(ItemStuff)</scope><name>deepMutableCopy</name></member>
+      <member refid="interface_n_s_object_07_item_stuff_08_1a054ab2120ad46a96c1e61c78908080fa" prot="public" virt="virtual"><scope>NSObject(ItemStuff)</scope><name>indexOfChildItem:</name></member>
+      <member refid="interface_n_s_object_07_item_stuff_08_1adab026851c6e7881b0a132d9b98c2847" prot="public" virt="virtual"><scope>NSObject(ItemStuff)</scope><name>insertChildItem:atIndex:</name></member>
+      <member refid="interface_n_s_object_07_item_stuff_08_1a01778e9d5963ae281e97121a2295eb75" prot="public" virt="virtual"><scope>NSObject(ItemStuff)</scope><name>isExpandable</name></member>
+      <member refid="interface_n_s_object_07_item_stuff_08_1a4d1ecfe09b70fa8d6a7070ab599b9cc0" prot="public" virt="virtual"><scope>NSObject(ItemStuff)</scope><name>isLeaf</name></member>
+      <member refid="interface_n_s_object_07_item_stuff_08_1a69e7ef2711fd61842b9d77070a992ce9" prot="public" virt="virtual"><scope>NSObject(ItemStuff)</scope><name>itemDescription</name></member>
+      <member refid="interface_n_s_object_07_item_stuff_08_1af513a7a09e89df9a961cb57b276b2c92" prot="public" virt="virtual"><scope>NSObject(ItemStuff)</scope><name>itemsByFlattening</name></member>
+      <member refid="interface_n_s_object_07_item_stuff_08_1a189d262d9d68628cacafbe04a6751477" prot="public" virt="virtual"><scope>NSObject(ItemStuff)</scope><name>newGroup</name></member>
+      <member refid="interface_n_s_object_07_item_stuff_08_1acffdd509184567522fad15f14e0fdb4a" prot="public" virt="virtual"><scope>NSObject(ItemStuff)</scope><name>newGroupFromLeaf:</name></member>
+      <member refid="interface_n_s_object_07_item_stuff_08_1a281197c3bfb530f82f82105c6a579f2e" prot="public" virt="virtual"><scope>NSObject(ItemStuff)</scope><name>newLeaf</name></member>
+      <member refid="interface_n_s_object_07_item_stuff_08_1ae3c8e963eeaf78dbc64730a74fcabbe7" prot="public" virt="virtual"><scope>NSObject(ItemStuff)</scope><name>numberOfChildItems</name></member>
+      <member refid="interface_n_s_object_07_item_stuff_08_1aa8d0dd1809324ffbad02d3faa81ed1ac" prot="public" virt="virtual"><scope>NSObject(ItemStuff)</scope><name>removeChildItem:</name></member>
+      <member refid="interface_n_s_object_07_item_stuff_08_1a2839cda4c5cb97b7d2d31aab6620da91" prot="public" virt="virtual"><scope>NSObject(ItemStuff)</scope><name>replaceChildAtIndex:withItem:</name></member>
+      <member refid="interface_n_s_object_07_item_stuff_08_1a7f431bf85b628cf2d03efd1d99fd8b6e" prot="public" virt="virtual"><scope>NSObject(ItemStuff)</scope><name>setItemDescription:</name></member>
+      <member refid="interface_n_s_object_07_item_stuff_08_1aa0803c2e181dca5c7577150629d94fec" prot="public" virt="virtual"><scope>NSObject(ItemStuff)</scope><name>sortRecursively:</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

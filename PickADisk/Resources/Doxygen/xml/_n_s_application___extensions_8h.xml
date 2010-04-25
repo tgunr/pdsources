@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.6.2">
+  <compounddef id="_n_s_application___extensions_8h" kind="file">
+    <compoundname>NSApplication_Extensions.h</compoundname>
+    <includes local="no">Cocoa/Cocoa.h</includes>
+    <includedby refid="_n_s_application___extensions_8m" local="yes">PickADisk/Sources/Cocoa Extensions/NSApplication_Extensions.m</includedby>
+    <includedby refid="_simple_tree_node_8m" local="yes">PickADisk/Sources/Index Tree/SimpleTreeNode.m</includedby>
+    <includedby refid="_p_a_d_inspector_controller_8m" local="yes">PickADisk/Sources/PAD Controllers/PADInspectorController.m</includedby>
+    <includedby refid="_p_a_d_search_request_8m" local="yes">PickADisk/Sources/PAD Controllers/PADSearchRequest.m</includedby>
+    <incdepgraph>
+      <node id="20">
+        <label>PickADisk/Sources/Cocoa Extensions/NSApplication_Extensions.h</label>
+        <link refid="NSApplication_Extensions.h"/>
+        <childnode refid="21" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>Cocoa/Cocoa.h</label>
+      </node>
+    </incdepgraph>
+    <innerclass refid="interface_n_s_date_07_my_extensions_08" prot="public">NSDate(MyExtensions)</innerclass>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="_n_s_application___extensions_8h_1ae12219ae92fcc4fdd550df6b043746ff" prot="public" static="no" mutable="no">
+        <type>const time_t</type>
+        <definition>const time_t kTimeOneDayInSeconds</definition>
+        <argsstring></argsstring>
+        <name>kTimeOneDayInSeconds</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Cocoa Extensions/NSApplication_Extensions.h" line="22" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Cocoa Extensions/NSApplication_Extensions.m" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>NSApplication_Extensions.h</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>PickADisc</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Created<sp/>by<sp/>Jack<sp/>Small<sp/>on<sp/>7/14/08.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Copyright<sp/>2008<sp/>polyMicro<sp/>Systems.<sp/>All<sp/>rights<sp/>reserved.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#import<sp/>&lt;Cocoa/Cocoa.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">@interface<sp/>NSApplication(MyExtensions)</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"></highlight></codeline>
+<codeline lineno="14"><highlight class="comment">IBOutlet<sp/>id<sp/>addVolumeController;</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"></highlight></codeline>
+<codeline lineno="16"><highlight class="comment">-<sp/>(id)addVolumeController;</highlight></codeline>
+<codeline lineno="17"><highlight class="comment">-<sp/>(void)setAddVolumeController:(id)inAVC;</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"></highlight></codeline>
+<codeline lineno="19"><highlight class="comment">@end</highlight></codeline>
+<codeline lineno="20"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><sp/><sp/><sp/>time_t<sp/><sp/>kTimeOneDayInSeconds;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24" refid="interface_n_s_date_07_my_extensions_08" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">@interface<sp/></highlight><highlight class="normal">NSDate(MyExtensions)</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal">+(NSDate*)tomorrow;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal">+(NSDate*)yesterday;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal">-(BOOL)isBetweenStartDate:(NSDate*)startDate<sp/>andEndDate:(NSDate*)endDate;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal">-(float)rankWithDate:(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)other<sp/>withOptions:(<ref refid="class_n_s_mutable_dictionary" kindref="compound">NSMutableDictionary</ref>*)options;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal">-(<ref refid="class_n_s_string" kindref="compound">NSString</ref>*)formatDateString:(<ref refid="class_n_s_string" kindref="compound">NSString</ref>*)dateFormat<sp/>useNatural:(BOOL)doNatural;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal">-(<ref refid="class_n_s_string" kindref="compound">NSString</ref>*)naturalDateString;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal">-(<ref refid="class_n_s_string" kindref="compound">NSString</ref>*)shorterDateString;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal">-(<ref refid="class_n_s_string" kindref="compound">NSString</ref>*)longerDateString;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="keyword">@end</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Cocoa Extensions/NSApplication_Extensions.h"/>
+  </compounddef>
+</doxygen>

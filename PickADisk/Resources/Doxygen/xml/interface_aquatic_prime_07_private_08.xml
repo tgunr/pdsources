@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.6.2">
+  <compounddef id="interface_aquatic_prime_07_private_08" kind="class" prot="public">
+    <compoundname>AquaticPrime(Private)</compoundname>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="interface_aquatic_prime_1a8c1e95fbedffe2a5d06b73586f958985" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void AquaticPrime(Private)::_setError:</definition>
+        <argsstring>(NSString *err)</argsstring>
+        <name>_setError:</name>
+        <param>
+          <type><ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+          <declname>err</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/AquaticPrime.h" line="74"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/AquaticPrime.h" line="73" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/AquaticPrime.h" bodystart="73" bodyend="-1"/>
+    <listofallmembers>
+      <member refid="interface_aquatic_prime_1a8c1e95fbedffe2a5d06b73586f958985" prot="public" virt="virtual"><scope>AquaticPrime(Private)</scope><name>_setError:</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

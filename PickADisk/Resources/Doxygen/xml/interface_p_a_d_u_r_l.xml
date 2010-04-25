@@ -1,0 +1,125 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.6.2">
+  <compounddef id="interface_p_a_d_u_r_l" kind="class" prot="public">
+    <compoundname>PADURL</compoundname>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="interface_p_a_d_u_r_l_1ad61c0ce8bea32636eab874338bd58586" prot="protected" static="no" mutable="no">
+        <type>BOOL</type>
+        <definition>BOOL PADURL::localValid</definition>
+        <argsstring></argsstring>
+        <name>localValid</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Cocoa Extensions/PADURL.h" line="14" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Cocoa Extensions/PADURL.h" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_p_a_d_u_r_l_1a0bff4e67bb2872cdc239c65b6c0776ba" prot="protected" static="no" mutable="no">
+        <type>FSRef</type>
+        <definition>FSRef PADURL::localRef</definition>
+        <argsstring></argsstring>
+        <name>localRef</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Cocoa Extensions/PADURL.h" line="15" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Cocoa Extensions/PADURL.h" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_p_a_d_u_r_l_1a49a52334634f9907fa7c0581f2628eb3" prot="protected" static="no" mutable="no">
+        <type>AliasHandle</type>
+        <definition>AliasHandle PADURL::localAlias</definition>
+        <argsstring></argsstring>
+        <name>localAlias</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Cocoa Extensions/PADURL.h" line="16" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Cocoa Extensions/PADURL.h" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="interface_p_a_d_u_r_l_1a37c072fa363766560d51de3de5d001ae" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>id</type>
+        <definition>id PADURL::resolve</definition>
+        <argsstring>()</argsstring>
+        <name>resolve</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Cocoa Extensions/PADURL.h" line="19" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Cocoa Extensions/PADURL.m" bodystart="20" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_p_a_d_u_r_l_1ab99102b924470b6ec5a47badf1b0d59b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>BOOL</type>
+        <definition>BOOL PADURL::localize</definition>
+        <argsstring>()</argsstring>
+        <name>localize</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Cocoa Extensions/PADURL.h" line="20" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Cocoa Extensions/PADURL.m" bodystart="43" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_p_a_d_u_r_l_1aff5e54815dffc5826628cfa3afb86f5d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>id</type>
+        <definition>id PADURL::initURLFromFileURL:</definition>
+        <argsstring>(NSURL *refURL)</argsstring>
+        <name>initURLFromFileURL:</name>
+        <param>
+          <type>NSURL *</type>
+          <declname>refURL</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Cocoa Extensions/PADURL.h" line="22" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Cocoa Extensions/PADURL.m" bodystart="59" bodyend="65"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="interface_p_a_d_u_r_l_1a37c131a12daf7ec9f77e3f525c2a5ec2" prot="public" static="yes" const="no" explicit="no" inline="no" virt="virtual">
+        <type>id</type>
+        <definition>id PADURL::padURLFromFileURL:</definition>
+        <argsstring>(NSURL *refURL)</argsstring>
+        <name>padURLFromFileURL:</name>
+        <param>
+          <type>NSURL *</type>
+          <declname>refURL</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Cocoa Extensions/PADURL.h" line="23" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Cocoa Extensions/PADURL.m" bodystart="67" bodyend="68"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Cocoa Extensions/PADURL.h" line="12" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Cocoa Extensions/PADURL.h" bodystart="12" bodyend="-1"/>
+    <listofallmembers>
+      <member refid="interface_p_a_d_u_r_l_1aff5e54815dffc5826628cfa3afb86f5d" prot="public" virt="virtual"><scope>PADURL</scope><name>initURLFromFileURL:</name></member>
+      <member refid="interface_p_a_d_u_r_l_1a49a52334634f9907fa7c0581f2628eb3" prot="protected" virt="non-virtual"><scope>PADURL</scope><name>localAlias</name></member>
+      <member refid="interface_p_a_d_u_r_l_1ab99102b924470b6ec5a47badf1b0d59b" prot="public" virt="virtual"><scope>PADURL</scope><name>localize</name></member>
+      <member refid="interface_p_a_d_u_r_l_1a0bff4e67bb2872cdc239c65b6c0776ba" prot="protected" virt="non-virtual"><scope>PADURL</scope><name>localRef</name></member>
+      <member refid="interface_p_a_d_u_r_l_1ad61c0ce8bea32636eab874338bd58586" prot="protected" virt="non-virtual"><scope>PADURL</scope><name>localValid</name></member>
+      <member refid="interface_p_a_d_u_r_l_1a37c131a12daf7ec9f77e3f525c2a5ec2" prot="public" virt="virtual"><scope>PADURL</scope><name>padURLFromFileURL:</name></member>
+      <member refid="interface_p_a_d_u_r_l_1a37c072fa363766560d51de3de5d001ae" prot="public" virt="virtual"><scope>PADURL</scope><name>resolve</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,221 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.6.2">
+  <compounddef id="_icon_family_8h" kind="file">
+    <compoundname>IconFamily.h</compoundname>
+    <includes local="no">Cocoa/Cocoa.h</includes>
+    <includes local="no">Carbon/Carbon.h</includes>
+    <includedby refid="_d_a_c_a_l_device_8m" local="yes">PickADisk/Sources/DACAL/DACALDevice.m</includedby>
+    <includedby refid="_icon_family_8m" local="yes">PickADisk/Sources/IconFamily/IconFamily.m</includedby>
+    <incdepgraph>
+      <node id="224">
+        <label>Cocoa/Cocoa.h</label>
+      </node>
+      <node id="223">
+        <label>PickADisk/Sources/IconFamily/IconFamily.h</label>
+        <link refid="IconFamily.h"/>
+        <childnode refid="224" relation="include">
+        </childnode>
+        <childnode refid="225" relation="include">
+        </childnode>
+      </node>
+      <node id="225">
+        <label>Carbon/Carbon.h</label>
+      </node>
+    </incdepgraph>
+    <innerclass refid="interface_icon_family" prot="public">IconFamily</innerclass>
+    <innerclass refid="interface_icon_family_07_scrap_additions_08" prot="public">IconFamily(ScrapAdditions)</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>IconFamily.h</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>IconFamily<sp/>class<sp/>interface</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/>by<sp/>Troy<sp/>Stephens,<sp/>Thomas<sp/>Schnitzer,<sp/>David<sp/>Remahl,<sp/>Nathan<sp/>Day,<sp/>Ben<sp/>Haller,<sp/>Sven<sp/>Janssen,<sp/>Peter<sp/>Hosey,<sp/>Conor<sp/>Dearden,<sp/>Elliot<sp/>Glaysher,<sp/>and<sp/>Dave<sp/>MacLachlan</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//<sp/>version<sp/>0.9.3</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Project<sp/>Home<sp/>Page:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>http://iconfamily.sourceforge.net/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Problems,<sp/>shortcomings,<sp/>and<sp/>uncertainties<sp/>that<sp/>I&apos;m<sp/>aware<sp/>of<sp/>are<sp/>flagged<sp/>with<sp/>&quot;NOTE:&quot;.<sp/><sp/>Please<sp/>address<sp/>bug<sp/>reports,<sp/>bug<sp/>fixes,<sp/>suggestions,<sp/>etc.<sp/>to<sp/>the<sp/>project<sp/>Forums<sp/>and<sp/>bug<sp/>tracker<sp/>at<sp/>https://sourceforge.net/projects/iconfamily/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/><sp/><sp/><sp/>Copyright<sp/>(c)<sp/>2001-2006<sp/>Troy<sp/>N.<sp/>Stephens</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/><sp/><sp/><sp/>Portions<sp/>Copyright<sp/>(c)<sp/>2007<sp/>Google<sp/>Inc.</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"></highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/><sp/><sp/><sp/>Use<sp/>and<sp/>distribution<sp/>of<sp/>this<sp/>source<sp/>code<sp/>is<sp/>governed<sp/>by<sp/>the<sp/>MIT<sp/>License,<sp/>whose<sp/>terms<sp/>are<sp/>as<sp/>follows.</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"></highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/><sp/><sp/><sp/>Permission<sp/>is<sp/>hereby<sp/>granted,<sp/>free<sp/>of<sp/>charge,<sp/>to<sp/>any<sp/>person<sp/>obtaining<sp/>a<sp/>copy<sp/>of<sp/>this<sp/>software<sp/>and<sp/>associated<sp/>documentation<sp/>files<sp/>(the<sp/>&quot;Software&quot;),<sp/>to<sp/>deal<sp/>in<sp/>the<sp/>Software<sp/>without<sp/>restriction,<sp/>including<sp/>without<sp/>limitation<sp/>the<sp/>rights<sp/>to<sp/>use,<sp/>copy,<sp/>modify,<sp/>merge,<sp/>publish,<sp/>distribute,<sp/>sublicense,<sp/>and/or<sp/>sell<sp/>copies<sp/>of<sp/>the<sp/>Software,<sp/>and<sp/>to<sp/>permit<sp/>persons<sp/>to<sp/>whom<sp/>the<sp/>Software<sp/>is<sp/>furnished<sp/>to<sp/>do<sp/>so,<sp/>subject<sp/>to<sp/>the<sp/>following<sp/>conditions:</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"></highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/><sp/><sp/><sp/>The<sp/>above<sp/>copyright<sp/>notice<sp/>and<sp/>this<sp/>permission<sp/>notice<sp/>shall<sp/>be<sp/>included<sp/>in<sp/>all<sp/>copies<sp/>or<sp/>substantial<sp/>portions<sp/>of<sp/>the<sp/>Software.</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"></highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/><sp/><sp/><sp/>THE<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>&quot;AS<sp/>IS&quot;,<sp/>WITHOUT<sp/>WARRANTY<sp/>OF<sp/>ANY<sp/>KIND,<sp/>EXPRESS<sp/>OR<sp/>IMPLIED,<sp/>INCLUDING<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO<sp/>THE<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY,<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>AND<sp/>NONINFRINGEMENT.<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>AUTHORS<sp/>OR<sp/>COPYRIGHT<sp/>HOLDERS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>CLAIM,<sp/>DAMAGES<sp/>OR<sp/>OTHER<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>AN<sp/>ACTION<sp/>OF<sp/>CONTRACT,<sp/>TORT<sp/>OR<sp/>OTHERWISE,<sp/>ARISING<sp/>FROM,<sp/>OUT<sp/>OF<sp/>OR<sp/>IN<sp/>CONNECTION<sp/>WITH<sp/>THE<sp/>SOFTWARE<sp/>OR<sp/>THE<sp/>USE<sp/>OR<sp/>OTHER<sp/>DEALINGS<sp/>IN<sp/>THE<sp/>SOFTWARE.</highlight></codeline>
+<codeline lineno="22"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#import<sp/>&lt;Cocoa/Cocoa.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#import<sp/>&lt;Carbon/Carbon.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="comment">//<sp/>This<sp/>class<sp/>is<sp/>a<sp/>Cocoa/Objective-C<sp/>wrapper<sp/>for<sp/>the<sp/>Mac<sp/>OS<sp/>X<sp/>Carbon<sp/>API&apos;s</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&quot;icon<sp/>family&quot;<sp/>data<sp/>type.<sp/><sp/>Its<sp/>main<sp/>purpose<sp/>is<sp/>to<sp/>enable<sp/>Cocoa<sp/>applications</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="comment">//<sp/>to<sp/>easily<sp/>create<sp/>custom<sp/>file<sp/>icons<sp/>from<sp/>NSImage<sp/>instances,<sp/>and<sp/>thus<sp/>take</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="comment">//<sp/>advantage<sp/>of<sp/>Mac<sp/>OS<sp/>X&apos;s<sp/>new<sp/>larger<sp/>RGBA<sp/>&quot;thumbnail&quot;<sp/>icon<sp/>format<sp/>to<sp/>provide</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="comment">//<sp/>richly<sp/>detailed<sp/>thumbnail<sp/>previews<sp/>of<sp/>the<sp/>files&apos;<sp/>contents.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Using<sp/>IconFamily,<sp/>this<sp/>becomes<sp/>as<sp/>simple<sp/>as:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/>id<sp/>iconFamily<sp/>=<sp/>[IconFamily<sp/>iconFamilyWithThumbnailsOfImage:anImage];</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/>[iconFamily<sp/>setAsCustomIconForFile:anExistingFile];</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="comment">//<sp/>You<sp/>can<sp/>also<sp/>write<sp/>an<sp/>icon<sp/>family<sp/>to<sp/>an<sp/>.icns<sp/>file<sp/>using<sp/>the<sp/>-writeToFile:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="comment">//<sp/>method.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41" refid="interface_icon_family" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">@interface<sp/></highlight><highlight class="normal"><ref refid="interface_icon_family" kindref="compound">IconFamily</ref><sp/>:<sp/><ref refid="class_n_s_object" kindref="compound">NSObject</ref></highlight></codeline>
+<codeline lineno="42"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>IconFamilyHandle<sp/>hIconFamily;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Convenience<sp/>methods.<sp/><sp/>These<sp/>use<sp/>the<sp/>corresponding<sp/>-init...<sp/>methods<sp/>to<sp/>return</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="comment">//<sp/>an<sp/>autoreleased<sp/>IconFamily<sp/>instance.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal">+<sp/>(<ref refid="interface_icon_family" kindref="compound">IconFamily</ref>*)<sp/>iconFamily;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal">+<sp/>(<ref refid="interface_icon_family" kindref="compound">IconFamily</ref>*)<sp/>iconFamilyWithContentsOfFile:(<ref refid="class_n_s_string" kindref="compound">NSString</ref>*)path;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal">+<sp/>(<ref refid="interface_icon_family" kindref="compound">IconFamily</ref>*)<sp/>iconFamilyWithIconOfFile:(<ref refid="class_n_s_string" kindref="compound">NSString</ref>*)path;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal">+<sp/>(<ref refid="interface_icon_family" kindref="compound">IconFamily</ref>*)<sp/>iconFamilyWithIconFamilyHandle:(IconFamilyHandle)hNewIconFamily;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal">+<sp/>(<ref refid="interface_icon_family" kindref="compound">IconFamily</ref>*)<sp/>iconFamilyWithSystemIcon:(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)fourByteCode;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal">+<sp/>(<ref refid="interface_icon_family" kindref="compound">IconFamily</ref>*)<sp/>iconFamilyWithThumbnailsOfImage:(<ref refid="class_n_s_image" kindref="compound">NSImage</ref>*)image;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal">+<sp/>(<ref refid="interface_icon_family" kindref="compound">IconFamily</ref>*)<sp/>iconFamilyWithThumbnailsOfImage:(<ref refid="class_n_s_image" kindref="compound">NSImage</ref>*)image<sp/>usingImageInterpolation:(NSImageInterpolation)imageInterpolation;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Initializes<sp/>as<sp/>a<sp/>new,<sp/>empty<sp/>IconFamily.<sp/><sp/>This<sp/>is<sp/>IconFamily&apos;s<sp/>designated</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="comment">//<sp/>initializer<sp/>method.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal">-<sp/>init;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Initializes<sp/>an<sp/>IconFamily<sp/>by<sp/>loading<sp/>the<sp/>contents<sp/>of<sp/>an<sp/>.icns<sp/>file.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal">-<sp/>initWithContentsOfFile:(<ref refid="class_n_s_string" kindref="compound">NSString</ref>*)path;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Initializes<sp/>an<sp/>IconFamily<sp/>from<sp/>an<sp/>existing<sp/>Carbon<sp/>IconFamilyHandle.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal">-<sp/>initWithIconFamilyHandle:(IconFamilyHandle)hNewIconFamily;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Initializes<sp/>an<sp/>IconFamily<sp/>by<sp/>loading<sp/>the<sp/>Finder<sp/>icon<sp/>that&apos;s<sp/>assigned<sp/>to<sp/>a</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight><highlight class="comment">//<sp/>file.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal">-<sp/>initWithIconOfFile:(<ref refid="class_n_s_string" kindref="compound">NSString</ref>*)path;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Initializes<sp/>an<sp/>IconFamily<sp/>by<sp/>referencing<sp/>a<sp/>standard<sp/>system<sp/>icon.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal">-<sp/>initWithSystemIcon:(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)fourByteCode;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Initializes<sp/>an<sp/>IconFamily<sp/>by<sp/>creating<sp/>its<sp/>elements<sp/>from<sp/>a<sp/>resampled</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight><highlight class="comment">//<sp/>NSImage.<sp/><sp/>The<sp/>second<sp/>form<sp/>of<sp/>this<sp/>method<sp/>allows<sp/>you<sp/>to<sp/>specify<sp/>the<sp/>degree</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight><highlight class="comment">//<sp/>of<sp/>antialiasing<sp/>to<sp/>be<sp/>used<sp/>in<sp/>resampling<sp/>the<sp/>image,<sp/>by<sp/>passing<sp/>in<sp/>one<sp/>of</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight><highlight class="comment">//<sp/>the<sp/>NSImageInterpolation...<sp/>constants<sp/>that<sp/>are<sp/>defined<sp/>in</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="comment">//<sp/>NSGraphicsContext.h.<sp/><sp/>The<sp/>first<sp/>form<sp/>of<sp/>this<sp/>initializer<sp/>simply<sp/>calls<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight><highlight class="comment">//<sp/>second<sp/>form<sp/>with<sp/>imageInterpolation<sp/>set<sp/>to<sp/>NSImageInterpolationHigh,<sp/>which</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight><highlight class="comment">//<sp/>produces<sp/>highly<sp/>smoothed<sp/>thumbnails.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal">-<sp/>initWithThumbnailsOfImage:(<ref refid="class_n_s_image" kindref="compound">NSImage</ref>*)image;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal">-<sp/>initWithThumbnailsOfImage:(<ref refid="class_n_s_image" kindref="compound">NSImage</ref>*)image<sp/>usingImageInterpolation:(NSImageInterpolation)imageInterpolation;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Writes<sp/>the<sp/>icon<sp/>family<sp/>to<sp/>an<sp/>.icns<sp/>file.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal">-<sp/>(BOOL)<sp/>writeToFile:(<ref refid="class_n_s_string" kindref="compound">NSString</ref>*)path;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Sets<sp/>the<sp/>image<sp/>data<sp/>for<sp/>one<sp/>of<sp/>the<sp/>icon<sp/>family&apos;s<sp/>elements<sp/>from<sp/>an</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight><highlight class="comment">//<sp/>NSBitmapImageRep.<sp/><sp/>The<sp/>&quot;elementType&quot;<sp/>parameter<sp/>must<sp/>be<sp/>one<sp/>of<sp/>the<sp/>icon</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight><highlight class="comment">//<sp/>family<sp/>element<sp/>types<sp/>listed<sp/>below,<sp/>and<sp/>the<sp/>format<sp/>of<sp/>the<sp/>&quot;bitmapImageRep&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight><highlight class="comment">//<sp/>must<sp/>match<sp/>the<sp/>corresponding<sp/>requirements<sp/>specified<sp/>below.<sp/><sp/>Regardless<sp/>of</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight><highlight class="comment">//<sp/>the<sp/>elementType,<sp/>the<sp/>bitmapImageRep<sp/>must<sp/>also<sp/>be<sp/>non-planar<sp/>and<sp/>have<sp/>8<sp/>bits</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight><highlight class="comment">//<sp/>per<sp/>sample.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>elementType<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dimensions<sp/><sp/><sp/>format</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>-------------------<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>----------<sp/><sp/><sp/>---------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>kIconServices512PixelDataARGB<sp/><sp/><sp/><sp/><sp/>512<sp/>x<sp/>512<sp/><sp/><sp/>32-bit<sp/>RGBA,<sp/>32-bit<sp/>RGB,<sp/>or<sp/>24-bit<sp/>RGB</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>kIconServices256PixelDataARGB<sp/><sp/><sp/><sp/><sp/>256<sp/>x<sp/>256<sp/><sp/><sp/>32-bit<sp/>RGBA,<sp/>32-bit<sp/>RGB,<sp/>or<sp/>24-bit<sp/>RGB</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>kThumbnail32BitData<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>128<sp/>x<sp/>128<sp/><sp/><sp/>32-bit<sp/>RGBA,<sp/>32-bit<sp/>RGB,<sp/>or<sp/>24-bit<sp/>RGB</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>kThumbnail8BitMask<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>128<sp/>x<sp/>128<sp/><sp/><sp/>32-bit<sp/>RGBA<sp/>or<sp/>8-bit<sp/>intensity</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>kLarge32BitData<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>32<sp/>x<sp/><sp/>32<sp/><sp/><sp/>32-bit<sp/>RGBA,<sp/>32-bit<sp/>RGB,<sp/>or<sp/>24-bit<sp/>RGB</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>kLarge8BitMask<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>32<sp/>x<sp/><sp/>32<sp/><sp/><sp/>32-bit<sp/>RGBA<sp/>or<sp/>8-bit<sp/>intensity</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>kLarge1BitMask<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>32<sp/>x<sp/><sp/>32<sp/><sp/><sp/>32-bit<sp/>RGBA,<sp/>8-bit<sp/>intensity,<sp/>or<sp/>1-bit</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>kSmall32BitData<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>16<sp/>x<sp/><sp/>16<sp/><sp/><sp/>32-bit<sp/>RGBA,<sp/>32-bit<sp/>RGB,<sp/>or<sp/>24-bit<sp/>RGB</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>kSmall8BitMask<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>16<sp/>x<sp/><sp/>16<sp/><sp/><sp/>32-bit<sp/>RGBA<sp/>or<sp/>8-bit<sp/>intensity</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>kSmall1BitMask<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>16<sp/>x<sp/><sp/>16<sp/><sp/><sp/>32-bit<sp/>RGBA,<sp/>8-bit<sp/>intensity,<sp/>or<sp/>1-bit</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight><highlight class="comment">//<sp/>When<sp/>an<sp/>RGBA<sp/>image<sp/>is<sp/>supplied<sp/>to<sp/>set<sp/>a<sp/>&quot;Mask&quot;<sp/>element,<sp/>the<sp/>mask<sp/>data<sp/>is</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight><highlight class="comment">//<sp/>taken<sp/>from<sp/>the<sp/>image&apos;s<sp/>alpha<sp/>channel.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight><highlight class="comment">//<sp/>NOTE:<sp/>Setting<sp/>an<sp/>IconFamily&apos;s<sp/>kLarge1BitMask<sp/>seems<sp/>to<sp/>damage<sp/>the<sp/>IconFamily</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/>for<sp/>some<sp/>as<sp/>yet<sp/>unknown<sp/>reason.<sp/><sp/>(If<sp/>you<sp/>then<sp/>assign<sp/>the<sp/>icon<sp/>family</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/>as<sp/>a<sp/>file&apos;s<sp/>custom<sp/>icon<sp/>using<sp/>-setAsCustomIconForFile:,<sp/>the<sp/>custom</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/>icon<sp/>doesn&apos;t<sp/>appear<sp/>for<sp/>the<sp/>file<sp/>in<sp/>the<sp/>Finder.)<sp/><sp/>However,<sp/>both</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/>custom<sp/>icon<sp/>display<sp/>and<sp/>mouse-click<sp/>hit-testing<sp/>in<sp/>the<sp/>Finder<sp/>seem<sp/>to</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/>work<sp/>fine<sp/>when<sp/>we<sp/>only<sp/>set<sp/>the<sp/>other<sp/>four<sp/>elements<sp/>(thus<sp/>keeping<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/>existing<sp/>kLarge1BitMask<sp/>from<sp/>the<sp/>valid<sp/>icon<sp/>family<sp/>from<sp/>which<sp/>we</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/>initialized<sp/>the<sp/>IconFamily<sp/>via<sp/>-initWithContentsOfFile:,<sp/>since</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/>IconFamily&apos;s<sp/>-init<sp/>method<sp/>is<sp/>currently<sp/>broken...),<sp/>so<sp/>it<sp/>seems<sp/>safe</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/>to<sp/>just<sp/>leave<sp/>the<sp/>kLarge1BitMask<sp/>alone.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal">-<sp/>(BOOL)<sp/>setIconFamilyElement:(OSType)elementType</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fromBitmapImageRep:(<ref refid="class_n_s_bitmap_image_rep" kindref="compound">NSBitmapImageRep</ref>*)bitmapImageRep;</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Gets<sp/>the<sp/>image<sp/>data<sp/>for<sp/>one<sp/>of<sp/>the<sp/>icon<sp/>family&apos;s<sp/>elements<sp/>as<sp/>a<sp/>new,<sp/>32-bit</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight><highlight class="comment">//<sp/>RGBA<sp/>NSBitmapImageRep.<sp/><sp/>The<sp/>specified<sp/>elementType<sp/>should<sp/>be<sp/>one<sp/>of</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight><highlight class="comment">//<sp/>kIconServices512PixelDataARGB,<sp/>kIconServices256PixelDataARGB,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight><highlight class="comment">//<sp/>kThumbnail32BitData,<sp/>kLarge32BitData,<sp/>or<sp/>kSmall32BitData.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight><highlight class="comment">//<sp/>The<sp/>returned<sp/>NSBitmapImageRep<sp/>will<sp/>have<sp/>the<sp/>corresponding<sp/>8-bit<sp/>mask<sp/>data</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight><highlight class="comment">//<sp/>in<sp/>its<sp/>alpha<sp/>channel,<sp/>or<sp/>a<sp/>fully<sp/>opaque<sp/>alpha<sp/>channel<sp/>if<sp/>the<sp/>icon<sp/>family</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight><highlight class="comment">//<sp/>has<sp/>no<sp/>8-bit<sp/>mask<sp/>data<sp/>for<sp/>the<sp/>specified<sp/>alpha<sp/>channel.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Returns<sp/>nil<sp/>if<sp/>the<sp/>requested<sp/>element<sp/>cannot<sp/>be<sp/>retrieved<sp/>(e.g.<sp/>if<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight><highlight class="comment">//<sp/>icon<sp/>family<sp/>has<sp/>no<sp/>such<sp/>32BitData<sp/>element).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal">-<sp/>(<ref refid="class_n_s_bitmap_image_rep" kindref="compound">NSBitmapImageRep</ref>*)<sp/>bitmapImageRepWithAlphaForIconFamilyElement:(OSType)elementType;</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Creates<sp/>and<sp/>returns<sp/>an<sp/>NSImage<sp/>that<sp/>contains<sp/>the<sp/>icon<sp/>family&apos;s<sp/>various</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight><highlight class="comment">//<sp/>elements<sp/>as<sp/>its<sp/>NSImageReps.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal">-<sp/>(<ref refid="class_n_s_image" kindref="compound">NSImage</ref>*)<sp/>imageWithAllReps;</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight><highlight class="comment">//<sp/>NOTE:<sp/>Planned<sp/>method<sp/>--<sp/>not<sp/>yet<sp/>implemented.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Gets<sp/>the<sp/>image<sp/>data<sp/>for<sp/>one<sp/>of<sp/>the<sp/>icon<sp/>family&apos;s<sp/>elements<sp/>as<sp/>a<sp/>new</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight><highlight class="comment">//<sp/>NSBitmapImageRep.<sp/><sp/>The<sp/>specified<sp/>elementType<sp/>should<sp/>be<sp/>one<sp/>of</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight><highlight class="comment">//<sp/>kThumbnail32BitData,<sp/>kThumbnail32BitMask,<sp/>kLarge32BitData,<sp/>kLarge8BitMask,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight><highlight class="comment">//<sp/>kLarge1BitMask,<sp/>kSmall32BitData,<sp/>kSmall8BitMask,<sp/>or<sp/>kSmall1BitMask.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"></highlight><highlight class="comment">//<sp/>-<sp/>(NSBitmapImageRep*)<sp/>bitmapImageRepForIconFamilyElement:(OSType)elementType;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Writes<sp/>the<sp/>icon<sp/>family<sp/>to<sp/>the<sp/>resource<sp/>fork<sp/>of<sp/>the<sp/>specified<sp/>file<sp/>as<sp/>its</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight><highlight class="comment">//<sp/>kCustomIconResource,<sp/>and<sp/>sets<sp/>the<sp/>necessary<sp/>Finder<sp/>bits<sp/>so<sp/>the<sp/>icon<sp/>will</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight><highlight class="comment">//<sp/>be<sp/>displayed<sp/>for<sp/>the<sp/>file<sp/>in<sp/>Finder<sp/>views.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal">-<sp/>(BOOL)<sp/>setAsCustomIconForFile:(<ref refid="class_n_s_string" kindref="compound">NSString</ref>*)path;</highlight></codeline>
+<codeline lineno="164"><highlight class="normal">-<sp/>(BOOL)<sp/>setAsCustomIconForFile:(<ref refid="class_n_s_string" kindref="compound">NSString</ref>*)path<sp/>withCompatibility:(BOOL)compat;</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Same<sp/>as<sp/>the<sp/>-setAsCustomIconForFile:...<sp/>methods,<sp/>but<sp/>for<sp/>folders<sp/>(directories).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal">-<sp/>(BOOL)<sp/>setAsCustomIconForDirectory:(<ref refid="class_n_s_string" kindref="compound">NSString</ref>*)path;</highlight></codeline>
+<codeline lineno="169"><highlight class="normal">-<sp/>(BOOL)<sp/>setAsCustomIconForDirectory:(<ref refid="class_n_s_string" kindref="compound">NSString</ref>*)path<sp/>withCompatibility:(BOOL)compat;</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Removes<sp/>the<sp/>custom<sp/>icon<sp/>(if<sp/>any)<sp/>from<sp/>the<sp/>specified<sp/>file&apos;s<sp/>resource<sp/>fork,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight><highlight class="comment">//<sp/>and<sp/>clears<sp/>the<sp/>necessary<sp/>Finder<sp/>bits<sp/>for<sp/>the<sp/>file.<sp/><sp/>(Note<sp/>that<sp/>this<sp/>is<sp/>a</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight><highlight class="comment">//<sp/>class<sp/>method,<sp/>so<sp/>you<sp/>don&apos;t<sp/>need<sp/>an<sp/>instance<sp/>of<sp/>IconFamily<sp/>to<sp/>invoke<sp/>it.)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal">+<sp/>(BOOL)<sp/>removeCustomIconFromFile:(<ref refid="class_n_s_string" kindref="compound">NSString</ref>*)path;</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight><highlight class="keyword">@end</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Methods<sp/>for<sp/>interfacing<sp/>with<sp/>the<sp/>Carbon<sp/>Scrap<sp/>Manager<sp/>(analogous<sp/>to<sp/>and</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"></highlight><highlight class="comment">//<sp/>interoperable<sp/>with<sp/>the<sp/>Cocoa<sp/>Pasteboard).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight><highlight class="keyword">@interface<sp/></highlight><highlight class="normal"><ref refid="interface_icon_family" kindref="compound">IconFamily</ref><sp/>(ScrapAdditions)</highlight></codeline>
+<codeline lineno="182"><highlight class="normal">+<sp/>(BOOL)<sp/>canInitWithScrap;</highlight></codeline>
+<codeline lineno="183"><highlight class="normal">+<sp/>(<ref refid="interface_icon_family" kindref="compound">IconFamily</ref>*)<sp/>iconFamilyWithScrap;</highlight></codeline>
+<codeline lineno="184"><highlight class="normal">-<sp/>initWithScrap;</highlight></codeline>
+<codeline lineno="185"><highlight class="normal">-<sp/>(BOOL)<sp/>putOnScrap;</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight><highlight class="keyword">@end</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/IconFamily/IconFamily.h"/>
+  </compounddef>
+</doxygen>

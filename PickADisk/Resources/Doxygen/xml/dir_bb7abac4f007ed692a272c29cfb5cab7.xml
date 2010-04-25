@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.6.2">
+  <compounddef id="dir_bb7abac4f007ed692a272c29cfb5cab7" kind="dir">
+    <compoundname>PickADisk/Sources/PAD Controllers/</compoundname>
+    <innerfile refid="_app_controller_8h">AppController.h</innerfile>
+    <innerfile refid="_app_controller_8m">AppController.m</innerfile>
+    <innerfile refid="_d_a_c_a_l_tree_data_source_8h">DACALTreeDataSource.h</innerfile>
+    <innerfile refid="_d_a_c_a_l_tree_data_source_8m">DACALTreeDataSource.m</innerfile>
+    <innerfile refid="_d_a_c_a_l_view_data_source_8h">DACALViewDataSource.h</innerfile>
+    <innerfile refid="_d_a_c_a_l_view_data_source_8m">DACALViewDataSource.m</innerfile>
+    <innerfile refid="_d_a_c_driver_installer_8h">DACDriverInstaller.h</innerfile>
+    <innerfile refid="_d_a_c_driver_installer_8m">DACDriverInstaller.m</innerfile>
+    <innerfile refid="_d_a_c_volume_8h">DACVolume.h</innerfile>
+    <innerfile refid="_d_a_c_volume_8m">DACVolume.m</innerfile>
+    <innerfile refid="_p_a_d_add_volume_controller_8h">PADAddVolumeController.h</innerfile>
+    <innerfile refid="_p_a_d_add_volume_controller_8m">PADAddVolumeController.m</innerfile>
+    <innerfile refid="_p_a_d_carousel_operation_8h">PADCarouselOperation.h</innerfile>
+    <innerfile refid="_p_a_d_carousel_operation_8m">PADCarouselOperation.m</innerfile>
+    <innerfile refid="_p_a_d_expanding_view_8h">PADExpandingView.h</innerfile>
+    <innerfile refid="_p_a_d_expanding_view_8m">PADExpandingView.m</innerfile>
+    <innerfile refid="_p_a_d_flavor_image_view_8h">PADFlavorImageView.h</innerfile>
+    <innerfile refid="_p_a_d_flavor_image_view_8m">PADFlavorImageView.m</innerfile>
+    <innerfile refid="_p_a_d_home_view_8h">PADHomeView.h</innerfile>
+    <innerfile refid="_p_a_d_home_view_8m">PADHomeView.m</innerfile>
+    <innerfile refid="_p_a_d_index_operation_8h">PADIndexOperation.h</innerfile>
+    <innerfile refid="_p_a_d_index_operation_8m">PADIndexOperation.m</innerfile>
+    <innerfile refid="_p_a_d_index_progress_controller_8h">PADIndexProgressController.h</innerfile>
+    <innerfile refid="_p_a_d_index_progress_controller_8m">PADIndexProgressController.m</innerfile>
+    <innerfile refid="_p_a_d_index_toolbar_controller_8h">PADIndexToolbarController.h</innerfile>
+    <innerfile refid="_p_a_d_index_toolbar_controller_8m">PADIndexToolbarController.m</innerfile>
+    <innerfile refid="_p_a_d_inspector_controller_8h">PADInspectorController.h</innerfile>
+    <innerfile refid="_p_a_d_inspector_controller_8m">PADInspectorController.m</innerfile>
+    <innerfile refid="_p_a_d_layout_view_8h">PADLayoutView.h</innerfile>
+    <innerfile refid="_p_a_d_layout_view_8m">PADLayoutView.m</innerfile>
+    <innerfile refid="_p_a_d_lifecycle_controller_8h">PADLifecycleController.h</innerfile>
+    <innerfile refid="_p_a_d_lifecycle_controller_8m">PADLifecycleController.m</innerfile>
+    <innerfile refid="_p_a_d_lifecycle_setup_8h">PADLifecycleSetup.h</innerfile>
+    <innerfile refid="_p_a_d_operation_control_device_8h">PADOperationControlDevice.h</innerfile>
+    <innerfile refid="_p_a_d_operation_control_device_8m">PADOperationControlDevice.m</innerfile>
+    <innerfile refid="_p_a_d_operation_open_device_8h">PADOperationOpenDevice.h</innerfile>
+    <innerfile refid="_p_a_d_operation_open_device_8m">PADOperationOpenDevice.m</innerfile>
+    <innerfile refid="_p_a_d_prefs_controller_8h">PADPrefsController.h</innerfile>
+    <innerfile refid="_p_a_d_prefs_controller_8m">PADPrefsController.m</innerfile>
+    <innerfile refid="_p_a_d_prefs_tree_controller_8h">PADPrefsTreeController.h</innerfile>
+    <innerfile refid="_p_a_d_prefs_tree_controller_8m">PADPrefsTreeController.m</innerfile>
+    <innerfile refid="_p_a_d_search_request_8h">PADSearchRequest.h</innerfile>
+    <innerfile refid="_p_a_d_search_request_8m">PADSearchRequest.m</innerfile>
+    <innerfile refid="_tree_controller_8h">TreeController.h</innerfile>
+    <innerfile refid="_tree_controller_8m">TreeController.m</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/"/>
+  </compounddef>
+</doxygen>

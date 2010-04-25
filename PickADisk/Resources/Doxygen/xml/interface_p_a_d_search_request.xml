@@ -1,0 +1,706 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.6.2">
+  <compounddef id="interface_p_a_d_search_request" kind="class" prot="public">
+    <compoundname>PADSearchRequest</compoundname>
+    <basecompoundref refid="class_n_s_object" prot="public" virt="non-virtual">NSObject</basecompoundref>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="interface_p_a_d_search_request_1a7e7234c8abc04a3366207123c6b8f0d4" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_n_s_array" kindref="compound">NSArray</ref> *</type>
+        <definition>NSArray* PADSearchRequest::searchLocations</definition>
+        <argsstring></argsstring>
+        <name>searchLocations</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" line="107" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" bodystart="107" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_p_a_d_search_request_1a17f3880cebae9f6820320ab8e8de36a9" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_n_s_mutable_dictionary" kindref="compound">NSMutableDictionary</ref> *</type>
+        <definition>NSMutableDictionary * PADSearchRequest::searchTermDictionary</definition>
+        <argsstring></argsstring>
+        <name>searchTermDictionary</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" line="108" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" bodystart="108" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_p_a_d_search_request_1a34b8516ef862a69f26189901e92a31aa" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_n_s_mutable_array" kindref="compound">NSMutableArray</ref> *</type>
+        <definition>NSMutableArray* PADSearchRequest::searchTermElements</definition>
+        <argsstring></argsstring>
+        <name>searchTermElements</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" line="109" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" bodystart="109" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_p_a_d_search_request_1a8d1f7b26c922237b444abeac0d35cd1b" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_n_s_mutable_array" kindref="compound">NSMutableArray</ref> *</type>
+        <definition>NSMutableArray* PADSearchRequest::searchTermOperations</definition>
+        <argsstring></argsstring>
+        <name>searchTermOperations</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" line="110" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" bodystart="110" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_p_a_d_search_request_1a520623d14d24885cd2c1e419db144b73" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_n_s_mutable_dictionary" kindref="compound">NSMutableDictionary</ref> *</type>
+        <definition>NSMutableDictionary* PADSearchRequest::searchOptions</definition>
+        <argsstring></argsstring>
+        <name>searchOptions</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" line="111" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" bodystart="111" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_p_a_d_search_request_1a4a3e08c60a5fedc4fd9cd00de0b67597" prot="protected" static="no" mutable="no">
+        <type>BOOL</type>
+        <definition>BOOL PADSearchRequest::searchingNow</definition>
+        <argsstring></argsstring>
+        <name>searchingNow</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" line="113" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" bodystart="113" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_p_a_d_search_request_1a9b9d2e7699cb35a4055295f0c6602b5e" prot="protected" static="no" mutable="no">
+        <type>BOOL</type>
+        <definition>BOOL PADSearchRequest::searchResultsDirty</definition>
+        <argsstring></argsstring>
+        <name>searchResultsDirty</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" line="114" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" bodystart="114" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_p_a_d_search_request_1a512b3a20b00a40487d5afb148560f9be" prot="protected" static="no" mutable="no">
+        <type>int</type>
+        <definition>int PADSearchRequest::searchError</definition>
+        <argsstring></argsstring>
+        <name>searchError</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" line="115" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" bodystart="115" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_p_a_d_search_request_1acb2c5ea10d1ff13bdf1e505d7d103ad2" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_n_s_mutable_array" kindref="compound">NSMutableArray</ref> *</type>
+        <definition>NSMutableArray* PADSearchRequest::searchResults</definition>
+        <argsstring></argsstring>
+        <name>searchResults</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" line="116" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" bodystart="116" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_p_a_d_search_request_1a8524a233e7befcec2c3d5709fa36baab" prot="protected" static="no" mutable="no">
+        <type>id</type>
+        <definition>id PADSearchRequest::searchTarget</definition>
+        <argsstring></argsstring>
+        <name>searchTarget</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" line="118" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" bodystart="118" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_p_a_d_search_request_1aeafcd3e89dad2c10c12f99fd2862977f" prot="protected" static="no" mutable="no">
+        <type>id</type>
+        <definition>id PADSearchRequest::searchNode</definition>
+        <argsstring></argsstring>
+        <name>searchNode</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" line="119" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" bodystart="119" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_p_a_d_search_request_1a167460e248ddc1a75bac9eb1c37d5030" prot="protected" static="no" mutable="no">
+        <type>id</type>
+        <definition>id PADSearchRequest::searchSubTree</definition>
+        <argsstring></argsstring>
+        <name>searchSubTree</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" line="120" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" bodystart="120" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_p_a_d_search_request_1ab2fa649737e0aff3724812b1060ca17f" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_n_s_mutable_array" kindref="compound">NSMutableArray</ref> *</type>
+        <definition>NSMutableArray* PADSearchRequest::searchTermParents</definition>
+        <argsstring></argsstring>
+        <name>searchTermParents</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" line="121" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" bodystart="121" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_p_a_d_search_request_1a221223d0f3608fee3829ef3a8c3812c8" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_n_s_array" kindref="compound">NSArray</ref> *</type>
+        <definition>NSArray * PADSearchRequest::searchOriginalSelection</definition>
+        <argsstring></argsstring>
+        <name>searchOriginalSelection</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" line="123" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" bodystart="123" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="interface_p_a_d_search_request_1adc3581e8fde9458584d9efab9ce5827a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void PADSearchRequest::addSearchTerm:forValue:inOrder:andConjunction:withWeight:andOptions:</definition>
+        <argsstring>(id inTerm,[forValue] id inValue,[inOrder] int order,[andConjunction] PADSearchConjunction inConj,[withWeight] float weight,[andOptions] NSDictionary *inOptions)</argsstring>
+        <name>addSearchTerm:forValue:inOrder:andConjunction:withWeight:andOptions:</name>
+        <param>
+          <type>id</type>
+          <declname>inTerm</declname>
+        </param>
+        <param>
+          <attributes>[forValue]</attributes>
+          <type>id</type>
+          <declname>inValue</declname>
+        </param>
+        <param>
+          <attributes>[inOrder]</attributes>
+          <type>int</type>
+          <declname>order</declname>
+        </param>
+        <param>
+          <attributes>[andConjunction]</attributes>
+          <type>PADSearchConjunction</type>
+          <declname>inConj</declname>
+        </param>
+        <param>
+          <attributes>[withWeight]</attributes>
+          <type>float</type>
+          <declname>weight</declname>
+        </param>
+        <param>
+          <attributes>[andOptions]</attributes>
+          <type>NSDictionary *</type>
+          <declname>inOptions</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" line="130" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.m" bodystart="478" bodyend="499"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_p_a_d_search_request_1abddd382bc655b3303e7b9b0aa4d8ce28" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="interface_p_a_d_search_request" kindref="compound">PADSearchRequest</ref> *</type>
+        <definition>PADSearchRequest * PADSearchRequest::setupSearchForTarget:onNode:andSubTree:</definition>
+        <argsstring>(id target,[onNode] id node,[andSubTree] id subTree)</argsstring>
+        <name>setupSearchForTarget:onNode:andSubTree:</name>
+        <param>
+          <type>id</type>
+          <declname>target</declname>
+        </param>
+        <param>
+          <attributes>[onNode]</attributes>
+          <type>id</type>
+          <declname>node</declname>
+        </param>
+        <param>
+          <attributes>[andSubTree]</attributes>
+          <type>id</type>
+          <declname>subTree</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" line="140" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.m" bodystart="421" bodyend="431"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_p_a_d_search_request_1a884bca36b25f83674b17fc9c94a8ca20" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="interface_p_a_d_search_request" kindref="compound">PADSearchRequest</ref> *</type>
+        <definition>PADSearchRequest * PADSearchRequest::startSearch</definition>
+        <argsstring>()</argsstring>
+        <name>startSearch</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" line="141" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.m" bodystart="433" bodyend="469"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_p_a_d_search_request_1aea35024b913f37f59a265b74421d74b8" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="class_simple_tree_node" kindref="compound">SimpleTreeNode</ref> *</type>
+        <definition>SimpleTreeNode * PADSearchRequest::resultsSubTree</definition>
+        <argsstring>()</argsstring>
+        <name>resultsSubTree</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" line="143" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.m" bodystart="283" bodyend="284"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_p_a_d_search_request_1a317d30b0be90da6af669b2f15e4dfda1" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="class_n_s_mutable_dictionary" kindref="compound">NSMutableDictionary</ref> *</type>
+        <definition>NSMutableDictionary* PADSearchRequest::searchTermDictionary</definition>
+        <argsstring>()</argsstring>
+        <name>searchTermDictionary</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" line="144"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_p_a_d_search_request_1af74a16d77b73282400bed8d420c882bb" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>id</type>
+        <definition>id PADSearchRequest::searchTarget</definition>
+        <argsstring>()</argsstring>
+        <name>searchTarget</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" line="145"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_p_a_d_search_request_1a11c372ba85be4c7f9c1ce824b4878443" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>BOOL</type>
+        <definition>BOOL PADSearchRequest::searchBusy</definition>
+        <argsstring>()</argsstring>
+        <name>searchBusy</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" line="146" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.m" bodystart="346" bodyend="358"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_p_a_d_search_request_1ac67469cf5db49466d98c151c899a2d24" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>id</type>
+        <definition>id PADSearchRequest::valueForTerm:</definition>
+        <argsstring>(id term)</argsstring>
+        <name>valueForTerm:</name>
+        <param>
+          <type>id</type>
+          <declname>term</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" line="147" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.m" bodystart="325" bodyend="335"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_p_a_d_search_request_1a40651e4f7cb06841242e89d3b555fd37" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>BOOL</type>
+        <definition>BOOL PADSearchRequest::searchResultsDirty</definition>
+        <argsstring>()</argsstring>
+        <name>searchResultsDirty</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" line="149"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_p_a_d_search_request_1ae1aa9f28e6ac5c81ab71e92de9481c4f" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void PADSearchRequest::dirtySearchResults</definition>
+        <argsstring>()</argsstring>
+        <name>dirtySearchResults</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" line="150" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.m" bodystart="340" bodyend="341"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_p_a_d_search_request_1aef930688591d92a61484ea70131e5bdc" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="class_n_s_array" kindref="compound">NSArray</ref> *</type>
+        <definition>NSArray* PADSearchRequest::searchOriginalSelection</definition>
+        <argsstring>()</argsstring>
+        <name>searchOriginalSelection</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" line="152"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_p_a_d_search_request_1ad484db82d63b6a25a0e106a76e6d67d3" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void PADSearchRequest::setSearchOriginalSelection:</definition>
+        <argsstring>(NSArray *selection)</argsstring>
+        <name>setSearchOriginalSelection:</name>
+        <param>
+          <type><ref refid="class_n_s_array" kindref="compound">NSArray</ref> *</type>
+          <declname>selection</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" line="153" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.m" bodystart="292" bodyend="300"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_p_a_d_search_request_1a534a61c4fe3b3147a235cb66daf54413" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void PADSearchRequest::createTermsForKeys</definition>
+        <argsstring>()</argsstring>
+        <name>createTermsForKeys</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" line="156" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.m" bodystart="501" bodyend="536"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_p_a_d_search_request_1a1adcef1fb3370b72e992c4c2153c1b18" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void PADSearchRequest::searchDataChanged:</definition>
+        <argsstring>(NSArray *theItems)</argsstring>
+        <name>searchDataChanged:</name>
+        <param>
+          <type><ref refid="class_n_s_array" kindref="compound">NSArray</ref> *</type>
+          <declname>theItems</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" line="157" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.m" bodystart="538" bodyend="544"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_p_a_d_search_request_1a9e2c4d890b5817cd6b8a13257bcbc47e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>id</type>
+        <definition>id PADSearchRequest::initSearchInLocations:andOptions:</definition>
+        <argsstring>(NSArray *inLocs,[andOptions] NSDictionary *inOptions)</argsstring>
+        <name>initSearchInLocations:andOptions:</name>
+        <param>
+          <type><ref refid="class_n_s_array" kindref="compound">NSArray</ref> *</type>
+          <declname>inLocs</declname>
+        </param>
+        <param>
+          <attributes>[andOptions]</attributes>
+          <type>NSDictionary *</type>
+          <declname>inOptions</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" line="160" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.m" bodystart="547" bodyend="568"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="interface_p_a_d_search_request_1a5a7ede86983d26f46e158d7a271a7127" prot="public" static="yes" const="no" explicit="no" inline="no" virt="virtual">
+        <type>id</type>
+        <definition>id PADSearchRequest::searchCarouselsForStars:resultType:</definition>
+        <argsstring>(NSString *inUTI,[resultType] const NSString *inType)</argsstring>
+        <name>searchCarouselsForStars:resultType:</name>
+        <param>
+          <type><ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+          <declname>inUTI</declname>
+        </param>
+        <param>
+          <attributes>[resultType]</attributes>
+          <type>const <ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+          <declname>inType</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" line="162" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.m" bodystart="570" bodyend="581"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_p_a_d_search_request_1a6783ebbf86246a870cee0b97f4169ab0" prot="public" static="yes" const="no" explicit="no" inline="no" virt="virtual">
+        <type>id</type>
+        <definition>id PADSearchRequest::searchCarouselsForFileUTI:resultType:</definition>
+        <argsstring>(NSString *inUTI,[resultType] const NSString *inType)</argsstring>
+        <name>searchCarouselsForFileUTI:resultType:</name>
+        <param>
+          <type><ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+          <declname>inUTI</declname>
+        </param>
+        <param>
+          <attributes>[resultType]</attributes>
+          <type>const <ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+          <declname>inType</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" line="163" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.m" bodystart="583" bodyend="594"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_p_a_d_search_request_1a2632a4dfa98cdadfabb155774c28c815" prot="public" static="yes" const="no" explicit="no" inline="no" virt="virtual">
+        <type>id</type>
+        <definition>id PADSearchRequest::searchCarouselsForDateAddedBeforeDays:ofDate:resultType:</definition>
+        <argsstring>(NSTimeInterval inDays,[ofDate] id inDate,[resultType] const NSString *inType)</argsstring>
+        <name>searchCarouselsForDateAddedBeforeDays:ofDate:resultType:</name>
+        <param>
+          <type>NSTimeInterval</type>
+          <declname>inDays</declname>
+        </param>
+        <param>
+          <attributes>[ofDate]</attributes>
+          <type>id</type>
+          <declname>inDate</declname>
+        </param>
+        <param>
+          <attributes>[resultType]</attributes>
+          <type>const <ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+          <declname>inType</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" line="164" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.m" bodystart="596" bodyend="611"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_p_a_d_search_request_1abefcb9e9036957bdcf7340d3abdbb34a" prot="public" static="yes" const="no" explicit="no" inline="no" virt="virtual">
+        <type>id</type>
+        <definition>id PADSearchRequest::searchCarouselsForCheckedInOutBeforeDays:ofDate:resultType:</definition>
+        <argsstring>(NSTimeInterval inDays,[ofDate] id inDate,[resultType] const NSString *inType)</argsstring>
+        <name>searchCarouselsForCheckedInOutBeforeDays:ofDate:resultType:</name>
+        <param>
+          <type>NSTimeInterval</type>
+          <declname>inDays</declname>
+        </param>
+        <param>
+          <attributes>[ofDate]</attributes>
+          <type>id</type>
+          <declname>inDate</declname>
+        </param>
+        <param>
+          <attributes>[resultType]</attributes>
+          <type>const <ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+          <declname>inType</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" line="165" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.m" bodystart="613" bodyend="628"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_p_a_d_search_request_1a64df2efa033335b14a6bcac99c749b22" prot="public" static="yes" const="no" explicit="no" inline="no" virt="virtual">
+        <type>id</type>
+        <definition>id PADSearchRequest::searchCarouselsForKind:resultType:</definition>
+        <argsstring>(NSString *inTerm,[resultType] const NSString *inType)</argsstring>
+        <name>searchCarouselsForKind:resultType:</name>
+        <param>
+          <type><ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+          <declname>inTerm</declname>
+        </param>
+        <param>
+          <attributes>[resultType]</attributes>
+          <type>const <ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+          <declname>inType</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" line="166" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.m" bodystart="630" bodyend="641"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_p_a_d_search_request_1a604066f43bc5824c034518cd56c600fc" prot="public" static="yes" const="no" explicit="no" inline="no" virt="virtual">
+        <type>id</type>
+        <definition>id PADSearchRequest::searchCarouselsForTitle:resultType:</definition>
+        <argsstring>(NSString *inKind,[resultType] const NSString *inType)</argsstring>
+        <name>searchCarouselsForTitle:resultType:</name>
+        <param>
+          <type><ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+          <declname>inKind</declname>
+        </param>
+        <param>
+          <attributes>[resultType]</attributes>
+          <type>const <ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+          <declname>inType</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" line="167" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.m" bodystart="656" bodyend="667"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_p_a_d_search_request_1ac954f195881be848c46f985f9f84f895" prot="public" static="yes" const="no" explicit="no" inline="no" virt="virtual">
+        <type>id</type>
+        <definition>id PADSearchRequest::searchCarouselsForTerm:</definition>
+        <argsstring>(NSString *inTerm)</argsstring>
+        <name>searchCarouselsForTerm:</name>
+        <param>
+          <type><ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+          <declname>inTerm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" line="168" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.m" bodystart="669" bodyend="684"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="356">
+        <label>PADSearchRequest</label>
+        <link refid="interface_p_a_d_search_request"/>
+        <childnode refid="357" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="357">
+        <label>NSObject</label>
+        <link refid="class_n_s_object"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="361">
+        <label>NSMutableArray</label>
+        <link refid="class_n_s_mutable_array"/>
+      </node>
+      <node id="358">
+        <label>PADSearchRequest</label>
+        <link refid="interface_p_a_d_search_request"/>
+        <childnode refid="359" relation="public-inheritance">
+        </childnode>
+        <childnode refid="360" relation="usage">
+          <edgelabel>searchOptions</edgelabel>
+          <edgelabel>searchTermDictionary</edgelabel>
+        </childnode>
+        <childnode refid="361" relation="usage">
+          <edgelabel>searchTermParents</edgelabel>
+          <edgelabel>searchResults</edgelabel>
+          <edgelabel>searchTermOperations</edgelabel>
+          <edgelabel>searchTermElements</edgelabel>
+        </childnode>
+        <childnode refid="362" relation="usage">
+          <edgelabel>searchLocations</edgelabel>
+          <edgelabel>searchOriginalSelection</edgelabel>
+        </childnode>
+      </node>
+      <node id="362">
+        <label>NSArray</label>
+        <link refid="class_n_s_array"/>
+      </node>
+      <node id="360">
+        <label>NSMutableDictionary</label>
+        <link refid="class_n_s_mutable_dictionary"/>
+      </node>
+      <node id="359">
+        <label>NSObject</label>
+        <link refid="class_n_s_object"/>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" line="105" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" bodystart="105" bodyend="-1"/>
+    <listofallmembers>
+      <member refid="interface_p_a_d_search_request_1adc3581e8fde9458584d9efab9ce5827a" prot="public" virt="virtual"><scope>PADSearchRequest</scope><name>addSearchTerm:forValue:inOrder:andConjunction:withWeight:andOptions:</name></member>
+      <member refid="interface_p_a_d_search_request_1a534a61c4fe3b3147a235cb66daf54413" prot="public" virt="virtual"><scope>PADSearchRequest</scope><name>createTermsForKeys</name></member>
+      <member refid="interface_p_a_d_search_request_1ae1aa9f28e6ac5c81ab71e92de9481c4f" prot="public" virt="virtual"><scope>PADSearchRequest</scope><name>dirtySearchResults</name></member>
+      <member refid="interface_p_a_d_search_request_1a9e2c4d890b5817cd6b8a13257bcbc47e" prot="public" virt="virtual"><scope>PADSearchRequest</scope><name>initSearchInLocations:andOptions:</name></member>
+      <member refid="interface_p_a_d_search_request_1aea35024b913f37f59a265b74421d74b8" prot="public" virt="virtual"><scope>PADSearchRequest</scope><name>resultsSubTree</name></member>
+      <member refid="interface_p_a_d_search_request_1a11c372ba85be4c7f9c1ce824b4878443" prot="public" virt="virtual"><scope>PADSearchRequest</scope><name>searchBusy</name></member>
+      <member refid="interface_p_a_d_search_request_1abefcb9e9036957bdcf7340d3abdbb34a" prot="public" virt="virtual"><scope>PADSearchRequest</scope><name>searchCarouselsForCheckedInOutBeforeDays:ofDate:resultType:</name></member>
+      <member refid="interface_p_a_d_search_request_1a2632a4dfa98cdadfabb155774c28c815" prot="public" virt="virtual"><scope>PADSearchRequest</scope><name>searchCarouselsForDateAddedBeforeDays:ofDate:resultType:</name></member>
+      <member refid="interface_p_a_d_search_request_1a6783ebbf86246a870cee0b97f4169ab0" prot="public" virt="virtual"><scope>PADSearchRequest</scope><name>searchCarouselsForFileUTI:resultType:</name></member>
+      <member refid="interface_p_a_d_search_request_1a64df2efa033335b14a6bcac99c749b22" prot="public" virt="virtual"><scope>PADSearchRequest</scope><name>searchCarouselsForKind:resultType:</name></member>
+      <member refid="interface_p_a_d_search_request_1a5a7ede86983d26f46e158d7a271a7127" prot="public" virt="virtual"><scope>PADSearchRequest</scope><name>searchCarouselsForStars:resultType:</name></member>
+      <member refid="interface_p_a_d_search_request_1ac954f195881be848c46f985f9f84f895" prot="public" virt="virtual"><scope>PADSearchRequest</scope><name>searchCarouselsForTerm:</name></member>
+      <member refid="interface_p_a_d_search_request_1a604066f43bc5824c034518cd56c600fc" prot="public" virt="virtual"><scope>PADSearchRequest</scope><name>searchCarouselsForTitle:resultType:</name></member>
+      <member refid="interface_p_a_d_search_request_1a1adcef1fb3370b72e992c4c2153c1b18" prot="public" virt="virtual"><scope>PADSearchRequest</scope><name>searchDataChanged:</name></member>
+      <member refid="interface_p_a_d_search_request_1a512b3a20b00a40487d5afb148560f9be" prot="protected" virt="non-virtual"><scope>PADSearchRequest</scope><name>searchError</name></member>
+      <member refid="interface_p_a_d_search_request_1a4a3e08c60a5fedc4fd9cd00de0b67597" prot="protected" virt="non-virtual"><scope>PADSearchRequest</scope><name>searchingNow</name></member>
+      <member refid="interface_p_a_d_search_request_1a7e7234c8abc04a3366207123c6b8f0d4" prot="protected" virt="non-virtual"><scope>PADSearchRequest</scope><name>searchLocations</name></member>
+      <member refid="interface_p_a_d_search_request_1aeafcd3e89dad2c10c12f99fd2862977f" prot="protected" virt="non-virtual"><scope>PADSearchRequest</scope><name>searchNode</name></member>
+      <member refid="interface_p_a_d_search_request_1a520623d14d24885cd2c1e419db144b73" prot="protected" virt="non-virtual"><scope>PADSearchRequest</scope><name>searchOptions</name></member>
+      <member refid="interface_p_a_d_search_request_1a221223d0f3608fee3829ef3a8c3812c8" prot="protected" virt="non-virtual"><scope>PADSearchRequest</scope><name>searchOriginalSelection</name></member>
+      <member refid="interface_p_a_d_search_request_1aef930688591d92a61484ea70131e5bdc" prot="public" virt="virtual"><scope>PADSearchRequest</scope><name>searchOriginalSelection</name></member>
+      <member refid="interface_p_a_d_search_request_1acb2c5ea10d1ff13bdf1e505d7d103ad2" prot="protected" virt="non-virtual"><scope>PADSearchRequest</scope><name>searchResults</name></member>
+      <member refid="interface_p_a_d_search_request_1a9b9d2e7699cb35a4055295f0c6602b5e" prot="protected" virt="non-virtual"><scope>PADSearchRequest</scope><name>searchResultsDirty</name></member>
+      <member refid="interface_p_a_d_search_request_1a40651e4f7cb06841242e89d3b555fd37" prot="public" virt="virtual"><scope>PADSearchRequest</scope><name>searchResultsDirty</name></member>
+      <member refid="interface_p_a_d_search_request_1a167460e248ddc1a75bac9eb1c37d5030" prot="protected" virt="non-virtual"><scope>PADSearchRequest</scope><name>searchSubTree</name></member>
+      <member refid="interface_p_a_d_search_request_1a8524a233e7befcec2c3d5709fa36baab" prot="protected" virt="non-virtual"><scope>PADSearchRequest</scope><name>searchTarget</name></member>
+      <member refid="interface_p_a_d_search_request_1af74a16d77b73282400bed8d420c882bb" prot="public" virt="virtual"><scope>PADSearchRequest</scope><name>searchTarget</name></member>
+      <member refid="interface_p_a_d_search_request_1a17f3880cebae9f6820320ab8e8de36a9" prot="protected" virt="non-virtual"><scope>PADSearchRequest</scope><name>searchTermDictionary</name></member>
+      <member refid="interface_p_a_d_search_request_1a317d30b0be90da6af669b2f15e4dfda1" prot="public" virt="virtual"><scope>PADSearchRequest</scope><name>searchTermDictionary</name></member>
+      <member refid="interface_p_a_d_search_request_1a34b8516ef862a69f26189901e92a31aa" prot="protected" virt="non-virtual"><scope>PADSearchRequest</scope><name>searchTermElements</name></member>
+      <member refid="interface_p_a_d_search_request_1a8d1f7b26c922237b444abeac0d35cd1b" prot="protected" virt="non-virtual"><scope>PADSearchRequest</scope><name>searchTermOperations</name></member>
+      <member refid="interface_p_a_d_search_request_1ab2fa649737e0aff3724812b1060ca17f" prot="protected" virt="non-virtual"><scope>PADSearchRequest</scope><name>searchTermParents</name></member>
+      <member refid="interface_p_a_d_search_request_1ad484db82d63b6a25a0e106a76e6d67d3" prot="public" virt="virtual"><scope>PADSearchRequest</scope><name>setSearchOriginalSelection:</name></member>
+      <member refid="interface_p_a_d_search_request_1abddd382bc655b3303e7b9b0aa4d8ce28" prot="public" virt="virtual"><scope>PADSearchRequest</scope><name>setupSearchForTarget:onNode:andSubTree:</name></member>
+      <member refid="interface_p_a_d_search_request_1a884bca36b25f83674b17fc9c94a8ca20" prot="public" virt="virtual"><scope>PADSearchRequest</scope><name>startSearch</name></member>
+      <member refid="interface_p_a_d_search_request_1ac67469cf5db49466d98c151c899a2d24" prot="public" virt="virtual"><scope>PADSearchRequest</scope><name>valueForTerm:</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

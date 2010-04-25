@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.6.2">
+  <compounddef id="interface_p_a_d_inspector_controller_panel" kind="class" prot="public">
+    <compoundname>PADInspectorControllerPanel</compoundname>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="interface_p_a_d_inspector_controller_panel_1a927686e7130b98b4030c6d56a0f7ea4a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>NSUndoManager *</type>
+        <definition>NSUndoManager * PADInspectorControllerPanel::undoManager</definition>
+        <argsstring>()</argsstring>
+        <name>undoManager</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADInspectorController.h" line="85" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADInspectorController.m" bodystart="491" bodyend="492"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADInspectorController.h" line="81" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADInspectorController.h" bodystart="80" bodyend="-1"/>
+    <listofallmembers>
+      <member refid="interface_p_a_d_inspector_controller_panel_1a927686e7130b98b4030c6d56a0f7ea4a" prot="public" virt="virtual"><scope>PADInspectorControllerPanel</scope><name>undoManager</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

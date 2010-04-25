@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.6.2">
+  <compounddef id="interface_n_s_slider_cell_07_slider_animation_08" kind="class" prot="public">
+    <compoundname>NSSliderCell(SliderAnimation)</compoundname>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="interface_n_s_slider_cell_07_slider_animation_08_1a00136ad45116dba56318899c250e7d96" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>IBAction</type>
+        <definition>IBAction NSSliderCell(SliderAnimation)::animateToFloatValueFrom:</definition>
+        <argsstring>(id sender)</argsstring>
+        <name>animateToFloatValueFrom:</name>
+        <param>
+          <type>id</type>
+          <declname>sender</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Cocoa Extensions/NSSlider_Animation.h" line="21"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_n_s_slider_cell_07_slider_animation_08_1af83645f7a535641498acce94d4d09c67" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void NSSliderCell(SliderAnimation)::animateToFloatValue:allowsTicksOnly:</definition>
+        <argsstring>(float newValue,[allowsTicksOnly] BOOL ticksOnly)</argsstring>
+        <name>animateToFloatValue:allowsTicksOnly:</name>
+        <param>
+          <type>float</type>
+          <declname>newValue</declname>
+        </param>
+        <param>
+          <attributes>[allowsTicksOnly]</attributes>
+          <type>BOOL</type>
+          <declname>ticksOnly</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Cocoa Extensions/NSSlider_Animation.h" line="22"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Cocoa Extensions/NSSlider_Animation.h" line="19" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Cocoa Extensions/NSSlider_Animation.h" bodystart="19" bodyend="-1"/>
+    <listofallmembers>
+      <member refid="interface_n_s_slider_cell_07_slider_animation_08_1af83645f7a535641498acce94d4d09c67" prot="public" virt="virtual"><scope>NSSliderCell(SliderAnimation)</scope><name>animateToFloatValue:allowsTicksOnly:</name></member>
+      <member refid="interface_n_s_slider_cell_07_slider_animation_08_1a00136ad45116dba56318899c250e7d96" prot="public" virt="virtual"><scope>NSSliderCell(SliderAnimation)</scope><name>animateToFloatValueFrom:</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

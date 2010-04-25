@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.6.2">
+  <compounddef id="interface_n_s_string_07_carbon_f_s_ref_creation_08" kind="class" prot="public">
+    <compoundname>NSString(CarbonFSRefCreation)</compoundname>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="interface_n_s_string_07_carbon_f_s_ref_creation_08_1a3e65152d41e37bc3c7fb5e8eb374a622" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>BOOL</type>
+        <definition>BOOL NSString(CarbonFSRefCreation)::getFSRef:createFileIfNecessary:</definition>
+        <argsstring>(FSRef *fsRef,[createFileIfNecessary] BOOL createFile)</argsstring>
+        <name>getFSRef:createFileIfNecessary:</name>
+        <param>
+          <type>FSRef *</type>
+          <declname>fsRef</declname>
+        </param>
+        <param>
+          <attributes>[createFileIfNecessary]</attributes>
+          <type>BOOL</type>
+          <declname>createFile</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/IconFamily/NSString+CarbonFSRefCreation.h" line="23"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/IconFamily/NSString+CarbonFSRefCreation.h" line="16" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/IconFamily/NSString+CarbonFSRefCreation.h" bodystart="16" bodyend="-1"/>
+    <listofallmembers>
+      <member refid="interface_n_s_string_07_carbon_f_s_ref_creation_08_1a3e65152d41e37bc3c7fb5e8eb374a622" prot="public" virt="virtual"><scope>NSString(CarbonFSRefCreation)</scope><name>getFSRef:createFileIfNecessary:</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

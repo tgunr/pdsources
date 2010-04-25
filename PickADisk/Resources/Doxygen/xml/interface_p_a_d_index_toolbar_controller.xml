@@ -1,0 +1,984 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.6.2">
+  <compounddef id="interface_p_a_d_index_toolbar_controller" kind="class" prot="public">
+    <compoundname>PADIndexToolbarController</compoundname>
+    <basecompoundref refid="class_n_s_object" prot="public" virt="non-virtual">NSObject</basecompoundref>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="interface_p_a_d_index_toolbar_controller_1aa19cd7a683261d2342a6f43daef0e2f4" prot="protected" static="no" mutable="no">
+        <type>IBOutlet NSToolbar *</type>
+        <definition>IBOutlet NSToolbar* PADIndexToolbarController::indexToolbar</definition>
+        <argsstring></argsstring>
+        <name>indexToolbar</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" line="18" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_p_a_d_index_toolbar_controller_1a98a67cc9011c62717207de4bbe970a16" prot="protected" static="no" mutable="no">
+        <type>IBOutlet NSButton *</type>
+        <definition>IBOutlet NSButton* PADIndexToolbarController::resetButton</definition>
+        <argsstring></argsstring>
+        <name>resetButton</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" line="20" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_p_a_d_index_toolbar_controller_1a3347f623e76313156d019870a2ab33bf" prot="protected" static="no" mutable="no">
+        <type>IBOutlet NSButton *</type>
+        <definition>IBOutlet NSButton* PADIndexToolbarController::playButton</definition>
+        <argsstring></argsstring>
+        <name>playButton</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" line="21" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_p_a_d_index_toolbar_controller_1a7d78e72552237628acd92e047f1f0b3d" prot="protected" static="no" mutable="no">
+        <type>IBOutlet NSButton *</type>
+        <definition>IBOutlet NSButton* PADIndexToolbarController::checkOutButton</definition>
+        <argsstring></argsstring>
+        <name>checkOutButton</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" line="22" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_p_a_d_index_toolbar_controller_1ac5a6787d086c3bdda5a490f514c661dd" prot="protected" static="no" mutable="no">
+        <type>IBOutlet NSButton *</type>
+        <definition>IBOutlet NSButton* PADIndexToolbarController::checkInButton</definition>
+        <argsstring></argsstring>
+        <name>checkInButton</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" line="23" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_p_a_d_index_toolbar_controller_1a8dade78690aac6ae6a218077d12aa949" prot="protected" static="no" mutable="no">
+        <type>IBOutlet NSButton *</type>
+        <definition>IBOutlet NSButton* PADIndexToolbarController::closeDoorButton</definition>
+        <argsstring></argsstring>
+        <name>closeDoorButton</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" line="24" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_p_a_d_index_toolbar_controller_1aabdbf7f7044a0380c2eb473c23961393" prot="protected" static="no" mutable="no">
+        <type>IBOutlet NSButton *</type>
+        <definition>IBOutlet NSButton* PADIndexToolbarController::assignButton</definition>
+        <argsstring></argsstring>
+        <name>assignButton</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" line="25" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_p_a_d_index_toolbar_controller_1ab54aa1c0c7f0d7616f3410a224506bbb" prot="protected" static="no" mutable="no">
+        <type>IBOutlet NSButton *</type>
+        <definition>IBOutlet NSButton* PADIndexToolbarController::unassignButton</definition>
+        <argsstring></argsstring>
+        <name>unassignButton</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" line="26" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_p_a_d_index_toolbar_controller_1aaf656c793ffd4775eee35cb85b5bcd37" prot="protected" static="no" mutable="no">
+        <type>IBOutlet NSButton *</type>
+        <definition>IBOutlet NSButton* PADIndexToolbarController::ejectButton</definition>
+        <argsstring></argsstring>
+        <name>ejectButton</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" line="27" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_p_a_d_index_toolbar_controller_1a1ccb7acd8d19dc4eb6804ed54683f2eb" prot="protected" static="no" mutable="no">
+        <type>IBOutlet NSButton *</type>
+        <definition>IBOutlet NSButton* PADIndexToolbarController::gotoButton</definition>
+        <argsstring></argsstring>
+        <name>gotoButton</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" line="28" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_p_a_d_index_toolbar_controller_1a388c2f5872c7627d2e5d007beccf584e" prot="protected" static="no" mutable="no">
+        <type>IBOutlet NSToolbarItem *</type>
+        <definition>IBOutlet NSToolbarItem* PADIndexToolbarController::printButton</definition>
+        <argsstring></argsstring>
+        <name>printButton</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" line="29" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_p_a_d_index_toolbar_controller_1a9b6d7daabec9fd47765427d3ca737389" prot="protected" static="no" mutable="no">
+        <type>IBOutlet NSToolbarItem *</type>
+        <definition>IBOutlet NSToolbarItem* PADIndexToolbarController::inspectorButton</definition>
+        <argsstring></argsstring>
+        <name>inspectorButton</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" line="30" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_p_a_d_index_toolbar_controller_1a4e9dfb209399a5da6b8369965f21247f" prot="protected" static="no" mutable="no">
+        <type>IBOutlet NSImageView *</type>
+        <definition>IBOutlet NSImageView* PADIndexToolbarController::noBoxIcon</definition>
+        <argsstring></argsstring>
+        <name>noBoxIcon</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" line="32" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_p_a_d_index_toolbar_controller_1a31c6c6a4a367c3750121906db1cf9212" prot="protected" static="no" mutable="no">
+        <type>IBOutlet NSSearchField *</type>
+        <definition>IBOutlet NSSearchField* PADIndexToolbarController::searchField</definition>
+        <argsstring></argsstring>
+        <name>searchField</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" line="34" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_p_a_d_index_toolbar_controller_1a01dd72c235d60032feb3962fc99be28d" prot="protected" static="no" mutable="no">
+        <type>IBOutlet NSSearchField *</type>
+        <definition>IBOutlet NSSearchField* PADIndexToolbarController::homeSearchField</definition>
+        <argsstring></argsstring>
+        <name>homeSearchField</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" line="35" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_p_a_d_index_toolbar_controller_1abb009bb0f79b5a25f1a96bb633ac3cb8" prot="protected" static="no" mutable="no">
+        <type>IBOutlet NSProgressIndicator *</type>
+        <definition>NSProgressIndicator * PADIndexToolbarController::busyProgress</definition>
+        <argsstring></argsstring>
+        <name>busyProgress</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" line="37" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_p_a_d_index_toolbar_controller_1aa6161a0b8ae0c517d674ed5c3710ac8f" prot="protected" static="no" mutable="no">
+        <type>IBOutlet NSPathControl *</type>
+        <definition>IBOutlet NSPathControl* PADIndexToolbarController::pathControl</definition>
+        <argsstring></argsstring>
+        <name>pathControl</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" line="39" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_p_a_d_index_toolbar_controller_1aff3d53ad50ee1866bb99b42ebdd51750" prot="protected" static="no" mutable="no">
+        <type>IBOutlet id</type>
+        <definition>IBOutlet id PADIndexToolbarController::indexController</definition>
+        <argsstring></argsstring>
+        <name>indexController</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" line="41" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_p_a_d_index_toolbar_controller_1a3b2a98084a5e18fa51e982dc89482a87" prot="protected" static="no" mutable="no">
+        <type>IBOutlet id</type>
+        <definition>IBOutlet id PADIndexToolbarController::dataController</definition>
+        <argsstring></argsstring>
+        <name>dataController</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" line="42" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_p_a_d_index_toolbar_controller_1a35a4c3dbb37c435e5117f4d9cc51abae" prot="protected" static="no" mutable="no">
+        <type>IBOutlet id</type>
+        <definition>IBOutlet id PADIndexToolbarController::addVolumeController</definition>
+        <argsstring></argsstring>
+        <name>addVolumeController</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" line="43" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_p_a_d_index_toolbar_controller_1a1814d1c63f09b3a10786158de49692e7" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_n_s_mutable_array" kindref="compound">NSMutableArray</ref> *</type>
+        <definition>NSMutableArray * PADIndexToolbarController::selectedDevices</definition>
+        <argsstring></argsstring>
+        <name>selectedDevices</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" line="46" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_p_a_d_index_toolbar_controller_1ad3b05daf261af8bc39f45e2e82590c84" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_n_s_mutable_array" kindref="compound">NSMutableArray</ref> *</type>
+        <definition>NSMutableArray * PADIndexToolbarController::selectedNodes</definition>
+        <argsstring></argsstring>
+        <name>selectedNodes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" line="48" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_p_a_d_index_toolbar_controller_1a015053d95fabf358d8e602454a99f9cf" prot="protected" static="no" mutable="no">
+        <type>BOOL</type>
+        <definition>BOOL PADIndexToolbarController::hasBoxes</definition>
+        <argsstring></argsstring>
+        <name>hasBoxes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" line="50" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="interface_p_a_d_index_toolbar_controller_1af90f14e5279985289aad7cf59d1e3a17" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>IBAction</type>
+        <definition>IBAction PADIndexToolbarController::clickReset:</definition>
+        <argsstring>(id sender)</argsstring>
+        <name>clickReset:</name>
+        <param>
+          <type>id</type>
+          <declname>sender</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" line="53" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.m" bodystart="333" bodyend="347"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_p_a_d_index_toolbar_controller_1ad5824c87fc16ceba12d0285a2420f979" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>IBAction</type>
+        <definition>IBAction PADIndexToolbarController::clickPlay:</definition>
+        <argsstring>(id sender)</argsstring>
+        <name>clickPlay:</name>
+        <param>
+          <type>id</type>
+          <declname>sender</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" line="54" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.m" bodystart="349" bodyend="367"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_p_a_d_index_toolbar_controller_1afdee4a0c3ae64552836859c6625505e8" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>IBAction</type>
+        <definition>IBAction PADIndexToolbarController::clickCheckOut:</definition>
+        <argsstring>(id sender)</argsstring>
+        <name>clickCheckOut:</name>
+        <param>
+          <type>id</type>
+          <declname>sender</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" line="55" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.m" bodystart="369" bodyend="410"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_p_a_d_index_toolbar_controller_1abbd4602173fcb7ad8ae331954eee65b3" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>IBAction</type>
+        <definition>IBAction PADIndexToolbarController::clickCheckIn:</definition>
+        <argsstring>(id sender)</argsstring>
+        <name>clickCheckIn:</name>
+        <param>
+          <type>id</type>
+          <declname>sender</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" line="56" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.m" bodystart="412" bodyend="431"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_p_a_d_index_toolbar_controller_1acccb61c0bfd1d70194102cfa5a2858fe" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>IBAction</type>
+        <definition>IBAction PADIndexToolbarController::clickCloseDoor:</definition>
+        <argsstring>(id sender)</argsstring>
+        <name>clickCloseDoor:</name>
+        <param>
+          <type>id</type>
+          <declname>sender</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" line="57" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.m" bodystart="433" bodyend="447"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_p_a_d_index_toolbar_controller_1a9d440aa890ff2ae071a67e4c3d38e88c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>IBAction</type>
+        <definition>IBAction PADIndexToolbarController::clickAssign:</definition>
+        <argsstring>(id sender)</argsstring>
+        <name>clickAssign:</name>
+        <param>
+          <type>id</type>
+          <declname>sender</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" line="58" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.m" bodystart="455" bodyend="459"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_p_a_d_index_toolbar_controller_1a0abb7d023aff7be8c4cd0579638d8100" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>IBAction</type>
+        <definition>IBAction PADIndexToolbarController::clickUnassign:</definition>
+        <argsstring>(id sender)</argsstring>
+        <name>clickUnassign:</name>
+        <param>
+          <type>id</type>
+          <declname>sender</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" line="59" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.m" bodystart="540" bodyend="541"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_p_a_d_index_toolbar_controller_1a7f60eb666046ff536fe770108518a279" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>IBAction</type>
+        <definition>IBAction PADIndexToolbarController::clickIdentify:</definition>
+        <argsstring>(id sender)</argsstring>
+        <name>clickIdentify:</name>
+        <param>
+          <type>id</type>
+          <declname>sender</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" line="60" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.m" bodystart="461" bodyend="463"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_p_a_d_index_toolbar_controller_1afe95b23361af138daca3e9a2c78fa66a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>IBAction</type>
+        <definition>IBAction PADIndexToolbarController::clickPrintReport:</definition>
+        <argsstring>(id sender)</argsstring>
+        <name>clickPrintReport:</name>
+        <param>
+          <type>id</type>
+          <declname>sender</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" line="61" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.m" bodystart="546" bodyend="547"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_p_a_d_index_toolbar_controller_1a1ec5d4e58000dbf9c1c25e5f6a7197d1" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>IBAction</type>
+        <definition>IBAction PADIndexToolbarController::clickGotoSlot:</definition>
+        <argsstring>(id sender)</argsstring>
+        <name>clickGotoSlot:</name>
+        <param>
+          <type>id</type>
+          <declname>sender</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" line="62" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.m" bodystart="543" bodyend="544"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_p_a_d_index_toolbar_controller_1a3746389f72b7daf2aff2eb76af04722e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>IBAction</type>
+        <definition>IBAction PADIndexToolbarController::clickEject:</definition>
+        <argsstring>(id sender)</argsstring>
+        <name>clickEject:</name>
+        <param>
+          <type>id</type>
+          <declname>sender</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" line="63" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.m" bodystart="549" bodyend="558"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_p_a_d_index_toolbar_controller_1a8e24ab0f162ae56ec3a54fe41ed57c54" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>IBAction</type>
+        <definition>IBAction PADIndexToolbarController::clickOpen:</definition>
+        <argsstring>(id sender)</argsstring>
+        <name>clickOpen:</name>
+        <param>
+          <type>id</type>
+          <declname>sender</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" line="64" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.m" bodystart="560" bodyend="561"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_p_a_d_index_toolbar_controller_1aa774602ec026bfc8a6b4bf261b241c2c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>IBAction</type>
+        <definition>IBAction PADIndexToolbarController::clickInspector:</definition>
+        <argsstring>(id sender)</argsstring>
+        <name>clickInspector:</name>
+        <param>
+          <type>id</type>
+          <declname>sender</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" line="65" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.m" bodystart="563" bodyend="566"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_p_a_d_index_toolbar_controller_1a1a6fa44b80345732be66cba96995a566" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>IBAction</type>
+        <definition>IBAction PADIndexToolbarController::searchAction:</definition>
+        <argsstring>(id sender)</argsstring>
+        <name>searchAction:</name>
+        <param>
+          <type>id</type>
+          <declname>sender</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" line="66" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.m" bodystart="594" bodyend="692"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_p_a_d_index_toolbar_controller_1a0c3a4e5be62e77e33bb71aea5100d95a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>IBAction</type>
+        <definition>IBAction PADIndexToolbarController::homeSearchAction:</definition>
+        <argsstring>(id sender)</argsstring>
+        <name>homeSearchAction:</name>
+        <param>
+          <type>id</type>
+          <declname>sender</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" line="67" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.m" bodystart="694" bodyend="698"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_p_a_d_index_toolbar_controller_1aa98f109493b563af0c19db66215748b3" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>IBAction</type>
+        <definition>IBAction PADIndexToolbarController::provideFeedback:</definition>
+        <argsstring>(id sender)</argsstring>
+        <name>provideFeedback:</name>
+        <param>
+          <type>id</type>
+          <declname>sender</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" line="68" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.m" bodystart="568" bodyend="571"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_p_a_d_index_toolbar_controller_1af1b5be31f2bf2f2d022b7ad4b52327b1" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void PADIndexToolbarController::unassignNodes:</definition>
+        <argsstring>(NSArray *nodesToDelete)</argsstring>
+        <name>unassignNodes:</name>
+        <param>
+          <type><ref refid="class_n_s_array" kindref="compound">NSArray</ref> *</type>
+          <declname>nodesToDelete</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" line="71" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.m" bodystart="501" bodyend="537"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_p_a_d_index_toolbar_controller_1a94f497cd8499b43f7fdb75d181d1d9b0" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>BOOL</type>
+        <definition>BOOL PADIndexToolbarController::allowCheck:</definition>
+        <argsstring>(BOOL inOrOut)</argsstring>
+        <name>allowCheck:</name>
+        <param>
+          <type>BOOL</type>
+          <declname>inOrOut</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" line="73" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.m" bodystart="130" bodyend="148"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_p_a_d_index_toolbar_controller_1af277d56af6ed297df30b64a84278eb03" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>BOOL</type>
+        <definition>BOOL PADIndexToolbarController::nodesContainMountedSlotVolumes:</definition>
+        <argsstring>(NSArray *nodeArray)</argsstring>
+        <name>nodesContainMountedSlotVolumes:</name>
+        <param>
+          <type><ref refid="class_n_s_array" kindref="compound">NSArray</ref> *</type>
+          <declname>nodeArray</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" line="74" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.m" bodystart="151" bodyend="163"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_p_a_d_index_toolbar_controller_1a216a1ef3c65acb743c1108052974553a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>BOOL</type>
+        <definition>BOOL PADIndexToolbarController::countUsedSlots:</definition>
+        <argsstring>(NSInteger *slotCount)</argsstring>
+        <name>countUsedSlots:</name>
+        <param>
+          <type>NSInteger *</type>
+          <declname>slotCount</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" line="75" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.m" bodystart="279" bodyend="280"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_p_a_d_index_toolbar_controller_1a410c818610522f86d0ad72f0ef550991" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+        <definition>NSString * PADIndexToolbarController::checkedOutTitle</definition>
+        <argsstring>()</argsstring>
+        <name>checkedOutTitle</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" line="77" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.m" bodystart="191" bodyend="228"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_p_a_d_index_toolbar_controller_1a5e6a0eba58bbe72a2abbeb1cfaa83b45" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void PADIndexToolbarController::reportNoDevice:</definition>
+        <argsstring>(BOOL hasBox)</argsstring>
+        <name>reportNoDevice:</name>
+        <param>
+          <type>BOOL</type>
+          <declname>hasBox</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" line="78" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.m" bodystart="322" bodyend="328"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_p_a_d_index_toolbar_controller_1acc796ffd1b5d90cfcfe6a3742e0eb740" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>BOOL</type>
+        <definition>BOOL PADIndexToolbarController::validateMenuItem:</definition>
+        <argsstring>(NSMenuItem *item)</argsstring>
+        <name>validateMenuItem:</name>
+        <param>
+          <type>NSMenuItem *</type>
+          <declname>item</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" line="79" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.m" bodystart="70" bodyend="98"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_p_a_d_index_toolbar_controller_1a89e4c309961fcc5efe9680bccae85fb0" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>NSProgressIndicator *</type>
+        <definition>NSProgressIndicator* PADIndexToolbarController::busyProgress</definition>
+        <argsstring>()</argsstring>
+        <name>busyProgress</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" line="81"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_p_a_d_index_toolbar_controller_1a63988a49715a1b2c382628c4691f783d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="class_n_s_mutable_array" kindref="compound">NSMutableArray</ref> *</type>
+        <definition>NSMutableArray* PADIndexToolbarController::selectedDevices</definition>
+        <argsstring>()</argsstring>
+        <name>selectedDevices</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" line="83"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_p_a_d_index_toolbar_controller_1ac49a4edcfbb8046b31982b552e313423" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void PADIndexToolbarController::setSelectedDevices:</definition>
+        <argsstring>(NSMutableArray *deviceList)</argsstring>
+        <name>setSelectedDevices:</name>
+        <param>
+          <type><ref refid="class_n_s_mutable_array" kindref="compound">NSMutableArray</ref> *</type>
+          <declname>deviceList</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" line="84" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.m" bodystart="705" bodyend="713"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_p_a_d_index_toolbar_controller_1ade7ba4c6b881dbe0e2481a4d78a11865" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void PADIndexToolbarController::setSelectedDevice:adoptSelection:</definition>
+        <argsstring>(DACALDeviceRef theDevice,[adoptSelection] BOOL doAdopt)</argsstring>
+        <name>setSelectedDevice:adoptSelection:</name>
+        <param>
+          <type>DACALDeviceRef</type>
+          <declname>theDevice</declname>
+        </param>
+        <param>
+          <attributes>[adoptSelection]</attributes>
+          <type>BOOL</type>
+          <declname>doAdopt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" line="85" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.m" bodystart="726" bodyend="733"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_p_a_d_index_toolbar_controller_1a5ff9e738ca66a1f7f0a08b046b4c4de4" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void PADIndexToolbarController::addSelectedDevice:adoptSelection:</definition>
+        <argsstring>(DACALDeviceRef theDevice,[adoptSelection] BOOL doAdopt)</argsstring>
+        <name>addSelectedDevice:adoptSelection:</name>
+        <param>
+          <type>DACALDeviceRef</type>
+          <declname>theDevice</declname>
+        </param>
+        <param>
+          <attributes>[adoptSelection]</attributes>
+          <type>BOOL</type>
+          <declname>doAdopt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" line="86" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.m" bodystart="715" bodyend="724"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_p_a_d_index_toolbar_controller_1add6a30ce5aa00d29cb2e15bf22fdb0c0" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="class_n_s_mutable_array" kindref="compound">NSMutableArray</ref> *</type>
+        <definition>NSMutableArray* PADIndexToolbarController::selectedNodes</definition>
+        <argsstring>()</argsstring>
+        <name>selectedNodes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" line="92"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_p_a_d_index_toolbar_controller_1ab6c469981793e31575b179106db5f2cc" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void PADIndexToolbarController::setSelectedNodes:</definition>
+        <argsstring>(NSMutableArray *nodeList)</argsstring>
+        <name>setSelectedNodes:</name>
+        <param>
+          <type><ref refid="class_n_s_mutable_array" kindref="compound">NSMutableArray</ref> *</type>
+          <declname>nodeList</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" line="93" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.m" bodystart="766" bodyend="773"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_p_a_d_index_toolbar_controller_1a9a7ff6d145788d01db85cb3e3e812e96" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void PADIndexToolbarController::setSelectedNode:adoptSelection:</definition>
+        <argsstring>(SimpleTreeNode *theNode,[adoptSelection] BOOL doAdopt)</argsstring>
+        <name>setSelectedNode:adoptSelection:</name>
+        <param>
+          <type><ref refid="class_simple_tree_node" kindref="compound">SimpleTreeNode</ref> *</type>
+          <declname>theNode</declname>
+        </param>
+        <param>
+          <attributes>[adoptSelection]</attributes>
+          <type>BOOL</type>
+          <declname>doAdopt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" line="94" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.m" bodystart="790" bodyend="798"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_p_a_d_index_toolbar_controller_1aa3ccaa5b0baed27d71a9871ad1fb188a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void PADIndexToolbarController::addSelectedNode:adoptSelection:</definition>
+        <argsstring>(SimpleTreeNode *theNode,[adoptSelection] BOOL doAdopt)</argsstring>
+        <name>addSelectedNode:adoptSelection:</name>
+        <param>
+          <type><ref refid="class_simple_tree_node" kindref="compound">SimpleTreeNode</ref> *</type>
+          <declname>theNode</declname>
+        </param>
+        <param>
+          <attributes>[adoptSelection]</attributes>
+          <type>BOOL</type>
+          <declname>doAdopt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" line="95" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.m" bodystart="775" bodyend="788"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_p_a_d_index_toolbar_controller_1a3c540e8e72a539aa11590914919ddd5b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void PADIndexToolbarController::resetSelectedNodesAndAdoptSelection:</definition>
+        <argsstring>(BOOL doAdopt)</argsstring>
+        <name>resetSelectedNodesAndAdoptSelection:</name>
+        <param>
+          <type>BOOL</type>
+          <declname>doAdopt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" line="96" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.m" bodystart="811" bodyend="814"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_p_a_d_index_toolbar_controller_1af7d1719f9b2687edfe52975e5bb84600" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void PADIndexToolbarController::resetSelection</definition>
+        <argsstring>()</argsstring>
+        <name>resetSelection</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" line="98" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.m" bodystart="816" bodyend="822"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="280">
+        <label>PADIndexToolbarController</label>
+        <link refid="interface_p_a_d_index_toolbar_controller"/>
+        <childnode refid="281" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="281">
+        <label>NSObject</label>
+        <link refid="class_n_s_object"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="284">
+        <label>NSMutableArray</label>
+        <link refid="class_n_s_mutable_array"/>
+      </node>
+      <node id="282">
+        <label>PADIndexToolbarController</label>
+        <link refid="interface_p_a_d_index_toolbar_controller"/>
+        <childnode refid="283" relation="public-inheritance">
+        </childnode>
+        <childnode refid="284" relation="usage">
+          <edgelabel>selectedNodes</edgelabel>
+          <edgelabel>selectedDevices</edgelabel>
+        </childnode>
+      </node>
+      <node id="283">
+        <label>NSObject</label>
+        <link refid="class_n_s_object"/>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" line="16" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h" bodystart="16" bodyend="-1"/>
+    <listofallmembers>
+      <member refid="interface_p_a_d_index_toolbar_controller_1a5ff9e738ca66a1f7f0a08b046b4c4de4" prot="public" virt="virtual"><scope>PADIndexToolbarController</scope><name>addSelectedDevice:adoptSelection:</name></member>
+      <member refid="interface_p_a_d_index_toolbar_controller_1aa3ccaa5b0baed27d71a9871ad1fb188a" prot="public" virt="virtual"><scope>PADIndexToolbarController</scope><name>addSelectedNode:adoptSelection:</name></member>
+      <member refid="interface_p_a_d_index_toolbar_controller_1a35a4c3dbb37c435e5117f4d9cc51abae" prot="protected" virt="non-virtual"><scope>PADIndexToolbarController</scope><name>addVolumeController</name></member>
+      <member refid="interface_p_a_d_index_toolbar_controller_1a94f497cd8499b43f7fdb75d181d1d9b0" prot="public" virt="virtual"><scope>PADIndexToolbarController</scope><name>allowCheck:</name></member>
+      <member refid="interface_p_a_d_index_toolbar_controller_1aabdbf7f7044a0380c2eb473c23961393" prot="protected" virt="non-virtual"><scope>PADIndexToolbarController</scope><name>assignButton</name></member>
+      <member refid="interface_p_a_d_index_toolbar_controller_1abb009bb0f79b5a25f1a96bb633ac3cb8" prot="protected" virt="non-virtual"><scope>PADIndexToolbarController</scope><name>busyProgress</name></member>
+      <member refid="interface_p_a_d_index_toolbar_controller_1a89e4c309961fcc5efe9680bccae85fb0" prot="public" virt="virtual"><scope>PADIndexToolbarController</scope><name>busyProgress</name></member>
+      <member refid="interface_p_a_d_index_toolbar_controller_1a410c818610522f86d0ad72f0ef550991" prot="public" virt="virtual"><scope>PADIndexToolbarController</scope><name>checkedOutTitle</name></member>
+      <member refid="interface_p_a_d_index_toolbar_controller_1ac5a6787d086c3bdda5a490f514c661dd" prot="protected" virt="non-virtual"><scope>PADIndexToolbarController</scope><name>checkInButton</name></member>
+      <member refid="interface_p_a_d_index_toolbar_controller_1a7d78e72552237628acd92e047f1f0b3d" prot="protected" virt="non-virtual"><scope>PADIndexToolbarController</scope><name>checkOutButton</name></member>
+      <member refid="interface_p_a_d_index_toolbar_controller_1a9d440aa890ff2ae071a67e4c3d38e88c" prot="public" virt="virtual"><scope>PADIndexToolbarController</scope><name>clickAssign:</name></member>
+      <member refid="interface_p_a_d_index_toolbar_controller_1abbd4602173fcb7ad8ae331954eee65b3" prot="public" virt="virtual"><scope>PADIndexToolbarController</scope><name>clickCheckIn:</name></member>
+      <member refid="interface_p_a_d_index_toolbar_controller_1afdee4a0c3ae64552836859c6625505e8" prot="public" virt="virtual"><scope>PADIndexToolbarController</scope><name>clickCheckOut:</name></member>
+      <member refid="interface_p_a_d_index_toolbar_controller_1acccb61c0bfd1d70194102cfa5a2858fe" prot="public" virt="virtual"><scope>PADIndexToolbarController</scope><name>clickCloseDoor:</name></member>
+      <member refid="interface_p_a_d_index_toolbar_controller_1a3746389f72b7daf2aff2eb76af04722e" prot="public" virt="virtual"><scope>PADIndexToolbarController</scope><name>clickEject:</name></member>
+      <member refid="interface_p_a_d_index_toolbar_controller_1a1ec5d4e58000dbf9c1c25e5f6a7197d1" prot="public" virt="virtual"><scope>PADIndexToolbarController</scope><name>clickGotoSlot:</name></member>
+      <member refid="interface_p_a_d_index_toolbar_controller_1a7f60eb666046ff536fe770108518a279" prot="public" virt="virtual"><scope>PADIndexToolbarController</scope><name>clickIdentify:</name></member>
+      <member refid="interface_p_a_d_index_toolbar_controller_1aa774602ec026bfc8a6b4bf261b241c2c" prot="public" virt="virtual"><scope>PADIndexToolbarController</scope><name>clickInspector:</name></member>
+      <member refid="interface_p_a_d_index_toolbar_controller_1a8e24ab0f162ae56ec3a54fe41ed57c54" prot="public" virt="virtual"><scope>PADIndexToolbarController</scope><name>clickOpen:</name></member>
+      <member refid="interface_p_a_d_index_toolbar_controller_1ad5824c87fc16ceba12d0285a2420f979" prot="public" virt="virtual"><scope>PADIndexToolbarController</scope><name>clickPlay:</name></member>
+      <member refid="interface_p_a_d_index_toolbar_controller_1afe95b23361af138daca3e9a2c78fa66a" prot="public" virt="virtual"><scope>PADIndexToolbarController</scope><name>clickPrintReport:</name></member>
+      <member refid="interface_p_a_d_index_toolbar_controller_1af90f14e5279985289aad7cf59d1e3a17" prot="public" virt="virtual"><scope>PADIndexToolbarController</scope><name>clickReset:</name></member>
+      <member refid="interface_p_a_d_index_toolbar_controller_1a0abb7d023aff7be8c4cd0579638d8100" prot="public" virt="virtual"><scope>PADIndexToolbarController</scope><name>clickUnassign:</name></member>
+      <member refid="interface_p_a_d_index_toolbar_controller_1a8dade78690aac6ae6a218077d12aa949" prot="protected" virt="non-virtual"><scope>PADIndexToolbarController</scope><name>closeDoorButton</name></member>
+      <member refid="interface_p_a_d_index_toolbar_controller_1a216a1ef3c65acb743c1108052974553a" prot="public" virt="virtual"><scope>PADIndexToolbarController</scope><name>countUsedSlots:</name></member>
+      <member refid="interface_p_a_d_index_toolbar_controller_1a3b2a98084a5e18fa51e982dc89482a87" prot="protected" virt="non-virtual"><scope>PADIndexToolbarController</scope><name>dataController</name></member>
+      <member refid="interface_p_a_d_index_toolbar_controller_1aaf656c793ffd4775eee35cb85b5bcd37" prot="protected" virt="non-virtual"><scope>PADIndexToolbarController</scope><name>ejectButton</name></member>
+      <member refid="interface_p_a_d_index_toolbar_controller_1a1ccb7acd8d19dc4eb6804ed54683f2eb" prot="protected" virt="non-virtual"><scope>PADIndexToolbarController</scope><name>gotoButton</name></member>
+      <member refid="interface_p_a_d_index_toolbar_controller_1a015053d95fabf358d8e602454a99f9cf" prot="protected" virt="non-virtual"><scope>PADIndexToolbarController</scope><name>hasBoxes</name></member>
+      <member refid="interface_p_a_d_index_toolbar_controller_1a0c3a4e5be62e77e33bb71aea5100d95a" prot="public" virt="virtual"><scope>PADIndexToolbarController</scope><name>homeSearchAction:</name></member>
+      <member refid="interface_p_a_d_index_toolbar_controller_1a01dd72c235d60032feb3962fc99be28d" prot="protected" virt="non-virtual"><scope>PADIndexToolbarController</scope><name>homeSearchField</name></member>
+      <member refid="interface_p_a_d_index_toolbar_controller_1aff3d53ad50ee1866bb99b42ebdd51750" prot="protected" virt="non-virtual"><scope>PADIndexToolbarController</scope><name>indexController</name></member>
+      <member refid="interface_p_a_d_index_toolbar_controller_1aa19cd7a683261d2342a6f43daef0e2f4" prot="protected" virt="non-virtual"><scope>PADIndexToolbarController</scope><name>indexToolbar</name></member>
+      <member refid="interface_p_a_d_index_toolbar_controller_1a9b6d7daabec9fd47765427d3ca737389" prot="protected" virt="non-virtual"><scope>PADIndexToolbarController</scope><name>inspectorButton</name></member>
+      <member refid="interface_p_a_d_index_toolbar_controller_1a4e9dfb209399a5da6b8369965f21247f" prot="protected" virt="non-virtual"><scope>PADIndexToolbarController</scope><name>noBoxIcon</name></member>
+      <member refid="interface_p_a_d_index_toolbar_controller_1af277d56af6ed297df30b64a84278eb03" prot="public" virt="virtual"><scope>PADIndexToolbarController</scope><name>nodesContainMountedSlotVolumes:</name></member>
+      <member refid="interface_p_a_d_index_toolbar_controller_1aa6161a0b8ae0c517d674ed5c3710ac8f" prot="protected" virt="non-virtual"><scope>PADIndexToolbarController</scope><name>pathControl</name></member>
+      <member refid="interface_p_a_d_index_toolbar_controller_1a3347f623e76313156d019870a2ab33bf" prot="protected" virt="non-virtual"><scope>PADIndexToolbarController</scope><name>playButton</name></member>
+      <member refid="interface_p_a_d_index_toolbar_controller_1a388c2f5872c7627d2e5d007beccf584e" prot="protected" virt="non-virtual"><scope>PADIndexToolbarController</scope><name>printButton</name></member>
+      <member refid="interface_p_a_d_index_toolbar_controller_1aa98f109493b563af0c19db66215748b3" prot="public" virt="virtual"><scope>PADIndexToolbarController</scope><name>provideFeedback:</name></member>
+      <member refid="interface_p_a_d_index_toolbar_controller_1a5e6a0eba58bbe72a2abbeb1cfaa83b45" prot="public" virt="virtual"><scope>PADIndexToolbarController</scope><name>reportNoDevice:</name></member>
+      <member refid="interface_p_a_d_index_toolbar_controller_1a98a67cc9011c62717207de4bbe970a16" prot="protected" virt="non-virtual"><scope>PADIndexToolbarController</scope><name>resetButton</name></member>
+      <member refid="interface_p_a_d_index_toolbar_controller_1a3c540e8e72a539aa11590914919ddd5b" prot="public" virt="virtual"><scope>PADIndexToolbarController</scope><name>resetSelectedNodesAndAdoptSelection:</name></member>
+      <member refid="interface_p_a_d_index_toolbar_controller_1af7d1719f9b2687edfe52975e5bb84600" prot="public" virt="virtual"><scope>PADIndexToolbarController</scope><name>resetSelection</name></member>
+      <member refid="interface_p_a_d_index_toolbar_controller_1a1a6fa44b80345732be66cba96995a566" prot="public" virt="virtual"><scope>PADIndexToolbarController</scope><name>searchAction:</name></member>
+      <member refid="interface_p_a_d_index_toolbar_controller_1a31c6c6a4a367c3750121906db1cf9212" prot="protected" virt="non-virtual"><scope>PADIndexToolbarController</scope><name>searchField</name></member>
+      <member refid="interface_p_a_d_index_toolbar_controller_1a1814d1c63f09b3a10786158de49692e7" prot="protected" virt="non-virtual"><scope>PADIndexToolbarController</scope><name>selectedDevices</name></member>
+      <member refid="interface_p_a_d_index_toolbar_controller_1a63988a49715a1b2c382628c4691f783d" prot="public" virt="virtual"><scope>PADIndexToolbarController</scope><name>selectedDevices</name></member>
+      <member refid="interface_p_a_d_index_toolbar_controller_1ad3b05daf261af8bc39f45e2e82590c84" prot="protected" virt="non-virtual"><scope>PADIndexToolbarController</scope><name>selectedNodes</name></member>
+      <member refid="interface_p_a_d_index_toolbar_controller_1add6a30ce5aa00d29cb2e15bf22fdb0c0" prot="public" virt="virtual"><scope>PADIndexToolbarController</scope><name>selectedNodes</name></member>
+      <member refid="interface_p_a_d_index_toolbar_controller_1ade7ba4c6b881dbe0e2481a4d78a11865" prot="public" virt="virtual"><scope>PADIndexToolbarController</scope><name>setSelectedDevice:adoptSelection:</name></member>
+      <member refid="interface_p_a_d_index_toolbar_controller_1ac49a4edcfbb8046b31982b552e313423" prot="public" virt="virtual"><scope>PADIndexToolbarController</scope><name>setSelectedDevices:</name></member>
+      <member refid="interface_p_a_d_index_toolbar_controller_1a9a7ff6d145788d01db85cb3e3e812e96" prot="public" virt="virtual"><scope>PADIndexToolbarController</scope><name>setSelectedNode:adoptSelection:</name></member>
+      <member refid="interface_p_a_d_index_toolbar_controller_1ab6c469981793e31575b179106db5f2cc" prot="public" virt="virtual"><scope>PADIndexToolbarController</scope><name>setSelectedNodes:</name></member>
+      <member refid="interface_p_a_d_index_toolbar_controller_1ab54aa1c0c7f0d7616f3410a224506bbb" prot="protected" virt="non-virtual"><scope>PADIndexToolbarController</scope><name>unassignButton</name></member>
+      <member refid="interface_p_a_d_index_toolbar_controller_1af1b5be31f2bf2f2d022b7ad4b52327b1" prot="public" virt="virtual"><scope>PADIndexToolbarController</scope><name>unassignNodes:</name></member>
+      <member refid="interface_p_a_d_index_toolbar_controller_1acc796ffd1b5d90cfcfe6a3742e0eb740" prot="public" virt="virtual"><scope>PADIndexToolbarController</scope><name>validateMenuItem:</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
