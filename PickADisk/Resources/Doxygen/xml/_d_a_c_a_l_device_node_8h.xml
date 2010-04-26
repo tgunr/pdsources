@@ -1,0 +1,210 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.6.2">
+  <compounddef id="_d_a_c_a_l_device_node_8h" kind="file">
+    <compoundname>DACALDeviceNode.h</compoundname>
+    <includes refid="_d_a_c_a_l_device_8h" local="yes">DACALDevice.h</includes>
+    <includes local="yes">dacallib.h</includes>
+    <includedby refid="_d_a_c_a_l_device_node_8m" local="yes">PickADisk/Sources/DACAL/DACALDeviceNode.m</includedby>
+    <includedby refid="_d_a_c_a_l_slot_8h" local="yes">PickADisk/Sources/DACAL/DACALSlot.h</includedby>
+    <includedby refid="_d_a_c_a_l_device_serivce_8m" local="yes">PickADisk/Sources/DACAL/DACALDeviceSerivce.m</includedby>
+    <includedby refid="_d_a_c_a_l_tree_data_source_8m" local="yes">PickADisk/Sources/PAD Controllers/DACALTreeDataSource.m</includedby>
+    <includedby refid="_d_a_c_a_l_view_data_source_8m" local="yes">PickADisk/Sources/PAD Controllers/DACALViewDataSource.m</includedby>
+    <includedby refid="_p_a_d_add_volume_controller_8m" local="yes">PickADisk/Sources/PAD Controllers/PADAddVolumeController.m</includedby>
+    <includedby refid="_p_a_d_index_operation_8m" local="yes">PickADisk/Sources/PAD Controllers/PADIndexOperation.m</includedby>
+    <includedby refid="_p_a_d_operation_control_device_8m" local="yes">PickADisk/Sources/PAD Controllers/PADOperationControlDevice.m</includedby>
+    <includedby refid="_p_a_d_operation_open_device_8m" local="yes">PickADisk/Sources/PAD Controllers/PADOperationOpenDevice.m</includedby>
+    <incdepgraph>
+      <node id="123">
+        <label>DACALDevice.h</label>
+        <link refid="_d_a_c_a_l_device_8h_source"/>
+        <childnode refid="124" relation="include">
+        </childnode>
+      </node>
+      <node id="122">
+        <label>PickADisk/Sources/DACAL/DACALDeviceNode.h</label>
+        <link refid="DACALDeviceNode.h"/>
+        <childnode refid="123" relation="include">
+        </childnode>
+        <childnode refid="125" relation="include">
+        </childnode>
+      </node>
+      <node id="125">
+        <label>dacallib.h</label>
+      </node>
+      <node id="124">
+        <label>pmsDACALUtility.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="126">
+        <label>PickADisk/Sources/DACAL/DACALDeviceNode.h</label>
+        <link refid="DACALDeviceNode.h"/>
+        <childnode refid="127" relation="include">
+        </childnode>
+      </node>
+      <node id="127">
+        <label>PickADisk/Sources/DACAL/DACALSlot.h</label>
+        <link refid="_d_a_c_a_l_slot_8h_source"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="interface_d_a_c_a_l_device_node" prot="public">DACALDeviceNode</innerclass>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="_d_a_c_a_l_device_node_8h_1a3c64184f42442061752e2eb576eef87f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void DACALNotification</definition>
+        <argsstring>(void *inData, DACALDeviceRef inBox, CFStringRef inMessage, CFDictionaryRef inParam)</argsstring>
+        <name>DACALNotification</name>
+        <param>
+          <type>void *</type>
+          <declname>inData</declname>
+        </param>
+        <param>
+          <type>DACALDeviceRef</type>
+          <declname>inBox</declname>
+        </param>
+        <param>
+          <type>CFStringRef</type>
+          <declname>inMessage</declname>
+        </param>
+        <param>
+          <type>CFDictionaryRef</type>
+          <declname>inParam</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALDeviceNode.h" line="44" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALDeviceNode.m" bodystart="236" bodyend="246"/>
+      </memberdef>
+      <memberdef kind="function" id="_d_a_c_a_l_device_node_8h_1a320f4924bfa4017161bd2032cbe599e1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="interface_d_a_c_a_l_device_node" kindref="compound">DACALDeviceNode</ref> *</type>
+        <definition>DACALDeviceNode* DACALDeviceNodeForDeviceRef</definition>
+        <argsstring>(DACALDeviceRef aBoxRef)</argsstring>
+        <name>DACALDeviceNodeForDeviceRef</name>
+        <param>
+          <type>DACALDeviceRef</type>
+          <declname>aBoxRef</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALDeviceNode.h" line="45" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALDeviceNode.m" bodystart="249" bodyend="252"/>
+      </memberdef>
+      <memberdef kind="function" id="_d_a_c_a_l_device_node_8h_1a9961286640ab9162074efd9d8eab032f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="interface_d_a_c_a_l_slot" kindref="compound">DACALSlot</ref> *</type>
+        <definition>DACALSlot* DACALDeviceSlotForSlotNumber</definition>
+        <argsstring>(DACALDeviceRef aBoxRef, DACALSlotNum aSlotNum)</argsstring>
+        <name>DACALDeviceSlotForSlotNumber</name>
+        <param>
+          <type>DACALDeviceRef</type>
+          <declname>aBoxRef</declname>
+        </param>
+        <param>
+          <type>DACALSlotNum</type>
+          <declname>aSlotNum</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALDeviceNode.h" line="46" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALDeviceNode.m" bodystart="255" bodyend="258"/>
+      </memberdef>
+      <memberdef kind="function" id="_d_a_c_a_l_device_node_8h_1af632bd3b7ca8ba222f40c9b601c6bcc2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="interface_d_a_c_a_l_slot" kindref="compound">DACALSlot</ref> *</type>
+        <definition>DACALSlot* DACALDeviceSlotForSlotIdentifier</definition>
+        <argsstring>(CFStringRef findID)</argsstring>
+        <name>DACALDeviceSlotForSlotIdentifier</name>
+        <param>
+          <type>CFStringRef</type>
+          <declname>findID</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALDeviceNode.h" line="47" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALDeviceNode.m" bodystart="261" bodyend="264"/>
+      </memberdef>
+      <memberdef kind="function" id="_d_a_c_a_l_device_node_8h_1a32ff9d7b50809588bf07684e35316b19" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="interface_d_a_c_a_l_slot_element" kindref="compound">DACALSlotElement</ref> *</type>
+        <definition>DACALSlotElement* DACALDeviceSlotElementForURL</definition>
+        <argsstring>(CFURLRef itemURL)</argsstring>
+        <name>DACALDeviceSlotElementForURL</name>
+        <param>
+          <type>CFURLRef</type>
+          <declname>itemURL</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALDeviceNode.h" line="48" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALDeviceNode.m" bodystart="267" bodyend="270"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>DACALDeviceNode.h</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>DACALTester</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Created<sp/>by<sp/>Dave<sp/>Carlton<sp/>on<sp/>01/11/10.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Copyright<sp/>2010<sp/>PolyMicro<sp/>Systems.<sp/>All<sp/>rights<sp/>reserved.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#import<sp/>&quot;DACALDevice.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#import<sp/>&quot;dacallib.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">@class</highlight><highlight class="normal"><sp/><ref refid="class_simple_tree_node" kindref="compound">SimpleTreeNode</ref>;</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">@class</highlight><highlight class="normal"><sp/><ref refid="interface_d_a_c_a_l_slot_element" kindref="compound">DACALSlotElement</ref>;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">@class</highlight><highlight class="normal"><sp/><ref refid="interface_d_a_c_a_l_slot" kindref="compound">DACALSlot</ref>;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">@class</highlight><highlight class="normal"><sp/><ref refid="interface_d_a_c_volume" kindref="compound">DACVolume</ref>;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17" refid="interface_d_a_c_a_l_device_node" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">@interface<sp/></highlight><highlight class="normal"><ref refid="interface_d_a_c_a_l_device_node" kindref="compound">DACALDeviceNode</ref><sp/>:<sp/><ref refid="interface_d_a_c_a_l_device" kindref="compound">DACALDevice</ref><sp/>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_simple_tree_node" kindref="compound">SimpleTreeNode</ref><sp/>*<sp/>deviceNode;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_n_s_array" kindref="compound">NSArray</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>deviceSlots;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>NSInteger<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>slotsUsed;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal">@property<sp/>(assign)<sp/><ref refid="class_simple_tree_node" kindref="compound">SimpleTreeNode</ref><sp/>*<sp/>deviceNode;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal">@property<sp/>(assign)<sp/><ref refid="class_n_s_array" kindref="compound">NSArray</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>deviceSlots;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal">@property<sp/>(assign)<sp/>NSInteger<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>slotsUsed;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal">-(<ref refid="interface_d_a_c_a_l_slot" kindref="compound">DACALSlot</ref><sp/>*)slotWithNumber:<sp/>(DACALSlotNum)<sp/>aSlot;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal">-(<ref refid="interface_d_a_c_a_l_slot" kindref="compound">DACALSlot</ref><sp/>*)slotWithIdentifier:<sp/>(<ref refid="class_n_s_string" kindref="compound">NSString</ref><sp/>*)<sp/>slotID;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal">-(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)indexUnassignedForSlot:<sp/>(<ref refid="interface_d_a_c_a_l_slot" kindref="compound">DACALSlot</ref><sp/>*)<sp/>oldSlot;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal">-(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)initDeviceWithDeviceRef:<sp/>(DACALDeviceRef)<sp/>newDeviceRef;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal">-(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)loadSlotIndex;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal">-(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)indexedNewVolume:<sp/>(<ref refid="interface_d_a_c_volume" kindref="compound">DACVolume</ref><sp/>*)<sp/>newVolume<sp/>forSlot:<sp/>(DACALSlotNum)<sp/>newSlot<sp/>ofType:<sp/>(<ref refid="class_n_s_string" kindref="compound">NSString</ref><sp/>*)<sp/>newTypem<sp/>forTarget:<sp/>(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)<sp/>finishedTarget;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal">-(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)swapSlotNumber:<sp/>(DACALSlotNum)<sp/>fromSlotNum<sp/>toDevice:<sp/>(<ref refid="interface_d_a_c_a_l_device_node" kindref="compound">DACALDeviceNode</ref><sp/>*)<sp/>toBox<sp/>toSlotNumber:<sp/>(DACALSlotNum)<sp/>toSlotNum;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal">-(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)attachingDevice;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal">-(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)attachedDevice:<sp/>(<ref refid="interface_d_a_c_a_l_device_node" kindref="compound">DACALDeviceNode</ref><sp/>*)<sp/>newBox;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal">-(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)detachingDevice;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">-(NSNumber<sp/>*)totalVolumeSize;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal">-(<ref refid="class_n_s_array" kindref="compound">NSArray</ref><sp/>*)deviceSlots;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal">-(NSInteger)slotsUsed;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal">@end</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal">extern<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>DACALNotification(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>inData,<sp/>DACALDeviceRef<sp/>inBox,<sp/>CFStringRef<sp/>inMessage,<sp/>CFDictionaryRef<sp/>inParam);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal">extern<sp/><ref refid="interface_d_a_c_a_l_device_node" kindref="compound">DACALDeviceNode</ref><sp/>*<sp/><sp/><sp/><sp/><sp/>DACALDeviceNodeForDeviceRef(DACALDeviceRef<sp/>aBoxRef);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal">extern<sp/><ref refid="interface_d_a_c_a_l_slot" kindref="compound">DACALSlot</ref><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DACALDeviceSlotForSlotNumber(DACALDeviceRef<sp/>aBoxRef,<sp/>DACALSlotNum<sp/>aSlotNum);</highlight></codeline>
+<codeline lineno="47"><highlight class="normal">extern<sp/><ref refid="interface_d_a_c_a_l_slot" kindref="compound">DACALSlot</ref><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DACALDeviceSlotForSlotIdentifier(CFStringRef<sp/>findID);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal">extern<sp/><ref refid="interface_d_a_c_a_l_slot_element" kindref="compound">DACALSlotElement</ref><sp/>*<sp/><sp/><sp/><sp/>DACALDeviceSlotElementForURL(CFURLRef<sp/>itemURL);</highlight></codeline>
+    </programlisting>
+    <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALDeviceNode.h"/>
+  </compounddef>
+</doxygen>

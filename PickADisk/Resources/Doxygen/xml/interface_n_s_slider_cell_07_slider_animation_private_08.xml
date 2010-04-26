@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.6.2">
+  <compounddef id="interface_n_s_slider_cell_07_slider_animation_private_08" kind="class" prot="public">
+    <compoundname>NSSliderCell(SliderAnimationPrivate)</compoundname>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="interface_n_s_slider_cell_07_slider_animation_private_08_1a7d98e8ab1e29ca14ee7ee1df766f42ae" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void NSSliderCell(SliderAnimationPrivate)::stopAnimatingDuringTransition:</definition>
+        <argsstring>(BOOL wasAnimating)</argsstring>
+        <name>stopAnimatingDuringTransition:</name>
+        <param>
+          <type>BOOL</type>
+          <declname>wasAnimating</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Cocoa Extensions/NSSlider_Animation.m" line="32"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_n_s_slider_cell_07_slider_animation_private_08_1a0321a1d6969b824ac9a8bc4b61cef4b9" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void NSSliderCell(SliderAnimationPrivate)::doAnimationStep:</definition>
+        <argsstring>(id sender)</argsstring>
+        <name>doAnimationStep:</name>
+        <param>
+          <type>id</type>
+          <declname>sender</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Cocoa Extensions/NSSlider_Animation.m" line="33"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_n_s_slider_cell_07_slider_animation_private_08_1aebca6f6a5bfa7eee763a1d2e30bfee5f" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void NSSliderCell(SliderAnimationPrivate)::stopAnimating</definition>
+        <argsstring>()</argsstring>
+        <name>stopAnimating</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Cocoa Extensions/NSSlider_Animation.m" line="34"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Cocoa Extensions/NSSlider_Animation.m" line="30" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Cocoa Extensions/NSSlider_Animation.m" bodystart="30" bodyend="-1"/>
+    <listofallmembers>
+      <member refid="interface_n_s_slider_cell_07_slider_animation_private_08_1a0321a1d6969b824ac9a8bc4b61cef4b9" prot="public" virt="virtual"><scope>NSSliderCell(SliderAnimationPrivate)</scope><name>doAnimationStep:</name></member>
+      <member refid="interface_n_s_slider_cell_07_slider_animation_private_08_1aebca6f6a5bfa7eee763a1d2e30bfee5f" prot="public" virt="virtual"><scope>NSSliderCell(SliderAnimationPrivate)</scope><name>stopAnimating</name></member>
+      <member refid="interface_n_s_slider_cell_07_slider_animation_private_08_1a7d98e8ab1e29ca14ee7ee1df766f42ae" prot="public" virt="virtual"><scope>NSSliderCell(SliderAnimationPrivate)</scope><name>stopAnimatingDuringTransition:</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

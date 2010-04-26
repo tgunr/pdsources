@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.6.2">
+  <compounddef id="_n_s_slider___animation_8h" kind="file">
+    <compoundname>NSSlider_Animation.h</compoundname>
+    <includes local="no">Cocoa/Cocoa.h</includes>
+    <includedby refid="_n_s_slider___animation_8m" local="yes">PickADisk/Sources/Cocoa Extensions/NSSlider_Animation.m</includedby>
+    <includedby refid="_p_a_d_add_volume_controller_8m" local="yes">PickADisk/Sources/PAD Controllers/PADAddVolumeController.m</includedby>
+    <incdepgraph>
+      <node id="71">
+        <label>Cocoa/Cocoa.h</label>
+      </node>
+      <node id="70">
+        <label>PickADisk/Sources/Cocoa Extensions/NSSlider_Animation.h</label>
+        <link refid="NSSlider_Animation.h"/>
+        <childnode refid="71" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innerclass refid="interface_n_s_slider_07_slider_animation_08" prot="public">NSSlider(SliderAnimation)</innerclass>
+    <innerclass refid="interface_n_s_slider_cell_07_slider_animation_08" prot="public">NSSliderCell(SliderAnimation)</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>NSSlider_Animation.h</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>AnimatedSlider</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Created<sp/>by<sp/>jcr<sp/>on<sp/>Tue<sp/>Nov<sp/>06<sp/>2001.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Copyright<sp/>(c)<sp/>2002<sp/><sp/>Apple<sp/>Computer,<sp/>Inc.<sp/>All<sp/>rights<sp/>reserved.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="comment">//<sp/>See<sp/>legal<sp/>notice<sp/>below.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#import<sp/>&lt;Cocoa/Cocoa.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">@interface<sp/></highlight><highlight class="normal"><ref refid="class_n_s_slider" kindref="compound">NSSlider</ref><sp/>(SliderAnimation)</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal">-<sp/>(IBAction)<sp/>animateToFloatValueFrom:<sp/>sender;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal">-<sp/>(void)<sp/>animateToFloatValue:(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)<sp/>newValue<sp/>allowsTicksOnly:(BOOL)ticksOnly;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">@end</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">@interface<sp/></highlight><highlight class="normal"><ref refid="class_n_s_slider_cell" kindref="compound">NSSliderCell</ref><sp/>(SliderAnimation)</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal">-<sp/>(IBAction)<sp/>animateToFloatValueFrom:<sp/>sender;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal">-<sp/>(void)<sp/>animateToFloatValue:(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)<sp/>newValue<sp/>allowsTicksOnly:(BOOL)ticksOnly;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keyword">@end</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp/>IMPORTANT:<sp/><sp/>This<sp/>Apple<sp/>software<sp/>is<sp/>supplied<sp/>to<sp/>you<sp/>by<sp/>Apple<sp/>Computer,<sp/>Inc.<sp/>(&quot;Apple&quot;)<sp/>in</highlight></codeline>
+<codeline lineno="29"><highlight class="comment"><sp/>consideration<sp/>of<sp/>your<sp/>agreement<sp/>to<sp/>the<sp/>following<sp/>terms,<sp/>and<sp/>your<sp/>use,<sp/>installation,<sp/></highlight></codeline>
+<codeline lineno="30"><highlight class="comment"><sp/>modification<sp/>or<sp/>redistribution<sp/>of<sp/>this<sp/>Apple<sp/>software<sp/>constitutes<sp/>acceptance<sp/>of<sp/>these<sp/></highlight></codeline>
+<codeline lineno="31"><highlight class="comment"><sp/>terms.<sp/><sp/>If<sp/>you<sp/>do<sp/>not<sp/>agree<sp/>with<sp/>these<sp/>terms,<sp/>please<sp/>do<sp/>not<sp/>use,<sp/>install,<sp/>modify<sp/>or<sp/></highlight></codeline>
+<codeline lineno="32"><highlight class="comment"><sp/>redistribute<sp/>this<sp/>Apple<sp/>software.</highlight></codeline>
+<codeline lineno="33"><highlight class="comment"><sp/></highlight></codeline>
+<codeline lineno="34"><highlight class="comment"><sp/>In<sp/>consideration<sp/>of<sp/>your<sp/>agreement<sp/>to<sp/>abide<sp/>by<sp/>the<sp/>following<sp/>terms,<sp/>and<sp/>subject<sp/>to<sp/>these<sp/></highlight></codeline>
+<codeline lineno="35"><highlight class="comment"><sp/>terms,<sp/>Apple<sp/>grants<sp/>you<sp/>a<sp/>personal,<sp/>non-exclusive<sp/>license,<sp/>under<sp/>Apple’s<sp/>copyrights<sp/>in<sp/></highlight></codeline>
+<codeline lineno="36"><highlight class="comment"><sp/>this<sp/>original<sp/>Apple<sp/>software<sp/>(the<sp/>&quot;Apple<sp/>Software&quot;),<sp/>to<sp/>use,<sp/>reproduce,<sp/>modify<sp/>and<sp/></highlight></codeline>
+<codeline lineno="37"><highlight class="comment"><sp/>redistribute<sp/>the<sp/>Apple<sp/>Software,<sp/>with<sp/>or<sp/>without<sp/>modifications,<sp/>in<sp/>source<sp/>and/or<sp/>binary<sp/></highlight></codeline>
+<codeline lineno="38"><highlight class="comment"><sp/>forms;<sp/>provided<sp/>that<sp/>if<sp/>you<sp/>redistribute<sp/>the<sp/>Apple<sp/>Software<sp/>in<sp/>its<sp/>entirety<sp/>and<sp/>without<sp/></highlight></codeline>
+<codeline lineno="39"><highlight class="comment"><sp/>modifications,<sp/>you<sp/>must<sp/>retain<sp/>this<sp/>notice<sp/>and<sp/>the<sp/>following<sp/>text<sp/>and<sp/>disclaimers<sp/>in<sp/>all<sp/></highlight></codeline>
+<codeline lineno="40"><highlight class="comment"><sp/>such<sp/>redistributions<sp/>of<sp/>the<sp/>Apple<sp/>Software.<sp/><sp/>Neither<sp/>the<sp/>name,<sp/>trademarks,<sp/>service<sp/>marks<sp/></highlight></codeline>
+<codeline lineno="41"><highlight class="comment"><sp/>or<sp/>logos<sp/>of<sp/>Apple<sp/>Computer,<sp/>Inc.<sp/>may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/></highlight></codeline>
+<codeline lineno="42"><highlight class="comment"><sp/>the<sp/>Apple<sp/>Software<sp/>without<sp/>specific<sp/>prior<sp/>written<sp/>permission<sp/>from<sp/>Apple.<sp/>Except<sp/>as<sp/>expressly</highlight></codeline>
+<codeline lineno="43"><highlight class="comment"><sp/>stated<sp/>in<sp/>this<sp/>notice,<sp/>no<sp/>other<sp/>rights<sp/>or<sp/>licenses,<sp/>express<sp/>or<sp/>implied,<sp/>are<sp/>granted<sp/>by<sp/>Apple</highlight></codeline>
+<codeline lineno="44"><highlight class="comment"><sp/>herein,<sp/>including<sp/>but<sp/>not<sp/>limited<sp/>to<sp/>any<sp/>patent<sp/>rights<sp/>that<sp/>may<sp/>be<sp/>infringed<sp/>by<sp/>your<sp/></highlight></codeline>
+<codeline lineno="45"><highlight class="comment"><sp/>derivative<sp/>works<sp/>or<sp/>by<sp/>other<sp/>works<sp/>in<sp/>which<sp/>the<sp/>Apple<sp/>Software<sp/>may<sp/>be<sp/>incorporated.</highlight></codeline>
+<codeline lineno="46"><highlight class="comment"><sp/></highlight></codeline>
+<codeline lineno="47"><highlight class="comment"><sp/>The<sp/>Apple<sp/>Software<sp/>is<sp/>provided<sp/>by<sp/>Apple<sp/>on<sp/>an<sp/>&quot;AS<sp/>IS&quot;<sp/>basis.<sp/><sp/>APPLE<sp/>MAKES<sp/>NO<sp/>WARRANTIES,<sp/></highlight></codeline>
+<codeline lineno="48"><highlight class="comment"><sp/>EXPRESS<sp/>OR<sp/>IMPLIED,<sp/>INCLUDING<sp/>WITHOUT<sp/>LIMITATION<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>NON-INFRINGEMENT,<sp/></highlight></codeline>
+<codeline lineno="49"><highlight class="comment"><sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE,<sp/>REGARDING<sp/>THE<sp/>APPLE<sp/>SOFTWARE<sp/>OR<sp/>ITS<sp/></highlight></codeline>
+<codeline lineno="50"><highlight class="comment"><sp/>USE<sp/>AND<sp/>OPERATION<sp/>ALONE<sp/>OR<sp/>IN<sp/>COMBINATION<sp/>WITH<sp/>YOUR<sp/>PRODUCTS.</highlight></codeline>
+<codeline lineno="51"><highlight class="comment"><sp/></highlight></codeline>
+<codeline lineno="52"><highlight class="comment"><sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>APPLE<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>SPECIAL,<sp/>INDIRECT,<sp/>INCIDENTAL<sp/>OR<sp/>CONSEQUENTIAL<sp/></highlight></codeline>
+<codeline lineno="53"><highlight class="comment"><sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/></highlight></codeline>
+<codeline lineno="54"><highlight class="comment"><sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE,<sp/></highlight></codeline>
+<codeline lineno="55"><highlight class="comment"><sp/>REPRODUCTION,<sp/>MODIFICATION<sp/>AND/OR<sp/>DISTRIBUTION<sp/>OF<sp/>THE<sp/>APPLE<sp/>SOFTWARE,<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/></highlight></codeline>
+<codeline lineno="56"><highlight class="comment"><sp/>WHETHER<sp/>UNDER<sp/>THEORY<sp/>OF<sp/>CONTRACT,<sp/>TORT<sp/>(INCLUDING<sp/>NEGLIGENCE),<sp/>STRICT<sp/>LIABILITY<sp/>OR<sp/></highlight></codeline>
+<codeline lineno="57"><highlight class="comment"><sp/>OTHERWISE,<sp/>EVEN<sp/>IF<sp/>APPLE<sp/>HAS<sp/>BEEN<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="58"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Cocoa Extensions/NSSlider_Animation.h"/>
+  </compounddef>
+</doxygen>

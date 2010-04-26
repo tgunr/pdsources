@@ -1,0 +1,366 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.6.2">
+  <compounddef id="_d_a_c_a_l_device_serivce_8m" kind="file">
+    <compoundname>DACALDeviceSerivce.m</compoundname>
+    <includes refid="_d_a_c_a_l_device_serivce_8h" local="yes">DACALDeviceSerivce.h</includes>
+    <includes refid="_p_a_d_lifecycle_controller_8h" local="yes">PADLifecycleController.h</includes>
+    <includes refid="_n_s_array___extensions_8h" local="yes">NSArray_Extensions.h</includes>
+    <includes refid="_d_a_c_a_l_device_node_8h" local="yes">DACALDeviceNode.h</includes>
+    <includes refid="_d_a_c_driver_installer_8h" local="yes">DACDriverInstaller.h</includes>
+    <includes refid="_license_service_8h" local="yes">LicenseService.h</includes>
+    <includes refid="_d_a_c_a_l_slot_8h" local="yes">DACALSlot.h</includes>
+    <incdepgraph>
+      <node id="165">
+        <label>NSArray_Extensions.h</label>
+        <link refid="_n_s_array___extensions_8h_source"/>
+        <childnode refid="166" relation="include">
+        </childnode>
+      </node>
+      <node id="182">
+        <label>IOKit/scsi/SCSITaskLib.h</label>
+      </node>
+      <node id="168">
+        <label>DACALDevice.h</label>
+        <link refid="_d_a_c_a_l_device_8h_source"/>
+        <childnode refid="169" relation="include">
+        </childnode>
+      </node>
+      <node id="160">
+        <label>Cocoa/Cocoa.h</label>
+      </node>
+      <node id="179">
+        <label>DACVolume.h</label>
+        <link refid="_d_a_c_volume_8h_source"/>
+        <childnode refid="160" relation="include">
+        </childnode>
+        <childnode refid="180" relation="include">
+        </childnode>
+        <childnode refid="181" relation="include">
+        </childnode>
+        <childnode refid="182" relation="include">
+        </childnode>
+        <childnode refid="164" relation="include">
+        </childnode>
+        <childnode refid="161" relation="include">
+        </childnode>
+      </node>
+      <node id="162">
+        <label>JSTestService.h</label>
+      </node>
+      <node id="172">
+        <label>AquaticPrime.h</label>
+        <link refid="_aquatic_prime_8h_source"/>
+        <childnode refid="160" relation="include">
+        </childnode>
+        <childnode refid="173" relation="include">
+        </childnode>
+        <childnode refid="174" relation="include">
+        </childnode>
+        <childnode refid="175" relation="include">
+        </childnode>
+      </node>
+      <node id="174">
+        <label>openssl/sha.h</label>
+      </node>
+      <node id="181">
+        <label>IOKit/IOKitLib.h</label>
+      </node>
+      <node id="173">
+        <label>openssl/rsa.h</label>
+      </node>
+      <node id="177">
+        <label>SimpleTreeNode.h</label>
+        <link refid="_simple_tree_node_8h_source"/>
+        <childnode refid="160" relation="include">
+        </childnode>
+        <childnode refid="178" relation="include">
+        </childnode>
+        <childnode refid="161" relation="include">
+        </childnode>
+        <childnode refid="166" relation="include">
+        </childnode>
+      </node>
+      <node id="167">
+        <label>DACALDeviceNode.h</label>
+        <link refid="_d_a_c_a_l_device_node_8h_source"/>
+        <childnode refid="168" relation="include">
+        </childnode>
+        <childnode refid="161" relation="include">
+        </childnode>
+      </node>
+      <node id="175">
+        <label>openssl/err.h</label>
+      </node>
+      <node id="178">
+        <label>TreeNode.h</label>
+        <link refid="_tree_node_8h_source"/>
+        <childnode refid="166" relation="include">
+        </childnode>
+      </node>
+      <node id="170">
+        <label>DACDriverInstaller.h</label>
+        <link refid="_d_a_c_driver_installer_8h_source"/>
+        <childnode refid="160" relation="include">
+        </childnode>
+      </node>
+      <node id="161">
+        <label>dacallib.h</label>
+      </node>
+      <node id="171">
+        <label>LicenseService.h</label>
+        <link refid="_license_service_8h_source"/>
+        <childnode refid="160" relation="include">
+        </childnode>
+        <childnode refid="164" relation="include">
+        </childnode>
+        <childnode refid="172" relation="include">
+        </childnode>
+      </node>
+      <node id="180">
+        <label>DiskArbitration/DiskArbitration.h</label>
+      </node>
+      <node id="159">
+        <label>DACALDeviceSerivce.h</label>
+        <link refid="_d_a_c_a_l_device_serivce_8h_source"/>
+        <childnode refid="160" relation="include">
+        </childnode>
+        <childnode refid="161" relation="include">
+        </childnode>
+        <childnode refid="162" relation="include">
+        </childnode>
+      </node>
+      <node id="158">
+        <label>PickADisk/Sources/DACAL/DACALDeviceSerivce.m</label>
+        <link refid="DACALDeviceSerivce.m"/>
+        <childnode refid="159" relation="include">
+        </childnode>
+        <childnode refid="163" relation="include">
+        </childnode>
+        <childnode refid="165" relation="include">
+        </childnode>
+        <childnode refid="167" relation="include">
+        </childnode>
+        <childnode refid="170" relation="include">
+        </childnode>
+        <childnode refid="171" relation="include">
+        </childnode>
+        <childnode refid="176" relation="include">
+        </childnode>
+      </node>
+      <node id="166">
+        <label>Foundation/Foundation.h</label>
+      </node>
+      <node id="164">
+        <label>JSServiceManager.h</label>
+      </node>
+      <node id="176">
+        <label>DACALSlot.h</label>
+        <link refid="_d_a_c_a_l_slot_8h_source"/>
+        <childnode refid="160" relation="include">
+        </childnode>
+        <childnode refid="177" relation="include">
+        </childnode>
+        <childnode refid="179" relation="include">
+        </childnode>
+        <childnode refid="167" relation="include">
+        </childnode>
+      </node>
+      <node id="163">
+        <label>PADLifecycleController.h</label>
+        <link refid="_p_a_d_lifecycle_controller_8h_source"/>
+        <childnode refid="160" relation="include">
+        </childnode>
+        <childnode refid="164" relation="include">
+        </childnode>
+      </node>
+      <node id="169">
+        <label>pmsDACALUtility.h</label>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>DACALDeviceSerivce.m</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>PickADisk</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Created<sp/>by<sp/>Dave<sp/>Carlton<sp/>on<sp/>01/11/10.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Copyright<sp/>2010<sp/>PolyMicro<sp/>Systems.<sp/>All<sp/>rights<sp/>reserved.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#import<sp/>&quot;DACALDeviceSerivce.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#import<sp/>&quot;PADLifecycleController.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#import<sp/>&quot;NSArray_Extensions.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#import<sp/>&quot;DACALDeviceNode.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#import<sp/>&quot;DACDriverInstaller.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#import<sp/>&quot;LicenseService.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#import<sp/>&quot;DACALSlot.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">@implementation<sp/></highlight><highlight class="normal"><ref refid="interface_d_a_c_a_l_device_service" kindref="compound">DACALDeviceService</ref></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">@synthesize</highlight><highlight class="normal"><sp/>deviceList;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal">-(NSInteger)deviceCount</highlight></codeline>
+<codeline lineno="22"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>[deviceList<sp/>count];</highlight></codeline>
+<codeline lineno="24"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal">-(void)dealloc</highlight></codeline>
+<codeline lineno="27"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[deviceList<sp/>release];</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[</highlight><highlight class="keyword">super</highlight><highlight class="normal"><sp/>dealloc];</highlight></codeline>
+<codeline lineno="30"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal">-(void)initSelf</highlight></codeline>
+<codeline lineno="33"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/>gDACALDevices<sp/>=<sp/>[[NSMutableArray<sp/>alloc]<sp/>initWithCapacity:0];</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[</highlight><highlight class="keyword">self</highlight><highlight class="normal"><sp/>setDeviceList:<sp/>[[<ref refid="class_n_s_mutable_array" kindref="compound">NSMutableArray</ref><sp/>alloc]<sp/>initWithCapacity:<sp/>0]];</highlight></codeline>
+<codeline lineno="36"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal">-(id)initializeService</highlight></codeline>
+<codeline lineno="39"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PADBOX_VALID_BEGIN<sp/>DACALRegisterIconResource(CFSTR(</highlight><highlight class="stringliteral">&quot;DC300Black&quot;</highlight><highlight class="normal">),<sp/>kDACALCarouselsFolderType);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DACALRegisterIconResource(CFSTR(</highlight><highlight class="stringliteral">&quot;CDAudio&quot;</highlight><highlight class="normal">),<sp/></highlight><highlight class="stringliteral">&apos;cdda&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DACALRegisterIconResource(CFSTR(</highlight><highlight class="stringliteral">&quot;DVD-Video&quot;</highlight><highlight class="normal">),<sp/></highlight><highlight class="stringliteral">&apos;dvd<sp/>&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DACALRegisterIconResource(CFSTR(</highlight><highlight class="stringliteral">&quot;CD-silver&quot;</highlight><highlight class="normal">),<sp/></highlight><highlight class="stringliteral">&apos;Dcd<sp/>&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DACALRegisterIconResource(CFSTR(</highlight><highlight class="stringliteral">&quot;Generic_Files&quot;</highlight><highlight class="normal">),<sp/></highlight><highlight class="stringliteral">&apos;gFil&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DACALRegisterIconResource(CFSTR(</highlight><highlight class="stringliteral">&quot;Generic_Music&quot;</highlight><highlight class="normal">),<sp/></highlight><highlight class="stringliteral">&apos;gMus&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DACALRegisterIconResource(CFSTR(</highlight><highlight class="stringliteral">&quot;Generic_Movie&quot;</highlight><highlight class="normal">),<sp/></highlight><highlight class="stringliteral">&apos;gMov&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DACALRegisterIconResource(CFSTR(</highlight><highlight class="stringliteral">&quot;Generic_Image&quot;</highlight><highlight class="normal">),<sp/></highlight><highlight class="stringliteral">&apos;gImg&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DACALClientCreate(kCFAllocatorDefault,<sp/>kPADClientIdentifier,<sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)</highlight><highlight class="keyword">self</highlight><highlight class="normal">,<sp/>DACALNotification);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PADBOX_VALID_END</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal">}<sp/></highlight><highlight class="comment">/*<sp/>initializeService<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal">-(void)openService</highlight></codeline>
+<codeline lineno="59"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PADBOX_VALID_BEGIN<sp/>DACALDevicesInitialize(&amp;DACALDevicesAddedWithService);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PADBOX_VALID_END</highlight></codeline>
+<codeline lineno="63"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal">-(void)addDACALDevice:<sp/>(<ref refid="interface_d_a_c_a_l_device_node" kindref="compound">DACALDeviceNode</ref><sp/>*)<sp/>newDevice</highlight></codeline>
+<codeline lineno="66"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[deviceList<sp/>addObject:<sp/>newDevice];</highlight></codeline>
+<codeline lineno="68"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal">-(<ref refid="interface_d_a_c_a_l_device_node" kindref="compound">DACALDeviceNode</ref><sp/>*)DACALDeviceNodeForDeviceRef:<sp/>(DACALDeviceRef)<sp/>aBoxRef</highlight></codeline>
+<codeline lineno="71"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="interface_d_a_c_a_l_device_node" kindref="compound">DACALDeviceNode</ref><sp/>*<sp/>foundBox<sp/>=<sp/>nil;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>boxIndex,<sp/>boxCount<sp/>=<sp/>[deviceList<sp/>count];</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(aBoxRef<sp/>&lt;<sp/>kDACALIllegalDevice)</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>aBoxRef<sp/>=<sp/>DACALDevicesCopyDeviceRefForIndex(aBoxRef,<sp/>NULL);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DACALDeviceRetain(aBoxRef);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(boxIndex<sp/>=<sp/>0;<sp/>boxIndex<sp/>&lt;<sp/>boxCount;<sp/>boxIndex++)<sp/>{</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>foundBox<sp/>=<sp/>[deviceList<sp/>objectAtIndex:<sp/>boxIndex];</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>([foundBox<sp/>isDeviceRef:<sp/>aBoxRef])<sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>foundBox<sp/>=<sp/>nil;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DACALDeviceRelease(aBoxRef);</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>foundBox;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal">}<sp/></highlight><highlight class="comment">/*<sp/>DACALDeviceNodeForDeviceRef<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal">-(<ref refid="interface_d_a_c_a_l_slot" kindref="compound">DACALSlot</ref><sp/>*)DACALDeviceSlotForDeviceRef:<sp/>(DACALDeviceRef)<sp/>aBoxRef<sp/>andSlotNum:<sp/>(DACALSlotNum)<sp/>aSlotNum</highlight></codeline>
+<codeline lineno="92"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="interface_d_a_c_a_l_device_node" kindref="compound">DACALDeviceNode</ref><sp/>*<sp/>slotBox<sp/>=<sp/>[</highlight><highlight class="keyword">self</highlight><highlight class="normal"><sp/>DACALDeviceNodeForDeviceRef:<sp/>aBoxRef];</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="interface_d_a_c_a_l_slot" kindref="compound">DACALSlot</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>foundSlot<sp/>=<sp/>nil;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(slotBox)</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>foundSlot<sp/>=<sp/>[slotBox<sp/>slotWithNumber:<sp/>aSlotNum];</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>foundSlot;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal">-(<ref refid="interface_d_a_c_a_l_slot" kindref="compound">DACALSlot</ref><sp/>*)DACALDeviceSlotForSlotIdentifier:<sp/>(<ref refid="class_n_s_string" kindref="compound">NSString</ref><sp/>*)<sp/>findID</highlight></codeline>
+<codeline lineno="103"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="interface_d_a_c_a_l_slot" kindref="compound">DACALSlot</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>foundSlot<sp/>=<sp/>nil;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="interface_d_a_c_a_l_device_node" kindref="compound">DACALDeviceNode</ref><sp/>*<sp/>workBox<sp/>=<sp/>nil;</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>NSEnumerator<sp/><sp/><sp/><sp/>*<sp/>boxEnum<sp/>=<sp/>[deviceList<sp/>objectEnumerator];</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(workBox<sp/>=<sp/>[boxEnum<sp/>nextObject])</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(foundSlot<sp/>=<sp/>[workBox<sp/>slotWithIdentifier:<sp/>findID])</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>foundSlot;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal">-(<ref refid="interface_d_a_c_a_l_slot_element" kindref="compound">DACALSlotElement</ref><sp/>*)DACALDeviceSlotElementForURL:<sp/>(NSURL<sp/>*)<sp/>itemURL</highlight></codeline>
+<codeline lineno="116"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DACALDeviceRef<sp/><sp/><sp/><sp/><sp/>searchDevice<sp/>=<sp/>CFURLCopyCarouselUUID(kCFAllocatorDefault,<sp/>(CFURLRef)itemURL);</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DACALSlotNum<sp/><sp/><sp/><sp/><sp/><sp/><sp/>searchSlotNum<sp/>=<sp/>CFURLGetSlotNumber(<sp/>(CFURLRef)itemURL,<sp/>FALSE<sp/>);</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="interface_d_a_c_a_l_slot" kindref="compound">DACALSlot</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>searchSlot<sp/>=<sp/>[</highlight><highlight class="keyword">self</highlight><highlight class="normal"><sp/>DACALDeviceSlotForDeviceRef:<sp/>searchDevice<sp/>andSlotNum:<sp/>searchSlotNum];</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="interface_d_a_c_a_l_slot_element" kindref="compound">DACALSlotElement</ref><sp/>*<sp/>foundElement<sp/>=<sp/>nil;</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(searchSlot<sp/>!=<sp/>nil)<sp/>{</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>foundElement<sp/>=<sp/>[searchSlot<sp/>elementWithURL:<sp/>itemURL];</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(foundElement<sp/>==<sp/>nil)<sp/>{</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>foundElement<sp/>=<sp/>[<ref refid="interface_d_a_c_a_l_slot_element" kindref="compound">DACALSlotElement</ref><sp/>slotElementForSlot:<sp/>searchSlot<sp/>atLocation:<sp/>itemURL];</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(searchDevice)<sp/>CFRelease(<sp/>(CFTypeRef)searchDevice<sp/>);</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>foundElement;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal">-(BOOL)countUsedSlots:<sp/>(NSInteger<sp/>*)<sp/>outUsedSlotCount</highlight></codeline>
+<codeline lineno="134"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>BOOL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>freeSlot<sp/>=<sp/>NO;</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>NSInteger<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>outCount<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>NSInteger<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>limitCount<sp/>=<sp/>50;<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>[[PADLicenseService<sp/>sharedLicenseService]<sp/>licenseLimit];</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>NSEnumerator<sp/><sp/><sp/><sp/>*<sp/>deviceEnum<sp/>=<sp/>[deviceList<sp/>objectEnumerator];</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="interface_d_a_c_a_l_device_node" kindref="compound">DACALDeviceNode</ref><sp/>*<sp/>workDevice<sp/>=<sp/>nil;</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(workDevice<sp/>=<sp/>[deviceEnum<sp/>nextObject])</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>outCount<sp/>+=<sp/>[workDevice<sp/>slotsUsed];</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>([[<ref refid="interface_p_a_d_license_service" kindref="compound">PADLicenseService</ref><sp/>sharedLicenseService]<sp/>licenseValid]<sp/>!=<sp/>YES)</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>freeSlot<sp/>=<sp/>(limitCount<sp/>&gt;=<sp/>outCount);</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>freeSlot<sp/>=<sp/>([deviceList<sp/>count]<sp/>&gt;<sp/>0);</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(outUsedSlotCount<sp/>!=<sp/>NULL)</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*outUsedSlotCount<sp/>=<sp/>outCount;</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>freeSlot;</highlight></codeline>
+<codeline lineno="153"><highlight class="normal">}<sp/></highlight><highlight class="comment">/*<sp/>countUsedSlots<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal">-(NSNumber<sp/>*)totalVolumeSize</highlight></codeline>
+<codeline lineno="156"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>NSEnumerator<sp/><sp/><sp/><sp/>*<sp/>slotEnum<sp/>=<sp/>[deviceList<sp/>objectEnumerator];</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="interface_d_a_c_a_l_device_node" kindref="compound">DACALDeviceNode</ref><sp/>*<sp/>workDevice<sp/>=<sp/>nil;</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>NSNumber<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>workNumber<sp/>=<sp/>[NSNumber<sp/>zero];</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(workDevice<sp/>=<sp/>[slotEnum<sp/>nextObject])</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>workNumber<sp/>=<sp/>[workNumber<sp/>addToNumber:<sp/>[workDevice<sp/>totalVolumeSize]];</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>workNumber;</highlight></codeline>
+<codeline lineno="165"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal">-(void)notificationDeviceAttached:<sp/>(DACALDeviceRef)<sp/>inBoxRef</highlight></codeline>
+<codeline lineno="168"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[[<ref refid="interface_d_a_c_a_l_device_node" kindref="compound">DACALDeviceNode</ref><sp/>deviceWithDeviceRef:<sp/>inBoxRef]<sp/>attachingDevice];</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PMLOG(3,<sp/></highlight><highlight class="stringliteral">@&quot;isDriverKextLoaded:<sp/>%@&quot;</highlight><highlight class="normal">,<sp/>[<ref refid="interface_d_a_c_driver_installer" kindref="compound">DACDriverInstaller</ref><sp/>versionOfDriverKextLoaded]);</highlight></codeline>
+<codeline lineno="171"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal">-(void)notificationDeviceDetached:<sp/>(DACALDeviceRef)<sp/>inBoxRef</highlight></codeline>
+<codeline lineno="174"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[[</highlight><highlight class="keyword">self</highlight><highlight class="normal"><sp/>DACALDeviceNodeForDeviceRef:<sp/>inBoxRef]<sp/>detachingDevice];</highlight></codeline>
+<codeline lineno="176"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight><highlight class="keyword">@end</highlight><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/>DACALDeviceService</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALDeviceSerivce.m"/>
+  </compounddef>
+</doxygen>

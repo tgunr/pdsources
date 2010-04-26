@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.6.2">
+  <compounddef id="interface_n_s_image_07_icon_ref_08" kind="class" prot="public">
+    <compoundname>NSImage(IconRef)</compoundname>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="interface_n_s_image_07_icon_ref_08_1a953c579307efc8e3fd3b276eb9a537ec" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>id</type>
+        <definition>id NSImage(IconRef)::initWithIconRef:</definition>
+        <argsstring>(IconRef icon)</argsstring>
+        <name>initWithIconRef:</name>
+        <param>
+          <type>IconRef</type>
+          <declname>icon</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Cocoa Extensions/BTHIconResources.h" line="50"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_n_s_image_07_icon_ref_08_1a20b405b6e3cf273f5debaf859e5f6577" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>id</type>
+        <definition>id NSImage(IconRef)::initWithIconRef:style:tinting:</definition>
+        <argsstring>(IconRef icon,[style] IconTransformType transformation,[tinting] NSColor *customTint)</argsstring>
+        <name>initWithIconRef:style:tinting:</name>
+        <param>
+          <type>IconRef</type>
+          <declname>icon</declname>
+        </param>
+        <param>
+          <attributes>[style]</attributes>
+          <type>IconTransformType</type>
+          <declname>transformation</declname>
+        </param>
+        <param>
+          <attributes>[tinting]</attributes>
+          <type><ref refid="class_n_s_color" kindref="compound">NSColor</ref> *</type>
+          <declname>customTint</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Cocoa Extensions/BTHIconResources.h" line="51"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Cocoa Extensions/BTHIconResources.h" line="49" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Cocoa Extensions/BTHIconResources.h" bodystart="49" bodyend="-1"/>
+    <listofallmembers>
+      <member refid="interface_n_s_image_07_icon_ref_08_1a953c579307efc8e3fd3b276eb9a537ec" prot="public" virt="virtual"><scope>NSImage(IconRef)</scope><name>initWithIconRef:</name></member>
+      <member refid="interface_n_s_image_07_icon_ref_08_1a20b405b6e3cf273f5debaf859e5f6577" prot="public" virt="virtual"><scope>NSImage(IconRef)</scope><name>initWithIconRef:style:tinting:</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

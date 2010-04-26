@@ -1,0 +1,673 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.6.2">
+  <compounddef id="interface_tree_node" kind="class" prot="public">
+    <compoundname>TreeNode</compoundname>
+    <basecompoundref refid="class_n_s_object" prot="public" virt="non-virtual">NSObject</basecompoundref>
+    <derivedcompoundref refid="class_simple_tree_node" prot="public" virt="non-virtual">SimpleTreeNode</derivedcompoundref>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="interface_tree_node_1a1b707ca387ffa0d430bfca9483da739b" prot="protected" static="no" mutable="no">
+        <type><ref refid="interface_tree_node" kindref="compound">TreeNode</ref> *</type>
+        <definition>TreeNode * TreeNode::nodeParent</definition>
+        <argsstring></argsstring>
+        <name>nodeParent</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/TreeNode.h" line="6" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/TreeNode.h" bodystart="6" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_tree_node_1a14944cf894caf1beb0ce804859dd5c4d" prot="protected" static="no" mutable="no">
+        <type>id</type>
+        <definition>id TreeNode::nodeData</definition>
+        <argsstring></argsstring>
+        <name>nodeData</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/TreeNode.h" line="7" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/TreeNode.h" bodystart="7" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_tree_node_1ab5c68d2c7d38a47a8a0a08ef639e5b11" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_n_s_mutable_array" kindref="compound">NSMutableArray</ref> *</type>
+        <definition>NSMutableArray* TreeNode::nodeChildren</definition>
+        <argsstring></argsstring>
+        <name>nodeChildren</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/TreeNode.h" line="8" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/TreeNode.h" bodystart="8" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="interface_tree_node_1aa5809328d7640042f4dad013f5676aaa" prot="public" static="yes" const="no" explicit="no" inline="no" virt="virtual">
+        <type>id</type>
+        <definition>id TreeNode::treeNodeWithData:</definition>
+        <argsstring>(id data)</argsstring>
+        <name>treeNodeWithData:</name>
+        <param>
+          <type>id</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/TreeNode.h" line="11" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/TreeNode.m" bodystart="58" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_tree_node_1a27fb33027e38c27320b4da4e306720be" prot="public" static="yes" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="class_n_s_array" kindref="compound">NSArray</ref> *</type>
+        <definition>NSArray * TreeNode::minimumNodeCoverFromNodesInArray:</definition>
+        <argsstring>(NSArray *allNodes)</argsstring>
+        <name>minimumNodeCoverFromNodesInArray:</name>
+        <param>
+          <type><ref refid="class_n_s_array" kindref="compound">NSArray</ref> *</type>
+          <declname>allNodes</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/TreeNode.h" line="70" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/TreeNode.m" bodystart="290" bodyend="305"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="interface_tree_node_1a0d58d52c4e657342f98062fb8eb18dee" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>id</type>
+        <definition>id TreeNode::initWithData:parent:children:</definition>
+        <argsstring>(id data,[parent] TreeNode *parent,[children] NSArray *children)</argsstring>
+        <name>initWithData:parent:children:</name>
+        <param>
+          <type>id</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <attributes>[parent]</attributes>
+          <type><ref refid="interface_tree_node" kindref="compound">TreeNode</ref> *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <attributes>[children]</attributes>
+          <type><ref refid="class_n_s_array" kindref="compound">NSArray</ref> *</type>
+          <declname>children</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/TreeNode.h" line="12" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/TreeNode.m" bodystart="62" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_tree_node_1a2022c5fe8a6d04f84dead8f7b107ed65" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void TreeNode::setNodeData:</definition>
+        <argsstring>(id data)</argsstring>
+        <name>setNodeData:</name>
+        <param>
+          <type>id</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/TreeNode.h" line="14" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/TreeNode.m" bodystart="82" bodyend="87"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_tree_node_1a85c38d1ba7b4af87b99c81c690bfc7a1" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>id</type>
+        <definition>id TreeNode::nodeData</definition>
+        <argsstring>()</argsstring>
+        <name>nodeData</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/TreeNode.h" line="15"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_tree_node_1acf0569645fe55d2b56c897f7ce2abf68" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void TreeNode::setNodeParent:</definition>
+        <argsstring>(TreeNode *parent)</argsstring>
+        <name>setNodeParent:</name>
+        <param>
+          <type><ref refid="interface_tree_node" kindref="compound">TreeNode</ref> *</type>
+          <declname>parent</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/TreeNode.h" line="17" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/TreeNode.m" bodystart="93" bodyend="95"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_tree_node_1a0d6d1efb4f3908cd73a1df523e39ab87" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="interface_tree_node" kindref="compound">TreeNode</ref> *</type>
+        <definition>TreeNode * TreeNode::nodeParent</definition>
+        <argsstring>()</argsstring>
+        <name>nodeParent</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/TreeNode.h" line="18"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_tree_node_1a21126a0b1c6ae2a8c977faa51cc0735e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void TreeNode::insertChild:atIndex:</definition>
+        <argsstring>(TreeNode *child,[atIndex] NSInteger index)</argsstring>
+        <name>insertChild:atIndex:</name>
+        <param>
+          <type><ref refid="interface_tree_node" kindref="compound">TreeNode</ref> *</type>
+          <declname>child</declname>
+        </param>
+        <param>
+          <attributes>[atIndex]</attributes>
+          <type>NSInteger</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/TreeNode.h" line="20" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/TreeNode.m" bodystart="101" bodyend="104"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_tree_node_1ad50e1a3350559dd7007469c650701ac5" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void TreeNode::insertChildren:atIndex:</definition>
+        <argsstring>(NSArray *children,[atIndex] NSInteger index)</argsstring>
+        <name>insertChildren:atIndex:</name>
+        <param>
+          <type><ref refid="class_n_s_array" kindref="compound">NSArray</ref> *</type>
+          <declname>children</declname>
+        </param>
+        <param>
+          <attributes>[atIndex]</attributes>
+          <type>NSInteger</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/TreeNode.h" line="21" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/TreeNode.m" bodystart="106" bodyend="109"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_tree_node_1aa4e7fd880096a203492645344e19e003" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void TreeNode::removeChild:</definition>
+        <argsstring>(TreeNode *child)</argsstring>
+        <name>removeChild:</name>
+        <param>
+          <type><ref refid="interface_tree_node" kindref="compound">TreeNode</ref> *</type>
+          <declname>child</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/TreeNode.h" line="23" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/TreeNode.m" bodystart="123" bodyend="128"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_tree_node_1a901ab63f0012b71415e91493142d281f" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void TreeNode::removeChildrenIdenticalTo:</definition>
+        <argsstring>(NSArray *childlist)</argsstring>
+        <name>removeChildrenIdenticalTo:</name>
+        <param>
+          <type><ref refid="class_n_s_array" kindref="compound">NSArray</ref> *</type>
+          <declname>childlist</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/TreeNode.h" line="24" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/TreeNode.m" bodystart="120" bodyend="121"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_tree_node_1ad44bb458b28a068787719e5cafeb760e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void TreeNode::removeFromParent</definition>
+        <argsstring>()</argsstring>
+        <name>removeFromParent</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/TreeNode.h" line="25" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/TreeNode.m" bodystart="130" bodyend="132"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_tree_node_1a7edf3a7e9adec11873f6cbbf0a287118" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>NSInteger</type>
+        <definition>NSInteger TreeNode::indexOfChild:</definition>
+        <argsstring>(TreeNode *child)</argsstring>
+        <name>indexOfChild:</name>
+        <param>
+          <type><ref refid="interface_tree_node" kindref="compound">TreeNode</ref> *</type>
+          <declname>child</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/TreeNode.h" line="27" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/TreeNode.m" bodystart="134" bodyend="136"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_tree_node_1a1c02bc1416c6264c13664c1a203c59dd" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>NSInteger</type>
+        <definition>NSInteger TreeNode::indexOfChildIdenticalTo:</definition>
+        <argsstring>(TreeNode *child)</argsstring>
+        <name>indexOfChildIdenticalTo:</name>
+        <param>
+          <type><ref refid="interface_tree_node" kindref="compound">TreeNode</ref> *</type>
+          <declname>child</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/TreeNode.h" line="28" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/TreeNode.m" bodystart="138" bodyend="140"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_tree_node_1ac65407c743625fd4adb177dc53ae3f25" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>NSInteger</type>
+        <definition>NSInteger TreeNode::numberOfChildren</definition>
+        <argsstring>()</argsstring>
+        <name>numberOfChildren</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/TreeNode.h" line="30" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/TreeNode.m" bodystart="142" bodyend="144"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_tree_node_1a3258b22c967e32d4481e797533db72ca" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="class_n_s_array" kindref="compound">NSArray</ref> *</type>
+        <definition>NSArray * TreeNode::children</definition>
+        <argsstring>()</argsstring>
+        <name>children</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/TreeNode.h" line="31" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/TreeNode.m" bodystart="146" bodyend="148"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_tree_node_1ad8592284d806a0151a6de308df1f20b5" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="interface_tree_node" kindref="compound">TreeNode</ref> *</type>
+        <definition>TreeNode * TreeNode::firstChild</definition>
+        <argsstring>()</argsstring>
+        <name>firstChild</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/TreeNode.h" line="32" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/TreeNode.m" bodystart="150" bodyend="152"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_tree_node_1a7f2570918fc938e46606c6bc6e7f13b8" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="interface_tree_node" kindref="compound">TreeNode</ref> *</type>
+        <definition>TreeNode * TreeNode::lastChild</definition>
+        <argsstring>()</argsstring>
+        <name>lastChild</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/TreeNode.h" line="33" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/TreeNode.m" bodystart="154" bodyend="156"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_tree_node_1abbfa2a1929cb67e97110055f37042edd" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="interface_tree_node" kindref="compound">TreeNode</ref> *</type>
+        <definition>TreeNode * TreeNode::childAtIndex:</definition>
+        <argsstring>(NSInteger index)</argsstring>
+        <name>childAtIndex:</name>
+        <param>
+          <type>NSInteger</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/TreeNode.h" line="34" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/TreeNode.m" bodystart="158" bodyend="160"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_tree_node_1abe841acddad30cbb02e8dd11def68fd6" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>BOOL</type>
+        <definition>BOOL TreeNode::isDescendantOfNode:</definition>
+        <argsstring>(TreeNode *node)</argsstring>
+        <name>isDescendantOfNode:</name>
+        <param>
+          <type><ref refid="interface_tree_node" kindref="compound">TreeNode</ref> *</type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/TreeNode.h" line="37" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/TreeNode.m" bodystart="162" bodyend="171"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_tree_node_1a0de6b81603f7f480628a63381ca64b1b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>BOOL</type>
+        <definition>BOOL TreeNode::isDescendantOfNodeInArray:</definition>
+        <argsstring>(NSArray *nodes)</argsstring>
+        <name>isDescendantOfNodeInArray:</name>
+        <param>
+          <type><ref refid="class_n_s_array" kindref="compound">NSArray</ref> *</type>
+          <declname>nodes</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/TreeNode.h" line="40" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/TreeNode.m" bodystart="173" bodyend="183"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_tree_node_1a0b3f572fe4c45ce5d48e5f7de5bcc5e1" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>BOOL</type>
+        <definition>BOOL TreeNode::isParentOfNode:</definition>
+        <argsstring>(TreeNode *node)</argsstring>
+        <name>isParentOfNode:</name>
+        <param>
+          <type><ref refid="interface_tree_node" kindref="compound">TreeNode</ref> *</type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/TreeNode.h" line="43" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/TreeNode.m" bodystart="185" bodyend="189"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_tree_node_1a98dd9f7952ac712d9b49423270142ec1" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>BOOL</type>
+        <definition>BOOL TreeNode::isParentOfNodesInArray:</definition>
+        <argsstring>(NSArray *nodes)</argsstring>
+        <name>isParentOfNodesInArray:</name>
+        <param>
+          <type><ref refid="class_n_s_array" kindref="compound">NSArray</ref> *</type>
+          <declname>nodes</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/TreeNode.h" line="46" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/TreeNode.m" bodystart="191" bodyend="201"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_tree_node_1aaa9cf091ac660c0d58db5302a068e321" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void TreeNode::reloadData:reloadChildren:</definition>
+        <argsstring>(id newData,[reloadChildren] BOOL recurse)</argsstring>
+        <name>reloadData:reloadChildren:</name>
+        <param>
+          <type>id</type>
+          <declname>newData</declname>
+        </param>
+        <param>
+          <attributes>[reloadChildren]</attributes>
+          <type>BOOL</type>
+          <declname>recurse</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/TreeNode.h" line="49" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/TreeNode.m" bodystart="203" bodyend="212"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_tree_node_1ae6cd4d74c84ea63fdee61dc08e9edd1c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void TreeNode::reloadDataAndChildren</definition>
+        <argsstring>()</argsstring>
+        <name>reloadDataAndChildren</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/TreeNode.h" line="50" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/TreeNode.m" bodystart="214" bodyend="215"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_tree_node_1acb142e096cf14de3577990a66226f5fb" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void TreeNode::orderChildrenByName:removeMissing:</definition>
+        <argsstring>(NSArray *childNames,[removeMissing] BOOL doRemove)</argsstring>
+        <name>orderChildrenByName:removeMissing:</name>
+        <param>
+          <type><ref refid="class_n_s_array" kindref="compound">NSArray</ref> *</type>
+          <declname>childNames</declname>
+        </param>
+        <param>
+          <attributes>[removeMissing]</attributes>
+          <type>BOOL</type>
+          <declname>doRemove</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/TreeNode.h" line="53" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/TreeNode.m" bodystart="218" bodyend="246"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_tree_node_1af580eb958bf484cc018d0ed6ec5f43a8" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void TreeNode::recursiveSortChildren</definition>
+        <argsstring>()</argsstring>
+        <name>recursiveSortChildren</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/TreeNode.h" line="56" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/TreeNode.m" bodystart="248" bodyend="251"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_tree_node_1aef2c2aea57baec8de897e43638d98185" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void TreeNode::sortChildrenUsingDescriptors:</definition>
+        <argsstring>(NSArray *newDescriptors)</argsstring>
+        <name>sortChildrenUsingDescriptors:</name>
+        <param>
+          <type><ref refid="class_n_s_array" kindref="compound">NSArray</ref> *</type>
+          <declname>newDescriptors</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/TreeNode.h" line="59" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/TreeNode.m" bodystart="253" bodyend="254"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_tree_node_1a79b2723e2d3ccf751576db9dd24f63c7" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void TreeNode::sortExpandedChildrenUsingDescriptors:</definition>
+        <argsstring>(NSArray *newDescriptors)</argsstring>
+        <name>sortExpandedChildrenUsingDescriptors:</name>
+        <param>
+          <type><ref refid="class_n_s_array" kindref="compound">NSArray</ref> *</type>
+          <declname>newDescriptors</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/TreeNode.h" line="60" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/TreeNode.m" bodystart="256" bodyend="262"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_tree_node_1a5a358476403cc44e6be25f4d4a3143d8" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void TreeNode::sortExpandedChildrenForView:</definition>
+        <argsstring>(NSOutlineView *theView)</argsstring>
+        <name>sortExpandedChildrenForView:</name>
+        <param>
+          <type>NSOutlineView *</type>
+          <declname>theView</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/TreeNode.h" line="61" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/TreeNode.m" bodystart="264" bodyend="265"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_tree_node_1af10bc3de838905ccb55b55f048dd636e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void TreeNode::recursiveSortChildrenUsingDescriptors:</definition>
+        <argsstring>(NSArray *newDescriptors)</argsstring>
+        <name>recursiveSortChildrenUsingDescriptors:</name>
+        <param>
+          <type><ref refid="class_n_s_array" kindref="compound">NSArray</ref> *</type>
+          <declname>newDescriptors</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/TreeNode.h" line="62" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/TreeNode.m" bodystart="274" bodyend="278"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_tree_node_1afa417a21b6885494ca94ad7dcfcaaf33" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void TreeNode::recursiveReExpandInView:</definition>
+        <argsstring>(NSOutlineView *theView)</argsstring>
+        <name>recursiveReExpandInView:</name>
+        <param>
+          <type>NSOutlineView *</type>
+          <declname>theView</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/TreeNode.h" line="65" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/TreeNode.m" bodystart="267" bodyend="271"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="451">
+        <label>SimpleTreeNode</label>
+        <link refid="class_simple_tree_node"/>
+        <childnode refid="449" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="449">
+        <label>TreeNode</label>
+        <link refid="interface_tree_node"/>
+        <childnode refid="450" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="450">
+        <label>NSObject</label>
+        <link refid="class_n_s_object"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="454">
+        <label>NSMutableArray</label>
+        <link refid="class_n_s_mutable_array"/>
+      </node>
+      <node id="452">
+        <label>TreeNode</label>
+        <link refid="interface_tree_node"/>
+        <childnode refid="453" relation="public-inheritance">
+        </childnode>
+        <childnode refid="452" relation="usage">
+          <edgelabel>nodeParent</edgelabel>
+        </childnode>
+        <childnode refid="454" relation="usage">
+          <edgelabel>nodeChildren</edgelabel>
+        </childnode>
+      </node>
+      <node id="453">
+        <label>NSObject</label>
+        <link refid="class_n_s_object"/>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/TreeNode.h" line="4" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/TreeNode.h" bodystart="4" bodyend="-1"/>
+    <listofallmembers>
+      <member refid="interface_tree_node_1abbfa2a1929cb67e97110055f37042edd" prot="public" virt="virtual"><scope>TreeNode</scope><name>childAtIndex:</name></member>
+      <member refid="interface_tree_node_1a3258b22c967e32d4481e797533db72ca" prot="public" virt="virtual"><scope>TreeNode</scope><name>children</name></member>
+      <member refid="interface_tree_node_1ad8592284d806a0151a6de308df1f20b5" prot="public" virt="virtual"><scope>TreeNode</scope><name>firstChild</name></member>
+      <member refid="interface_tree_node_1a7edf3a7e9adec11873f6cbbf0a287118" prot="public" virt="virtual"><scope>TreeNode</scope><name>indexOfChild:</name></member>
+      <member refid="interface_tree_node_1a1c02bc1416c6264c13664c1a203c59dd" prot="public" virt="virtual"><scope>TreeNode</scope><name>indexOfChildIdenticalTo:</name></member>
+      <member refid="interface_tree_node_1a0d58d52c4e657342f98062fb8eb18dee" prot="public" virt="virtual"><scope>TreeNode</scope><name>initWithData:parent:children:</name></member>
+      <member refid="interface_tree_node_1a21126a0b1c6ae2a8c977faa51cc0735e" prot="public" virt="virtual"><scope>TreeNode</scope><name>insertChild:atIndex:</name></member>
+      <member refid="interface_tree_node_1ad50e1a3350559dd7007469c650701ac5" prot="public" virt="virtual"><scope>TreeNode</scope><name>insertChildren:atIndex:</name></member>
+      <member refid="interface_tree_node_1abe841acddad30cbb02e8dd11def68fd6" prot="public" virt="virtual"><scope>TreeNode</scope><name>isDescendantOfNode:</name></member>
+      <member refid="interface_tree_node_1a0de6b81603f7f480628a63381ca64b1b" prot="public" virt="virtual"><scope>TreeNode</scope><name>isDescendantOfNodeInArray:</name></member>
+      <member refid="interface_tree_node_1a0b3f572fe4c45ce5d48e5f7de5bcc5e1" prot="public" virt="virtual"><scope>TreeNode</scope><name>isParentOfNode:</name></member>
+      <member refid="interface_tree_node_1a98dd9f7952ac712d9b49423270142ec1" prot="public" virt="virtual"><scope>TreeNode</scope><name>isParentOfNodesInArray:</name></member>
+      <member refid="interface_tree_node_1a7f2570918fc938e46606c6bc6e7f13b8" prot="public" virt="virtual"><scope>TreeNode</scope><name>lastChild</name></member>
+      <member refid="interface_tree_node_1a27fb33027e38c27320b4da4e306720be" prot="public" virt="virtual"><scope>TreeNode</scope><name>minimumNodeCoverFromNodesInArray:</name></member>
+      <member refid="interface_tree_node_1ab5c68d2c7d38a47a8a0a08ef639e5b11" prot="protected" virt="non-virtual"><scope>TreeNode</scope><name>nodeChildren</name></member>
+      <member refid="interface_tree_node_1a14944cf894caf1beb0ce804859dd5c4d" prot="protected" virt="non-virtual"><scope>TreeNode</scope><name>nodeData</name></member>
+      <member refid="interface_tree_node_1a85c38d1ba7b4af87b99c81c690bfc7a1" prot="public" virt="virtual"><scope>TreeNode</scope><name>nodeData</name></member>
+      <member refid="interface_tree_node_1a1b707ca387ffa0d430bfca9483da739b" prot="protected" virt="non-virtual"><scope>TreeNode</scope><name>nodeParent</name></member>
+      <member refid="interface_tree_node_1a0d6d1efb4f3908cd73a1df523e39ab87" prot="public" virt="virtual"><scope>TreeNode</scope><name>nodeParent</name></member>
+      <member refid="interface_tree_node_1ac65407c743625fd4adb177dc53ae3f25" prot="public" virt="virtual"><scope>TreeNode</scope><name>numberOfChildren</name></member>
+      <member refid="interface_tree_node_1acb142e096cf14de3577990a66226f5fb" prot="public" virt="virtual"><scope>TreeNode</scope><name>orderChildrenByName:removeMissing:</name></member>
+      <member refid="interface_tree_node_1afa417a21b6885494ca94ad7dcfcaaf33" prot="public" virt="virtual"><scope>TreeNode</scope><name>recursiveReExpandInView:</name></member>
+      <member refid="interface_tree_node_1af580eb958bf484cc018d0ed6ec5f43a8" prot="public" virt="virtual"><scope>TreeNode</scope><name>recursiveSortChildren</name></member>
+      <member refid="interface_tree_node_1af10bc3de838905ccb55b55f048dd636e" prot="public" virt="virtual"><scope>TreeNode</scope><name>recursiveSortChildrenUsingDescriptors:</name></member>
+      <member refid="interface_tree_node_1aaa9cf091ac660c0d58db5302a068e321" prot="public" virt="virtual"><scope>TreeNode</scope><name>reloadData:reloadChildren:</name></member>
+      <member refid="interface_tree_node_1ae6cd4d74c84ea63fdee61dc08e9edd1c" prot="public" virt="virtual"><scope>TreeNode</scope><name>reloadDataAndChildren</name></member>
+      <member refid="interface_tree_node_1aa4e7fd880096a203492645344e19e003" prot="public" virt="virtual"><scope>TreeNode</scope><name>removeChild:</name></member>
+      <member refid="interface_tree_node_1a901ab63f0012b71415e91493142d281f" prot="public" virt="virtual"><scope>TreeNode</scope><name>removeChildrenIdenticalTo:</name></member>
+      <member refid="interface_tree_node_1ad44bb458b28a068787719e5cafeb760e" prot="public" virt="virtual"><scope>TreeNode</scope><name>removeFromParent</name></member>
+      <member refid="interface_tree_node_1a2022c5fe8a6d04f84dead8f7b107ed65" prot="public" virt="virtual"><scope>TreeNode</scope><name>setNodeData:</name></member>
+      <member refid="interface_tree_node_1acf0569645fe55d2b56c897f7ce2abf68" prot="public" virt="virtual"><scope>TreeNode</scope><name>setNodeParent:</name></member>
+      <member refid="interface_tree_node_1aef2c2aea57baec8de897e43638d98185" prot="public" virt="virtual"><scope>TreeNode</scope><name>sortChildrenUsingDescriptors:</name></member>
+      <member refid="interface_tree_node_1a5a358476403cc44e6be25f4d4a3143d8" prot="public" virt="virtual"><scope>TreeNode</scope><name>sortExpandedChildrenForView:</name></member>
+      <member refid="interface_tree_node_1a79b2723e2d3ccf751576db9dd24f63c7" prot="public" virt="virtual"><scope>TreeNode</scope><name>sortExpandedChildrenUsingDescriptors:</name></member>
+      <member refid="interface_tree_node_1aa5809328d7640042f4dad013f5676aaa" prot="public" virt="virtual"><scope>TreeNode</scope><name>treeNodeWithData:</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

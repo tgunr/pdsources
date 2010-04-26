@@ -1,0 +1,767 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.6.2">
+  <compounddef id="interface_tree_controller" kind="class" prot="public">
+    <compoundname>TreeController</compoundname>
+    <basecompoundref refid="class_n_s_object" prot="public" virt="non-virtual">NSObject</basecompoundref>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="interface_tree_controller_1a48f8be4cde3d8ed6b7db36ac6f5af172" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_simple_tree_node" kindref="compound">SimpleTreeNode</ref> *</type>
+        <definition>SimpleTreeNode* TreeController::treeData</definition>
+        <argsstring></argsstring>
+        <name>treeData</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" line="41" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_tree_controller_1a0e4d96c5cf20c953efa40bfddf406fa9" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_n_s_array" kindref="compound">NSArray</ref> *</type>
+        <definition>NSArray * TreeController::draggedNodes</definition>
+        <argsstring></argsstring>
+        <name>draggedNodes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" line="42" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_tree_controller_1acac652ada6b3c3bb20183c5722b7e5ff" prot="protected" static="no" mutable="no">
+        <type>BOOL</type>
+        <definition>BOOL TreeController::allowOnDropOnGroup</definition>
+        <argsstring></argsstring>
+        <name>allowOnDropOnGroup</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" line="44" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_tree_controller_1aaf1a538a809c877c5eca406defeb8098" prot="protected" static="no" mutable="no">
+        <type>BOOL</type>
+        <definition>BOOL TreeController::allowOnDropOnLeaf</definition>
+        <argsstring></argsstring>
+        <name>allowOnDropOnLeaf</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" line="45" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_tree_controller_1a6975e809d329f4e67eb5cbc02bdfb704" prot="protected" static="no" mutable="no">
+        <type>BOOL</type>
+        <definition>BOOL TreeController::allowBetweenDrop</definition>
+        <argsstring></argsstring>
+        <name>allowBetweenDrop</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" line="46" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_tree_controller_1aec4cfc8b183d17681a61a581df7917d0" prot="protected" static="no" mutable="no">
+        <type>BOOL</type>
+        <definition>BOOL TreeController::allowGroupRowLook</definition>
+        <argsstring></argsstring>
+        <name>allowGroupRowLook</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" line="47" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_tree_controller_1af9a816184260f157a7757fd92b286e95" prot="protected" static="no" mutable="no">
+        <type>BOOL</type>
+        <definition>BOOL TreeController::allowButtonCellsToChangeSelection</definition>
+        <argsstring></argsstring>
+        <name>allowButtonCellsToChangeSelection</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" line="48" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_tree_controller_1a83fe02a753318de01afdf84c9061bdf1" prot="protected" static="no" mutable="no">
+        <type>BOOL</type>
+        <definition>BOOL TreeController::allowToggleVerticalBeginsDrag</definition>
+        <argsstring></argsstring>
+        <name>allowToggleVerticalBeginsDrag</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" line="49" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_tree_controller_1af394baed1909c31dc106f011ea7e6fa4" prot="protected" static="no" mutable="no">
+        <type>BOOL</type>
+        <definition>BOOL TreeController::onlyAcceptDropOnRoot</definition>
+        <argsstring></argsstring>
+        <name>onlyAcceptDropOnRoot</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" line="50" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_tree_controller_1a8026a3a0ca58f0cf1e2cda5f768d66f7" prot="protected" static="no" mutable="no">
+        <type>IBOutlet id</type>
+        <definition>id TreeController::dataSource</definition>
+        <argsstring></argsstring>
+        <name>dataSource</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" line="52" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_tree_controller_1a3769ed57eaccb3f86917ebe30f8c5400" prot="protected" static="no" mutable="no">
+        <type>IBOutlet NSOutlineView *</type>
+        <definition>NSOutlineView * TreeController::outlineView</definition>
+        <argsstring></argsstring>
+        <name>outlineView</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" line="53" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="interface_tree_controller_1a25c9a4bed2e12d77c3239bad43314733" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>IBAction</type>
+        <definition>void TreeController::addGroup:</definition>
+        <argsstring>(id sender)</argsstring>
+        <name>addGroup:</name>
+        <param>
+          <type>id</type>
+          <declname>sender</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" line="56" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.m" bodystart="153" bodyend="156"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_tree_controller_1a62ed43fab24007b3b32acfed36dc1d52" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>IBAction</type>
+        <definition>void TreeController::addLeaf:</definition>
+        <argsstring>(id sender)</argsstring>
+        <name>addLeaf:</name>
+        <param>
+          <type>id</type>
+          <declname>sender</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" line="57" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.m" bodystart="158" bodyend="161"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_tree_controller_1ae4228e4bd60542cc74355820ddd81493" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>IBAction</type>
+        <definition>void TreeController::deleteSelections:</definition>
+        <argsstring>(id sender)</argsstring>
+        <name>deleteSelections:</name>
+        <param>
+          <type>id</type>
+          <declname>sender</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" line="58" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.m" bodystart="211" bodyend="217"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_tree_controller_1aa40ffd780567b6c777aae615244290f6" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>IBAction</type>
+        <definition>void TreeController::outlineViewAction:</definition>
+        <argsstring>(id sender)</argsstring>
+        <name>outlineViewAction:</name>
+        <param>
+          <type>id</type>
+          <declname>sender</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" line="59" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.m" bodystart="196" bodyend="202"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_tree_controller_1a06de46aff50a282fe573b5ec8cbd16cf" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>IBAction</type>
+        <definition>IBAction TreeController::sortData:</definition>
+        <argsstring>(id sender)</argsstring>
+        <name>sortData:</name>
+        <param>
+          <type>id</type>
+          <declname>sender</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" line="60" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.m" bodystart="230" bodyend="235"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_tree_controller_1a34327ad24d1bfc5b1cb60628fced8b40" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>IBAction</type>
+        <definition>IBAction TreeController::expandableMenuItemAction:</definition>
+        <argsstring>(id sender)</argsstring>
+        <name>expandableMenuItemAction:</name>
+        <param>
+          <type>id</type>
+          <declname>sender</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" line="61" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.m" bodystart="828" bodyend="839"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_tree_controller_1a6d2e423d7f0c1986ed0a44f9374e0a74" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void TreeController::deletedSelections</definition>
+        <argsstring>()</argsstring>
+        <name>deletedSelections</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" line="63" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.m" bodystart="219" bodyend="223"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_tree_controller_1a2047e916742403982f6335da62c61a7a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="class_simple_tree_node" kindref="compound">SimpleTreeNode</ref> *</type>
+        <definition>SimpleTreeNode * TreeController::treeRoot</definition>
+        <argsstring>()</argsstring>
+        <name>treeRoot</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" line="65" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.m" bodystart="87" bodyend="87"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_tree_controller_1a847115deadc9443e93386d37a704676f" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void TreeController::setTreeRoot:</definition>
+        <argsstring>(SimpleTreeNode *root)</argsstring>
+        <name>setTreeRoot:</name>
+        <param>
+          <type><ref refid="class_simple_tree_node" kindref="compound">SimpleTreeNode</ref> *</type>
+          <declname>root</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" line="66" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.m" bodystart="89" bodyend="97"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_tree_controller_1a9712a21bc7d2cba06420e747de167e44" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void TreeController::addTreeRoot:</definition>
+        <argsstring>(SimpleTreeNode *newChild)</argsstring>
+        <name>addTreeRoot:</name>
+        <param>
+          <type><ref refid="class_simple_tree_node" kindref="compound">SimpleTreeNode</ref> *</type>
+          <declname>newChild</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" line="67" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.m" bodystart="99" bodyend="126"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_tree_controller_1a6c576dc37e23d413d2f1fbf7665f90f2" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void TreeController::addDataToTree:startEdit:</definition>
+        <argsstring>(SimpleTreeNode *newChild,[startEdit] BOOL doEdit)</argsstring>
+        <name>addDataToTree:startEdit:</name>
+        <param>
+          <type><ref refid="class_simple_tree_node" kindref="compound">SimpleTreeNode</ref> *</type>
+          <declname>newChild</declname>
+        </param>
+        <param>
+          <attributes>[startEdit]</attributes>
+          <type>BOOL</type>
+          <declname>doEdit</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" line="68" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.m" bodystart="163" bodyend="193"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_tree_controller_1a2ce10a03be545f5d2591215955686873" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void TreeController::recreateInitialTree</definition>
+        <argsstring>()</argsstring>
+        <name>recreateInitialTree</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" line="69" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.m" bodystart="59" bodyend="63"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_tree_controller_1a996e01df0eca13979d21817335a01ab2" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>id</type>
+        <definition>id TreeController::dataSource</definition>
+        <argsstring>()</argsstring>
+        <name>dataSource</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" line="71"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_tree_controller_1a7cf38103111daa5bf7db69a957c1694b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>NSOutlineView *</type>
+        <definition>NSOutlineView* TreeController::outlineView</definition>
+        <argsstring>()</argsstring>
+        <name>outlineView</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" line="73"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_tree_controller_1a71b9e2e72cc048a1ecb2699783373386" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void TreeController::setOutlineView:</definition>
+        <argsstring>(NSOutlineView *view)</argsstring>
+        <name>setOutlineView:</name>
+        <param>
+          <type>NSOutlineView *</type>
+          <declname>view</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" line="74" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.m" bodystart="131" bodyend="136"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_tree_controller_1a73a6c7a193ca16e9f637e995e310fc2a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>NSUndoManager *</type>
+        <definition>NSUndoManager * TreeController::undoManager</definition>
+        <argsstring>()</argsstring>
+        <name>undoManager</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" line="75" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.m" bodystart="139" bodyend="147"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_tree_controller_1aab83dffb384f2c021751597bde8a3c5c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="class_n_s_array" kindref="compound">NSArray</ref> *</type>
+        <definition>NSArray* TreeController::draggedNodes</definition>
+        <argsstring>()</argsstring>
+        <name>draggedNodes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" line="77"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_tree_controller_1a7175132504fb8afa8210b8cbbefa8af5" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="class_n_s_array" kindref="compound">NSArray</ref> *</type>
+        <definition>NSArray * TreeController::selectedNodes</definition>
+        <argsstring>()</argsstring>
+        <name>selectedNodes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" line="78" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.m" bodystart="69" bodyend="69"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_tree_controller_1aacdf1cd1ab999e98a064c61f1a0e7568" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>BOOL</type>
+        <definition>BOOL TreeController::allowOnDropOnGroup</definition>
+        <argsstring>()</argsstring>
+        <name>allowOnDropOnGroup</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" line="80"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_tree_controller_1a19e277591f2e432231e20fb84c83a5e2" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>BOOL</type>
+        <definition>BOOL TreeController::allowOnDropOnLeaf</definition>
+        <argsstring>()</argsstring>
+        <name>allowOnDropOnLeaf</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" line="81"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_tree_controller_1a856333695158d6770e4f90defeddec8c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>BOOL</type>
+        <definition>BOOL TreeController::allowBetweenDrop</definition>
+        <argsstring>()</argsstring>
+        <name>allowBetweenDrop</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" line="82"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_tree_controller_1aed5d207d3cdfa28d4cde072bb2406a2c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>BOOL</type>
+        <definition>BOOL TreeController::allowGroupRowLook</definition>
+        <argsstring>()</argsstring>
+        <name>allowGroupRowLook</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" line="83"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_tree_controller_1a36367ff38188cc71cf0c11cc8ddd616a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>BOOL</type>
+        <definition>BOOL TreeController::allowButtonCellsToChangeSelection</definition>
+        <argsstring>()</argsstring>
+        <name>allowButtonCellsToChangeSelection</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" line="84"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_tree_controller_1ae253a338b682b117a3a70e1bdd54fb3d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>BOOL</type>
+        <definition>BOOL TreeController::allowToggleVerticalBeginsDrag</definition>
+        <argsstring>()</argsstring>
+        <name>allowToggleVerticalBeginsDrag</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" line="85"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_tree_controller_1a055702edb19004ca4e604f0ae8812527" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>BOOL</type>
+        <definition>BOOL TreeController::onlyAcceptDropOnRoot</definition>
+        <argsstring>()</argsstring>
+        <name>onlyAcceptDropOnRoot</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" line="86"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_tree_controller_1a27780957a4055d8b16b69bb56d837f80" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void TreeController::setAllowOnDropOnGroup:</definition>
+        <argsstring>(BOOL allow)</argsstring>
+        <name>setAllowOnDropOnGroup:</name>
+        <param>
+          <type>BOOL</type>
+          <declname>allow</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" line="88" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.m" bodystart="79" bodyend="79"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_tree_controller_1abcf17a90cc4c47f490b1c349ab27cdff" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void TreeController::setAllowOnDropOnLeaf:</definition>
+        <argsstring>(BOOL allow)</argsstring>
+        <name>setAllowOnDropOnLeaf:</name>
+        <param>
+          <type>BOOL</type>
+          <declname>allow</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" line="89" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.m" bodystart="80" bodyend="80"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_tree_controller_1a1373de595f1a6c11c992436e0a80f5b0" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void TreeController::setAllowBetweenDrop:</definition>
+        <argsstring>(BOOL allow)</argsstring>
+        <name>setAllowBetweenDrop:</name>
+        <param>
+          <type>BOOL</type>
+          <declname>allow</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" line="90" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.m" bodystart="81" bodyend="81"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_tree_controller_1a45ccaa0eb9cfc3f435b26ae69a7450c7" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void TreeController::setAllowGroupRowLook:</definition>
+        <argsstring>(BOOL allow)</argsstring>
+        <name>setAllowGroupRowLook:</name>
+        <param>
+          <type>BOOL</type>
+          <declname>allow</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" line="91" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.m" bodystart="82" bodyend="82"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_tree_controller_1a3d03663cc4ac9b7ce014634481dbb4c1" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void TreeController::setAllowButtonCellsToChangeSelection:</definition>
+        <argsstring>(BOOL allow)</argsstring>
+        <name>setAllowButtonCellsToChangeSelection:</name>
+        <param>
+          <type>BOOL</type>
+          <declname>allow</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" line="92" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.m" bodystart="83" bodyend="83"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_tree_controller_1af6cc0e2ea11e52963736fffadfe4c346" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void TreeController::setAllowToggleVerticalBeginsDrag:</definition>
+        <argsstring>(BOOL allow)</argsstring>
+        <name>setAllowToggleVerticalBeginsDrag:</name>
+        <param>
+          <type>BOOL</type>
+          <declname>allow</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" line="93" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.m" bodystart="84" bodyend="84"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_tree_controller_1a2fe761a985849bb3a5ca114fd5ef670d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void TreeController::setOnlyAcceptDropOnRoot:</definition>
+        <argsstring>(BOOL allow)</argsstring>
+        <name>setOnlyAcceptDropOnRoot:</name>
+        <param>
+          <type>BOOL</type>
+          <declname>allow</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" line="94" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.m" bodystart="85" bodyend="85"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_tree_controller_1a1818a72a6e6b7bd3c1823f0a7d3d4607" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void TreeController(Private)::_addNewDataToSelection:</definition>
+        <argsstring>(SimpleTreeNode *newChild)</argsstring>
+        <name>_addNewDataToSelection:</name>
+        <param>
+          <type><ref refid="class_simple_tree_node" kindref="compound">SimpleTreeNode</ref> *</type>
+          <declname>newChild</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.m" line="16" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.m" bodystart="845" bodyend="866"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="430">
+        <label>TreeController</label>
+        <link refid="interface_tree_controller"/>
+        <childnode refid="431" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="431">
+        <label>NSObject</label>
+        <link refid="class_n_s_object"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="436">
+        <label>NSMutableArray</label>
+        <link refid="class_n_s_mutable_array"/>
+      </node>
+      <node id="434">
+        <label>SimpleTreeNode</label>
+        <link refid="class_simple_tree_node"/>
+        <childnode refid="435" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="432">
+        <label>TreeController</label>
+        <link refid="interface_tree_controller"/>
+        <childnode refid="433" relation="public-inheritance">
+        </childnode>
+        <childnode refid="434" relation="usage">
+          <edgelabel>treeData</edgelabel>
+        </childnode>
+        <childnode refid="437" relation="usage">
+          <edgelabel>draggedNodes</edgelabel>
+        </childnode>
+      </node>
+      <node id="437">
+        <label>NSArray</label>
+        <link refid="class_n_s_array"/>
+      </node>
+      <node id="435">
+        <label>TreeNode</label>
+        <link refid="interface_tree_node"/>
+        <childnode refid="433" relation="public-inheritance">
+        </childnode>
+        <childnode refid="435" relation="usage">
+          <edgelabel>nodeParent</edgelabel>
+        </childnode>
+        <childnode refid="436" relation="usage">
+          <edgelabel>nodeChildren</edgelabel>
+        </childnode>
+      </node>
+      <node id="433">
+        <label>NSObject</label>
+        <link refid="class_n_s_object"/>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" line="39" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" bodystart="39" bodyend="-1"/>
+    <listofallmembers>
+      <member refid="interface_tree_controller_1a1818a72a6e6b7bd3c1823f0a7d3d4607" prot="public" virt="virtual"><scope>TreeController</scope><name>_addNewDataToSelection:</name></member>
+      <member refid="interface_tree_controller_1a6c576dc37e23d413d2f1fbf7665f90f2" prot="public" virt="virtual"><scope>TreeController</scope><name>addDataToTree:startEdit:</name></member>
+      <member refid="interface_tree_controller_1a25c9a4bed2e12d77c3239bad43314733" prot="public" virt="virtual"><scope>TreeController</scope><name>addGroup:</name></member>
+      <member refid="interface_tree_controller_1a62ed43fab24007b3b32acfed36dc1d52" prot="public" virt="virtual"><scope>TreeController</scope><name>addLeaf:</name></member>
+      <member refid="interface_tree_controller_1a9712a21bc7d2cba06420e747de167e44" prot="public" virt="virtual"><scope>TreeController</scope><name>addTreeRoot:</name></member>
+      <member refid="interface_tree_controller_1a6975e809d329f4e67eb5cbc02bdfb704" prot="protected" virt="non-virtual"><scope>TreeController</scope><name>allowBetweenDrop</name></member>
+      <member refid="interface_tree_controller_1a856333695158d6770e4f90defeddec8c" prot="public" virt="virtual"><scope>TreeController</scope><name>allowBetweenDrop</name></member>
+      <member refid="interface_tree_controller_1af9a816184260f157a7757fd92b286e95" prot="protected" virt="non-virtual"><scope>TreeController</scope><name>allowButtonCellsToChangeSelection</name></member>
+      <member refid="interface_tree_controller_1a36367ff38188cc71cf0c11cc8ddd616a" prot="public" virt="virtual"><scope>TreeController</scope><name>allowButtonCellsToChangeSelection</name></member>
+      <member refid="interface_tree_controller_1aec4cfc8b183d17681a61a581df7917d0" prot="protected" virt="non-virtual"><scope>TreeController</scope><name>allowGroupRowLook</name></member>
+      <member refid="interface_tree_controller_1aed5d207d3cdfa28d4cde072bb2406a2c" prot="public" virt="virtual"><scope>TreeController</scope><name>allowGroupRowLook</name></member>
+      <member refid="interface_tree_controller_1acac652ada6b3c3bb20183c5722b7e5ff" prot="protected" virt="non-virtual"><scope>TreeController</scope><name>allowOnDropOnGroup</name></member>
+      <member refid="interface_tree_controller_1aacdf1cd1ab999e98a064c61f1a0e7568" prot="public" virt="virtual"><scope>TreeController</scope><name>allowOnDropOnGroup</name></member>
+      <member refid="interface_tree_controller_1aaf1a538a809c877c5eca406defeb8098" prot="protected" virt="non-virtual"><scope>TreeController</scope><name>allowOnDropOnLeaf</name></member>
+      <member refid="interface_tree_controller_1a19e277591f2e432231e20fb84c83a5e2" prot="public" virt="virtual"><scope>TreeController</scope><name>allowOnDropOnLeaf</name></member>
+      <member refid="interface_tree_controller_1a83fe02a753318de01afdf84c9061bdf1" prot="protected" virt="non-virtual"><scope>TreeController</scope><name>allowToggleVerticalBeginsDrag</name></member>
+      <member refid="interface_tree_controller_1ae253a338b682b117a3a70e1bdd54fb3d" prot="public" virt="virtual"><scope>TreeController</scope><name>allowToggleVerticalBeginsDrag</name></member>
+      <member refid="interface_tree_controller_1a8026a3a0ca58f0cf1e2cda5f768d66f7" prot="protected" virt="non-virtual"><scope>TreeController</scope><name>dataSource</name></member>
+      <member refid="interface_tree_controller_1a996e01df0eca13979d21817335a01ab2" prot="public" virt="virtual"><scope>TreeController</scope><name>dataSource</name></member>
+      <member refid="interface_tree_controller_1a6d2e423d7f0c1986ed0a44f9374e0a74" prot="public" virt="virtual"><scope>TreeController</scope><name>deletedSelections</name></member>
+      <member refid="interface_tree_controller_1ae4228e4bd60542cc74355820ddd81493" prot="public" virt="virtual"><scope>TreeController</scope><name>deleteSelections:</name></member>
+      <member refid="interface_tree_controller_1a0e4d96c5cf20c953efa40bfddf406fa9" prot="protected" virt="non-virtual"><scope>TreeController</scope><name>draggedNodes</name></member>
+      <member refid="interface_tree_controller_1aab83dffb384f2c021751597bde8a3c5c" prot="public" virt="virtual"><scope>TreeController</scope><name>draggedNodes</name></member>
+      <member refid="interface_tree_controller_1a34327ad24d1bfc5b1cb60628fced8b40" prot="public" virt="virtual"><scope>TreeController</scope><name>expandableMenuItemAction:</name></member>
+      <member refid="interface_tree_controller_1af394baed1909c31dc106f011ea7e6fa4" prot="protected" virt="non-virtual"><scope>TreeController</scope><name>onlyAcceptDropOnRoot</name></member>
+      <member refid="interface_tree_controller_1a055702edb19004ca4e604f0ae8812527" prot="public" virt="virtual"><scope>TreeController</scope><name>onlyAcceptDropOnRoot</name></member>
+      <member refid="interface_tree_controller_1a3769ed57eaccb3f86917ebe30f8c5400" prot="protected" virt="non-virtual"><scope>TreeController</scope><name>outlineView</name></member>
+      <member refid="interface_tree_controller_1a7cf38103111daa5bf7db69a957c1694b" prot="public" virt="virtual"><scope>TreeController</scope><name>outlineView</name></member>
+      <member refid="interface_tree_controller_1aa40ffd780567b6c777aae615244290f6" prot="public" virt="virtual"><scope>TreeController</scope><name>outlineViewAction:</name></member>
+      <member refid="interface_tree_controller_1a2ce10a03be545f5d2591215955686873" prot="public" virt="virtual"><scope>TreeController</scope><name>recreateInitialTree</name></member>
+      <member refid="interface_tree_controller_1a7175132504fb8afa8210b8cbbefa8af5" prot="public" virt="virtual"><scope>TreeController</scope><name>selectedNodes</name></member>
+      <member refid="interface_tree_controller_1a1373de595f1a6c11c992436e0a80f5b0" prot="public" virt="virtual"><scope>TreeController</scope><name>setAllowBetweenDrop:</name></member>
+      <member refid="interface_tree_controller_1a3d03663cc4ac9b7ce014634481dbb4c1" prot="public" virt="virtual"><scope>TreeController</scope><name>setAllowButtonCellsToChangeSelection:</name></member>
+      <member refid="interface_tree_controller_1a45ccaa0eb9cfc3f435b26ae69a7450c7" prot="public" virt="virtual"><scope>TreeController</scope><name>setAllowGroupRowLook:</name></member>
+      <member refid="interface_tree_controller_1a27780957a4055d8b16b69bb56d837f80" prot="public" virt="virtual"><scope>TreeController</scope><name>setAllowOnDropOnGroup:</name></member>
+      <member refid="interface_tree_controller_1abcf17a90cc4c47f490b1c349ab27cdff" prot="public" virt="virtual"><scope>TreeController</scope><name>setAllowOnDropOnLeaf:</name></member>
+      <member refid="interface_tree_controller_1af6cc0e2ea11e52963736fffadfe4c346" prot="public" virt="virtual"><scope>TreeController</scope><name>setAllowToggleVerticalBeginsDrag:</name></member>
+      <member refid="interface_tree_controller_1a2fe761a985849bb3a5ca114fd5ef670d" prot="public" virt="virtual"><scope>TreeController</scope><name>setOnlyAcceptDropOnRoot:</name></member>
+      <member refid="interface_tree_controller_1a71b9e2e72cc048a1ecb2699783373386" prot="public" virt="virtual"><scope>TreeController</scope><name>setOutlineView:</name></member>
+      <member refid="interface_tree_controller_1a847115deadc9443e93386d37a704676f" prot="public" virt="virtual"><scope>TreeController</scope><name>setTreeRoot:</name></member>
+      <member refid="interface_tree_controller_1a06de46aff50a282fe573b5ec8cbd16cf" prot="public" virt="virtual"><scope>TreeController</scope><name>sortData:</name></member>
+      <member refid="interface_tree_controller_1a48f8be4cde3d8ed6b7db36ac6f5af172" prot="protected" virt="non-virtual"><scope>TreeController</scope><name>treeData</name></member>
+      <member refid="interface_tree_controller_1a2047e916742403982f6335da62c61a7a" prot="public" virt="virtual"><scope>TreeController</scope><name>treeRoot</name></member>
+      <member refid="interface_tree_controller_1a73a6c7a193ca16e9f637e995e310fc2a" prot="public" virt="virtual"><scope>TreeController</scope><name>undoManager</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

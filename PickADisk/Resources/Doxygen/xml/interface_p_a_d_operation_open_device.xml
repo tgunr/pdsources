@@ -1,0 +1,169 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.6.2">
+  <compounddef id="interface_p_a_d_operation_open_device" kind="class" prot="public">
+    <compoundname>PADOperationOpenDevice</compoundname>
+    <basecompoundref refid="interface_p_a_d_operation_task" prot="public" virt="non-virtual">PADOperationTask</basecompoundref>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="interface_p_a_d_operation_open_device_1ac729d68c76316b25285670ecd125fe27" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_simple_tree_node" kindref="compound">SimpleTreeNode</ref> *</type>
+        <definition>SimpleTreeNode * PADOperationOpenDevice::theDeviceNode</definition>
+        <argsstring></argsstring>
+        <name>theDeviceNode</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADOperationOpenDevice.h" line="17" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADOperationOpenDevice.h" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="interface_p_a_d_operation_open_device_1a7324e9d63e2b139443498d53c9aa1424" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="class_simple_tree_node" kindref="compound">SimpleTreeNode</ref> *</type>
+        <definition>SimpleTreeNode* PADOperationOpenDevice::theDeviceNode</definition>
+        <argsstring>()</argsstring>
+        <name>theDeviceNode</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADOperationOpenDevice.h" line="20"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_p_a_d_operation_open_device_1a523e266a789d87dce71e89cbcda9305f" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void PADOperationOpenDevice::setTheDeviceNode:</definition>
+        <argsstring>(SimpleTreeNode *newNode)</argsstring>
+        <name>setTheDeviceNode:</name>
+        <param>
+          <type><ref refid="class_simple_tree_node" kindref="compound">SimpleTreeNode</ref> *</type>
+          <declname>newNode</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADOperationOpenDevice.h" line="21" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADOperationOpenDevice.m" bodystart="19" bodyend="22"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="interface_p_a_d_operation_open_device_1ae4967c5540981b266a59135cde3033ad" prot="public" static="yes" const="no" explicit="no" inline="no" virt="virtual">
+        <type>BOOL</type>
+        <definition>BOOL PADOperationOpenDevice::addDeviceToSourceTree:</definition>
+        <argsstring>(DACALDeviceNode *newBox)</argsstring>
+        <name>addDeviceToSourceTree:</name>
+        <param>
+          <type><ref refid="interface_d_a_c_a_l_device_node" kindref="compound">DACALDeviceNode</ref> *</type>
+          <declname>newBox</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADOperationOpenDevice.h" line="23" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADOperationOpenDevice.m" bodystart="37" bodyend="45"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="324">
+        <label>PADOperationOpenDevice</label>
+        <link refid="interface_p_a_d_operation_open_device"/>
+        <childnode refid="325" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="325">
+        <label>PADOperationTask</label>
+        <link refid="interface_p_a_d_operation_task"/>
+        <childnode refid="326" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="326">
+        <label>NSObject</label>
+        <link refid="class_n_s_object"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="327">
+        <label>PADOperationOpenDevice</label>
+        <link refid="interface_p_a_d_operation_open_device"/>
+        <childnode refid="328" relation="public-inheritance">
+        </childnode>
+        <childnode refid="332" relation="usage">
+          <edgelabel>theDeviceNode</edgelabel>
+        </childnode>
+      </node>
+      <node id="334">
+        <label>NSMutableArray</label>
+        <link refid="class_n_s_mutable_array"/>
+      </node>
+      <node id="332">
+        <label>SimpleTreeNode</label>
+        <link refid="class_simple_tree_node"/>
+        <childnode refid="333" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="330">
+        <label>DACALDeviceNode</label>
+        <link refid="interface_d_a_c_a_l_device_node"/>
+        <childnode refid="331" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="331">
+        <label>DACALDevice</label>
+        <link refid="interface_d_a_c_a_l_device"/>
+        <childnode refid="329" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="333">
+        <label>TreeNode</label>
+        <link refid="interface_tree_node"/>
+        <childnode refid="329" relation="public-inheritance">
+        </childnode>
+        <childnode refid="333" relation="usage">
+          <edgelabel>nodeParent</edgelabel>
+        </childnode>
+        <childnode refid="334" relation="usage">
+          <edgelabel>nodeChildren</edgelabel>
+        </childnode>
+      </node>
+      <node id="328">
+        <label>PADOperationTask</label>
+        <link refid="interface_p_a_d_operation_task"/>
+        <childnode refid="329" relation="public-inheritance">
+        </childnode>
+        <childnode refid="330" relation="usage">
+          <edgelabel>theBoxRef</edgelabel>
+        </childnode>
+      </node>
+      <node id="329">
+        <label>NSObject</label>
+        <link refid="class_n_s_object"/>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADOperationOpenDevice.h" line="15" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADOperationOpenDevice.h" bodystart="15" bodyend="-1"/>
+    <listofallmembers>
+      <member refid="interface_p_a_d_operation_open_device_1ae4967c5540981b266a59135cde3033ad" prot="public" virt="virtual"><scope>PADOperationOpenDevice</scope><name>addDeviceToSourceTree:</name></member>
+      <member refid="interface_p_a_d_operation_task_1a952c94f6f13806d17fd3c40b2ef17849" prot="public" virt="virtual"><scope>PADOperationOpenDevice</scope><name>cancelOperationForDevice:</name></member>
+      <member refid="interface_p_a_d_operation_task_1a77bc7572ee9b11695ff6a0abb7ab2177" prot="public" virt="virtual"><scope>PADOperationOpenDevice</scope><name>endTaskForOperation:</name></member>
+      <member refid="interface_p_a_d_operation_task_1aefcc774e15468308ab6e1462cc0ec943" prot="public" virt="virtual"><scope>PADOperationOpenDevice</scope><name>newTaskForOperation:</name></member>
+      <member refid="interface_p_a_d_operation_task_1a7be615f3ea1345ef4fbe92dbc6a94428" prot="public" virt="virtual"><scope>PADOperationOpenDevice</scope><name>queueTaskForOperation:</name></member>
+      <member refid="interface_p_a_d_operation_task_1a20c4a446189711c25a8d5228845328bc" prot="public" virt="virtual"><scope>PADOperationOpenDevice</scope><name>runTaskForOperation:</name></member>
+      <member refid="interface_p_a_d_operation_task_1a7b0831b12b9fb5cdcd9fbec05a1919aa" prot="public" virt="virtual"><scope>PADOperationOpenDevice</scope><name>setTheBoxRef:</name></member>
+      <member refid="interface_p_a_d_operation_open_device_1a523e266a789d87dce71e89cbcda9305f" prot="public" virt="virtual"><scope>PADOperationOpenDevice</scope><name>setTheDeviceNode:</name></member>
+      <member refid="interface_p_a_d_operation_task_1a52b305d74c1a5e37c606d2598ecc65f5" prot="public" virt="virtual"><scope>PADOperationOpenDevice</scope><name>startNewOperationForTarget:endSelector:</name></member>
+      <member refid="interface_p_a_d_operation_task_1af35153f874686ac5da07d994d27339e8" prot="protected" virt="non-virtual"><scope>PADOperationOpenDevice</scope><name>theBoxRef</name></member>
+      <member refid="interface_p_a_d_operation_task_1a116c6f663a8e2b4458ecd18fbc9a9bef" prot="public" virt="virtual"><scope>PADOperationOpenDevice</scope><name>theBoxRef</name></member>
+      <member refid="interface_p_a_d_operation_open_device_1ac729d68c76316b25285670ecd125fe27" prot="protected" virt="non-virtual"><scope>PADOperationOpenDevice</scope><name>theDeviceNode</name></member>
+      <member refid="interface_p_a_d_operation_open_device_1a7324e9d63e2b139443498d53c9aa1424" prot="public" virt="virtual"><scope>PADOperationOpenDevice</scope><name>theDeviceNode</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

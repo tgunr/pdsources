@@ -1,0 +1,136 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.6.2">
+  <compounddef id="interface_my_outline_view" kind="class" prot="public">
+    <compoundname>MyOutlineView</compoundname>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="interface_my_outline_view_1a80f82a6e75950a2c07effa429eed36a4" prot="protected" static="no" mutable="no">
+        <type><ref refid="interface_p_a_d_search_request" kindref="compound">PADSearchRequest</ref> *</type>
+        <definition>PADSearchRequest * MyOutlineView::currentSearch</definition>
+        <argsstring></argsstring>
+        <name>currentSearch</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Cocoa Extensions/NSOutlineView_Extensions.h" line="25" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Cocoa Extensions/NSOutlineView_Extensions.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="interface_my_outline_view_1a2c7149ad4d1d08840bd2c05fed2e928e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="interface_p_a_d_search_request" kindref="compound">PADSearchRequest</ref> *</type>
+        <definition>PADSearchRequest* MyOutlineView::currentSearch</definition>
+        <argsstring>()</argsstring>
+        <name>currentSearch</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Cocoa Extensions/NSOutlineView_Extensions.h" line="28"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_my_outline_view_1ae7fdec82607bedeba919bef059e984d1" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void MyOutlineView::setCurrentSearch:</definition>
+        <argsstring>(PADSearchRequest *newSearch)</argsstring>
+        <name>setCurrentSearch:</name>
+        <param>
+          <type><ref refid="interface_p_a_d_search_request" kindref="compound">PADSearchRequest</ref> *</type>
+          <declname>newSearch</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Cocoa Extensions/NSOutlineView_Extensions.h" line="29" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Cocoa Extensions/NSOutlineView_Extensions.m" bodystart="149" bodyend="159"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_my_outline_view_1a593b11799c65c342501bcd4ac21c523d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void MyOutlineView::draggedImage:endedAt:operation:</definition>
+        <argsstring>(NSImage *image,[endedAt] NSPoint screenPoint,[operation] NSDragOperation operation)</argsstring>
+        <name>draggedImage:endedAt:operation:</name>
+        <param>
+          <type><ref refid="class_n_s_image" kindref="compound">NSImage</ref> *</type>
+          <declname>image</declname>
+        </param>
+        <param>
+          <attributes>[endedAt]</attributes>
+          <type>NSPoint</type>
+          <declname>screenPoint</declname>
+        </param>
+        <param>
+          <attributes>[operation]</attributes>
+          <type>NSDragOperation</type>
+          <declname>operation</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Cocoa Extensions/NSOutlineView_Extensions.h" line="31" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Cocoa Extensions/NSOutlineView_Extensions.m" bodystart="267" bodyend="275"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="143">
+        <label>NSMutableArray</label>
+        <link refid="class_n_s_mutable_array"/>
+      </node>
+      <node id="140">
+        <label>PADSearchRequest</label>
+        <link refid="interface_p_a_d_search_request"/>
+        <childnode refid="141" relation="public-inheritance">
+        </childnode>
+        <childnode refid="142" relation="usage">
+          <edgelabel>searchOptions</edgelabel>
+          <edgelabel>searchTermDictionary</edgelabel>
+        </childnode>
+        <childnode refid="143" relation="usage">
+          <edgelabel>searchTermParents</edgelabel>
+          <edgelabel>searchResults</edgelabel>
+          <edgelabel>searchTermOperations</edgelabel>
+          <edgelabel>searchTermElements</edgelabel>
+        </childnode>
+        <childnode refid="144" relation="usage">
+          <edgelabel>searchLocations</edgelabel>
+          <edgelabel>searchOriginalSelection</edgelabel>
+        </childnode>
+      </node>
+      <node id="144">
+        <label>NSArray</label>
+        <link refid="class_n_s_array"/>
+      </node>
+      <node id="139">
+        <label>MyOutlineView</label>
+        <link refid="interface_my_outline_view"/>
+        <childnode refid="140" relation="usage">
+          <edgelabel>currentSearch</edgelabel>
+        </childnode>
+      </node>
+      <node id="142">
+        <label>NSMutableDictionary</label>
+        <link refid="class_n_s_mutable_dictionary"/>
+      </node>
+      <node id="141">
+        <label>NSObject</label>
+        <link refid="class_n_s_object"/>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Cocoa Extensions/NSOutlineView_Extensions.h" line="24" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Cocoa Extensions/NSOutlineView_Extensions.h" bodystart="23" bodyend="-1"/>
+    <listofallmembers>
+      <member refid="interface_my_outline_view_1a80f82a6e75950a2c07effa429eed36a4" prot="protected" virt="non-virtual"><scope>MyOutlineView</scope><name>currentSearch</name></member>
+      <member refid="interface_my_outline_view_1a2c7149ad4d1d08840bd2c05fed2e928e" prot="public" virt="virtual"><scope>MyOutlineView</scope><name>currentSearch</name></member>
+      <member refid="interface_my_outline_view_1a593b11799c65c342501bcd4ac21c523d" prot="public" virt="virtual"><scope>MyOutlineView</scope><name>draggedImage:endedAt:operation:</name></member>
+      <member refid="interface_my_outline_view_1ae7fdec82607bedeba919bef059e984d1" prot="public" virt="virtual"><scope>MyOutlineView</scope><name>setCurrentSearch:</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
