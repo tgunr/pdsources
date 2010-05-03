@@ -1,0 +1,207 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.6.2">
+  <compounddef id="_p_a_d_flavor_image_view_8h" kind="file">
+    <compoundname>PADFlavorImageView.h</compoundname>
+    <includes local="no">Cocoa/Cocoa.h</includes>
+    <includedby refid="_p_a_d_add_volume_controller_8h" local="yes">PickADisk/Sources/PAD Controllers/PADAddVolumeController.h</includedby>
+    <includedby refid="_p_a_d_inspector_controller_8h" local="yes">PickADisk/Sources/PAD Controllers/PADInspectorController.h</includedby>
+    <includedby refid="_p_a_d_flavor_image_view_8m" local="yes">PickADisk/Sources/PAD Controllers/PADFlavorImageView.m</includedby>
+    <incdepgraph>
+      <node id="689">
+        <label>Cocoa/Cocoa.h</label>
+      </node>
+      <node id="688">
+        <label>PickADisk/Sources/PAD Controllers/PADFlavorImageView.h</label>
+        <link refid="PADFlavorImageView.h"/>
+        <childnode refid="689" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="691">
+        <label>PickADisk/Sources/PAD Controllers/PADAddVolumeController.h</label>
+        <link refid="_p_a_d_add_volume_controller_8h_source"/>
+        <childnode refid="692" relation="include">
+        </childnode>
+      </node>
+      <node id="692">
+        <label>PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h</label>
+        <link refid="_p_a_d_index_toolbar_controller_8h_source"/>
+        <childnode refid="693" relation="include">
+        </childnode>
+      </node>
+      <node id="693">
+        <label>PickADisk/Sources/PAD Controllers/DACALViewDataSource.h</label>
+        <link refid="_d_a_c_a_l_view_data_source_8h_source"/>
+      </node>
+      <node id="690">
+        <label>PickADisk/Sources/PAD Controllers/PADFlavorImageView.h</label>
+        <link refid="PADFlavorImageView.h"/>
+        <childnode refid="691" relation="include">
+        </childnode>
+        <childnode refid="694" relation="include">
+        </childnode>
+      </node>
+      <node id="694">
+        <label>PickADisk/Sources/PAD Controllers/PADInspectorController.h</label>
+        <link refid="_p_a_d_inspector_controller_8h_source"/>
+        <childnode refid="692" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="interface_p_a_d_simple_image_view" prot="public">PADSimpleImageView</innerclass>
+    <innerclass refid="interface_p_a_d_flavor_image_view" prot="public">PADFlavorImageView</innerclass>
+    <innerclass refid="interface_p_a_d_volume_icon_view" prot="public">PADVolumeIconView</innerclass>
+    <innerclass refid="interface_p_a_d_volume_icon_view_spin_animation" prot="public">PADVolumeIconViewSpinAnimation</innerclass>
+    <innerclass refid="interface_p_a_d_named_image_view" prot="public">PADNamedImageView</innerclass>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="_p_a_d_flavor_image_view_8h_1a77aaab17fbf5bf85fabf1e51d396a927" prot="public" static="no" mutable="no">
+        <type>const CGFloat</type>
+        <definition>const CGFloat kPADVIVStateRotateClockwise</definition>
+        <argsstring></argsstring>
+        <name>kPADVIVStateRotateClockwise</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADFlavorImageView.h" line="45" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADFlavorImageView.m" bodystart="193" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="_p_a_d_flavor_image_view_8h_1a04803a21ba32e139fea74567d2f6ac5b" prot="public" static="no" mutable="no">
+        <type>const CGFloat</type>
+        <definition>const CGFloat kPADVIVStateRotateOff</definition>
+        <argsstring></argsstring>
+        <name>kPADVIVStateRotateOff</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADFlavorImageView.h" line="46" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADFlavorImageView.m" bodystart="194" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="_p_a_d_flavor_image_view_8h_1ad656886ee6be0a15dae77a8c4395498c" prot="public" static="no" mutable="no">
+        <type>const CGFloat</type>
+        <definition>const CGFloat kPADVIVStateRotateCounterClockwise</definition>
+        <argsstring></argsstring>
+        <name>kPADVIVStateRotateCounterClockwise</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADFlavorImageView.h" line="47" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADFlavorImageView.m" bodystart="195" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>PADFlavorImageView.h</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>PickADisk</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Created<sp/>by<sp/>Jack<sp/>Small<sp/>on<sp/>10/20/08.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Copyright<sp/>2008<sp/>Jack<sp/>Small.<sp/>All<sp/>rights<sp/>reserved.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#import<sp/>&lt;Cocoa/Cocoa.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">@class</highlight><highlight class="normal"><sp/><ref refid="interface_d_a_c_volume" kindref="compound">DACVolume</ref>;</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13" refid="interface_p_a_d_simple_image_view" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">@interface<sp/></highlight><highlight class="normal"><ref refid="interface_p_a_d_simple_image_view" kindref="compound">PADSimpleImageView</ref><sp/>:<sp/>NSView<sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_n_s_image" kindref="compound">NSImage</ref>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>currentImage;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CGFloat<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>currentAlpha;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>NSCompositingOperation<sp/><sp/>currentCompositingOp;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal">-(<ref refid="class_n_s_image" kindref="compound">NSImage</ref>*)currentImage;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal">-(void)setCurrentImage:(<ref refid="class_n_s_image" kindref="compound">NSImage</ref>*)newImage;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal">-(void)changeCurrentImage:(<ref refid="class_n_s_image" kindref="compound">NSImage</ref>*)newImage;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal">-(CGFloat)currentAlpha;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal">-(void)setCurrentAlpha:(CGFloat)newAlpha;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal">-(void)changeCurrentAlpha:(CGFloat)newAlpha;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal">-(NSCompositingOperation)currentCompositingOp;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal">-(void)setCurrentCompositingOp:(NSCompositingOperation)newOp;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal">-(void)changeCurrentCompositingOP:(NSCompositingOperation)newOp;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal">-(BOOL)changeToNillImage;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal">-(BOOL)changeToDefaultImage;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal">-(BOOL)changeToIconRef:(IconRef)theIcon;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal">-(BOOL)changeToImageResource:(<ref refid="class_n_s_string" kindref="compound">NSString</ref>*)imageName;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="keyword">@end</highlight><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/>PADSimpleImageView</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="interface_p_a_d_flavor_image_view" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">@interface<sp/></highlight><highlight class="normal"><ref refid="interface_p_a_d_flavor_image_view" kindref="compound">PADFlavorImageView</ref><sp/>:<sp/><ref refid="interface_p_a_d_simple_image_view" kindref="compound">PADSimpleImageView</ref></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal">-(BOOL)changeToLibraryFlavor:(<ref refid="class_n_s_string" kindref="compound">NSString</ref>*)flavorName;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="keyword">@end</highlight><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/>PADFlavorImageView</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><sp/><sp/>CGFloat<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>kPADVIVStateRotateClockwise;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><sp/><sp/>CGFloat<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>kPADVIVStateRotateOff;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><sp/><sp/>CGFloat<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>kPADVIVStateRotateCounterClockwise;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49" refid="interface_p_a_d_volume_icon_view" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">@interface<sp/></highlight><highlight class="normal"><ref refid="interface_p_a_d_volume_icon_view" kindref="compound">PADVolumeIconView</ref><sp/>:<sp/><ref refid="interface_p_a_d_simple_image_view" kindref="compound">PADSimpleImageView</ref></highlight></codeline>
+<codeline lineno="50"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CGFloat<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>currentRotation;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CGFloat<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>spinsState;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CGFloat<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>spinsPerSecond;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>NSTimer*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>spinsTimer;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal">-(CGFloat)currentRotation;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal">-(void)setCurrentRotation:(CGFloat)newDegRotation;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal">-(void)changeCurrentRotation:(CGFloat)newDegRotation;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal">-(void)synchronizeRotation;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal">-(CGFloat)spinsState;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal">-(void)setSpinsState:(CGFloat)newState;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal">-(void)changeSpinsState:(CGFloat)newState;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal">-(void)changeSpinsPerSecond:(CGFloat)newRate;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal">-(void)spinUpInDirection:(CGFloat)spinDirection;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal">-(void)spinDown;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal">-(BOOL)changeToVolumeIcon:(<ref refid="interface_d_a_c_volume" kindref="compound">DACVolume</ref>*)theVolume;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="keyword">@end</highlight><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/>PADVolumeIconView</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76" refid="interface_p_a_d_volume_icon_view_spin_animation" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">@interface<sp/></highlight><highlight class="normal"><ref refid="interface_p_a_d_volume_icon_view_spin_animation" kindref="compound">PADVolumeIconViewSpinAnimation</ref><sp/>:<sp/>NSAnimation</highlight></codeline>
+<codeline lineno="77"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="interface_p_a_d_volume_icon_view" kindref="compound">PADVolumeIconView</ref>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>theIcon;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal">+(void)runSpinForIcon:(<ref refid="interface_p_a_d_volume_icon_view" kindref="compound">PADVolumeIconView</ref>*)aniIcon<sp/>spinUp:(BOOL)isStarting;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal">+(void)runSpinUpForIcon:(<ref refid="interface_p_a_d_volume_icon_view" kindref="compound">PADVolumeIconView</ref>*)aniIcon;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight><highlight class="keyword">@end</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86" refid="interface_p_a_d_named_image_view" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">@interface<sp/></highlight><highlight class="normal"><ref refid="interface_p_a_d_named_image_view" kindref="compound">PADNamedImageView</ref><sp/>:<sp/><ref refid="interface_p_a_d_simple_image_view" kindref="compound">PADSimpleImageView</ref></highlight></codeline>
+<codeline lineno="87"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_n_s_string" kindref="compound">NSString</ref>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resourceName;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CGFloat<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resourceAlpha;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal">-(<ref refid="class_n_s_string" kindref="compound">NSString</ref>*)resourceName;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal">-(void)setResourceName:(<ref refid="class_n_s_string" kindref="compound">NSString</ref>*)newName;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal">-(void)changeResourceName:(<ref refid="class_n_s_string" kindref="compound">NSString</ref>*)newName;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal">-(CGFloat)resourceAlpha;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal">-(void)setResourceAlpha:(CGFloat)newAlpha;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal">-(void)changeResourceAlpha:(CGFloat)newAlpha;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight><highlight class="keyword">@end</highlight><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/>PADNamedImageView</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADFlavorImageView.h"/>
+  </compounddef>
+</doxygen>

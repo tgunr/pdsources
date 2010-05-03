@@ -1,0 +1,159 @@
+\hypertarget{interface_d_a_c_volume_service}{
+\section{DACVolumeService Class Reference}
+\label{interface_d_a_c_volume_service}\index{DACVolumeService@{DACVolumeService}}
+}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_d_a_c_volume_service_a90c16f857d23a4e89590e1b48929b55a}{
+(CFArrayRef) -\/ {\bfseries kextBundles}}
+\label{interface_d_a_c_volume_service_a90c16f857d23a4e89590e1b48929b55a}
+
+\item 
+\hypertarget{interface_d_a_c_volume_service_a2e31884ac7e2302fac4dfb655878bfc6}{
+(void) -\/ {\bfseries lazyInitKextBundles}}
+\label{interface_d_a_c_volume_service_a2e31884ac7e2302fac4dfb655878bfc6}
+
+\item 
+\hypertarget{interface_d_a_c_volume_service_abfdb85744191af445d18776a903f1bf7}{
+(\hyperlink{class_n_s_mutable_array}{NSMutableArray} $\ast$) -\/ {\bfseries pendingMounts}}
+\label{interface_d_a_c_volume_service_abfdb85744191af445d18776a903f1bf7}
+
+\item 
+\hypertarget{interface_d_a_c_volume_service_afeeae2fef2a8ccc6931faca6456ddd1c}{
+(void) -\/ {\bfseries setPendingMounts:}}
+\label{interface_d_a_c_volume_service_afeeae2fef2a8ccc6931faca6456ddd1c}
+
+\item 
+\hypertarget{interface_d_a_c_volume_service_af78fa3c95399e755aeea138635c9e9fe}{
+(void) -\/ {\bfseries addPendingMount:}}
+\label{interface_d_a_c_volume_service_af78fa3c95399e755aeea138635c9e9fe}
+
+\item 
+\hypertarget{interface_d_a_c_volume_service_af64c6637a2bc3111aa1d50dbe0b23b56}{
+(void) -\/ {\bfseries removePendingMount:}}
+\label{interface_d_a_c_volume_service_af64c6637a2bc3111aa1d50dbe0b23b56}
+
+\item 
+\hypertarget{interface_d_a_c_volume_service_a9902597ef5ad44fc05813f1f568521bb}{
+(BOOL) -\/ {\bfseries isPendingMount:}}
+\label{interface_d_a_c_volume_service_a9902597ef5ad44fc05813f1f568521bb}
+
+\item 
+\hypertarget{interface_d_a_c_volume_service_ac34c94422071fadb68588198d04ac125}{
+(\hyperlink{class_n_s_mutable_array}{NSMutableArray} $\ast$) -\/ {\bfseries pendingUnmounts}}
+\label{interface_d_a_c_volume_service_ac34c94422071fadb68588198d04ac125}
+
+\item 
+\hypertarget{interface_d_a_c_volume_service_aca243444c0e6bfc43c5838dff3998ca8}{
+(void) -\/ {\bfseries setPendingUnmounts:}}
+\label{interface_d_a_c_volume_service_aca243444c0e6bfc43c5838dff3998ca8}
+
+\item 
+\hypertarget{interface_d_a_c_volume_service_af7eec5546f333b69aa5452194f6453f6}{
+(void) -\/ {\bfseries addPendingUnmount:}}
+\label{interface_d_a_c_volume_service_af7eec5546f333b69aa5452194f6453f6}
+
+\item 
+\hypertarget{interface_d_a_c_volume_service_a1aeb4e7679dc041cfe52b77273b0a027}{
+(void) -\/ {\bfseries removePendingUnmount:}}
+\label{interface_d_a_c_volume_service_a1aeb4e7679dc041cfe52b77273b0a027}
+
+\item 
+\hypertarget{interface_d_a_c_volume_service_ab1cefac86378f0561a9e71c5d851637a}{
+(BOOL) -\/ {\bfseries isPendingUnmount:}}
+\label{interface_d_a_c_volume_service_ab1cefac86378f0561a9e71c5d851637a}
+
+\item 
+\hypertarget{interface_d_a_c_volume_service_a20929c1510022bcfed50b39af98d5b41}{
+(\hyperlink{class_n_s_mutable_array}{NSMutableArray} $\ast$) -\/ {\bfseries knownVolumes}}
+\label{interface_d_a_c_volume_service_a20929c1510022bcfed50b39af98d5b41}
+
+\item 
+\hypertarget{interface_d_a_c_volume_service_a3efa170f68f544e2eacfafd8969970cb}{
+(\hyperlink{interface_d_a_c_volume}{DACVolume} $\ast$) -\/ {\bfseries knownVolumeWithURL:}}
+\label{interface_d_a_c_volume_service_a3efa170f68f544e2eacfafd8969970cb}
+
+\item 
+\hypertarget{interface_d_a_c_volume_service_a424b7f1fa3413c3f720574e7c82c59d8}{
+(\hyperlink{interface_d_a_c_volume}{DACVolume} $\ast$) -\/ {\bfseries knownVolumeWithPath:}}
+\label{interface_d_a_c_volume_service_a424b7f1fa3413c3f720574e7c82c59d8}
+
+\item 
+\hypertarget{interface_d_a_c_volume_service_a97826f42cc341ff0cd4dab4c3f03be7c}{
+(\hyperlink{class_n_s_array}{NSArray} $\ast$) -\/ {\bfseries knownIndexableVolumes:}}
+\label{interface_d_a_c_volume_service_a97826f42cc341ff0cd4dab4c3f03be7c}
+
+\item 
+\hypertarget{interface_d_a_c_volume_service_abdf538e24b7b81f329d2cd47aa90e29c}{
+(\hyperlink{class_n_s_array}{NSArray} $\ast$) -\/ {\bfseries knownSlotVolumes:}}
+\label{interface_d_a_c_volume_service_abdf538e24b7b81f329d2cd47aa90e29c}
+
+\item 
+\hypertarget{interface_d_a_c_volume_service_a11e8cb0380ac497a19c1c3e1340e5946}{
+(void) -\/ {\bfseries newMediaDetected:}}
+\label{interface_d_a_c_volume_service_a11e8cb0380ac497a19c1c3e1340e5946}
+
+\item 
+\hypertarget{interface_d_a_c_volume_service_a765a9026699b0900809c81bda9771e88}{
+(void) -\/ {\bfseries scanMountedRemovableMedia}}
+\label{interface_d_a_c_volume_service_a765a9026699b0900809c81bda9771e88}
+
+\item 
+\hypertarget{interface_d_a_c_volume_service_aa6ac353c2277e8206257d89b736816bf}{
+(void) -\/ {\bfseries existingMediaRemoved:}}
+\label{interface_d_a_c_volume_service_aa6ac353c2277e8206257d89b736816bf}
+
+\item 
+\hypertarget{interface_d_a_c_volume_service_a4c1867009e151291ba4d85adc7fbbac2}{
+(void) -\/ {\bfseries carouselDeviceAttached:}}
+\label{interface_d_a_c_volume_service_a4c1867009e151291ba4d85adc7fbbac2}
+
+\item 
+\hypertarget{interface_d_a_c_volume_service_a331005d8faa2cfcc5ed6b8a0b55e83f6}{
+(void) -\/ {\bfseries carouselDeviceSlotAttached:}}
+\label{interface_d_a_c_volume_service_a331005d8faa2cfcc5ed6b8a0b55e83f6}
+
+\item 
+\hypertarget{interface_d_a_c_volume_service_afdbc5d538b32920bd76ae3734ac6054a}{
+(void) -\/ {\bfseries carouselDeviceDetached:}}
+\label{interface_d_a_c_volume_service_afdbc5d538b32920bd76ae3734ac6054a}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_d_a_c_volume_service_a9ecd3864ae4f45470d64c8d4dd7929ff}{
+(id) + {\bfseries sharedVolumeService}}
+\label{interface_d_a_c_volume_service_a9ecd3864ae4f45470d64c8d4dd7929ff}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_d_a_c_volume_service_a0afe89a9c0d72c22c80cca89652c2bcd}{
+CFArrayRef {\bfseries kextBundles}}
+\label{interface_d_a_c_volume_service_a0afe89a9c0d72c22c80cca89652c2bcd}
+
+\item 
+\hypertarget{interface_d_a_c_volume_service_a51394972132833b45f8e6aa5527d119b}{
+\hyperlink{class_n_s_mutable_array}{NSMutableArray} $\ast$ {\bfseries knownVolumes}}
+\label{interface_d_a_c_volume_service_a51394972132833b45f8e6aa5527d119b}
+
+\item 
+\hypertarget{interface_d_a_c_volume_service_a2cbb59eb93f6f26a84cceb27af904fba}{
+\hyperlink{class_n_s_mutable_array}{NSMutableArray} $\ast$ {\bfseries pendingMounts}}
+\label{interface_d_a_c_volume_service_a2cbb59eb93f6f26a84cceb27af904fba}
+
+\item 
+\hypertarget{interface_d_a_c_volume_service_a85e7af9403141b9ef6fa0a3a01f1dd59}{
+\hyperlink{class_n_s_mutable_array}{NSMutableArray} $\ast$ {\bfseries pendingUnmounts}}
+\label{interface_d_a_c_volume_service_a85e7af9403141b9ef6fa0a3a01f1dd59}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+PickADisk/Sources/PAD Controllers/DACVolume.h\item 
+PickADisk/Sources/PAD Controllers/DACVolume.m\end{DoxyCompactItemize}

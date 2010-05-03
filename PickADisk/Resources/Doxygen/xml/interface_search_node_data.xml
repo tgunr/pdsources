@@ -1,0 +1,273 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.6.2">
+  <compounddef id="interface_search_node_data" kind="class" prot="public">
+    <compoundname>SearchNodeData</compoundname>
+    <basecompoundref refid="interface_simple_node_data" prot="public" virt="non-virtual">SimpleNodeData</basecompoundref>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="interface_search_node_data_1a8decabeb3b51dc5b40caced309be180c" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_simple_tree_node" kindref="compound">SimpleTreeNode</ref> *</type>
+        <definition>SimpleTreeNode * SearchNodeData::matchActual</definition>
+        <argsstring></argsstring>
+        <name>matchActual</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" line="236" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" bodystart="236" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_search_node_data_1ad824f31ea6480c5b3e6bb8762854e3e5" prot="protected" static="no" mutable="no">
+        <type>PADSearchRelevance</type>
+        <definition>PADSearchRelevance SearchNodeData::matchScore</definition>
+        <argsstring></argsstring>
+        <name>matchScore</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" line="237" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" bodystart="237" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="interface_search_node_data_1a09217003f3e3c786aba0b4785413d1ce" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="class_simple_tree_node" kindref="compound">SimpleTreeNode</ref> *</type>
+        <definition>SimpleTreeNode* SearchNodeData::matchActual</definition>
+        <argsstring>()</argsstring>
+        <name>matchActual</name>
+        <reimplements refid="interface_simple_node_data_1ad35320f67168e534b22b9d958df4453f">matchActual</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" line="240"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_search_node_data_1aaa82adc332f14232d723a6102004590d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>PADSearchRelevance</type>
+        <definition>PADSearchRelevance SearchNodeData::matchScore</definition>
+        <argsstring>()</argsstring>
+        <name>matchScore</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" line="241"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_search_node_data_1afb452b53e199f9da204e80a8ba0804e5" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>id</type>
+        <definition>id SearchNodeData::initWithLocationOfActual:withScore:asResult:</definition>
+        <argsstring>(SimpleTreeNode *inMatch,[withScore] PADSearchRelevance inScore,[asResult] NSString *resultType)</argsstring>
+        <name>initWithLocationOfActual:withScore:asResult:</name>
+        <param>
+          <type><ref refid="class_simple_tree_node" kindref="compound">SimpleTreeNode</ref> *</type>
+          <declname>inMatch</declname>
+        </param>
+        <param>
+          <attributes>[withScore]</attributes>
+          <type>PADSearchRelevance</type>
+          <declname>inScore</declname>
+        </param>
+        <param>
+          <attributes>[asResult]</attributes>
+          <type><ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+          <declname>resultType</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" line="243" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.m" bodystart="1093" bodyend="1110"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="interface_search_node_data_1affa24006f9e32d28a195fd4f39a871cd" prot="public" static="yes" const="no" explicit="no" inline="no" virt="virtual">
+        <type>id</type>
+        <definition>id SearchNodeData::nodeDataWithLocationOfActual:withScore:asResult:</definition>
+        <argsstring>(SimpleTreeNode *inMatch,[withScore] PADSearchRelevance inScore,[asResult] NSString *resultType)</argsstring>
+        <name>nodeDataWithLocationOfActual:withScore:asResult:</name>
+        <param>
+          <type><ref refid="class_simple_tree_node" kindref="compound">SimpleTreeNode</ref> *</type>
+          <declname>inMatch</declname>
+        </param>
+        <param>
+          <attributes>[withScore]</attributes>
+          <type>PADSearchRelevance</type>
+          <declname>inScore</declname>
+        </param>
+        <param>
+          <attributes>[asResult]</attributes>
+          <type><ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+          <declname>resultType</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" line="244" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.m" bodystart="1112" bodyend="1113"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="397">
+        <label>SearchNodeData</label>
+        <link refid="interface_search_node_data"/>
+        <childnode refid="398" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="398">
+        <label>SimpleNodeData</label>
+        <link refid="interface_simple_node_data"/>
+        <childnode refid="399" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="399">
+        <label>NSObject</label>
+        <link refid="class_n_s_object"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="400">
+        <label>SearchNodeData</label>
+        <link refid="interface_search_node_data"/>
+        <childnode refid="401" relation="public-inheritance">
+        </childnode>
+        <childnode refid="403" relation="usage">
+          <edgelabel>matchActual</edgelabel>
+        </childnode>
+      </node>
+      <node id="401">
+        <label>SimpleNodeData</label>
+        <link refid="interface_simple_node_data"/>
+        <childnode refid="402" relation="public-inheritance">
+        </childnode>
+        <childnode refid="403" relation="usage">
+          <edgelabel>subTree</edgelabel>
+        </childnode>
+        <childnode refid="406" relation="usage">
+          <edgelabel>itemFlavor</edgelabel>
+          <edgelabel>name</edgelabel>
+        </childnode>
+        <childnode refid="407" relation="usage">
+          <edgelabel>iconRep</edgelabel>
+        </childnode>
+      </node>
+      <node id="405">
+        <label>NSMutableArray</label>
+        <link refid="class_n_s_mutable_array"/>
+      </node>
+      <node id="403">
+        <label>SimpleTreeNode</label>
+        <link refid="class_simple_tree_node"/>
+        <childnode refid="404" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="407">
+        <label>NSImage</label>
+        <link refid="class_n_s_image"/>
+      </node>
+      <node id="406">
+        <label>NSString</label>
+        <link refid="class_n_s_string"/>
+      </node>
+      <node id="404">
+        <label>TreeNode</label>
+        <link refid="interface_tree_node"/>
+        <childnode refid="402" relation="public-inheritance">
+        </childnode>
+        <childnode refid="404" relation="usage">
+          <edgelabel>nodeParent</edgelabel>
+        </childnode>
+        <childnode refid="405" relation="usage">
+          <edgelabel>nodeChildren</edgelabel>
+        </childnode>
+      </node>
+      <node id="402">
+        <label>NSObject</label>
+        <link refid="class_n_s_object"/>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" line="235" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" bodystart="234" bodyend="-1"/>
+    <listofallmembers>
+      <member refid="interface_simple_node_data_1a4d5b24e648728f7872dfb0cff706eaf5" prot="public" virt="virtual"><scope>SearchNodeData</scope><name>busy</name></member>
+      <member refid="interface_simple_node_data_1a3c3525b002fd28144ad0573abf97027e" prot="public" virt="virtual"><scope>SearchNodeData</scope><name>checkedInDate</name></member>
+      <member refid="interface_simple_node_data_1a8c9887391d02f1b9842cd8daca0c88c1" prot="public" virt="virtual"><scope>SearchNodeData</scope><name>checkedOutDate</name></member>
+      <member refid="interface_simple_node_data_1a582dda970caef52d82695d3d5f113e13" prot="public" virt="virtual"><scope>SearchNodeData</scope><name>compare:</name></member>
+      <member refid="interface_simple_node_data_1a2bea5cc795b4894ff0373eb627885e74" prot="public" virt="virtual"><scope>SearchNodeData</scope><name>compareDataAddDates:</name></member>
+      <member refid="interface_simple_node_data_1a20db640e8ea9fe5d7bf539e4090ac466" prot="public" virt="virtual"><scope>SearchNodeData</scope><name>compareDataFlavors:</name></member>
+      <member refid="interface_simple_node_data_1ab7f3f909005bd52566d18ec7bd0bcbc1" prot="public" virt="virtual"><scope>SearchNodeData</scope><name>compareDataNames:</name></member>
+      <member refid="interface_simple_node_data_1a52c303487f5e21cd4c0273bf21871f7c" prot="public" virt="virtual"><scope>SearchNodeData</scope><name>compareDataScores:</name></member>
+      <member refid="interface_simple_node_data_1a1767d620577f5d52ff659e4172bce3cf" prot="public" virt="virtual"><scope>SearchNodeData</scope><name>compareDataSlots:</name></member>
+      <member refid="interface_simple_node_data_1a170d0ec3cb679b3fb1999e38e2236302" prot="public" virt="virtual"><scope>SearchNodeData</scope><name>compareKeyCheckedOut:</name></member>
+      <member refid="interface_simple_node_data_1ae6521fd09bc63cb72b5d4d3695d75d1c" prot="public" virt="virtual"><scope>SearchNodeData</scope><name>compareKeyComments:</name></member>
+      <member refid="interface_simple_node_data_1ad9efd8536c19dfc0e079d8331577f824" prot="public" virt="virtual"><scope>SearchNodeData</scope><name>compareKeyStars:</name></member>
+      <member refid="interface_simple_node_data_1a18a82c2c7e75cf7546bc41fec01a8116" prot="public" virt="virtual"><scope>SearchNodeData</scope><name>compareKeyTags:</name></member>
+      <member refid="interface_simple_node_data_1a723aabf69386c4e53a01302a165a1922" prot="public" virt="virtual"><scope>SearchNodeData</scope><name>groupDataWithName:</name></member>
+      <member refid="interface_simple_node_data_1a2406dde887b9c930f20a06be5b6b4e62" prot="public" virt="virtual"><scope>SearchNodeData</scope><name>iconRep</name></member>
+      <member refid="interface_simple_node_data_1a910be504ebf50a61a15392f68bda668d" prot="public" virt="virtual"><scope>SearchNodeData</scope><name>initWithLocation:</name></member>
+      <member refid="interface_simple_node_data_1aba117f30be58580b8e554900b1344fb4" prot="public" virt="virtual"><scope>SearchNodeData</scope><name>initWithLocation:isLeaf:</name></member>
+      <member refid="interface_search_node_data_1afb452b53e199f9da204e80a8ba0804e5" prot="public" virt="virtual"><scope>SearchNodeData</scope><name>initWithLocationOfActual:withScore:asResult:</name></member>
+      <member refid="interface_simple_node_data_1a3932c4bfaae8a9e289d13360abd54cb1" prot="public" virt="virtual"><scope>SearchNodeData</scope><name>initWithName:isLeaf:</name></member>
+      <member refid="interface_simple_node_data_1aa00ea9e53026ab32a962321ec549d8a1" prot="public" virt="virtual"><scope>SearchNodeData</scope><name>isCheckedOut</name></member>
+      <member refid="interface_simple_node_data_1a6c4123b1f2a74b2a40706aa5260702e8" prot="public" virt="virtual"><scope>SearchNodeData</scope><name>isExpandable</name></member>
+      <member refid="interface_simple_node_data_1a537624c0ff02d4facbc434b6f27d4486" prot="public" virt="virtual"><scope>SearchNodeData</scope><name>isExpanded</name></member>
+      <member refid="interface_simple_node_data_1afc7f2f5d5937f442264693f3faf7f251" prot="public" virt="virtual"><scope>SearchNodeData</scope><name>isGroup</name></member>
+      <member refid="interface_simple_node_data_1a930ac1fb69bfe178efeb79b1ef9c96fd" prot="public" virt="virtual"><scope>SearchNodeData</scope><name>isLeaf</name></member>
+      <member refid="interface_simple_node_data_1a26e2fd51806c2e2f30c3a64474dd8dc8" prot="public" virt="virtual"><scope>SearchNodeData</scope><name>isSelectable</name></member>
+      <member refid="interface_simple_node_data_1ace4abe4bbca1ec04388d98cb1c182fcf" prot="public" virt="virtual"><scope>SearchNodeData</scope><name>itemAddDate</name></member>
+      <member refid="interface_simple_node_data_1a33fafc70dab892857dc4b911d0a9e575" prot="public" virt="virtual"><scope>SearchNodeData</scope><name>itemDevice</name></member>
+      <member refid="interface_simple_node_data_1abb5e9497fcab85e2a0582e0e9b0f6442" prot="public" virt="virtual"><scope>SearchNodeData</scope><name>itemElement</name></member>
+      <member refid="interface_simple_node_data_1afcfe8c08eabbf5d19fc352756b7a275d" prot="public" virt="virtual"><scope>SearchNodeData</scope><name>itemFlavor</name></member>
+      <member refid="interface_simple_node_data_1a3eded77d09e5994db910537b0301cc6e" prot="public" virt="virtual"><scope>SearchNodeData</scope><name>itemSlot</name></member>
+      <member refid="interface_simple_node_data_1afa8780be5016d077fc2af7b7a97df988" prot="public" virt="virtual"><scope>SearchNodeData</scope><name>itemType</name></member>
+      <member refid="interface_simple_node_data_1a33fe8caf7951bf13939577f69169a9dc" prot="public" virt="virtual"><scope>SearchNodeData</scope><name>keyComments</name></member>
+      <member refid="interface_simple_node_data_1a64386bb8b63b9dbc44c9ee01266e20e5" prot="public" virt="virtual"><scope>SearchNodeData</scope><name>keyStars</name></member>
+      <member refid="interface_simple_node_data_1ab9b12d893169b658830206d8b47bf62a" prot="public" virt="virtual"><scope>SearchNodeData</scope><name>keyTags</name></member>
+      <member refid="interface_simple_node_data_1a27a70662180f2be54ffd5ee4293b78d7" prot="public" virt="virtual"><scope>SearchNodeData</scope><name>leafDataWithName:</name></member>
+      <member refid="interface_simple_node_data_1ae41c7b170d4ff781bf5426b9fb81908f" prot="public" virt="virtual"><scope>SearchNodeData</scope><name>location</name></member>
+      <member refid="interface_search_node_data_1a8decabeb3b51dc5b40caced309be180c" prot="protected" virt="non-virtual"><scope>SearchNodeData</scope><name>matchActual</name></member>
+      <member refid="interface_search_node_data_1a09217003f3e3c786aba0b4785413d1ce" prot="public" virt="virtual"><scope>SearchNodeData</scope><name>matchActual</name></member>
+      <member refid="interface_search_node_data_1ad824f31ea6480c5b3e6bb8762854e3e5" prot="protected" virt="non-virtual"><scope>SearchNodeData</scope><name>matchScore</name></member>
+      <member refid="interface_search_node_data_1aaa82adc332f14232d723a6102004590d" prot="public" virt="virtual"><scope>SearchNodeData</scope><name>matchScore</name></member>
+      <member refid="interface_simple_node_data_1a0885b5915b0a77d4bf669f03a5ec78cb" prot="public" virt="virtual"><scope>SearchNodeData</scope><name>name</name></member>
+      <member refid="interface_search_node_data_1affa24006f9e32d28a195fd4f39a871cd" prot="public" virt="virtual"><scope>SearchNodeData</scope><name>nodeDataWithLocationOfActual:withScore:asResult:</name></member>
+      <member refid="interface_simple_node_data_1a4853f2de7c70d619c9cca00a6b8f29ba" prot="public" virt="virtual"><scope>SearchNodeData</scope><name>nodeDataWithURL:</name></member>
+      <member refid="interface_simple_node_data_1a7ca520ed6db620a9ce28a1d9f3f9e794" prot="public" virt="virtual"><scope>SearchNodeData</scope><name>nodeDataWithURL:isLeaf:</name></member>
+      <member refid="interface_simple_node_data_1a4265e51dac132add6b156d6cf4d683fb" prot="public" virt="virtual"><scope>SearchNodeData</scope><name>numberForSlotNumber</name></member>
+      <member refid="interface_simple_node_data_1a7531d185e0ea8177afc548578840c041" prot="public" virt="virtual"><scope>SearchNodeData</scope><name>reload</name></member>
+      <member refid="interface_simple_node_data_1a2a98cde7396df831cd98e5649d60ff47" prot="public" virt="virtual"><scope>SearchNodeData</scope><name>reloadData:</name></member>
+      <member refid="interface_simple_node_data_1aa130304efe2639b6ed5985b41892a0be" prot="public" virt="virtual"><scope>SearchNodeData</scope><name>setBusy:</name></member>
+      <member refid="interface_simple_node_data_1ac19d97470559cefc69ec8f0746229980" prot="public" virt="virtual"><scope>SearchNodeData</scope><name>setExpandable:</name></member>
+      <member refid="interface_simple_node_data_1a806bab083500c20f345494544d071e11" prot="public" virt="virtual"><scope>SearchNodeData</scope><name>setExpanded:</name></member>
+      <member refid="interface_simple_node_data_1ab919b6d0f7d7dd3c888445aec8d8fa6d" prot="public" virt="virtual"><scope>SearchNodeData</scope><name>setIconRep:</name></member>
+      <member refid="interface_simple_node_data_1a6bba8f82b3d75fa4f1f15e4fc7ffd989" prot="public" virt="virtual"><scope>SearchNodeData</scope><name>setIsLeaf:</name></member>
+      <member refid="interface_simple_node_data_1ad090e18d4f2966c50254650300cd5902" prot="public" virt="virtual"><scope>SearchNodeData</scope><name>setItemAddDate:</name></member>
+      <member refid="interface_simple_node_data_1a0a0ddd9aa41a40119e9a681a8c1df7b1" prot="public" virt="virtual"><scope>SearchNodeData</scope><name>setItemDevice:</name></member>
+      <member refid="interface_simple_node_data_1a7ee427da4533e804ce5a34fe1d7744fb" prot="public" virt="virtual"><scope>SearchNodeData</scope><name>setItemElement:</name></member>
+      <member refid="interface_simple_node_data_1ae97440b9e242108deafe08ea437617cb" prot="public" virt="virtual"><scope>SearchNodeData</scope><name>setItemFlavor:</name></member>
+      <member refid="interface_simple_node_data_1a3e9d3b1baab43c81fe3f2a4a17a381ad" prot="public" virt="virtual"><scope>SearchNodeData</scope><name>setItemSlot:</name></member>
+      <member refid="interface_simple_node_data_1ab5fe27e6ef5f52eb31d293fee6a24a9d" prot="public" virt="virtual"><scope>SearchNodeData</scope><name>setItemType:</name></member>
+      <member refid="interface_simple_node_data_1a6d8aafc8c0507f0c8e5b347a5ab1de30" prot="public" virt="virtual"><scope>SearchNodeData</scope><name>setKeyComments:</name></member>
+      <member refid="interface_simple_node_data_1ab3ebfa589d46b4724b0a709599a93f48" prot="public" virt="virtual"><scope>SearchNodeData</scope><name>setKeyStars:</name></member>
+      <member refid="interface_simple_node_data_1a658e7a3207cd1610e1ced186da370d9c" prot="public" virt="virtual"><scope>SearchNodeData</scope><name>setKeyTags:</name></member>
+      <member refid="interface_simple_node_data_1a177b7a3eb851aed139e6469f28d1b87a" prot="public" virt="virtual"><scope>SearchNodeData</scope><name>setLocation:</name></member>
+      <member refid="interface_simple_node_data_1a887cdafd5518896393dc1d0ff2840cb8" prot="public" virt="virtual"><scope>SearchNodeData</scope><name>setLocationForIcon:</name></member>
+      <member refid="interface_simple_node_data_1ad7ce504674275f65b3b11a4a47941a71" prot="public" virt="virtual"><scope>SearchNodeData</scope><name>setName:</name></member>
+      <member refid="interface_simple_node_data_1acee899f4a40f9e26d4ea028fc6f7eee9" prot="public" virt="virtual"><scope>SearchNodeData</scope><name>setSelectable:</name></member>
+      <member refid="interface_simple_node_data_1acfbdf707df8e8cfb474e5d344605db88" prot="public" virt="virtual"><scope>SearchNodeData</scope><name>setSubTree:</name></member>
+      <member refid="interface_simple_node_data_1a92b2e87b40867317a37d5db2e8b914f8" prot="public" virt="virtual"><scope>SearchNodeData</scope><name>subTree</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

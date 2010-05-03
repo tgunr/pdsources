@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.6.2">
+  <compounddef id="dir_6fdb30b00c67408053a0ea5800abc291" kind="dir">
+    <compoundname>PickADisk/Sources/License/</compoundname>
+    <innerfile refid="_a_q_data_extensions_8h">AQDataExtensions.h</innerfile>
+    <innerfile refid="_a_q_data_extensions_8m">AQDataExtensions.m</innerfile>
+    <innerfile refid="_aquatic_prime_8h">AquaticPrime.h</innerfile>
+    <innerfile refid="_aquatic_prime_8m">AquaticPrime.m</innerfile>
+    <innerfile refid="_license_controller_8h">LicenseController.h</innerfile>
+    <innerfile refid="_license_controller_8m">LicenseController.m</innerfile>
+    <innerfile refid="_license_service_8h">LicenseService.h</innerfile>
+    <innerfile refid="_license_service_8m">LicenseService.m</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/"/>
+  </compounddef>
+</doxygen>

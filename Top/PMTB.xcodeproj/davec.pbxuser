@@ -161,24 +161,18 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 274379077;
-			PBXWorkspaceStateSaveDate = 274379077;
+			PBXPerProjectTemplateStateSaveDate = 293876845;
+			PBXWorkspaceStateSaveDate = 293876845;
 		};
 		perUserProjectItems = {
-			7521EDDA0DD5303700C1C0C8 = 7521EDDA0DD5303700C1C0C8 /* PBXTextBookmark */;
-			7521EDE00DD5303700C1C0C8 = 7521EDE00DD5303700C1C0C8 /* PBXTextBookmark */;
-			7550D75C0DC398A9008515EC = 7550D75C0DC398A9008515EC /* PBXTextBookmark */;
-			7550D75E0DC398A9008515EC = 7550D75E0DC398A9008515EC /* PBXTextBookmark */;
-			7550D7600DC398A9008515EC = 7550D7600DC398A9008515EC /* PBXTextBookmark */;
-			7550D7620DC398A9008515EC = 7550D7620DC398A9008515EC /* PBXTextBookmark */;
-			756836800DEA41F8001C6F01 = 756836800DEA41F8001C6F01 /* PBXTextBookmark */;
-			759BCBDC0DB5408B0039608A = 759BCBDC0DB5408B0039608A /* PBXBookmark */;
-			75AEC5280DDCC3BA0090DE55 = 75AEC5280DDCC3BA0090DE55 /* PBXBookmark */;
-			75AEC65B0DDE0E040090DE55 = 75AEC65B0DDE0E040090DE55 /* PBXBookmark */;
-			75AEC65C0DDE0E040090DE55 = 75AEC65C0DDE0E040090DE55 /* PBXBookmark */;
-			75F2BBCC0DF01E4F00BEC5A4 = 75F2BBCC0DF01E4F00BEC5A4 /* PBXTextBookmark */;
-			75F2BBCE0DF01E4F00BEC5A4 = 75F2BBCE0DF01E4F00BEC5A4 /* PBXTextBookmark */;
-			75FD8B620DB986D900237357 = 75FD8B620DB986D900237357 /* PBXTextBookmark */;
+			7521EDDA0DD5303700C1C0C8 /* PBXTextBookmark */ = 7521EDDA0DD5303700C1C0C8 /* PBXTextBookmark */;
+			7550D75C0DC398A9008515EC /* PBXTextBookmark */ = 7550D75C0DC398A9008515EC /* PBXTextBookmark */;
+			7550D75E0DC398A9008515EC /* PBXTextBookmark */ = 7550D75E0DC398A9008515EC /* PBXTextBookmark */;
+			7550D7600DC398A9008515EC /* PBXTextBookmark */ = 7550D7600DC398A9008515EC /* PBXTextBookmark */;
+			7550D7620DC398A9008515EC /* PBXTextBookmark */ = 7550D7620DC398A9008515EC /* PBXTextBookmark */;
+			75F2BBCC0DF01E4F00BEC5A4 /* PBXTextBookmark */ = 75F2BBCC0DF01E4F00BEC5A4 /* PBXTextBookmark */;
+			75F2BBCE0DF01E4F00BEC5A4 /* PBXTextBookmark */ = 75F2BBCE0DF01E4F00BEC5A4 /* PBXTextBookmark */;
+			75FD8B620DB986D900237357 /* PBXTextBookmark */ = 75FD8B620DB986D900237357 /* PBXTextBookmark */;
 		};
 		sourceControlManager = 759BC9B40DB496500039608A /* Source Control */;
 		userBookmarkGroup = 759BCA280DB4AD6A0039608A /* PBXBookmarkGroup */;
@@ -193,16 +187,6 @@
 		sourceTree = "<absolute>";
 	};
 	7521EDDA0DD5303700C1C0C8 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 7521EDBA0DD52F8F00C1C0C8 /* CoreServices.h */;
-		name = "CoreServices.h: 21";
-		rLen = 19;
-		rLoc = 469;
-		rType = 0;
-		vrLen = 1024;
-		vrLoc = 0;
-	};
-	7521EDE00DD5303700C1C0C8 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 7521EDBA0DD52F8F00C1C0C8 /* CoreServices.h */;
 		name = "CoreServices.h: 21";
@@ -462,15 +446,6 @@
 		state = 1;
 		symbolName = "[AppDelegate applicationDidFinishLaunching:]";
 	};
-	756836800DEA41F8001C6F01 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		name = "carousel: 21";
-		rLen = 0;
-		rLoc = 429;
-		rType = 0;
-		vrLen = 1088;
-		vrLoc = 0;
-	};
 	759BC9B40DB496500039608A /* Source Control */ = {
 		isa = PBXSourceControlManager;
 		fallbackIsa = XCSourceControlManager;
@@ -510,31 +485,6 @@
 		vrLen = 3165;
 		vrLoc = 0;
 	};
-	759BCBB30DB536920039608A /* GenericFolderFlat.png */ = {
-		isa = PBXFileReference;
-		lastKnownFileType = image.png;
-		name = GenericFolderFlat.png;
-		path = /Users/davec/Desktop/PMTB/trunk/PMTBFS/Resources/GenericFolderFlat.png;
-		sourceTree = "<absolute>";
-	};
-	759BCBB50DB5375B0039608A /* MB-folder-offline.tiff */ = {
-		isa = PBXFileReference;
-		lastKnownFileType = image.tiff;
-		name = "MB-folder-offline.tiff";
-		path = "/Users/davec/Desktop/PMTB/trunk/PMTBFS/Resources/MB-folder-offline.tiff";
-		sourceTree = "<absolute>";
-	};
-	759BCBB60DB5375B0039608A /* MB-folder.tiff */ = {
-		isa = PBXFileReference;
-		lastKnownFileType = image.tiff;
-		name = "MB-folder.tiff";
-		path = "/Users/davec/Desktop/PMTB/trunk/PMTBFS/Resources/MB-folder.tiff";
-		sourceTree = "<absolute>";
-	};
-	759BCBDC0DB5408B0039608A /* PBXBookmark */ = {
-		isa = PBXBookmark;
-		fRef = 759BCBB30DB536920039608A /* GenericFolderFlat.png */;
-	};
 	75AEC1BA0DDA08DC0090DE55 /* StorageWindowController.m */ = {
 		isa = PBXFileReference;
 		fileEncoding = 4;
@@ -543,18 +493,6 @@
 		path = /Users/davec/Desktop/PMTB/trunk/Carousel/StorageWindowController.m;
 		sourceTree = "<absolute>";
 	};
-	75AEC4670DDB9A380090DE55 /* PMTBFS-Info.plist */ = {
-		isa = PBXFileReference;
-		lastKnownFileType = text.plist.xml;
-		name = "PMTBFS-Info.plist";
-		path = "/Users/davec/Desktop/PMTB/trunk/PMTBFS/Sources/PMTBFS-Info.plist";
-		sourceTree = "<absolute>";
-	};
-	75AEC5280DDCC3BA0090DE55 /* PBXBookmark */ = {
-		isa = PBXBookmark;
-		fRef = 75AEC4670DDB9A380090DE55 /* PMTBFS-Info.plist */;
-		name = "/Users/davec/Sources/XCode/Projects/PMTB/PMTB/PMTBFS-Info.plist";
-	};
 	75AEC6090DDE08320090DE55 /* CarouselDocument.m */ = {
 		isa = PBXFileReference;
 		fileEncoding = 4;
@@ -562,14 +500,6 @@
 		name = CarouselDocument.m;
 		path = /Users/davec/Desktop/PMTB/trunk/Carousel/CarouselDocument.m;
 		sourceTree = "<absolute>";
-	};
-	75AEC65B0DDE0E040090DE55 /* PBXBookmark */ = {
-		isa = PBXBookmark;
-		fRef = 759BCBB50DB5375B0039608A /* MB-folder-offline.tiff */;
-	};
-	75AEC65C0DDE0E040090DE55 /* PBXBookmark */ = {
-		isa = PBXBookmark;
-		fRef = 759BCBB60DB5375B0039608A /* MB-folder.tiff */;
 	};
 	75AEC7400DDE2EA10090DE55 /* MediaController.m */ = {
 		isa = PBXFileReference;

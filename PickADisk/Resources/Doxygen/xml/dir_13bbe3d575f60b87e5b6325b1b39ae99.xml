@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.6.2">
+  <compounddef id="dir_13bbe3d575f60b87e5b6325b1b39ae99" kind="dir">
+    <compoundname>PickADisk/Sources/sparkle/</compoundname>
+    <innerfile refid="report-distinct_8php">report-distinct.php</innerfile>
+    <innerfile refid="report_8php">report.php</innerfile>
+    <innerfile refid="support_config_8php">supportConfig.php</innerfile>
+    <innerfile refid="support_d_b_8php">supportDB.php</innerfile>
+    <innerfile refid="support_l_config_8php">supportLConfig.php</innerfile>
+    <innerfile refid="support_lookup_8php">supportLookup.php</innerfile>
+    <innerfile refid="update_info_8php">updateInfo.php</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/sparkle/"/>
+  </compounddef>
+</doxygen>

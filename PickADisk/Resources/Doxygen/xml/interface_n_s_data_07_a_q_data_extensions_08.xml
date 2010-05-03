@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.6.2">
+  <compounddef id="interface_n_s_data_07_a_q_data_extensions_08" kind="class" prot="public">
+    <compoundname>NSData(AQDataExtensions)</compoundname>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="interface_n_s_data_07_a_q_data_extensions_08_1a4b9071d86e6ba86e60469c4b9762bc5b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="class_n_s_data" kindref="compound">NSData</ref> *</type>
+        <definition>NSData* NSData(AQDataExtensions)::dataEncryptedWithPassword:</definition>
+        <argsstring>(NSString *password)</argsstring>
+        <name>dataEncryptedWithPassword:</name>
+        <param>
+          <type><ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+          <declname>password</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/AQDataExtensions.h" line="30"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_n_s_data_07_a_q_data_extensions_08_1ab4f2e905201ab9112d4624f329bd15bb" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="class_n_s_data" kindref="compound">NSData</ref> *</type>
+        <definition>NSData* NSData(AQDataExtensions)::dataDecryptedWithPassword:</definition>
+        <argsstring>(NSString *password)</argsstring>
+        <name>dataDecryptedWithPassword:</name>
+        <param>
+          <type><ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+          <declname>password</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/AQDataExtensions.h" line="31"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/AQDataExtensions.h" line="28" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/AQDataExtensions.h" bodystart="28" bodyend="-1"/>
+    <listofallmembers>
+      <member refid="interface_n_s_data_07_a_q_data_extensions_08_1ab4f2e905201ab9112d4624f329bd15bb" prot="public" virt="virtual"><scope>NSData(AQDataExtensions)</scope><name>dataDecryptedWithPassword:</name></member>
+      <member refid="interface_n_s_data_07_a_q_data_extensions_08_1a4b9071d86e6ba86e60469c4b9762bc5b" prot="public" virt="virtual"><scope>NSData(AQDataExtensions)</scope><name>dataEncryptedWithPassword:</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,150 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.6.2">
+  <compounddef id="_b_t_h_icon_resources_8h" kind="file">
+    <compoundname>BTHIconResources.h</compoundname>
+    <includes local="no">Cocoa/Cocoa.h</includes>
+    <includedby refid="_b_t_h_icon_resources_8m" local="yes">PickADisk/Sources/Cocoa Extensions/BTHIconResources.m</includedby>
+    <incdepgraph>
+      <node id="0">
+        <label>PickADisk/Sources/Cocoa Extensions/BTHIconResources.h</label>
+        <link refid="BTHIconResources.h"/>
+        <childnode refid="1" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Cocoa/Cocoa.h</label>
+      </node>
+    </incdepgraph>
+    <innerclass refid="interface_n_s_color_07_r_g_b_color_08" prot="public">NSColor(RGBColor)</innerclass>
+    <innerclass refid="interface_n_s_bitmap_image_rep_07_icon_ref_08" prot="public">NSBitmapImageRep(IconRef)</innerclass>
+    <innerclass refid="interface_n_s_image_07_icon_ref_08" prot="public">NSImage(IconRef)</innerclass>
+    <innerclass refid="interface_n_s_workspace_07_carbon_icons_08" prot="public">NSWorkspace(CarbonIcons)</innerclass>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="_b_t_h_icon_resources_8h_1a5ffe41321758609431a928cc417f9efe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>OSStatus</type>
+        <definition>OSStatus GetIconRefFromUTI</definition>
+        <argsstring>(CFStringRef typeIdent, IconRef *outIconRef)</argsstring>
+        <name>GetIconRefFromUTI</name>
+        <param>
+          <type>CFStringRef</type>
+          <declname>typeIdent</declname>
+        </param>
+        <param>
+          <type>IconRef *</type>
+          <declname>outIconRef</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Cocoa Extensions/BTHIconResources.h" line="71" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Cocoa Extensions/BTHIconResources.m" bodystart="243" bodyend="287"/>
+      </memberdef>
+      <memberdef kind="function" id="_b_t_h_icon_resources_8h_1a5dfdb6f1cccc6ffe75025d73f4dfade9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>OSStatus</type>
+        <definition>OSStatus GetIconImagesFromUTI</definition>
+        <argsstring>(CFStringRef typeIdent, NSImage **outIconImage, NSImage **outAlternateIconImage)</argsstring>
+        <name>GetIconImagesFromUTI</name>
+        <param>
+          <type>CFStringRef</type>
+          <declname>typeIdent</declname>
+        </param>
+        <param>
+          <type><ref refid="class_n_s_image" kindref="compound">NSImage</ref> **</type>
+          <declname>outIconImage</declname>
+        </param>
+        <param>
+          <type><ref refid="class_n_s_image" kindref="compound">NSImage</ref> **</type>
+          <declname>outAlternateIconImage</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Cocoa Extensions/BTHIconResources.h" line="72" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Cocoa Extensions/BTHIconResources.m" bodystart="289" bodyend="304"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>BTHIconResources.h</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Icon<sp/>Resources<sp/>for<sp/>converting<sp/>between<sp/>IconRefs<sp/>and<sp/>NSImages</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Created<sp/>by<sp/>Blain<sp/>Hamon<sp/>of<sp/>Unlogica<sp/>on<sp/>Sept<sp/>2007</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Parts<sp/>were<sp/>taken<sp/>from<sp/>IconGrabber<sp/>(<sp/>http://boredzo.org/icongrabber/<sp/>)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Released<sp/>as<sp/>PUBLIC<sp/>DOMAIN.<sp/>No<sp/>license,<sp/>no<sp/>warranty,<sp/>no<sp/>fitness<sp/>of<sp/>purpose.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Free<sp/>to<sp/>use<sp/>in<sp/>any<sp/>form<sp/>desired.<sp/>Attribution<sp/>would<sp/>be<sp/>nice<sp/>but<sp/>isn&apos;t<sp/>required.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Copying<sp/>and<sp/>wrongfully<sp/>claiming<sp/>credit<sp/>isn&apos;t<sp/>copyright<sp/>violation,<sp/>but<sp/>it<sp/>is<sp/>plagarism.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#import<sp/>&lt;Cocoa/Cocoa.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">@interface<sp/></highlight><highlight class="normal"><ref refid="class_n_s_color" kindref="compound">NSColor</ref><sp/>(RGBColor)</highlight></codeline>
+<codeline lineno="16"><highlight class="normal">+<sp/>(<ref refid="class_n_s_color" kindref="compound">NSColor</ref><sp/>*)colorWithRGBColor:<sp/>(RGBColor)<sp/>rgbColor;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal">-<sp/>(RGBColor)<sp/>approximateRGBColor;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">@end</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keyword">@interface<sp/></highlight><highlight class="normal"><ref refid="class_n_s_bitmap_image_rep" kindref="compound">NSBitmapImageRep</ref><sp/>(IconRef)</highlight></codeline>
+<codeline lineno="21"><highlight class="normal">-<sp/>(id)initWithIconRef:(IconRef)<sp/>icon;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal">-<sp/>(id)initWithIconRef:(IconRef)<sp/>icon<sp/>width:<sp/>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)<sp/>iconWidth<sp/>height:<sp/>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)<sp/>iconHeight;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal">-<sp/>(id)initWithIconRef:(IconRef)<sp/>icon<sp/>width:<sp/>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)<sp/>iconWidth<sp/>height:<sp/>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)<sp/>iconHeight</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>align:<sp/>(IconAlignmentType)<sp/>alignment<sp/>transform:<sp/>(IconTransformType)<sp/>transformation</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>usingRGBcolor:<sp/>(RGBColor<sp/>*)<sp/>labelColor;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="comment">//-<sp/>(id)initWithIconRef:(IconRef)<sp/>icon<sp/>width:<sp/>(float)<sp/>iconWidth<sp/>height:<sp/>(float)<sp/>iconHeight</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>align:<sp/>(IconAlignmentType)<sp/>alignment<sp/>transform:<sp/>(IconTransformType)<sp/>transformation</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>usingRGBcolor:<sp/>(RGBColor<sp/>*)<sp/>labelColor</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>iconBadgeRef:<sp/>(IconRef)badgeIcon<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>align:<sp/>(IconAlignmentType)badgeAlignment;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal">+<sp/>(<ref refid="class_n_s_array" kindref="compound">NSArray</ref><sp/>*)imageRepsWithIconRef:(IconRef)icon;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Tries<sp/>to<sp/>capture<sp/>multiple<sp/>icon<sp/>representations.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal">+<sp/>(<ref refid="class_n_s_array" kindref="compound">NSArray</ref><sp/>*)imageRepsWithIconRef:(IconRef)icon<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Tries<sp/>to<sp/>capture<sp/>multiple<sp/>icon<sp/>representations.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>align:<sp/>(IconAlignmentType)<sp/>alignment<sp/>transform:<sp/>(IconTransformType)<sp/>transformation</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>usingRGBcolor:<sp/>(RGBColor<sp/>*)<sp/>labelColor;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="comment">//+<sp/>(NSArray<sp/>*)imageRepsWithIconRef:(IconRef)icon<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/*<sp/>Tries<sp/>to<sp/>capture<sp/>multiple<sp/>icon<sp/>representations.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>align:<sp/>(IconAlignmentType)<sp/>alignment<sp/>transform:<sp/>(IconTransformType)<sp/>transformation</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>usingRGBcolor:<sp/>(RGBColor<sp/>*)<sp/>labelColor</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>iconBadgeRef:<sp/>(IconRef)badgeIcon<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>align:<sp/>(IconAlignmentType)badgeAlignment;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="keyword">@end</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="comment">//To<sp/>have<sp/>the<sp/>image<sp/>from<sp/>a<sp/>type<sp/>or<sp/>creator,<sp/>it&apos;s<sp/>tempting<sp/>to<sp/>have<sp/>it<sp/>a<sp/>NSImage<sp/>message</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="comment">//But<sp/>for<sp/>the<sp/>sake<sp/>of<sp/>consistency,<sp/>it<sp/>should<sp/>come<sp/>from<sp/>NSWorkspace<sp/>instead</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="comment">//Actually,<sp/>is<sp/>it?<sp/>Well,<sp/>iconref<sp/>comes<sp/>from<sp/>NSImage.<sp/>Just<sp/>so<sp/>Imagereps<sp/>don&apos;t<sp/>have<sp/>to<sp/>be<sp/>touched.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="keyword">@interface<sp/></highlight><highlight class="normal"><ref refid="class_n_s_image" kindref="compound">NSImage</ref><sp/>(IconRef)</highlight></codeline>
+<codeline lineno="50"><highlight class="normal">-<sp/>(id)<sp/>initWithIconRef:(IconRef)<sp/>icon;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal">-<sp/>(id)<sp/>initWithIconRef:(IconRef)<sp/>icon<sp/>style:<sp/>(IconTransformType)<sp/>transformation<sp/>tinting:<sp/>(<ref refid="class_n_s_color" kindref="compound">NSColor</ref><sp/>*)<sp/>customTint;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="comment">//-<sp/>(id)<sp/>initWithIconRef:(IconRef)<sp/>icon<sp/>style:<sp/>(IconTransformType)<sp/>transformation<sp/>tinting:<sp/>(NSColor<sp/>*)<sp/>customTint</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>iconBadgeRef:<sp/>(IconRef)badgeIcon<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>align:<sp/>(IconAlignmentType)badgeAlignment;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="keyword">@end</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="keyword">@interface<sp/></highlight><highlight class="normal"><ref refid="class_n_s_workspace" kindref="compound">NSWorkspace</ref><sp/>(CarbonIcons)</highlight></codeline>
+<codeline lineno="57"><highlight class="normal">-<sp/>(<ref refid="class_n_s_image" kindref="compound">NSImage</ref><sp/>*)iconForCreator:(<ref refid="class_n_s_string" kindref="compound">NSString</ref><sp/>*)creator<sp/>Type:<sp/>(<ref refid="class_n_s_string" kindref="compound">NSString</ref><sp/>*)iconType;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="comment">//-<sp/>(NSImage<sp/>*)iconForCreator:(NSString<sp/>*)creator<sp/>Type:<sp/>(NSString<sp/>*)iconType</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>style:<sp/>(IconTransformType)<sp/>transformation<sp/>tinting:<sp/>(NSColor<sp/>*)<sp/>customTint</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>badge:<sp/>(NSString<sp/>*)badgeType;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal">-<sp/>(<ref refid="class_n_s_image" kindref="compound">NSImage</ref><sp/>*)iconForMIME:(<ref refid="class_n_s_string" kindref="compound">NSString</ref><sp/>*)mimetype;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="comment">//-<sp/>(NSImage<sp/>*)iconForMIME:(NSString<sp/>*)mimetype</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>style:<sp/>(IconTransformType)<sp/>transformation<sp/>tinting:<sp/>(NSColor<sp/>*)<sp/>customTint</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>badge:<sp/>(NSString<sp/>*)badgeType;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="keyword">@end</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal">OSStatus<sp/>GetIconRefFromUTI(CFStringRef<sp/>typeIdent,<sp/>IconRef<sp/>*<sp/>outIconRef);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal">OSStatus<sp/>GetIconImagesFromUTI(CFStringRef<sp/>typeIdent,<sp/><ref refid="class_n_s_image" kindref="compound">NSImage</ref><sp/>**<sp/>outIconImage,<sp/><ref refid="class_n_s_image" kindref="compound">NSImage</ref><sp/>**<sp/>outAlternateIconImage);</highlight></codeline>
+    </programlisting>
+    <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Cocoa Extensions/BTHIconResources.h"/>
+  </compounddef>
+</doxygen>

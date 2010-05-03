@@ -1,0 +1,181 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.6.2">
+  <compounddef id="_p_a_d_index_operation_8m" kind="file">
+    <compoundname>PADIndexOperation.m</compoundname>
+    <includes refid="_p_a_d_index_operation_8h" local="yes">PADIndexOperation.h</includes>
+    <includes refid="_p_a_d_search_request_8h" local="yes">PADSearchRequest.h</includes>
+    <includes refid="_simple_tree_node_8h" local="yes">SimpleTreeNode.h</includes>
+    <includes refid="_d_a_c_a_l_device_node_8h" local="yes">DACALDeviceNode.h</includes>
+    <incdepgraph>
+      <node id="732">
+        <label>DACALDevice.h</label>
+        <link refid="_d_a_c_a_l_device_8h_source"/>
+        <childnode refid="733" relation="include">
+        </childnode>
+      </node>
+      <node id="725">
+        <label>Cocoa/Cocoa.h</label>
+      </node>
+      <node id="731">
+        <label>DACALDeviceNode.h</label>
+        <link refid="_d_a_c_a_l_device_node_8h_source"/>
+        <childnode refid="732" relation="include">
+        </childnode>
+        <childnode refid="730" relation="include">
+        </childnode>
+      </node>
+      <node id="727">
+        <label>SimpleTreeNode.h</label>
+        <link refid="_simple_tree_node_8h_source"/>
+        <childnode refid="725" relation="include">
+        </childnode>
+        <childnode refid="728" relation="include">
+        </childnode>
+        <childnode refid="730" relation="include">
+        </childnode>
+        <childnode refid="729" relation="include">
+        </childnode>
+      </node>
+      <node id="728">
+        <label>TreeNode.h</label>
+        <link refid="_tree_node_8h_source"/>
+        <childnode refid="729" relation="include">
+        </childnode>
+      </node>
+      <node id="730">
+        <label>dacallib.h</label>
+      </node>
+      <node id="729">
+        <label>Foundation/Foundation.h</label>
+      </node>
+      <node id="726">
+        <label>JSServiceManager.h</label>
+      </node>
+      <node id="724">
+        <label>PADSearchRequest.h</label>
+        <link refid="_p_a_d_search_request_8h_source"/>
+        <childnode refid="725" relation="include">
+        </childnode>
+        <childnode refid="726" relation="include">
+        </childnode>
+        <childnode refid="727" relation="include">
+        </childnode>
+      </node>
+      <node id="723">
+        <label>PADIndexOperation.h</label>
+        <link refid="_p_a_d_index_operation_8h_source"/>
+      </node>
+      <node id="722">
+        <label>PickADisk/Sources/PAD Controllers/PADIndexOperation.m</label>
+        <link refid="PADIndexOperation.m"/>
+        <childnode refid="723" relation="include">
+        </childnode>
+        <childnode refid="724" relation="include">
+        </childnode>
+        <childnode refid="727" relation="include">
+        </childnode>
+        <childnode refid="731" relation="include">
+        </childnode>
+      </node>
+      <node id="733">
+        <label>pmsDACALUtility.h</label>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>PADIndexOperation.m</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>PickADisc</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Created<sp/>by<sp/>Jack<sp/>Small<sp/>on<sp/>7/15/08.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Copyright<sp/>2008<sp/>polyMicro<sp/>Systems.<sp/>All<sp/>rights<sp/>reserved.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#import<sp/>&quot;PADIndexOperation.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#import<sp/>&quot;PADSearchRequest.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#import<sp/>&quot;SimpleTreeNode.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#import<sp/>&quot;DACALDeviceNode.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">@class</highlight><highlight class="normal"><sp/><ref refid="interface_p_a_d_search_service" kindref="compound">PADSearchService</ref>;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">@implementation<sp/></highlight><highlight class="normal"><ref refid="interface_p_a_d_index_operation" kindref="compound">PADIndexOperation</ref></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">@synthesize</highlight><highlight class="normal"><sp/>subtreeChild;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">@synthesize</highlight><highlight class="normal"><sp/>itemLocation;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keyword">@synthesize</highlight><highlight class="normal"><sp/>finishTarget;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal">-<sp/>(id)initWithLocation:(NSURL*)url<sp/>forChild:(<ref refid="class_simple_tree_node" kindref="compound">SimpleTreeNode</ref>*)child<sp/>completionTarget:(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)target;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal"><sp/>=<sp/>[super<sp/>init]<sp/>)</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[</highlight><highlight class="keyword">self</highlight><highlight class="normal"><sp/>setSubtreeChild:child];</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[</highlight><highlight class="keyword">self</highlight><highlight class="normal"><sp/>setItemLocation:url];</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[</highlight><highlight class="keyword">self</highlight><highlight class="normal"><sp/>setFinishTarget:target];</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[child<sp/>setBusy:YES];</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal">-<sp/>(id)initWithLocation:(NSURL*)url<sp/>forChild:(<ref refid="class_simple_tree_node" kindref="compound">SimpleTreeNode</ref>*)child;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>[</highlight><highlight class="keyword">self</highlight><highlight class="normal"><sp/>initWithLocation:url<sp/>forChild:child<sp/>completionTarget:nil];<sp/>}</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal">-<sp/>(void)dealloc</highlight></codeline>
+<codeline lineno="39"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>[subtreeChild<sp/>release],<sp/><sp/><sp/><sp/><sp/>subtreeChild<sp/>=<sp/>nil;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>[itemLocation<sp/>release],<sp/><sp/><sp/><sp/><sp/>itemLocation<sp/>=<sp/>nil;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>[finishTarget<sp/>release],<sp/><sp/><sp/><sp/><sp/>finishTarget<sp/>=<sp/>nil;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>[</highlight><highlight class="keyword">super</highlight><highlight class="normal"><sp/>dealloc];</highlight></codeline>
+<codeline lineno="44"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal">-<sp/>(BOOL)cancelOperationForDevice:(<ref refid="interface_d_a_c_a_l_device" kindref="compound">DACALDevice</ref>*)oldBox</highlight></codeline>
+<codeline lineno="47"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DACALDeviceRef<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ourBox<sp/>=<sp/>CFURLCopyCarouselUUID(<sp/>kCFAllocatorDefault,<sp/>(CFURLRef)itemLocation<sp/>);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>BOOL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sameBox<sp/>=<sp/>[oldBox<sp/>isDeviceRef:ourBox];<sp/></highlight><highlight class="comment">//<sp/>[oldBox<sp/>isEqual:DACALDeviceNodeForDeviceRef(<sp/>ourBox<sp/>)];</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<sp/>ourBox<sp/>!=<sp/>kDACALNullDevice<sp/>)<sp/>CFRelease(<sp/>(CFTypeRef)ourBox<sp/>);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>sameBox<sp/>=<sp/>YES;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<sp/>sameBox<sp/>==<sp/>YES<sp/>)</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[</highlight><highlight class="keyword">self</highlight><highlight class="normal"><sp/>cancel];</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sameBox;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal">-<sp/>(void)main</highlight></codeline>
+<codeline lineno="61"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_simple_tree_node" kindref="compound">SimpleTreeNode</ref>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>theNode<sp/>=<sp/>[</highlight><highlight class="keyword">self</highlight><highlight class="normal"><sp/>subtreeChild];</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>theTarget<sp/>=<sp/>[</highlight><highlight class="keyword">self</highlight><highlight class="normal"><sp/>finishTarget];</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<sp/>[</highlight><highlight class="keyword">self</highlight><highlight class="normal"><sp/>isCancelled]<sp/>)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/>[theNode<sp/>setBusy:YES];</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[theNode<sp/>initFromLocation:[</highlight><highlight class="keyword">self</highlight><highlight class="normal"><sp/>itemLocation]];</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<sp/>[</highlight><highlight class="keyword">self</highlight><highlight class="normal"><sp/>isCancelled]<sp/>)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[theNode<sp/>setBusy:NO];</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<sp/>[</highlight><highlight class="keyword">self</highlight><highlight class="normal"><sp/>isCancelled]<sp/>)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[<ref refid="interface_p_a_d_search_service" kindref="compound">PADSearchService</ref><sp/>updateAllSearches];</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__DCDEBUG</highlight></codeline>
+<codeline lineno="78"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>NSLog(</highlight><highlight class="stringliteral">@&quot;Finished<sp/>location:<sp/>%@&quot;</highlight><highlight class="normal">,<sp/>itemLocation);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="80"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<sp/>[</highlight><highlight class="keyword">self</highlight><highlight class="normal"><sp/>isCancelled]<sp/>)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<sp/>theTarget<sp/>!=<sp/>nil<sp/>)</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[theTarget<sp/><sp/><sp/><sp/><sp/><sp/>performSelectorOnMainThread:@selector(subTreeCompletedLoad:)</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>withObject:subtreeChild</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>waitUntilDone:NO];</highlight></codeline>
+<codeline lineno="87"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight><highlight class="keyword">@end</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADIndexOperation.m"/>
+  </compounddef>
+</doxygen>

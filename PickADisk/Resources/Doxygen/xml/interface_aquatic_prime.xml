@@ -1,0 +1,476 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.6.2">
+  <compounddef id="interface_aquatic_prime" kind="class" prot="public">
+    <compoundname>AquaticPrime</compoundname>
+    <basecompoundref refid="class_n_s_object" prot="public" virt="non-virtual">NSObject</basecompoundref>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="interface_aquatic_prime_1a17b0dff0211fa596cf4bba58afcafcae" prot="protected" static="no" mutable="no">
+        <type>RSA *</type>
+        <definition>RSA* AquaticPrime::rsaKey</definition>
+        <argsstring></argsstring>
+        <name>rsaKey</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/AquaticPrime.h" line="33" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/AquaticPrime.h" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_aquatic_prime_1ac1bc7e00b96abb5eaaf06c0ccf879e88" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+        <definition>NSString* AquaticPrime::aqError</definition>
+        <argsstring></argsstring>
+        <name>aqError</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/AquaticPrime.h" line="35" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/AquaticPrime.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_aquatic_prime_1a2c7cf637b8c304db0dd4002e6705de26" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+        <definition>NSString * AquaticPrime::hash</definition>
+        <argsstring></argsstring>
+        <name>hash</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/AquaticPrime.h" line="36" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/AquaticPrime.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_aquatic_prime_1a77fd85f9248a8d051ce3bb953286f558" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_n_s_array" kindref="compound">NSArray</ref> *</type>
+        <definition>NSArray* AquaticPrime::blacklist</definition>
+        <argsstring></argsstring>
+        <name>blacklist</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/AquaticPrime.h" line="37" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/AquaticPrime.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_aquatic_prime_1ac464473140490128ff8db5f6973f5211" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+        <definition>NSString* AquaticPrime::pkey</definition>
+        <argsstring></argsstring>
+        <name>pkey</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/AquaticPrime.h" line="38" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/AquaticPrime.h" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="interface_aquatic_prime_1ad06bd17d62c22452aa6421ed544a2b06" prot="public" static="yes" const="no" explicit="no" inline="no" virt="virtual">
+        <type>id</type>
+        <definition>id AquaticPrime::aquaticPrimeWithKey:</definition>
+        <argsstring>(NSString *key)</argsstring>
+        <name>aquaticPrimeWithKey:</name>
+        <param>
+          <type><ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/AquaticPrime.h" line="42" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/AquaticPrime.m" bodystart="76" bodyend="79"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_aquatic_prime_1ab52482614697b1cb0a3688471ad9d97b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="virtual">
+        <type>id</type>
+        <definition>id AquaticPrime::aquaticPrimeWithKey:privateKey:</definition>
+        <argsstring>(NSString *key,[privateKey] NSString *privateKey)</argsstring>
+        <name>aquaticPrimeWithKey:privateKey:</name>
+        <param>
+          <type><ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <attributes>[privateKey]</attributes>
+          <type><ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+          <declname>privateKey</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/AquaticPrime.h" line="43" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/AquaticPrime.m" bodystart="71" bodyend="74"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="interface_aquatic_prime_1a87acffdf7a33cd1be32ba12bb545066d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>id</type>
+        <definition>id AquaticPrime::initWithKey:</definition>
+        <argsstring>(NSString *key)</argsstring>
+        <name>initWithKey:</name>
+        <param>
+          <type><ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/AquaticPrime.h" line="44" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/AquaticPrime.m" bodystart="35" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_aquatic_prime_1a6d4f557fc46af47d23abb8f22edf91f7" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>id</type>
+        <definition>id AquaticPrime::initWithKey:privateKey:</definition>
+        <argsstring>(NSString *key,[privateKey] NSString *privateKey)</argsstring>
+        <name>initWithKey:privateKey:</name>
+        <param>
+          <type><ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <attributes>[privateKey]</attributes>
+          <type><ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+          <declname>privateKey</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/AquaticPrime.h" line="45" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/AquaticPrime.m" bodystart="40" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_aquatic_prime_1a82a6af97a1938fe1b3a2d101bdc02b7b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>BOOL</type>
+        <definition>BOOL AquaticPrime::setKey:</definition>
+        <argsstring>(NSString *key)</argsstring>
+        <name>setKey:</name>
+        <param>
+          <type><ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/AquaticPrime.h" line="48" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/AquaticPrime.m" bodystart="81" bodyend="84"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_aquatic_prime_1a90d3cd34779b576581ecb2884df06c4b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>BOOL</type>
+        <definition>BOOL AquaticPrime::setKey:privateKey:</definition>
+        <argsstring>(NSString *key,[privateKey] NSString *privateKey)</argsstring>
+        <name>setKey:privateKey:</name>
+        <param>
+          <type><ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <attributes>[privateKey]</attributes>
+          <type><ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+          <declname>privateKey</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/AquaticPrime.h" line="49" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/AquaticPrime.m" bodystart="86" bodyend="131"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_aquatic_prime_1aa4178bb2c420dc8dda29fc71e0e3f114" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+        <definition>NSString * AquaticPrime::key</definition>
+        <argsstring>()</argsstring>
+        <name>key</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/AquaticPrime.h" line="50" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/AquaticPrime.m" bodystart="133" bodyend="144"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_aquatic_prime_1ac3157ed7509a1518ca7e50444dd79dde" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+        <definition>NSString * AquaticPrime::privateKey</definition>
+        <argsstring>()</argsstring>
+        <name>privateKey</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/AquaticPrime.h" line="51" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/AquaticPrime.m" bodystart="146" bodyend="157"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_aquatic_prime_1a09dc2a0716061dc6a63d9aacb6b7bf2b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void AquaticPrime::setHash:</definition>
+        <argsstring>(NSString *newHash)</argsstring>
+        <name>setHash:</name>
+        <param>
+          <type><ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+          <declname>newHash</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/AquaticPrime.h" line="52" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/AquaticPrime.m" bodystart="159" bodyend="163"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_aquatic_prime_1a317025a50dcb9e025a0f98042c1987e4" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+        <definition>NSString * AquaticPrime::hash</definition>
+        <argsstring>()</argsstring>
+        <name>hash</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/AquaticPrime.h" line="53"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_aquatic_prime_1a271e3771274f450b5bd0b753ee0c6c8f" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="class_n_s_data" kindref="compound">NSData</ref> *</type>
+        <definition>NSData * AquaticPrime::licenseDataForDictionary:</definition>
+        <argsstring>(NSDictionary *dict)</argsstring>
+        <name>licenseDataForDictionary:</name>
+        <param>
+          <type>NSDictionary *</type>
+          <declname>dict</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/AquaticPrime.h" line="56" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/AquaticPrime.m" bodystart="181" bodyend="235"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_aquatic_prime_1aa63463d04181d37d58a1e850cb4ad13e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>BOOL</type>
+        <definition>BOOL AquaticPrime::writeLicenseFileForDictionary:toPath:</definition>
+        <argsstring>(NSDictionary *dict,[toPath] NSString *path)</argsstring>
+        <name>writeLicenseFileForDictionary:toPath:</name>
+        <param>
+          <type>NSDictionary *</type>
+          <declname>dict</declname>
+        </param>
+        <param>
+          <attributes>[toPath]</attributes>
+          <type><ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+          <declname>path</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/AquaticPrime.h" line="57" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/AquaticPrime.m" bodystart="237" bodyend="245"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_aquatic_prime_1a2e9b8604d9a4ecfb00220e5f691979cc" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>NSDictionary *</type>
+        <definition>NSDictionary * AquaticPrime::dictionaryForLicenseData:</definition>
+        <argsstring>(NSData *data)</argsstring>
+        <name>dictionaryForLicenseData:</name>
+        <param>
+          <type><ref refid="class_n_s_data" kindref="compound">NSData</ref> *</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/AquaticPrime.h" line="60" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/AquaticPrime.m" bodystart="248" bodyend="315"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_aquatic_prime_1a332ea8569d52504f509d3f00aff392d3" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>NSDictionary *</type>
+        <definition>NSDictionary * AquaticPrime::dictionaryForLicenseFile:</definition>
+        <argsstring>(NSString *path)</argsstring>
+        <name>dictionaryForLicenseFile:</name>
+        <param>
+          <type><ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+          <declname>path</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/AquaticPrime.h" line="61" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/AquaticPrime.m" bodystart="317" bodyend="325"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_aquatic_prime_1a2d9f83f07bc65012cb0c50aeee80c46f" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>BOOL</type>
+        <definition>BOOL AquaticPrime::verifyLicenseData:</definition>
+        <argsstring>(NSData *data)</argsstring>
+        <name>verifyLicenseData:</name>
+        <param>
+          <type><ref refid="class_n_s_data" kindref="compound">NSData</ref> *</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/AquaticPrime.h" line="62" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/AquaticPrime.m" bodystart="327" bodyend="333"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_aquatic_prime_1a0f27ac34304e58772ee37fb30af41aef" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>BOOL</type>
+        <definition>BOOL AquaticPrime::verifyLicenseFile:</definition>
+        <argsstring>(NSString *path)</argsstring>
+        <name>verifyLicenseFile:</name>
+        <param>
+          <type><ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+          <declname>path</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/AquaticPrime.h" line="63" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/AquaticPrime.m" bodystart="335" bodyend="339"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_aquatic_prime_1a3aaf317e389c694f7a4fdea39c649d8d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void AquaticPrime::setBlacklist:</definition>
+        <argsstring>(NSArray *hashArray)</argsstring>
+        <name>setBlacklist:</name>
+        <param>
+          <type><ref refid="class_n_s_array" kindref="compound">NSArray</ref> *</type>
+          <declname>hashArray</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/AquaticPrime.h" line="66" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/AquaticPrime.m" bodystart="173" bodyend="177"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_aquatic_prime_1a64b11dee63fe00a16061745bbef45321" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+        <definition>NSString * AquaticPrime::getLastError</definition>
+        <argsstring>()</argsstring>
+        <name>getLastError</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/AquaticPrime.h" line="69" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/AquaticPrime.m" bodystart="343" bodyend="346"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_aquatic_prime_1a8c1e95fbedffe2a5d06b73586f958985" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void AquaticPrime(Private)::_setError:</definition>
+        <argsstring>(NSString *err)</argsstring>
+        <name>_setError:</name>
+        <param>
+          <type><ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+          <declname>err</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/AquaticPrime.h" line="74"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="10">
+        <label>AquaticPrime</label>
+        <link refid="interface_aquatic_prime"/>
+        <childnode refid="11" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>NSObject</label>
+        <link refid="class_n_s_object"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="14">
+        <label>NSString</label>
+        <link refid="class_n_s_string"/>
+      </node>
+      <node id="15">
+        <label>NSArray</label>
+        <link refid="class_n_s_array"/>
+      </node>
+      <node id="12">
+        <label>AquaticPrime</label>
+        <link refid="interface_aquatic_prime"/>
+        <childnode refid="13" relation="public-inheritance">
+        </childnode>
+        <childnode refid="14" relation="usage">
+          <edgelabel>aqError</edgelabel>
+          <edgelabel>pkey</edgelabel>
+          <edgelabel>hash</edgelabel>
+        </childnode>
+        <childnode refid="15" relation="usage">
+          <edgelabel>blacklist</edgelabel>
+        </childnode>
+      </node>
+      <node id="13">
+        <label>NSObject</label>
+        <link refid="class_n_s_object"/>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/AquaticPrime.h" line="32" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/AquaticPrime.h" bodystart="32" bodyend="-1"/>
+    <listofallmembers>
+      <member refid="interface_aquatic_prime_1a8c1e95fbedffe2a5d06b73586f958985" prot="public" virt="virtual"><scope>AquaticPrime</scope><name>_setError:</name></member>
+      <member refid="interface_aquatic_prime_1ac1bc7e00b96abb5eaaf06c0ccf879e88" prot="protected" virt="non-virtual"><scope>AquaticPrime</scope><name>aqError</name></member>
+      <member refid="interface_aquatic_prime_1ad06bd17d62c22452aa6421ed544a2b06" prot="public" virt="virtual"><scope>AquaticPrime</scope><name>aquaticPrimeWithKey:</name></member>
+      <member refid="interface_aquatic_prime_1ab52482614697b1cb0a3688471ad9d97b" prot="public" virt="virtual"><scope>AquaticPrime</scope><name>aquaticPrimeWithKey:privateKey:</name></member>
+      <member refid="interface_aquatic_prime_1a77fd85f9248a8d051ce3bb953286f558" prot="protected" virt="non-virtual"><scope>AquaticPrime</scope><name>blacklist</name></member>
+      <member refid="interface_aquatic_prime_1a2e9b8604d9a4ecfb00220e5f691979cc" prot="public" virt="virtual"><scope>AquaticPrime</scope><name>dictionaryForLicenseData:</name></member>
+      <member refid="interface_aquatic_prime_1a332ea8569d52504f509d3f00aff392d3" prot="public" virt="virtual"><scope>AquaticPrime</scope><name>dictionaryForLicenseFile:</name></member>
+      <member refid="interface_aquatic_prime_1a64b11dee63fe00a16061745bbef45321" prot="public" virt="virtual"><scope>AquaticPrime</scope><name>getLastError</name></member>
+      <member refid="interface_aquatic_prime_1a2c7cf637b8c304db0dd4002e6705de26" prot="protected" virt="non-virtual"><scope>AquaticPrime</scope><name>hash</name></member>
+      <member refid="interface_aquatic_prime_1a317025a50dcb9e025a0f98042c1987e4" prot="public" virt="virtual"><scope>AquaticPrime</scope><name>hash</name></member>
+      <member refid="interface_aquatic_prime_1a87acffdf7a33cd1be32ba12bb545066d" prot="public" virt="virtual"><scope>AquaticPrime</scope><name>initWithKey:</name></member>
+      <member refid="interface_aquatic_prime_1a6d4f557fc46af47d23abb8f22edf91f7" prot="public" virt="virtual"><scope>AquaticPrime</scope><name>initWithKey:privateKey:</name></member>
+      <member refid="interface_aquatic_prime_1aa4178bb2c420dc8dda29fc71e0e3f114" prot="public" virt="virtual"><scope>AquaticPrime</scope><name>key</name></member>
+      <member refid="interface_aquatic_prime_1a271e3771274f450b5bd0b753ee0c6c8f" prot="public" virt="virtual"><scope>AquaticPrime</scope><name>licenseDataForDictionary:</name></member>
+      <member refid="interface_aquatic_prime_1ac464473140490128ff8db5f6973f5211" prot="protected" virt="non-virtual"><scope>AquaticPrime</scope><name>pkey</name></member>
+      <member refid="interface_aquatic_prime_1ac3157ed7509a1518ca7e50444dd79dde" prot="public" virt="virtual"><scope>AquaticPrime</scope><name>privateKey</name></member>
+      <member refid="interface_aquatic_prime_1a17b0dff0211fa596cf4bba58afcafcae" prot="protected" virt="non-virtual"><scope>AquaticPrime</scope><name>rsaKey</name></member>
+      <member refid="interface_aquatic_prime_1a3aaf317e389c694f7a4fdea39c649d8d" prot="public" virt="virtual"><scope>AquaticPrime</scope><name>setBlacklist:</name></member>
+      <member refid="interface_aquatic_prime_1a09dc2a0716061dc6a63d9aacb6b7bf2b" prot="public" virt="virtual"><scope>AquaticPrime</scope><name>setHash:</name></member>
+      <member refid="interface_aquatic_prime_1a82a6af97a1938fe1b3a2d101bdc02b7b" prot="public" virt="virtual"><scope>AquaticPrime</scope><name>setKey:</name></member>
+      <member refid="interface_aquatic_prime_1a90d3cd34779b576581ecb2884df06c4b" prot="public" virt="virtual"><scope>AquaticPrime</scope><name>setKey:privateKey:</name></member>
+      <member refid="interface_aquatic_prime_1a2d9f83f07bc65012cb0c50aeee80c46f" prot="public" virt="virtual"><scope>AquaticPrime</scope><name>verifyLicenseData:</name></member>
+      <member refid="interface_aquatic_prime_1a0f27ac34304e58772ee37fb30af41aef" prot="public" virt="virtual"><scope>AquaticPrime</scope><name>verifyLicenseFile:</name></member>
+      <member refid="interface_aquatic_prime_1aa63463d04181d37d58a1e850cb4ad13e" prot="public" virt="virtual"><scope>AquaticPrime</scope><name>writeLicenseFileForDictionary:toPath:</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

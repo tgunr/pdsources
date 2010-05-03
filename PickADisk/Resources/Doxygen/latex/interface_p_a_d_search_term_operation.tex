@@ -1,0 +1,104 @@
+\hypertarget{interface_p_a_d_search_term_operation}{
+\section{PADSearchTermOperation Class Reference}
+\label{interface_p_a_d_search_term_operation}\index{PADSearchTermOperation@{PADSearchTermOperation}}
+}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_p_a_d_search_term_operation_a983cb25f384fd434b2b1cf91e1921716}{
+(BOOL) -\/ {\bfseries searchDone}}
+\label{interface_p_a_d_search_term_operation_a983cb25f384fd434b2b1cf91e1921716}
+
+\item 
+\hypertarget{interface_p_a_d_search_term_operation_a572e3e70c70383dab2bc5005267390e4}{
+(BOOL) -\/ {\bfseries searchBusy}}
+\label{interface_p_a_d_search_term_operation_a572e3e70c70383dab2bc5005267390e4}
+
+\item 
+\hypertarget{interface_p_a_d_search_term_operation_ad13d7379c156550705e79420b6b7ce28}{
+(BOOL) -\/ {\bfseries elementsWaiting}}
+\label{interface_p_a_d_search_term_operation_ad13d7379c156550705e79420b6b7ce28}
+
+\item 
+\hypertarget{interface_p_a_d_search_term_operation_af7f1ddf11bdab015efd2e62e1dcf982a}{
+(\hyperlink{class_n_s_array}{NSArray} $\ast$) -\/ {\bfseries pullMatchQueue}}
+\label{interface_p_a_d_search_term_operation_af7f1ddf11bdab015efd2e62e1dcf982a}
+
+\item 
+\hypertarget{interface_p_a_d_search_term_operation_a083c9c796a144a20679b7808056bd51f}{
+(id) -\/ {\bfseries parentMatchOfChildMatch:}}
+\label{interface_p_a_d_search_term_operation_a083c9c796a144a20679b7808056bd51f}
+
+\item 
+\hypertarget{interface_p_a_d_search_term_operation_a5c0b986cdd173d66954b9b98ab002f03}{
+(void) -\/ {\bfseries endSearch}}
+\label{interface_p_a_d_search_term_operation_a5c0b986cdd173d66954b9b98ab002f03}
+
+\item 
+\hypertarget{interface_p_a_d_search_term_operation_a4fb73bd3c4515dcf3efad3bcf7888a17}{
+(void) -\/ {\bfseries startSearch}}
+\label{interface_p_a_d_search_term_operation_a4fb73bd3c4515dcf3efad3bcf7888a17}
+
+\item 
+\hypertarget{interface_p_a_d_search_term_operation_a789c90b132fa97f7ebf98b3736390d4d}{
+(\hyperlink{interface_p_a_d_search_term_operation}{PADSearchTermOperation} $\ast$) -\/ {\bfseries initWithTree:forTerms:andTarget:}}
+\label{interface_p_a_d_search_term_operation_a789c90b132fa97f7ebf98b3736390d4d}
+
+\item 
+\hypertarget{interface_p_a_d_search_term_operation_ac1c97e73b13a8819885928aba2ddafc5}{
+(void) -\/ {\bfseries notifyTarget:}}
+\label{interface_p_a_d_search_term_operation_ac1c97e73b13a8819885928aba2ddafc5}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_p_a_d_search_term_operation_aee4a73f1d055220e68d6548355741e84}{
+(\hyperlink{interface_p_a_d_search_term_operation}{PADSearchTermOperation} $\ast$) + {\bfseries searchOperationsForTreeNode:forTerms:andTarget:}}
+\label{interface_p_a_d_search_term_operation_aee4a73f1d055220e68d6548355741e84}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_p_a_d_search_term_operation_a9cb714370ce604571ce9d9e484323752}{
+\hyperlink{class_simple_tree_node}{SimpleTreeNode} $\ast$ {\bfseries searchTree}}
+\label{interface_p_a_d_search_term_operation_a9cb714370ce604571ce9d9e484323752}
+
+\item 
+\hypertarget{interface_p_a_d_search_term_operation_aa08f06e64d4f09f6c751c209901f5ca0}{
+\hyperlink{class_n_s_array}{NSArray} $\ast$ {\bfseries searchTerms}}
+\label{interface_p_a_d_search_term_operation_aa08f06e64d4f09f6c751c209901f5ca0}
+
+\item 
+\hypertarget{interface_p_a_d_search_term_operation_a9272906c162c62597bf156d324ec7076}{
+BOOL {\bfseries searchBusy}}
+\label{interface_p_a_d_search_term_operation_a9272906c162c62597bf156d324ec7076}
+
+\item 
+\hypertarget{interface_p_a_d_search_term_operation_a7060bec5dc65de00bda875b593b2b181}{
+\hyperlink{class_n_s_mutable_array}{NSMutableArray} $\ast$ {\bfseries inQueue}}
+\label{interface_p_a_d_search_term_operation_a7060bec5dc65de00bda875b593b2b181}
+
+\item 
+\hypertarget{interface_p_a_d_search_term_operation_a77d89b9f54f1e708d454671a25521a95}{
+\hyperlink{class_n_s_mutable_array}{NSMutableArray} $\ast$ {\bfseries matchQueue}}
+\label{interface_p_a_d_search_term_operation_a77d89b9f54f1e708d454671a25521a95}
+
+\item 
+\hypertarget{interface_p_a_d_search_term_operation_a2287279e77ac99999cd6b819ce4983cd}{
+\hyperlink{class_n_s_mutable_array}{NSMutableArray} $\ast$ {\bfseries parentQueue}}
+\label{interface_p_a_d_search_term_operation_a2287279e77ac99999cd6b819ce4983cd}
+
+\item 
+\hypertarget{interface_p_a_d_search_term_operation_a947e22d4f4355140dc0837c01ce36634}{
+id {\bfseries messageTarget}}
+\label{interface_p_a_d_search_term_operation_a947e22d4f4355140dc0837c01ce36634}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+PickADisk/Sources/PAD Controllers/PADSearchRequest.h\item 
+PickADisk/Sources/PAD Controllers/PADSearchRequest.m\end{DoxyCompactItemize}

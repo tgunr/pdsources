@@ -1,0 +1,404 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.6.2">
+  <compounddef id="_tree_controller_8h" kind="file">
+    <compoundname>TreeController.h</compoundname>
+    <includes local="no">Cocoa/Cocoa.h</includes>
+    <includes refid="_simple_tree_node_8h" local="yes">SimpleTreeNode.h</includes>
+    <includes refid="_n_s_array___extensions_8h" local="yes">NSArray_Extensions.h</includes>
+    <includedby refid="_n_s_outline_view___extensions_8m" local="yes">PickADisk/Sources/Cocoa Extensions/NSOutlineView_Extensions.m</includedby>
+    <includedby refid="_p_a_d_index_toolbar_controller_8h" local="yes">PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h</includedby>
+    <includedby refid="_d_a_c_a_l_tree_data_source_8h" local="yes">PickADisk/Sources/PAD Controllers/DACALTreeDataSource.h</includedby>
+    <includedby refid="_d_a_c_a_l_view_data_source_8h" local="yes">PickADisk/Sources/PAD Controllers/DACALViewDataSource.h</includedby>
+    <includedby refid="_p_a_d_prefs_tree_controller_8h" local="yes">PickADisk/Sources/PAD Controllers/PADPrefsTreeController.h</includedby>
+    <includedby refid="_tree_controller_8m" local="yes">PickADisk/Sources/PAD Controllers/TreeController.m</includedby>
+    <incdepgraph>
+      <node id="969">
+        <label>NSArray_Extensions.h</label>
+        <link refid="_n_s_array___extensions_8h_source"/>
+        <childnode refid="967" relation="include">
+        </childnode>
+      </node>
+      <node id="964">
+        <label>Cocoa/Cocoa.h</label>
+      </node>
+      <node id="965">
+        <label>SimpleTreeNode.h</label>
+        <link refid="_simple_tree_node_8h_source"/>
+        <childnode refid="964" relation="include">
+        </childnode>
+        <childnode refid="966" relation="include">
+        </childnode>
+        <childnode refid="968" relation="include">
+        </childnode>
+        <childnode refid="967" relation="include">
+        </childnode>
+      </node>
+      <node id="966">
+        <label>TreeNode.h</label>
+        <link refid="_tree_node_8h_source"/>
+        <childnode refid="967" relation="include">
+        </childnode>
+      </node>
+      <node id="968">
+        <label>dacallib.h</label>
+      </node>
+      <node id="967">
+        <label>Foundation/Foundation.h</label>
+      </node>
+      <node id="963">
+        <label>PickADisk/Sources/PAD Controllers/TreeController.h</label>
+        <link refid="TreeController.h"/>
+        <childnode refid="964" relation="include">
+        </childnode>
+        <childnode refid="965" relation="include">
+        </childnode>
+        <childnode refid="969" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="974">
+        <label>PickADisk/Sources/PAD Controllers/PADAddVolumeController.h</label>
+        <link refid="_p_a_d_add_volume_controller_8h_source"/>
+        <childnode refid="971" relation="include">
+        </childnode>
+      </node>
+      <node id="975">
+        <label>PickADisk/Sources/PAD Controllers/PADPrefsTreeController.h</label>
+        <link refid="_p_a_d_prefs_tree_controller_8h_source"/>
+      </node>
+      <node id="973">
+        <label>PickADisk/Sources/PAD Controllers/DACALTreeDataSource.h</label>
+        <link refid="_d_a_c_a_l_tree_data_source_8h_source"/>
+        <childnode refid="971" relation="include">
+        </childnode>
+        <childnode refid="974" relation="include">
+        </childnode>
+        <childnode refid="972" relation="include">
+        </childnode>
+      </node>
+      <node id="971">
+        <label>PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h</label>
+        <link refid="_p_a_d_index_toolbar_controller_8h_source"/>
+        <childnode refid="972" relation="include">
+        </childnode>
+      </node>
+      <node id="972">
+        <label>PickADisk/Sources/PAD Controllers/DACALViewDataSource.h</label>
+        <link refid="_d_a_c_a_l_view_data_source_8h_source"/>
+      </node>
+      <node id="970">
+        <label>PickADisk/Sources/PAD Controllers/TreeController.h</label>
+        <link refid="TreeController.h"/>
+        <childnode refid="971" relation="include">
+        </childnode>
+        <childnode refid="973" relation="include">
+        </childnode>
+        <childnode refid="972" relation="include">
+        </childnode>
+        <childnode refid="975" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="interface_tree_controller" prot="public">TreeController</innerclass>
+    <innerclass refid="interface_tree_controller_data_source" prot="public">TreeControllerDataSource</innerclass>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="_tree_controller_8h_1a7ad43654daa0977f3efe8f7d6e93f6c7" prot="public" static="no">
+        <name>DragDropSimplePboardType</name>
+        <initializer>@&quot;MyCustomOutlineViewPboardType&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" line="18" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_tree_controller_8h_1a5cf732a382af679812ad51e2add37e23" prot="public" static="no">
+        <name>COLUMNID_NAME</name>
+        <initializer>@&quot;NameColumn&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" line="19" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_tree_controller_8h_1aa85979f11c1757ee749ae8cd983f6015" prot="public" static="no">
+        <name>COLUMNID_SLOT</name>
+        <initializer>@&quot;SlotColumn&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" line="20" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_tree_controller_8h_1a1e4e10e252e2c4a0cfd6e1f87c89d7aa" prot="public" static="no">
+        <name>COLUMNID_MODDATE</name>
+        <initializer>@&quot;DateAddColumn&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" line="21" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_tree_controller_8h_1ab4c579e0b38373d102546608d3ce1e4d" prot="public" static="no">
+        <name>COLUMNID_TYPE</name>
+        <initializer>@&quot;TypeColumn&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" line="22" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_tree_controller_8h_1a649fd0c0effb50c7fad40df2dd4c38fd" prot="public" static="no">
+        <name>COLUMNID_SCORE</name>
+        <initializer>@&quot;ScoreColumn&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" line="23" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_tree_controller_8h_1ad30e681163b1d7ffc675dada7428fae3" prot="public" static="no">
+        <name>COLUMNID_CHECKEDOUT</name>
+        <initializer>@&quot;CheckOutColumn&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" line="24" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_tree_controller_8h_1adc2c9af387b8e3380ab998c84786a339" prot="public" static="no">
+        <name>COLUMNID_DATECHECKEDOUT</name>
+        <initializer>@&quot;DateCheckedOutColumn&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" line="25" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_tree_controller_8h_1a046f1666cd1aa4029e084de5325be334" prot="public" static="no">
+        <name>COLUMNID_COMMENT</name>
+        <initializer>@&quot;CommentColumn&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" line="27" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_tree_controller_8h_1a44829011640ba5de2c4ebad36ba4fc0e" prot="public" static="no">
+        <name>COLUMNID_TAGS</name>
+        <initializer>@&quot;TagsColumn&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" line="28" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_tree_controller_8h_1a58a7c97b2c79c653fe666cacb4c6d239" prot="public" static="no">
+        <name>COLUMNID_STARS</name>
+        <initializer>@&quot;StarsColumn&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" line="29" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_tree_controller_8h_1abc50e2485deb0c2a20c6eeccbb2b43d7" prot="public" static="no">
+        <name>COLUMNID_RATING</name>
+        <initializer>@&quot;RatingColumn&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" line="30" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="_tree_controller_8h_1a266b27432e5c74d96254e6f6582dd4ea" prot="public" static="no">
+        <name>COLUMNID_PREFSCHECKBOX</name>
+        <initializer>@&quot;PrefCheckedColumn&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" line="32" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>TreeController.h</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>DragNDropOutlineView</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Created<sp/>by<sp/>Jack<sp/>Small<sp/>on<sp/>7/4/08.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Copyright<sp/>2008<sp/>polyMicro<sp/>Systems.<sp/>All<sp/>rights<sp/>reserved.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#import<sp/>&lt;Cocoa/Cocoa.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#import<sp/>&quot;SimpleTreeNode.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#import<sp/>&quot;NSArray_Extensions.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="comment">//<sp/>================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Useful<sp/>Macros</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="comment">//<sp/>================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DragDropSimplePboardType<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">@&quot;MyCustomOutlineViewPboardType&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>COLUMNID_NAME<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">@&quot;NameColumn&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>COLUMNID_SLOT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">@&quot;SlotColumn&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>COLUMNID_MODDATE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">@&quot;DateAddColumn&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>COLUMNID_TYPE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">@&quot;TypeColumn&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>COLUMNID_SCORE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">@&quot;ScoreColumn&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>COLUMNID_CHECKEDOUT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">@&quot;CheckOutColumn&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>COLUMNID_DATECHECKEDOUT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">@&quot;DateCheckedOutColumn&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>COLUMNID_COMMENT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">@&quot;CommentColumn&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>COLUMNID_TAGS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">@&quot;TagsColumn&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>COLUMNID_STARS<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">@&quot;StarsColumn&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>COLUMNID_RATING<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">@&quot;RatingColumn&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>COLUMNID_PREFSCHECKBOX<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">@&quot;PrefCheckedColumn&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="comment">//#define<sp/>COLUMNID_NODE_KIND<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>@&quot;NodeKindColumn&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="keyword">@class</highlight><highlight class="normal"><sp/><ref refid="class_simple_tree_node" kindref="compound">SimpleTreeNode</ref>;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="keyword">@class</highlight><highlight class="normal"><sp/><ref refid="interface_p_a_d_index_toolbar_controller" kindref="compound">PADIndexToolbarController</ref>;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="interface_tree_controller" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">@interface<sp/></highlight><highlight class="normal"><ref refid="interface_tree_controller" kindref="compound">TreeController</ref><sp/>:<sp/><ref refid="class_n_s_object" kindref="compound">NSObject</ref><sp/>{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_simple_tree_node" kindref="compound">SimpleTreeNode</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*treeData;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_n_s_array" kindref="compound">NSArray</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*draggedNodes;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>BOOL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>allowOnDropOnGroup;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>BOOL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>allowOnDropOnLeaf;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>BOOL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>allowBetweenDrop;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>BOOL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>allowGroupRowLook;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>BOOL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>allowButtonCellsToChangeSelection;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>BOOL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>allowToggleVerticalBeginsDrag;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>BOOL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>onlyAcceptDropOnRoot;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>IBOutlet<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dataSource;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>IBOutlet<sp/>NSOutlineView<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*outlineView;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="54"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal">-<sp/>(IBAction)addGroup:(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)sender;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal">-<sp/>(IBAction)addLeaf:(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)sender;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal">-<sp/>(IBAction)deleteSelections:(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)sender;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal">-<sp/>(IBAction)outlineViewAction:(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)sender;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal">-<sp/>(IBAction)sortData:(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)sender;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal">-<sp/>(IBAction)expandableMenuItemAction:(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)sender;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal">-<sp/>(void)deletedSelections;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal">-<sp/>(<ref refid="class_simple_tree_node" kindref="compound">SimpleTreeNode</ref>*)treeRoot<sp/>;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal">-<sp/>(void)setTreeRoot:(<ref refid="class_simple_tree_node" kindref="compound">SimpleTreeNode</ref>*)root;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal">-<sp/>(void)addTreeRoot:(<ref refid="class_simple_tree_node" kindref="compound">SimpleTreeNode</ref>*)newChild;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal">-<sp/>(void)addDataToTree:(<ref refid="class_simple_tree_node" kindref="compound">SimpleTreeNode</ref>*)newChild<sp/>startEdit:(BOOL)doEdit;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal">-<sp/>(void)recreateInitialTree;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal">-<sp/>(id)dataSource;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal">-<sp/>(NSOutlineView*)outlineView;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal">-<sp/>(void)setOutlineView:(NSOutlineView*)view;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal">-<sp/>(NSUndoManager*)undoManager;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal">-<sp/>(<ref refid="class_n_s_array" kindref="compound">NSArray</ref>*)draggedNodes;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal">-<sp/>(<ref refid="class_n_s_array" kindref="compound">NSArray</ref>*)selectedNodes;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal">-<sp/>(BOOL)allowOnDropOnGroup;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal">-<sp/>(BOOL)allowOnDropOnLeaf;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal">-<sp/>(BOOL)allowBetweenDrop;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal">-<sp/>(BOOL)allowGroupRowLook;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal">-<sp/>(BOOL)allowButtonCellsToChangeSelection;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal">-<sp/>(BOOL)allowToggleVerticalBeginsDrag;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal">-<sp/>(BOOL)onlyAcceptDropOnRoot;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal">-<sp/>(void)setAllowOnDropOnGroup:(BOOL)allow;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal">-<sp/>(void)setAllowOnDropOnLeaf:(BOOL)allow;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal">-<sp/>(void)setAllowBetweenDrop:(BOOL)allow;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal">-<sp/>(void)setAllowGroupRowLook:(BOOL)allow;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal">-<sp/>(void)setAllowButtonCellsToChangeSelection:(BOOL)allow;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal">-<sp/>(void)setAllowToggleVerticalBeginsDrag:(BOOL)allow;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal">-<sp/>(void)setOnlyAcceptDropOnRoot:(BOOL)allow;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight><highlight class="keyword">@end</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98" refid="interface_tree_controller_data_source" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">@interface<sp/></highlight><highlight class="normal"><ref refid="interface_tree_controller_data_source" kindref="compound">TreeControllerDataSource</ref><sp/>:<sp/><ref refid="class_n_s_object" kindref="compound">NSObject</ref><sp/>{</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>IBOutlet<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>treeControl;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Contextual<sp/>menus<sp/>(aka:<sp/>right<sp/>click<sp/>menus)<sp/>for<sp/>the<sp/>NSOutlineView</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/>IBOutlet<sp/>NSMenu<sp/><sp/><sp/><sp/><sp/>*outlineViewContextMenu;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>IBOutlet<sp/>NSMenu<sp/><sp/><sp/><sp/><sp/>*expandableColumnMenu;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>IBOutlet<sp/><ref refid="interface_p_a_d_index_toolbar_controller" kindref="compound">PADIndexToolbarController</ref>*<sp/><sp/><sp/><sp/><sp/>toolbarControl;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="107"><highlight class="normal">-<sp/>(id)treeControl;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal">-<sp/>(void)setTreeControl:(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)tree;</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal">-<sp/>(NSOutlineView*)outlineView;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal">-<sp/>(NSUndoManager*)undoManager;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal">-<sp/>(void)removeAllChildren;</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal">-<sp/>(id)toolbarControl;</highlight></codeline>
+<codeline lineno="116"><highlight class="normal">-<sp/>(void)setToolbarControl:(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)tbar;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal">-<sp/>(<ref refid="class_simple_tree_node" kindref="compound">SimpleTreeNode</ref>*)createInitialTree:(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)tree;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal">-<sp/>(void)outlineViewInit;</highlight></codeline>
+<codeline lineno="120"><highlight class="normal">-<sp/>(void)recreateInitialTree;</highlight></codeline>
+<codeline lineno="121"><highlight class="normal">-<sp/>(void)outlineViewAction:(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)tree;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal">-<sp/>(void)outlineViewDoubleAction:(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)tree;</highlight></codeline>
+<codeline lineno="123"><highlight class="normal">-<sp/>(<ref refid="class_n_s_array" kindref="compound">NSArray</ref>*)ctmClickedRows;</highlight></codeline>
+<codeline lineno="124"><highlight class="normal">-<sp/>(void)menuNeedsUpdate:(NSMenu*)menu;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal">-<sp/>(void)menuNeedsUpdate:(NSMenu*)menu<sp/>fromTree:(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)tree;</highlight></codeline>
+<codeline lineno="126"><highlight class="normal">-<sp/>(void)nodeNameChanged:(<ref refid="class_simple_tree_node" kindref="compound">SimpleTreeNode</ref>*)theNode<sp/>toName:(<ref refid="class_n_s_string" kindref="compound">NSString</ref>*)theName;</highlight></codeline>
+<codeline lineno="127"><highlight class="normal">-<sp/>(NSInteger)shouldEditTableColumn:(NSTableColumn<sp/>*)tc<sp/>item:(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)item;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal">-<sp/>(void)sortExpandedChildrenWithCurrentDescriptors:(<ref refid="class_simple_tree_node" kindref="compound">SimpleTreeNode</ref>*)theNode;</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal">-<sp/>(BOOL)outlineView:(NSOutlineView<sp/>*)ov<sp/>writeItems:(<ref refid="class_n_s_array" kindref="compound">NSArray</ref><sp/>*)items<sp/>toPasteboard:(NSPasteboard<sp/>*)pboard;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal">-<sp/>(NSDragOperation)validateDropSource:(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal"><sp/>&lt;NSDraggingInfo&gt;)info<sp/>proposedItem:(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)item<sp/>proposedChildIndex:(NSInteger)childIndex;</highlight></codeline>
+<codeline lineno="132"><highlight class="normal">-<sp/>(BOOL)outlineView:(NSOutlineView<sp/>*)ov<sp/>acceptDrop:(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal"><sp/>&lt;NSDraggingInfo&gt;)info<sp/>item:(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)item<sp/>childIndex:(NSInteger)childIndex;</highlight></codeline>
+<codeline lineno="133"><highlight class="normal">-<sp/>(BOOL)performDropOperation:(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal"><sp/>&lt;NSDraggingInfo&gt;)info<sp/>onNode:(<ref refid="interface_tree_node" kindref="compound">TreeNode</ref><sp/>*)parentNode<sp/>atIndex:(NSInteger)childIndex;</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal">-<sp/>(id)objectValueForTableColumn:(NSTableColumn<sp/>*)tableColumn<sp/>byItem:(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)item;</highlight></codeline>
+<codeline lineno="136"><highlight class="normal">-<sp/>(void)setObjectValue:(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)object<sp/>forTableColumn:(NSTableColumn<sp/>*)tableColumn<sp/>byItem:(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)item;</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal">-<sp/>(BOOL)shouldShowCellExpansionForTableColumn:(NSTableColumn<sp/>*)tc<sp/>item:(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)inItem;</highlight></codeline>
+<codeline lineno="139"><highlight class="normal">-<sp/>(<ref refid="class_n_s_string" kindref="compound">NSString</ref>*)toolTipForCell:(NSCell<sp/>*)cell<sp/>rect:(NSRectPointer)inRect<sp/>tableColumn:(NSTableColumn<sp/>*)tc<sp/>item:(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)inItem<sp/>mouseLocation:(NSPoint)inMouseLocation;</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal">-<sp/>(void)updateChangesForItem:(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)changeItem<sp/>withAction:(BOOL)doAction;</highlight></codeline>
+<codeline lineno="142"><highlight class="normal">-<sp/>(void)updateChangesForItems:(<ref refid="class_n_s_array" kindref="compound">NSArray</ref>*)changedItems<sp/>withAction:(BOOL)doAction;</highlight></codeline>
+<codeline lineno="143"><highlight class="normal">-<sp/>(void)updateChangesWithAction:(BOOL)doAction;</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight><highlight class="keyword">@end</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.h"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.6.2">
+  <compounddef id="interface_n_s_string_07_my_extensions_08" kind="class" prot="public">
+    <compoundname>NSString(MyExtensions)</compoundname>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="interface_n_s_string_07_my_extensions_08_1a188a9937af56294004d5ff22bda73b3c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="class_n_s_data" kindref="compound">NSData</ref> *</type>
+        <definition>NSData * NSString(MyExtensions)::md5Data</definition>
+        <argsstring>()</argsstring>
+        <name>md5Data</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Cocoa Extensions/NSString_Extensions.h" line="14" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Cocoa Extensions/NSString_Extensions.m" bodystart="15" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_n_s_string_07_my_extensions_08_1a514df04301d57272549842f9c3eb3c24" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+        <definition>NSString * NSString(MyExtensions)::md5String</definition>
+        <argsstring>()</argsstring>
+        <name>md5String</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Cocoa Extensions/NSString_Extensions.h" line="15" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Cocoa Extensions/NSString_Extensions.m" bodystart="30" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_n_s_string_07_my_extensions_08_1add671e44841f164dcedc90cbade15000" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>float</type>
+        <definition>float NSString(MyExtensions)::rankWithString:compareOptions:</definition>
+        <argsstring>(NSString *other,[compareOptions] NSStringCompareOptions findOptions)</argsstring>
+        <name>rankWithString:compareOptions:</name>
+        <param>
+          <type><ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+          <declname>other</declname>
+        </param>
+        <param>
+          <attributes>[compareOptions]</attributes>
+          <type>NSStringCompareOptions</type>
+          <declname>findOptions</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Cocoa Extensions/NSString_Extensions.h" line="17" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Cocoa Extensions/NSString_Extensions.m" bodystart="50" bodyend="64"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="interface_n_s_string_07_my_extensions_08_1a17e489607875a47748f03ec8b989e717" prot="public" static="yes" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+        <definition>NSString * NSString(MyExtensions)::stringFromByteCount:</definition>
+        <argsstring>(NSNumber *inBytes)</argsstring>
+        <name>stringFromByteCount:</name>
+        <param>
+          <type>NSNumber *</type>
+          <declname>inBytes</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Cocoa Extensions/NSString_Extensions.h" line="20" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Cocoa Extensions/NSString_Extensions.m" bodystart="66" bodyend="79"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Cocoa Extensions/NSString_Extensions.h" line="12" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Cocoa Extensions/NSString_Extensions.h" bodystart="12" bodyend="-1"/>
+    <listofallmembers>
+      <member refid="interface_n_s_string_07_my_extensions_08_1a188a9937af56294004d5ff22bda73b3c" prot="public" virt="virtual"><scope>NSString(MyExtensions)</scope><name>md5Data</name></member>
+      <member refid="interface_n_s_string_07_my_extensions_08_1a514df04301d57272549842f9c3eb3c24" prot="public" virt="virtual"><scope>NSString(MyExtensions)</scope><name>md5String</name></member>
+      <member refid="interface_n_s_string_07_my_extensions_08_1add671e44841f164dcedc90cbade15000" prot="public" virt="virtual"><scope>NSString(MyExtensions)</scope><name>rankWithString:compareOptions:</name></member>
+      <member refid="interface_n_s_string_07_my_extensions_08_1a17e489607875a47748f03ec8b989e717" prot="public" virt="virtual"><scope>NSString(MyExtensions)</scope><name>stringFromByteCount:</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

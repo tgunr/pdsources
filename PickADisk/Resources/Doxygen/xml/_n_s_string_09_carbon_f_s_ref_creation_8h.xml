@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.6.2">
+  <compounddef id="_n_s_string_09_carbon_f_s_ref_creation_8h" kind="file">
+    <compoundname>NSString+CarbonFSRefCreation.h</compoundname>
+    <includes local="no">Foundation/Foundation.h</includes>
+    <includes local="no">Carbon/Carbon.h</includes>
+    <includedby refid="_icon_family_8m" local="yes">PickADisk/Sources/IconFamily/IconFamily.m</includedby>
+    <includedby refid="_n_s_string_09_carbon_f_s_ref_creation_8m" local="yes">PickADisk/Sources/IconFamily/NSString+CarbonFSRefCreation.m</includedby>
+    <incdepgraph>
+      <node id="236">
+        <label>Carbon/Carbon.h</label>
+      </node>
+      <node id="234">
+        <label>PickADisk/Sources/IconFamily/NSString+CarbonFSRefCreation.h</label>
+        <link refid="NSString+CarbonFSRefCreation.h"/>
+        <childnode refid="235" relation="include">
+        </childnode>
+        <childnode refid="236" relation="include">
+        </childnode>
+      </node>
+      <node id="235">
+        <label>Foundation/Foundation.h</label>
+      </node>
+    </incdepgraph>
+    <innerclass refid="interface_n_s_string_07_carbon_f_s_ref_creation_08" prot="public">NSString(CarbonFSRefCreation)</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/><sp/><sp/><sp/>Copyright<sp/>(c)<sp/>2001-2006<sp/>Troy<sp/>N.<sp/>Stephens</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"></highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/><sp/><sp/><sp/>Use<sp/>and<sp/>distribution<sp/>of<sp/>this<sp/>source<sp/>code<sp/>is<sp/>governed<sp/>by<sp/>the<sp/>MIT<sp/>License,<sp/>whose<sp/>terms<sp/>are<sp/>as<sp/>follows.</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"></highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/><sp/><sp/><sp/>Permission<sp/>is<sp/>hereby<sp/>granted,<sp/>free<sp/>of<sp/>charge,<sp/>to<sp/>any<sp/>person<sp/>obtaining<sp/>a<sp/>copy<sp/>of<sp/>this<sp/>software<sp/>and<sp/>associated<sp/>documentation<sp/>files<sp/>(the<sp/>&quot;Software&quot;),<sp/>to<sp/>deal<sp/>in<sp/>the<sp/>Software<sp/>without<sp/>restriction,<sp/>including<sp/>without<sp/>limitation<sp/>the<sp/>rights<sp/>to<sp/>use,<sp/>copy,<sp/>modify,<sp/>merge,<sp/>publish,<sp/>distribute,<sp/>sublicense,<sp/>and/or<sp/>sell<sp/>copies<sp/>of<sp/>the<sp/>Software,<sp/>and<sp/>to<sp/>permit<sp/>persons<sp/>to<sp/>whom<sp/>the<sp/>Software<sp/>is<sp/>furnished<sp/>to<sp/>do<sp/>so,<sp/>subject<sp/>to<sp/>the<sp/>following<sp/>conditions:</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"></highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/><sp/><sp/><sp/>The<sp/>above<sp/>copyright<sp/>notice<sp/>and<sp/>this<sp/>permission<sp/>notice<sp/>shall<sp/>be<sp/>included<sp/>in<sp/>all<sp/>copies<sp/>or<sp/>substantial<sp/>portions<sp/>of<sp/>the<sp/>Software.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"></highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/><sp/><sp/><sp/>THE<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>&quot;AS<sp/>IS&quot;,<sp/>WITHOUT<sp/>WARRANTY<sp/>OF<sp/>ANY<sp/>KIND,<sp/>EXPRESS<sp/>OR<sp/>IMPLIED,<sp/>INCLUDING<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO<sp/>THE<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY,<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>AND<sp/>NONINFRINGEMENT.<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>AUTHORS<sp/>OR<sp/>COPYRIGHT<sp/>HOLDERS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>CLAIM,<sp/>DAMAGES<sp/>OR<sp/>OTHER<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>AN<sp/>ACTION<sp/>OF<sp/>CONTRACT,<sp/>TORT<sp/>OR<sp/>OTHERWISE,<sp/>ARISING<sp/>FROM,<sp/>OUT<sp/>OF<sp/>OR<sp/>IN<sp/>CONNECTION<sp/>WITH<sp/>THE<sp/>SOFTWARE<sp/>OR<sp/>THE<sp/>USE<sp/>OR<sp/>OTHER<sp/>DEALINGS<sp/>IN<sp/>THE<sp/>SOFTWARE.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#import<sp/>&lt;Foundation/Foundation.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#import<sp/>&lt;Carbon/Carbon.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">@interface<sp/></highlight><highlight class="normal"><ref refid="class_n_s_string" kindref="compound">NSString</ref><sp/>(CarbonFSRefCreation)</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Fills<sp/>in<sp/>the<sp/>given<sp/>FSRef<sp/>struct<sp/>so<sp/>it<sp/>specifies<sp/>the<sp/>file<sp/>whose<sp/>path<sp/>is<sp/>in<sp/>this<sp/>string.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//<sp/>If<sp/>the<sp/>file<sp/>doesn&apos;t<sp/>exist,<sp/>and<sp/>&quot;createFile&quot;<sp/>is<sp/>YES,<sp/>this<sp/>method<sp/>will<sp/>attempt<sp/>to<sp/>create</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//<sp/>an<sp/>empty<sp/>file<sp/>with<sp/>the<sp/>specified<sp/>path.<sp/><sp/>(The<sp/>caller<sp/>should<sp/>insure<sp/>that<sp/>the<sp/>directory</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment">//<sp/>the<sp/>file<sp/>is<sp/>to<sp/>be<sp/>placed<sp/>in<sp/>already<sp/>exists.)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal">-<sp/>(BOOL)<sp/>getFSRef:(FSRef*)fsRef<sp/>createFileIfNecessary:(BOOL)createFile;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">@end</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/IconFamily/NSString+CarbonFSRefCreation.h"/>
+  </compounddef>
+</doxygen>

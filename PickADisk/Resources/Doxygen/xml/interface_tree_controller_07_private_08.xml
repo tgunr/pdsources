@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.6.2">
+  <compounddef id="interface_tree_controller_07_private_08" kind="class" prot="public">
+    <compoundname>TreeController(Private)</compoundname>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="interface_tree_controller_1a1818a72a6e6b7bd3c1823f0a7d3d4607" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void TreeController(Private)::_addNewDataToSelection:</definition>
+        <argsstring>(SimpleTreeNode *newChild)</argsstring>
+        <name>_addNewDataToSelection:</name>
+        <param>
+          <type><ref refid="class_simple_tree_node" kindref="compound">SimpleTreeNode</ref> *</type>
+          <declname>newChild</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.m" line="16" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.m" bodystart="845" bodyend="866"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.m" line="15" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/TreeController.m" bodystart="15" bodyend="-1"/>
+    <listofallmembers>
+      <member refid="interface_tree_controller_1a1818a72a6e6b7bd3c1823f0a7d3d4607" prot="public" virt="virtual"><scope>TreeController(Private)</scope><name>_addNewDataToSelection:</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

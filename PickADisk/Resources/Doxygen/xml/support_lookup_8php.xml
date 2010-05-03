@@ -1,0 +1,219 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.6.2">
+  <compounddef id="support_lookup_8php" kind="file">
+    <compoundname>supportLookup.php</compoundname>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="support_lookup_8php_1a85ae3e64cd40e9564adceb010085e9dd" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>$debug</definition>
+        <argsstring></argsstring>
+        <name>$debug</name>
+        <initializer> 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/sparkle/supportLookup.php" line="13" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/sparkle/supportLookup.php" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="support_lookup_8php_1ab18d68c42c52cb07c80cc5f57f2de14c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>dateValidate</definition>
+        <argsstring>($date)</argsstring>
+        <name>dateValidate</name>
+        <param>
+          <type>$</type>
+          <declname>date</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/sparkle/supportLookup.php" line="39" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/sparkle/supportLookup.php" bodystart="39" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="support_lookup_8php_1a5b939c603875eaf3e615483aec7adc38" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>profileLookupForm</definition>
+        <argsstring>()</argsstring>
+        <name>profileLookupForm</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/sparkle/supportLookup.php" line="48" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/sparkle/supportLookup.php" bodystart="48" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="support_lookup_8php_1a1c7c9ac8f1cb20d1cac8ce40a1e2fcaa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>profileLookup</definition>
+        <argsstring>()</argsstring>
+        <name>profileLookup</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/sparkle/supportLookup.php" line="51" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/sparkle/supportLookup.php" bodystart="51" bodyend="140"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal">&lt;html&gt;</highlight></codeline>
+<codeline lineno="2"><highlight class="normal">&lt;head&gt;</highlight></codeline>
+<codeline lineno="3"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;title&gt;Sparkle<sp/>Profile<sp/>Data<sp/>Lookup&lt;/title&gt;</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;link<sp/>href=</highlight><highlight class="stringliteral">&quot;support/css/report.css&quot;</highlight><highlight class="normal"><sp/>type=</highlight><highlight class="stringliteral">&quot;text/css&quot;</highlight><highlight class="normal"><sp/>rel=</highlight><highlight class="stringliteral">&quot;stylesheet&quot;</highlight><highlight class="normal"><sp/>media=</highlight><highlight class="stringliteral">&quot;all&quot;</highlight><highlight class="normal">&gt;</highlight></codeline>
+<codeline lineno="5"><highlight class="normal">&lt;/head&gt;</highlight></codeline>
+<codeline lineno="6"><highlight class="normal">&lt;body&gt;</highlight></codeline>
+<codeline lineno="7"><highlight class="normal">&lt;?php</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="comment">//<sp/>$Id:<sp/>profileLookup.php<sp/>6<sp/>2006-06-09<sp/>23:50:23Z<sp/>atomicbird<sp/>$</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="comment">//<sp/>$HeadURL:<sp/>http://sparkleplus.googlecode.com/svn/trunk/profileLookup.php<sp/>$</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal">require(</highlight><highlight class="stringliteral">&quot;supportConfig.php&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="12"><highlight class="normal">require(</highlight><highlight class="stringliteral">&quot;supportDB.php&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="13"><highlight class="normal">$debug<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/><sp/><sp/>always<sp/>do<sp/>a<sp/>lookup.</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/><sp/><sp/>if<sp/>start<sp/>and<sp/>end<sp/>specified,<sp/>use<sp/>them<sp/>if<sp/>valid.</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/><sp/><sp/>if<sp/>only<sp/>end<sp/>set,<sp/>use<sp/>start<sp/>of<sp/>1<sp/>month<sp/>ago</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/><sp/><sp/>if<sp/>neither<sp/>set,<sp/>use<sp/>default<sp/>start<sp/>&amp;<sp/>end</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment">//<sp/>If<sp/>end<sp/>is<sp/>set,<sp/>make<sp/>sure<sp/>it<sp/>looks<sp/>like<sp/>a<sp/>date</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(isset($_GET[</highlight><highlight class="stringliteral">&apos;end&apos;</highlight><highlight class="normal">])<sp/>&amp;&amp;<sp/>(dateValidate($_GET[</highlight><highlight class="stringliteral">&apos;end&apos;</highlight><highlight class="normal">])))<sp/>{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>$end_date<sp/>=<sp/>$_GET[</highlight><highlight class="stringliteral">&apos;end&apos;</highlight><highlight class="normal">];</highlight></codeline>
+<codeline lineno="24"><highlight class="normal">}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>default<sp/>end<sp/>date<sp/>is<sp/>now</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>$end_date<sp/>=<sp/>strftime(</highlight><highlight class="stringliteral">&quot;%Y-%m-%d<sp/>%H:%M:%S&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="comment">//<sp/>check<sp/>that<sp/>start<sp/>looks<sp/>like<sp/>a<sp/>date</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(dateValidate($_GET[</highlight><highlight class="stringliteral">&apos;start&apos;</highlight><highlight class="normal">]))<sp/>{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>$start_date<sp/>=<sp/>$_GET[</highlight><highlight class="stringliteral">&apos;start&apos;</highlight><highlight class="normal">];</highlight></codeline>
+<codeline lineno="31"><highlight class="normal">}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>default<sp/>start<sp/>date<sp/>is<sp/>one<sp/>month<sp/>before<sp/>end<sp/>date</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>$start_timestamp<sp/>=<sp/>strtotime(</highlight><highlight class="stringliteral">&quot;$end_date<sp/>1<sp/>month<sp/>ago&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>$start_date<sp/>=<sp/>strftime(</highlight><highlight class="stringliteral">&quot;%Y-%m-%d<sp/>%H:%M:%S&quot;</highlight><highlight class="normal">,<sp/>$start_timestamp);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal">profileLookup();</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal">function<sp/>dateValidate($date)<sp/>{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(preg_match(</highlight><highlight class="stringliteral">&apos;/^[0-9]{4}-[0-9]{2}-[0-9]{2}<sp/>[0-9]{2}:[0-9]{2}:[0-9]{2}$/&apos;</highlight><highlight class="normal">,<sp/>$date))<sp/>{</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>$timestamp<sp/>=<sp/>strtotime($date);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>checkdate(date(</highlight><highlight class="charliteral">&apos;m&apos;</highlight><highlight class="normal">,$timestamp),<sp/>date(</highlight><highlight class="charliteral">&apos;d&apos;</highlight><highlight class="normal">,$timestamp),<sp/>date(</highlight><highlight class="charliteral">&apos;Y&apos;</highlight><highlight class="normal">,$timestamp));</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal">function<sp/>profileLookupForm()<sp/>{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal">function<sp/>profileLookup()<sp/>{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>global<sp/>$start_date,<sp/>$end_date;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>connect<sp/>to<sp/>the<sp/>database</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!TryOpenDB())<sp/>{</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>abortAndExit();</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Get<sp/>REPORT_ID<sp/>for<sp/>all<sp/>reports<sp/>between<sp/>specified<sp/>dates.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//$start_date<sp/>=<sp/>&apos;2006-01-01&apos;;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//$end_date<sp/>=<sp/>strftime(&quot;%Y-%m-%d<sp/>%H:%m:%S&quot;);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>print<sp/></highlight><highlight class="stringliteral">&quot;&lt;table&gt;\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>print<sp/></highlight><highlight class="stringliteral">&quot;&lt;tr&gt;&lt;td&gt;Start<sp/>date:&lt;/td&gt;&lt;td&gt;$start_date&lt;/td&gt;\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>print<sp/></highlight><highlight class="stringliteral">&quot;&lt;tr&gt;&lt;td&gt;End<sp/>date:&lt;/td&gt;&lt;td&gt;$end_date&lt;/td&gt;\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>print<sp/></highlight><highlight class="stringliteral">&quot;&lt;/table&gt;\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>$queryString<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;select<sp/>REPORT_ID,REPORT_DATE<sp/>from<sp/>profileReport<sp/>where<sp/>REPORT_DATE<sp/>&gt;=<sp/>&apos;&quot;</highlight><highlight class="normal"><sp/>.<sp/>$start_date<sp/>.<sp/></highlight><highlight class="stringliteral">&quot;&apos;<sp/>and<sp/>REPORT_DATE<sp/>&lt;=<sp/>&apos;&quot;</highlight><highlight class="normal"><sp/>.<sp/>$end_date<sp/>.<sp/></highlight><highlight class="stringliteral">&quot;<sp/>ORDER<sp/>BY<sp/>REPORT_DATE&apos;&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//print<sp/>&quot;query:<sp/>$queryString&lt;br<sp/>/&gt;\n&quot;;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>report_ids<sp/>will<sp/>be<sp/>an<sp/>associative<sp/>array:<sp/>keys=report_ids,<sp/>values=dates</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>$report_ids_lookup<sp/>=<sp/>mysql_query($queryString);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!$report_ids_lookup)<sp/>{</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>abortAndExit();</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//print<sp/>&quot;Could<sp/>not<sp/>look<sp/>up<sp/>row<sp/>IDs<sp/>with<sp/>query<sp/>$queryString&lt;br<sp/>/&gt;\n&quot;;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mysql_num_rows($report_ids_lookup)<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>print<sp/></highlight><highlight class="stringliteral">&quot;&lt;p&gt;No<sp/>reports<sp/>found<sp/>in<sp/>this<sp/>date<sp/>range&lt;/p&gt;\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>($row<sp/>=<sp/>mysql_fetch_assoc($report_ids_lookup))<sp/>{</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//print<sp/>$row[&apos;REPORT_ID&apos;]<sp/>.<sp/>&quot;:<sp/>&quot;<sp/>.<sp/>$row[&apos;REPORT_DATE&apos;];</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>$report_ids[$row[</highlight><highlight class="stringliteral">&apos;REPORT_ID&apos;</highlight><highlight class="normal">]]<sp/>=<sp/>$row[</highlight><highlight class="stringliteral">&apos;REPORT_DATE&apos;</highlight><highlight class="normal">];</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mysql_free_result($report_ids_lookup);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>($debug)<sp/>{</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>print<sp/></highlight><highlight class="stringliteral">&quot;Report<sp/>IDs:&lt;br<sp/>/&gt;\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>print_r($report_ids);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>print<sp/></highlight><highlight class="stringliteral">&quot;&lt;br<sp/>\&gt;\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Now<sp/>dsplay<sp/>a<sp/>table<sp/>of<sp/>reported<sp/>data<sp/>for<sp/>these<sp/>REPORT_IDs.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Could<sp/>find<sp/>keys<sp/>in<sp/>advance<sp/>using<sp/>&quot;select<sp/>REPORT_KEY<sp/>from<sp/>reportRecord<sp/>group<sp/>by<sp/>REPORT_KEY&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>knownReportKeys<sp/>is<sp/>a<sp/>(non-associative)<sp/>array<sp/>where<sp/>each<sp/>entry<sp/>is<sp/>a<sp/>key<sp/>used<sp/>in<sp/>a<sp/>profile<sp/>report.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>$knownReportKeysLookup<sp/>=<sp/>mysql_query(</highlight><highlight class="stringliteral">&quot;select<sp/>REPORT_KEY<sp/>from<sp/>reportRecord<sp/>group<sp/>by<sp/>REPORT_KEY&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!$knownReportKeysLookup)<sp/>{</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>abortAndExit();</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>($row<sp/>=<sp/>mysql_fetch_array($knownReportKeysLookup))<sp/>{</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>$knownReportKeys[]<sp/>=<sp/>$row[0];</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mysql_free_result($knownReportKeysLookup);</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>($debug)<sp/>{</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>print<sp/></highlight><highlight class="stringliteral">&quot;known<sp/>keys:&lt;br<sp/>/&gt;\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>print_r($knownReportKeys);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>print<sp/></highlight><highlight class="stringliteral">&quot;&lt;table&gt;&lt;tr<sp/>id=\&quot;colname\&quot;&gt;\n&lt;td<sp/>class=\&quot;colname\&quot;<sp/>id=\&quot;colname1\&quot;&gt;Date&lt;/td&gt;\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>$colID<sp/>=<sp/>2;</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">foreach</highlight><highlight class="normal">($knownReportKeys<sp/>as<sp/>$reportKey)<sp/>{</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>print<sp/></highlight><highlight class="stringliteral">&quot;&lt;td<sp/>class=\&quot;colname\&quot;<sp/>id=\&quot;colname$colID\&quot;&gt;$reportKey&lt;/td&gt;\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>$colID<sp/>+=<sp/>1;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>print<sp/></highlight><highlight class="stringliteral">&quot;&lt;/td&gt;\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal">(list($report_id,<sp/>$report_date)<sp/>=<sp/>each($report_ids))<sp/>{</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>$queryString<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;select<sp/>REPORT_KEY,REPORT_VALUE<sp/>from<sp/>reportRecord<sp/>where<sp/>REPORT_ID=&apos;&quot;</highlight><highlight class="normal"><sp/>.<sp/>$report_id<sp/>.<sp/></highlight><highlight class="stringliteral">&quot;&apos;&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>report_records<sp/>will<sp/>be<sp/>an<sp/>assoc<sp/>array,<sp/>keys<sp/>from<sp/>knownReportKeys,<sp/>values<sp/>with<sp/>the<sp/>corresponding<sp/>value</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>$reportRecordsLookup<sp/>=<sp/>mysql_query($queryString);</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!$reportRecordsLookup)<sp/>{</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>abortAndExit();</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>($row<sp/>=<sp/>mysql_fetch_assoc($reportRecordsLookup))<sp/>{</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>$reportRecords[$row[</highlight><highlight class="stringliteral">&apos;REPORT_KEY&apos;</highlight><highlight class="normal">]]<sp/>=<sp/>$row[</highlight><highlight class="stringliteral">&apos;REPORT_VALUE&apos;</highlight><highlight class="normal">];</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mysql_free_result($reportRecordsLookup);</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>($debug)<sp/>{</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>print<sp/></highlight><highlight class="stringliteral">&quot;&lt;br<sp/>/&gt;report<sp/>records:<sp/>&lt;br<sp/>/&gt;\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>print_r($reportRecords);</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>print<sp/></highlight><highlight class="stringliteral">&quot;&lt;br<sp/>/&gt;\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>print<sp/></highlight><highlight class="stringliteral">&quot;&lt;tr&gt;&lt;td<sp/>class=\&quot;row\&quot;&gt;$report_date&lt;/td&gt;\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">foreach</highlight><highlight class="normal">($knownReportKeys<sp/>as<sp/>$reportKey)<sp/>{</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>print<sp/></highlight><highlight class="stringliteral">&quot;&lt;td<sp/>class=\&quot;row\&quot;&gt;&quot;</highlight><highlight class="normal"><sp/>.<sp/>$reportRecords[$reportKey]<sp/>.<sp/></highlight><highlight class="stringliteral">&quot;&lt;/td&gt;\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>print<sp/></highlight><highlight class="stringliteral">&quot;&lt;/tr&gt;\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>print<sp/></highlight><highlight class="stringliteral">&quot;&lt;/table&gt;\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CloseDB();</highlight></codeline>
+<codeline lineno="140"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="141"><highlight class="normal">?&gt;</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal">&lt;/body&gt;</highlight></codeline>
+<codeline lineno="144"><highlight class="normal">&lt;/html&gt;</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/sparkle/supportLookup.php"/>
+  </compounddef>
+</doxygen>
