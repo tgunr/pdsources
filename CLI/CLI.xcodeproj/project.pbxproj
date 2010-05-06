@@ -25,11 +25,28 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		751047C00E41422E009AFDB4 /* pmsCFUtility.c in Sources */ = {isa = PBXBuildFile; fileRef = 751047BE0E41422E009AFDB4 /* pmsCFUtility.c */; };
+		7502880F11923D47008008F8 /* pms.m in Sources */ = {isa = PBXBuildFile; fileRef = 7502880311923D47008008F8 /* pms.m */; };
+		7502881011923D47008008F8 /* dacallib.m in Sources */ = {isa = PBXBuildFile; fileRef = 7502880611923D47008008F8 /* dacallib.m */; };
+		7502881111923D47008008F8 /* daclconstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 7502880811923D47008008F8 /* daclconstants.m */; };
+		7502881311923D47008008F8 /* pmsDACALUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 7502880C11923D47008008F8 /* pmsDACALUtility.m */; };
+		7502881411923D47008008F8 /* pmsCFUtility.c in Sources */ = {isa = PBXBuildFile; fileRef = 7502880E11923D47008008F8 /* pmsCFUtility.c */; };
+		7502881511923D47008008F8 /* pms.h in Headers */ = {isa = PBXBuildFile; fileRef = 7502880211923D47008008F8 /* pms.h */; };
+		7502881611923D47008008F8 /* pms.m in Sources */ = {isa = PBXBuildFile; fileRef = 7502880311923D47008008F8 /* pms.m */; };
+		7502881711923D47008008F8 /* dacallib.h in Headers */ = {isa = PBXBuildFile; fileRef = 7502880511923D47008008F8 /* dacallib.h */; };
+		7502881811923D47008008F8 /* dacallib.m in Sources */ = {isa = PBXBuildFile; fileRef = 7502880611923D47008008F8 /* dacallib.m */; };
+		7502881911923D47008008F8 /* daclconstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 7502880711923D47008008F8 /* daclconstants.h */; };
+		7502881A11923D47008008F8 /* daclconstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 7502880811923D47008008F8 /* daclconstants.m */; };
+		7502881C11923D47008008F8 /* pmsDACALUtility.h in Headers */ = {isa = PBXBuildFile; fileRef = 7502880B11923D47008008F8 /* pmsDACALUtility.h */; };
+		7502881D11923D47008008F8 /* pmsDACALUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 7502880C11923D47008008F8 /* pmsDACALUtility.m */; };
+		7502881E11923D47008008F8 /* pmsCFUtility.h in Headers */ = {isa = PBXBuildFile; fileRef = 7502880D11923D47008008F8 /* pmsCFUtility.h */; };
+		7502881F11923D47008008F8 /* pmsCFUtility.c in Sources */ = {isa = PBXBuildFile; fileRef = 7502880E11923D47008008F8 /* pmsCFUtility.c */; };
+		7502882B11923DD9008008F8 /* IconFamily.m in Sources */ = {isa = PBXBuildFile; fileRef = 7502882811923DD9008008F8 /* IconFamily.m */; };
+		7502882C11923DD9008008F8 /* NSString+CarbonFSRefCreation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7502882A11923DD9008008F8 /* NSString+CarbonFSRefCreation.m */; };
+		7502882D11923DD9008008F8 /* IconFamily.h in Headers */ = {isa = PBXBuildFile; fileRef = 7502882711923DD9008008F8 /* IconFamily.h */; };
+		7502882E11923DD9008008F8 /* IconFamily.m in Sources */ = {isa = PBXBuildFile; fileRef = 7502882811923DD9008008F8 /* IconFamily.m */; };
+		7502882F11923DD9008008F8 /* NSString+CarbonFSRefCreation.h in Headers */ = {isa = PBXBuildFile; fileRef = 7502882911923DD9008008F8 /* NSString+CarbonFSRefCreation.h */; };
+		7502883011923DD9008008F8 /* NSString+CarbonFSRefCreation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7502882A11923DD9008008F8 /* NSString+CarbonFSRefCreation.m */; };
 		751047FA0E41430C009AFDB4 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09AB6884FE841BABC02AAC07 /* CoreFoundation.framework */; };
-		751047FF0E41435B009AFDB4 /* pmsDACALUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 751047C80E4142A8009AFDB4 /* pmsDACALUtility.m */; };
-		751048000E414362009AFDB4 /* pmsCFUtility.h in Headers */ = {isa = PBXBuildFile; fileRef = 751047BF0E41422E009AFDB4 /* pmsCFUtility.h */; };
-		751048010E414363009AFDB4 /* pmsDACALUtility.h in Headers */ = {isa = PBXBuildFile; fileRef = 751047C70E4142A8009AFDB4 /* pmsDACALUtility.h */; };
 		751048060E4143A8009AFDB4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 751048050E4143A8009AFDB4 /* Cocoa.framework */; };
 		751FBA2A0E39059100D64628 /* find.c in Sources */ = {isa = PBXBuildFile; fileRef = 751FBA200E39059000D64628 /* find.c */; };
 		751FBA2B0E39059100D64628 /* function.c in Sources */ = {isa = PBXBuildFile; fileRef = 751FBA220E39059000D64628 /* function.c */; };
@@ -39,8 +56,6 @@
 		751FBA300E39059100D64628 /* misc.c in Sources */ = {isa = PBXBuildFile; fileRef = 751FBA270E39059100D64628 /* misc.c */; };
 		751FBA310E39059100D64628 /* operator.c in Sources */ = {isa = PBXBuildFile; fileRef = 751FBA280E39059100D64628 /* operator.c */; };
 		751FBA320E39059100D64628 /* option.c in Sources */ = {isa = PBXBuildFile; fileRef = 751FBA290E39059100D64628 /* option.c */; };
-		751FBA3B0E3905F900D64628 /* dacallib.m in Sources */ = {isa = PBXBuildFile; fileRef = 751FBA390E3905F900D64628 /* dacallib.m */; };
-		751FBA3C0E3905F900D64628 /* dacallib.h in Headers */ = {isa = PBXBuildFile; fileRef = 751FBA3A0E3905F900D64628 /* dacallib.h */; };
 		751FBA3F0E39060A00D64628 /* dacal.c in Sources */ = {isa = PBXBuildFile; fileRef = 751FBA3D0E39060A00D64628 /* dacal.c */; };
 		751FBA780E39065200D64628 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 751FBA6B0E39065200D64628 /* main.c */; };
 		751FBA790E39065200D64628 /* xattrfunctions.c in Sources */ = {isa = PBXBuildFile; fileRef = 751FBA710E39065200D64628 /* xattrfunctions.c */; };
@@ -100,10 +115,21 @@
 /* Begin PBXFileReference section */
 		08FB7796FE84155DC02AAC07 /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		09AB6884FE841BABC02AAC07 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = /System/Library/Frameworks/CoreFoundation.framework; sourceTree = "<absolute>"; };
-		751047BE0E41422E009AFDB4 /* pmsCFUtility.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = pmsCFUtility.c; path = "../PMS Source/utility/pmsCFUtility.c"; sourceTree = SOURCE_ROOT; };
-		751047BF0E41422E009AFDB4 /* pmsCFUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pmsCFUtility.h; path = "../PMS Source/utility/pmsCFUtility.h"; sourceTree = SOURCE_ROOT; };
-		751047C70E4142A8009AFDB4 /* pmsDACALUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pmsDACALUtility.h; path = "../PMS Source/utility/pmsDACALUtility.h"; sourceTree = SOURCE_ROOT; };
-		751047C80E4142A8009AFDB4 /* pmsDACALUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = pmsDACALUtility.m; path = "../PMS Source/utility/pmsDACALUtility.m"; sourceTree = SOURCE_ROOT; };
+		7502880211923D47008008F8 /* pms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pms.h; path = pmsutility/pms.h; sourceTree = "<group>"; };
+		7502880311923D47008008F8 /* pms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = pms.m; path = pmsutility/pms.m; sourceTree = "<group>"; };
+		7502880511923D47008008F8 /* dacallib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dacallib.h; sourceTree = "<group>"; };
+		7502880611923D47008008F8 /* dacallib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = dacallib.m; sourceTree = "<group>"; };
+		7502880711923D47008008F8 /* daclconstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = daclconstants.h; sourceTree = "<group>"; };
+		7502880811923D47008008F8 /* daclconstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = daclconstants.m; sourceTree = "<group>"; };
+		7502880A11923D47008008F8 /* _doprnt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _doprnt.m; sourceTree = "<group>"; };
+		7502880B11923D47008008F8 /* pmsDACALUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pmsDACALUtility.h; sourceTree = "<group>"; };
+		7502880C11923D47008008F8 /* pmsDACALUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = pmsDACALUtility.m; sourceTree = "<group>"; };
+		7502880D11923D47008008F8 /* pmsCFUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pmsCFUtility.h; sourceTree = "<group>"; };
+		7502880E11923D47008008F8 /* pmsCFUtility.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pmsCFUtility.c; sourceTree = "<group>"; };
+		7502882711923DD9008008F8 /* IconFamily.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IconFamily.h; sourceTree = "<group>"; };
+		7502882811923DD9008008F8 /* IconFamily.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IconFamily.m; sourceTree = "<group>"; };
+		7502882911923DD9008008F8 /* NSString+CarbonFSRefCreation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CarbonFSRefCreation.h"; sourceTree = "<group>"; };
+		7502882A11923DD9008008F8 /* NSString+CarbonFSRefCreation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+CarbonFSRefCreation.m"; sourceTree = "<group>"; };
 		751048050E4143A8009AFDB4 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		751FB9FC0E39046200D64628 /* dacal */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = dacal; sourceTree = BUILT_PRODUCTS_DIR; };
 		751FBA060E3904AB00D64628 /* dacallib.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = dacallib.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -121,8 +147,6 @@
 		751FBA270E39059100D64628 /* misc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = misc.c; sourceTree = "<group>"; };
 		751FBA280E39059100D64628 /* operator.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = operator.c; sourceTree = "<group>"; };
 		751FBA290E39059100D64628 /* option.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = option.c; sourceTree = "<group>"; };
-		751FBA390E3905F900D64628 /* dacallib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = dacallib.m; sourceTree = "<group>"; };
-		751FBA3A0E3905F900D64628 /* dacallib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dacallib.h; sourceTree = "<group>"; };
 		751FBA3D0E39060A00D64628 /* dacal.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = dacal.c; sourceTree = "<group>"; };
 		751FBA3E0E39060A00D64628 /* dacal.1 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.man; path = dacal.1; sourceTree = "<group>"; };
 		751FBA430E39063900D64628 /* xattr */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = xattr; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -209,10 +233,13 @@
 		08FB7795FE84155DC02AAC07 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				7502882611923DD9008008F8 /* IconFamily */,
+				751FBA3D0E39060A00D64628 /* dacal.c */,
+				751FBA3E0E39060A00D64628 /* dacal.1 */,
+				7502880111923D47008008F8 /* pmssource */,
 				751FBCA20E393EEC00D64628 /* xargs */,
 				751FBA470E39065200D64628 /* xattr */,
 				751FBA350E3905C300D64628 /* fabricate */,
-				751FBA340E3905B300D64628 /* dacal */,
 				751FBA1D0E39059000D64628 /* find */,
 				08FB7796FE84155DC02AAC07 /* main.c */,
 			);
@@ -243,6 +270,53 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		7502880111923D47008008F8 /* pmssource */ = {
+			isa = PBXGroup;
+			children = (
+				7502880211923D47008008F8 /* pms.h */,
+				7502880311923D47008008F8 /* pms.m */,
+				7502880411923D47008008F8 /* carlib */,
+				7502880911923D47008008F8 /* pmsutility */,
+			);
+			name = pmssource;
+			path = ../pmssource;
+			sourceTree = SOURCE_ROOT;
+		};
+		7502880411923D47008008F8 /* carlib */ = {
+			isa = PBXGroup;
+			children = (
+				7502880511923D47008008F8 /* dacallib.h */,
+				7502880611923D47008008F8 /* dacallib.m */,
+				7502880711923D47008008F8 /* daclconstants.h */,
+				7502880811923D47008008F8 /* daclconstants.m */,
+			);
+			path = carlib;
+			sourceTree = "<group>";
+		};
+		7502880911923D47008008F8 /* pmsutility */ = {
+			isa = PBXGroup;
+			children = (
+				7502880A11923D47008008F8 /* _doprnt.m */,
+				7502880B11923D47008008F8 /* pmsDACALUtility.h */,
+				7502880C11923D47008008F8 /* pmsDACALUtility.m */,
+				7502880D11923D47008008F8 /* pmsCFUtility.h */,
+				7502880E11923D47008008F8 /* pmsCFUtility.c */,
+			);
+			path = pmsutility;
+			sourceTree = "<group>";
+		};
+		7502882611923DD9008008F8 /* IconFamily */ = {
+			isa = PBXGroup;
+			children = (
+				7502882711923DD9008008F8 /* IconFamily.h */,
+				7502882811923DD9008008F8 /* IconFamily.m */,
+				7502882911923DD9008008F8 /* NSString+CarbonFSRefCreation.h */,
+				7502882A11923DD9008008F8 /* NSString+CarbonFSRefCreation.m */,
+			);
+			name = IconFamily;
+			path = ../PickADisk/Sources/IconFamily;
+			sourceTree = SOURCE_ROOT;
+		};
 		751FBA1D0E39059000D64628 /* find */ = {
 			isa = PBXGroup;
 			children = (
@@ -261,21 +335,6 @@
 				751FBA290E39059100D64628 /* option.c */,
 			);
 			path = find;
-			sourceTree = "<group>";
-		};
-		751FBA340E3905B300D64628 /* dacal */ = {
-			isa = PBXGroup;
-			children = (
-				751047C70E4142A8009AFDB4 /* pmsDACALUtility.h */,
-				751047C80E4142A8009AFDB4 /* pmsDACALUtility.m */,
-				751047BE0E41422E009AFDB4 /* pmsCFUtility.c */,
-				751047BF0E41422E009AFDB4 /* pmsCFUtility.h */,
-				751FBA3E0E39060A00D64628 /* dacal.1 */,
-				751FBA3D0E39060A00D64628 /* dacal.c */,
-				751FBA390E3905F900D64628 /* dacallib.m */,
-				751FBA3A0E3905F900D64628 /* dacallib.h */,
-			);
-			name = dacal;
 			sourceTree = "<group>";
 		};
 		751FBA350E3905C300D64628 /* fabricate */ = {
@@ -325,9 +384,13 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				751FBA3C0E3905F900D64628 /* dacallib.h in Headers */,
-				751048000E414362009AFDB4 /* pmsCFUtility.h in Headers */,
-				751048010E414363009AFDB4 /* pmsDACALUtility.h in Headers */,
+				7502881511923D47008008F8 /* pms.h in Headers */,
+				7502881711923D47008008F8 /* dacallib.h in Headers */,
+				7502881911923D47008008F8 /* daclconstants.h in Headers */,
+				7502881C11923D47008008F8 /* pmsDACALUtility.h in Headers */,
+				7502881E11923D47008008F8 /* pmsCFUtility.h in Headers */,
+				7502882D11923DD9008008F8 /* IconFamily.h in Headers */,
+				7502882F11923DD9008008F8 /* NSString+CarbonFSRefCreation.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -478,6 +541,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				751FBA3F0E39060A00D64628 /* dacal.c in Sources */,
+				7502880F11923D47008008F8 /* pms.m in Sources */,
+				7502881011923D47008008F8 /* dacallib.m in Sources */,
+				7502881111923D47008008F8 /* daclconstants.m in Sources */,
+				7502881311923D47008008F8 /* pmsDACALUtility.m in Sources */,
+				7502881411923D47008008F8 /* pmsCFUtility.c in Sources */,
+				7502882B11923DD9008008F8 /* IconFamily.m in Sources */,
+				7502882C11923DD9008008F8 /* NSString+CarbonFSRefCreation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -485,9 +555,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				751FBA3B0E3905F900D64628 /* dacallib.m in Sources */,
-				751047C00E41422E009AFDB4 /* pmsCFUtility.c in Sources */,
-				751047FF0E41435B009AFDB4 /* pmsDACALUtility.m in Sources */,
+				7502881611923D47008008F8 /* pms.m in Sources */,
+				7502881811923D47008008F8 /* dacallib.m in Sources */,
+				7502881A11923D47008008F8 /* daclconstants.m in Sources */,
+				7502881D11923D47008008F8 /* pmsDACALUtility.m in Sources */,
+				7502881F11923D47008008F8 /* pmsCFUtility.c in Sources */,
+				7502882E11923DD9008008F8 /* IconFamily.m in Sources */,
+				7502883011923DD9008008F8 /* NSString+CarbonFSRefCreation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -588,6 +662,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_VERSION = 4.0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
