@@ -13,7 +13,6 @@
 		5C1A10250F4018A4004F3605 /* NSString+CarbonFSRefCreation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1A10210F4018A4004F3605 /* NSString+CarbonFSRefCreation.m */; };
 		5C1ECC100E4120050091B446 /* PADSearchRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1ECC0E0E4120050091B446 /* PADSearchRequest.m */; };
 		5C1ECD080E4154790091B446 /* PAD4.icns in Resources */ = {isa = PBXBuildFile; fileRef = 5C1ECD070E4154790091B446 /* PAD4.icns */; };
-		5C1ECE5B0E41B5C80091B446 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C1ECE5A0E41B5C80091B446 /* Sparkle.framework */; };
 		5C1ECE9B0E41B6A10091B446 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5C1ECE5A0E41B5C80091B446 /* Sparkle.framework */; };
 		5C2741770E27686A00A32C40 /* DiscRecording.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C2741760E27686A00A32C40 /* DiscRecording.framework */; };
 		5C2D25F50E304B1C005F9FB5 /* PADIndexProgressController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C2D25F30E304B1C005F9FB5 /* PADIndexProgressController.m */; };
@@ -89,7 +88,6 @@
 		5CDAC1C50E934054003984E1 /* success.icns in Resources */ = {isa = PBXBuildFile; fileRef = 5CDAC1C40E934054003984E1 /* success.icns */; };
 		5CDAC1E50E9342C3003984E1 /* CheckedOut.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CDAC1E40E9342C3003984E1 /* CheckedOut.png */; };
 		5CE577300E590C230086A57F /* PADOperationControlDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE5772E0E590C230086A57F /* PADOperationControlDevice.m */; };
-		5CF4D9810E68E6DF0091A77F /* ILCrashReporter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CF4D9800E68E6DF0091A77F /* ILCrashReporter.framework */; };
 		5CF4D98E0E68E9300091A77F /* ILCrashReporter.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5CF4D9800E68E6DF0091A77F /* ILCrashReporter.framework */; };
 		5CF9624D0F37BE5A009D2A9B /* PADInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CF9624C0F37BE5A009D2A9B /* PADInspector.xib */; };
 		5CF962540F37E042009D2A9B /* PADExpandingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF962520F37E042009D2A9B /* PADExpandingView.m */; };
@@ -132,6 +130,8 @@
 		75B2FCB50EDDA9AD007356FD /* BlackSearch1.png in Resources */ = {isa = PBXBuildFile; fileRef = 75B2FCB40EDDA9AD007356FD /* BlackSearch1.png */; };
 		75B356E011256EF00025F1B3 /* Volume.h in Headers */ = {isa = PBXBuildFile; fileRef = 75B356DE11256EF00025F1B3 /* Volume.h */; };
 		75B356E111256EF00025F1B3 /* Volume.m in Sources */ = {isa = PBXBuildFile; fileRef = 75B356DF11256EF00025F1B3 /* Volume.m */; };
+		75B9B0921193A3AF00E90AE6 /* ILCrashReporter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75B9B08F1193A37800E90AE6 /* ILCrashReporter.framework */; };
+		75B9B0F51193A7E000E90AE6 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75B9B0F21193A7CF00E90AE6 /* Sparkle.framework */; };
 		75E0D61C1073EF620012897D /* Multi-Folder.icns in Resources */ = {isa = PBXBuildFile; fileRef = 75E0D61B1073EF620012897D /* Multi-Folder.icns */; };
 		75E0D7E6107444930012897D /* PickADiskDoc.pdf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 75E0D78D1074331A0012897D /* PickADiskDoc.pdf */; };
 		75E0D91C10767E050012897D /* PAD_1.0.3_50805.html in Resources */ = {isa = PBXBuildFile; fileRef = 75E0D91B10767E040012897D /* PAD_1.0.3_50805.html */; };
@@ -158,6 +158,55 @@
 			proxyType = 2;
 			remoteGlobalIDString = 32D94FD00562CBF700B6AF17;
 			remoteInfo = DACALDriver;
+		};
+		75B9B08E1193A37800E90AE6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 75B9B0891193A37800E90AE6 /* ILCrashReporter.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8DC2EF5B0486A6940098B216 /* ILCrashReporter.framework */;
+			remoteInfo = ILCrashReporter;
+		};
+		75B9B0901193A37800E90AE6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 75B9B0891193A37800E90AE6 /* ILCrashReporter.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6AF6C41806B18B4800C4D0C9 /* CrashReporter.app */;
+			remoteInfo = CrashReporter;
+		};
+		75B9B0951193A3C000E90AE6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7504AFFC0FB4724300FFAA84 /* DACALDriver.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 32D94FC30562CBF700B6AF17 /* DACALDriver */;
+			remoteInfo = DACALDriver;
+		};
+		75B9B0971193A3C600E90AE6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 75B9B0891193A37800E90AE6 /* ILCrashReporter.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 8DC2EF4F0486A6940098B216 /* ILCrashReporter */;
+			remoteInfo = ILCrashReporter;
+		};
+		75B9B0F11193A7CF00E90AE6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 75B9B0EC1193A7CF00E90AE6 /* Sparkle.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8DC2EF5B0486A6940098B216 /* Sparkle.framework */;
+			remoteInfo = Sparkle;
+		};
+		75B9B0F31193A7CF00E90AE6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 75B9B0EC1193A7CF00E90AE6 /* Sparkle.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 61B5F90209C4CEE200B25A18 /* Sparkle Test App.app */;
+			remoteInfo = "Sparkle Test App";
+		};
+		75B9B1141193A96900E90AE6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 75B9B0EC1193A7CF00E90AE6 /* Sparkle.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 8DC2EF4F0486A6940098B216 /* Sparkle */;
+			remoteInfo = Sparkle;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -387,6 +436,8 @@
 		75B2FCB40EDDA9AD007356FD /* BlackSearch1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlackSearch1.png; sourceTree = "<group>"; };
 		75B356DE11256EF00025F1B3 /* Volume.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Volume.h; sourceTree = "<group>"; };
 		75B356DF11256EF00025F1B3 /* Volume.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Volume.m; sourceTree = "<group>"; };
+		75B9B0891193A37800E90AE6 /* ILCrashReporter.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ILCrashReporter.xcodeproj; path = "../../Vendor/ilcrashreporter-ng-read-only/src/ILCrashReporter.xcodeproj"; sourceTree = SOURCE_ROOT; };
+		75B9B0EC1193A7CF00E90AE6 /* Sparkle.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Sparkle.xcodeproj; path = ../../Vendor/Sparkle/Sparkle.xcodeproj; sourceTree = SOURCE_ROOT; };
 		75E0D61B1073EF620012897D /* Multi-Folder.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = "Multi-Folder.icns"; path = "../Resources/Multi-Folder.icns"; sourceTree = SOURCE_ROOT; };
 		75E0D70C1074330E0012897D /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		75E0D70D1074330E0012897D /* lesson.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = lesson.xml; sourceTree = "<group>"; };
@@ -462,16 +513,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75B9B0F51193A7E000E90AE6 /* Sparkle.framework in Frameworks */,
+				75B9B0921193A3AF00E90AE6 /* ILCrashReporter.framework in Frameworks */,
 				735CC2BD049A7E2A00C919A3 /* Cocoa.framework in Frameworks */,
 				5CA07A710E2E274900F71FA7 /* Carbon.framework in Frameworks */,
 				5C4E17FD0E216A2D0091DD7D /* IOKit.framework in Frameworks */,
 				5C0884420E26CFCA0052D931 /* AudioToolbox.framework in Frameworks */,
 				5C5F7E2D0E772EF5003111DF /* DiskArbitration.framework in Frameworks */,
 				5C2741770E27686A00A32C40 /* DiscRecording.framework in Frameworks */,
-				5C1ECE5B0E41B5C80091B446 /* Sparkle.framework in Frameworks */,
 				5C6CC47A0E4F9763000EE6B3 /* Quartz.framework in Frameworks */,
 				5C2E41100E74076A00D7DF4A /* Security.framework in Frameworks */,
-				5CF4D9810E68E6DF0091A77F /* ILCrashReporter.framework in Frameworks */,
 				5C438A5A0E8E825F0070CF56 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -886,6 +937,8 @@
 		7504AFFB0FB4722D00FFAA84 /* Other Projects */ = {
 			isa = PBXGroup;
 			children = (
+				75B9B0EC1193A7CF00E90AE6 /* Sparkle.xcodeproj */,
+				75B9B0891193A37800E90AE6 /* ILCrashReporter.xcodeproj */,
 				7504AFFC0FB4724300FFAA84 /* DACALDriver.xcodeproj */,
 			);
 			name = "Other Projects";
@@ -932,6 +985,24 @@
 			);
 			name = Volumes;
 			path = Sources/Volumes;
+			sourceTree = "<group>";
+		};
+		75B9B08A1193A37800E90AE6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				75B9B08F1193A37800E90AE6 /* ILCrashReporter.framework */,
+				75B9B0911193A37800E90AE6 /* CrashReporter.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		75B9B0ED1193A7CF00E90AE6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				75B9B0F21193A7CF00E90AE6 /* Sparkle.framework */,
+				75B9B0F41193A7CF00E90AE6 /* Sparkle Test App.app */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		75E0D7091074330E0012897D /* PickADiskDoc */ = {
@@ -1189,6 +1260,9 @@
 				734E63B1049E6C2800C919A3 /* PBXBuildRule */,
 			);
 			dependencies = (
+				75B9B0961193A3C000E90AE6 /* PBXTargetDependency */,
+				75B9B0981193A3C600E90AE6 /* PBXTargetDependency */,
+				75B9B1151193A96900E90AE6 /* PBXTargetDependency */,
 			);
 			name = PickADisk;
 			productInstallPath = "$(LOCAL_DEVELOPER_DIR)/Demos";
@@ -1211,6 +1285,14 @@
 					ProductGroup = 7504AFFD0FB4724300FFAA84 /* Products */;
 					ProjectRef = 7504AFFC0FB4724300FFAA84 /* DACALDriver.xcodeproj */;
 				},
+				{
+					ProductGroup = 75B9B08A1193A37800E90AE6 /* Products */;
+					ProjectRef = 75B9B0891193A37800E90AE6 /* ILCrashReporter.xcodeproj */;
+				},
+				{
+					ProductGroup = 75B9B0ED1193A7CF00E90AE6 /* Products */;
+					ProjectRef = 75B9B0EC1193A7CF00E90AE6 /* Sparkle.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -1225,6 +1307,34 @@
 			fileType = wrapper.cfbundle;
 			path = DACALDriver.kext;
 			remoteRef = 7504B0030FB4724300FFAA84 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		75B9B08F1193A37800E90AE6 /* ILCrashReporter.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ILCrashReporter.framework;
+			remoteRef = 75B9B08E1193A37800E90AE6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		75B9B0911193A37800E90AE6 /* CrashReporter.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = CrashReporter.app;
+			remoteRef = 75B9B0901193A37800E90AE6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		75B9B0F21193A7CF00E90AE6 /* Sparkle.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Sparkle.framework;
+			remoteRef = 75B9B0F11193A7CF00E90AE6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		75B9B0F41193A7CF00E90AE6 /* Sparkle Test App.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = "Sparkle Test App.app";
+			remoteRef = 75B9B0F31193A7CF00E90AE6 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -1412,6 +1522,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		75B9B0961193A3C000E90AE6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = DACALDriver;
+			targetProxy = 75B9B0951193A3C000E90AE6 /* PBXContainerItemProxy */;
+		};
+		75B9B0981193A3C600E90AE6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ILCrashReporter;
+			targetProxy = 75B9B0971193A3C600E90AE6 /* PBXContainerItemProxy */;
+		};
+		75B9B1151193A96900E90AE6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Sparkle;
+			targetProxy = 75B9B1141193A96900E90AE6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		089C165CFE840E0CC02AAC07 /* InfoPlist.strings */ = {
