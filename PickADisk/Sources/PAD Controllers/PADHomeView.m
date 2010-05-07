@@ -7,7 +7,7 @@
 //
 
 #import "PADHomeView.h"
-
+#import "NSArray_Extensions.h"
 
 @implementation PADHomeView
 

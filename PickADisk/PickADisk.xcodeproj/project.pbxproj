@@ -18,10 +18,9 @@
 		5C2741770E27686A00A32C40 /* DiscRecording.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C2741760E27686A00A32C40 /* DiscRecording.framework */; };
 		5C2D25F50E304B1C005F9FB5 /* PADIndexProgressController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C2D25F30E304B1C005F9FB5 /* PADIndexProgressController.m */; };
 		5C2D25FC0E305079005F9FB5 /* CarouselProgress.nib in Resources */ = {isa = PBXBuildFile; fileRef = 5C2D25FB0E305079005F9FB5 /* CarouselProgress.nib */; };
-		5C2E40E30E73FBD300D7DF4A /* DACDriverInstaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C2E40E10E73FBD300D7DF4A /* DACDriverInstaller.m */; };
+		5C2E40E30E73FBD300D7DF4A /* DACALDriverInstaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C2E40E10E73FBD300D7DF4A /* DACALDriverInstaller.m */; };
 		5C2E41100E74076A00D7DF4A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C2E410F0E74076A00D7DF4A /* Security.framework */; };
 		5C2E42610E7451E300D7DF4A /* dacauth in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5C2E42540E74519C00D7DF4A /* dacauth */; };
-		5C2E42620E7451E300D7DF4A /* DACALDriver.kext in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5C2E42550E74519C00D7DF4A /* DACALDriver.kext */; };
 		5C2EBE930E29719B009BAF4C /* update.icns in Resources */ = {isa = PBXBuildFile; fileRef = 5C2EBE920E29719B009BAF4C /* update.icns */; };
 		5C2EBE960E2979B3009BAF4C /* sidebarpref.icns in Resources */ = {isa = PBXBuildFile; fileRef = 5C2EBE950E2979B3009BAF4C /* sidebarpref.icns */; };
 		5C2EBE9C0E2991BF009BAF4C /* PADPrefsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C2EBE9A0E2991BF009BAF4C /* PADPrefsController.m */; };
@@ -36,7 +35,7 @@
 		5C4E17FD0E216A2D0091DD7D /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C4E17FC0E216A2D0091DD7D /* IOKit.framework */; };
 		5C57B6300E6635600063190F /* PADIndexNodeData.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C57B62E0E6635600063190F /* PADIndexNodeData.m */; };
 		5C57B7F70E66EF630063190F /* Generic_Image.icns in Resources */ = {isa = PBXBuildFile; fileRef = 5C57B7F60E66EF630063190F /* Generic_Image.icns */; };
-		5C5F7DBF0E771E83003111DF /* DACVolume.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5F7DBD0E771E83003111DF /* DACVolume.m */; };
+		5C5F7DBF0E771E83003111DF /* DACALVolume.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5F7DBD0E771E83003111DF /* DACALVolume.m */; };
 		5C5F7E2D0E772EF5003111DF /* DiskArbitration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C5F7E2C0E772EF5003111DF /* DiskArbitration.framework */; };
 		5C62ACB90E20B00900A26788 /* CarouselIndex.nib in Resources */ = {isa = PBXBuildFile; fileRef = 5C62ACB80E20B00900A26788 /* CarouselIndex.nib */; };
 		5C6C12DD0E240AAC0097CC7A /* advancedpref.icns in Resources */ = {isa = PBXBuildFile; fileRef = 5C6C12D30E240AAC0097CC7A /* advancedpref.icns */; };
@@ -85,7 +84,7 @@
 		5CBA913B0E739484000279A2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5CBA913A0E739484000279A2 /* Localizable.strings */; };
 		5CBA91670E73D380000279A2 /* driver.icns in Resources */ = {isa = PBXBuildFile; fileRef = 5CBA91660E73D380000279A2 /* driver.icns */; };
 		5CC83EED0E6F6C81000903AD /* swapslot.sh in Resources */ = {isa = PBXBuildFile; fileRef = 5CC83EEC0E6F6C81000903AD /* swapslot.sh */; };
-		5CC83FC70E6FB34C000903AD /* DACALDeviceObjC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CC83FC50E6FB34C000903AD /* DACALDeviceObjC.m */; };
+		5CC83FC70E6FB34C000903AD /* DACALDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CC83FC50E6FB34C000903AD /* DACALDevice.m */; };
 		5CD985180E4E60A700441ED7 /* PADHomeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CD985160E4E60A700441ED7 /* PADHomeView.m */; };
 		5CDAC1C50E934054003984E1 /* success.icns in Resources */ = {isa = PBXBuildFile; fileRef = 5CDAC1C40E934054003984E1 /* success.icns */; };
 		5CDAC1E50E9342C3003984E1 /* CheckedOut.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CDAC1E40E9342C3003984E1 /* CheckedOut.png */; };
@@ -114,14 +113,26 @@
 		7504AF270FB3A1F900FFAA84 /* updates.xml in Resources */ = {isa = PBXBuildFile; fileRef = 7504AF260FB3A1F900FFAA84 /* updates.xml */; };
 		7504AFDD0FB3AEBB00FFAA84 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 7504AFDC0FB3AEBB00FFAA84 /* Credits.rtf */; };
 		7504B0050FB4724F00FFAA84 /* DACALDriver.kext in Resources */ = {isa = PBXBuildFile; fileRef = 7504B0040FB4724300FFAA84 /* DACALDriver.kext */; };
+		7506046910FC480F0030A123 /* DACALSlot.m in Sources */ = {isa = PBXBuildFile; fileRef = 7506046810FC480F0030A123 /* DACALSlot.m */; };
+		7506046B10FC48180030A123 /* DACALSlot.h in Headers */ = {isa = PBXBuildFile; fileRef = 7506046A10FC48180030A123 /* DACALSlot.h */; };
+		7506048910FC49B60030A123 /* DACALDriver.kext in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7504B0040FB4724300FFAA84 /* DACALDriver.kext */; };
+		750604D410FC4BF30030A123 /* pms.m in Sources */ = {isa = PBXBuildFile; fileRef = 750604D310FC4BF30030A123 /* pms.m */; };
+		7506050510FC56D40030A123 /* DACALDeviceNode.h in Headers */ = {isa = PBXBuildFile; fileRef = 7506050310FC56D40030A123 /* DACALDeviceNode.h */; };
+		7506050610FC56D40030A123 /* DACALDeviceNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 7506050410FC56D40030A123 /* DACALDeviceNode.m */; };
+		7506051110FC574F0030A123 /* DACALDeviceSerivce.h in Headers */ = {isa = PBXBuildFile; fileRef = 7506050F10FC574F0030A123 /* DACALDeviceSerivce.h */; };
+		7506051210FC574F0030A123 /* DACALDeviceSerivce.m in Sources */ = {isa = PBXBuildFile; fileRef = 7506051010FC574F0030A123 /* DACALDeviceSerivce.m */; };
 		751C4E2D0E9400250027BC1C /* AquaticPrime.m in Sources */ = {isa = PBXBuildFile; fileRef = 751C4E2C0E9400250027BC1C /* AquaticPrime.m */; };
-		75339121101B99470007F931 /* daclconstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 7533911F101B99470007F931 /* daclconstants.h */; };
-		75339122101B99470007F931 /* daclconstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 75339120101B99470007F931 /* daclconstants.m */; };
-		75AF25ED1083A66B004D1F99 /* pms.m in Sources */ = {isa = PBXBuildFile; fileRef = 75AF25EC1083A66B004D1F99 /* pms.m */; };
+		75339121101B99470007F931 /* dacalconstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 7533911F101B99470007F931 /* dacalconstants.h */; };
+		75339122101B99470007F931 /* dacalconstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 75339120101B99470007F931 /* dacalconstants.m */; };
+		75349FEF1113863500604CD4 /* VolumeService.h in Headers */ = {isa = PBXBuildFile; fileRef = 75349FED1113863500604CD4 /* VolumeService.h */; };
+		75349FF01113863500604CD4 /* VolumeService.m in Sources */ = {isa = PBXBuildFile; fileRef = 75349FEE1113863500604CD4 /* VolumeService.m */; };
+		758748C21120BED700A4791E /* DACALVolumeService.h in Headers */ = {isa = PBXBuildFile; fileRef = 758748C01120BED700A4791E /* DACALVolumeService.h */; };
+		758748C31120BED700A4791E /* DACALVolumeService.m in Sources */ = {isa = PBXBuildFile; fileRef = 758748C11120BED700A4791E /* DACALVolumeService.m */; };
 		75B2FCB30EDDA9A1007356FD /* BlackPlus1.png in Resources */ = {isa = PBXBuildFile; fileRef = 75B2FCB20EDDA9A1007356FD /* BlackPlus1.png */; };
 		75B2FCB50EDDA9AD007356FD /* BlackSearch1.png in Resources */ = {isa = PBXBuildFile; fileRef = 75B2FCB40EDDA9AD007356FD /* BlackSearch1.png */; };
+		75B356E011256EF00025F1B3 /* Volume.h in Headers */ = {isa = PBXBuildFile; fileRef = 75B356DE11256EF00025F1B3 /* Volume.h */; };
+		75B356E111256EF00025F1B3 /* Volume.m in Sources */ = {isa = PBXBuildFile; fileRef = 75B356DF11256EF00025F1B3 /* Volume.m */; };
 		75E0D61C1073EF620012897D /* Multi-Folder.icns in Resources */ = {isa = PBXBuildFile; fileRef = 75E0D61B1073EF620012897D /* Multi-Folder.icns */; };
-		75E0D78E1074331A0012897D /* PickADiskDoc.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 75E0D78D1074331A0012897D /* PickADiskDoc.pdf */; };
 		75E0D7E6107444930012897D /* PickADiskDoc.pdf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 75E0D78D1074331A0012897D /* PickADiskDoc.pdf */; };
 		75E0D91C10767E050012897D /* PAD_1.0.3_50805.html in Resources */ = {isa = PBXBuildFile; fileRef = 75E0D91B10767E040012897D /* PAD_1.0.3_50805.html */; };
 		75E667D60E92CA9500A9DA07 /* license.icns in Resources */ = {isa = PBXBuildFile; fileRef = 75E667D50E92CA9500A9DA07 /* license.icns */; };
@@ -148,55 +159,6 @@
 			remoteGlobalIDString = 32D94FD00562CBF700B6AF17;
 			remoteInfo = DACALDriver;
 		};
-		752C58771186598300196BB0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7504AFFC0FB4724300FFAA84 /* DACALDriver.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 32D94FC30562CBF700B6AF17;
-			remoteInfo = DACALDriver;
-		};
-		75A5B3DD10F72A20001A674A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 75A5B3D310F72A20001A674A /* CLI.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 751FB9FC0E39046200D64628;
-			remoteInfo = dacal;
-		};
-		75A5B3DF10F72A20001A674A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 75A5B3D310F72A20001A674A /* CLI.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 751FBA060E3904AB00D64628;
-			remoteInfo = dacallib;
-		};
-		75A5B3E110F72A20001A674A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 75A5B3D310F72A20001A674A /* CLI.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 751FBA0E0E39054600D64628;
-			remoteInfo = fabricate;
-		};
-		75A5B3E310F72A20001A674A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 75A5B3D310F72A20001A674A /* CLI.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 751FBA170E39057100D64628;
-			remoteInfo = find;
-		};
-		75A5B3E510F72A20001A674A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 75A5B3D310F72A20001A674A /* CLI.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 751FBA430E39063900D64628;
-			remoteInfo = xattr;
-		};
-		75A5B3E710F72A20001A674A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 75A5B3D310F72A20001A674A /* CLI.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 751FBC9E0E393EDE00D64628;
-			remoteInfo = xargs;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -206,8 +168,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 6;
 			files = (
+				7506048910FC49B60030A123 /* DACALDriver.kext in CopyFiles */,
 				5C2E42610E7451E300D7DF4A /* dacauth in CopyFiles */,
-				5C2E42620E7451E300D7DF4A /* DACALDriver.kext in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,8 +228,8 @@
 		5C2D25F30E304B1C005F9FB5 /* PADIndexProgressController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PADIndexProgressController.m; sourceTree = "<group>"; };
 		5C2D25F40E304B1C005F9FB5 /* PADIndexProgressController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PADIndexProgressController.h; sourceTree = "<group>"; };
 		5C2D25FB0E305079005F9FB5 /* CarouselProgress.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; path = CarouselProgress.nib; sourceTree = "<group>"; };
-		5C2E40E00E73FBD300D7DF4A /* DACDriverInstaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DACDriverInstaller.h; path = "../PAD Controllers/DACDriverInstaller.h"; sourceTree = "<group>"; };
-		5C2E40E10E73FBD300D7DF4A /* DACDriverInstaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DACDriverInstaller.m; path = "../PAD Controllers/DACDriverInstaller.m"; sourceTree = "<group>"; };
+		5C2E40E00E73FBD300D7DF4A /* DACALDriverInstaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DACALDriverInstaller.h; path = Sources/DACAL/DACALDriverInstaller.h; sourceTree = "<group>"; };
+		5C2E40E10E73FBD300D7DF4A /* DACALDriverInstaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DACALDriverInstaller.m; path = Sources/DACAL/DACALDriverInstaller.m; sourceTree = "<group>"; };
 		5C2E410F0E74076A00D7DF4A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
 		5C2E42540E74519C00D7DF4A /* dacauth */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = dacauth; path = ../DACALDriver/dacauth; sourceTree = SOURCE_ROOT; };
 		5C2E42550E74519C00D7DF4A /* DACALDriver.kext */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.kernel-extension"; name = DACALDriver.kext; path = ../DACALDriver/build/Release/DACALDriver.kext; sourceTree = SOURCE_ROOT; };
@@ -292,8 +254,8 @@
 		5C57B62D0E6635600063190F /* PADIndexNodeData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PADIndexNodeData.h; sourceTree = "<group>"; };
 		5C57B62E0E6635600063190F /* PADIndexNodeData.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = PADIndexNodeData.m; sourceTree = "<group>"; };
 		5C57B7F60E66EF630063190F /* Generic_Image.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Generic_Image.icns; sourceTree = "<group>"; };
-		5C5F7DBC0E771E83003111DF /* DACVolume.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DACVolume.h; path = "../PAD Controllers/DACVolume.h"; sourceTree = "<group>"; };
-		5C5F7DBD0E771E83003111DF /* DACVolume.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DACVolume.m; path = "../PAD Controllers/DACVolume.m"; sourceTree = "<group>"; };
+		5C5F7DBC0E771E83003111DF /* DACALVolume.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DACALVolume.h; path = Sources/DACAL/DACALVolume.h; sourceTree = "<group>"; };
+		5C5F7DBD0E771E83003111DF /* DACALVolume.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DACALVolume.m; path = Sources/DACAL/DACALVolume.m; sourceTree = "<group>"; };
 		5C5F7E2C0E772EF5003111DF /* DiskArbitration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DiskArbitration.framework; path = /System/Library/Frameworks/DiskArbitration.framework; sourceTree = "<absolute>"; };
 		5C62ACB80E20B00900A26788 /* CarouselIndex.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; path = CarouselIndex.nib; sourceTree = "<group>"; };
 		5C6657010E3822D400414ECB /* xattr */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = xattr; path = ../pmssource/carlib/xattr; sourceTree = SOURCE_ROOT; };
@@ -309,8 +271,8 @@
 		5C6C12DC0E240AAC0097CC7A /* SmartFolder.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = SmartFolder.icns; path = Resources/Icons/SmartFolder.icns; sourceTree = SOURCE_ROOT; };
 		5C6C12E80E240BEA0097CC7A /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppController.h; sourceTree = "<group>"; };
 		5C6C12E90E240BEA0097CC7A /* AppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppController.m; sourceTree = "<group>"; };
-		5C6C12EA0E240BEA0097CC7A /* DACALTreeDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DACALTreeDataSource.h; path = "../PAD Controllers/DACALTreeDataSource.h"; sourceTree = "<group>"; };
-		5C6C12EB0E240BEA0097CC7A /* DACALTreeDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DACALTreeDataSource.m; path = "../PAD Controllers/DACALTreeDataSource.m"; sourceTree = "<group>"; };
+		5C6C12EA0E240BEA0097CC7A /* DACALTreeDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DACALTreeDataSource.h; path = Sources/DACAL/DACALTreeDataSource.h; sourceTree = "<group>"; };
+		5C6C12EB0E240BEA0097CC7A /* DACALTreeDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DACALTreeDataSource.m; path = Sources/DACAL/DACALTreeDataSource.m; sourceTree = "<group>"; };
 		5C6C12EC0E240BEA0097CC7A /* PADAddVolumeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PADAddVolumeController.h; sourceTree = "<group>"; };
 		5C6C12ED0E240BEA0097CC7A /* PADAddVolumeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PADAddVolumeController.m; sourceTree = "<group>"; };
 		5C6C12EE0E240BEA0097CC7A /* PADIndexToolbarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PADIndexToolbarController.h; sourceTree = "<group>"; };
@@ -353,8 +315,8 @@
 		5C88C1890EB83A51005D267C /* BluePlus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BluePlus.png; sourceTree = "<group>"; };
 		5C8B8BB30E3FCCF9007A1505 /* PADCarouselOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PADCarouselOperation.h; path = "Sources/PAD Controllers/PADCarouselOperation.h"; sourceTree = "<group>"; };
 		5C8B8BB40E3FCCF9007A1505 /* PADCarouselOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PADCarouselOperation.m; path = "Sources/PAD Controllers/PADCarouselOperation.m"; sourceTree = "<group>"; };
-		5C8E54F30E6A1D690029D83A /* DACALViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DACALViewDataSource.h; path = "../PAD Controllers/DACALViewDataSource.h"; sourceTree = "<group>"; };
-		5C8E54F40E6A1D690029D83A /* DACALViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DACALViewDataSource.m; path = "../PAD Controllers/DACALViewDataSource.m"; sourceTree = "<group>"; };
+		5C8E54F30E6A1D690029D83A /* DACALViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DACALViewDataSource.h; path = Sources/DACAL/DACALViewDataSource.h; sourceTree = "<group>"; };
+		5C8E54F40E6A1D690029D83A /* DACALViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DACALViewDataSource.m; path = Sources/DACAL/DACALViewDataSource.m; sourceTree = "<group>"; };
 		5C90847B0E2D748800162C13 /* PADIndexOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PADIndexOperation.h; path = "Sources/PAD Controllers/PADIndexOperation.h"; sourceTree = "<group>"; };
 		5C90847C0E2D748800162C13 /* PADIndexOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PADIndexOperation.m; path = "Sources/PAD Controllers/PADIndexOperation.m"; sourceTree = "<group>"; };
 		5C9293A80E1EBF7100835A1F /* BTHIconResources.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTHIconResources.h; sourceTree = "<group>"; };
@@ -362,9 +324,9 @@
 		5C9C3E700E5796720004DA00 /* PADOperationOpenDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PADOperationOpenDevice.h; path = "Sources/PAD Controllers/PADOperationOpenDevice.h"; sourceTree = "<group>"; };
 		5C9C3E710E5796720004DA00 /* PADOperationOpenDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PADOperationOpenDevice.m; path = "Sources/PAD Controllers/PADOperationOpenDevice.m"; sourceTree = "<group>"; };
 		5CA07A700E2E274900F71FA7 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
-		5CAFCCA50E2EB77300A7BEA4 /* dacallib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dacallib.h; path = ../pmssource/carlib/dacallib.h; sourceTree = SOURCE_ROOT; };
+		5CAFCCA50E2EB77300A7BEA4 /* dacallib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dacallib.h; sourceTree = "<group>"; };
 		5CAFCCA60E2EB77300A7BEA4 /* dacallib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = dacallib.m; path = ../pmssource/carlib/dacallib.m; sourceTree = SOURCE_ROOT; };
-		5CAFCCA80E2EB77300A7BEA4 /* pms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pms.h; path = pmsutility/pms.h; sourceTree = "<group>"; };
+		5CAFCCA80E2EB77300A7BEA4 /* pms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pms.h; sourceTree = "<group>"; };
 		5CAFCCEC0E2EC1E900A7BEA4 /* pmsCFUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pmsCFUtility.h; sourceTree = "<group>"; };
 		5CAFCCED0E2EC1E900A7BEA4 /* pmsCFUtility.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pmsCFUtility.c; sourceTree = "<group>"; };
 		5CAFCD1A0E2ED18200A7BEA4 /* pmsDACALUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pmsDACALUtility.h; sourceTree = "<group>"; };
@@ -376,8 +338,8 @@
 		5CC83EEC0E6F6C81000903AD /* swapslot.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = swapslot.sh; path = ../pmssource/carlib/swapslot.sh; sourceTree = SOURCE_ROOT; };
 		5CC83F6E0E6F957B000903AD /* PADURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PADURL.h; sourceTree = "<group>"; };
 		5CC83F6F0E6F957B000903AD /* PADURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PADURL.m; sourceTree = "<group>"; };
-		5CC83FC40E6FB34C000903AD /* DACALDeviceObjC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DACALDeviceObjC.h; path = "../PAD Controllers/DACALDeviceObjC.h"; sourceTree = "<group>"; };
-		5CC83FC50E6FB34C000903AD /* DACALDeviceObjC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DACALDeviceObjC.m; path = "../PAD Controllers/DACALDeviceObjC.m"; sourceTree = "<group>"; };
+		5CC83FC40E6FB34C000903AD /* DACALDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DACALDevice.h; path = Sources/DACAL/DACALDevice.h; sourceTree = "<group>"; };
+		5CC83FC50E6FB34C000903AD /* DACALDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DACALDevice.m; path = Sources/DACAL/DACALDevice.m; sourceTree = "<group>"; };
 		5CD985150E4E60A700441ED7 /* PADHomeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PADHomeView.h; path = "Sources/PAD Controllers/PADHomeView.h"; sourceTree = "<group>"; };
 		5CD985160E4E60A700441ED7 /* PADHomeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PADHomeView.m; path = "Sources/PAD Controllers/PADHomeView.m"; sourceTree = "<group>"; };
 		5CDAC1C40E934054003984E1 /* success.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = success.icns; sourceTree = "<group>"; };
@@ -407,14 +369,24 @@
 		7504AF260FB3A1F900FFAA84 /* updates.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = updates.xml; sourceTree = "<group>"; };
 		7504AFDC0FB3AEBB00FFAA84 /* Credits.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 		7504AFFC0FB4724300FFAA84 /* DACALDriver.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = DACALDriver.xcodeproj; path = ../DACALDriver/DACALDriver.xcodeproj; sourceTree = SOURCE_ROOT; };
+		7506046810FC480F0030A123 /* DACALSlot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DACALSlot.m; path = Sources/DACAL/DACALSlot.m; sourceTree = "<group>"; };
+		7506046A10FC48180030A123 /* DACALSlot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DACALSlot.h; path = Sources/DACAL/DACALSlot.h; sourceTree = "<group>"; };
+		750604D310FC4BF30030A123 /* pms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = pms.m; sourceTree = "<group>"; };
+		7506050310FC56D40030A123 /* DACALDeviceNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DACALDeviceNode.h; path = Sources/DACAL/DACALDeviceNode.h; sourceTree = "<group>"; };
+		7506050410FC56D40030A123 /* DACALDeviceNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DACALDeviceNode.m; path = Sources/DACAL/DACALDeviceNode.m; sourceTree = "<group>"; };
+		7506050F10FC574F0030A123 /* DACALDeviceSerivce.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DACALDeviceSerivce.h; path = Sources/DACAL/DACALDeviceSerivce.h; sourceTree = "<group>"; };
+		7506051010FC574F0030A123 /* DACALDeviceSerivce.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DACALDeviceSerivce.m; path = Sources/DACAL/DACALDeviceSerivce.m; sourceTree = "<group>"; };
 		751C4E2C0E9400250027BC1C /* AquaticPrime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AquaticPrime.m; path = Sources/License/AquaticPrime.m; sourceTree = "<group>"; };
-		7533911F101B99470007F931 /* daclconstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = daclconstants.h; sourceTree = "<group>"; };
-		75339120101B99470007F931 /* daclconstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = daclconstants.m; sourceTree = "<group>"; };
-		75A5B3D310F72A20001A674A /* CLI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CLI.xcodeproj; path = ../CLI/CLI.xcodeproj; sourceTree = SOURCE_ROOT; };
-		75AF25EC1083A66B004D1F99 /* pms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = pms.m; path = pmsutility/pms.m; sourceTree = "<group>"; };
+		7533911F101B99470007F931 /* dacalconstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dacalconstants.h; sourceTree = "<group>"; };
+		75339120101B99470007F931 /* dacalconstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = dacalconstants.m; sourceTree = "<group>"; };
+		75349FED1113863500604CD4 /* VolumeService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VolumeService.h; sourceTree = "<group>"; };
+		75349FEE1113863500604CD4 /* VolumeService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VolumeService.m; sourceTree = "<group>"; };
+		758748C01120BED700A4791E /* DACALVolumeService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DACALVolumeService.h; path = Sources/DACAL/DACALVolumeService.h; sourceTree = "<group>"; };
+		758748C11120BED700A4791E /* DACALVolumeService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DACALVolumeService.m; path = Sources/DACAL/DACALVolumeService.m; sourceTree = "<group>"; };
 		75B2FCB20EDDA9A1007356FD /* BlackPlus1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlackPlus1.png; sourceTree = "<group>"; };
 		75B2FCB40EDDA9AD007356FD /* BlackSearch1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlackSearch1.png; sourceTree = "<group>"; };
-		75D1ED2A1085236600DE7820 /* _doprnt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _doprnt.m; sourceTree = "<group>"; };
+		75B356DE11256EF00025F1B3 /* Volume.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Volume.h; sourceTree = "<group>"; };
+		75B356DF11256EF00025F1B3 /* Volume.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Volume.m; sourceTree = "<group>"; };
 		75E0D61B1073EF620012897D /* Multi-Folder.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = "Multi-Folder.icns"; path = "../Resources/Multi-Folder.icns"; sourceTree = SOURCE_ROOT; };
 		75E0D70C1074330E0012897D /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		75E0D70D1074330E0012897D /* lesson.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = lesson.xml; sourceTree = "<group>"; };
@@ -510,10 +482,6 @@
 		01518910FF1B822411CA0E35 /* Index Tree */ = {
 			isa = PBXGroup;
 			children = (
-				5C6C12EA0E240BEA0097CC7A /* DACALTreeDataSource.h */,
-				5C6C12EB0E240BEA0097CC7A /* DACALTreeDataSource.m */,
-				5C8E54F30E6A1D690029D83A /* DACALViewDataSource.h */,
-				5C8E54F40E6A1D690029D83A /* DACALViewDataSource.m */,
 				5C6C12F00E240BEA0097CC7A /* TreeController.h */,
 				5C6C12F10E240BEA0097CC7A /* TreeController.m */,
 				08DC403BFF0C20FA11CA0E35 /* TreeNode.h */,
@@ -558,6 +526,8 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				75B356DD11256EF00025F1B3 /* Volumes */,
+				7506046710FC47F90030A123 /* DACAL */,
 				5C6C12E70E240BEA0097CC7A /* PAD Controllers */,
 				5C81A2370EC58B2800E75319 /* Operations */,
 				5C81A2380EC58B8600E75319 /* Views */,
@@ -780,12 +750,8 @@
 		5C81A2340EC589B900E75319 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				5CC83FC40E6FB34C000903AD /* DACALDeviceObjC.h */,
-				5CC83FC50E6FB34C000903AD /* DACALDeviceObjC.m */,
-				5C5F7DBC0E771E83003111DF /* DACVolume.h */,
-				5C5F7DBD0E771E83003111DF /* DACVolume.m */,
-				5C2E40E00E73FBD300D7DF4A /* DACDriverInstaller.h */,
-				5C2E40E10E73FBD300D7DF4A /* DACDriverInstaller.m */,
+				75349FED1113863500604CD4 /* VolumeService.h */,
+				75349FEE1113863500604CD4 /* VolumeService.m */,
 				5C81A2250EC585CB00E75319 /* PADCrashReportService.h */,
 				5C81A2260EC585CB00E75319 /* PADCrashReportService.m */,
 				5C48B6920E453D98005795F7 /* PADLifecycleController.h */,
@@ -829,8 +795,6 @@
 		5CAFCCA20E2EB77300A7BEA4 /* pmssource */ = {
 			isa = PBXGroup;
 			children = (
-				5CAFCCA80E2EB77300A7BEA4 /* pms.h */,
-				75AF25EC1083A66B004D1F99 /* pms.m */,
 				5CAFCCA30E2EB77300A7BEA4 /* carlib */,
 				5CAFCCA90E2EB77300A7BEA4 /* pmsutility */,
 			);
@@ -843,8 +807,8 @@
 			children = (
 				5CAFCCA50E2EB77300A7BEA4 /* dacallib.h */,
 				5CAFCCA60E2EB77300A7BEA4 /* dacallib.m */,
-				7533911F101B99470007F931 /* daclconstants.h */,
-				75339120101B99470007F931 /* daclconstants.m */,
+				7533911F101B99470007F931 /* dacalconstants.h */,
+				75339120101B99470007F931 /* dacalconstants.m */,
 			);
 			name = carlib;
 			path = ../pmssource/carlib;
@@ -853,7 +817,8 @@
 		5CAFCCA90E2EB77300A7BEA4 /* pmsutility */ = {
 			isa = PBXGroup;
 			children = (
-				75D1ED2A1085236600DE7820 /* _doprnt.m */,
+				750604D310FC4BF30030A123 /* pms.m */,
+				5CAFCCA80E2EB77300A7BEA4 /* pms.h */,
 				5CAFCD1A0E2ED18200A7BEA4 /* pmsDACALUtility.h */,
 				5CAFCD1B0E2ED18200A7BEA4 /* pmsDACALUtility.m */,
 				5CAFCCEC0E2EC1E900A7BEA4 /* pmsCFUtility.h */,
@@ -921,7 +886,6 @@
 		7504AFFB0FB4722D00FFAA84 /* Other Projects */ = {
 			isa = PBXGroup;
 			children = (
-				75A5B3D310F72A20001A674A /* CLI.xcodeproj */,
 				7504AFFC0FB4724300FFAA84 /* DACALDriver.xcodeproj */,
 			);
 			name = "Other Projects";
@@ -935,17 +899,39 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		75A5B3D410F72A20001A674A /* Products */ = {
+		7506046710FC47F90030A123 /* DACAL */ = {
 			isa = PBXGroup;
 			children = (
-				75A5B3DE10F72A20001A674A /* dacal */,
-				75A5B3E010F72A20001A674A /* dacallib.dylib */,
-				75A5B3E210F72A20001A674A /* fabricate */,
-				75A5B3E410F72A20001A674A /* find */,
-				75A5B3E610F72A20001A674A /* xattr */,
-				75A5B3E810F72A20001A674A /* xargs */,
+				5C5F7DBC0E771E83003111DF /* DACALVolume.h */,
+				5C5F7DBD0E771E83003111DF /* DACALVolume.m */,
+				5C2E40E00E73FBD300D7DF4A /* DACALDriverInstaller.h */,
+				5C2E40E10E73FBD300D7DF4A /* DACALDriverInstaller.m */,
+				7506050F10FC574F0030A123 /* DACALDeviceSerivce.h */,
+				7506051010FC574F0030A123 /* DACALDeviceSerivce.m */,
+				7506046A10FC48180030A123 /* DACALSlot.h */,
+				7506046810FC480F0030A123 /* DACALSlot.m */,
+				5CC83FC40E6FB34C000903AD /* DACALDevice.h */,
+				5CC83FC50E6FB34C000903AD /* DACALDevice.m */,
+				7506050310FC56D40030A123 /* DACALDeviceNode.h */,
+				7506050410FC56D40030A123 /* DACALDeviceNode.m */,
+				758748C01120BED700A4791E /* DACALVolumeService.h */,
+				758748C11120BED700A4791E /* DACALVolumeService.m */,
+				5C6C12EA0E240BEA0097CC7A /* DACALTreeDataSource.h */,
+				5C6C12EB0E240BEA0097CC7A /* DACALTreeDataSource.m */,
+				5C8E54F30E6A1D690029D83A /* DACALViewDataSource.h */,
+				5C8E54F40E6A1D690029D83A /* DACALViewDataSource.m */,
 			);
-			name = Products;
+			name = DACAL;
+			sourceTree = "<group>";
+		};
+		75B356DD11256EF00025F1B3 /* Volumes */ = {
+			isa = PBXGroup;
+			children = (
+				75B356DE11256EF00025F1B3 /* Volume.h */,
+				75B356DF11256EF00025F1B3 /* Volume.m */,
+			);
+			name = Volumes;
+			path = Sources/Volumes;
 			sourceTree = "<group>";
 		};
 		75E0D7091074330E0012897D /* PickADiskDoc */ = {
@@ -1170,7 +1156,13 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				75339121101B99470007F931 /* daclconstants.h in Headers */,
+				75339121101B99470007F931 /* dacalconstants.h in Headers */,
+				7506046B10FC48180030A123 /* DACALSlot.h in Headers */,
+				7506050510FC56D40030A123 /* DACALDeviceNode.h in Headers */,
+				7506051110FC574F0030A123 /* DACALDeviceSerivce.h in Headers */,
+				75349FEF1113863500604CD4 /* VolumeService.h in Headers */,
+				758748C21120BED700A4791E /* DACALVolumeService.h in Headers */,
+				75B356E011256EF00025F1B3 /* Volume.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1197,7 +1189,6 @@
 				734E63B1049E6C2800C919A3 /* PBXBuildRule */,
 			);
 			dependencies = (
-				752C58781186598300196BB0 /* PBXTargetDependency */,
 			);
 			name = PickADisk;
 			productInstallPath = "$(LOCAL_DEVELOPER_DIR)/Demos";
@@ -1217,10 +1208,6 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 75A5B3D410F72A20001A674A /* Products */;
-					ProjectRef = 75A5B3D310F72A20001A674A /* CLI.xcodeproj */;
-				},
-				{
 					ProductGroup = 7504AFFD0FB4724300FFAA84 /* Products */;
 					ProjectRef = 7504AFFC0FB4724300FFAA84 /* DACALDriver.xcodeproj */;
 				},
@@ -1238,48 +1225,6 @@
 			fileType = wrapper.cfbundle;
 			path = DACALDriver.kext;
 			remoteRef = 7504B0030FB4724300FFAA84 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		75A5B3DE10F72A20001A674A /* dacal */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = dacal;
-			remoteRef = 75A5B3DD10F72A20001A674A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		75A5B3E010F72A20001A674A /* dacallib.dylib */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.dylib";
-			path = dacallib.dylib;
-			remoteRef = 75A5B3DF10F72A20001A674A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		75A5B3E210F72A20001A674A /* fabricate */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = fabricate;
-			remoteRef = 75A5B3E110F72A20001A674A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		75A5B3E410F72A20001A674A /* find */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = find;
-			remoteRef = 75A5B3E310F72A20001A674A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		75A5B3E610F72A20001A674A /* xattr */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = xattr;
-			remoteRef = 75A5B3E510F72A20001A674A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		75A5B3E810F72A20001A674A /* xargs */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = xargs;
-			remoteRef = 75A5B3E710F72A20001A674A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -1344,7 +1289,6 @@
 				7504AFDD0FB3AEBB00FFAA84 /* Credits.rtf in Resources */,
 				7504B0050FB4724F00FFAA84 /* DACALDriver.kext in Resources */,
 				75E0D61C1073EF620012897D /* Multi-Folder.icns in Resources */,
-				75E0D78E1074331A0012897D /* PickADiskDoc.pdf in Resources */,
 				75E0D91C10767E050012897D /* PAD_1.0.3_50805.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1388,7 +1332,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/bin/sh -x";
-			shellScript = "# was intended to copy htlp help files to resource folder, for now using PDF file\n# rsync -av --exclude=\".svn\" \"$SRCROOT/Resources/PickADiskDoc\" \"$CONFIGURATION_BUILD_DIR/$UNLOCALIZED_RESOURCES_FOLDER_PATH\"\n";
+			shellScript = "\nif [[ \"$CONFIGURATION\" == 'Release Test' && \"$USER\" == 'davec' ]]; then\n\trsync -av --exclude=\".svn\" \"$SRCROOT/Resources/PickADiskDoc\" \"$CONFIGURATION_BUILD_DIR/$UNLOCALIZED_RESOURCES_FOLDER_PATH\"\n\nfi";
 		};
 		75E4927B0EACBFB900AC85A0 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1402,7 +1346,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "logger \"Starting PickADisk Xcode Script\"\n\n# Test for kill prefs file on each build\nif [[ \"$CONFIGURATION\" == 'Development Fresh Prefs' ]]; then\n\tif [ -e \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist\" ]; then\n\t\tif [ -e \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist.1\" ]; then\n\t\t    logger \"Removing prefs\"\n\t\t    /bin/rm \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist\"\t\t\n\t\telse\n\t\t    logger \"Moving prefs aside\"\n\t\t    /bin/mv \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist\" \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist.1\"\n\t\tfi\n\tfi\nfi\n\n# If no long kill prefs, check for prexisting pref file and restore it\nif [[ -e \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist.1\" ]]; then\n\tlogger \"restoring old pref\"\n\t/bin/mv \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist.1\" \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist\"\nfi\n\n### If not releasing increment build number\nif [[ ! \"$CONFIGURATION\" =~ 'Release' ]]; then\n    /usr/bin/perl -pe 's/(BUILD_NUMBER = )(\\d+)/$1.($2+1)/eg' -i \"$SRCROOT/Misc/buildnumber.xcconfig\"\n    BUILD_NUMBER=`head -n 1 \"$SRCROOT/Misc/buildnumber.xcconfig\" | sed -e 's/BUILD_NUMBER = //'`\nfi\n\n## Pre-release construction of release files\nif [[ \"$CONFIGURATION\" == 'Release Test' ]]; then\n    # copy build number over to release number\n    # as long as we stay in a release mode this number will not change in case we have to run again\n    RELEASE_NUMBER=`head -n 1 \"$SRCROOT/Misc/releasenumber.xcconfig\" | sed -e 's/BUILD_NUMBER = //'`\n    RELEASE_VERSION=`tail -n 1 \"$SRCROOT/Misc/releasenumber.xcconfig\" | sed -e 's/VERSION_NUMBER = //'`\n    BUILD_NUMBER=`head -n 1 \"$SRCROOT/Misc/buildnumber.xcconfig\" | sed -e 's/BUILD_NUMBER = //'`\n    BUILD_VERSION=`tail -n 1 \"$SRCROOT/Misc/buildnumber.xcconfig\" | sed -e 's/VERSION_NUMBER = //'`\n    # first, insure versions are not the same, warn if so\n    if [[ \"$RELEASE_VERSION\" == \"$BUILD_VERSION\" ]] ; then\n\techo \"Build version $BUILD_VERSION is same as Release version!\"\n\techo \"Edit releasenumber.xcconfig and change it\"\n\texit 1\n    fi\n    # check that release number is same as build number\n    if [[ \"$BUILD_NUMBER\" != \"$RELEASE_NUMBER\" ]] ; then\n\t# replace RELEASE_NUMBER with previous BUILD_NUMBER\n\tsed -e \"1,1s/BUILD_NUMBER = .*/BUILD_NUMBER = $BUILD_NUMBER/\" -i.bak \"$SRCROOT/Misc/releasenumber.xcconfig\"\n\tRELEASE_NUMBER=`head -n 1 \"$SRCROOT/Misc/releasenumber.xcconfig\" | sed -e 's/RELEASE_NUMBER = //'`\n    fi\n    # construct file paths\n    ZIP_FILE=`echo \"$PRODUCT_NAME-$VERSION_NUMBER-$RELEASE_NUMBER.zip\" | tr \"-\" \"_\"`\n    HTML_FILE=`echo \"PAD-$VERSION_NUMBER-$RELEASE_NUMBER.html\" | tr \"-\" \"_\"`\n\n    # see if release notes file for this release already exists, may be 2nd or more build so only do it once\n    RELEASE_NOTES_PATH=$SRCROOT/Sources/sparkle/support/releasenotes\n    if [[ ! -e \"$RELEASE_NOTES_PATH/$HTML_FILE\" ]] ; then\n\t\techo \"$RELEASE_NOTES_PATH/$HTML_FILE\"\n\t\tcat >  \"$RELEASE_NOTES_PATH/$HTML_FILE\" <<End-of-html\n<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 TRANSITIONAL//EN\">\n<html>\n\n\t<head>\n\t\t<title>Version $RELEASE_VERSION Build $RELEASE_NUMBER</title>\n\t\t<link href=\"../css/simplelist.css\" type=\"text/css\" rel=\"stylesheet\" media=\"all\">\n\t</head>\n\t<body>\n\t\t<p class=\"p1\" align=\"center\">PickADisk Version $RELEASE_VERSION Build $RELEASE_NUMBER </p>\n\t\t<ul class=\"ul1\">\n\t\t\t<li class=\"li1\">Item1</li>\n\t\t</ul>\n\t</body>\n</html>\nEnd-of-html\n    fi\n\n    open -e \"$RELEASE_NOTES_PATH/$HTML_FILE\"\n\n    XML_UPDATE_FILE=$SRCROOT/Sources/sparkle/updates.xml\n    TODAY_DATE=`date`\n\n# New item is in clipboard, paste it in\n    pbcopy<<End-of-item\n\t\t<item>\n\t\t\t<title>Version $RELEASE_VERSION Build $BUILD_NUMBER</title>\n\t\t\t<sparkle:releaseNotesLink>http://updates.pickadisk.com/trunk/support/releasenotes/$HTML_FILE</sparkle:releaseNotesLink>\n\t\t\t<description>Version $RELEASE_VERSION Build $BUILD_NUMBER </description>\n\t\t\t<pubDate>$TODAY_DATE</pubDate>\n\t\t\t<enclosure sparkle:shortVersionString=\"$RELEASE_VERSION\" sparkle:version=\"$RELEASE_NUMBER\" url=\"http://updates.pickadisk.com/trunk/archives/$ZIP_FILE\" type=\"application/octet-stream\"/>\n\t\t</item>\nEnd-of-item\n\nopen \"$XML_UPDATE_FILE\"\n\n\trsync -auv \"$SRCROOT/Sources/sparkle/\" \"$SRCROOT/../../marketing/WebSite/updates/\" --exclude=\".*\"\n\tpushd \"$TARGET_BUILD_DIR\" >/dev/null\n\tfind \"$WRAPPER_NAME\" -name \".svn\" -delete\n\tzip -q -r \"$ZIP_FILE\" \"$WRAPPER_NAME\"\n\tcp \"$ZIP_FILE\" \"$SRCROOT/../../marketing/WebSite/updates/archives/\"\n\tpopd >/dev/null\n\techo \"Prelease checklist\"\n\techo \"- Update updates.xml with new version, paste in from clip board\"\n\techo \"- Update release notes\"\n\techo \"- Update known issues\"\n\techo \"- Update URL for new version, copy next line\"\n\techo \"../updates/assets/updates/archives/$ZIP_FILE\"\n\techo \"- Turn on local hosts for pickadisk.com\"\n\techo \"- Publish site\"\n\techo \"- Verify site\"\n\techo \"- Change build to release\"\n\techo \"- Veirify not using local hosts\"\nfi\n\nif [[ \"$CONFIGURATION\" == 'Release' ]]; then\n\techo \"Update remote web site\"\n\trsync -auv /web/sites/pickadisk.com/ polymicrosystems.com:sites/staging.pickadisk.com/\nfi\n";
+			shellScript = "set -x\nlogger \"Starting PickADisk Xcode Script\"\nif [[ \"$CONFIGURATION\" == 'Development Fresh Prefs' ]]; then\n\tif [ -e \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist\" ]; then\n\t\tif [ -e \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist.1\" ]; then\n\t\t\tlogger \"Removing prefs aside\"\n\t\t\t/bin/rm \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist\"\t\telse\n\t\t\tlogger \"Moving prefs aside\"\n\t\t\t/bin/mv \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist\" \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist.1\"\n\t\tfi\n\tfi\nfi\n\nif [[ -e \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist.1\" ]]; then\n\tlogger \"restoring old pref\"\n\t/bin/mv \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist.1\" \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist\"\nfi\n\n/usr/bin/perl -pe 's/(BUILD_NUMBER = )(\\d+)/$1.($2+1)/eg' -i \"$SRCROOT/Misc/buildnumber.xcconfig\"\n\nBUILD_NUMBER=`head -n 1  \"$SRCROOT/Misc/buildnumber.xcconfig\" |sed -e 's/BUILD_NUMBER = //'`\n\nZIP_FILE=`echo \"$PRODUCT_NAME-$VERSION_NUMBER-$BUILD_NUMBER.zip\" | tr \"-\" \"_\"`\nHTML_FILE=`echo \"PAD-$VERSION_NUMBER-$BUILD_NUMBER.html\" | tr \"-\" \"_\"`\n\nif [[ \"$CONFIGURATION\" == 'Release Test' && \"$USER\" == 'davec' ]]; then\n\tRELEASE_NOTES_PATH=$SRCROOT/Sources/sparkle/support/releasenotes\n\tif [ ! -e \"$RELEASE_NOTES_PATH/$HTML_FILE\" ] ; then\n\n\ncat >  \"$RELEASE_NOTES_PATH/$HTML_FILE\" <<End-of-html\n<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 TRANSITIONAL//EN\">\n<html>\n\n\t<head>\n\t\t<title>Version $VERSION_NUMBER Build $BUILD_NUMBER</title>\n\t\t<link href=\"../css/simplelist.css\" type=\"text/css\" rel=\"stylesheet\" media=\"all\">\n\t</head>\n\t<body>\n\t\t<p class=\"p1\" align=\"center\">PickADisk Version $VERSION_NUMBER Build $BUILD_NUMBER </p>\n\t\t<ul class=\"ul1\">\n\t\t\t<li class=\"li1\">Item1</li>\n\t\t</ul>\n\t</body>\n</html>\nEnd-of-html\nfi\nopen -e \"$RELEASE_NOTES_PATH/$HTML_FILE\"\n\nXML_UPDATE_FILE=$SRCROOT/Sources/sparkle/updates.xml\nTODAY_DATE=`date`\n\npbcopy<<End-of-item\n\t\t<item>\n\t\t\t<title>Version $VERSION_NUMBER Build $BUILD_NUMBER</title>\n\t\t\t<sparkle:releaseNotesLink>http://updates.pickadisk.com/trunk/support/releasenotes/$HTML_FILE</sparkle:releaseNotesLink>\n\t\t\t<description>Version $VERSION_NUMBER Build $BUILD_NUMBER </description>\n\t\t\t<pubDate>$TODAY_DATE</pubDate>\n\t\t\t<enclosure sparkle:shortVersionString=\"$VERSION_NUMBER\" sparkle:version=\"$BUILD_NUMBER\" url=\"http://updates.pickadisk.com/trunk/archives/$ZIP_FILE\" type=\"application/octet-stream\"/>\n\t\t</item>\nEnd-of-item\n\nopen \"$XML_UPDATE_FILE\"\n\nfi\n\necho $USER\n\nif [[ \"$CONFIGURATION\" == 'Release' && \"$USER\" == 'davec' ]]; then\n\trsync -auv \"$SRCROOT/Sources/sparkle/\" polymicrosystems.com:pickadisk.com/updates/trunk/ --exclude=\".*\"\n\tzip -r -q \"$TARGET_BUILD_DIR/$ZIP_FILE\" \"$TARGET_BUILD_DIR/$WRAPPER_NAME\"\n\trsync -auv \"$TARGET_BUILD_DIR/$ZIP_FILE\" polymicrosystems.com:pickadisk.com/updates/trunk/archives/ --exclude=\".*\"\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1439,10 +1383,10 @@
 				5CE577300E590C230086A57F /* PADOperationControlDevice.m in Sources */,
 				5C57B6300E6635600063190F /* PADIndexNodeData.m in Sources */,
 				5C8E54F60E6A1D690029D83A /* DACALViewDataSource.m in Sources */,
-				5CC83FC70E6FB34C000903AD /* DACALDeviceObjC.m in Sources */,
+				5CC83FC70E6FB34C000903AD /* DACALDevice.m in Sources */,
 				5CBA8FCF0E71DD0F000279A2 /* NSSlider_Animation.m in Sources */,
-				5C2E40E30E73FBD300D7DF4A /* DACDriverInstaller.m in Sources */,
-				5C5F7DBF0E771E83003111DF /* DACVolume.m in Sources */,
+				5C2E40E30E73FBD300D7DF4A /* DACALDriverInstaller.m in Sources */,
+				5C5F7DBF0E771E83003111DF /* DACALVolume.m in Sources */,
 				751C4E2D0E9400250027BC1C /* AquaticPrime.m in Sources */,
 				75F02D240E955A9400A02B14 /* LicenseController.m in Sources */,
 				5C76C1270E9AD9FE00E363B0 /* NSData_Extensions.m in Sources */,
@@ -1456,20 +1400,18 @@
 				5C7F73FC0F3934B30053681D /* PADInspectorController.m in Sources */,
 				5C1A10230F4018A4004F3605 /* IconFamily.m in Sources */,
 				5C1A10250F4018A4004F3605 /* NSString+CarbonFSRefCreation.m in Sources */,
-				75339122101B99470007F931 /* daclconstants.m in Sources */,
-				75AF25ED1083A66B004D1F99 /* pms.m in Sources */,
+				75339122101B99470007F931 /* dacalconstants.m in Sources */,
+				7506046910FC480F0030A123 /* DACALSlot.m in Sources */,
+				750604D410FC4BF30030A123 /* pms.m in Sources */,
+				7506050610FC56D40030A123 /* DACALDeviceNode.m in Sources */,
+				7506051210FC574F0030A123 /* DACALDeviceSerivce.m in Sources */,
+				75349FF01113863500604CD4 /* VolumeService.m in Sources */,
+				758748C31120BED700A4791E /* DACALVolumeService.m in Sources */,
+				75B356E111256EF00025F1B3 /* Volume.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		752C58781186598300196BB0 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = DACALDriver;
-			targetProxy = 752C58771186598300196BB0 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		089C165CFE840E0CC02AAC07 /* InfoPlist.strings */ = {
@@ -1509,11 +1451,7 @@
 					ppc,
 				);
 				FRAMEWORK_SEARCH_PATHS = "";
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_VERSION = 4.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.5;
-				PRODUCT_NAME = PickADisk;
 				SDKROOT = /Developer/SDKs/MacOSX10.5.sdk;
 			};
 			name = "Release Test";
@@ -1538,6 +1476,7 @@
 				GCC_WARN_UNKNOWN_PRAGMAS = NO;
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "Info-PickADisk.plist";
+				INSTALL_PATH = /Applications;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
@@ -1549,6 +1488,7 @@
 					"-seg1addr",
 					0x10000000,
 				);
+				PRODUCT_NAME = PickADisk;
 				SECTORDER_FLAGS = "";
 				WARNING_CFLAGS = "-Wmost";
 				WRAPPER_EXTENSION = app;
@@ -1556,15 +1496,72 @@
 			};
 			name = "Release Test";
 		};
+		750937BB110D141100230B25 /* Development Remote */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7504AEA30FB389E600FFAA84 /* buildnumber.xcconfig */;
+			buildSettings = {
+				ARCHS = (
+					"$(NATIVE_ARCH)",
+					ppc,
+				);
+				FRAMEWORK_SEARCH_PATHS = "";
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = PickADisk;
+				SDKROOT = /Developer/SDKs/MacOSX10.5.sdk;
+				SYMROOT = /Users/Shared/RemoteDebug/PickADisk/build;
+			};
+			name = "Development Remote";
+		};
+		750937BC110D141100230B25 /* Development Remote */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH)";
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/Frameworks",
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(DEVELOPER_DIR)/SDKs/MacOSX10.5.sdk/System/Library/Frameworks\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../DiscID/build/Release\"";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_6 = "\"$(SRCROOT)/Frameworks\"";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Sources/Prefix.h;
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
+				INFOPLIST_FILE = "Info-PickADisk.plist";
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+				);
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)\"";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = (
+					"-lcrypto",
+					"-seg1addr",
+					0x10000000,
+				);
+				PRODUCT_NAME = PickADisk;
+				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = "";
+				WRAPPER_EXTENSION = app;
+				ZERO_LINK = YES;
+			};
+			name = "Development Remote";
+		};
 		75D3EBAB0E8BF811009A0199 /* DebugPPC */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7504AEA30FB389E600FFAA84 /* buildnumber.xcconfig */;
 			buildSettings = {
 				ARCHS = ppc;
 				FRAMEWORK_SEARCH_PATHS = "";
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_VERSION = 4.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				PRODUCT_NAME = PickADisk;
 				SDKROOT = /Developer/SDKs/MacOSX10.5.sdk;
@@ -1593,6 +1590,7 @@
 				GCC_WARN_UNKNOWN_PRAGMAS = NO;
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "Info-PickADisk.plist";
+				INSTALL_PATH = "";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
@@ -1604,85 +1602,13 @@
 					"-seg1addr",
 					0x10000000,
 				);
+				PRODUCT_NAME = PickADisk;
 				SECTORDER_FLAGS = "";
 				WARNING_CFLAGS = "-Wmost";
 				WRAPPER_EXTENSION = app;
 				ZERO_LINK = YES;
 			};
 			name = DebugPPC;
-		};
-		75DFAC86107FF40F0076E115 /* DebugRemote */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7504AEA30FB389E600FFAA84 /* buildnumber.xcconfig */;
-			buildSettings = {
-				ARCHS = (
-					"$(NATIVE_ARCH)",
-					ppc,
-				);
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				FRAMEWORK_SEARCH_PATHS = "";
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_VERSION = 4.0;
-				MACOSX_DEPLOYMENT_TARGET = 10.5;
-				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_NAME = PickADisk;
-				RUN_CLANG_STATIC_ANALYZER = NO;
-				SDKROOT = /Developer/SDKs/MacOSX10.5.sdk;
-				SYMROOT = /Volumes/RemoteDebug/PickADisk/build;
-			};
-			name = DebugRemote;
-		};
-		75DFAC87107FF40F0076E115 /* DebugRemote */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = "$(NATIVE_ARCH)";
-				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/Frameworks",
-				);
-				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(DEVELOPER_DIR)/SDKs/MacOSX10.5.sdk/System/Library/Frameworks\"";
-				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../DiscID/build/Release\"";
-				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_6 = "\"$(SRCROOT)/Frameworks\"";
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_CPP_EXCEPTIONS = NO;
-				GCC_ENABLE_CPP_RTTI = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_FAST_OBJC_DISPATCH = NO;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_MODEL_TUNING = G5;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = Sources/Prefix.h;
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = 4.0;
-				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
-				GCC_WARN_UNKNOWN_PRAGMAS = NO;
-				HEADER_SEARCH_PATHS = "";
-				IBC_FLATTEN_NIBS = NO;
-				IBC_STRIP_NIBS = NO;
-				INFOPLIST_FILE = "Info-PickADisk.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
-				);
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)\"";
-				ONLY_ACTIVE_ARCH = YES;
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = (
-					"-lcrypto",
-					"-seg1addr",
-					0x10000000,
-				);
-				RUN_CLANG_STATIC_ANALYZER = NO;
-				SECTORDER_FLAGS = "";
-				SYMROOT = /Users/Shared/PickADisk/build;
-				WARNING_CFLAGS = "";
-				WRAPPER_EXTENSION = app;
-				ZERO_LINK = NO;
-			};
-			name = DebugRemote;
 		};
 		75E4927C0EACC04200AC85A0 /* Development Fresh Prefs */ = {
 			isa = XCBuildConfiguration;
@@ -1701,8 +1627,6 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_VERSION = 4.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = PickADisk;
@@ -1733,6 +1657,7 @@
 				GCC_WARN_UNKNOWN_PRAGMAS = NO;
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "Info-PickADisk.plist";
+				INSTALL_PATH = "";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
@@ -1745,6 +1670,7 @@
 					"-seg1addr",
 					0x10000000,
 				);
+				PRODUCT_NAME = PickADisk;
 				SECTORDER_FLAGS = "";
 				WARNING_CFLAGS = "";
 				WRAPPER_EXTENSION = app;
@@ -1765,23 +1691,15 @@
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../DiscID/build/Release\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_6 = "\"$(SRCROOT)/Frameworks\"";
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_CPP_EXCEPTIONS = NO;
-				GCC_ENABLE_CPP_RTTI = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				GCC_FAST_OBJC_DISPATCH = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Sources/Prefix.h;
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = 4.0;
 				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
-				GCC_WARN_UNKNOWN_PRAGMAS = NO;
-				HEADER_SEARCH_PATHS = "";
-				IBC_FLATTEN_NIBS = NO;
-				IBC_STRIP_NIBS = NO;
 				INFOPLIST_FILE = "Info-PickADisk.plist";
+				INSTALL_PATH = "";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
@@ -1794,10 +1712,12 @@
 					"-seg1addr",
 					0x10000000,
 				);
+				PRODUCT_NAME = PickADisk;
+				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SECTORDER_FLAGS = "";
 				WARNING_CFLAGS = "";
 				WRAPPER_EXTENSION = app;
-				ZERO_LINK = NO;
+				ZERO_LINK = YES;
 			};
 			name = Development;
 		};
@@ -1821,6 +1741,7 @@
 				GCC_WARN_UNKNOWN_PRAGMAS = NO;
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "Info-PickADisk.plist";
+				INSTALL_PATH = /Applications;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
@@ -1832,6 +1753,7 @@
 					"-seg1addr",
 					0x10000000,
 				);
+				PRODUCT_NAME = PickADisk;
 				SECTORDER_FLAGS = "";
 				WARNING_CFLAGS = "-Wmost";
 				WRAPPER_EXTENSION = app;
@@ -1848,15 +1770,10 @@
 					ppc,
 				);
 				FRAMEWORK_SEARCH_PATHS = "";
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_VERSION = 4.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = PickADisk;
-				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = /Developer/SDKs/MacOSX10.5.sdk;
-				SYMROOT = /Users/Shared/PickADisk;
 			};
 			name = Development;
 		};
@@ -1870,11 +1787,8 @@
 					ppc,
 				);
 				FRAMEWORK_SEARCH_PATHS = "";
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_VERSION = 4.0;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				MACOSX_DEPLOYMENT_TARGET = 10.5;
-				PRODUCT_NAME = PickADisk;
 				SDKROOT = /Developer/SDKs/MacOSX10.5.sdk;
 			};
 			name = Release;
@@ -1886,7 +1800,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B69BDD9508A2EC26008AC9B5 /* Development */,
-				75DFAC87107FF40F0076E115 /* DebugRemote */,
+				750937BC110D141100230B25 /* Development Remote */,
 				75E4927D0EACC04200AC85A0 /* Development Fresh Prefs */,
 				75D3EBAC0E8BF811009A0199 /* DebugPPC */,
 				B69BDD9608A2EC26008AC9B5 /* Release */,
@@ -1899,7 +1813,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B69BDD9908A2EC26008AC9B5 /* Development */,
-				75DFAC86107FF40F0076E115 /* DebugRemote */,
+				750937BB110D141100230B25 /* Development Remote */,
 				75E4927C0EACC04200AC85A0 /* Development Fresh Prefs */,
 				75D3EBAB0E8BF811009A0199 /* DebugPPC */,
 				B69BDD9A08A2EC26008AC9B5 /* Release */,

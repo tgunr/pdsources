@@ -7,7 +7,7 @@
 //
 
 #import "PADLayoutView.h"
-
+#import <Carbon/Carbon.h>
 
 CFStringRef	CFStringCopyDateTime( CFAllocatorRef allocator, CFAbsoluteTime theTime, CFDateFormatterStyle dateForm, CFDateFormatterStyle timeForm );
 CFStringRef	CFStringCopyDateTime( CFAllocatorRef allocator, CFAbsoluteTime theTime, CFDateFormatterStyle dateForm, CFDateFormatterStyle timeForm )

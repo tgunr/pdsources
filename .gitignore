@@ -1,2 +1,4 @@
-DACALDriver/DACALDriver.xcodeproj/davec.perspectivev3
-PickADisk/PickADisk.xcodeproj/davec.perspectivev3
+*.perspectivev3
+buildnumber.xcconfig
+*.mode1v3
+*.pbxuser

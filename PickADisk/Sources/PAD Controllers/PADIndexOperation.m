@@ -3,10 +3,15 @@
 //  PickADisc
 //
 //  Created by Jack Small on 7/15/08.
-//  Copyright 2008 __MyCompanyName__. All rights reserved.
+//  Copyright 2008 polyMicro Systems. All rights reserved.
 //
 
 #import "PADIndexOperation.h"
+#import "PADSearchRequest.h"
+#import "SimpleTreeNode.h"
+#import "DACALDeviceNode.h"
+
+@class PADSearchService;
 
 @implementation PADIndexOperation
 
@@ -41,7 +46,7 @@
 - (BOOL)cancelOperationForDevice:(DACALDevice*)oldBox
 {
 	DACALDeviceRef		ourBox = CFURLCopyCarouselUUID( kCFAllocatorDefault, (CFURLRef)itemLocation );
-	BOOL				sameBox = [oldBox isDeviceRef:ourBox]; // [oldBox isEqual:DACALDeviceForDeviceRef( ourBox )];
+	BOOL				sameBox = [oldBox isDeviceRef:ourBox]; // [oldBox isEqual:DACALDeviceNodeForDeviceRef( ourBox )];
 	
 	if( ourBox != kDACALNullDevice ) CFRelease( (CFTypeRef)ourBox );
 	else sameBox = YES;

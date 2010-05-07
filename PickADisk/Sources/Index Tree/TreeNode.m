@@ -47,8 +47,11 @@
  OTHERWISE, EVEN IF APPLE HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#import "TreeNode.h"
+#import <Cocoa/Cocoa.h>
+#import "SimpleTreeNode.h"
 #import "NSArray_Extensions.h"
+
+@class SimpleTreeNode;
 
 @implementation TreeNode
 

@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class DACALVolume;
 
 @interface PADSimpleImageView : NSView {
 
@@ -68,7 +69,7 @@ extern	const	CGFloat		kPADVIVStateRotateCounterClockwise;
 -(void)spinUpInDirection:(CGFloat)spinDirection;
 -(void)spinDown;
 
--(BOOL)changeToVolumeIcon:(DACVolume*)theVolume;
+-(BOOL)changeToVolumeIcon:(DACALVolume*)theVolume;
 
 @end	//	PADVolumeIconView
 

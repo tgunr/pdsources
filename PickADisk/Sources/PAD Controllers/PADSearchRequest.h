@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 
 #import "JSServiceManager.h"
-#import "AppController.h"
+//#import "AppController.h"
 #import "SimpleTreeNode.h"
 
 typedef float		PADSearchRelevance;
@@ -38,6 +38,8 @@ extern const	PADSearchRelevance	kPADSearchWeightNone;
 extern const	NSString*			kPADSearchOptionResultType;
 extern const	NSString*			kPADSearchOptionResultTypeLeaf;
 extern const	NSString*			kPADSearchOptionResultTypeItem;
+
+@class SimpleTreeNode;
 
 @interface PADSearchTerm : NSObject {
 

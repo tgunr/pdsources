@@ -7,13 +7,12 @@
 //
 
 #import "PADCarouselOperation.h"
-
+#import "AppController.h"
 
 @implementation PADOperationTask
 
--(DACALDevice*)theBoxRef
-{ return theBoxRef; }
--(void)setTheBoxRef:(DACALDevice*)newBox
+-(DACALDeviceNode*)theBoxRef { return theBoxRef; }
+-(void)setTheBoxRef:(DACALDeviceNode*)newBox
 {
 	if( newBox ) [newBox retain];
 	if( theBoxRef ) [theBoxRef release];
@@ -42,7 +41,7 @@
 	{ return (id)ownerOp; }
 
 
--(BOOL)cancelOperationForDevice:(DACALDevice*)oldBox
+-(BOOL)cancelOperationForDevice:(DACALDeviceNode*)oldBox
 {
 	return [[self theBoxRef] isEqual:oldBox];	//[oldBox isDeviceRef:[self theBoxRef]];
 }
@@ -89,7 +88,7 @@
 	[super dealloc];
 }
 
--(BOOL)cancelOperationForDevice:(DACALDevice*)oldBox
+-(BOOL)cancelOperationForDevice:(DACALDeviceNode*)oldBox
 {
 	BOOL cancel = [[self thisOperation] cancelOperationForDevice:oldBox];
 	

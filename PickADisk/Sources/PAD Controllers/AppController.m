@@ -21,13 +21,17 @@
 #import "JSServiceManager.h"
 //#import "JSTestService.h"
 
-//#import "DACDriverInstaller.h"
-//#import "DACVolume.h"
+#import "PADLifecycleController.h"
 #import "LicenseController.h"
 #import "LicenseService.h"
+#import "DACALDevice.h"
+#import "SimpleTreeNode.h"
+#import "PADIndexToolbarController.h"
 
 #define PAD_BUSYBODY_DELAY	0.1
 #define PAD_PREFS_VERSION	(const char*)"0.6"
+
+@class DACALTreeDataSource;
 
 @implementation AppController
 static AppController *shared;
@@ -83,7 +87,7 @@ static AppController *shared;
 - (void)queueUIOperation:(NSOperation*)op { [queueUI addOperation:op]; }
 - (void)queueSearchOperation:(NSOperation*)op {	[queueSearch addOperation:op]; }
 
-- (void)cancelOperationsForDevice:(DACALDevice*)oldBox onQueue:(NSOperationQueue*)workQueue
+- (void)cancelOperationsForDevice:(DACALDeviceNode*)oldBox onQueue:(NSOperationQueue*)workQueue
 {
 	[workQueue setSuspended:YES];
 	
@@ -96,7 +100,7 @@ static AppController *shared;
 	[workQueue setSuspended:NO];
 }
 
-- (void)cancelOperationsForDevice:(DACALDevice*)oldBox
+- (void)cancelOperationsForDevice:(DACALDeviceNode*)oldBox
 {
 	[self cancelOperationsForDevice:oldBox onQueue:queue];
 	[self cancelOperationsForDevice:oldBox onQueue:queueUI];
@@ -257,7 +261,7 @@ static AppController *shared;
 	DACALCount			boxCount = DACALDevicesGetCount();
 	DACALCount			count101 = DACALDevicesGetCountForModel( DACALDC101CFName );
 	DACALCount			count300 = DACALDevicesGetCountForModel( DACALDC300CFName );
-	DACALCount			count016 = DACALDevicesGetCountForModel( DACALDC016RWCFName );
+	DACALCount			count016 = DACALDevicesGetCountForModel( DACALDC016CFName );
 	
 	if( isSending == YES )
 	{

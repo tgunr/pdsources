@@ -3,11 +3,15 @@
 //  PickADisc
 //
 //  Created by Jack Small on 7/7/08.
-//  Copyright 2008 __MyCompanyName__. All rights reserved.
+//  Copyright 2008 polyMicro Systems. All rights reserved.
 //
 
 #import "PADIndexToolbarController.h"
+#import "DACALSlot.h"
+#import "DACALDeviceSerivce.h"
 #import "LicenseService.h"
+#import "AppController.h"
+#import "NSOutlineView_Extensions.h"
 
 @implementation PADIndexToolbarController
 
@@ -279,13 +283,23 @@ PADSearchRequest* PADIndexToolbarController_LastSearch = nil;
 //	in the tree/data view
 -(void)adoptSelection
 {
+	DACALDeviceRef	aBox;
 	BOOL			anyBox = NO;
+	BOOL			anyDC016 = NO;
 	BOOL			anySlot = NO;
 	BOOL			anyVolumes = [self nodesContainMountedSlotVolumes:[self selectedNodes]];
 	BOOL			freeSlot = [self countUsedSlots:NULL];
 	
-	if( [self selectedDevices] )
+	if( [self selectedDevices] ) {
 		anyBox = [[self selectedDevices] count] > 0;
+		// Check for any Powerdrive, turn on Close, Eject & Reset if so
+		if ( anyBox ) {
+			aBox = (DACALDeviceRef)[[self selectedDevices] objectAtIndex:0];		
+			if ( DACALIsDC016(aBox) )
+				anyDC016 = YES;		
+		}
+
+	}
 	if( [self selectedNodes] )	
 		anySlot = [[self selectedNodes] count] > 0;
 	
@@ -296,7 +310,7 @@ PADSearchRequest* PADIndexToolbarController_LastSearch = nil;
 	if( checkOutButton )	[checkOutButton setEnabled:[self allowCheck:YES]];
 	if( checkInButton )		[checkInButton setEnabled:[self allowCheck:NO]];
 	if( unassignButton )	[unassignButton setEnabled:anySlot];
-	if( ejectButton )		[ejectButton setEnabled:anyVolumes];
+	if( ejectButton )		[ejectButton setEnabled:anyVolumes | anyDC016];
 	if( gotoButton )		[gotoButton setEnabled:anySlot];
 	
 	[self adoptPathSelection];
@@ -322,7 +336,8 @@ PADSearchRequest* PADIndexToolbarController_LastSearch = nil;
 	NSInteger	index;
 	DACALDeviceRef	aBox;
 
-	if( [self selectedDevices] ) boxCount = [[self selectedDevices] count];
+	if( [self selectedDevices] ) 
+		boxCount = [[self selectedDevices] count];
 
 	for( index=0; index < boxCount; index++ )
 	{
@@ -336,8 +351,18 @@ PADSearchRequest* PADIndexToolbarController_LastSearch = nil;
 	NSEnumerator*		nodeEnum = [selectedNodes objectEnumerator];
 	SimpleTreeNode*		workNode = nil;
 	
-	while ( workNode = [nodeEnum nextObject] )
-		[[[workNode nodeData] itemElement] openMountedElement];
+	// !!!:davec:20091230 Under what conditions would this loop more than once? Cause for DC016 we can't be mounting
+	// multiple slots
+	while ( workNode = [nodeEnum nextObject] ) {
+		SimpleNodeData * thisNode = [workNode nodeData];
+		DACALDeviceRef theDevice = [thisNode itemDevice];
+		if ( DACALIsDC016(theDevice) ) {
+			DACALSlotNum slotToMount = [thisNode itemSlot];
+			DACALResult err = DACALCommandDVDMoveTo(theDevice, slotToMount);
+			PMERR(@"Failed to move to slot %d", slotToMount);
+		}
+		[[thisNode itemElement] openMountedElement];
+	}
 
 }
 
@@ -411,7 +436,8 @@ PADSearchRequest* PADIndexToolbarController_LastSearch = nil;
 	NSInteger	index;
 	DACALDeviceRef	aBox;
 
-	if( [self selectedDevices] ) boxCount = [[self selectedDevices] count];
+	if( [self selectedDevices] ) 
+		boxCount = [[self selectedDevices] count];
 
 	for( index=0; index < boxCount; index++ )
 	{
@@ -520,8 +546,16 @@ PADSearchRequest* PADIndexToolbarController_LastSearch = nil;
 - (IBAction)clickPrintReport:(id)sender
 	{ [[AppController shared] printReport:self]; }
 
-- (IBAction)clickEject:(id)sender
-	{ [DACALSlot ejectSlotVolumesOfNodes:[self selectedNodes]]; }
+- (IBAction)clickEject:(id)sender { 
+	if ([[self selectedNodes] count] )
+		[DACALSlot ejectSlotVolumesOfNodes:[self selectedNodes]]; 
+	
+	DACALDeviceRef theDevice = (DACALDeviceRef)[[self selectedDevices]objectAtIndex:0];
+	if ( DACALIsDC016(theDevice) ) {
+		DACALResult err = DACALCommandDVDEject(theDevice);
+		PMERR(@"Failed to eject");
+	}
+}
 
 - (IBAction)clickOpen:(id)sender
 { }

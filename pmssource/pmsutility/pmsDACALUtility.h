@@ -3,7 +3,7 @@
  *  PickADisc
  *
  *  Created by Jack Small on 7/16/08.
- *  Copyright 2008 __MyCompanyName__. All rights reserved.
+ *  Copyright 2008 polyMicro Systems. All rights reserved.
  *
  */
 
@@ -13,7 +13,7 @@
 
 #ifndef _pmsDACALUtility
 OSStatus		DACALRegisterIconResource( CFStringRef theIconFile, OSType theIconType );
-NSImage*		DACALGetIconImageForType( int	theType );
+NSImage*		DACALGetIconImageForType( OSType	theType );
 IconRef			DACALGetIconRefForType( int	theType );
 
 

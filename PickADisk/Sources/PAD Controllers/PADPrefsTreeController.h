@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-
+#import "TreeController.h"
 
 @interface PADPrefsTreeController : TreeControllerDataSource {
 

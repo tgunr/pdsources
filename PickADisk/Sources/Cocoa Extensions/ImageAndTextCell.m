@@ -7,6 +7,7 @@
  */
 
 #import "ImageAndTextCell.h"
+#import "AppController.h"
 #import <AppKit/NSCell.h>
 
 #define		DACIATCImageIndent		3

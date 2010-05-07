@@ -7,6 +7,9 @@
 //
 
 #import "LicenseService.h"
+#import "PADLifecycleController.h"
+#import "AppController.h"
+#import "DACALTreeDataSource.h"
 
 NSString*		kPADLicenseDataPrefKey			=	@"licenseDict";
 NSString*		kPADLicenseFirstRunPrefKey		=	@"demoAnnounce";

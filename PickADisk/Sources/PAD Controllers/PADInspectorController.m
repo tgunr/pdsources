@@ -7,7 +7,13 @@
 //
 
 #import "PADInspectorController.h"
-
+#import "DACALSlot.h"
+#import "DACALTreeDataSource.h"
+#import "DACALViewDataSource.h"
+#import "PADSearchRequest.h"
+#import "NSApplication_Extensions.h"
+#import "NSString_Extensions.h"
+#import "AppController.h";
 
 @implementation PADInspectorController
 
@@ -60,6 +66,11 @@ static	PADInspectorController*		PADInspectorController_shared = nil;
 - (NSUndoManager*)windowWillReturnUndoManager:(NSWindow*)window
 {
 	return [[[AppController shared] dataView] undoManager];
+}
+
+- (NSString *)windowFrameAutosaveName {
+	NSString *saveName = @"MainInspectorData";
+	return saveName;
 }
 
 - (NSUndoManager*)undoManager
@@ -472,6 +483,7 @@ static	PADInspectorController*		PADInspectorController_shared = nil;
 	[self installSelectionData];
 }
 
+
 @end		//	PADInspectorController
 
 @implementation PADInspectorControllerPanel
@@ -480,6 +492,7 @@ static	PADInspectorController*		PADInspectorController_shared = nil;
 {	return [(PADInspectorController*)[self windowController] undoManager];	}
 
 @end		//	PADInspectorControllerPanel
+
 
 
 

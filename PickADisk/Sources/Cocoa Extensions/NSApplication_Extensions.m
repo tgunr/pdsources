@@ -3,7 +3,7 @@
 //  PickADisc
 //
 //  Created by Jack Small on 7/14/08.
-//  Copyright 2008 __MyCompanyName__. All rights reserved.
+//  Copyright 2008 polyMicro Systems. All rights reserved.
 //
 
 #import "NSApplication_Extensions.h"
@@ -113,8 +113,9 @@ const	time_t	kTimeOneDayInSeconds = 86400.0;
 		CFTimeInterval	dayCount = [[options objectForKey:@"Days"] doubleValue];
 		CFTimeInterval	daySeconds = dayCount * 86400;
 		
-		if( other == nil ) other = [NSDate date];
-		if( ([other isKindOfClass:[NSString class]] ) && ([other compare:@"Yesterday"] == NSOrderedSame) )
+		if( other == nil ) 
+			other = [NSDate date];
+		if( ([other isKindOfClass:[NSString class]] ) && ([(NSString *)other compare:@"Yesterday"] == NSOrderedSame) )
 			other = [NSDate yesterday];
 		
 		if( (other != nil) && (ourDate != nil) )

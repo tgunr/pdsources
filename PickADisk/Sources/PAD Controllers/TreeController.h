@@ -3,17 +3,13 @@
 //  DragNDropOutlineView
 //
 //  Created by Jack Small on 7/4/08.
-//  Copyright 2008 __MyCompanyName__. All rights reserved.
+//  Copyright 2008 polyMicro Systems. All rights reserved.
 //
 
 #import <Cocoa/Cocoa.h>
 
-//#import "AppController.h"
 #import "SimpleTreeNode.h"
-
-#import "ImageAndTextCell.h"
 #import "NSArray_Extensions.h"
-#import "NSOutlineView_Extensions.h"
 
 // ================================================================
 // Useful Macros

@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 
 @class PADOperationTask;
+@class DACALDeviceNode;
 
 @interface PADCarouselOperation : NSOperation {
 
@@ -25,7 +26,7 @@
 -(SEL)finishSelector;
 -(void)setFinishSelector:(SEL)newSel;
 
--(BOOL)cancelOperationForDevice:(DACALDevice*)oldBox;
+-(BOOL)cancelOperationForDevice:(DACALDeviceNode*)oldBox;
 
 -(id)initWithTarget:(id)theTarget endSelector:(SEL)theSelector;
 +(id)startOperationTask:(id)opTask forTarget:(id)opTarget endSelector:(SEL)theSelector;
@@ -34,19 +35,19 @@
 
 @interface PADOperationTask : NSObject {
 
-	DACALDevice*		theBoxRef;
+	DACALDeviceNode*		theBoxRef;
 
 }
 
--(DACALDevice*)theBoxRef;
--(void)setTheBoxRef:(DACALDevice*)newBox;
+-(DACALDeviceNode*)theBoxRef;
+-(void)setTheBoxRef:(DACALDeviceNode*)newBox;
 
 -(BOOL)newTaskForOperation:(PADCarouselOperation*)ownerOp;
 -(void)queueTaskForOperation:(PADCarouselOperation*)ownerOp;
 -(BOOL)runTaskForOperation:(PADCarouselOperation*)ownerOp;
 -(id)endTaskForOperation:(PADCarouselOperation*)ownerOp;
 
--(BOOL)cancelOperationForDevice:(DACALDevice*)oldBox;
+-(BOOL)cancelOperationForDevice:(DACALDeviceNode*)oldBox;
 -(id)startNewOperationForTarget:(id)theTarget endSelector:(SEL)theSelector;
 
 @end

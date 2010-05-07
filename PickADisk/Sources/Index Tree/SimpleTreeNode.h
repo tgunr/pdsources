@@ -2,6 +2,7 @@
 #import <Cocoa/Cocoa.h>
 
 #import "TreeNode.h"
+#import "dacallib.h"
 
 #define KEY_GROUPNAME	@"Group"
 #define KEY_ENTRIES		@"Entries"
