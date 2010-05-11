@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.6.2">
+  <compounddef id="dir_8868fe042af8f81bbb501acb2ece1c8e" kind="dir">
+    <compoundname>PickADisk/Sources/Index Tree/</compoundname>
+    <innerfile refid="_item___extensions_8h">Item_Extensions.h</innerfile>
+    <innerfile refid="_item___extensions_8m">Item_Extensions.m</innerfile>
+    <innerfile refid="_p_a_d_index_node_data_8h">PADIndexNodeData.h</innerfile>
+    <innerfile refid="_p_a_d_index_node_data_8m">PADIndexNodeData.m</innerfile>
+    <innerfile refid="_simple_tree_node_8h">SimpleTreeNode.h</innerfile>
+    <innerfile refid="_simple_tree_node_8m">SimpleTreeNode.m</innerfile>
+    <innerfile refid="_tree_node_8h">TreeNode.h</innerfile>
+    <innerfile refid="_tree_node_8m">TreeNode.m</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/"/>
+  </compounddef>
+</doxygen>

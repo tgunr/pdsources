@@ -1,0 +1,813 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.6.2">
+  <compounddef id="interface_d_a_c_volume" kind="class" prot="public">
+    <compoundname>DACVolume</compoundname>
+    <basecompoundref refid="class_n_s_object" prot="public" virt="non-virtual">NSObject</basecompoundref>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="interface_d_a_c_volume_1a45a54acadb8faf31dd5c490d0abf620a" prot="protected" static="no" mutable="no">
+        <type>FSVolumeRefNum</type>
+        <definition>FSVolumeRefNum DACVolume::mountVolume</definition>
+        <argsstring></argsstring>
+        <name>mountVolume</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.h" line="20" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.h" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_d_a_c_volume_1a08b202ae0604f53eb0459c04e815f702" prot="protected" static="no" mutable="no">
+        <type>NSURL *</type>
+        <definition>NSURL * DACVolume::volumeURL</definition>
+        <argsstring></argsstring>
+        <name>volumeURL</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.h" line="21" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.h" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_d_a_c_volume_1a958dcda1ca70696f56e5e7707fab5c21" prot="protected" static="no" mutable="no">
+        <type>DADiskRef</type>
+        <definition>DADiskRef DACVolume::volumeDiskRef</definition>
+        <argsstring></argsstring>
+        <name>volumeDiskRef</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.h" line="22" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.h" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_d_a_c_volume_1a2292abd31644987559eae81475195543" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+        <definition>NSString * DACVolume::mediaTitle</definition>
+        <argsstring></argsstring>
+        <name>mediaTitle</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.h" line="24" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.h" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_d_a_c_volume_1aa53cfa2e2558110fe9d1b5ec814dccee" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+        <definition>NSString * DACVolume::mediaType</definition>
+        <argsstring></argsstring>
+        <name>mediaType</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.h" line="25" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_d_a_c_volume_1ad823a818f360460c080496aaa982f152" prot="protected" static="no" mutable="no">
+        <type>NSNumber *</type>
+        <definition>NSNumber * DACVolume::mediaSize</definition>
+        <argsstring></argsstring>
+        <name>mediaSize</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.h" line="26" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.h" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_d_a_c_volume_1a23d29973519568c4608c8c809e33a8be" prot="protected" static="no" mutable="no">
+        <type>IconRef</type>
+        <definition>IconRef DACVolume::mediaIcon</definition>
+        <argsstring></argsstring>
+        <name>mediaIcon</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.h" line="27" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.h" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_d_a_c_volume_1affee0f2e99b60f433faa10ea83762154" prot="protected" static="no" mutable="no">
+        <type>CFUUIDRef</type>
+        <definition>CFUUIDRef DACVolume::mediaUUID</definition>
+        <argsstring></argsstring>
+        <name>mediaUUID</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.h" line="28" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_d_a_c_volume_1a3a7a14d8f1c7f066ab176c1bc14f67a1" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+        <definition>NSString * DACVolume::padIdentifier</definition>
+        <argsstring></argsstring>
+        <name>padIdentifier</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.h" line="30" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.h" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_d_a_c_volume_1a046328c1a58b75b67c050a706bc6964a" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+        <definition>NSString * DACVolume::padKnownHost</definition>
+        <argsstring></argsstring>
+        <name>padKnownHost</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.h" line="31" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_d_a_c_volume_1af1b69301c18bb358bc0182d30e01227a" prot="protected" static="no" mutable="no">
+        <type>BOOL</type>
+        <definition>BOOL DACVolume::padKnownVolume</definition>
+        <argsstring></argsstring>
+        <name>padKnownVolume</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.h" line="32" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_d_a_c_volume_1adc9dd5b9c1fe2b62a479a4fbe6d60700" prot="protected" static="no" mutable="no">
+        <type><ref refid="interface_d_a_c_a_l_slot" kindref="compound">DACALSlot</ref> *</type>
+        <definition>DACALSlot * DACVolume::padKnownSlot</definition>
+        <argsstring></argsstring>
+        <name>padKnownSlot</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.h" line="33" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.h" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_d_a_c_volume_1ac4394ed828f239c13e28819f4bb99ef5" prot="protected" static="no" mutable="no">
+        <type>DACALDeviceRef</type>
+        <definition>DACALDeviceRef DACVolume::padKnownDevice</definition>
+        <argsstring></argsstring>
+        <name>padKnownDevice</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.h" line="34" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_d_a_c_volume_1abae9299fd903ba8706547127e0a5ec6b" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+        <definition>NSString * DACVolume::padFlavorGuess</definition>
+        <argsstring></argsstring>
+        <name>padFlavorGuess</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.h" line="35" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="interface_d_a_c_volume_1a4a821b0f3cd94f5f4320470a1fef1c27" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>FSVolumeRefNum</type>
+        <definition>FSVolumeRefNum DACVolume::mountVolume</definition>
+        <argsstring>()</argsstring>
+        <name>mountVolume</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.h" line="38"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_volume_1a58f32011239439e6f92e9e55f5fd93b7" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>NSURL *</type>
+        <definition>NSURL * DACVolume::volumeURL</definition>
+        <argsstring>()</argsstring>
+        <name>volumeURL</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.h" line="39"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_volume_1a0270438e0c1abfb386b35b06432f86df" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+        <definition>NSString * DACVolume::volumePath</definition>
+        <argsstring>()</argsstring>
+        <name>volumePath</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.h" line="40" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.m" bodystart="60" bodyend="69"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_volume_1a1a300ad08d0d55b7a863b210ba56305a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>DADiskRef</type>
+        <definition>DADiskRef DACVolume::volumeDiskRef</definition>
+        <argsstring>()</argsstring>
+        <name>volumeDiskRef</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.h" line="41"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_volume_1ab076a55213c76c53b69f28e48befb010" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+        <definition>NSString * DACVolume::mediaTitle</definition>
+        <argsstring>()</argsstring>
+        <name>mediaTitle</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.h" line="43"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_volume_1a3c2da12503bc3829fcde8269b479189b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+        <definition>NSString * DACVolume::mediaType</definition>
+        <argsstring>()</argsstring>
+        <name>mediaType</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.h" line="44"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_volume_1a8439f02909cdd6a026c624eeb52a5f8c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>NSNumber *</type>
+        <definition>NSNumber * DACVolume::mediaSize</definition>
+        <argsstring>()</argsstring>
+        <name>mediaSize</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.h" line="45"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_volume_1a3562484413983c5b9394e8c8cb4a2c33" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>IconRef</type>
+        <definition>IconRef DACVolume::mediaIcon</definition>
+        <argsstring>()</argsstring>
+        <name>mediaIcon</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.h" line="46"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_volume_1a95803c39dfba89129e5d1afb5b07548b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>CFUUIDRef</type>
+        <definition>CFUUIDRef DACVolume::mediaUUID</definition>
+        <argsstring>()</argsstring>
+        <name>mediaUUID</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.h" line="47"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_volume_1a5f5ecbe1048d65e72a7c5d988c6037db" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+        <definition>NSString * DACVolume::padIdentifier</definition>
+        <argsstring>()</argsstring>
+        <name>padIdentifier</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.h" line="49"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_volume_1ab72021a9b59e441476b5a5bafcc02c50" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+        <definition>NSString * DACVolume::padKnownHost</definition>
+        <argsstring>()</argsstring>
+        <name>padKnownHost</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.h" line="50"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_volume_1ac3a00e61c36842cb6433d9d6982c83ba" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>BOOL</type>
+        <definition>BOOL DACVolume::padKnownVolume</definition>
+        <argsstring>()</argsstring>
+        <name>padKnownVolume</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.h" line="52"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_volume_1ab2037dd55f3121c08ea60183ffed589c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="interface_d_a_c_a_l_slot" kindref="compound">DACALSlot</ref> *</type>
+        <definition>DACALSlot * DACVolume::padKnownSlot</definition>
+        <argsstring>()</argsstring>
+        <name>padKnownSlot</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.h" line="54"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_volume_1a1bef37818ce0aecc4bceac62ce2d279d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void DACVolume::setPadKnownSlot:</definition>
+        <argsstring>(DACALSlot *newSlot)</argsstring>
+        <name>setPadKnownSlot:</name>
+        <param>
+          <type><ref refid="interface_d_a_c_a_l_slot" kindref="compound">DACALSlot</ref> *</type>
+          <declname>newSlot</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.h" line="55" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.m" bodystart="106" bodyend="115"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_volume_1a4974ef51416dfcf1c75f669a1639d449" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>DACALDeviceRef</type>
+        <definition>DACALDeviceRef DACVolume::padKnownDevice</definition>
+        <argsstring>()</argsstring>
+        <name>padKnownDevice</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.h" line="57"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_volume_1a01ada9a1d8b5c2fe8a887803ef47e821" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void DACVolume::setPadKnownDevice:</definition>
+        <argsstring>(DACALDeviceRef newDevice)</argsstring>
+        <name>setPadKnownDevice:</name>
+        <param>
+          <type>DACALDeviceRef</type>
+          <declname>newDevice</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.h" line="58" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.m" bodystart="119" bodyend="123"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_volume_1a2bf0904b0e10b8af50a9ef627c693549" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+        <definition>NSString * DACVolume::padFlavorGuess</definition>
+        <argsstring>()</argsstring>
+        <name>padFlavorGuess</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.h" line="60"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_volume_1a825b3db979c357e7136d7738feb5dcc6" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void DACVolume::setPadFlavorGuess:</definition>
+        <argsstring>(NSString *guessFlavor)</argsstring>
+        <name>setPadFlavorGuess:</name>
+        <param>
+          <type><ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+          <declname>guessFlavor</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.h" line="61" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.m" bodystart="128" bodyend="136"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_volume_1a11e2afb0b0b8e35761707e66a826d5c4" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="class_n_s_array" kindref="compound">NSArray</ref> *</type>
+        <definition>NSArray * DACVolume::topLevelDirectory</definition>
+        <argsstring>()</argsstring>
+        <name>topLevelDirectory</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.h" line="63" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.m" bodystart="138" bodyend="160"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_volume_1ae2b46f1f78f7f9516b413a92b359100c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>BOOL</type>
+        <definition>BOOL DACVolume::isVolumeURL:</definition>
+        <argsstring>(NSURL *otherURL)</argsstring>
+        <name>isVolumeURL:</name>
+        <param>
+          <type>NSURL *</type>
+          <declname>otherURL</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.h" line="64" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.m" bodystart="162" bodyend="171"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_volume_1a9e98a1c9e6ed28139fb23537e6bdecc1" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>BOOL</type>
+        <definition>BOOL DACVolume::isIdentifiedAs:</definition>
+        <argsstring>(NSString *testID)</argsstring>
+        <name>isIdentifiedAs:</name>
+        <param>
+          <type><ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+          <declname>testID</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.h" line="65" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.m" bodystart="173" bodyend="181"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_volume_1a63fcf3e0b8ebc640894876dda6026848" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>BOOL</type>
+        <definition>BOOL DACVolume::isIndexable</definition>
+        <argsstring>()</argsstring>
+        <name>isIndexable</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.h" line="66" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.m" bodystart="183" bodyend="184"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_volume_1ac2a2159dfe20d3234102dda29f383cf9" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>BOOL</type>
+        <definition>BOOL DACVolume::isCD</definition>
+        <argsstring>()</argsstring>
+        <name>isCD</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.h" line="67" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.m" bodystart="186" bodyend="187"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_volume_1a9232fe9bf051dc1193e6aa200b820c0c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>BOOL</type>
+        <definition>BOOL DACVolume::isDVD</definition>
+        <argsstring>()</argsstring>
+        <name>isDVD</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.h" line="68" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.m" bodystart="189" bodyend="190"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_volume_1a3fd1a4ab51244da3fa2ce4bb4f4f5670" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>BOOL</type>
+        <definition>BOOL DACVolume::isBD</definition>
+        <argsstring>()</argsstring>
+        <name>isBD</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.h" line="69" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.m" bodystart="192" bodyend="193"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_volume_1a8fad0622742b34273bae954d492db187" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+        <definition>NSString * DACVolume::guessPADFlavor</definition>
+        <argsstring>()</argsstring>
+        <name>guessPADFlavor</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.h" line="70" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.m" bodystart="195" bodyend="283"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_volume_1a10abd2d76f1e2f5efed332524479f892" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="class_n_s_mutable_dictionary" kindref="compound">NSMutableDictionary</ref> *</type>
+        <definition>NSMutableDictionary * DACVolume::getDVDMediaInfo</definition>
+        <argsstring>()</argsstring>
+        <name>getDVDMediaInfo</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.h" line="71" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.m" bodystart="332" bodyend="450"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_volume_1ac842254fa9eb29625a4727f0473df400" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>BOOL</type>
+        <definition>BOOL DACVolume::ejectVolume</definition>
+        <argsstring>()</argsstring>
+        <name>ejectVolume</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.h" line="72" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.m" bodystart="808" bodyend="816"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_volume_1aca85c4eaec2edf253f185437dc7f7d31" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void DACVolume::readDVDStructure:withFormat:address:layer:intoDictionary:</definition>
+        <argsstring>(MMCDeviceInterface **mmcInterface,[withFormat] SCSICmdField1Byte format,[address] SCSICmdField4Byte address,[layer] SCSICmdField1Byte layer,[intoDictionary] NSMutableDictionary *dict)</argsstring>
+        <name>readDVDStructure:withFormat:address:layer:intoDictionary:</name>
+        <param>
+          <type>MMCDeviceInterface **</type>
+          <declname>mmcInterface</declname>
+        </param>
+        <param>
+          <attributes>[withFormat]</attributes>
+          <type>SCSICmdField1Byte</type>
+          <declname>format</declname>
+        </param>
+        <param>
+          <attributes>[address]</attributes>
+          <type>SCSICmdField4Byte</type>
+          <declname>address</declname>
+        </param>
+        <param>
+          <attributes>[layer]</attributes>
+          <type>SCSICmdField1Byte</type>
+          <declname>layer</declname>
+        </param>
+        <param>
+          <attributes>[intoDictionary]</attributes>
+          <type><ref refid="class_n_s_mutable_dictionary" kindref="compound">NSMutableDictionary</ref> *</type>
+          <declname>dict</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.h" line="78" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.m" bodystart="453" bodyend="528"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_volume_1a217f90394135d3f15a4b0dc4cdcaa269" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="interface_d_a_c_volume" kindref="compound">DACVolume</ref> *</type>
+        <definition>DACVolume * DACVolume::initForMountURL:</definition>
+        <argsstring>(NSURL *mountURL)</argsstring>
+        <name>initForMountURL:</name>
+        <param>
+          <type>NSURL *</type>
+          <declname>mountURL</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.h" line="80" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.m" bodystart="532" bodyend="775"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="interface_d_a_c_volume_1ad4baa638444d8b6452309d3f58bff189" prot="public" static="yes" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="interface_d_a_c_volume" kindref="compound">DACVolume</ref> *</type>
+        <definition>DACVolume * DACVolume::volumeForMountURL:</definition>
+        <argsstring>(NSURL *mountURL)</argsstring>
+        <name>volumeForMountURL:</name>
+        <param>
+          <type>NSURL *</type>
+          <declname>mountURL</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.h" line="81" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.m" bodystart="780" bodyend="781"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_volume_1a49e9650deed87fb00d705e2a5e7ab0bc" prot="public" static="yes" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="class_n_s_array" kindref="compound">NSArray</ref> *</type>
+        <definition>NSArray * DACVolume::detectedMounts:</definition>
+        <argsstring>(NSArray *newMounts)</argsstring>
+        <name>detectedMounts:</name>
+        <param>
+          <type><ref refid="class_n_s_array" kindref="compound">NSArray</ref> *</type>
+          <declname>newMounts</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.h" line="82" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.m" bodystart="783" bodyend="806"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="96">
+        <label>DACVolume</label>
+        <link refid="interface_d_a_c_volume"/>
+        <childnode refid="97" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="97">
+        <label>NSObject</label>
+        <link refid="class_n_s_object"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="103">
+        <label>NSMutableArray</label>
+        <link refid="class_n_s_mutable_array"/>
+      </node>
+      <node id="101">
+        <label>SimpleTreeNode</label>
+        <link refid="class_simple_tree_node"/>
+        <childnode refid="102" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="105">
+        <label>DACALDeviceNode</label>
+        <link refid="interface_d_a_c_a_l_device_node"/>
+        <childnode refid="106" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="104">
+        <label>NSString</label>
+        <link refid="class_n_s_string"/>
+      </node>
+      <node id="98">
+        <label>DACVolume</label>
+        <link refid="interface_d_a_c_volume"/>
+        <childnode refid="99" relation="public-inheritance">
+        </childnode>
+        <childnode refid="100" relation="usage">
+          <edgelabel>padKnownSlot</edgelabel>
+        </childnode>
+        <childnode refid="104" relation="usage">
+          <edgelabel>padIdentifier</edgelabel>
+          <edgelabel>mediaType</edgelabel>
+          <edgelabel>mediaTitle</edgelabel>
+          <edgelabel>padFlavorGuess</edgelabel>
+          <edgelabel>padKnownHost</edgelabel>
+        </childnode>
+      </node>
+      <node id="106">
+        <label>DACALDevice</label>
+        <link refid="interface_d_a_c_a_l_device"/>
+        <childnode refid="99" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="102">
+        <label>TreeNode</label>
+        <link refid="interface_tree_node"/>
+        <childnode refid="99" relation="public-inheritance">
+        </childnode>
+        <childnode refid="102" relation="usage">
+          <edgelabel>nodeParent</edgelabel>
+        </childnode>
+        <childnode refid="103" relation="usage">
+          <edgelabel>nodeChildren</edgelabel>
+        </childnode>
+      </node>
+      <node id="99">
+        <label>NSObject</label>
+        <link refid="class_n_s_object"/>
+      </node>
+      <node id="100">
+        <label>DACALSlot</label>
+        <link refid="interface_d_a_c_a_l_slot"/>
+        <childnode refid="99" relation="public-inheritance">
+        </childnode>
+        <childnode refid="101" relation="usage">
+          <edgelabel>slotNode</edgelabel>
+        </childnode>
+        <childnode refid="104" relation="usage">
+          <edgelabel>slotIdentifier</edgelabel>
+        </childnode>
+        <childnode refid="105" relation="usage">
+          <edgelabel>slotDevice</edgelabel>
+        </childnode>
+        <childnode refid="103" relation="usage">
+          <edgelabel>slotElements</edgelabel>
+        </childnode>
+        <childnode refid="98" relation="usage">
+          <edgelabel>slotVolume</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.h" line="19" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/DACVolume.h" bodystart="19" bodyend="-1"/>
+    <listofallmembers>
+      <member refid="interface_d_a_c_volume_1a49e9650deed87fb00d705e2a5e7ab0bc" prot="public" virt="virtual"><scope>DACVolume</scope><name>detectedMounts:</name></member>
+      <member refid="interface_d_a_c_volume_1ac842254fa9eb29625a4727f0473df400" prot="public" virt="virtual"><scope>DACVolume</scope><name>ejectVolume</name></member>
+      <member refid="interface_d_a_c_volume_1a10abd2d76f1e2f5efed332524479f892" prot="public" virt="virtual"><scope>DACVolume</scope><name>getDVDMediaInfo</name></member>
+      <member refid="interface_d_a_c_volume_1a8fad0622742b34273bae954d492db187" prot="public" virt="virtual"><scope>DACVolume</scope><name>guessPADFlavor</name></member>
+      <member refid="interface_d_a_c_volume_1a217f90394135d3f15a4b0dc4cdcaa269" prot="public" virt="virtual"><scope>DACVolume</scope><name>initForMountURL:</name></member>
+      <member refid="interface_d_a_c_volume_1a3fd1a4ab51244da3fa2ce4bb4f4f5670" prot="public" virt="virtual"><scope>DACVolume</scope><name>isBD</name></member>
+      <member refid="interface_d_a_c_volume_1ac2a2159dfe20d3234102dda29f383cf9" prot="public" virt="virtual"><scope>DACVolume</scope><name>isCD</name></member>
+      <member refid="interface_d_a_c_volume_1a9232fe9bf051dc1193e6aa200b820c0c" prot="public" virt="virtual"><scope>DACVolume</scope><name>isDVD</name></member>
+      <member refid="interface_d_a_c_volume_1a9e98a1c9e6ed28139fb23537e6bdecc1" prot="public" virt="virtual"><scope>DACVolume</scope><name>isIdentifiedAs:</name></member>
+      <member refid="interface_d_a_c_volume_1a63fcf3e0b8ebc640894876dda6026848" prot="public" virt="virtual"><scope>DACVolume</scope><name>isIndexable</name></member>
+      <member refid="interface_d_a_c_volume_1ae2b46f1f78f7f9516b413a92b359100c" prot="public" virt="virtual"><scope>DACVolume</scope><name>isVolumeURL:</name></member>
+      <member refid="interface_d_a_c_volume_1a23d29973519568c4608c8c809e33a8be" prot="protected" virt="non-virtual"><scope>DACVolume</scope><name>mediaIcon</name></member>
+      <member refid="interface_d_a_c_volume_1a3562484413983c5b9394e8c8cb4a2c33" prot="public" virt="virtual"><scope>DACVolume</scope><name>mediaIcon</name></member>
+      <member refid="interface_d_a_c_volume_1ad823a818f360460c080496aaa982f152" prot="protected" virt="non-virtual"><scope>DACVolume</scope><name>mediaSize</name></member>
+      <member refid="interface_d_a_c_volume_1a8439f02909cdd6a026c624eeb52a5f8c" prot="public" virt="virtual"><scope>DACVolume</scope><name>mediaSize</name></member>
+      <member refid="interface_d_a_c_volume_1a2292abd31644987559eae81475195543" prot="protected" virt="non-virtual"><scope>DACVolume</scope><name>mediaTitle</name></member>
+      <member refid="interface_d_a_c_volume_1ab076a55213c76c53b69f28e48befb010" prot="public" virt="virtual"><scope>DACVolume</scope><name>mediaTitle</name></member>
+      <member refid="interface_d_a_c_volume_1aa53cfa2e2558110fe9d1b5ec814dccee" prot="protected" virt="non-virtual"><scope>DACVolume</scope><name>mediaType</name></member>
+      <member refid="interface_d_a_c_volume_1a3c2da12503bc3829fcde8269b479189b" prot="public" virt="virtual"><scope>DACVolume</scope><name>mediaType</name></member>
+      <member refid="interface_d_a_c_volume_1affee0f2e99b60f433faa10ea83762154" prot="protected" virt="non-virtual"><scope>DACVolume</scope><name>mediaUUID</name></member>
+      <member refid="interface_d_a_c_volume_1a95803c39dfba89129e5d1afb5b07548b" prot="public" virt="virtual"><scope>DACVolume</scope><name>mediaUUID</name></member>
+      <member refid="interface_d_a_c_volume_1a45a54acadb8faf31dd5c490d0abf620a" prot="protected" virt="non-virtual"><scope>DACVolume</scope><name>mountVolume</name></member>
+      <member refid="interface_d_a_c_volume_1a4a821b0f3cd94f5f4320470a1fef1c27" prot="public" virt="virtual"><scope>DACVolume</scope><name>mountVolume</name></member>
+      <member refid="interface_d_a_c_volume_1abae9299fd903ba8706547127e0a5ec6b" prot="protected" virt="non-virtual"><scope>DACVolume</scope><name>padFlavorGuess</name></member>
+      <member refid="interface_d_a_c_volume_1a2bf0904b0e10b8af50a9ef627c693549" prot="public" virt="virtual"><scope>DACVolume</scope><name>padFlavorGuess</name></member>
+      <member refid="interface_d_a_c_volume_1a3a7a14d8f1c7f066ab176c1bc14f67a1" prot="protected" virt="non-virtual"><scope>DACVolume</scope><name>padIdentifier</name></member>
+      <member refid="interface_d_a_c_volume_1a5f5ecbe1048d65e72a7c5d988c6037db" prot="public" virt="virtual"><scope>DACVolume</scope><name>padIdentifier</name></member>
+      <member refid="interface_d_a_c_volume_1ac4394ed828f239c13e28819f4bb99ef5" prot="protected" virt="non-virtual"><scope>DACVolume</scope><name>padKnownDevice</name></member>
+      <member refid="interface_d_a_c_volume_1a4974ef51416dfcf1c75f669a1639d449" prot="public" virt="virtual"><scope>DACVolume</scope><name>padKnownDevice</name></member>
+      <member refid="interface_d_a_c_volume_1a046328c1a58b75b67c050a706bc6964a" prot="protected" virt="non-virtual"><scope>DACVolume</scope><name>padKnownHost</name></member>
+      <member refid="interface_d_a_c_volume_1ab72021a9b59e441476b5a5bafcc02c50" prot="public" virt="virtual"><scope>DACVolume</scope><name>padKnownHost</name></member>
+      <member refid="interface_d_a_c_volume_1adc9dd5b9c1fe2b62a479a4fbe6d60700" prot="protected" virt="non-virtual"><scope>DACVolume</scope><name>padKnownSlot</name></member>
+      <member refid="interface_d_a_c_volume_1ab2037dd55f3121c08ea60183ffed589c" prot="public" virt="virtual"><scope>DACVolume</scope><name>padKnownSlot</name></member>
+      <member refid="interface_d_a_c_volume_1af1b69301c18bb358bc0182d30e01227a" prot="protected" virt="non-virtual"><scope>DACVolume</scope><name>padKnownVolume</name></member>
+      <member refid="interface_d_a_c_volume_1ac3a00e61c36842cb6433d9d6982c83ba" prot="public" virt="virtual"><scope>DACVolume</scope><name>padKnownVolume</name></member>
+      <member refid="interface_d_a_c_volume_1aca85c4eaec2edf253f185437dc7f7d31" prot="public" virt="virtual"><scope>DACVolume</scope><name>readDVDStructure:withFormat:address:layer:intoDictionary:</name></member>
+      <member refid="interface_d_a_c_volume_1a825b3db979c357e7136d7738feb5dcc6" prot="public" virt="virtual"><scope>DACVolume</scope><name>setPadFlavorGuess:</name></member>
+      <member refid="interface_d_a_c_volume_1a01ada9a1d8b5c2fe8a887803ef47e821" prot="public" virt="virtual"><scope>DACVolume</scope><name>setPadKnownDevice:</name></member>
+      <member refid="interface_d_a_c_volume_1a1bef37818ce0aecc4bceac62ce2d279d" prot="public" virt="virtual"><scope>DACVolume</scope><name>setPadKnownSlot:</name></member>
+      <member refid="interface_d_a_c_volume_1a11e2afb0b0b8e35761707e66a826d5c4" prot="public" virt="virtual"><scope>DACVolume</scope><name>topLevelDirectory</name></member>
+      <member refid="interface_d_a_c_volume_1a958dcda1ca70696f56e5e7707fab5c21" prot="protected" virt="non-virtual"><scope>DACVolume</scope><name>volumeDiskRef</name></member>
+      <member refid="interface_d_a_c_volume_1a1a300ad08d0d55b7a863b210ba56305a" prot="public" virt="virtual"><scope>DACVolume</scope><name>volumeDiskRef</name></member>
+      <member refid="interface_d_a_c_volume_1ad4baa638444d8b6452309d3f58bff189" prot="public" virt="virtual"><scope>DACVolume</scope><name>volumeForMountURL:</name></member>
+      <member refid="interface_d_a_c_volume_1a0270438e0c1abfb386b35b06432f86df" prot="public" virt="virtual"><scope>DACVolume</scope><name>volumePath</name></member>
+      <member refid="interface_d_a_c_volume_1a08b202ae0604f53eb0459c04e815f702" prot="protected" virt="non-virtual"><scope>DACVolume</scope><name>volumeURL</name></member>
+      <member refid="interface_d_a_c_volume_1a58f32011239439e6f92e9e55f5fd93b7" prot="public" virt="virtual"><scope>DACVolume</scope><name>volumeURL</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

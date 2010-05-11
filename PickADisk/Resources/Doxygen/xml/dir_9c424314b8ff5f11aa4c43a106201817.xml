@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.6.2">
+  <compounddef id="dir_9c424314b8ff5f11aa4c43a106201817" kind="dir">
+    <compoundname>PickADisk/Sources/IconFamily/</compoundname>
+    <innerfile refid="_icon_family_8h">IconFamily.h</innerfile>
+    <innerfile refid="_icon_family_8m">IconFamily.m</innerfile>
+    <innerfile refid="_n_s_string_09_carbon_f_s_ref_creation_8h">NSString+CarbonFSRefCreation.h</innerfile>
+    <innerfile refid="_n_s_string_09_carbon_f_s_ref_creation_8m">NSString+CarbonFSRefCreation.m</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/IconFamily/"/>
+  </compounddef>
+</doxygen>

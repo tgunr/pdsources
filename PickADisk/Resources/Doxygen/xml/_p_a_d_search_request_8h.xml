@@ -1,0 +1,616 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.6.2">
+  <compounddef id="_p_a_d_search_request_8h" kind="file">
+    <compoundname>PADSearchRequest.h</compoundname>
+    <includes local="no">Cocoa/Cocoa.h</includes>
+    <includes local="yes">JSServiceManager.h</includes>
+    <includes refid="_simple_tree_node_8h" local="yes">SimpleTreeNode.h</includes>
+    <includedby refid="_n_s_outline_view___extensions_8m" local="yes">PickADisk/Sources/Cocoa Extensions/NSOutlineView_Extensions.m</includedby>
+    <includedby refid="_d_a_c_a_l_device_8m" local="yes">PickADisk/Sources/DACAL/DACALDevice.m</includedby>
+    <includedby refid="_d_a_c_a_l_device_node_8m" local="yes">PickADisk/Sources/DACAL/DACALDeviceNode.m</includedby>
+    <includedby refid="_d_a_c_a_l_slot_8m" local="yes">PickADisk/Sources/DACAL/DACALSlot.m</includedby>
+    <includedby refid="_p_a_d_index_node_data_8h" local="yes">PickADisk/Sources/Index Tree/PADIndexNodeData.h</includedby>
+    <includedby refid="_simple_tree_node_8m" local="yes">PickADisk/Sources/Index Tree/SimpleTreeNode.m</includedby>
+    <includedby refid="_p_a_d_index_toolbar_controller_8h" local="yes">PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h</includedby>
+    <includedby refid="_d_a_c_a_l_tree_data_source_8m" local="yes">PickADisk/Sources/PAD Controllers/DACALTreeDataSource.m</includedby>
+    <includedby refid="_p_a_d_index_operation_8m" local="yes">PickADisk/Sources/PAD Controllers/PADIndexOperation.m</includedby>
+    <includedby refid="_p_a_d_inspector_controller_8m" local="yes">PickADisk/Sources/PAD Controllers/PADInspectorController.m</includedby>
+    <includedby refid="_p_a_d_search_request_8m" local="yes">PickADisk/Sources/PAD Controllers/PADSearchRequest.m</includedby>
+    <incdepgraph>
+      <node id="937">
+        <label>Cocoa/Cocoa.h</label>
+      </node>
+      <node id="939">
+        <label>SimpleTreeNode.h</label>
+        <link refid="_simple_tree_node_8h_source"/>
+        <childnode refid="937" relation="include">
+        </childnode>
+        <childnode refid="940" relation="include">
+        </childnode>
+        <childnode refid="942" relation="include">
+        </childnode>
+        <childnode refid="941" relation="include">
+        </childnode>
+      </node>
+      <node id="940">
+        <label>TreeNode.h</label>
+        <link refid="_tree_node_8h_source"/>
+        <childnode refid="941" relation="include">
+        </childnode>
+      </node>
+      <node id="942">
+        <label>dacallib.h</label>
+      </node>
+      <node id="941">
+        <label>Foundation/Foundation.h</label>
+      </node>
+      <node id="938">
+        <label>JSServiceManager.h</label>
+      </node>
+      <node id="936">
+        <label>PickADisk/Sources/PAD Controllers/PADSearchRequest.h</label>
+        <link refid="PADSearchRequest.h"/>
+        <childnode refid="937" relation="include">
+        </childnode>
+        <childnode refid="938" relation="include">
+        </childnode>
+        <childnode refid="939" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="946">
+        <label>PickADisk/Sources/PAD Controllers/PADIndexToolbarController.h</label>
+        <link refid="_p_a_d_index_toolbar_controller_8h_source"/>
+        <childnode refid="945" relation="include">
+        </childnode>
+      </node>
+      <node id="945">
+        <label>PickADisk/Sources/PAD Controllers/DACALViewDataSource.h</label>
+        <link refid="_d_a_c_a_l_view_data_source_8h_source"/>
+      </node>
+      <node id="944">
+        <label>PickADisk/Sources/Index Tree/PADIndexNodeData.h</label>
+        <link refid="_p_a_d_index_node_data_8h_source"/>
+        <childnode refid="945" relation="include">
+        </childnode>
+      </node>
+      <node id="943">
+        <label>PickADisk/Sources/PAD Controllers/PADSearchRequest.h</label>
+        <link refid="PADSearchRequest.h"/>
+        <childnode refid="944" relation="include">
+        </childnode>
+        <childnode refid="946" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="interface_p_a_d_search_term" prot="public">PADSearchTerm</innerclass>
+    <innerclass refid="interface_p_a_d_search_request" prot="public">PADSearchRequest</innerclass>
+    <innerclass refid="interface_p_a_d_search_term_operation" prot="public">PADSearchTermOperation</innerclass>
+    <innerclass refid="interface_p_a_d_search_service" prot="public">PADSearchService</innerclass>
+    <innerclass refid="interface_search_node_data" prot="public">SearchNodeData</innerclass>
+    <innerclass refid="interface_simple_tree_node_07_p_a_d_search_extensions_08" prot="public">SimpleTreeNode(PADSearchExtensions)</innerclass>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="_p_a_d_search_request_8h_1a8e0621aff9918ed8d8213a4c34d02f31" prot="public" static="no">
+        <name>PADSearchConjunction</name>
+        <enumvalue id="_p_a_d_search_request_8h_1a8e0621aff9918ed8d8213a4c34d02f31ae66e7b8da599c8eb6584c3bd5ed0ba12" prot="public">
+          <name>kPADSearchConjunctionOr</name>
+          <initializer> ( 1 &lt;&lt; 0 )</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_p_a_d_search_request_8h_1a8e0621aff9918ed8d8213a4c34d02f31a3829824f59c5ded7c0dcf8c7a77980cd" prot="public">
+          <name>kPADSearchConjunctionAnd</name>
+          <initializer> ( 1 &lt;&lt; 1 )</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_p_a_d_search_request_8h_1a8e0621aff9918ed8d8213a4c34d02f31a44e2dcd261a15cc2472f6aea58433711" prot="public">
+          <name>kPADSearchConjunctionNot</name>
+          <initializer> ( 1 &lt;&lt; 2 )</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_p_a_d_search_request_8h_1a8e0621aff9918ed8d8213a4c34d02f31ab216701aac4e687487bb025659b89f48" prot="public">
+          <name>kPADSearchConjunctionNormal</name>
+          <initializer> kPADSearchConjunctionOr</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" line="27" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" bodystart="27" bodyend="32"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="_p_a_d_search_request_8h_1a6ad00b23a09b5ddbee3863d8e0f1e6cb" prot="public" static="no">
+        <type>float</type>
+        <definition>typedef float PADSearchRelevance</definition>
+        <argsstring></argsstring>
+        <name>PADSearchRelevance</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" line="15" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="_p_a_d_search_request_8h_1a51963f7fcf321f7285ad1c0cf93f1403" prot="public" static="no">
+        <type>NSNumber *</type>
+        <definition>typedef NSNumber* PADSearchRelevanceRef</definition>
+        <argsstring></argsstring>
+        <name>PADSearchRelevanceRef</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" line="16" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="_p_a_d_search_request_8h_1a95c0505941a72d969b3e4e110a67eee2" prot="public" static="no" mutable="no">
+        <type>const <ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+        <definition>const NSString* kPADSearchByTitle</definition>
+        <argsstring></argsstring>
+        <name>kPADSearchByTitle</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" line="18" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.m" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="_p_a_d_search_request_8h_1a52fc334f961b00de6d1de4a7325e2750" prot="public" static="no" mutable="no">
+        <type>const <ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+        <definition>const NSString* kPADSearchByTitleID</definition>
+        <argsstring></argsstring>
+        <name>kPADSearchByTitleID</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" line="19" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.m" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="_p_a_d_search_request_8h_1ab5fd132c203c6f44ec874d3f0438e10f" prot="public" static="no" mutable="no">
+        <type>const <ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+        <definition>const NSString* kPADSearchByType</definition>
+        <argsstring></argsstring>
+        <name>kPADSearchByType</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" line="20" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.m" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="_p_a_d_search_request_8h_1a70d11700e9f5eb856936a284f9bebb23" prot="public" static="no" mutable="no">
+        <type>const <ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+        <definition>const NSString* kPADSearchByTypeID</definition>
+        <argsstring></argsstring>
+        <name>kPADSearchByTypeID</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" line="21" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.m" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="_p_a_d_search_request_8h_1ab24bab2af69022bed94f8622a9793520" prot="public" static="no" mutable="no">
+        <type>const <ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+        <definition>const NSString* kPADSearchByDateAdded</definition>
+        <argsstring></argsstring>
+        <name>kPADSearchByDateAdded</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" line="22" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.m" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="_p_a_d_search_request_8h_1a9a35e59fbb0365e953a8754791f62bef" prot="public" static="no" mutable="no">
+        <type>const <ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+        <definition>const NSString* kPADSearchByDateAddedID</definition>
+        <argsstring></argsstring>
+        <name>kPADSearchByDateAddedID</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" line="23" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.m" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="_p_a_d_search_request_8h_1ac079ee79b8b53de020669c1b8994eb5c" prot="public" static="no" mutable="no">
+        <type>const <ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+        <definition>const NSString* kPADSearchByFileUTI</definition>
+        <argsstring></argsstring>
+        <name>kPADSearchByFileUTI</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" line="24" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.m" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="_p_a_d_search_request_8h_1a83789e2584f257dde44bb6e692ae7278" prot="public" static="no" mutable="no">
+        <type>const <ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+        <definition>const NSString* kPADSearchByFileUTIID</definition>
+        <argsstring></argsstring>
+        <name>kPADSearchByFileUTIID</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" line="25" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.m" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="_p_a_d_search_request_8h_1aa1583c16796abe659cbc150d47a3bb2e" prot="public" static="no" mutable="no">
+        <type>const PADSearchRelevance</type>
+        <definition>const PADSearchRelevance kPADSearchWeightNormal</definition>
+        <argsstring></argsstring>
+        <name>kPADSearchWeightNormal</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" line="34" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.m" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="_p_a_d_search_request_8h_1aa2e68040e65bd575fdefbfc317e54743" prot="public" static="no" mutable="no">
+        <type>const PADSearchRelevance</type>
+        <definition>const PADSearchRelevance kPADSearchWeightHalf</definition>
+        <argsstring></argsstring>
+        <name>kPADSearchWeightHalf</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" line="35" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.m" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="_p_a_d_search_request_8h_1a741da8c2e9e718c9e92abad7dc772359" prot="public" static="no" mutable="no">
+        <type>const PADSearchRelevance</type>
+        <definition>const PADSearchRelevance kPADSearchWeightNone</definition>
+        <argsstring></argsstring>
+        <name>kPADSearchWeightNone</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" line="36" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.m" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="_p_a_d_search_request_8h_1a050e0282a1733b79593842211a72d5fc" prot="public" static="no" mutable="no">
+        <type>const <ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+        <definition>const NSString* kPADSearchOptionResultType</definition>
+        <argsstring></argsstring>
+        <name>kPADSearchOptionResultType</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" line="38" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.m" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="_p_a_d_search_request_8h_1a37e8edfc8099c961e24b0379d9263679" prot="public" static="no" mutable="no">
+        <type>const <ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+        <definition>const NSString* kPADSearchOptionResultTypeLeaf</definition>
+        <argsstring></argsstring>
+        <name>kPADSearchOptionResultTypeLeaf</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" line="39" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.m" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="_p_a_d_search_request_8h_1ac7163455b319f98f705f5e89ecec8d59" prot="public" static="no" mutable="no">
+        <type>const <ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+        <definition>const NSString* kPADSearchOptionResultTypeItem</definition>
+        <argsstring></argsstring>
+        <name>kPADSearchOptionResultTypeItem</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h" line="40" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.m" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>PADSearchRequest.h</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>PickADisc</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Created<sp/>by<sp/>Jack<sp/>Small<sp/>on<sp/>7/30/08.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Copyright<sp/>2008<sp/>Jack<sp/>Small.<sp/>All<sp/>rights<sp/>reserved.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#import<sp/>&lt;Cocoa/Cocoa.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#import<sp/>&quot;JSServiceManager.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="comment">//#import<sp/>&quot;AppController.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#import<sp/>&quot;SimpleTreeNode.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PADSearchRelevance;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>NSNumber*<sp/><sp/><sp/><sp/><sp/><sp/><sp/>PADSearchRelevanceRef;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_n_s_string" kindref="compound">NSString</ref>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>kPADSearchByTitle;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_n_s_string" kindref="compound">NSString</ref>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>kPADSearchByTitleID;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_n_s_string" kindref="compound">NSString</ref>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>kPADSearchByType;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_n_s_string" kindref="compound">NSString</ref>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>kPADSearchByTypeID;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_n_s_string" kindref="compound">NSString</ref>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>kPADSearchByDateAdded;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_n_s_string" kindref="compound">NSString</ref>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>kPADSearchByDateAddedID;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_n_s_string" kindref="compound">NSString</ref>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>kPADSearchByFileUTI;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_n_s_string" kindref="compound">NSString</ref>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>kPADSearchByFileUTIID;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>PADSearchConjunction<sp/>{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>kPADSearchConjunctionOr<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>(<sp/>1<sp/>&lt;&lt;<sp/>0<sp/>),</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>kPADSearchConjunctionAnd<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>(<sp/>1<sp/>&lt;&lt;<sp/>1<sp/>),</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>kPADSearchConjunctionNot<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>(<sp/>1<sp/>&lt;&lt;<sp/>2<sp/>),</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>kPADSearchConjunctionNormal<sp/><sp/><sp/><sp/><sp/>=<sp/>kPADSearchConjunctionOr</highlight></codeline>
+<codeline lineno="32"><highlight class="normal">}<sp/>PADSearchConjunction;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><sp/><sp/><sp/>PADSearchRelevance<sp/><sp/><sp/><sp/><sp/><sp/>kPADSearchWeightNormal;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><sp/><sp/><sp/>PADSearchRelevance<sp/><sp/><sp/><sp/><sp/><sp/>kPADSearchWeightHalf;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><sp/><sp/><sp/>PADSearchRelevance<sp/><sp/><sp/><sp/><sp/><sp/>kPADSearchWeightNone;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_n_s_string" kindref="compound">NSString</ref>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>kPADSearchOptionResultType;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_n_s_string" kindref="compound">NSString</ref>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>kPADSearchOptionResultTypeLeaf;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_n_s_string" kindref="compound">NSString</ref>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>kPADSearchOptionResultTypeItem;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="keyword">@class</highlight><highlight class="normal"><sp/><ref refid="class_simple_tree_node" kindref="compound">SimpleTreeNode</ref>;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44" refid="interface_p_a_d_search_term" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">@interface<sp/></highlight><highlight class="normal"><ref refid="interface_p_a_d_search_term" kindref="compound">PADSearchTerm</ref><sp/>:<sp/><ref refid="class_n_s_object" kindref="compound">NSObject</ref><sp/>{</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_n_s_string" kindref="compound">NSString</ref>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>termTitle;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_n_s_string" kindref="compound">NSString</ref>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>termID;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>termOrder;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PADSearchConjunction<sp/><sp/><sp/><sp/>termConjuntion;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>termWeight;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>termCompareDataValue;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">SEL</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>termGetDataSelector;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">SEL</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>termCompareDataSelector;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_n_s_mutable_dictionary" kindref="compound">NSMutableDictionary</ref>*<sp/><sp/><sp/><sp/>termOptions;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal">-<sp/>(<ref refid="class_n_s_string" kindref="compound">NSString</ref>*)termTitle;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal">-<sp/>(void)setTermTitle:(<ref refid="class_n_s_string" kindref="compound">NSString</ref>*)title;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal">-<sp/>(<ref refid="class_n_s_string" kindref="compound">NSString</ref>*)termID;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal">-<sp/>(void)setTermID:(<ref refid="class_n_s_string" kindref="compound">NSString</ref>*)id;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal">-<sp/>(int)termOrder;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal">-<sp/>(void)setTermOrder:(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)id;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal">-<sp/>(PADSearchConjunction)termConjuntion;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal">-<sp/>(void)setTermConjunction:(PADSearchConjunction)newConjunction;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal">-<sp/>(float)termWeight;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal">-<sp/>(void)setTermWeight:(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)weight;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal">-<sp/>(id)compareData;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal">-<sp/>(void)setCompareData:(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)data;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal">-<sp/>(SEL)getSelector;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal">-<sp/>(void)setGetSelector:(</highlight><highlight class="keywordtype">SEL</highlight><highlight class="normal">)data;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal">-<sp/>(SEL)compareSelector;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal">-<sp/>(void)setCompareSelector:(</highlight><highlight class="keywordtype">SEL</highlight><highlight class="normal">)data;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal">-<sp/>(<ref refid="class_n_s_mutable_dictionary" kindref="compound">NSMutableDictionary</ref>*)termOptions;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal">-<sp/>(void)setTermOptions:(<ref refid="class_n_s_mutable_dictionary" kindref="compound">NSMutableDictionary</ref>*)options;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal">-<sp/>(PADSearchRelevance)compareWithElement:(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)element;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal">-<sp/>(PADSearchRelevance)compareForSearch:(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)value<sp/>withOptions:(<ref refid="class_n_s_mutable_dictionary" kindref="compound">NSMutableDictionary</ref>*)options;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal">-<sp/>(<ref refid="interface_p_a_d_search_term" kindref="compound">PADSearchTerm</ref>*)initWithTitle:(<ref refid="class_n_s_string" kindref="compound">NSString</ref>*)title<sp/>termID:(<ref refid="class_n_s_string" kindref="compound">NSString</ref>*)newID<sp/>getSelector:(</highlight><highlight class="keywordtype">SEL</highlight><highlight class="normal">)getSel<sp/>compareSelector:(</highlight><highlight class="keywordtype">SEL</highlight><highlight class="normal">)cmpSel<sp/>compareData:(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)data<sp/>andOptions:(NSDictionary*)options;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal">-<sp/>(<ref refid="interface_p_a_d_search_term" kindref="compound">PADSearchTerm</ref>*)termWithTerm;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal">+<sp/>(<ref refid="interface_p_a_d_search_term" kindref="compound">PADSearchTerm</ref>*)termWithTitle:(<ref refid="class_n_s_string" kindref="compound">NSString</ref>*)title<sp/>termID:(<ref refid="class_n_s_string" kindref="compound">NSString</ref>*)newID<sp/>getSelector:(</highlight><highlight class="keywordtype">SEL</highlight><highlight class="normal">)getSel<sp/>compareSelector:(</highlight><highlight class="keywordtype">SEL</highlight><highlight class="normal">)cmpSel<sp/>compareData:(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)data<sp/>andOptions:(NSDictionary*)options;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight><highlight class="keyword">@end</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>PADSearchTerm</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/>This<sp/>function<sp/>should<sp/>be<sp/>called<sp/>during<sp/>initialization<sp/>to<sp/>setup<sp/>the<sp/>search<sp/>categories</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight><highlight class="comment">//void<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PADSearchTermSetup();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/>This<sp/>function<sp/>is<sp/>called<sp/>during<sp/>setup<sp/>to<sp/>create<sp/>known<sp/>search<sp/>terms</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight><highlight class="comment">//void<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PADAddSearchTerm(<sp/>const<sp/>NSString*<sp/>title,<sp/>const<sp/>NSString*<sp/>newID,<sp/>SEL<sp/>getSel,<sp/>SEL<sp/>cmpSel,<sp/>id<sp/>data,<sp/>NSDictionary*<sp/>options<sp/>);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/>This<sp/>function<sp/>is<sp/>called<sp/>internally<sp/>in<sp/>PADSearchRequest<sp/>-createTermsForKeys<sp/>to<sp/>create<sp/>local<sp/>copies<sp/>of<sp/>search<sp/>terms.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight><highlight class="comment">//PADSearchTerm*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PADCopySearchTermWithTitleOrID(<sp/>NSString*<sp/>aTitle<sp/>);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105" refid="interface_p_a_d_search_request" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">@interface<sp/></highlight><highlight class="normal"><ref refid="interface_p_a_d_search_request" kindref="compound">PADSearchRequest</ref><sp/>:<sp/><ref refid="class_n_s_object" kindref="compound">NSObject</ref><sp/>{</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_n_s_array" kindref="compound">NSArray</ref>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>searchLocations;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_n_s_mutable_dictionary" kindref="compound">NSMutableDictionary</ref>*<sp/><sp/><sp/><sp/>searchTermDictionary;</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_n_s_mutable_array" kindref="compound">NSMutableArray</ref>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>searchTermElements;</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_n_s_mutable_array" kindref="compound">NSMutableArray</ref>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>searchTermOperations;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_n_s_mutable_dictionary" kindref="compound">NSMutableDictionary</ref>*<sp/><sp/><sp/><sp/>searchOptions;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>BOOL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>searchingNow;</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>BOOL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>searchResultsDirty;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>searchError;</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_n_s_mutable_array" kindref="compound">NSMutableArray</ref>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>searchResults;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>searchTarget;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>searchNode;</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>searchSubTree;</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_n_s_mutable_array" kindref="compound">NSMutableArray</ref>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>searchTermParents;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_n_s_array" kindref="compound">NSArray</ref>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>searchOriginalSelection;</highlight></codeline>
+<codeline lineno="124"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight><highlight class="comment">//<sp/>This<sp/>function<sp/>is<sp/>used<sp/>to<sp/>add<sp/>terms<sp/>to<sp/>a<sp/>search.<sp/><sp/>Unrecognized<sp/>terms<sp/>are<sp/>ignored<sp/>during<sp/>the<sp/>search.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight><highlight class="comment">//<sp/>order<sp/>is<sp/>a<sp/>positive<sp/>integer<sp/>reperesenting<sp/>the<sp/>absolute<sp/>order<sp/>of<sp/>term<sp/>evaluation,<sp/>or<sp/>one<sp/>of<sp/>the<sp/>constants<sp/>with<sp/>a<sp/>logical<sp/>value</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight><highlight class="comment">//<sp/>weight<sp/>is<sp/>expressed<sp/>as<sp/>a<sp/>percentile<sp/>where<sp/>1.0<sp/>=<sp/>100%<sp/>*for<sp/>each<sp/>term*.<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Match<sp/>&quot;scores&quot;<sp/>are<sp/>expressed<sp/>as<sp/>a<sp/>relative<sp/>percentage<sp/>of<sp/>the<sp/>maximum<sp/>score<sp/>possible.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal">-(void)addSearchTerm:(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)inTerm<sp/>forValue:(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)inValue<sp/>inOrder:(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)order<sp/>andConjunction:(PADSearchConjunction)inConj<sp/>withWeight:(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)weight<sp/>andOptions:(NSDictionary*)inOptions;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight><highlight class="comment">//<sp/>This<sp/>function<sp/>is<sp/>used<sp/>to<sp/>start<sp/>a<sp/>search.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Targets<sp/>creating<sp/>searches<sp/>are<sp/>expected<sp/>to<sp/>respond<sp/>to<sp/>the<sp/>following<sp/>selectors:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight><highlight class="comment">//<sp/>-<sp/>(void)searchFoundResults:(NSArray*)itemsFound<sp/>forSearch:(PADSearchRequest*)theSearch</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight><highlight class="comment">//<sp/>-<sp/>(void)searchCompleted:(PADSearchRequest*)theSearch</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Note<sp/>that<sp/>any<sp/>returned<sp/>itemsFound<sp/>are<sp/>already<sp/>attached<sp/>as<sp/>children<sp/>to<sp/>subTree<sp/>if<sp/>one<sp/>is<sp/>provided.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal">-(<ref refid="interface_p_a_d_search_request" kindref="compound">PADSearchRequest</ref>*)setupSearchForTarget:(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)target<sp/>onNode:(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)node<sp/>andSubTree:(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)subTree;</highlight></codeline>
+<codeline lineno="141"><highlight class="normal">-(<ref refid="interface_p_a_d_search_request" kindref="compound">PADSearchRequest</ref>*)startSearch;</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal">-(<ref refid="class_simple_tree_node" kindref="compound">SimpleTreeNode</ref>*)resultsSubTree;</highlight></codeline>
+<codeline lineno="144"><highlight class="normal">-(<ref refid="class_n_s_mutable_dictionary" kindref="compound">NSMutableDictionary</ref>*)searchTermDictionary;</highlight></codeline>
+<codeline lineno="145"><highlight class="normal">-(id)searchTarget;</highlight></codeline>
+<codeline lineno="146"><highlight class="normal">-(BOOL)searchBusy;</highlight></codeline>
+<codeline lineno="147"><highlight class="normal">-(id)valueForTerm:(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)term;</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal">-(BOOL)searchResultsDirty;</highlight></codeline>
+<codeline lineno="150"><highlight class="normal">-(void)dirtySearchResults;</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal">-(<ref refid="class_n_s_array" kindref="compound">NSArray</ref>*)searchOriginalSelection;</highlight></codeline>
+<codeline lineno="153"><highlight class="normal">-(void)setSearchOriginalSelection:(<ref refid="class_n_s_array" kindref="compound">NSArray</ref>*)selection;</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Called<sp/>internally</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal">-(void)createTermsForKeys;</highlight></codeline>
+<codeline lineno="157"><highlight class="normal">-(void)searchDataChanged:(<ref refid="class_n_s_array" kindref="compound">NSArray</ref>*)theItems;</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Used<sp/>to<sp/>setup<sp/>a<sp/>new<sp/>search.<sp/><sp/>If<sp/>inLocs<sp/>==<sp/>nil,<sp/>then<sp/>the<sp/>subTrees<sp/>of<sp/>all<sp/>the<sp/>mounted<sp/>devices<sp/>are<sp/>used.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal">-(id)initSearchInLocations:(<ref refid="class_n_s_array" kindref="compound">NSArray</ref>*)inLocs<sp/>andOptions:(NSDictionary*)inOptions;</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal">+(id)searchCarouselsForStars:(<ref refid="class_n_s_string" kindref="compound">NSString</ref>*)inUTI<sp/>resultType:(const<sp/><ref refid="class_n_s_string" kindref="compound">NSString</ref>*)inType;</highlight></codeline>
+<codeline lineno="163"><highlight class="normal">+(id)searchCarouselsForFileUTI:(<ref refid="class_n_s_string" kindref="compound">NSString</ref>*)inUTI<sp/>resultType:(const<sp/><ref refid="class_n_s_string" kindref="compound">NSString</ref>*)inType;</highlight></codeline>
+<codeline lineno="164"><highlight class="normal">+(id)searchCarouselsForDateAddedBeforeDays:(NSTimeInterval)inDays<sp/>ofDate:(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)inDate<sp/>resultType:(const<sp/><ref refid="class_n_s_string" kindref="compound">NSString</ref>*)inType;</highlight></codeline>
+<codeline lineno="165"><highlight class="normal">+(id)searchCarouselsForCheckedInOutBeforeDays:(NSTimeInterval)inDays<sp/>ofDate:(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)inDate<sp/>resultType:(const<sp/><ref refid="class_n_s_string" kindref="compound">NSString</ref>*)inType;</highlight></codeline>
+<codeline lineno="166"><highlight class="normal">+(id)searchCarouselsForKind:(<ref refid="class_n_s_string" kindref="compound">NSString</ref>*)inTerm<sp/>resultType:(const<sp/><ref refid="class_n_s_string" kindref="compound">NSString</ref>*)inType;</highlight></codeline>
+<codeline lineno="167"><highlight class="normal">+(id)searchCarouselsForTitle:(<ref refid="class_n_s_string" kindref="compound">NSString</ref>*)inKind<sp/>resultType:(const<sp/><ref refid="class_n_s_string" kindref="compound">NSString</ref>*)inType;</highlight></codeline>
+<codeline lineno="168"><highlight class="normal">+(id)searchCarouselsForTerm:(<ref refid="class_n_s_string" kindref="compound">NSString</ref>*)inTerm;</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight><highlight class="keyword">@end</highlight><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>PADSearchRequest</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight></codeline>
+<codeline lineno="172" refid="interface_p_a_d_search_term_operation" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">@interface<sp/></highlight><highlight class="normal"><ref refid="interface_p_a_d_search_term_operation" kindref="compound">PADSearchTermOperation</ref><sp/>:<sp/>NSOperation</highlight></codeline>
+<codeline lineno="173"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_simple_tree_node" kindref="compound">SimpleTreeNode</ref>*<sp/>searchTree;</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_n_s_array" kindref="compound">NSArray</ref>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>searchTerms;</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>BOOL<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>searchBusy;</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_n_s_mutable_array" kindref="compound">NSMutableArray</ref>*<sp/>inQueue;</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_n_s_mutable_array" kindref="compound">NSMutableArray</ref>*<sp/>matchQueue;</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_n_s_mutable_array" kindref="compound">NSMutableArray</ref>*<sp/>parentQueue;</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>messageTarget;</highlight></codeline>
+<codeline lineno="183"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"></highlight></codeline>
+<codeline lineno="185"><highlight class="normal">-(BOOL)searchDone;</highlight></codeline>
+<codeline lineno="186"><highlight class="normal">-(BOOL)searchBusy;</highlight></codeline>
+<codeline lineno="187"><highlight class="normal">-(BOOL)elementsWaiting;</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal">-(<ref refid="class_n_s_array" kindref="compound">NSArray</ref>*)pullMatchQueue;</highlight></codeline>
+<codeline lineno="190"><highlight class="normal">-(id)parentMatchOfChildMatch:(<ref refid="class_simple_tree_node" kindref="compound">SimpleTreeNode</ref>*)child;</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="normal">-(void)endSearch;</highlight></codeline>
+<codeline lineno="193"><highlight class="normal">-(void)startSearch;</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight></codeline>
+<codeline lineno="195"><highlight class="normal">-(<ref refid="interface_p_a_d_search_term_operation" kindref="compound">PADSearchTermOperation</ref>*)initWithTree:(<ref refid="class_simple_tree_node" kindref="compound">SimpleTreeNode</ref>*)aTree<sp/>forTerms:(<ref refid="class_n_s_array" kindref="compound">NSArray</ref>*)theTerms<sp/>andTarget:(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)aTarget;</highlight></codeline>
+<codeline lineno="196"><highlight class="normal">-(void)notifyTarget:(BOOL)done;</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"></highlight></codeline>
+<codeline lineno="198"><highlight class="normal">+(<ref refid="interface_p_a_d_search_term_operation" kindref="compound">PADSearchTermOperation</ref>*)searchOperationsForTreeNode:(<ref refid="class_simple_tree_node" kindref="compound">SimpleTreeNode</ref>*)rootSubTree<sp/>forTerms:(<ref refid="class_n_s_array" kindref="compound">NSArray</ref>*)theTerms<sp/>andTarget:(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)aTarget;</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="normal"></highlight><highlight class="keyword">@end</highlight><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>PADSearchTermOperation</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="201"><highlight class="normal"></highlight></codeline>
+<codeline lineno="202" refid="interface_p_a_d_search_service" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">@interface<sp/></highlight><highlight class="normal"><ref refid="interface_p_a_d_search_service" kindref="compound">PADSearchService</ref><sp/>:<sp/>JSServiceAbstract</highlight></codeline>
+<codeline lineno="203"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_n_s_mutable_array" kindref="compound">NSMutableArray</ref>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>searchTerms;</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_n_s_mutable_array" kindref="compound">NSMutableArray</ref>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>activeSearches;</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_n_s_mutable_array" kindref="compound">NSMutableArray</ref>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>activeWatchers;</highlight></codeline>
+<codeline lineno="208"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"></highlight></codeline>
+<codeline lineno="210"><highlight class="normal">+(id)sharedSearch;</highlight></codeline>
+<codeline lineno="211"><highlight class="normal">+(void)updateAllSearches;</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"></highlight></codeline>
+<codeline lineno="213"><highlight class="normal">-(void)addSearchTermWithTitle:(const<sp/><ref refid="class_n_s_string" kindref="compound">NSString</ref>*)title</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>andTermID:(const<sp/><ref refid="class_n_s_string" kindref="compound">NSString</ref>*)newID</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>getSelector:(</highlight><highlight class="keywordtype">SEL</highlight><highlight class="normal">)getSel</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>compareSelector:(</highlight><highlight class="keywordtype">SEL</highlight><highlight class="normal">)cmpSel</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>compareData:(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)data</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>andOptions:(NSDictionary*)options;</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"></highlight></codeline>
+<codeline lineno="220"><highlight class="normal">-(<ref refid="interface_p_a_d_search_term" kindref="compound">PADSearchTerm</ref>*)copySearchTermWithTitleOrID:(<ref refid="class_n_s_string" kindref="compound">NSString</ref>*)aTermName;</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"></highlight></codeline>
+<codeline lineno="222"><highlight class="normal">-(void)addActiveSearch:(<ref refid="interface_p_a_d_search_request" kindref="compound">PADSearchRequest</ref>*)newRequest;</highlight></codeline>
+<codeline lineno="223"><highlight class="normal">-(void)removeActiveSearch:(<ref refid="interface_p_a_d_search_request" kindref="compound">PADSearchRequest</ref>*)oldRequest;</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"></highlight></codeline>
+<codeline lineno="225"><highlight class="normal">-(void)addActiveWatcher:(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)newWatcher;</highlight></codeline>
+<codeline lineno="226"><highlight class="normal">-(void)removeActiveWatcher:(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)oldWatcher;</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"></highlight></codeline>
+<codeline lineno="228"><highlight class="normal">-(void)searchStarted:(<ref refid="interface_p_a_d_search_request" kindref="compound">PADSearchRequest</ref>*)aRequest;</highlight></codeline>
+<codeline lineno="229"><highlight class="normal">-(void)searchFinished:(<ref refid="interface_p_a_d_search_request" kindref="compound">PADSearchRequest</ref>*)aRequest;</highlight></codeline>
+<codeline lineno="230"><highlight class="normal">-(void)searchDataChanged:(<ref refid="class_n_s_array" kindref="compound">NSArray</ref>*)theItems;</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"></highlight></codeline>
+<codeline lineno="232"><highlight class="normal"></highlight><highlight class="keyword">@end</highlight><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>PADSearchService</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="233"><highlight class="normal"></highlight></codeline>
+<codeline lineno="234" refid="interface_search_node_data" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">@interface<sp/></highlight><highlight class="normal"><ref refid="interface_search_node_data" kindref="compound">SearchNodeData</ref><sp/>:<sp/><ref refid="interface_simple_node_data" kindref="compound">SimpleNodeData</ref></highlight></codeline>
+<codeline lineno="235"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_simple_tree_node" kindref="compound">SimpleTreeNode</ref>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>matchActual;</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PADSearchRelevance<sp/><sp/><sp/><sp/><sp/><sp/>matchScore;</highlight></codeline>
+<codeline lineno="238"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"></highlight></codeline>
+<codeline lineno="240"><highlight class="normal">-(<ref refid="class_simple_tree_node" kindref="compound">SimpleTreeNode</ref>*)matchActual;</highlight></codeline>
+<codeline lineno="241"><highlight class="normal">-(PADSearchRelevance)matchScore;</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"></highlight></codeline>
+<codeline lineno="243"><highlight class="normal">-(id)initWithLocationOfActual:(<ref refid="class_simple_tree_node" kindref="compound">SimpleTreeNode</ref>*)inMatch<sp/>withScore:(PADSearchRelevance)inScore<sp/>asResult:(<ref refid="class_n_s_string" kindref="compound">NSString</ref>*)resultType;</highlight></codeline>
+<codeline lineno="244"><highlight class="normal">+(id)nodeDataWithLocationOfActual:(<ref refid="class_simple_tree_node" kindref="compound">SimpleTreeNode</ref>*)inMatch<sp/>withScore:(PADSearchRelevance)inScore<sp/>asResult:(<ref refid="class_n_s_string" kindref="compound">NSString</ref>*)resultType;</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"></highlight></codeline>
+<codeline lineno="246"><highlight class="normal"></highlight><highlight class="keyword">@end</highlight><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>SearchNodeData</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="247"><highlight class="normal"></highlight></codeline>
+<codeline lineno="248"><highlight class="normal"></highlight><highlight class="keyword">@interface<sp/></highlight><highlight class="normal"><ref refid="class_simple_tree_node" kindref="compound">SimpleTreeNode</ref>(PADSearchExtensions)</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"></highlight></codeline>
+<codeline lineno="250"><highlight class="normal">-(<ref refid="interface_simple_node_data" kindref="compound">SimpleNodeData</ref>*)keyScore;</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"></highlight></codeline>
+<codeline lineno="252"><highlight class="normal">-(id)initForActualMatch:(<ref refid="class_simple_tree_node" kindref="compound">SimpleTreeNode</ref>*)aMatch<sp/>withScore:(PADSearchRelevance)aScore<sp/>asResult:(<ref refid="class_n_s_string" kindref="compound">NSString</ref>*)resultType;</highlight></codeline>
+<codeline lineno="253"><highlight class="normal">+(id)treeForActualMatch:(<ref refid="class_simple_tree_node" kindref="compound">SimpleTreeNode</ref>*)aMatch<sp/>withScore:(PADSearchRelevance)aScore<sp/>asResult:(<ref refid="class_n_s_string" kindref="compound">NSString</ref>*)resultType;</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"></highlight></codeline>
+<codeline lineno="255"><highlight class="normal"></highlight><highlight class="keyword">@end</highlight><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>SimpleTreeNode(PADSearchExtensions)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="256"><highlight class="normal"></highlight></codeline>
+<codeline lineno="257"><highlight class="normal"></highlight></codeline>
+<codeline lineno="258"><highlight class="normal"></highlight></codeline>
+<codeline lineno="259"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADSearchRequest.h"/>
+  </compounddef>
+</doxygen>

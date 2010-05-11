@@ -1,0 +1,225 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.6.2">
+  <compounddef id="_p_a_d_index_node_data_8m" kind="file">
+    <compoundname>PADIndexNodeData.m</compoundname>
+    <includes local="yes">pmsDACALUtility.h</includes>
+    <includes refid="_p_a_d_index_node_data_8h" local="yes">PADIndexNodeData.h</includes>
+    <includes refid="_d_a_c_a_l_tree_data_source_8h" local="yes">DACALTreeDataSource.h</includes>
+    <incdepgraph>
+      <node id="272">
+        <label>NSArray_Extensions.h</label>
+        <link refid="_n_s_array___extensions_8h_source"/>
+        <childnode refid="266" relation="include">
+        </childnode>
+      </node>
+      <node id="263">
+        <label>Cocoa/Cocoa.h</label>
+      </node>
+      <node id="270">
+        <label>DACALTreeDataSource.h</label>
+        <link refid="_d_a_c_a_l_tree_data_source_8h_source"/>
+        <childnode refid="263" relation="include">
+        </childnode>
+        <childnode refid="271" relation="include">
+        </childnode>
+      </node>
+      <node id="264">
+        <label>SimpleTreeNode.h</label>
+        <link refid="_simple_tree_node_8h_source"/>
+        <childnode refid="263" relation="include">
+        </childnode>
+        <childnode refid="265" relation="include">
+        </childnode>
+        <childnode refid="267" relation="include">
+        </childnode>
+        <childnode refid="266" relation="include">
+        </childnode>
+      </node>
+      <node id="265">
+        <label>TreeNode.h</label>
+        <link refid="_tree_node_8h_source"/>
+        <childnode refid="266" relation="include">
+        </childnode>
+      </node>
+      <node id="267">
+        <label>dacallib.h</label>
+      </node>
+      <node id="262">
+        <label>PADIndexNodeData.h</label>
+        <link refid="_p_a_d_index_node_data_8h_source"/>
+        <childnode refid="263" relation="include">
+        </childnode>
+        <childnode refid="264" relation="include">
+        </childnode>
+        <childnode refid="268" relation="include">
+        </childnode>
+      </node>
+      <node id="260">
+        <label>PickADisk/Sources/Index Tree/PADIndexNodeData.m</label>
+        <link refid="PADIndexNodeData.m"/>
+        <childnode refid="261" relation="include">
+        </childnode>
+        <childnode refid="262" relation="include">
+        </childnode>
+        <childnode refid="270" relation="include">
+        </childnode>
+      </node>
+      <node id="266">
+        <label>Foundation/Foundation.h</label>
+      </node>
+      <node id="269">
+        <label>JSServiceManager.h</label>
+      </node>
+      <node id="268">
+        <label>PADSearchRequest.h</label>
+        <link refid="_p_a_d_search_request_8h_source"/>
+        <childnode refid="263" relation="include">
+        </childnode>
+        <childnode refid="269" relation="include">
+        </childnode>
+        <childnode refid="264" relation="include">
+        </childnode>
+      </node>
+      <node id="271">
+        <label>TreeController.h</label>
+        <link refid="_tree_controller_8h_source"/>
+        <childnode refid="263" relation="include">
+        </childnode>
+        <childnode refid="264" relation="include">
+        </childnode>
+        <childnode refid="272" relation="include">
+        </childnode>
+      </node>
+      <node id="261">
+        <label>pmsDACALUtility.h</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="_p_a_d_index_node_data_8m_1a16c68fac6a3bb6131e676c86a5c8afd1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="interface_p_a_d_search_request" kindref="compound">PADSearchRequest</ref> *</type>
+        <definition>PADSearchRequest* PADCreateSearchForType</definition>
+        <argsstring>(OSType aType)</argsstring>
+        <name>PADCreateSearchForType</name>
+        <param>
+          <type>OSType</type>
+          <declname>aType</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/PADIndexNodeData.m" line="15" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/PADIndexNodeData.m" bodystart="14" bodyend="31"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>PADIndexNodeData.m</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>PickADisk</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Created<sp/>by<sp/>Jack<sp/>Small<sp/>on<sp/>8/27/08.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Copyright<sp/>2008<sp/>Jack<sp/>Small.<sp/>All<sp/>rights<sp/>reserved.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#import<sp/>&quot;pmsDACALUtility.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#import<sp/>&quot;PADIndexNodeData.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#import<sp/>&quot;DACALTreeDataSource.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><ref refid="interface_p_a_d_search_request" kindref="compound">PADSearchRequest</ref><sp/>*</highlight></codeline>
+<codeline lineno="14"><highlight class="normal">PADCreateSearchForType(OSType<sp/>aType)</highlight></codeline>
+<codeline lineno="15"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="interface_p_a_d_search_request" kindref="compound">PADSearchRequest</ref><sp/>*<sp/>theReq<sp/>=<sp/>nil;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(aType<sp/>==<sp/></highlight><highlight class="stringliteral">&apos;gMov&apos;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>theReq<sp/>=<sp/>[<ref refid="interface_p_a_d_search_request" kindref="compound">PADSearchRequest</ref><sp/>searchCarouselsForKind:<sp/>(NSString<sp/>*)PADINDEX_FLAVORVALUE_MOVIE<sp/>resultType:<sp/>kPADSearchOptionResultTypeItem];</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(aType<sp/>==<sp/></highlight><highlight class="stringliteral">&apos;gMus&apos;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>theReq<sp/>=<sp/>[<ref refid="interface_p_a_d_search_request" kindref="compound">PADSearchRequest</ref><sp/>searchCarouselsForKind:<sp/>(NSString<sp/>*)PADINDEX_FLAVORVALUE_MUSIC<sp/>resultType:<sp/>kPADSearchOptionResultTypeItem];</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(aType<sp/>==<sp/></highlight><highlight class="stringliteral">&apos;gFil&apos;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>theReq<sp/>=<sp/>[<ref refid="interface_p_a_d_search_request" kindref="compound">PADSearchRequest</ref><sp/>searchCarouselsForKind:<sp/>(NSString<sp/>*)PADINDEX_FLAVORVALUE_FILES<sp/>resultType:<sp/>kPADSearchOptionResultTypeItem];</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(aType<sp/>==<sp/></highlight><highlight class="stringliteral">&apos;gImg&apos;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>theReq<sp/>=<sp/>[<ref refid="interface_p_a_d_search_request" kindref="compound">PADSearchRequest</ref><sp/>searchCarouselsForKind:<sp/>(NSString<sp/>*)PADINDEX_FLAVORVALUE_IMAGE<sp/>resultType:<sp/>kPADSearchOptionResultTypeItem];</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>theReq;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>PADCreateSearchForType</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="keyword">@implementation<sp/></highlight><highlight class="normal"><ref refid="interface_index_node_data" kindref="compound">IndexNodeData</ref></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal">-(<ref refid="interface_p_a_d_search_request" kindref="compound">PADSearchRequest</ref><sp/>*)itemSearch</highlight></codeline>
+<codeline lineno="36"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>itemSearch;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal">-(void)setItemSearch:<sp/>(<ref refid="interface_p_a_d_search_request" kindref="compound">PADSearchRequest</ref><sp/>*)<sp/>newSearch</highlight></codeline>
+<codeline lineno="41"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(newSearch)<sp/>[newSearch<sp/>retain];</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(itemSearch)<sp/>[itemSearch<sp/>release];</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>itemSearch<sp/>=<sp/>newSearch;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal">+(id)leafDataWithName:<sp/>(<ref refid="class_n_s_string" kindref="compound">NSString</ref><sp/>*)<sp/>str</highlight></codeline>
+<codeline lineno="48"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Convenience<sp/>method<sp/>to<sp/>return<sp/>a<sp/>leaf<sp/>node<sp/>with<sp/>its<sp/>name<sp/>set.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>[[<ref refid="interface_index_node_data" kindref="compound">IndexNodeData</ref><sp/>alloc]<sp/>initWithName:<sp/>str<sp/>isLeaf:<sp/>YES];</highlight></codeline>
+<codeline lineno="51"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal">+(id)groupDataWithName:<sp/>(<ref refid="class_n_s_string" kindref="compound">NSString</ref><sp/>*)<sp/>str</highlight></codeline>
+<codeline lineno="54"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Convenience<sp/>method<sp/>to<sp/>return<sp/>a<sp/>branch<sp/>node<sp/>with<sp/>its<sp/>name<sp/>set.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>[[<ref refid="interface_index_node_data" kindref="compound">IndexNodeData</ref><sp/>alloc]<sp/>initWithName:<sp/>str<sp/>isLeaf:<sp/>NO];</highlight></codeline>
+<codeline lineno="57"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="keyword">@end</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>IndexNodeData</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61" refid="class_simple_tree_node" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">@implementation<sp/></highlight><highlight class="normal"><ref refid="class_simple_tree_node" kindref="compound">SimpleTreeNode</ref><sp/>(PADIndexExtensions)</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal">-(id)initIndexFromDictionary:<sp/>(NSDictionary<sp/>*)<sp/>dict</highlight></codeline>
+<codeline lineno="64"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>This<sp/>is<sp/>a<sp/>convenience<sp/>init<sp/>method<sp/>to<sp/>return<sp/>a<sp/>tree<sp/>root<sp/>of<sp/>a<sp/>tree<sp/>derived<sp/>from<sp/>an<sp/>input<sp/>dictionary.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>input<sp/>dictionary<sp/>for<sp/>this<sp/>example<sp/>app<sp/>is<sp/>InitInfo.dict.<sp/><sp/>Look<sp/>at<sp/>that<sp/>file<sp/>to<sp/>understand<sp/>the<sp/>format.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="interface_index_node_data" kindref="compound">IndexNodeData</ref><sp/><sp/>*<sp/>data<sp/>=<sp/>[<ref refid="interface_index_node_data" kindref="compound">IndexNodeData</ref><sp/>groupDataWithName:<sp/>[dict<sp/>objectForKey:<sp/>KEY_GROUPNAME]];</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>NSEnumerator<sp/><sp/><sp/>*<sp/>entryEnum<sp/>=<sp/>[[dict<sp/>objectForKey:<sp/>KEY_ENTRIES]<sp/>objectEnumerator];</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>entry;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_simple_tree_node" kindref="compound">SimpleTreeNode</ref><sp/>*<sp/>child<sp/>=<sp/>nil;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_n_s_string" kindref="compound">NSString</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>entryName;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_n_s_string" kindref="compound">NSString</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>entryIconType;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal"><sp/>=<sp/>[</highlight><highlight class="keyword">super</highlight><highlight class="normal"><sp/>initWithData:<sp/>data<sp/>parent:<sp/>nil<sp/>children:<sp/>[[<ref refid="class_n_s_array" kindref="compound">NSArray</ref><sp/>alloc]<sp/>init]];</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">self</highlight><highlight class="normal"><sp/>!=<sp/>nil)<sp/>{</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(<sp/>(entry<sp/>=<sp/>[entryEnum<sp/>nextObject])<sp/>)<sp/>{</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>([entry<sp/>isKindOfClass:<sp/>[NSDictionary<sp/></highlight><highlight class="keyword">class</highlight><highlight class="normal">]])</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>child<sp/>=<sp/>[<ref refid="class_simple_tree_node" kindref="compound">SimpleTreeNode</ref><sp/>treeIndexFromDictionary:<sp/>entry];</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>([entry<sp/>isKindOfClass:<sp/>[<ref refid="class_n_s_array" kindref="compound">NSArray</ref><sp/></highlight><highlight class="keyword">class</highlight><highlight class="normal">]])<sp/>{</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>entryName<sp/>=<sp/>[entry<sp/>objectAtIndex:<sp/>0];</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>entryIconType<sp/>=<sp/>[entry<sp/>objectAtIndex:<sp/>1];</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>child<sp/>=<sp/>[[<ref refid="class_simple_tree_node" kindref="compound">SimpleTreeNode</ref><sp/>alloc]<sp/>initWithData:<sp/>[<ref refid="interface_index_node_data" kindref="compound">IndexNodeData</ref><sp/>leafDataWithName:<sp/>entryName]<sp/>parent:<sp/>nil<sp/>children:<sp/>[[<ref refid="class_n_s_array" kindref="compound">NSArray</ref><sp/>alloc]<sp/>init]];</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>OSType<sp/><sp/><sp/><sp/>iconType<sp/>=<sp/>UTGetOSTypeFromString(<sp/>(CFStringRef)entryIconType<sp/>);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_n_s_image" kindref="compound">NSImage</ref><sp/>*<sp/>iconImage<sp/>=<sp/>DACALGetIconImageForType(iconType);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[[child<sp/>nodeData]<sp/>setIconRep:<sp/>iconImage];</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[[child<sp/>nodeData]<sp/>setItemSearch:<sp/>PADCreateSearchForType(<sp/>UTGetOSTypeFromString(<sp/>(CFStringRef)entryIconType<sp/>)<sp/>)];</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>child<sp/>=<sp/>[[<ref refid="class_simple_tree_node" kindref="compound">SimpleTreeNode</ref><sp/>alloc]<sp/>initWithData:<sp/>[<ref refid="interface_index_node_data" kindref="compound">IndexNodeData</ref><sp/>leafDataWithName:<sp/>entry]<sp/>parent:<sp/>nil<sp/>children:<sp/>[[<ref refid="class_n_s_array" kindref="compound">NSArray</ref><sp/>alloc]<sp/>init]];</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[</highlight><highlight class="keyword">self</highlight><highlight class="normal"><sp/>insertChild:<sp/>child<sp/>atIndex:<sp/>[</highlight><highlight class="keyword">self</highlight><highlight class="normal"><sp/>numberOfChildren]];</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>initIndexFromDictionary</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal">+(id)treeIndexFromDictionary:<sp/>(NSDictionary<sp/>*)<sp/>dict</highlight></codeline>
+<codeline lineno="97"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>[[<ref refid="class_simple_tree_node" kindref="compound">SimpleTreeNode</ref><sp/>alloc]<sp/>initIndexFromDictionary:<sp/>dict];</highlight></codeline>
+<codeline lineno="99"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight><highlight class="keyword">@end</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/PADIndexNodeData.m"/>
+  </compounddef>
+</doxygen>

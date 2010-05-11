@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.6.2">
+  <compounddef id="interface_p_a_d_volume_icon_view_spin_animation" kind="class" prot="public">
+    <compoundname>PADVolumeIconViewSpinAnimation</compoundname>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="interface_p_a_d_volume_icon_view_spin_animation_1a33c3c5c4ba59cd2dec688bd361474f1d" prot="protected" static="no" mutable="no">
+        <type><ref refid="interface_p_a_d_volume_icon_view" kindref="compound">PADVolumeIconView</ref> *</type>
+        <definition>PADVolumeIconView* PADVolumeIconViewSpinAnimation::theIcon</definition>
+        <argsstring></argsstring>
+        <name>theIcon</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADFlavorImageView.h" line="78" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADFlavorImageView.h" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="interface_p_a_d_volume_icon_view_spin_animation_1aef7ac903263f5904b6af9f8dce48e69c" prot="public" static="yes" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void PADVolumeIconViewSpinAnimation::runSpinForIcon:spinUp:</definition>
+        <argsstring>(PADVolumeIconView *aniIcon,[spinUp] BOOL isStarting)</argsstring>
+        <name>runSpinForIcon:spinUp:</name>
+        <param>
+          <type><ref refid="interface_p_a_d_volume_icon_view" kindref="compound">PADVolumeIconView</ref> *</type>
+          <declname>aniIcon</declname>
+        </param>
+        <param>
+          <attributes>[spinUp]</attributes>
+          <type>BOOL</type>
+          <declname>isStarting</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADFlavorImageView.h" line="81" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADFlavorImageView.m" bodystart="362" bodyend="369"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_p_a_d_volume_icon_view_spin_animation_1a25398c33085764292b286e1d51c18c7e" prot="public" static="yes" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void PADVolumeIconViewSpinAnimation::runSpinUpForIcon:</definition>
+        <argsstring>(PADVolumeIconView *aniIcon)</argsstring>
+        <name>runSpinUpForIcon:</name>
+        <param>
+          <type><ref refid="interface_p_a_d_volume_icon_view" kindref="compound">PADVolumeIconView</ref> *</type>
+          <declname>aniIcon</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADFlavorImageView.h" line="82" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADFlavorImageView.m" bodystart="371" bodyend="375"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="393">
+        <label>PADVolumeIconViewSpinAnimation</label>
+        <link refid="interface_p_a_d_volume_icon_view_spin_animation"/>
+        <childnode refid="394" relation="usage">
+          <edgelabel>theIcon</edgelabel>
+        </childnode>
+      </node>
+      <node id="395">
+        <label>PADSimpleImageView</label>
+        <link refid="interface_p_a_d_simple_image_view"/>
+        <childnode refid="396" relation="usage">
+          <edgelabel>currentImage</edgelabel>
+        </childnode>
+      </node>
+      <node id="394">
+        <label>PADVolumeIconView</label>
+        <link refid="interface_p_a_d_volume_icon_view"/>
+        <childnode refid="395" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="396">
+        <label>NSImage</label>
+        <link refid="class_n_s_image"/>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADFlavorImageView.h" line="77" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADFlavorImageView.h" bodystart="76" bodyend="-1"/>
+    <listofallmembers>
+      <member refid="interface_p_a_d_volume_icon_view_spin_animation_1aef7ac903263f5904b6af9f8dce48e69c" prot="public" virt="virtual"><scope>PADVolumeIconViewSpinAnimation</scope><name>runSpinForIcon:spinUp:</name></member>
+      <member refid="interface_p_a_d_volume_icon_view_spin_animation_1a25398c33085764292b286e1d51c18c7e" prot="public" virt="virtual"><scope>PADVolumeIconViewSpinAnimation</scope><name>runSpinUpForIcon:</name></member>
+      <member refid="interface_p_a_d_volume_icon_view_spin_animation_1a33c3c5c4ba59cd2dec688bd361474f1d" prot="protected" virt="non-virtual"><scope>PADVolumeIconViewSpinAnimation</scope><name>theIcon</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

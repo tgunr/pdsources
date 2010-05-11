@@ -1,0 +1,134 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.6.2">
+  <compounddef id="interface_p_a_d_layout_view" kind="class" prot="public">
+    <compoundname>PADLayoutView</compoundname>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="interface_p_a_d_layout_view_1a3fb7b756c2c10d18b52f5911793f9ef4" prot="protected" static="no" mutable="no">
+        <type>DACALDeviceRef</type>
+        <definition>DACALDeviceRef PADLayoutView::reportDevice</definition>
+        <argsstring></argsstring>
+        <name>reportDevice</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADLayoutView.h" line="14" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADLayoutView.h" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_p_a_d_layout_view_1ac0dd1f78bfdfb8a8bbd7616d691166d3" prot="protected" static="no" mutable="no">
+        <type>BOOL</type>
+        <definition>BOOL PADLayoutView::reportBlankSlots</definition>
+        <argsstring></argsstring>
+        <name>reportBlankSlots</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADLayoutView.h" line="15" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADLayoutView.h" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="interface_p_a_d_layout_view_1a64d54dddf5259fe3b5dfade9eb6dc0a2" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void PADLayoutView::setReportDevice:</definition>
+        <argsstring>(DACALDeviceRef newDevice)</argsstring>
+        <name>setReportDevice:</name>
+        <param>
+          <type>DACALDeviceRef</type>
+          <declname>newDevice</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADLayoutView.h" line="19" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADLayoutView.m" bodystart="74" bodyend="80"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_p_a_d_layout_view_1abbd91358a228923d48b43fd73a146436" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>DACALDeviceRef</type>
+        <definition>DACALDeviceRef PADLayoutView::reportDevice</definition>
+        <argsstring>()</argsstring>
+        <name>reportDevice</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADLayoutView.h" line="20"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_p_a_d_layout_view_1a33e37f86a05cff0e66b63055e21613d0" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void PADLayoutView::setReportBlankSlots:</definition>
+        <argsstring>(BOOL drawSlots)</argsstring>
+        <name>setReportBlankSlots:</name>
+        <param>
+          <type>BOOL</type>
+          <declname>drawSlots</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADLayoutView.h" line="22" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADLayoutView.m" bodystart="85" bodyend="86"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_p_a_d_layout_view_1a008ec61579c5b9886d56e800a0f2b328" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>BOOL</type>
+        <definition>BOOL PADLayoutView::reportBlankSlots</definition>
+        <argsstring>()</argsstring>
+        <name>reportBlankSlots</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADLayoutView.h" line="23"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="interface_p_a_d_layout_view_1ac961e01c8d30ec108513c1374844e421" prot="public" static="yes" const="no" explicit="no" inline="no" virt="virtual">
+        <type>id</type>
+        <definition>id PADLayoutView::printReportForDevice:forSender:</definition>
+        <argsstring>(DACALDeviceRef box,[forSender] id sender)</argsstring>
+        <name>printReportForDevice:forSender:</name>
+        <param>
+          <type>DACALDeviceRef</type>
+          <declname>box</declname>
+        </param>
+        <param>
+          <attributes>[forSender]</attributes>
+          <type>id</type>
+          <declname>sender</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADLayoutView.h" line="25" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADLayoutView.m" bodystart="232" bodyend="246"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADLayoutView.h" line="12" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/PAD Controllers/PADLayoutView.h" bodystart="12" bodyend="-1"/>
+    <listofallmembers>
+      <member refid="interface_p_a_d_layout_view_1ac961e01c8d30ec108513c1374844e421" prot="public" virt="virtual"><scope>PADLayoutView</scope><name>printReportForDevice:forSender:</name></member>
+      <member refid="interface_p_a_d_layout_view_1ac0dd1f78bfdfb8a8bbd7616d691166d3" prot="protected" virt="non-virtual"><scope>PADLayoutView</scope><name>reportBlankSlots</name></member>
+      <member refid="interface_p_a_d_layout_view_1a008ec61579c5b9886d56e800a0f2b328" prot="public" virt="virtual"><scope>PADLayoutView</scope><name>reportBlankSlots</name></member>
+      <member refid="interface_p_a_d_layout_view_1a3fb7b756c2c10d18b52f5911793f9ef4" prot="protected" virt="non-virtual"><scope>PADLayoutView</scope><name>reportDevice</name></member>
+      <member refid="interface_p_a_d_layout_view_1abbd91358a228923d48b43fd73a146436" prot="public" virt="virtual"><scope>PADLayoutView</scope><name>reportDevice</name></member>
+      <member refid="interface_p_a_d_layout_view_1a33e37f86a05cff0e66b63055e21613d0" prot="public" virt="virtual"><scope>PADLayoutView</scope><name>setReportBlankSlots:</name></member>
+      <member refid="interface_p_a_d_layout_view_1a64d54dddf5259fe3b5dfade9eb6dc0a2" prot="public" virt="virtual"><scope>PADLayoutView</scope><name>setReportDevice:</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

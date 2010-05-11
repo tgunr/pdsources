@@ -1,0 +1,61 @@
+﻿//
+//  TesterWindow.m
+//
+//  Created by Dave Carlton on 01/03/10.
+//  Copyright 2010 Polymicro Systems. All rights reserved.
+//
+
+#import "TesterWindow.h"
+
+@implementation NSWindow
+- (IBAction)deminiaturize:(id)sender {
+    
+}
+
+- (IBAction)makeKeyAndOrderFront:(id)sender {
+    
+}
+
+- (IBAction)miniaturize:(id)sender {
+    
+}
+
+- (IBAction)orderBack:(id)sender {
+    
+}
+
+- (IBAction)orderFront:(id)sender {
+    
+}
+
+- (IBAction)orderOut:(id)sender {
+    
+}
+
+- (IBAction)performClose:(id)sender {
+    
+}
+
+- (IBAction)performMiniaturize:(id)sender {
+    
+}
+
+- (IBAction)performZoom:(id)sender {
+    
+}
+
+- (IBAction)print:(id)sender {
+    
+}
+
+- (IBAction)runToolbarCustomizationPalette:(id)sender {
+    
+}
+
+- (IBAction)toggleToolbarShown:(id)sender {
+    
+}
+@end
+// Local Variables:
+// coding: utf-8-with-bom
+// End:

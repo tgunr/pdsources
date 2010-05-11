@@ -148,6 +148,13 @@
 			remoteGlobalIDString = 32D94FD00562CBF700B6AF17;
 			remoteInfo = DACALDriver;
 		};
+		752C58771186598300196BB0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7504AFFC0FB4724300FFAA84 /* DACALDriver.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 32D94FC30562CBF700B6AF17;
+			remoteInfo = DACALDriver;
+		};
 		75A5B3DD10F72A20001A674A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 75A5B3D310F72A20001A674A /* CLI.xcodeproj */;
@@ -1190,6 +1197,7 @@
 				734E63B1049E6C2800C919A3 /* PBXBuildRule */,
 			);
 			dependencies = (
+				752C58781186598300196BB0 /* PBXTargetDependency */,
 			);
 			name = PickADisk;
 			productInstallPath = "$(LOCAL_DEVELOPER_DIR)/Demos";
@@ -1454,6 +1462,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		752C58781186598300196BB0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = DACALDriver;
+			targetProxy = 752C58771186598300196BB0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		089C165CFE840E0CC02AAC07 /* InfoPlist.strings */ = {

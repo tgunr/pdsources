@@ -1,0 +1,1116 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.6.2">
+  <compounddef id="interface_d_a_c_a_l_slot" kind="class" prot="public">
+    <compoundname>DACALSlot</compoundname>
+    <basecompoundref refid="class_n_s_object" prot="public" virt="non-virtual">NSObject</basecompoundref>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="interface_d_a_c_a_l_slot_1ad21e445e7323248f836d2ff47f73a28c" prot="protected" static="no" mutable="no">
+        <type><ref refid="interface_d_a_c_a_l_device_node" kindref="compound">DACALDeviceNode</ref> *</type>
+        <definition>DACALDeviceNode * DACALSlot::slotDevice</definition>
+        <argsstring></argsstring>
+        <name>slotDevice</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.h" line="104" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.h" bodystart="104" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_d_a_c_a_l_slot_1aff0ad5f88d1f523b314b6e92fcd860c1" prot="protected" static="no" mutable="no">
+        <type>DACALSlotNum</type>
+        <definition>DACALSlotNum DACALSlot::slotNumber</definition>
+        <argsstring></argsstring>
+        <name>slotNumber</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.h" line="105" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.h" bodystart="105" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_d_a_c_a_l_slot_1a052b3c686f39a3388dc9edcfe0cfba78" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_simple_tree_node" kindref="compound">SimpleTreeNode</ref> *</type>
+        <definition>SimpleTreeNode * DACALSlot::slotNode</definition>
+        <argsstring></argsstring>
+        <name>slotNode</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.h" line="107" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.h" bodystart="107" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_d_a_c_a_l_slot_1a535f1c08be2deefca635b4c06ffb137b" prot="protected" static="no" mutable="no">
+        <type><ref refid="interface_d_a_c_volume" kindref="compound">DACVolume</ref> *</type>
+        <definition>DACVolume * DACALSlot::slotVolume</definition>
+        <argsstring></argsstring>
+        <name>slotVolume</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.h" line="108" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.h" bodystart="108" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_d_a_c_a_l_slot_1a2d73da79f5f2072a32d21da4948064c9" prot="protected" static="no" mutable="no">
+        <type>FSRef</type>
+        <definition>FSRef * DACALSlot::slotFSRef</definition>
+        <argsstring></argsstring>
+        <name>slotFSRef</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.h" line="109" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.h" bodystart="109" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_d_a_c_a_l_slot_1a5703a39fcff6111a695575a00f59aa2f" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+        <definition>NSString * DACALSlot::slotIdentifier</definition>
+        <argsstring></argsstring>
+        <name>slotIdentifier</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.h" line="111" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.h" bodystart="111" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_d_a_c_a_l_slot_1aca46985adb53c9003831feba63357041" prot="protected" static="no" mutable="no">
+        <type>BOOL</type>
+        <definition>BOOL DACALSlot::slotIsCheckedOut</definition>
+        <argsstring></argsstring>
+        <name>slotIsCheckedOut</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.h" line="113" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.h" bodystart="113" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_d_a_c_a_l_slot_1ad9d71e96b861f811ad4f887d3ec28463" prot="protected" static="no" mutable="no">
+        <type>NSDate *</type>
+        <definition>NSDate* DACALSlot::slotCheckedOut</definition>
+        <argsstring></argsstring>
+        <name>slotCheckedOut</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.h" line="114" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.h" bodystart="114" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_d_a_c_a_l_slot_1a24ce8a659ae13009ab41e1b519285269" prot="protected" static="no" mutable="no">
+        <type>NSDate *</type>
+        <definition>NSDate* DACALSlot::slotCheckedIn</definition>
+        <argsstring></argsstring>
+        <name>slotCheckedIn</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.h" line="115" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.h" bodystart="115" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_d_a_c_a_l_slot_1a03eae9b0df596d2f5d68150f1f18ef06" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_n_s_mutable_array" kindref="compound">NSMutableArray</ref> *</type>
+        <definition>NSMutableArray * DACALSlot::slotElements</definition>
+        <argsstring></argsstring>
+        <name>slotElements</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.h" line="117" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.h" bodystart="117" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="interface_d_a_c_a_l_slot_1a97abbc48def674a9b3d83f1fce87af0d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="interface_d_a_c_a_l_device_node" kindref="compound">DACALDeviceNode</ref> *</type>
+        <definition>DACALDeviceNode* DACALSlot::slotDevice</definition>
+        <argsstring>()</argsstring>
+        <name>slotDevice</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.h" line="120"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_a_l_slot_1a2493454084c013ace6d876c5b3fa3cf9" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>DACALDeviceRef</type>
+        <definition>DACALDeviceRef DACALSlot::slotDeviceRef</definition>
+        <argsstring>()</argsstring>
+        <name>slotDeviceRef</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.h" line="121" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.m" bodystart="534" bodyend="538"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_a_l_slot_1af4d13bd7d891eacab4cb9646fc0e11b9" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>DACALSlotNum</type>
+        <definition>DACALSlotNum DACALSlot::slotNumber</definition>
+        <argsstring>()</argsstring>
+        <name>slotNumber</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.h" line="122"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_a_l_slot_1a128471fe9e9cb769c7a66638ca5c4959" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="class_simple_tree_node" kindref="compound">SimpleTreeNode</ref> *</type>
+        <definition>SimpleTreeNode* DACALSlot::slotNode</definition>
+        <argsstring>()</argsstring>
+        <name>slotNode</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.h" line="123"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_a_l_slot_1af4bd26777f227834dd8ba682a32a732a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void DACALSlot::setSlotNode:</definition>
+        <argsstring>(SimpleTreeNode *newNode)</argsstring>
+        <name>setSlotNode:</name>
+        <param>
+          <type><ref refid="class_simple_tree_node" kindref="compound">SimpleTreeNode</ref> *</type>
+          <declname>newNode</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.h" line="124" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.m" bodystart="550" bodyend="557"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_a_l_slot_1adf0fe671e88e368badb6f71f323e9b2e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="interface_d_a_c_volume" kindref="compound">DACVolume</ref> *</type>
+        <definition>DACVolume* DACALSlot::slotVolume</definition>
+        <argsstring>()</argsstring>
+        <name>slotVolume</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.h" line="125"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_a_l_slot_1a660d17804796320de4486e10c4102b63" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>FSRef *</type>
+        <definition>FSRef* DACALSlot::slotFSRef</definition>
+        <argsstring>()</argsstring>
+        <name>slotFSRef</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.h" line="126"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_a_l_slot_1a6923e35dbade9934ad2550b20baea357" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>BOOL</type>
+        <definition>BOOL DACALSlot::validSlotFSRef</definition>
+        <argsstring>()</argsstring>
+        <name>validSlotFSRef</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.h" line="127" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.m" bodystart="583" bodyend="586"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_a_l_slot_1a03587e90e0f587cef833a2cc6bb8f89c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>BOOL</type>
+        <definition>BOOL DACALSlot::setSlotFSRefFromURL:</definition>
+        <argsstring>(NSURL *slotURL)</argsstring>
+        <name>setSlotFSRefFromURL:</name>
+        <param>
+          <type>NSURL *</type>
+          <declname>slotURL</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.h" line="128" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.m" bodystart="578" bodyend="581"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_a_l_slot_1a3cde00c9e81b8465557a730073b86b2e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>BOOL</type>
+        <definition>BOOL DACALSlot::setSlotLocation:</definition>
+        <argsstring>(NSURL *slotURL)</argsstring>
+        <name>setSlotLocation:</name>
+        <param>
+          <type>NSURL *</type>
+          <declname>slotURL</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.h" line="129" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.m" bodystart="588" bodyend="634"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_a_l_slot_1a0af1e99ef71a68cc4544ef80ac702199" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="class_n_s_mutable_array" kindref="compound">NSMutableArray</ref> *</type>
+        <definition>NSMutableArray* DACALSlot::slotElements</definition>
+        <argsstring>()</argsstring>
+        <name>slotElements</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.h" line="133"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_a_l_slot_1a3136ffeeb3bc0243dcb3e137abe6ca86" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void DACALSlot::setSlotElements:</definition>
+        <argsstring>(NSMutableArray *newElements)</argsstring>
+        <name>setSlotElements:</name>
+        <param>
+          <type><ref refid="class_n_s_mutable_array" kindref="compound">NSMutableArray</ref> *</type>
+          <declname>newElements</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.h" line="134" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.m" bodystart="641" bodyend="650"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_a_l_slot_1a47cfe63472351bea5b32aa958e144a46" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void DACALSlot::addSlotElement:</definition>
+        <argsstring>(DACALSlotElement *newElement)</argsstring>
+        <name>addSlotElement:</name>
+        <param>
+          <type><ref refid="interface_d_a_c_a_l_slot_element" kindref="compound">DACALSlotElement</ref> *</type>
+          <declname>newElement</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.h" line="135" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.m" bodystart="652" bodyend="658"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_a_l_slot_1a2cd881ccae8e8459f2cc38ef70a80707" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void DACALSlot::removeSlotElement:</definition>
+        <argsstring>(DACALSlotElement *oldElement)</argsstring>
+        <name>removeSlotElement:</name>
+        <param>
+          <type><ref refid="interface_d_a_c_a_l_slot_element" kindref="compound">DACALSlotElement</ref> *</type>
+          <declname>oldElement</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.h" line="136" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.m" bodystart="660" bodyend="664"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_a_l_slot_1a116ec424151811f73916f5a12ad7a3cf" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="interface_d_a_c_a_l_slot_element" kindref="compound">DACALSlotElement</ref> *</type>
+        <definition>DACALSlotElement * DACALSlot::elementWithFSRef:</definition>
+        <argsstring>(const FSRef *otherFSRef)</argsstring>
+        <name>elementWithFSRef:</name>
+        <param>
+          <type>const FSRef *</type>
+          <declname>otherFSRef</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.h" line="138" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.m" bodystart="666" bodyend="677"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_a_l_slot_1a02131c7c03a9a5a8a62fc6634e41ca26" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="interface_d_a_c_a_l_slot_element" kindref="compound">DACALSlotElement</ref> *</type>
+        <definition>DACALSlotElement * DACALSlot::elementWithURL:</definition>
+        <argsstring>(NSURL *otherURL)</argsstring>
+        <name>elementWithURL:</name>
+        <param>
+          <type>NSURL *</type>
+          <declname>otherURL</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.h" line="139" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.m" bodystart="679" bodyend="690"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_a_l_slot_1a5da9b8ddb0ec516f8431a267d69fb4cc" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+        <definition>NSString* DACALSlot::slotIdentifier</definition>
+        <argsstring>()</argsstring>
+        <name>slotIdentifier</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.h" line="141"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_a_l_slot_1a0bd0a43c1d554446d980d6cd6ddb6678" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void DACALSlot::setSlotIdentifier:</definition>
+        <argsstring>(NSString *newID)</argsstring>
+        <name>setSlotIdentifier:</name>
+        <param>
+          <type><ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+          <declname>newID</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.h" line="142" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.m" bodystart="697" bodyend="704"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_a_l_slot_1ad51e4ba9b10faa666e4277fc069c2423" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="interface_d_a_c_a_l_slot" kindref="compound">DACALSlot</ref> *</type>
+        <definition>DACALSlot * DACALSlot::slotWithIdentifier:</definition>
+        <argsstring>(NSString *slotID)</argsstring>
+        <name>slotWithIdentifier:</name>
+        <param>
+          <type><ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+          <declname>slotID</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.h" line="143" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.m" bodystart="706" bodyend="714"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_a_l_slot_1ad38c3552b1708dbfe12590e32830a546" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>id</type>
+        <definition>id DACALSlot::initSlotForDevice:inSlot:</definition>
+        <argsstring>(DACALDevice *newDevice,[inSlot] DACALSlotNum newSlot)</argsstring>
+        <name>initSlotForDevice:inSlot:</name>
+        <param>
+          <type><ref refid="interface_d_a_c_a_l_device" kindref="compound">DACALDevice</ref> *</type>
+          <declname>newDevice</declname>
+        </param>
+        <param>
+          <attributes>[inSlot]</attributes>
+          <type>DACALSlotNum</type>
+          <declname>newSlot</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.h" line="145" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.m" bodystart="716" bodyend="734"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_a_l_slot_1a0e8bf2153b52f41bb96631453a41293c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void DACALSlot::reloadSlot</definition>
+        <argsstring>()</argsstring>
+        <name>reloadSlot</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.h" line="148" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.m" bodystart="805" bodyend="824"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_a_l_slot_1a53d139749f3c20f28b28ca9b026429ae" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void DACALSlot::reloadElement:</definition>
+        <argsstring>(DACALSlotElement *theElement)</argsstring>
+        <name>reloadElement:</name>
+        <param>
+          <type><ref refid="interface_d_a_c_a_l_slot_element" kindref="compound">DACALSlotElement</ref> *</type>
+          <declname>theElement</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.h" line="149" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.m" bodystart="826" bodyend="836"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_a_l_slot_1abf287d193d28293e86b989fe375891cd" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void DACALSlot::swapWithSlot:</definition>
+        <argsstring>(DACALSlot *otherSlot)</argsstring>
+        <name>swapWithSlot:</name>
+        <param>
+          <type><ref refid="interface_d_a_c_a_l_slot" kindref="compound">DACALSlot</ref> *</type>
+          <declname>otherSlot</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.h" line="151" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.m" bodystart="753" bodyend="803"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_a_l_slot_1a3e0edf1f5e144723b672340ad437b164" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+        <definition>NSString * DACALSlot::title</definition>
+        <argsstring>()</argsstring>
+        <name>title</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.h" line="153" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.m" bodystart="742" bodyend="745"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_a_l_slot_1aaa8af8a07cee636394edd417b1d757ba" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+        <definition>NSString * DACALSlot::displayTitle</definition>
+        <argsstring>()</argsstring>
+        <name>displayTitle</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.h" line="154" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.m" bodystart="748" bodyend="751"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_a_l_slot_1aede85a5eaaa753f729a3bd71e931f310" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>NSURL *</type>
+        <definition>NSURL * DACALSlot::fileURL</definition>
+        <argsstring>()</argsstring>
+        <name>fileURL</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.h" line="155" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.m" bodystart="838" bodyend="849"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_a_l_slot_1a1fa8b4002c0b7b352faae3367633e4f3" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+        <definition>NSString * DACALSlot::flavor</definition>
+        <argsstring>()</argsstring>
+        <name>flavor</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.h" line="157" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.m" bodystart="851" bodyend="859"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_a_l_slot_1a387cb2f89493ac1e74d7f0f789e520c1" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void DACALSlot::setFlavor:</definition>
+        <argsstring>(NSString *newFlavor)</argsstring>
+        <name>setFlavor:</name>
+        <param>
+          <type><ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+          <declname>newFlavor</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.h" line="158" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.m" bodystart="861" bodyend="865"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_a_l_slot_1a8b5837d044259637513b867a86b6328a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>DACALResult</type>
+        <definition>DACALResult DACALSlot::moveDeviceToSlotWithOptions:</definition>
+        <argsstring>(DACALOptionBits slotOptions)</argsstring>
+        <name>moveDeviceToSlotWithOptions:</name>
+        <param>
+          <type>DACALOptionBits</type>
+          <declname>slotOptions</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.h" line="160" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.m" bodystart="867" bodyend="870"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_a_l_slot_1ab1515a3090a175c2512ba45321ac9d6e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>BOOL</type>
+        <definition>BOOL DACALSlot::isCheckedOut</definition>
+        <argsstring>()</argsstring>
+        <name>isCheckedOut</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.h" line="165" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.m" bodystart="928" bodyend="931"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_a_l_slot_1a9865c85e84bfc35963c8285552481f9b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void DACALSlot::setIsCheckedOut:</definition>
+        <argsstring>(BOOL isOut)</argsstring>
+        <name>setIsCheckedOut:</name>
+        <param>
+          <type>BOOL</type>
+          <declname>isOut</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.h" line="166" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.m" bodystart="933" bodyend="936"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_a_l_slot_1af9446ac6fc452d10060a6e40e231c5fb" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>NSDate *</type>
+        <definition>NSDate * DACALSlot::checkedOutDate</definition>
+        <argsstring>()</argsstring>
+        <name>checkedOutDate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.h" line="168" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.m" bodystart="938" bodyend="941"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_a_l_slot_1a836fa34eaa6534048444d109d51fa362" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void DACALSlot::setCheckedOutDate:</definition>
+        <argsstring>(NSDate *newDate)</argsstring>
+        <name>setCheckedOutDate:</name>
+        <param>
+          <type>NSDate *</type>
+          <declname>newDate</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.h" line="169" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.m" bodystart="943" bodyend="950"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_a_l_slot_1a39bb5fec1bbb099e2a6a67adc62c7caa" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>NSDate *</type>
+        <definition>NSDate * DACALSlot::checkedInDate</definition>
+        <argsstring>()</argsstring>
+        <name>checkedInDate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.h" line="171" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.m" bodystart="952" bodyend="955"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_a_l_slot_1aab8a20dc053933e24a200553e9638179" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void DACALSlot::setCheckedInDate:</definition>
+        <argsstring>(NSDate *newDate)</argsstring>
+        <name>setCheckedInDate:</name>
+        <param>
+          <type>NSDate *</type>
+          <declname>newDate</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.h" line="172" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.m" bodystart="957" bodyend="964"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_a_l_slot_1a944014708a461bf650835a94e252bb8b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>NSDictionary *</type>
+        <definition>NSDictionary * DACALSlot::currentReservation</definition>
+        <argsstring>()</argsstring>
+        <name>currentReservation</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.h" line="174" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.m" bodystart="966" bodyend="981"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_a_l_slot_1ad81fe0da889ba317f506e11ca919e8e5" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>NSDictionary *</type>
+        <definition>NSDictionary * DACALSlot::reservationHistory</definition>
+        <argsstring>()</argsstring>
+        <name>reservationHistory</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.h" line="175" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.m" bodystart="983" bodyend="992"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_a_l_slot_1a6be032c8e658a14d2871cdfd888008f2" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>BOOL</type>
+        <definition>BOOL DACALSlot::checkOutForUser:onHost:withUI:</definition>
+        <argsstring>(NSString *userName,[onHost] NSString *userHost,[withUI] BOOL doUI)</argsstring>
+        <name>checkOutForUser:onHost:withUI:</name>
+        <param>
+          <type><ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+          <declname>userName</declname>
+        </param>
+        <param>
+          <attributes>[onHost]</attributes>
+          <type><ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+          <declname>userHost</declname>
+        </param>
+        <param>
+          <attributes>[withUI]</attributes>
+          <type>BOOL</type>
+          <declname>doUI</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.h" line="177" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.m" bodystart="994" bodyend="1042"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_a_l_slot_1a9a429ab157f2a8a8904f777398718bfb" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>BOOL</type>
+        <definition>BOOL DACALSlot::checkInForUser:onHost:withUI:</definition>
+        <argsstring>(NSString *userName,[onHost] NSString *userHost,[withUI] BOOL doUI)</argsstring>
+        <name>checkInForUser:onHost:withUI:</name>
+        <param>
+          <type><ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+          <declname>userName</declname>
+        </param>
+        <param>
+          <attributes>[onHost]</attributes>
+          <type><ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+          <declname>userHost</declname>
+        </param>
+        <param>
+          <attributes>[withUI]</attributes>
+          <type>BOOL</type>
+          <declname>doUI</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.h" line="178" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.m" bodystart="1044" bodyend="1097"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_a_l_slot_1a1efc5af0a44c92908920e60186990974" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>BOOL</type>
+        <definition>BOOL DACALSlot::toggleReservationForUser:onHost:withUI:</definition>
+        <argsstring>(NSString *userName,[onHost] NSString *userHost,[withUI] BOOL doUI)</argsstring>
+        <name>toggleReservationForUser:onHost:withUI:</name>
+        <param>
+          <type><ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+          <declname>userName</declname>
+        </param>
+        <param>
+          <attributes>[onHost]</attributes>
+          <type><ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+          <declname>userHost</declname>
+        </param>
+        <param>
+          <attributes>[withUI]</attributes>
+          <type>BOOL</type>
+          <declname>doUI</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.h" line="179" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.m" bodystart="1099" bodyend="1115"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_a_l_slot_1a99762625e98456cb5b844597edea7c6a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>BOOL</type>
+        <definition>BOOL DACALSlot::isSlotMounted</definition>
+        <argsstring>()</argsstring>
+        <name>isSlotMounted</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.h" line="181" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.m" bodystart="1117" bodyend="1120"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_a_l_slot_1a6b2963d5e55d89a65dc22b705fb24a09" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+        <definition>NSString * DACALSlot::slotHost</definition>
+        <argsstring>()</argsstring>
+        <name>slotHost</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.h" line="182" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.m" bodystart="1122" bodyend="1131"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_a_l_slot_1aa7650ac8022f2eb608417b30456ec018" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>BOOL</type>
+        <definition>BOOL DACALSlot::slotMountedAsVolume:</definition>
+        <argsstring>(DACVolume *mountVolume)</argsstring>
+        <name>slotMountedAsVolume:</name>
+        <param>
+          <type><ref refid="interface_d_a_c_volume" kindref="compound">DACVolume</ref> *</type>
+          <declname>mountVolume</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.h" line="183" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.m" bodystart="1133" bodyend="1161"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_a_l_slot_1aac49acf5f0c222d2dd9b09bf45946ac1" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>BOOL</type>
+        <definition>BOOL DACALSlot::slotUnmounted</definition>
+        <argsstring>()</argsstring>
+        <name>slotUnmounted</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.h" line="184" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.m" bodystart="1163" bodyend="1184"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_a_l_slot_1ae6e02a7506baca03f27e900af992b47b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>BOOL</type>
+        <definition>BOOL DACALSlot::isSlotAssigned</definition>
+        <argsstring>()</argsstring>
+        <name>isSlotAssigned</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.h" line="186" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.m" bodystart="1186" bodyend="1189"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_a_l_slot_1ac21a1cff3e100f6f8517f3232945dd75" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>BOOL</type>
+        <definition>BOOL DACALSlot::slotAssignedIndexFromVolume:asType:</definition>
+        <argsstring>(DACVolume *indexVolume,[asType] NSString *newType)</argsstring>
+        <name>slotAssignedIndexFromVolume:asType:</name>
+        <param>
+          <type><ref refid="interface_d_a_c_volume" kindref="compound">DACVolume</ref> *</type>
+          <declname>indexVolume</declname>
+        </param>
+        <param>
+          <attributes>[asType]</attributes>
+          <type><ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+          <declname>newType</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.h" line="187" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.m" bodystart="1191" bodyend="1277"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_a_l_slot_1a3a5ca84e50a883e87d1d90d4f03f9cdc" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>BOOL</type>
+        <definition>BOOL DACALSlot::unassignSlotIndex</definition>
+        <argsstring>()</argsstring>
+        <name>unassignSlotIndex</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.h" line="188" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.m" bodystart="1279" bodyend="1304"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_a_l_slot_1a8e459f0b97ff16fd70dfae0dee96a363" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>NSNumber *</type>
+        <definition>NSNumber * DACALSlot::volumeSize</definition>
+        <argsstring>()</argsstring>
+        <name>volumeSize</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.h" line="190" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.m" bodystart="1306" bodyend="1319"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="interface_d_a_c_a_l_slot_1ab4c89af6613dc8cbc8e21dd59dbf566c" prot="public" static="yes" const="no" explicit="no" inline="no" virt="virtual">
+        <type>id</type>
+        <definition>id DACALSlot::createSlotForDevice:inSlot:</definition>
+        <argsstring>(DACALDevice *newDevice,[inSlot] DACALSlotNum newSlot)</argsstring>
+        <name>createSlotForDevice:inSlot:</name>
+        <param>
+          <type><ref refid="interface_d_a_c_a_l_device" kindref="compound">DACALDevice</ref> *</type>
+          <declname>newDevice</declname>
+        </param>
+        <param>
+          <attributes>[inSlot]</attributes>
+          <type>DACALSlotNum</type>
+          <declname>newSlot</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.h" line="146" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.m" bodystart="736" bodyend="739"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_a_l_slot_1a8d2e8f5da4411398a52d607bb868ea60" prot="public" static="yes" const="no" explicit="no" inline="no" virt="virtual">
+        <type>BOOL</type>
+        <definition>BOOL DACALSlot::moveDevicesToSlotsOfNodes:</definition>
+        <argsstring>(NSArray *theTreeNodes)</argsstring>
+        <name>moveDevicesToSlotsOfNodes:</name>
+        <param>
+          <type><ref refid="class_n_s_array" kindref="compound">NSArray</ref> *</type>
+          <declname>theTreeNodes</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.h" line="162" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.m" bodystart="872" bodyend="902"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_d_a_c_a_l_slot_1aa5da6089d88d3295a409a1564689b599" prot="public" static="yes" const="no" explicit="no" inline="no" virt="virtual">
+        <type>BOOL</type>
+        <definition>BOOL DACALSlot::ejectSlotVolumesOfNodes:</definition>
+        <argsstring>(NSArray *theTreeNodes)</argsstring>
+        <name>ejectSlotVolumesOfNodes:</name>
+        <param>
+          <type><ref refid="class_n_s_array" kindref="compound">NSArray</ref> *</type>
+          <declname>theTreeNodes</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.h" line="163" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.m" bodystart="904" bodyend="926"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="37">
+        <label>NSObject</label>
+        <link refid="class_n_s_object"/>
+      </node>
+      <node id="36">
+        <label>DACALSlot</label>
+        <link refid="interface_d_a_c_a_l_slot"/>
+        <childnode refid="37" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="42">
+        <label>NSMutableArray</label>
+        <link refid="class_n_s_mutable_array"/>
+      </node>
+      <node id="40">
+        <label>SimpleTreeNode</label>
+        <link refid="class_simple_tree_node"/>
+        <childnode refid="41" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="44">
+        <label>DACALDeviceNode</label>
+        <link refid="interface_d_a_c_a_l_device_node"/>
+        <childnode refid="45" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="43">
+        <label>NSString</label>
+        <link refid="class_n_s_string"/>
+      </node>
+      <node id="46">
+        <label>DACVolume</label>
+        <link refid="interface_d_a_c_volume"/>
+        <childnode refid="39" relation="public-inheritance">
+        </childnode>
+        <childnode refid="38" relation="usage">
+          <edgelabel>padKnownSlot</edgelabel>
+        </childnode>
+        <childnode refid="43" relation="usage">
+          <edgelabel>padIdentifier</edgelabel>
+          <edgelabel>mediaType</edgelabel>
+          <edgelabel>mediaTitle</edgelabel>
+          <edgelabel>padFlavorGuess</edgelabel>
+          <edgelabel>padKnownHost</edgelabel>
+        </childnode>
+      </node>
+      <node id="45">
+        <label>DACALDevice</label>
+        <link refid="interface_d_a_c_a_l_device"/>
+        <childnode refid="39" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="41">
+        <label>TreeNode</label>
+        <link refid="interface_tree_node"/>
+        <childnode refid="39" relation="public-inheritance">
+        </childnode>
+        <childnode refid="41" relation="usage">
+          <edgelabel>nodeParent</edgelabel>
+        </childnode>
+        <childnode refid="42" relation="usage">
+          <edgelabel>nodeChildren</edgelabel>
+        </childnode>
+      </node>
+      <node id="39">
+        <label>NSObject</label>
+        <link refid="class_n_s_object"/>
+      </node>
+      <node id="38">
+        <label>DACALSlot</label>
+        <link refid="interface_d_a_c_a_l_slot"/>
+        <childnode refid="39" relation="public-inheritance">
+        </childnode>
+        <childnode refid="40" relation="usage">
+          <edgelabel>slotNode</edgelabel>
+        </childnode>
+        <childnode refid="43" relation="usage">
+          <edgelabel>slotIdentifier</edgelabel>
+        </childnode>
+        <childnode refid="44" relation="usage">
+          <edgelabel>slotDevice</edgelabel>
+        </childnode>
+        <childnode refid="42" relation="usage">
+          <edgelabel>slotElements</edgelabel>
+        </childnode>
+        <childnode refid="46" relation="usage">
+          <edgelabel>slotVolume</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.h" line="102" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/DACAL/DACALSlot.h" bodystart="102" bodyend="-1"/>
+    <listofallmembers>
+      <member refid="interface_d_a_c_a_l_slot_1a47cfe63472351bea5b32aa958e144a46" prot="public" virt="virtual"><scope>DACALSlot</scope><name>addSlotElement:</name></member>
+      <member refid="interface_d_a_c_a_l_slot_1a39bb5fec1bbb099e2a6a67adc62c7caa" prot="public" virt="virtual"><scope>DACALSlot</scope><name>checkedInDate</name></member>
+      <member refid="interface_d_a_c_a_l_slot_1af9446ac6fc452d10060a6e40e231c5fb" prot="public" virt="virtual"><scope>DACALSlot</scope><name>checkedOutDate</name></member>
+      <member refid="interface_d_a_c_a_l_slot_1a9a429ab157f2a8a8904f777398718bfb" prot="public" virt="virtual"><scope>DACALSlot</scope><name>checkInForUser:onHost:withUI:</name></member>
+      <member refid="interface_d_a_c_a_l_slot_1a6be032c8e658a14d2871cdfd888008f2" prot="public" virt="virtual"><scope>DACALSlot</scope><name>checkOutForUser:onHost:withUI:</name></member>
+      <member refid="interface_d_a_c_a_l_slot_1ab4c89af6613dc8cbc8e21dd59dbf566c" prot="public" virt="virtual"><scope>DACALSlot</scope><name>createSlotForDevice:inSlot:</name></member>
+      <member refid="interface_d_a_c_a_l_slot_1a944014708a461bf650835a94e252bb8b" prot="public" virt="virtual"><scope>DACALSlot</scope><name>currentReservation</name></member>
+      <member refid="interface_d_a_c_a_l_slot_1aaa8af8a07cee636394edd417b1d757ba" prot="public" virt="virtual"><scope>DACALSlot</scope><name>displayTitle</name></member>
+      <member refid="interface_d_a_c_a_l_slot_1aa5da6089d88d3295a409a1564689b599" prot="public" virt="virtual"><scope>DACALSlot</scope><name>ejectSlotVolumesOfNodes:</name></member>
+      <member refid="interface_d_a_c_a_l_slot_1a116ec424151811f73916f5a12ad7a3cf" prot="public" virt="virtual"><scope>DACALSlot</scope><name>elementWithFSRef:</name></member>
+      <member refid="interface_d_a_c_a_l_slot_1a02131c7c03a9a5a8a62fc6634e41ca26" prot="public" virt="virtual"><scope>DACALSlot</scope><name>elementWithURL:</name></member>
+      <member refid="interface_d_a_c_a_l_slot_1aede85a5eaaa753f729a3bd71e931f310" prot="public" virt="virtual"><scope>DACALSlot</scope><name>fileURL</name></member>
+      <member refid="interface_d_a_c_a_l_slot_1a1fa8b4002c0b7b352faae3367633e4f3" prot="public" virt="virtual"><scope>DACALSlot</scope><name>flavor</name></member>
+      <member refid="interface_d_a_c_a_l_slot_1ad38c3552b1708dbfe12590e32830a546" prot="public" virt="virtual"><scope>DACALSlot</scope><name>initSlotForDevice:inSlot:</name></member>
+      <member refid="interface_d_a_c_a_l_slot_1ab1515a3090a175c2512ba45321ac9d6e" prot="public" virt="virtual"><scope>DACALSlot</scope><name>isCheckedOut</name></member>
+      <member refid="interface_d_a_c_a_l_slot_1ae6e02a7506baca03f27e900af992b47b" prot="public" virt="virtual"><scope>DACALSlot</scope><name>isSlotAssigned</name></member>
+      <member refid="interface_d_a_c_a_l_slot_1a99762625e98456cb5b844597edea7c6a" prot="public" virt="virtual"><scope>DACALSlot</scope><name>isSlotMounted</name></member>
+      <member refid="interface_d_a_c_a_l_slot_1a8d2e8f5da4411398a52d607bb868ea60" prot="public" virt="virtual"><scope>DACALSlot</scope><name>moveDevicesToSlotsOfNodes:</name></member>
+      <member refid="interface_d_a_c_a_l_slot_1a8b5837d044259637513b867a86b6328a" prot="public" virt="virtual"><scope>DACALSlot</scope><name>moveDeviceToSlotWithOptions:</name></member>
+      <member refid="interface_d_a_c_a_l_slot_1a53d139749f3c20f28b28ca9b026429ae" prot="public" virt="virtual"><scope>DACALSlot</scope><name>reloadElement:</name></member>
+      <member refid="interface_d_a_c_a_l_slot_1a0e8bf2153b52f41bb96631453a41293c" prot="public" virt="virtual"><scope>DACALSlot</scope><name>reloadSlot</name></member>
+      <member refid="interface_d_a_c_a_l_slot_1a2cd881ccae8e8459f2cc38ef70a80707" prot="public" virt="virtual"><scope>DACALSlot</scope><name>removeSlotElement:</name></member>
+      <member refid="interface_d_a_c_a_l_slot_1ad81fe0da889ba317f506e11ca919e8e5" prot="public" virt="virtual"><scope>DACALSlot</scope><name>reservationHistory</name></member>
+      <member refid="interface_d_a_c_a_l_slot_1aab8a20dc053933e24a200553e9638179" prot="public" virt="virtual"><scope>DACALSlot</scope><name>setCheckedInDate:</name></member>
+      <member refid="interface_d_a_c_a_l_slot_1a836fa34eaa6534048444d109d51fa362" prot="public" virt="virtual"><scope>DACALSlot</scope><name>setCheckedOutDate:</name></member>
+      <member refid="interface_d_a_c_a_l_slot_1a387cb2f89493ac1e74d7f0f789e520c1" prot="public" virt="virtual"><scope>DACALSlot</scope><name>setFlavor:</name></member>
+      <member refid="interface_d_a_c_a_l_slot_1a9865c85e84bfc35963c8285552481f9b" prot="public" virt="virtual"><scope>DACALSlot</scope><name>setIsCheckedOut:</name></member>
+      <member refid="interface_d_a_c_a_l_slot_1a3136ffeeb3bc0243dcb3e137abe6ca86" prot="public" virt="virtual"><scope>DACALSlot</scope><name>setSlotElements:</name></member>
+      <member refid="interface_d_a_c_a_l_slot_1a03587e90e0f587cef833a2cc6bb8f89c" prot="public" virt="virtual"><scope>DACALSlot</scope><name>setSlotFSRefFromURL:</name></member>
+      <member refid="interface_d_a_c_a_l_slot_1a0bd0a43c1d554446d980d6cd6ddb6678" prot="public" virt="virtual"><scope>DACALSlot</scope><name>setSlotIdentifier:</name></member>
+      <member refid="interface_d_a_c_a_l_slot_1a3cde00c9e81b8465557a730073b86b2e" prot="public" virt="virtual"><scope>DACALSlot</scope><name>setSlotLocation:</name></member>
+      <member refid="interface_d_a_c_a_l_slot_1af4bd26777f227834dd8ba682a32a732a" prot="public" virt="virtual"><scope>DACALSlot</scope><name>setSlotNode:</name></member>
+      <member refid="interface_d_a_c_a_l_slot_1ac21a1cff3e100f6f8517f3232945dd75" prot="public" virt="virtual"><scope>DACALSlot</scope><name>slotAssignedIndexFromVolume:asType:</name></member>
+      <member refid="interface_d_a_c_a_l_slot_1a24ce8a659ae13009ab41e1b519285269" prot="protected" virt="non-virtual"><scope>DACALSlot</scope><name>slotCheckedIn</name></member>
+      <member refid="interface_d_a_c_a_l_slot_1ad9d71e96b861f811ad4f887d3ec28463" prot="protected" virt="non-virtual"><scope>DACALSlot</scope><name>slotCheckedOut</name></member>
+      <member refid="interface_d_a_c_a_l_slot_1ad21e445e7323248f836d2ff47f73a28c" prot="protected" virt="non-virtual"><scope>DACALSlot</scope><name>slotDevice</name></member>
+      <member refid="interface_d_a_c_a_l_slot_1a97abbc48def674a9b3d83f1fce87af0d" prot="public" virt="virtual"><scope>DACALSlot</scope><name>slotDevice</name></member>
+      <member refid="interface_d_a_c_a_l_slot_1a2493454084c013ace6d876c5b3fa3cf9" prot="public" virt="virtual"><scope>DACALSlot</scope><name>slotDeviceRef</name></member>
+      <member refid="interface_d_a_c_a_l_slot_1a03eae9b0df596d2f5d68150f1f18ef06" prot="protected" virt="non-virtual"><scope>DACALSlot</scope><name>slotElements</name></member>
+      <member refid="interface_d_a_c_a_l_slot_1a0af1e99ef71a68cc4544ef80ac702199" prot="public" virt="virtual"><scope>DACALSlot</scope><name>slotElements</name></member>
+      <member refid="interface_d_a_c_a_l_slot_1a2d73da79f5f2072a32d21da4948064c9" prot="protected" virt="non-virtual"><scope>DACALSlot</scope><name>slotFSRef</name></member>
+      <member refid="interface_d_a_c_a_l_slot_1a660d17804796320de4486e10c4102b63" prot="public" virt="virtual"><scope>DACALSlot</scope><name>slotFSRef</name></member>
+      <member refid="interface_d_a_c_a_l_slot_1a6b2963d5e55d89a65dc22b705fb24a09" prot="public" virt="virtual"><scope>DACALSlot</scope><name>slotHost</name></member>
+      <member refid="interface_d_a_c_a_l_slot_1a5703a39fcff6111a695575a00f59aa2f" prot="protected" virt="non-virtual"><scope>DACALSlot</scope><name>slotIdentifier</name></member>
+      <member refid="interface_d_a_c_a_l_slot_1a5da9b8ddb0ec516f8431a267d69fb4cc" prot="public" virt="virtual"><scope>DACALSlot</scope><name>slotIdentifier</name></member>
+      <member refid="interface_d_a_c_a_l_slot_1aca46985adb53c9003831feba63357041" prot="protected" virt="non-virtual"><scope>DACALSlot</scope><name>slotIsCheckedOut</name></member>
+      <member refid="interface_d_a_c_a_l_slot_1aa7650ac8022f2eb608417b30456ec018" prot="public" virt="virtual"><scope>DACALSlot</scope><name>slotMountedAsVolume:</name></member>
+      <member refid="interface_d_a_c_a_l_slot_1a052b3c686f39a3388dc9edcfe0cfba78" prot="protected" virt="non-virtual"><scope>DACALSlot</scope><name>slotNode</name></member>
+      <member refid="interface_d_a_c_a_l_slot_1a128471fe9e9cb769c7a66638ca5c4959" prot="public" virt="virtual"><scope>DACALSlot</scope><name>slotNode</name></member>
+      <member refid="interface_d_a_c_a_l_slot_1aff0ad5f88d1f523b314b6e92fcd860c1" prot="protected" virt="non-virtual"><scope>DACALSlot</scope><name>slotNumber</name></member>
+      <member refid="interface_d_a_c_a_l_slot_1af4d13bd7d891eacab4cb9646fc0e11b9" prot="public" virt="virtual"><scope>DACALSlot</scope><name>slotNumber</name></member>
+      <member refid="interface_d_a_c_a_l_slot_1aac49acf5f0c222d2dd9b09bf45946ac1" prot="public" virt="virtual"><scope>DACALSlot</scope><name>slotUnmounted</name></member>
+      <member refid="interface_d_a_c_a_l_slot_1a535f1c08be2deefca635b4c06ffb137b" prot="protected" virt="non-virtual"><scope>DACALSlot</scope><name>slotVolume</name></member>
+      <member refid="interface_d_a_c_a_l_slot_1adf0fe671e88e368badb6f71f323e9b2e" prot="public" virt="virtual"><scope>DACALSlot</scope><name>slotVolume</name></member>
+      <member refid="interface_d_a_c_a_l_slot_1ad51e4ba9b10faa666e4277fc069c2423" prot="public" virt="virtual"><scope>DACALSlot</scope><name>slotWithIdentifier:</name></member>
+      <member refid="interface_d_a_c_a_l_slot_1abf287d193d28293e86b989fe375891cd" prot="public" virt="virtual"><scope>DACALSlot</scope><name>swapWithSlot:</name></member>
+      <member refid="interface_d_a_c_a_l_slot_1a3e0edf1f5e144723b672340ad437b164" prot="public" virt="virtual"><scope>DACALSlot</scope><name>title</name></member>
+      <member refid="interface_d_a_c_a_l_slot_1a1efc5af0a44c92908920e60186990974" prot="public" virt="virtual"><scope>DACALSlot</scope><name>toggleReservationForUser:onHost:withUI:</name></member>
+      <member refid="interface_d_a_c_a_l_slot_1a3a5ca84e50a883e87d1d90d4f03f9cdc" prot="public" virt="virtual"><scope>DACALSlot</scope><name>unassignSlotIndex</name></member>
+      <member refid="interface_d_a_c_a_l_slot_1a6923e35dbade9934ad2550b20baea357" prot="public" virt="virtual"><scope>DACALSlot</scope><name>validSlotFSRef</name></member>
+      <member refid="interface_d_a_c_a_l_slot_1a8e459f0b97ff16fd70dfae0dee96a363" prot="public" virt="virtual"><scope>DACALSlot</scope><name>volumeSize</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

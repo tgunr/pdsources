@@ -1,0 +1,548 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.6.2">
+  <compounddef id="interface_license_controller" kind="class" prot="public">
+    <compoundname>LicenseController</compoundname>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="interface_license_controller_1a621ce5f5b4fdc6b2960a1310b35aaf2f" prot="protected" static="no" mutable="no">
+        <type>IBOutlet NSWindow *</type>
+        <definition>IBOutlet NSWindow* LicenseController::notLicensedWindow</definition>
+        <argsstring></argsstring>
+        <name>notLicensedWindow</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/LicenseController.h" line="7" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/LicenseController.h" bodystart="7" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_license_controller_1a25beadabf071560b85f20d5355d0e2d9" prot="protected" static="no" mutable="no">
+        <type>IBOutlet NSWindow *</type>
+        <definition>IBOutlet NSWindow* LicenseController::enterLicenseWindow</definition>
+        <argsstring></argsstring>
+        <name>enterLicenseWindow</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/LicenseController.h" line="8" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/LicenseController.h" bodystart="8" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_license_controller_1a27e60bf7a046c328327cf591afd79847" prot="protected" static="no" mutable="no">
+        <type>IBOutlet NSWindow *</type>
+        <definition>IBOutlet NSWindow* LicenseController::requestLicenseWindow</definition>
+        <argsstring></argsstring>
+        <name>requestLicenseWindow</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/LicenseController.h" line="9" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/LicenseController.h" bodystart="9" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_license_controller_1aafdb5f3409aa9982ffface64ba2100f9" prot="protected" static="no" mutable="no">
+        <type>IBOutlet NSWindow *</type>
+        <definition>IBOutlet NSWindow* LicenseController::licenseWindow</definition>
+        <argsstring></argsstring>
+        <name>licenseWindow</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/LicenseController.h" line="10" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/LicenseController.h" bodystart="10" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_license_controller_1a2f7a5a1210ec31dc93e70141829c65f5" prot="protected" static="no" mutable="no">
+        <type>IBOutlet NSButton *</type>
+        <definition>IBOutlet NSButton* LicenseController::okBtn</definition>
+        <argsstring></argsstring>
+        <name>okBtn</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/LicenseController.h" line="12" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/LicenseController.h" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_license_controller_1a03c801df7bbf33df35318540621d97cc" prot="protected" static="no" mutable="no">
+        <type>IBOutlet NSButton *</type>
+        <definition>IBOutlet NSButton* LicenseController::enterLicenseBtn</definition>
+        <argsstring></argsstring>
+        <name>enterLicenseBtn</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/LicenseController.h" line="15" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/LicenseController.h" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_license_controller_1ab39d638b8619aac3d4981399d7f67f7f" prot="protected" static="no" mutable="no">
+        <type>IBOutlet NSButton *</type>
+        <definition>IBOutlet NSButton* LicenseController::demoLicenseBtn</definition>
+        <argsstring></argsstring>
+        <name>demoLicenseBtn</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/LicenseController.h" line="16" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/LicenseController.h" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_license_controller_1a262b6f14311aeb197194c21ef46fc58b" prot="protected" static="no" mutable="no">
+        <type>IBOutlet NSButton *</type>
+        <definition>IBOutlet NSButton* LicenseController::visitLicenseBtn</definition>
+        <argsstring></argsstring>
+        <name>visitLicenseBtn</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/LicenseController.h" line="17" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/LicenseController.h" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_license_controller_1a4356bbb4175f18844ab3e4998319e3f5" prot="protected" static="no" mutable="no">
+        <type>IBOutlet NSButton *</type>
+        <definition>IBOutlet NSButton* LicenseController::selectLicenseFileBtn</definition>
+        <argsstring></argsstring>
+        <name>selectLicenseFileBtn</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/LicenseController.h" line="20" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/LicenseController.h" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_license_controller_1acf779f5fcbe702033902c43354f9dcec" prot="protected" static="no" mutable="no">
+        <type>IBOutlet NSButton *</type>
+        <definition>IBOutlet NSButton* LicenseController::requestLicenseBtn</definition>
+        <argsstring></argsstring>
+        <name>requestLicenseBtn</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/LicenseController.h" line="21" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/LicenseController.h" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_license_controller_1a81c820ed66ea1e2a9a2d26e262588607" prot="protected" static="no" mutable="no">
+        <type>IBOutlet NSPathControl *</type>
+        <definition>IBOutlet NSPathControl* LicenseController::licensePathControl</definition>
+        <argsstring></argsstring>
+        <name>licensePathControl</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/LicenseController.h" line="22" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/LicenseController.h" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_license_controller_1a1271f0bea5e20a6b2effc0cfb9026f8d" prot="protected" static="no" mutable="no">
+        <type>IBOutlet NSTextField *</type>
+        <definition>IBOutlet NSTextField* LicenseController::licenseeField</definition>
+        <argsstring></argsstring>
+        <name>licenseeField</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/LicenseController.h" line="25" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/LicenseController.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_license_controller_1a137db32ba25e7d01ea67c55be5277cd7" prot="protected" static="no" mutable="no">
+        <type>IBOutlet NSTextField *</type>
+        <definition>IBOutlet NSTextField* LicenseController::licenseMailField</definition>
+        <argsstring></argsstring>
+        <name>licenseMailField</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/LicenseController.h" line="26" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/LicenseController.h" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_license_controller_1ae891e14745775481f51198ae74e0035e" prot="protected" static="no" mutable="no">
+        <type>IBOutlet NSTextField *</type>
+        <definition>IBOutlet NSTextField* LicenseController::licenseInvoiceCode</definition>
+        <argsstring></argsstring>
+        <name>licenseInvoiceCode</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/LicenseController.h" line="27" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/LicenseController.h" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_license_controller_1a175d2efb347182534bb287444763752d" prot="protected" static="no" mutable="no">
+        <type>IBOutlet NSButton *</type>
+        <definition>IBOutlet NSButton* LicenseController::submitRequestBtn</definition>
+        <argsstring></argsstring>
+        <name>submitRequestBtn</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/LicenseController.h" line="28" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/LicenseController.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_license_controller_1a35381b891797fc586bba8350dce1e6b1" prot="protected" static="no" mutable="no">
+        <type>IBOutlet NSTextField *</type>
+        <definition>IBOutlet NSTextField* LicenseController::validUserName</definition>
+        <argsstring></argsstring>
+        <name>validUserName</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/LicenseController.h" line="31" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/LicenseController.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_license_controller_1a0060a65c4f5b84c7cd40510a55b71473" prot="protected" static="no" mutable="no">
+        <type>IBOutlet NSTextField *</type>
+        <definition>IBOutlet NSTextField* LicenseController::validUserMail</definition>
+        <argsstring></argsstring>
+        <name>validUserMail</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/LicenseController.h" line="32" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/LicenseController.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_license_controller_1a4aa00aa8294869df51130a9e359360fc" prot="protected" static="no" mutable="no">
+        <type>IBOutlet NSTextField *</type>
+        <definition>IBOutlet NSTextField* LicenseController::validUserMessage</definition>
+        <argsstring></argsstring>
+        <name>validUserMessage</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/LicenseController.h" line="33" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/LicenseController.h" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="interface_license_controller_1a43c30441f9027fc1ca0b3ca6a8c57b4f" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_n_s_string" kindref="compound">NSString</ref> *</type>
+        <definition>NSString* LicenseController::controllerState</definition>
+        <argsstring></argsstring>
+        <name>controllerState</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/LicenseController.h" line="35" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/LicenseController.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="interface_license_controller_1a0769e1d5addbe8b34e065e460369f00d" prot="public" static="yes" const="no" explicit="no" inline="no" virt="virtual">
+        <type>id</type>
+        <definition>id LicenseController::sharedLicenseController</definition>
+        <argsstring>()</argsstring>
+        <name>sharedLicenseController</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/LicenseController.h" line="38" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/LicenseController.m" bodystart="36" bodyend="41"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="interface_license_controller_1a8f07fde896fb0274eaffb30d36c3bca8" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>id</type>
+        <definition>id LicenseController::init</definition>
+        <argsstring>()</argsstring>
+        <name>init</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/LicenseController.h" line="39" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/LicenseController.m" bodystart="44" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_license_controller_1a8d7f4e837404d7f1f325cde6a677162b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void LicenseController::runNotLicensedModalWindow</definition>
+        <argsstring>()</argsstring>
+        <name>runNotLicensedModalWindow</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/LicenseController.h" line="41" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/LicenseController.m" bodystart="99" bodyend="112"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_license_controller_1a0dd97f8862e8210f7036582af3366f20" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void LicenseController::runChooseLicenseWindow</definition>
+        <argsstring>()</argsstring>
+        <name>runChooseLicenseWindow</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/LicenseController.h" line="42" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/LicenseController.m" bodystart="114" bodyend="119"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_license_controller_1ab9d8333c1fc02102abd8d648517232a2" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void LicenseController::runHaveLicenseWindow</definition>
+        <argsstring>()</argsstring>
+        <name>runHaveLicenseWindow</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/LicenseController.h" line="43" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/LicenseController.m" bodystart="139" bodyend="156"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_license_controller_1a795377cae3986256d6f1ac5e034fa37e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>IBAction</type>
+        <definition>IBAction LicenseController::chooseAppLicensedMenu:</definition>
+        <argsstring>(id sender)</argsstring>
+        <name>chooseAppLicensedMenu:</name>
+        <param>
+          <type>id</type>
+          <declname>sender</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/LicenseController.h" line="45" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/LicenseController.m" bodystart="158" bodyend="164"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_license_controller_1a8c65041a6b0c141b30b64e1672c9beec" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>IBAction</type>
+        <definition>IBAction LicenseController::chooseRequestLicenseMenu:</definition>
+        <argsstring>(id sender)</argsstring>
+        <name>chooseRequestLicenseMenu:</name>
+        <param>
+          <type>id</type>
+          <declname>sender</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/LicenseController.h" line="46" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/LicenseController.m" bodystart="166" bodyend="170"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_license_controller_1aaa0ef071af91e0ff38caaf96a26fa4fa" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>IBAction</type>
+        <definition>IBAction LicenseController::cancelLicenseBtn:</definition>
+        <argsstring>(id sender)</argsstring>
+        <name>cancelLicenseBtn:</name>
+        <param>
+          <type>id</type>
+          <declname>sender</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/LicenseController.h" line="48" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/LicenseController.m" bodystart="368" bodyend="372"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_license_controller_1adaaeaccd1e676b7cbfdc1b162ddeecd2" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>IBAction</type>
+        <definition>IBAction LicenseController::enterLicenseBtn:</definition>
+        <argsstring>(id sender)</argsstring>
+        <name>enterLicenseBtn:</name>
+        <param>
+          <type>id</type>
+          <declname>sender</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/LicenseController.h" line="51" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/LicenseController.m" bodystart="421" bodyend="426"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_license_controller_1af56c6580f6943f299c554f72c4f71831" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>IBAction</type>
+        <definition>IBAction LicenseController::visitLicenseBtn:</definition>
+        <argsstring>(id sender)</argsstring>
+        <name>visitLicenseBtn:</name>
+        <param>
+          <type>id</type>
+          <declname>sender</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/LicenseController.h" line="52" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/LicenseController.m" bodystart="404" bodyend="413"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_license_controller_1a041776c38b8b1b0020a496ab44bd8a64" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>IBAction</type>
+        <definition>IBAction LicenseController::demoLicenseBtn:</definition>
+        <argsstring>(id sender)</argsstring>
+        <name>demoLicenseBtn:</name>
+        <param>
+          <type>id</type>
+          <declname>sender</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/LicenseController.h" line="53" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/LicenseController.m" bodystart="415" bodyend="419"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_license_controller_1a62be01656891868891ad2867271f2184" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>IBAction</type>
+        <definition>IBAction LicenseController::selectLicenseFileBtn:</definition>
+        <argsstring>(id sender)</argsstring>
+        <name>selectLicenseFileBtn:</name>
+        <param>
+          <type>id</type>
+          <declname>sender</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/LicenseController.h" line="56" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/LicenseController.m" bodystart="324" bodyend="346"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_license_controller_1ab9b4ff77f94f9af33a85699de8210e13" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void LicenseController::pathControlDoubleClick:</definition>
+        <argsstring>(id sender)</argsstring>
+        <name>pathControlDoubleClick:</name>
+        <param>
+          <type>id</type>
+          <declname>sender</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/LicenseController.h" line="57" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/LicenseController.m" bodystart="211" bodyend="214"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_license_controller_1a05f70a5f4d4e1bce95f962be9a73df15" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>IBAction</type>
+        <definition>IBAction LicenseController::requestLicensePressed:</definition>
+        <argsstring>(id sender)</argsstring>
+        <name>requestLicensePressed:</name>
+        <param>
+          <type>id</type>
+          <declname>sender</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/LicenseController.h" line="58" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/LicenseController.m" bodystart="374" bodyend="378"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_license_controller_1a8742baeaea259c8fb373a8bb76569a80" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>IBAction</type>
+        <definition>IBAction LicenseController::submitBtnPressed:</definition>
+        <argsstring>(id sender)</argsstring>
+        <name>submitBtnPressed:</name>
+        <param>
+          <type>id</type>
+          <declname>sender</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/LicenseController.h" line="61" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/LicenseController.m" bodystart="380" bodyend="402"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="136">
+        <label>LicenseController</label>
+        <link refid="interface_license_controller"/>
+        <childnode refid="137" relation="usage">
+          <edgelabel>controllerState</edgelabel>
+        </childnode>
+      </node>
+      <node id="137">
+        <label>NSString</label>
+        <link refid="class_n_s_string"/>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/LicenseController.h" line="6" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/License/LicenseController.h" bodystart="5" bodyend="-1"/>
+    <listofallmembers>
+      <member refid="interface_license_controller_1aaa0ef071af91e0ff38caaf96a26fa4fa" prot="public" virt="virtual"><scope>LicenseController</scope><name>cancelLicenseBtn:</name></member>
+      <member refid="interface_license_controller_1a795377cae3986256d6f1ac5e034fa37e" prot="public" virt="virtual"><scope>LicenseController</scope><name>chooseAppLicensedMenu:</name></member>
+      <member refid="interface_license_controller_1a8c65041a6b0c141b30b64e1672c9beec" prot="public" virt="virtual"><scope>LicenseController</scope><name>chooseRequestLicenseMenu:</name></member>
+      <member refid="interface_license_controller_1a43c30441f9027fc1ca0b3ca6a8c57b4f" prot="protected" virt="non-virtual"><scope>LicenseController</scope><name>controllerState</name></member>
+      <member refid="interface_license_controller_1ab39d638b8619aac3d4981399d7f67f7f" prot="protected" virt="non-virtual"><scope>LicenseController</scope><name>demoLicenseBtn</name></member>
+      <member refid="interface_license_controller_1a041776c38b8b1b0020a496ab44bd8a64" prot="public" virt="virtual"><scope>LicenseController</scope><name>demoLicenseBtn:</name></member>
+      <member refid="interface_license_controller_1a03c801df7bbf33df35318540621d97cc" prot="protected" virt="non-virtual"><scope>LicenseController</scope><name>enterLicenseBtn</name></member>
+      <member refid="interface_license_controller_1adaaeaccd1e676b7cbfdc1b162ddeecd2" prot="public" virt="virtual"><scope>LicenseController</scope><name>enterLicenseBtn:</name></member>
+      <member refid="interface_license_controller_1a25beadabf071560b85f20d5355d0e2d9" prot="protected" virt="non-virtual"><scope>LicenseController</scope><name>enterLicenseWindow</name></member>
+      <member refid="interface_license_controller_1a8f07fde896fb0274eaffb30d36c3bca8" prot="public" virt="virtual"><scope>LicenseController</scope><name>init</name></member>
+      <member refid="interface_license_controller_1a1271f0bea5e20a6b2effc0cfb9026f8d" prot="protected" virt="non-virtual"><scope>LicenseController</scope><name>licenseeField</name></member>
+      <member refid="interface_license_controller_1ae891e14745775481f51198ae74e0035e" prot="protected" virt="non-virtual"><scope>LicenseController</scope><name>licenseInvoiceCode</name></member>
+      <member refid="interface_license_controller_1a137db32ba25e7d01ea67c55be5277cd7" prot="protected" virt="non-virtual"><scope>LicenseController</scope><name>licenseMailField</name></member>
+      <member refid="interface_license_controller_1a81c820ed66ea1e2a9a2d26e262588607" prot="protected" virt="non-virtual"><scope>LicenseController</scope><name>licensePathControl</name></member>
+      <member refid="interface_license_controller_1aafdb5f3409aa9982ffface64ba2100f9" prot="protected" virt="non-virtual"><scope>LicenseController</scope><name>licenseWindow</name></member>
+      <member refid="interface_license_controller_1a621ce5f5b4fdc6b2960a1310b35aaf2f" prot="protected" virt="non-virtual"><scope>LicenseController</scope><name>notLicensedWindow</name></member>
+      <member refid="interface_license_controller_1a2f7a5a1210ec31dc93e70141829c65f5" prot="protected" virt="non-virtual"><scope>LicenseController</scope><name>okBtn</name></member>
+      <member refid="interface_license_controller_1ab9b4ff77f94f9af33a85699de8210e13" prot="public" virt="virtual"><scope>LicenseController</scope><name>pathControlDoubleClick:</name></member>
+      <member refid="interface_license_controller_1acf779f5fcbe702033902c43354f9dcec" prot="protected" virt="non-virtual"><scope>LicenseController</scope><name>requestLicenseBtn</name></member>
+      <member refid="interface_license_controller_1a05f70a5f4d4e1bce95f962be9a73df15" prot="public" virt="virtual"><scope>LicenseController</scope><name>requestLicensePressed:</name></member>
+      <member refid="interface_license_controller_1a27e60bf7a046c328327cf591afd79847" prot="protected" virt="non-virtual"><scope>LicenseController</scope><name>requestLicenseWindow</name></member>
+      <member refid="interface_license_controller_1a0dd97f8862e8210f7036582af3366f20" prot="public" virt="virtual"><scope>LicenseController</scope><name>runChooseLicenseWindow</name></member>
+      <member refid="interface_license_controller_1ab9d8333c1fc02102abd8d648517232a2" prot="public" virt="virtual"><scope>LicenseController</scope><name>runHaveLicenseWindow</name></member>
+      <member refid="interface_license_controller_1a8d7f4e837404d7f1f325cde6a677162b" prot="public" virt="virtual"><scope>LicenseController</scope><name>runNotLicensedModalWindow</name></member>
+      <member refid="interface_license_controller_1a4356bbb4175f18844ab3e4998319e3f5" prot="protected" virt="non-virtual"><scope>LicenseController</scope><name>selectLicenseFileBtn</name></member>
+      <member refid="interface_license_controller_1a62be01656891868891ad2867271f2184" prot="public" virt="virtual"><scope>LicenseController</scope><name>selectLicenseFileBtn:</name></member>
+      <member refid="interface_license_controller_1a0769e1d5addbe8b34e065e460369f00d" prot="public" virt="virtual"><scope>LicenseController</scope><name>sharedLicenseController</name></member>
+      <member refid="interface_license_controller_1a8742baeaea259c8fb373a8bb76569a80" prot="public" virt="virtual"><scope>LicenseController</scope><name>submitBtnPressed:</name></member>
+      <member refid="interface_license_controller_1a175d2efb347182534bb287444763752d" prot="protected" virt="non-virtual"><scope>LicenseController</scope><name>submitRequestBtn</name></member>
+      <member refid="interface_license_controller_1a0060a65c4f5b84c7cd40510a55b71473" prot="protected" virt="non-virtual"><scope>LicenseController</scope><name>validUserMail</name></member>
+      <member refid="interface_license_controller_1a4aa00aa8294869df51130a9e359360fc" prot="protected" virt="non-virtual"><scope>LicenseController</scope><name>validUserMessage</name></member>
+      <member refid="interface_license_controller_1a35381b891797fc586bba8350dce1e6b1" prot="protected" virt="non-virtual"><scope>LicenseController</scope><name>validUserName</name></member>
+      <member refid="interface_license_controller_1a262b6f14311aeb197194c21ef46fc58b" prot="protected" virt="non-virtual"><scope>LicenseController</scope><name>visitLicenseBtn</name></member>
+      <member refid="interface_license_controller_1af56c6580f6943f299c554f72c4f71831" prot="public" virt="virtual"><scope>LicenseController</scope><name>visitLicenseBtn:</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,136 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.6.2">
+  <compounddef id="_p_a_d_index_node_data_8h" kind="file">
+    <compoundname>PADIndexNodeData.h</compoundname>
+    <includes local="no">Cocoa/Cocoa.h</includes>
+    <includes refid="_simple_tree_node_8h" local="yes">SimpleTreeNode.h</includes>
+    <includes refid="_p_a_d_search_request_8h" local="yes">PADSearchRequest.h</includes>
+    <includedby refid="_p_a_d_index_node_data_8m" local="yes">PickADisk/Sources/Index Tree/PADIndexNodeData.m</includedby>
+    <includedby refid="_d_a_c_a_l_tree_data_source_8m" local="yes">PickADisk/Sources/PAD Controllers/DACALTreeDataSource.m</includedby>
+    <includedby refid="_d_a_c_a_l_view_data_source_8h" local="yes">PickADisk/Sources/PAD Controllers/DACALViewDataSource.h</includedby>
+    <includedby refid="_p_a_d_prefs_tree_controller_8m" local="yes">PickADisk/Sources/PAD Controllers/PADPrefsTreeController.m</includedby>
+    <incdepgraph>
+      <node id="251">
+        <label>Cocoa/Cocoa.h</label>
+      </node>
+      <node id="252">
+        <label>SimpleTreeNode.h</label>
+        <link refid="_simple_tree_node_8h_source"/>
+        <childnode refid="251" relation="include">
+        </childnode>
+        <childnode refid="253" relation="include">
+        </childnode>
+        <childnode refid="255" relation="include">
+        </childnode>
+        <childnode refid="254" relation="include">
+        </childnode>
+      </node>
+      <node id="253">
+        <label>TreeNode.h</label>
+        <link refid="_tree_node_8h_source"/>
+        <childnode refid="254" relation="include">
+        </childnode>
+      </node>
+      <node id="255">
+        <label>dacallib.h</label>
+      </node>
+      <node id="250">
+        <label>PickADisk/Sources/Index Tree/PADIndexNodeData.h</label>
+        <link refid="PADIndexNodeData.h"/>
+        <childnode refid="251" relation="include">
+        </childnode>
+        <childnode refid="252" relation="include">
+        </childnode>
+        <childnode refid="256" relation="include">
+        </childnode>
+      </node>
+      <node id="254">
+        <label>Foundation/Foundation.h</label>
+      </node>
+      <node id="257">
+        <label>JSServiceManager.h</label>
+      </node>
+      <node id="256">
+        <label>PADSearchRequest.h</label>
+        <link refid="_p_a_d_search_request_8h_source"/>
+        <childnode refid="251" relation="include">
+        </childnode>
+        <childnode refid="257" relation="include">
+        </childnode>
+        <childnode refid="252" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="259">
+        <label>PickADisk/Sources/PAD Controllers/DACALViewDataSource.h</label>
+        <link refid="_d_a_c_a_l_view_data_source_8h_source"/>
+      </node>
+      <node id="258">
+        <label>PickADisk/Sources/Index Tree/PADIndexNodeData.h</label>
+        <link refid="PADIndexNodeData.h"/>
+        <childnode refid="259" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="interface_index_node_data" prot="public">IndexNodeData</innerclass>
+    <innerclass refid="interface_simple_tree_node_07_p_a_d_index_extensions_08" prot="public">SimpleTreeNode(PADIndexExtensions)</innerclass>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="_p_a_d_index_node_data_8h_1a16c68fac6a3bb6131e676c86a5c8afd1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="interface_p_a_d_search_request" kindref="compound">PADSearchRequest</ref> *</type>
+        <definition>PADSearchRequest* PADCreateSearchForType</definition>
+        <argsstring>(OSType aType)</argsstring>
+        <name>PADCreateSearchForType</name>
+        <param>
+          <type>OSType</type>
+          <declname>aType</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/PADIndexNodeData.h" line="13" bodyfile="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/PADIndexNodeData.m" bodystart="14" bodyend="31"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>PADIndexNodeData.h</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>PickADisk</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Created<sp/>by<sp/>Jack<sp/>Small<sp/>on<sp/>8/27/08.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Copyright<sp/>2008<sp/>Jack<sp/>Small.<sp/>All<sp/>rights<sp/>reserved.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#import<sp/>&lt;Cocoa/Cocoa.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#import<sp/>&quot;SimpleTreeNode.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#import<sp/>&quot;PADSearchRequest.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><ref refid="interface_p_a_d_search_request" kindref="compound">PADSearchRequest</ref>*<sp/>PADCreateSearchForType(<sp/>OSType<sp/>aType<sp/>);</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">@class</highlight><highlight class="normal"><sp/><ref refid="interface_p_a_d_search_request" kindref="compound">PADSearchRequest</ref>;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17" refid="interface_index_node_data" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">@interface<sp/></highlight><highlight class="normal"><ref refid="interface_index_node_data" kindref="compound">IndexNodeData</ref><sp/>:<sp/><ref refid="interface_simple_node_data" kindref="compound">SimpleNodeData</ref><sp/>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="interface_p_a_d_search_request" kindref="compound">PADSearchRequest</ref>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>itemSearch;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal">-(<ref refid="interface_p_a_d_search_request" kindref="compound">PADSearchRequest</ref>*)itemSearch;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal">-(void)setItemSearch:<sp/><sp/><sp/><sp/><sp/><sp/><sp/>(<ref refid="interface_p_a_d_search_request" kindref="compound">PADSearchRequest</ref>*)newSearch;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keyword">@end</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">@interface<sp/></highlight><highlight class="normal"><ref refid="class_simple_tree_node" kindref="compound">SimpleTreeNode</ref>(PADIndexExtensions)</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal">-<sp/>(id)initIndexFromDictionary:(NSDictionary*)dict;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal">+<sp/>(id)treeIndexFromDictionary:(NSDictionary<sp/>*)dict;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="keyword">@end</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/Sources/Index Tree/PADIndexNodeData.h"/>
+  </compounddef>
+</doxygen>

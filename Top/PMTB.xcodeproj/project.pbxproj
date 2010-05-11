@@ -105,7 +105,7 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 7543D5C10E3BDB17009A8AF3 /* PickADisk.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 735CC2C1049A7E2A00C919A3 /* PickADisk.app */;
+			remoteGlobalIDString = 735CC2C1049A7E2A00C919A3;
 			remoteInfo = PickADisk;
 		};
 /* End PBXContainerItemProxy section */

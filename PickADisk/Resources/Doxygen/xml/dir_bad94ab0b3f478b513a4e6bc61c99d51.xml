@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.6.2">
+  <compounddef id="dir_bad94ab0b3f478b513a4e6bc61c99d51" kind="dir">
+    <compoundname>PickADisk/</compoundname>
+    <innerdir refid="dir_e83f0349b715d6a7eaa72ae1501ba6b0">PickADisk/Sources/</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/davec/Projects/PMTB/branches/davec/PickADisk/PickADisk/"/>
+  </compounddef>
+</doxygen>
