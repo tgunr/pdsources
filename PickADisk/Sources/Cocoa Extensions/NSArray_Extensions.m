@@ -214,7 +214,7 @@
 		else [infoString appendString:[infoItem md5String]];
 		[infoString appendString:[infoKey md5String]];
 	}
-
+	[infoKey release];
 	return [infoString md5String];
 }
 
