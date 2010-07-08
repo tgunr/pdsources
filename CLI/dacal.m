@@ -218,7 +218,7 @@ int main (int argc, const char * argv[]) {
 			}
 																		// verbose
 			case 'b':{
-				gDACALVerbose = !gDACALVerbose;
+				gVerbose = !gVerbose;
 				break;
 			}
 																		// status
