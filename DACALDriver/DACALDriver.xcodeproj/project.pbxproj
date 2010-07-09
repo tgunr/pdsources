@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7543D5200E3BBDFE009A8AF3 /* VendorSpecificDriver.h in Headers */ = {isa = PBXBuildFile; fileRef = 7543D51E0E3BBDFE009A8AF3 /* VendorSpecificDriver.h */; };
 		7543D5210E3BBDFE009A8AF3 /* VendorSpecificDriver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7543D51F0E3BBDFE009A8AF3 /* VendorSpecificDriver.cpp */; };
+		75637F6111E6813E0069CA00 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7543D5960E3BD6A3009A8AF3 /* Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -129,6 +130,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75637F6111E6813E0069CA00 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -188,6 +190,7 @@
 				MODULE_NAME = com.polymicrosystems.com.driver.DACALDriver;
 				MODULE_VERSION = 1.0.0;
 				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = DACALDriver;
 				SDKROOT = macosx10.4;
 				WRAPPER_EXTENSION = kext;
