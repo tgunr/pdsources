@@ -3,13 +3,13 @@
  *  PickADisc
  *
  *  Created by Jack Small on 7/16/08.
- *  Copyright 2008 __MyCompanyName__. All rights reserved.
+ *  Copyright 2008 polyMicro Systems. All rights reserved.
  *
  */
 
 #import "pmsDACALUtility.h"
 #include "IconFamily.h"
-#import "daclconstants.h"
+#import "dacalconstants.h"
 
 OSStatus DACALRegisterIconResource( CFStringRef theIconFile, OSType theIconType )
 {
@@ -142,7 +142,7 @@ IconRef	CFURLGetIcon( CFAllocatorRef allocator, CFURLRef url, OSStatus* outError
 	if( CFURLIsCarousel(url) ) {
 		outResult = GetIconRef( kOnSystemDisk, kDACALCreatorType, kDACALCarouselsFolderType, &theOutputIcon );
 		if( outResult != 0 ) 
-			PMLOG(1, "GetIconRef: %d\n", (int)outResult );
+			PMLOG(1, @"GetIconRef: %d\n", (int)outResult );
 		AcquireIconRef(theOutputIcon);
 		goto BAIL;
 	}
@@ -159,9 +159,9 @@ IconRef	CFURLGetIcon( CFAllocatorRef allocator, CFURLRef url, OSStatus* outError
 		if( outResult != 0 )
 			outResult = GetIconRef( kOnSystemDisk, kDACALCreatorType, kGenericCDROMIcon, &theOutputIcon );
 		if( outResult != 0 ) 
-			PMLOG(1, "GetIconRef: %d\n", (int)outResult );
+			PMLOG(1, @"GetIconRef: %d\n", (int)outResult );
 		else 
-			PMLOG(2, "Assigned disc icon!\n");
+			PMLOG(2, @"Assigned disc icon!\n");
 		AcquireIconRef(theOutputIcon);
 		goto BAIL;
 	}
@@ -351,7 +351,7 @@ BAIL:
 	return( theOutputIcon );
 }
 
-NSImage*	DACALGetIconImageForType( int	theType )
+NSImage*	DACALGetIconImageForType( OSType	theType )
 {
 	OSStatus		outResult = paramErr;
 	IconRef			theOutputIcon = NULL;
@@ -362,7 +362,8 @@ NSImage*	DACALGetIconImageForType( int	theType )
 	
 	if( theType == 0 ) goto BAIL;
 	
-	if( theType == 'morI' ) theType = 'morƒ';
+	if( theType == 'morI' )
+		theType = kMacOSReadMeFolderIcon;
 	
 	outResult = GetIconRef( kOnSystemDisk, kDACALCreatorType, theType, &theOutputIcon );
 	if( outResult != 0 ) outResult = GetIconRef( kOnSystemDisk, kSystemIconsCreator, theType, &theOutputIcon );
