@@ -64,7 +64,7 @@ int main (int argc, const char * argv[]) {
 	char options='\0';												// A 'char' representing options as 1-bit flags.
 	int ch;
 	
-	while ((ch = getopt(argc, argv, "dpwhvlsRC")) != -1) {
+	while ((ch = getopt(argc, (char * const *)argv, "dpwhvlsRC")) != -1) {
 		switch (ch) {
 			case 'd':
 				command = DELETE;
