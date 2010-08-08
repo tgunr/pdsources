@@ -190,13 +190,6 @@
 			remoteGlobalIDString = 751FBA430E39063900D64628;
 			remoteInfo = xattr;
 		};
-		75A5B3E710F72A20001A674A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 75A5B3D310F72A20001A674A /* CLI.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 751FBC9E0E393EDE00D64628;
-			remoteInfo = xargs;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -943,7 +936,6 @@
 				75A5B3E210F72A20001A674A /* fabricate */,
 				75A5B3E410F72A20001A674A /* find */,
 				75A5B3E610F72A20001A674A /* xattr */,
-				75A5B3E810F72A20001A674A /* xargs */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1273,13 +1265,6 @@
 			fileType = "compiled.mach-o.executable";
 			path = xattr;
 			remoteRef = 75A5B3E510F72A20001A674A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		75A5B3E810F72A20001A674A /* xargs */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = xargs;
-			remoteRef = 75A5B3E710F72A20001A674A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */

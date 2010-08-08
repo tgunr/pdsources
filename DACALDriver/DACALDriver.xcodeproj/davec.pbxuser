@@ -1,7 +1,7 @@
 // !$*UTF8*$!
 {
 	089C1669FE841209C02AAC07 /* Project object */ = {
-		activeBuildConfigurationName = Development;
+		activeBuildConfigurationName = Release;
 		activeTarget = 32D94FC30562CBF700B6AF17 /* DACALDriver */;
 		codeSenseManager = 7545AC9110F2CDC4001E73C5 /* Code sense */;
 		perUserDictionary = {
@@ -44,7 +44,7 @@
 				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
 				PBXFileTableDataSourceColumnWidthsKey = (
 					20,
-					669,
+					815,
 					60,
 					20,
 					48,
@@ -61,14 +61,17 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 291247044;
-			PBXWorkspaceStateSaveDate = 291247044;
+			PBXPerProjectTemplateStateSaveDate = 300403915;
+			PBXWorkspaceStateSaveDate = 300403915;
 		};
 		perUserProjectItems = {
-			7565F1A4115C153900D0725D /* PBXTextBookmark */ = 7565F1A4115C153900D0725D /* PBXTextBookmark */;
-			7565F1A6115C153900D0725D /* PBXTextBookmark */ = 7565F1A6115C153900D0725D /* PBXTextBookmark */;
-			7565F1AA115C153900D0725D /* PBXBookmark */ = 7565F1AA115C153900D0725D /* PBXBookmark */;
-			7565F1AB115C153900D0725D /* PBXTextBookmark */ = 7565F1AB115C153900D0725D /* PBXTextBookmark */;
+			75571BB211E7CCD400831BD5 /* PlistBookmark */ = 75571BB211E7CCD400831BD5 /* PlistBookmark */;
+			75571BB311E7CCD400831BD5 /* PlistBookmark */ = 75571BB311E7CCD400831BD5 /* PlistBookmark */;
+			7563832B11E6AECF0069CA00 /* PBXTextBookmark */ = 7563832B11E6AECF0069CA00 /* PBXTextBookmark */;
+			7563832D11E6AECF0069CA00 /* PBXTextBookmark */ = 7563832D11E6AECF0069CA00 /* PBXTextBookmark */;
+			7563833B11E6B0090069CA00 /* PBXTextBookmark */ = 7563833B11E6B0090069CA00 /* PBXTextBookmark */;
+			7563833C11E6B0090069CA00 /* PBXTextBookmark */ = 7563833C11E6B0090069CA00 /* PBXTextBookmark */;
+			7563833D11E6B0090069CA00 /* PBXTextBookmark */ = 7563833D11E6B0090069CA00 /* PBXTextBookmark */;
 		};
 		sourceControlManager = 7545AC9010F2CDC4001E73C5 /* Source Control */;
 		userBuildSettings = {
@@ -76,6 +79,27 @@
 	};
 	32D94FC30562CBF700B6AF17 /* DACALDriver */ = {
 		activeExec = 0;
+	};
+	7543D51E0E3BBDFE009A8AF3 /* VendorSpecificDriver.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1033, 899}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1396}";
+		};
+	};
+	7543D51F0E3BBDFE009A8AF3 /* VendorSpecificDriver.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1033, 899}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1261}";
+		};
+	};
+	7543D5230E3BBE60009A8AF3 /* DACALSpecificDriver */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1033, 1072}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{352, 1444}";
+		};
 	};
 	7543D5960E3BD6A3009A8AF3 /* Info.plist */ = {
 		uiCtxt = {
@@ -96,60 +120,90 @@
 		isa = PBXCodeSenseManager;
 		indexTemplatePath = "";
 	};
-	7565F1A4115C153900D0725D /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 7565F1A5115C153900D0725D /* dacauthorize.c */;
+	75571BB211E7CCD400831BD5 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 7543D5960E3BD6A3009A8AF3 /* Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = /Users/davec/Projects/PickADisk/Sources/DACALDriver/Info.plist;
 		rLen = 0;
 		rLoc = 9223372036854775807;
-		rType = 0;
 	};
-	7565F1A5115C153900D0725D /* dacauthorize.c */ = {
-		isa = PBXFileReference;
-		lastKnownFileType = sourcecode.c.c;
-		name = dacauthorize.c;
-		path = /Volumes/leopard/Projects/PMTB/branches/davec/PickADisk/DACALDriver/dacauthorize.c;
-		sourceTree = "<absolute>";
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1092, 2176}}";
-			sepNavSelRange = "{243, 1}";
-			sepNavVisRange = "{0, 2535}";
-			sepNavWindowFrame = "{{15, 432}, {852, 1141}}";
-		};
+	75571BB311E7CCD400831BD5 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 7543D5960E3BD6A3009A8AF3 /* Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = /Users/davec/Projects/PickADisk/Sources/DACALDriver/Info.plist;
+		rLen = 0;
+		rLoc = 9223372036854775807;
 	};
-	7565F1A6115C153900D0725D /* PBXTextBookmark */ = {
+	7563832B11E6AECF0069CA00 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
-		fRef = 7565F1A7115C153900D0725D /* dacauthorize.c */;
-		name = "dacauthorize.c: 9";
-		rLen = 1;
-		rLoc = 243;
-		rType = 0;
-		vrLen = 2535;
-		vrLoc = 0;
-	};
-	7565F1A7115C153900D0725D /* dacauthorize.c */ = {
-		isa = PBXFileReference;
-		name = dacauthorize.c;
-		path = /Volumes/leopard/Projects/PMTB/branches/davec/PickADisk/DACALDriver/dacauthorize.c;
-		sourceTree = "<absolute>";
-	};
-	7565F1AA115C153900D0725D /* PBXBookmark */ = {
-		isa = PBXBookmark;
-		fRef = 7565F1A5115C153900D0725D /* dacauthorize.c */;
-	};
-	7565F1AB115C153900D0725D /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 7565F1AC115C153900D0725D /* dacauthorize.c */;
-		name = "dacauthorize.c: 1";
+		fRef = 7543D5230E3BBE60009A8AF3 /* DACALSpecificDriver */;
+		name = "DACALSpecificDriver: 1";
 		rLen = 0;
 		rLoc = 0;
 		rType = 0;
-		vrLen = 2351;
+		vrLen = 1444;
+		vrLoc = 352;
+	};
+	7563832D11E6AECF0069CA00 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 75C815000E4DFCE6003D8293 /* postinstall.sh */;
+		name = "postinstall.sh: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 292;
 		vrLoc = 0;
 	};
-	7565F1AC115C153900D0725D /* dacauthorize.c */ = {
-		isa = PBXFileReference;
-		name = dacauthorize.c;
-		path = /Volumes/leopard/Projects/PMTB/branches/davec/PickADisk/DACALDriver/dacauthorize.c;
-		sourceTree = "<absolute>";
+	7563833B11E6B0090069CA00 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 75C815240E4E32E4003D8293 /* preinstall.sh */;
+		name = "preinstall.sh: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 361;
+		vrLoc = 0;
+	};
+	7563833C11E6B0090069CA00 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 7543D51E0E3BBDFE009A8AF3 /* VendorSpecificDriver.h */;
+		name = "VendorSpecificDriver.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1396;
+		vrLoc = 0;
+	};
+	7563833D11E6B0090069CA00 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 7543D51F0E3BBDFE009A8AF3 /* VendorSpecificDriver.cpp */;
+		name = "VendorSpecificDriver.cpp: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1261;
+		vrLoc = 0;
+	};
+	75C815000E4DFCE6003D8293 /* postinstall.sh */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1033, 902}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 292}";
+		};
+	};
+	75C815240E4E32E4003D8293 /* preinstall.sh */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1033, 899}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 361}";
+		};
 	};
 }
