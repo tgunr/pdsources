@@ -14,7 +14,7 @@
 #include <CoreServices/CoreServices.h>
 #include "pms.h"
 
-#ifdef __DCDEBUG
+#ifdef PMDEBUG
 Boolean			gVerbose = TRUE;
 int				gDebugLevel = 7;
 #else
