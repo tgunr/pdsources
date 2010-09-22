@@ -257,7 +257,7 @@ static AppController *shared;
 	DACALCount			boxCount = DACALDevicesGetCount();
 	DACALCount			count101 = DACALDevicesGetCountForModel( DACALDC101CFName );
 	DACALCount			count300 = DACALDevicesGetCountForModel( DACALDC300CFName );
-	DACALCount			count016 = DACALDevicesGetCountForModel( DACALDC016RWCFName );
+	DACALCount			count016 = DACALDevicesGetCountForModel( DACALDC016CFName );
 	
 	if( isSending == YES )
 	{
