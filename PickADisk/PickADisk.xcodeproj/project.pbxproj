@@ -357,7 +357,7 @@
 		5CA07A700E2E274900F71FA7 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
 		5CAFCCA50E2EB77300A7BEA4 /* dacallib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dacallib.h; path = ../pmssource/carlib/dacallib.h; sourceTree = SOURCE_ROOT; };
 		5CAFCCA60E2EB77300A7BEA4 /* dacallib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = dacallib.m; path = ../pmssource/carlib/dacallib.m; sourceTree = SOURCE_ROOT; };
-		5CAFCCA80E2EB77300A7BEA4 /* pms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pms.h; path = pmsutility/pms.h; sourceTree = "<group>"; };
+		5CAFCCA80E2EB77300A7BEA4 /* pms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pms.h; path = pms/pms.h; sourceTree = "<group>"; };
 		5CAFCCEC0E2EC1E900A7BEA4 /* pmsCFUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pmsCFUtility.h; sourceTree = "<group>"; };
 		5CAFCCED0E2EC1E900A7BEA4 /* pmsCFUtility.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pmsCFUtility.c; sourceTree = "<group>"; };
 		5CAFCD1A0E2ED18200A7BEA4 /* pmsDACALUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pmsDACALUtility.h; sourceTree = "<group>"; };
@@ -404,10 +404,9 @@
 		7533911F101B99470007F931 /* daclconstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = daclconstants.h; sourceTree = "<group>"; };
 		75339120101B99470007F931 /* daclconstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = daclconstants.m; sourceTree = "<group>"; };
 		75A5B3D310F72A20001A674A /* CLI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CLI.xcodeproj; path = ../CLI/CLI.xcodeproj; sourceTree = SOURCE_ROOT; };
-		75AF25EC1083A66B004D1F99 /* pms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = pms.m; path = pmsutility/pms.m; sourceTree = "<group>"; };
+		75AF25EC1083A66B004D1F99 /* pms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = pms.m; path = pms/pms.m; sourceTree = "<group>"; };
 		75B2FCB20EDDA9A1007356FD /* BlackPlus1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlackPlus1.png; sourceTree = "<group>"; };
 		75B2FCB40EDDA9AD007356FD /* BlackSearch1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlackSearch1.png; sourceTree = "<group>"; };
-		75D1ED2A1085236600DE7820 /* _doprnt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _doprnt.m; sourceTree = "<group>"; };
 		75E0D61B1073EF620012897D /* Multi-Folder.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = "Multi-Folder.icns"; path = "../Resources/Multi-Folder.icns"; sourceTree = SOURCE_ROOT; };
 		75E0D70C1074330E0012897D /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		75E0D70D1074330E0012897D /* lesson.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = lesson.xml; sourceTree = "<group>"; };
@@ -616,7 +615,7 @@
 			children = (
 				7504AEA20FB389E600FFAA84 /* Misc */,
 				7504AE590FB380E700FFAA84 /* sparkle */,
-				5CAFCCA20E2EB77300A7BEA4 /* pmssource */,
+				5CAFCCA20E2EB77300A7BEA4 /* pms */,
 				5C81A0E60EC39D9B00E75319 /* jsutility */,
 				5C1A101D0F4018A4004F3605 /* IconFamily */,
 				735CC297049A7E1F00C919A3 /* Prefix.h */,
@@ -819,15 +818,17 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
-		5CAFCCA20E2EB77300A7BEA4 /* pmssource */ = {
+		5CAFCCA20E2EB77300A7BEA4 /* pms */ = {
 			isa = PBXGroup;
 			children = (
+				75808038124A850F00AEF0CF /* Classes */,
+				75808037124A84DD00AEF0CF /* ´xtensions */,
 				5CAFCCA80E2EB77300A7BEA4 /* pms.h */,
 				75AF25EC1083A66B004D1F99 /* pms.m */,
 				5CAFCCA30E2EB77300A7BEA4 /* carlib */,
-				5CAFCCA90E2EB77300A7BEA4 /* pmsutility */,
+				5CAFCCA90E2EB77300A7BEA4 /* CoreFoundation */,
 			);
-			name = pmssource;
+			name = pms;
 			path = ../pmssource;
 			sourceTree = SOURCE_ROOT;
 		};
@@ -843,18 +844,15 @@
 			path = ../pmssource/carlib;
 			sourceTree = SOURCE_ROOT;
 		};
-		5CAFCCA90E2EB77300A7BEA4 /* pmsutility */ = {
+		5CAFCCA90E2EB77300A7BEA4 /* CoreFoundation */ = {
 			isa = PBXGroup;
 			children = (
-				75D1ED2A1085236600DE7820 /* _doprnt.m */,
-				5CAFCD1A0E2ED18200A7BEA4 /* pmsDACALUtility.h */,
-				5CAFCD1B0E2ED18200A7BEA4 /* pmsDACALUtility.m */,
 				5CAFCCEC0E2EC1E900A7BEA4 /* pmsCFUtility.h */,
 				5CAFCCED0E2EC1E900A7BEA4 /* pmsCFUtility.c */,
 			);
-			name = pmsutility;
-			path = ../pmssource/pmsutility;
-			sourceTree = SOURCE_ROOT;
+			name = CoreFoundation;
+			path = pms/CoreFoundation;
+			sourceTree = "<group>";
 		};
 		7504AE590FB380E700FFAA84 /* sparkle */ = {
 			isa = PBXGroup;
@@ -926,6 +924,22 @@
 				7504B0040FB4724300FFAA84 /* DACALDriver.kext */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		75808037124A84DD00AEF0CF /* ´xtensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "´xtensions";
+			sourceTree = "<group>";
+		};
+		75808038124A850F00AEF0CF /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				5CAFCD1A0E2ED18200A7BEA4 /* pmsDACALUtility.h */,
+				5CAFCD1B0E2ED18200A7BEA4 /* pmsDACALUtility.m */,
+			);
+			path = Classes;
 			sourceTree = "<group>";
 		};
 		75A5B3D410F72A20001A674A /* Products */ = {
@@ -1205,6 +1219,9 @@
 			buildConfigurationList = B69BDD9808A2EC26008AC9B5 /* Build configuration list for PBXProject "PickADisk" */;
 			compatibilityVersion = "Xcode 2.4";
 			hasScannedForEncodings = 1;
+			knownRegions = (
+				en,
+			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CocoaApp */;
 			projectDirPath = "";
 			projectReferences = (
