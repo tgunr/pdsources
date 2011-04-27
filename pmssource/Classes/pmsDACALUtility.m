@@ -351,7 +351,7 @@ BAIL:
 	return( theOutputIcon );
 }
 
-NSImage*	DACALGetIconImageForType( OSType	theType )
+NSImage*	DACALGetIconImageForType( int	theType )
 {
 	OSStatus		outResult = paramErr;
 	IconRef			theOutputIcon = NULL;
@@ -415,29 +415,4 @@ CFStringRef	CFURLCopyItemFlavor( CFURLRef url, OSStatus* outError )
 
 OSStatus		CFURLSetItemFlavor( CFURLRef url, CFStringRef newFlavor )
 {	return CFURLSetXattr( url, kDACALCarouselDocumentXAttrSlotKind, newFlavor ); }
-
-BOOL			BooleanToBOOL(Boolean	inBoolean)
-	{ return (inBoolean == TRUE) ? YES : NO; }
-
-Boolean			BOOLToBoolean(BOOL		inBool)
-	{ return(inBool == YES ); }
-
-CFBooleanRef	BooleanToCFBoolean(Boolean	inBoolean)
-	{ return( (inBoolean == TRUE) ? kCFBooleanTrue : kCFBooleanFalse ); }
-
-CFBooleanRef	BOOLToCFBoolean(BOOL	inBool)
-	{ return( (inBool == YES) ? kCFBooleanTrue : kCFBooleanFalse ); }
-
-BOOL			CFBooleanToBOOL(CFBooleanRef inCFBoolean)
-	{ return( BooleanToBOOL(CFBooleanGetValue(inCFBoolean)) ); }
-
-Boolean			CFBooleanToBoolean(CFBooleanRef inCFBoolean)
-	{ return( CFBooleanGetValue(inCFBoolean) ); }
-
-CFBooleanRef	NSNumberToCFBoolean(NSNumber*	inNSNum)
-{ return( BOOLToCFBoolean([inNSNum boolValue]) ); }
-
-NSNumber*		CFBooleanToNSNumber(CFBooleanRef inCFBoolean)
-	{ return [NSNumber numberWithBool:CFBooleanToBOOL(inCFBoolean)]; }
-
 
