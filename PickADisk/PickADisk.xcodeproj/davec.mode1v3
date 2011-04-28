@@ -372,8 +372,6 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>58</integer>
-									<integer>26</integer>
 									<integer>0</integer>
 								</array>
 							</array>
@@ -427,7 +425,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>7501A4FA1367A23A00E74F4C</string>
+										<string>7501A560136A19AC00E74F4C</string>
 										<key>history</key>
 										<array>
 											<string>7501A4F71367A23A00E74F4C</string>
@@ -615,7 +613,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>325558842.40978402</real>
+	<real>325720492.33194703</real>
 	<key>ToolbarConfigUserDefaultsMinorVersion</key>
 	<string>2</string>
 	<key>ToolbarDisplayMode</key>
@@ -632,13 +630,13 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>7501A4FC1367A23A00E74F4C</string>
+		<string>7501A561136A19AC00E74F4C</string>
 		<string>7501A4FD1367A23A00E74F4C</string>
 		<string>7501A4FE1367A23A00E74F4C</string>
 		<string>1C78EAAD065D492600B07095</string>
 		<string>1CD10A99069EF8BA00B06720</string>
-		<string>/Volumes/leopard/Projects/PickADisk/Sources/PickADisk/PickADisk.xcodeproj</string>
 		<string>1C530D57069F1CE1000CFCEE</string>
+		<string>/Volumes/leopard/Projects/PickADisk/Sources/PickADisk/PickADisk.xcodeproj</string>
 		<string>7592E144107ACDCE00A52EB4</string>
 	</array>
 	<key>WindowString</key>
@@ -672,7 +670,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {1362, 911}}</string>
 								<key>RubberWindowFrame</key>
-								<string>1126 299 1362 1279 0 0 2560 1578 </string>
+								<string>590 299 1362 1279 0 0 2560 1578 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -698,7 +696,7 @@
 								<key>Frame</key>
 								<string>{{0, 916}, {1362, 322}}</string>
 								<key>RubberWindowFrame</key>
-								<string>1126 299 1362 1279 0 0 2560 1578 </string>
+								<string>590 299 1362 1279 0 0 2560 1578 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXBuildResultsModule</string>
@@ -730,7 +728,7 @@
 			<key>WindowContentMinSize</key>
 			<string>486 300</string>
 			<key>WindowString</key>
-			<string>1126 299 1362 1279 0 0 2560 1578 </string>
+			<string>590 299 1362 1279 0 0 2560 1578 </string>
 			<key>WindowToolGUID</key>
 			<string>7592E144107ACDCE00A52EB4</string>
 			<key>WindowToolIsVisible</key>
