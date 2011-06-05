@@ -270,48 +270,7 @@
 		</dict>
 	</array>
 	<key>OpenEditors</key>
-	<array>
-		<dict>
-			<key>Content</key>
-			<dict>
-				<key>PBXProjectModuleGUID</key>
-				<string>7565F1A8115C153900D0725D</string>
-				<key>PBXProjectModuleLabel</key>
-				<string>dacauthorize.c</string>
-				<key>PBXSplitModuleInNavigatorKey</key>
-				<dict>
-					<key>Split0</key>
-					<dict>
-						<key>PBXProjectModuleGUID</key>
-						<string>7565F1A9115C153900D0725D</string>
-						<key>PBXProjectModuleLabel</key>
-						<string>dacauthorize.c</string>
-						<key>_historyCapacity</key>
-						<integer>0</integer>
-						<key>bookmark</key>
-						<string>7565F1AB115C153900D0725D</string>
-						<key>history</key>
-						<array>
-							<string>7565F1AA115C153900D0725D</string>
-						</array>
-					</dict>
-					<key>SplitCount</key>
-					<string>1</string>
-				</dict>
-				<key>StatusBarVisibility</key>
-				<true/>
-			</dict>
-			<key>Geometry</key>
-			<dict>
-				<key>Frame</key>
-				<string>{{0, 20}, {852, 1044}}</string>
-				<key>PBXModuleWindowStatusBarHidden2</key>
-				<false/>
-				<key>RubberWindowFrame</key>
-				<string>15 488 852 1085 0 0 2560 1578 </string>
-			</dict>
-		</dict>
-	</array>
+	<array/>
 	<key>PerspectiveWidths</key>
 	<array>
 		<integer>-1</integer>
@@ -325,9 +284,15 @@
 				<string>active-combo-popup</string>
 				<string>action</string>
 				<string>servicesModuleSnapshots</string>
+				<string>servicesModuleproject</string>
+				<string>toggle-editor</string>
+				<string>servicesModuleclasses</string>
+				<string>Quick Model</string>
+				<string>NSToolbarFlexibleSpaceItem</string>
+				<string>servicesModulebreakpoints</string>
+				<string>debugger-enable-breakpoints</string>
 				<string>NSToolbarFlexibleSpaceItem</string>
 				<string>debugger-fix-and-continue</string>
-				<string>debugger-enable-breakpoints</string>
 				<string>clean-target</string>
 				<string>build</string>
 				<string>build-and-go</string>
@@ -336,7 +301,6 @@
 				<string>get-info</string>
 				<string>show-inspector</string>
 				<string>NSToolbarFlexibleSpaceItem</string>
-				<string>toggle-editor</string>
 				<string>com.apple.pbx.toolbar.searchfield</string>
 			</array>
 			<key>ControllerClassBaseName</key>
@@ -386,11 +350,16 @@
 							<array>
 								<string>089C166AFE841209C02AAC07</string>
 								<string>247142CAFF3F8F9811CA285C</string>
+								<string>8DA8362C06AD9B9200E5AC22</string>
+								<string>089C167CFE841241C02AAC07</string>
+								<string>19C28FB6FE9D52B211CA2CBB</string>
 								<string>1C37FABC05509CD000000102</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
+									<integer>10</integer>
+									<integer>9</integer>
 									<integer>0</integer>
 								</array>
 							</array>
@@ -425,14 +394,12 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>dacauthorize.c</string>
+								<string>Info.plist</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -440,14 +407,15 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>dacauthorize.c</string>
+										<string>Info.plist</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>7565F1A6115C153900D0725D</string>
+										<string>753BFF1E139C4BE900938DB0</string>
 										<key>history</key>
 										<array>
-											<string>7565F1A4115C153900D0725D</string>
+											<string>753BFF1B139C495800938DB0</string>
+											<string>753BFF1C139C495800938DB0</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -459,14 +427,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {1094, 1141}}</string>
+								<string>{{0, 0}, {1094, 1138}}</string>
 								<key>RubberWindowFrame</key>
 								<string>1003 161 1379 1368 0 0 2560 1578 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>1141pt</string>
+							<string>1138pt</string>
 						</dict>
 						<dict>
 							<key>ContentConfiguration</key>
@@ -479,14 +447,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 1146}, {1094, 181}}</string>
+								<string>{{0, 1143}, {1094, 184}}</string>
 								<key>RubberWindowFrame</key>
 								<string>1003 161 1379 1368 0 0 2560 1578 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
 							<key>Proportion</key>
-							<string>181pt</string>
+							<string>184pt</string>
 						</dict>
 					</array>
 					<key>Proportion</key>
@@ -505,9 +473,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>7565F19F115C13D700D0725D</string>
+				<string>753BFF17139C491000938DB0</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>7565F1A0115C13D700D0725D</string>
+				<string>753BFF18139C491000938DB0</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -628,7 +596,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>291247417.11038202</real>
+	<real>329010153.18759799</real>
 	<key>ToolbarConfigUserDefaultsMinorVersion</key>
 	<string>2</string>
 	<key>ToolbarDisplayMode</key>
@@ -646,8 +614,7 @@
 	<key>WindowOrderList</key>
 	<array>
 		<string>7565F1A2115C13D700D0725D</string>
-		<string>/Volumes/leopard/Projects/PMTB/branches/davec/PickADisk/DACALDriver/DACALDriver.xcodeproj</string>
-		<string>7565F1A8115C153900D0725D</string>
+		<string>/Volumes/leopard/Projects/PickADisk/Sources/DACALDriver/DACALDriver.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
 	<string>1003 161 1379 1368 0 0 2560 1578 </string>
@@ -671,23 +638,25 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string></string>
+								<string>&lt;No Editor&gt;</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {500, 218}}</string>
+								<string>{{0, 0}, {919, 0}}</string>
 								<key>RubberWindowFrame</key>
-								<string>1406 1002 500 500 0 0 2560 1578 </string>
+								<string>1406 456 919 1046 0 0 2560 1578 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>218pt</string>
+							<string>0pt</string>
 						</dict>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -702,18 +671,18 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 223}, {500, 236}}</string>
+								<string>{{0, 5}, {919, 1000}}</string>
 								<key>RubberWindowFrame</key>
-								<string>1406 1002 500 500 0 0 2560 1578 </string>
+								<string>1406 456 919 1046 0 0 2560 1578 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXBuildResultsModule</string>
 							<key>Proportion</key>
-							<string>236pt</string>
+							<string>1000pt</string>
 						</dict>
 					</array>
 					<key>Proportion</key>
-					<string>459pt</string>
+					<string>1005pt</string>
 				</dict>
 			</array>
 			<key>Name</key>
@@ -727,7 +696,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>7565F1A2115C13D700D0725D</string>
-				<string>7565F1A3115C13D700D0725D</string>
+				<string>753BFF12139C48DE00938DB0</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -736,7 +705,7 @@
 			<key>WindowContentMinSize</key>
 			<string>486 300</string>
 			<key>WindowString</key>
-			<string>1406 1002 500 500 0 0 2560 1578 </string>
+			<string>1406 456 919 1046 0 0 2560 1578 </string>
 			<key>WindowToolGUID</key>
 			<string>7565F1A2115C13D700D0725D</string>
 			<key>WindowToolIsVisible</key>

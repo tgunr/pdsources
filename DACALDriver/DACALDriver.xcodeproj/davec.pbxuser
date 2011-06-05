@@ -61,14 +61,13 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 291247044;
-			PBXWorkspaceStateSaveDate = 291247044;
+			PBXPerProjectTemplateStateSaveDate = 329008115;
+			PBXWorkspaceStateSaveDate = 329008115;
 		};
 		perUserProjectItems = {
-			7565F1A4115C153900D0725D /* PBXTextBookmark */ = 7565F1A4115C153900D0725D /* PBXTextBookmark */;
-			7565F1A6115C153900D0725D /* PBXTextBookmark */ = 7565F1A6115C153900D0725D /* PBXTextBookmark */;
-			7565F1AA115C153900D0725D /* PBXBookmark */ = 7565F1AA115C153900D0725D /* PBXBookmark */;
-			7565F1AB115C153900D0725D /* PBXTextBookmark */ = 7565F1AB115C153900D0725D /* PBXTextBookmark */;
+			753BFF1B139C495800938DB0 /* PBXTextBookmark */ = 753BFF1B139C495800938DB0 /* PBXTextBookmark */;
+			753BFF1C139C495800938DB0 /* PBXBookmark */ = 753BFF1C139C495800938DB0 /* PBXBookmark */;
+			753BFF1E139C4BE900938DB0 /* PlistBookmark */ = 753BFF1E139C4BE900938DB0 /* PlistBookmark */;
 		};
 		sourceControlManager = 7545AC9010F2CDC4001E73C5 /* Source Control */;
 		userBuildSettings = {
@@ -76,6 +75,45 @@
 	};
 	32D94FC30562CBF700B6AF17 /* DACALDriver */ = {
 		activeExec = 0;
+	};
+	753BFEF8139C43B800938DB0 /* Info.plist */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = file.bplist;
+		name = Info.plist;
+		path = /Volumes/leopard/Projects/PickADisk/Sources/DACALDriver/Info.plist;
+		sourceTree = "<absolute>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1033, 1302}}";
+			sepNavSelRange = "{234, 0}";
+			sepNavVisRange = "{0, 2295}";
+			sepNavVisRect = "{{0, 0}, {1047, 1106}}";
+		};
+	};
+	753BFF1B139C495800938DB0 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 7565F1A5115C153900D0725D /* dacauthorize.c */;
+		name = "dacauthorize.c: 9";
+		rLen = 1;
+		rLoc = 243;
+		rType = 0;
+		vrLen = 2781;
+		vrLoc = 0;
+	};
+	753BFF1C139C495800938DB0 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 753BFEF8139C43B800938DB0 /* Info.plist */;
+	};
+	753BFF1E139C4BE900938DB0 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 7543D5960E3BD6A3009A8AF3 /* Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+			IOKitPersonalities,
+		);
+		name = /Volumes/leopard/Projects/PickADisk/Sources/DACALDriver/Info.plist;
+		rLen = 0;
+		rLoc = 9223372036854775807;
 	};
 	7543D5960E3BD6A3009A8AF3 /* Info.plist */ = {
 		uiCtxt = {
@@ -96,13 +134,6 @@
 		isa = PBXCodeSenseManager;
 		indexTemplatePath = "";
 	};
-	7565F1A4115C153900D0725D /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 7565F1A5115C153900D0725D /* dacauthorize.c */;
-		rLen = 0;
-		rLoc = 9223372036854775807;
-		rType = 0;
-	};
 	7565F1A5115C153900D0725D /* dacauthorize.c */ = {
 		isa = PBXFileReference;
 		lastKnownFileType = sourcecode.c.c;
@@ -110,46 +141,10 @@
 		path = /Volumes/leopard/Projects/PMTB/branches/davec/PickADisk/DACALDriver/dacauthorize.c;
 		sourceTree = "<absolute>";
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1092, 2176}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1033, 1624}}";
 			sepNavSelRange = "{243, 1}";
-			sepNavVisRange = "{0, 2535}";
+			sepNavVisRange = "{0, 2781}";
 			sepNavWindowFrame = "{{15, 432}, {852, 1141}}";
 		};
-	};
-	7565F1A6115C153900D0725D /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 7565F1A7115C153900D0725D /* dacauthorize.c */;
-		name = "dacauthorize.c: 9";
-		rLen = 1;
-		rLoc = 243;
-		rType = 0;
-		vrLen = 2535;
-		vrLoc = 0;
-	};
-	7565F1A7115C153900D0725D /* dacauthorize.c */ = {
-		isa = PBXFileReference;
-		name = dacauthorize.c;
-		path = /Volumes/leopard/Projects/PMTB/branches/davec/PickADisk/DACALDriver/dacauthorize.c;
-		sourceTree = "<absolute>";
-	};
-	7565F1AA115C153900D0725D /* PBXBookmark */ = {
-		isa = PBXBookmark;
-		fRef = 7565F1A5115C153900D0725D /* dacauthorize.c */;
-	};
-	7565F1AB115C153900D0725D /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 7565F1AC115C153900D0725D /* dacauthorize.c */;
-		name = "dacauthorize.c: 1";
-		rLen = 0;
-		rLoc = 0;
-		rType = 0;
-		vrLen = 2351;
-		vrLoc = 0;
-	};
-	7565F1AC115C153900D0725D /* dacauthorize.c */ = {
-		isa = PBXFileReference;
-		name = dacauthorize.c;
-		path = /Volumes/leopard/Projects/PMTB/branches/davec/PickADisk/DACALDriver/dacauthorize.c;
-		sourceTree = "<absolute>";
 	};
 }

@@ -174,7 +174,7 @@
 				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
 				PBXFileTableDataSourceColumnWidthsKey = (
 					20,
-					797,
+					772,
 					20,
 					48,
 					43,
@@ -213,8 +213,17 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 294875329;
-			PBXWorkspaceStateSaveDate = 294875329;
+			PBXPerProjectTemplateStateSaveDate = 329007966;
+			PBXWorkspaceStateSaveDate = 329007966;
+		};
+		perUserProjectItems = {
+			753BFEF7139C43B800938DB0 /* XCBuildMessageTextBookmark */ = 753BFEF7139C43B800938DB0 /* XCBuildMessageTextBookmark */;
+			753BFEF9139C43B800938DB0 /* PlistBookmark */ = 753BFEF9139C43B800938DB0 /* PlistBookmark */;
+			753BFEFB139C43BE00938DB0 /* PlistBookmark */ = 753BFEFB139C43BE00938DB0 /* PlistBookmark */;
+			753BFF00139C43E700938DB0 /* PlistBookmark */ = 753BFF00139C43E700938DB0 /* PlistBookmark */;
+			753BFF01139C43EB00938DB0 /* PlistBookmark */ = 753BFF01139C43EB00938DB0 /* PlistBookmark */;
+			753BFF27139C4C4F00938DB0 /* XCBuildMessageTextBookmark */ = 753BFF27139C4C4F00938DB0 /* XCBuildMessageTextBookmark */;
+			753BFF28139C4C4F00938DB0 /* PBXTextBookmark */ = 753BFF28139C4C4F00938DB0 /* PBXTextBookmark */;
 		};
 		sourceControlManager = 7592E146107ACDCE00A52EB4 /* Source Control */;
 		userBookmarkGroup = 7581E56310DAA8D30043A8EB /* PBXBookmarkGroup */;
@@ -476,9 +485,9 @@
 	};
 	5CAFCCA60E2EB77300A7BEA4 /* dacallib.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1076, 44024}}";
-			sepNavSelRange = "{19876, 63}";
-			sepNavVisRange = "{19228, 1711}";
+			sepNavIntBoundsRect = "{{0, 0}, {950, 38878}}";
+			sepNavSelRange = "{87358, 0}";
+			sepNavVisRange = "{0, 0}";
 			sepNavWindowFrame = "{{1522, 99}, {963, 1275}}";
 		};
 	};
@@ -586,6 +595,97 @@
 			sepNavSelRange = "{0, 0}";
 			sepNavVisRange = "{0, 1490}";
 		};
+	};
+	753BFEF7139C43B800938DB0 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Preprocess build/DACALDriver.build/Release/DACALDriver.build/Preprocessed-Info.plist Info.plist";
+		fRef = 753BFEF8139C43B800938DB0 /* Info.plist */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 0;
+		rLoc = 0;
+		rType = 1;
+	};
+	753BFEF8139C43B800938DB0 /* Info.plist */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = file.bplist;
+		name = Info.plist;
+		path = /Volumes/leopard/Projects/PickADisk/Sources/DACALDriver/Info.plist;
+		sourceTree = "<absolute>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1033, 1302}}";
+			sepNavSelRange = "{234, 0}";
+			sepNavVisRange = "{0, 2295}";
+			sepNavVisRect = "{{0, 0}, {1047, 1106}}";
+		};
+	};
+	753BFEF9139C43B800938DB0 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 753BFEFA139C43B800938DB0 /* Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = /Volumes/leopard/Projects/PickADisk/Sources/DACALDriver/Info.plist;
+		rLen = 0;
+		rLoc = 9223372036854775807;
+	};
+	753BFEFA139C43B800938DB0 /* Info.plist */ = {
+		isa = PBXFileReference;
+		name = Info.plist;
+		path = /Volumes/leopard/Projects/PickADisk/Sources/DACALDriver/Info.plist;
+		sourceTree = "<absolute>";
+	};
+	753BFEFB139C43BE00938DB0 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 753BFEF8139C43B800938DB0 /* Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = /Volumes/leopard/Projects/PickADisk/Sources/DACALDriver/Info.plist;
+		rLen = 0;
+		rLoc = 9223372036854775807;
+	};
+	753BFF00139C43E700938DB0 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 753BFEF8139C43B800938DB0 /* Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = /Volumes/leopard/Projects/PickADisk/Sources/DACALDriver/Info.plist;
+		rLen = 0;
+		rLoc = 9223372036854775807;
+	};
+	753BFF01139C43EB00938DB0 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 753BFEF8139C43B800938DB0 /* Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = /Volumes/leopard/Projects/PickADisk/Sources/DACALDriver/Info.plist;
+		rLen = 0;
+		rLoc = 9223372036854775807;
+	};
+	753BFF27139C4C4F00938DB0 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Passing argument 4 of '_PMLOG' from incompatible pointer type";
+		fRef = 5CAFCCA60E2EB77300A7BEA4 /* dacallib.m */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 842;
+		rType = 1;
+	};
+	753BFF28139C4C4F00938DB0 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5CAFCCA60E2EB77300A7BEA4 /* dacallib.m */;
+		name = "dacallib.m: 2630";
+		rLen = 0;
+		rLoc = 87358;
+		rType = 0;
+		vrLen = 0;
+		vrLoc = 0;
 	};
 	7545AC0D10F2C060001E73C5 /* DACALDeviceObjC.m:1744 */ = {
 		isa = PBXFileBreakpoint;
