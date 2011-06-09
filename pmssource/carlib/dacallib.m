@@ -9,6 +9,7 @@
 
 #import "dacallib.h"
 #import "pmsDACALUtility.h"
+#import "pms.h"
 
 #define __DCDEBUG												// define this in your pch to go verbose debug
 
