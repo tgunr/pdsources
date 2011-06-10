@@ -7,21 +7,6 @@
 			sepNavVisRange = "{0, 1378}";
 		};
 	};
-	06AA3D12FF0C15B911CA0E35 /* NSOutlineView_Extensions.h */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {887, 1013}}";
-			sepNavSelRange = "{470, 34}";
-			sepNavVisRange = "{0, 708}";
-			sepNavWindowFrame = "{{61, 390}, {946, 1141}}";
-		};
-	};
-	06AA3D13FF0C15B911CA0E35 /* NSOutlineView_Extensions.m */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {969, 3445}}";
-			sepNavSelRange = "{2853, 21}";
-			sepNavVisRange = "{1037, 2963}";
-		};
-	};
 	089C165DFE840E0CC02AAC07 /* English */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {879, 882}}";
@@ -60,13 +45,6 @@
 			sepNavSelRange = "{8220, 0}";
 			sepNavVisRange = "{7331, 1143}";
 			sepNavWindowFrame = "{{681, 181}, {970, 1390}}";
-		};
-	};
-	08DC4049FF0C3BD211CA0E35 /* NSArray_Extensions.m */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1283, 3120}}";
-			sepNavSelRange = "{4055, 10}";
-			sepNavVisRange = "{2630, 2202}";
 		};
 	};
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
@@ -213,17 +191,17 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 329007966;
-			PBXWorkspaceStateSaveDate = 329007966;
+			PBXPerProjectTemplateStateSaveDate = 329432670;
+			PBXWorkspaceStateSaveDate = 329432670;
 		};
 		perUserProjectItems = {
-			753BFEF7139C43B800938DB0 /* XCBuildMessageTextBookmark */ = 753BFEF7139C43B800938DB0 /* XCBuildMessageTextBookmark */;
-			753BFEF9139C43B800938DB0 /* PlistBookmark */ = 753BFEF9139C43B800938DB0 /* PlistBookmark */;
-			753BFEFB139C43BE00938DB0 /* PlistBookmark */ = 753BFEFB139C43BE00938DB0 /* PlistBookmark */;
-			753BFF00139C43E700938DB0 /* PlistBookmark */ = 753BFF00139C43E700938DB0 /* PlistBookmark */;
-			753BFF01139C43EB00938DB0 /* PlistBookmark */ = 753BFF01139C43EB00938DB0 /* PlistBookmark */;
-			753BFF27139C4C4F00938DB0 /* XCBuildMessageTextBookmark */ = 753BFF27139C4C4F00938DB0 /* XCBuildMessageTextBookmark */;
-			753BFF28139C4C4F00938DB0 /* PBXTextBookmark */ = 753BFF28139C4C4F00938DB0 /* PBXTextBookmark */;
+			753BFEF7139C43B800938DB0 = 753BFEF7139C43B800938DB0 /* PBXTextBookmark */;
+			753BFEF9139C43B800938DB0 = 753BFEF9139C43B800938DB0 /* PlistBookmark */;
+			753BFEFB139C43BE00938DB0 = 753BFEFB139C43BE00938DB0 /* PlistBookmark */;
+			753BFF00139C43E700938DB0 = 753BFF00139C43E700938DB0 /* PlistBookmark */;
+			753BFF01139C43EB00938DB0 = 753BFF01139C43EB00938DB0 /* PlistBookmark */;
+			753BFF27139C4C4F00938DB0 = 753BFF27139C4C4F00938DB0 /* PBXTextBookmark */;
+			753BFF28139C4C4F00938DB0 = 753BFF28139C4C4F00938DB0 /* PBXTextBookmark */;
 		};
 		sourceControlManager = 7592E146107ACDCE00A52EB4 /* Source Control */;
 		userBookmarkGroup = 7581E56310DAA8D30043A8EB /* PBXBookmarkGroup */;
@@ -410,20 +388,6 @@
 			sepNavVisRange = "{0, 1449}";
 		};
 	};
-	5C76C1250E9AD9FE00E363B0 /* NSData_Extensions.m */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {908, 981}}";
-			sepNavSelRange = "{1095, 7}";
-			sepNavVisRange = "{0, 1673}";
-		};
-	};
-	5C76C1310E9ADD0500E363B0 /* NSString_Extensions.h */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {996, 779}}";
-			sepNavSelRange = "{140, 24}";
-			sepNavVisRange = "{0, 395}";
-		};
-	};
 	5C81A0E80EC39D9B00E75319 /* JSServiceManager.m */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1206, 2223}}";
@@ -485,25 +449,10 @@
 	};
 	5CAFCCA60E2EB77300A7BEA4 /* dacallib.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {950, 38878}}";
+			sepNavIntBoundsRect = "{{0, 0}, {950, 37674}}";
 			sepNavSelRange = "{87358, 0}";
 			sepNavVisRange = "{0, 0}";
 			sepNavWindowFrame = "{{1522, 99}, {963, 1275}}";
-		};
-	};
-	5CAFCCA80E2EB77300A7BEA4 /* pms.h */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {879, 599}}";
-			sepNavSelRange = "{768, 0}";
-			sepNavVisRange = "{0, 1047}";
-			sepNavWindowFrame = "{{149, 833}, {1158, 745}}";
-		};
-	};
-	5CAFCCED0E2EC1E900A7BEA4 /* pmsCFUtility.c */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1118, 8970}}";
-			sepNavSelRange = "{18701, 7}";
-			sepNavVisRange = "{17426, 1836}";
 		};
 	};
 	5CAFCD1A0E2ED18200A7BEA4 /* pmsDACALUtility.h */ = {
@@ -596,11 +545,10 @@
 			sepNavVisRange = "{0, 1490}";
 		};
 	};
-	753BFEF7139C43B800938DB0 /* XCBuildMessageTextBookmark */ = {
+	753BFEF7139C43B800938DB0 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		comments = "Preprocess build/DACALDriver.build/Release/DACALDriver.build/Preprocessed-Info.plist Info.plist";
 		fRef = 753BFEF8139C43B800938DB0 /* Info.plist */;
-		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 0;
 		rLoc = 0;
 		rType = 1;
@@ -611,12 +559,6 @@
 		name = Info.plist;
 		path = /Volumes/leopard/Projects/PickADisk/Sources/DACALDriver/Info.plist;
 		sourceTree = "<absolute>";
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1033, 1302}}";
-			sepNavSelRange = "{234, 0}";
-			sepNavVisRange = "{0, 2295}";
-			sepNavVisRect = "{{0, 0}, {1047, 1106}}";
-		};
 	};
 	753BFEF9139C43B800938DB0 /* PlistBookmark */ = {
 		isa = PlistBookmark;
@@ -627,10 +569,11 @@
 		);
 		name = /Volumes/leopard/Projects/PickADisk/Sources/DACALDriver/Info.plist;
 		rLen = 0;
-		rLoc = 9223372036854775807;
+		rLoc = 9223372036854775808;
 	};
 	753BFEFA139C43B800938DB0 /* Info.plist */ = {
 		isa = PBXFileReference;
+		lastKnownFileType = text.plist.xml;
 		name = Info.plist;
 		path = /Volumes/leopard/Projects/PickADisk/Sources/DACALDriver/Info.plist;
 		sourceTree = "<absolute>";
@@ -644,7 +587,7 @@
 		);
 		name = /Volumes/leopard/Projects/PickADisk/Sources/DACALDriver/Info.plist;
 		rLen = 0;
-		rLoc = 9223372036854775807;
+		rLoc = 9223372036854775808;
 	};
 	753BFF00139C43E700938DB0 /* PlistBookmark */ = {
 		isa = PlistBookmark;
@@ -655,7 +598,7 @@
 		);
 		name = /Volumes/leopard/Projects/PickADisk/Sources/DACALDriver/Info.plist;
 		rLen = 0;
-		rLoc = 9223372036854775807;
+		rLoc = 9223372036854775808;
 	};
 	753BFF01139C43EB00938DB0 /* PlistBookmark */ = {
 		isa = PlistBookmark;
@@ -666,13 +609,12 @@
 		);
 		name = /Volumes/leopard/Projects/PickADisk/Sources/DACALDriver/Info.plist;
 		rLen = 0;
-		rLoc = 9223372036854775807;
+		rLoc = 9223372036854775808;
 	};
-	753BFF27139C4C4F00938DB0 /* XCBuildMessageTextBookmark */ = {
+	753BFF27139C4C4F00938DB0 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		comments = "Passing argument 4 of '_PMLOG' from incompatible pointer type";
 		fRef = 5CAFCCA60E2EB77300A7BEA4 /* dacallib.m */;
-		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 1;
 		rLoc = 842;
 		rType = 1;
@@ -855,14 +797,6 @@
 		originalNumberOfMultipleMatches = 1;
 		state = 1;
 	};
-	75AF25EC1083A66B004D1F99 /* pms.m */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {961, 2314}}";
-			sepNavSelRange = "{3988, 0}";
-			sepNavVisRange = "{2274, 2149}";
-			sepNavWindowFrame = "{{232, 219}, {1020, 1192}}";
-		};
-	};
 	75CAD3A410EACC76005C4294 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 5CAFCCA60E2EB77300A7BEA4 /* dacallib.m */;
@@ -902,14 +836,6 @@
 		rType = 0;
 		vrLen = 2002;
 		vrLoc = 72606;
-	};
-	75D1ED2A1085236600DE7820 /* _doprnt.m */ = {
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {908, 4251}}";
-			sepNavSelRange = "{3963, 0}";
-			sepNavVisRange = "{3242, 1057}";
-			sepNavWindowFrame = "{{130, 403}, {1075, 1065}}";
-		};
 	};
 	75D30F0310F1D72D0036862D /* RemotePAD */ = {
 		isa = PBXExecutable;

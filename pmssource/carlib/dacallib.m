@@ -14,103 +14,12 @@
 #define __DCDEBUG												// define this in your pch to go verbose debug
 
 // Interface Level
-typedef IOUSBDeviceInterface300		DACALIOUSBDeviceInterface;								
-typedef IOUSBInterfaceInterface300	DACALIOUSBInterfaceInterface;
-
-#define DACAL_MAXDEVICE_COUNT	64*4							// 64 boxes + 64 hubs = 128 devices/per port for possible 4 ports.  Total 256 devices.
-#define	DACAL_MAXCLIENT_COUNT	1								// Only 1 will work for now.
-
-//#define	DACAL_SHORT_SLEEP		usleep(900);
-#define	DACAL_SHORT_SLEEP		sleep(1);
-#define	DACAL_RESET_SLEEP		sleep(5);
-
-#define DACAL_BOX_BUSY(x)			gDACALBoxes.box[x].isBusy
-#define DACAL_BOX_NAME(x)			gDACALBoxes.box[x].boxName
-#define DACAL_BOX_MODEL(x)			gDACALBoxes.box[x].boxModel
-#define DACAL_BOX_UUID(x)			gDACALBoxes.box[x].boxUUID
-#define DACAL_BOX_REF(x)			gDACALBoxes.box[x].boxRef
-#define DACAL_BOX_DEVICE(x)			gDACALBoxes.box[x].boxDevice
-#define DACAL_BOX_LASTSLOT(x)		gDACALBoxes.box[x].boxLastSlot
-#define DACAL_BOX_LASTSLOTTIME(x)	gDACALBoxes.box[x].boxLastSlotTime
-#define DACAL_BOX_PATH(x)			gDACALBoxes.box[x].boxPath
-#define DACAL_BOX_NODE(x)			gDACALBoxes.box[x].boxNode
-#define DACAL_BOX_NOTIFICATION(x)	gDACALBoxes.box[x].boxNotification
-
-#define DACAL_CLIENT_IDENTIFIER(x)	gDACALClients.client[x-1].clientIdentifier
-#define DACAL_CLIENT_ALLOCATOR(x)	gDACALClients.client[x-1].clientAllocator
-#define DACAL_CLIENT_CALLBACK(x)	gDACALClients.client[x-1].clientCallback
-#define DACAL_CLIENT_USERDATA(x)	gDACALClients.client[x-1].clientDataRef
-
-//#define PMBUFSIZE(x) (((sizeof(x)/8)+1)*8)
-#define PMBUFSIZE(x) (sizeof(x))
 
 const SInt32	kDACALVendorID			= 0x04b4;
 const SInt32	kDACALDC300ProductID	= 0x5a9b;
 const SInt32	kDACALDC016ProductID	= 0x4611;
 const SInt32	kDACALProductID			= 0x5a9b;
 const SInt32	kDACALReleaseID			= 0x0100;
-
-typedef enum {
-	undocManufacturer = 1,
-	undocSoftware = 2,
-	undocUnknown3,
-	undocUnknown4,
-	undocUnknown5,
-	undocUnknown6,
-	undocUnknown7,
-	undocUnknown8,
-	cmdGetModel,	// 9
-	cmdGetUUID,		// 10
-	cmdReset,		// 11
-	cmdMoveToSlot,	// 12
-	cmdReserved1,	// 13
-	cmdCloseDoor,	// 14
-	cmdLEDOn,		// 15
-	cmdLEDOff,		// 16
-	cmdGetStatus,	// 17
-	cmdGetSlot,		// 18
-	cmdMoveToDVD,	// 19
-	cmdEjectDVD,	// 20
-} dacalCmd;
-
-typedef struct {
-	Boolean							isBusy;
-	DACALDeviceNode					boxNode;
-	CFStringRef						boxName;
-	CFStringRef						boxModel;
-	CFUUIDRef						boxUUID;
-	CFURLRef						boxPath;
-	DACALIOUSBDeviceInterface**		boxRef;
-	io_service_t					boxDevice;
-	io_object_t						boxNotification;
-	DACALSlotNum					boxLastSlot;
-	time_t							boxLastSlotTime;
-} DACALBox, *DACALBoxRef;
-
-typedef struct {
-	DACALCount						boxCount;
-	DACALBox						box[DACAL_MAXDEVICE_COUNT];		// Change the constant above if necesary
-} DACALArray;
-
-typedef struct {
-	UInt8	stringSize;	
-	UInt8	stringCode;
-	UniChar uniString[128];
-} dacalString, *dacalStringRef;
-
-typedef struct {
-	CFStringRef						clientIdentifier;
-	CFAllocatorRef					clientAllocator;
-	void*							clientCallback;
-	void*							clientDataRef;
-} DACALClientData, *DACALClientDataRef;
-
-typedef struct {
-	unsigned int					clientCount;
-	DACALClientData					client[DACAL_MAXCLIENT_COUNT];
-} DACALClientsArray;
-
-typedef	vm_offset_t		DACALClientRef;
 
 CFStringRef dacalACK = CFSTR("ACK");
 CFStringRef dacalBUSY = CFSTR("Busy");
@@ -122,7 +31,7 @@ CFStringRef dacalDC300 = CFSTR("1234567");
 CFStringRef dacalDC016RW = CFSTR("DC016RW");
 CFStringRef DACALDC101CFName = CFSTR("DC-101");
 CFStringRef DACALDC300CFName = CFSTR("DC-300");
-CFStringRef DACALDC016RWCFName = CFSTR("DC-016RW");
+CFStringRef DACALDC016CFName = CFSTR("DC-016RW");
 
 //CFStringRef		kDACALNameProperty = CFSTR("DACAL Device Name");
 CFStringRef		kDACALPreferencesID = CFSTR("com.polymicrosystems.carousellib.devicenames");
@@ -168,9 +77,8 @@ const DACALDeviceRef	kDACALIllegalDevice = DACAL_MAXDEVICE_COUNT+1;
 const DACALDeviceRef	kDACALDevicesMaxCount = DACAL_MAXDEVICE_COUNT;
 const DACALDeviceRef	kDACALNullDevice = (DACALDeviceRef)NULL;
 
-
 //static	mach_port_t				masterPort = 0;				// requires <mach/mach.h>
-static	io_iterator_t			gDACALAddedIter;
+static  io_iterator_t			gDACALAddedIter;
 static	CFAllocatorRef			gDACALDefaultCFAllocator = NULL;
 static	IONotificationPortRef	gDACALNotifyPort;
 static	CFRunLoopSourceRef		gDACALRunLoopSource;
@@ -1074,7 +982,7 @@ CFStringRef		DACALCommandCopyModel( DACALDeviceRef deviceID, DACALResult* outErr
 	else {
 		compareResult = CFStringCompareWithOptions(descriptorStr, dacalDC016RW, CFRangeMake(0,CFStringGetLength(dacalDC016RW)), kCFCompareCaseInsensitive);
 		if (compareResult == kCFCompareEqualTo) 
-			modelName = DACALDC016RWCFName;
+			modelName = DACALDC016CFName;
 		else 
 			modelName = descriptorStr;
 	}
@@ -1302,7 +1210,7 @@ DACALCommandSetName( DACALDeviceRef deviceID, CFStringRef deviceName ) {
 //	return SaveUSBProductData( deviceID, deviceName, 0 );
 }
 
-DACALDeviceNode		
+DACALDeviceRefNode		
 DACALCommandCopyNode( DACALDeviceRef deviceID, DACALResult* outError ) {
 	DACALCount		indexID = dacalDeviceRefToDeviceIndex( deviceID );
 	
@@ -1312,7 +1220,7 @@ DACALCommandCopyNode( DACALDeviceRef deviceID, DACALResult* outError ) {
 	}
 	
 	if( outError ) *outError = 0;
-	return( (DACALDeviceNode)indexID+1 );
+	return( (DACALDeviceRefNode)indexID+1 );
 }
 
 /*
@@ -2305,7 +2213,7 @@ DACALDeviceCreateWithService( io_service_t ioDeviceObj, DACALResult* outErr ) {
 	CFStringRef					newModel;
 //	CFStringRef					newName;
 //	CFStringRef					userName;
-	DACALDeviceNode				newNode;
+	DACALDeviceRefNode			newNode;
 //	DACALDeviceRef				originalDefault = DACALDevicesGetDefaultDevice();
 	UInt8						intfNumEndpoints;
 	SInt32 config = 0;

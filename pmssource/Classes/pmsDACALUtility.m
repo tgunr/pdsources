@@ -351,7 +351,7 @@ BAIL:
 	return( theOutputIcon );
 }
 
-NSImage*	DACALGetIconImageForType( int	theType )
+NSImage*	DACALGetIconImageForType( OSType	theType )
 {
 	OSStatus		outResult = paramErr;
 	IconRef			theOutputIcon = NULL;

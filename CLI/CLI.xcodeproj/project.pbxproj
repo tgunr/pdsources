@@ -28,7 +28,6 @@
 		7502880F11923D47008008F8 /* pms.m in Sources */ = {isa = PBXBuildFile; fileRef = 7502880311923D47008008F8 /* pms.m */; };
 		7502881011923D47008008F8 /* dacallib.m in Sources */ = {isa = PBXBuildFile; fileRef = 7502880611923D47008008F8 /* dacallib.m */; };
 		7502881111923D47008008F8 /* dacalconstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 7502880811923D47008008F8 /* dacalconstants.m */; };
-		7502881311923D47008008F8 /* pmsDACALUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 7502880C11923D47008008F8 /* pmsDACALUtility.m */; };
 		7502881411923D47008008F8 /* pmsCFUtility.c in Sources */ = {isa = PBXBuildFile; fileRef = 7502880E11923D47008008F8 /* pmsCFUtility.c */; };
 		7502881511923D47008008F8 /* pms.h in Headers */ = {isa = PBXBuildFile; fileRef = 7502880211923D47008008F8 /* pms.h */; };
 		7502881611923D47008008F8 /* pms.m in Sources */ = {isa = PBXBuildFile; fileRef = 7502880311923D47008008F8 /* pms.m */; };
@@ -36,8 +35,6 @@
 		7502881811923D47008008F8 /* dacallib.m in Sources */ = {isa = PBXBuildFile; fileRef = 7502880611923D47008008F8 /* dacallib.m */; };
 		7502881911923D47008008F8 /* dacalconstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 7502880711923D47008008F8 /* dacalconstants.h */; };
 		7502881A11923D47008008F8 /* dacalconstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 7502880811923D47008008F8 /* dacalconstants.m */; };
-		7502881C11923D47008008F8 /* pmsDACALUtility.h in Headers */ = {isa = PBXBuildFile; fileRef = 7502880B11923D47008008F8 /* pmsDACALUtility.h */; };
-		7502881D11923D47008008F8 /* pmsDACALUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 7502880C11923D47008008F8 /* pmsDACALUtility.m */; };
 		7502881E11923D47008008F8 /* pmsCFUtility.h in Headers */ = {isa = PBXBuildFile; fileRef = 7502880D11923D47008008F8 /* pmsCFUtility.h */; };
 		7502881F11923D47008008F8 /* pmsCFUtility.c in Sources */ = {isa = PBXBuildFile; fileRef = 7502880E11923D47008008F8 /* pmsCFUtility.c */; };
 		7502882C11923DD9008008F8 /* NSString+CarbonFSRefCreation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7502882A11923DD9008008F8 /* NSString+CarbonFSRefCreation.m */; };
@@ -68,6 +65,8 @@
 		75637E9911E64F670069CA00 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75637E9811E64F670069CA00 /* ApplicationServices.framework */; };
 		75637EA011E64FB50069CA00 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75637E9F11E64FB50069CA00 /* AppKit.framework */; };
 		75782D6611E4F7B700496670 /* libcrypto.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 75782D6511E4F7B700496670 /* libcrypto.dylib */; };
+		75D2136113A26EF20018E8E5 /* pmsDACALUtility.h in Headers */ = {isa = PBXBuildFile; fileRef = 75D2135F13A26EF20018E8E5 /* pmsDACALUtility.h */; };
+		75D2136213A26EF20018E8E5 /* pmsDACALUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 75D2136013A26EF20018E8E5 /* pmsDACALUtility.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,9 +115,6 @@
 		7502880611923D47008008F8 /* dacallib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = dacallib.m; sourceTree = "<group>"; };
 		7502880711923D47008008F8 /* dacalconstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dacalconstants.h; sourceTree = "<group>"; };
 		7502880811923D47008008F8 /* dacalconstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = dacalconstants.m; sourceTree = "<group>"; };
-		7502880A11923D47008008F8 /* _doprnt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _doprnt.m; sourceTree = "<group>"; };
-		7502880B11923D47008008F8 /* pmsDACALUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pmsDACALUtility.h; sourceTree = "<group>"; };
-		7502880C11923D47008008F8 /* pmsDACALUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = pmsDACALUtility.m; sourceTree = "<group>"; };
 		7502880D11923D47008008F8 /* pmsCFUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pmsCFUtility.h; sourceTree = "<group>"; };
 		7502880E11923D47008008F8 /* pmsCFUtility.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pmsCFUtility.c; sourceTree = "<group>"; };
 		7502882711923DD9008008F8 /* IconFamily.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IconFamily.h; sourceTree = "<group>"; };
@@ -158,6 +154,8 @@
 		75637E9811E64F670069CA00 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = System/Library/Frameworks/ApplicationServices.framework; sourceTree = SDKROOT; };
 		75637E9F11E64FB50069CA00 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		75782D6511E4F7B700496670 /* libcrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcrypto.dylib; path = usr/lib/libcrypto.dylib; sourceTree = SDKROOT; };
+		75D2135F13A26EF20018E8E5 /* pmsDACALUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pmsDACALUtility.h; path = ../carlib/pmsDACALUtility.h; sourceTree = "<group>"; };
+		75D2136013A26EF20018E8E5 /* pmsDACALUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = pmsDACALUtility.m; path = ../carlib/pmsDACALUtility.m; sourceTree = "<group>"; };
 		C6859E970290921104C91782 /* CLI Tools.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = "CLI Tools.1"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -289,9 +287,8 @@
 		7502880911923D47008008F8 /* pmsutility */ = {
 			isa = PBXGroup;
 			children = (
-				7502880A11923D47008008F8 /* _doprnt.m */,
-				7502880B11923D47008008F8 /* pmsDACALUtility.h */,
-				7502880C11923D47008008F8 /* pmsDACALUtility.m */,
+				75D2135F13A26EF20018E8E5 /* pmsDACALUtility.h */,
+				75D2136013A26EF20018E8E5 /* pmsDACALUtility.m */,
 				7502880D11923D47008008F8 /* pmsCFUtility.h */,
 				7502880E11923D47008008F8 /* pmsCFUtility.c */,
 			);
@@ -368,10 +365,10 @@
 				7502881511923D47008008F8 /* pms.h in Headers */,
 				7502881711923D47008008F8 /* dacallib.h in Headers */,
 				7502881911923D47008008F8 /* dacalconstants.h in Headers */,
-				7502881C11923D47008008F8 /* pmsDACALUtility.h in Headers */,
 				7502881E11923D47008008F8 /* pmsCFUtility.h in Headers */,
 				7502882D11923DD9008008F8 /* IconFamily.h in Headers */,
 				7502882F11923DD9008008F8 /* NSString+CarbonFSRefCreation.h in Headers */,
+				75D2136113A26EF20018E8E5 /* pmsDACALUtility.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -467,7 +464,6 @@
 			isa = PBXProject;
 			buildConfigurationList = 1DEB924B08733DCA0010E9CD /* Build configuration list for PBXProject "CLI" */;
 			compatibilityVersion = "Xcode 3.1";
-			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
 				en,
@@ -511,7 +507,6 @@
 				7502880F11923D47008008F8 /* pms.m in Sources */,
 				7502881011923D47008008F8 /* dacallib.m in Sources */,
 				7502881111923D47008008F8 /* dacalconstants.m in Sources */,
-				7502881311923D47008008F8 /* pmsDACALUtility.m in Sources */,
 				7502881411923D47008008F8 /* pmsCFUtility.c in Sources */,
 				7502882C11923DD9008008F8 /* NSString+CarbonFSRefCreation.m in Sources */,
 			);
@@ -524,10 +519,10 @@
 				7502881611923D47008008F8 /* pms.m in Sources */,
 				7502881811923D47008008F8 /* dacallib.m in Sources */,
 				7502881A11923D47008008F8 /* dacalconstants.m in Sources */,
-				7502881D11923D47008008F8 /* pmsDACALUtility.m in Sources */,
 				7502881F11923D47008008F8 /* pmsCFUtility.c in Sources */,
 				7502882E11923DD9008008F8 /* IconFamily.m in Sources */,
 				7502883011923DD9008008F8 /* NSString+CarbonFSRefCreation.m in Sources */,
+				75D2136213A26EF20018E8E5 /* pmsDACALUtility.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

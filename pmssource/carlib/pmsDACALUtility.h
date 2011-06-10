@@ -13,7 +13,7 @@
 
 #ifndef _pmsDACALUtility
 OSStatus		DACALRegisterIconResource( CFStringRef theIconFile, OSType theIconType );
-NSImage*		DACALGetIconImageForType( int theType );
+NSImage*		DACALGetIconImageForType( OSType theType );
 IconRef			DACALGetIconRefForType( int	theType );
 
 

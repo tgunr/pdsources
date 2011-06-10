@@ -136,14 +136,14 @@ typedef struct {
 typedef vm_offset_t DACALClientRef;
 
 //static	mach_port_t				masterPort = 0;				// requires <mach/mach.h>
-extern io_iterator_t         gDACALAddedIter;
-extern CFAllocatorRef        gDACALDefaultCFAllocator;
-extern IONotificationPortRef gDACALNotifyPort;
-extern CFRunLoopSourceRef    gDACALRunLoopSource;
+//extern io_iterator_t         gDACALAddedIter;
+//extern CFAllocatorRef        gDACALDefaultCFAllocator;
+//extern IONotificationPortRef gDACALNotifyPort;
+//extern CFRunLoopSourceRef    gDACALRunLoopSource;
 extern DACALDeviceRef        gDACALDefaultDevice1;
-extern DACALArray            gDACALBoxes;
-extern DACALClientsArray     gDACALClients;
-extern DACALClientRef        gDACALNextClientID;
+//extern DACALArray            gDACALBoxes;
+//extern DACALClientsArray     gDACALClients;
+//extern DACALClientRef        gDACALNextClientID;
 
 extern const DACALResult kDACALOK;
 extern const DACALResult kDACALBusy;
