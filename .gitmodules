@@ -1,3 +1,3 @@
-[submodule "pmssource/pms"]
-	path = pmssource/pms
-	url = ssh://polymicrosystems.com/~/git/Sources/pms.git
+[submodule "pmssource/pmsutility"]
+	path = pmssource/pmsutility
+	url = https://tgunr@github.com/tgunr/pmsutility.git

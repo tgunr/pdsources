@@ -22,16 +22,8 @@
 	<dict>
 		<key>DACALDrive</key>
 		<dict>
-			<key>bConfigurationValue</key>
-			<integer>1</integer>
-			<key>bInterfaceNumber</key>
-			<integer>0</integer>
 			<key>CFBundleIdentifier</key>
 			<string>com.apple.iokit.IOUSBMassStorageClass</string>
-			<key>idProduct</key>
-			<integer>17937</integer>
-			<key>idVendor</key>
-			<integer>1204</integer>
 			<key>IOClass</key>
 			<string>IOUSBMassStorageClass</string>
 			<key>IOProviderClass</key>
@@ -45,6 +37,14 @@
 				<key>Manual Eject</key>
 				<string>true</string>
 			</dict>
+			<key>bConfigurationValue</key>
+			<integer>1</integer>
+			<key>bInterfaceNumber</key>
+			<integer>0</integer>
+			<key>idProduct</key>
+			<integer>17937</integer>
+			<key>idVendor</key>
+			<integer>1204</integer>
 		</dict>
 		<key>DeviceDriver</key>
 		<dict>
@@ -80,7 +80,7 @@
 		</dict>
 	</dict>
 	<key>NSHumanReadableCopyright</key>
-	<string>© 2008, polyMicro Systems</string>
+	<string>(c) 2008, polyMicro Systems</string>
 	<key>OSBundleLibraries</key>
 	<dict>
 		<key>com.apple.iokit.IOUSBFamily</key>

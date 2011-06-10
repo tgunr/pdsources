@@ -5,7 +5,9 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "PADSearchRequest.h"
+//#import "PADSearchRequest.h"
+
+@class PADSearchRequest;
 
 @interface NSOutlineView(MyExtensions)
 
