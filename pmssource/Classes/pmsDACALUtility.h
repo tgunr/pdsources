@@ -14,7 +14,7 @@
 #ifndef _pmsDACALUtility
 OSStatus		DACALRegisterIconResource( CFStringRef theIconFile, OSType theIconType );
 NSImage*		DACALGetIconImageForType( OSType	theType );
-IconRef			DACALGetIconRefForType( int	theType );
+IconRef			DACALGetIconRefForType( OSType	theType );
 
 
 Boolean			CFURLIsCarousel( CFURLRef url );
