@@ -46,6 +46,7 @@
 #import "PADIndexOperation.h"
 #import "DACALTreeDataSource.h"
 #import "pmsDACALUtility.h"
+#import "NSString_Extensions.h"
 
 
 @implementation SimpleNodeData
