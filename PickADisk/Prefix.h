@@ -12,7 +12,7 @@
 #ifdef __OBJC__
     #import <Foundation/Foundation.h>
     #import <AppKit/AppKit.h>
-	#import "../pmsutility/pms.h"
+	#import "pms.h"
 	#import "dacallib.h"
 	#import "NSApplication_Extensions.h"
 	#import "AppController.h"
