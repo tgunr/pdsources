@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "JSServiceManager.h"
 #import "JSServicesSetup.h"
-#import "pms.h"
+#import <PMSUtility/pms.h>
 
 @implementation JSServiceAbstract
 

@@ -94,30 +94,6 @@
 		735CC2B7049A7E2A00C919A3 /* SimpleTreeNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 08DC4042FF0C22D111CA0E35 /* SimpleTreeNode.m */; settings = {ATTRIBUTES = (); }; };
 		735CC2B9049A7E2A00C919A3 /* TreeNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 08DC403CFF0C20FA11CA0E35 /* TreeNode.m */; settings = {ATTRIBUTES = (); }; };
 		735CC2BD049A7E2A00C919A3 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 011669A0FFC1E3D311CA0E35 /* Cocoa.framework */; };
-		7501A4B013679EDF00E74F4C /* BTHIconResources.h in Headers */ = {isa = PBXBuildFile; fileRef = 7501A48413679EDF00E74F4C /* BTHIconResources.h */; };
-		7501A4B113679EDF00E74F4C /* BTHIconResources.m in Sources */ = {isa = PBXBuildFile; fileRef = 7501A48513679EDF00E74F4C /* BTHIconResources.m */; };
-		7501A4B213679EDF00E74F4C /* ImageAndTextCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 7501A48613679EDF00E74F4C /* ImageAndTextCell.h */; };
-		7501A4B313679EDF00E74F4C /* ImageAndTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7501A48713679EDF00E74F4C /* ImageAndTextCell.m */; };
-		7501A4B413679EDF00E74F4C /* NSApplication_Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 7501A48913679EDF00E74F4C /* NSApplication_Extensions.h */; };
-		7501A4B513679EDF00E74F4C /* NSApplication_Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7501A48A13679EDF00E74F4C /* NSApplication_Extensions.m */; };
-		7501A4B613679EDF00E74F4C /* NSArray_Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 7501A48B13679EDF00E74F4C /* NSArray_Extensions.h */; };
-		7501A4B713679EDF00E74F4C /* NSArray_Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7501A48C13679EDF00E74F4C /* NSArray_Extensions.m */; };
-		7501A4B813679EDF00E74F4C /* NSData_Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 7501A48D13679EDF00E74F4C /* NSData_Extensions.h */; };
-		7501A4B913679EDF00E74F4C /* NSData_Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7501A48E13679EDF00E74F4C /* NSData_Extensions.m */; };
-		7501A4BA13679EDF00E74F4C /* NSOutlineView_Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 7501A48F13679EDF00E74F4C /* NSOutlineView_Extensions.h */; };
-		7501A4BB13679EDF00E74F4C /* NSOutlineView_Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7501A49013679EDF00E74F4C /* NSOutlineView_Extensions.m */; };
-		7501A4BC13679EDF00E74F4C /* NSSlider_Animation.h in Headers */ = {isa = PBXBuildFile; fileRef = 7501A49113679EDF00E74F4C /* NSSlider_Animation.h */; };
-		7501A4BD13679EDF00E74F4C /* NSSlider_Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7501A49213679EDF00E74F4C /* NSSlider_Animation.m */; };
-		7501A4BE13679EDF00E74F4C /* NSString_Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 7501A49313679EDF00E74F4C /* NSString_Extensions.h */; };
-		7501A4BF13679EDF00E74F4C /* NSString_Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7501A49413679EDF00E74F4C /* NSString_Extensions.m */; };
-		7501A4C013679EDF00E74F4C /* NSViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 7501A49513679EDF00E74F4C /* NSViewController.h */; };
-		7501A4C113679EDF00E74F4C /* NSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7501A49613679EDF00E74F4C /* NSViewController.m */; };
-		7501A4C213679EDF00E74F4C /* pmsNSUtility.h in Headers */ = {isa = PBXBuildFile; fileRef = 7501A49713679EDF00E74F4C /* pmsNSUtility.h */; };
-		7501A4C313679EDF00E74F4C /* pmsNSUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 7501A49813679EDF00E74F4C /* pmsNSUtility.m */; };
-		7501A4D51367A0DA00E74F4C /* pms.h in Headers */ = {isa = PBXBuildFile; fileRef = 7501A4D31367A0DA00E74F4C /* pms.h */; };
-		7501A4D61367A0DA00E74F4C /* pms.m in Sources */ = {isa = PBXBuildFile; fileRef = 7501A4D41367A0DA00E74F4C /* pms.m */; };
-		7501A4DB1367A16600E74F4C /* pmsCFUtility.c in Sources */ = {isa = PBXBuildFile; fileRef = 7501A4D91367A16600E74F4C /* pmsCFUtility.c */; };
-		7501A4DC1367A16600E74F4C /* pmsCFUtility.h in Headers */ = {isa = PBXBuildFile; fileRef = 7501A4DA1367A16600E74F4C /* pmsCFUtility.h */; };
 		7504AE680FB380E700FFAA84 /* report.css in Resources */ = {isa = PBXBuildFile; fileRef = 7504AE5C0FB380E700FFAA84 /* report.css */; };
 		7504AE690FB380E700FFAA84 /* simplelist.css in Resources */ = {isa = PBXBuildFile; fileRef = 7504AE5D0FB380E700FFAA84 /* simplelist.css */; };
 		7504AE6A0FB380E700FFAA84 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 7504AE5E0FB380E700FFAA84 /* index.html */; };
@@ -132,6 +108,7 @@
 		75339121101B99470007F931 /* daclconstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 7533911F101B99470007F931 /* daclconstants.h */; };
 		75339122101B99470007F931 /* daclconstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 75339120101B99470007F931 /* daclconstants.m */; };
 		7565EFE813AAC73A0029990C /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7565EFE713AAC73A0029990C /* IOKit.framework */; };
+		7565F01A13AB0F480029990C /* PMSUtility.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7565F01913AB0F480029990C /* PMSUtility.framework */; };
 		75B047BE13A2E0C20012924D /* pmsDACALUtility.h in Headers */ = {isa = PBXBuildFile; fileRef = 75B047BC13A2E0C20012924D /* pmsDACALUtility.h */; };
 		75B047BF13A2E0C20012924D /* pmsDACALUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 75B047BD13A2E0C20012924D /* pmsDACALUtility.m */; };
 		75B2FCB30EDDA9A1007356FD /* BlackPlus1.png in Resources */ = {isa = PBXBuildFile; fileRef = 75B2FCB20EDDA9A1007356FD /* BlackPlus1.png */; };
@@ -287,7 +264,6 @@
 		5C48B6920E453D98005795F7 /* PADLifecycleController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PADLifecycleController.h; path = "../PAD Controllers/PADLifecycleController.h"; sourceTree = "<group>"; };
 		5C48B6930E453D98005795F7 /* PADLifecycleController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PADLifecycleController.m; path = "../PAD Controllers/PADLifecycleController.m"; sourceTree = "<group>"; };
 		5C4E17EB0E2167580091DD7D /* carousel.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = carousel.sh; path = ../pmssource/carlib/carousel.sh; sourceTree = SOURCE_ROOT; };
-		5C4E17FC0E216A2D0091DD7D /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = SDKs/MacOSX10.5.sdk/System/Library/Frameworks/IOKit.framework; sourceTree = DEVELOPER_DIR; };
 		5C57B62D0E6635600063190F /* PADIndexNodeData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PADIndexNodeData.h; sourceTree = "<group>"; };
 		5C57B62E0E6635600063190F /* PADIndexNodeData.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = PADIndexNodeData.m; sourceTree = "<group>"; };
 		5C57B7F60E66EF630063190F /* Generic_Image.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Generic_Image.icns; sourceTree = "<group>"; };
@@ -375,30 +351,6 @@
 		735CC297049A7E1F00C919A3 /* Prefix.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Prefix.h; path = Sources/Prefix.h; sourceTree = SOURCE_ROOT; };
 		735CC2C0049A7E2A00C919A3 /* Info-PickADisk.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-PickADisk.plist"; sourceTree = SOURCE_ROOT; };
 		735CC2C1049A7E2A00C919A3 /* PickADisk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PickADisk.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		7501A48413679EDF00E74F4C /* BTHIconResources.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTHIconResources.h; sourceTree = "<group>"; };
-		7501A48513679EDF00E74F4C /* BTHIconResources.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTHIconResources.m; sourceTree = "<group>"; };
-		7501A48613679EDF00E74F4C /* ImageAndTextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageAndTextCell.h; sourceTree = "<group>"; };
-		7501A48713679EDF00E74F4C /* ImageAndTextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageAndTextCell.m; sourceTree = "<group>"; };
-		7501A48913679EDF00E74F4C /* NSApplication_Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSApplication_Extensions.h; sourceTree = "<group>"; };
-		7501A48A13679EDF00E74F4C /* NSApplication_Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSApplication_Extensions.m; sourceTree = "<group>"; };
-		7501A48B13679EDF00E74F4C /* NSArray_Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSArray_Extensions.h; sourceTree = "<group>"; };
-		7501A48C13679EDF00E74F4C /* NSArray_Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSArray_Extensions.m; sourceTree = "<group>"; };
-		7501A48D13679EDF00E74F4C /* NSData_Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSData_Extensions.h; sourceTree = "<group>"; };
-		7501A48E13679EDF00E74F4C /* NSData_Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSData_Extensions.m; sourceTree = "<group>"; };
-		7501A48F13679EDF00E74F4C /* NSOutlineView_Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSOutlineView_Extensions.h; sourceTree = "<group>"; };
-		7501A49013679EDF00E74F4C /* NSOutlineView_Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSOutlineView_Extensions.m; sourceTree = "<group>"; };
-		7501A49113679EDF00E74F4C /* NSSlider_Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSSlider_Animation.h; sourceTree = "<group>"; };
-		7501A49213679EDF00E74F4C /* NSSlider_Animation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSSlider_Animation.m; sourceTree = "<group>"; };
-		7501A49313679EDF00E74F4C /* NSString_Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSString_Extensions.h; sourceTree = "<group>"; };
-		7501A49413679EDF00E74F4C /* NSString_Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSString_Extensions.m; sourceTree = "<group>"; };
-		7501A49513679EDF00E74F4C /* NSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSViewController.h; sourceTree = "<group>"; };
-		7501A49613679EDF00E74F4C /* NSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSViewController.m; sourceTree = "<group>"; };
-		7501A49713679EDF00E74F4C /* pmsNSUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pmsNSUtility.h; sourceTree = "<group>"; };
-		7501A49813679EDF00E74F4C /* pmsNSUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = pmsNSUtility.m; sourceTree = "<group>"; };
-		7501A4D31367A0DA00E74F4C /* pms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pms.h; sourceTree = "<group>"; };
-		7501A4D41367A0DA00E74F4C /* pms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = pms.m; sourceTree = "<group>"; };
-		7501A4D91367A16600E74F4C /* pmsCFUtility.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pmsCFUtility.c; sourceTree = "<group>"; };
-		7501A4DA1367A16600E74F4C /* pmsCFUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pmsCFUtility.h; sourceTree = "<group>"; };
 		7504AE5C0FB380E700FFAA84 /* report.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = report.css; sourceTree = "<group>"; };
 		7504AE5D0FB380E700FFAA84 /* simplelist.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = simplelist.css; sourceTree = "<group>"; };
 		7504AE5E0FB380E700FFAA84 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
@@ -419,9 +371,8 @@
 		7533911F101B99470007F931 /* daclconstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = daclconstants.h; sourceTree = "<group>"; };
 		75339120101B99470007F931 /* daclconstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = daclconstants.m; sourceTree = "<group>"; };
 		7565EFCB13AAC4360029990C /* pmsutility.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = pmsutility.xcodeproj; path = ../../../../Sources/GIT/pmsutility/pmsutility.xcodeproj; sourceTree = "<group>"; };
-		7565EFE513AAC6EE0029990C /* PMSUtility.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = PMSUtility.framework; path = /Volumes/leopard/Sources/GIT/pmsutility/build/Release/PMSUtility.framework; sourceTree = "<absolute>"; };
-		7565EFE713AAC73A0029990C /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = ../../../../../../System/Library/Frameworks/IOKit.framework; sourceTree = "<group>"; };
-		7565EFE913AAC8320029990C /* PMSUtility.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = PMSUtility.framework; path = /Volumes/leopard/Sources/GIT/pmsutility/build/Release/PMSUtility.framework; sourceTree = "<absolute>"; };
+		7565EFE713AAC73A0029990C /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
+		7565F01913AB0F480029990C /* PMSUtility.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = PMSUtility.framework; path = /Volumes/leopard/Sources/GIT/pmsutility/build/Release/PMSUtility.framework; sourceTree = "<absolute>"; };
 		75A5B3D310F72A20001A674A /* CLI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CLI.xcodeproj; path = ../CLI/CLI.xcodeproj; sourceTree = SOURCE_ROOT; };
 		75B047BC13A2E0C20012924D /* pmsDACALUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pmsDACALUtility.h; sourceTree = "<group>"; };
 		75B047BD13A2E0C20012924D /* pmsDACALUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = pmsDACALUtility.m; sourceTree = "<group>"; };
@@ -502,6 +453,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7565F01A13AB0F480029990C /* PMSUtility.framework in Frameworks */,
 				7565EFE813AAC73A0029990C /* IOKit.framework in Frameworks */,
 				735CC2BD049A7E2A00C919A3 /* Cocoa.framework in Frameworks */,
 				5CA07A710E2E274900F71FA7 /* Carbon.framework in Frameworks */,
@@ -568,6 +520,8 @@
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7565F01913AB0F480029990C /* PMSUtility.framework */,
+				7565EFE713AAC73A0029990C /* IOKit.framework */,
 				0247A8BE007179D411CA0E35 /* Foundation.framework */,
 				5C2E410F0E74076A00D7DF4A /* Security.framework */,
 				5CF4D9800E68E6DF0091A77F /* ILCrashReporter.framework */,
@@ -576,7 +530,6 @@
 				5C7C4EE80E3C006C00FCEBD8 /* DiscID.framework */,
 				5CA07A700E2E274900F71FA7 /* Carbon.framework */,
 				011669A0FFC1E3D311CA0E35 /* Cocoa.framework */,
-				5C4E17FC0E216A2D0091DD7D /* IOKit.framework */,
 				5C0884410E26CFCA0052D931 /* AudioToolbox.framework */,
 				5C5F7E2C0E772EF5003111DF /* DiskArbitration.framework */,
 				5C2741760E27686A00A32C40 /* DiscRecording.framework */,
@@ -603,9 +556,6 @@
 		29B97314FDCFA39411CA2CEA /* CocoaApp */ = {
 			isa = PBXGroup;
 			children = (
-				7565EFE713AAC73A0029990C /* IOKit.framework */,
-				7565EFE513AAC6EE0029990C /* PMSUtility.framework */,
-				7565EFE913AAC8320029990C /* PMSUtility.framework */,
 				7504AFFB0FB4722D00FFAA84 /* Other Projects */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
@@ -839,53 +789,13 @@
 		7501A45D13679EDF00E74F4C /* pmsutility */ = {
 			isa = PBXGroup;
 			children = (
-				7501A4D31367A0DA00E74F4C /* pms.h */,
-				7501A4D41367A0DA00E74F4C /* pms.m */,
-				7501A4D91367A16600E74F4C /* pmsCFUtility.c */,
-				7501A4DA1367A16600E74F4C /* pmsCFUtility.h */,
 				75B047BB13A2E0C20012924D /* dacalutility */,
 				5C81A0E60EC39D9B00E75319 /* jsutility */,
 				5CAFCCA30E2EB77300A7BEA4 /* carlib */,
-				7501A48313679EDF00E74F4C /* Classes */,
-				7501A48813679EDF00E74F4C /* Extensions */,
-				7501A49713679EDF00E74F4C /* pmsNSUtility.h */,
-				7501A49813679EDF00E74F4C /* pmsNSUtility.m */,
 			);
 			name = pmsutility;
 			path = ../pmssource/pmsutility;
 			sourceTree = SOURCE_ROOT;
-		};
-		7501A48313679EDF00E74F4C /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				7501A48413679EDF00E74F4C /* BTHIconResources.h */,
-				7501A48513679EDF00E74F4C /* BTHIconResources.m */,
-				7501A48613679EDF00E74F4C /* ImageAndTextCell.h */,
-				7501A48713679EDF00E74F4C /* ImageAndTextCell.m */,
-			);
-			path = Classes;
-			sourceTree = "<group>";
-		};
-		7501A48813679EDF00E74F4C /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				7501A48913679EDF00E74F4C /* NSApplication_Extensions.h */,
-				7501A48A13679EDF00E74F4C /* NSApplication_Extensions.m */,
-				7501A48B13679EDF00E74F4C /* NSArray_Extensions.h */,
-				7501A48C13679EDF00E74F4C /* NSArray_Extensions.m */,
-				7501A48D13679EDF00E74F4C /* NSData_Extensions.h */,
-				7501A48E13679EDF00E74F4C /* NSData_Extensions.m */,
-				7501A48F13679EDF00E74F4C /* NSOutlineView_Extensions.h */,
-				7501A49013679EDF00E74F4C /* NSOutlineView_Extensions.m */,
-				7501A49113679EDF00E74F4C /* NSSlider_Animation.h */,
-				7501A49213679EDF00E74F4C /* NSSlider_Animation.m */,
-				7501A49313679EDF00E74F4C /* NSString_Extensions.h */,
-				7501A49413679EDF00E74F4C /* NSString_Extensions.m */,
-				7501A49513679EDF00E74F4C /* NSViewController.h */,
-				7501A49613679EDF00E74F4C /* NSViewController.m */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
 		};
 		7504AE590FB380E700FFAA84 /* sparkle */ = {
 			isa = PBXGroup;
@@ -1213,18 +1123,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				75339121101B99470007F931 /* daclconstants.h in Headers */,
-				7501A4B013679EDF00E74F4C /* BTHIconResources.h in Headers */,
-				7501A4B213679EDF00E74F4C /* ImageAndTextCell.h in Headers */,
-				7501A4B413679EDF00E74F4C /* NSApplication_Extensions.h in Headers */,
-				7501A4B613679EDF00E74F4C /* NSArray_Extensions.h in Headers */,
-				7501A4B813679EDF00E74F4C /* NSData_Extensions.h in Headers */,
-				7501A4BA13679EDF00E74F4C /* NSOutlineView_Extensions.h in Headers */,
-				7501A4BC13679EDF00E74F4C /* NSSlider_Animation.h in Headers */,
-				7501A4BE13679EDF00E74F4C /* NSString_Extensions.h in Headers */,
-				7501A4C013679EDF00E74F4C /* NSViewController.h in Headers */,
-				7501A4C213679EDF00E74F4C /* pmsNSUtility.h in Headers */,
-				7501A4D51367A0DA00E74F4C /* pms.h in Headers */,
-				7501A4DC1367A16600E74F4C /* pmsCFUtility.h in Headers */,
 				75B047BE13A2E0C20012924D /* pmsDACALUtility.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1510,18 +1408,6 @@
 				5C1A10230F4018A4004F3605 /* IconFamily.m in Sources */,
 				5C1A10250F4018A4004F3605 /* NSString+CarbonFSRefCreation.m in Sources */,
 				75339122101B99470007F931 /* daclconstants.m in Sources */,
-				7501A4B113679EDF00E74F4C /* BTHIconResources.m in Sources */,
-				7501A4B313679EDF00E74F4C /* ImageAndTextCell.m in Sources */,
-				7501A4B513679EDF00E74F4C /* NSApplication_Extensions.m in Sources */,
-				7501A4B713679EDF00E74F4C /* NSArray_Extensions.m in Sources */,
-				7501A4B913679EDF00E74F4C /* NSData_Extensions.m in Sources */,
-				7501A4BB13679EDF00E74F4C /* NSOutlineView_Extensions.m in Sources */,
-				7501A4BD13679EDF00E74F4C /* NSSlider_Animation.m in Sources */,
-				7501A4BF13679EDF00E74F4C /* NSString_Extensions.m in Sources */,
-				7501A4C113679EDF00E74F4C /* NSViewController.m in Sources */,
-				7501A4C313679EDF00E74F4C /* pmsNSUtility.m in Sources */,
-				7501A4D61367A0DA00E74F4C /* pms.m in Sources */,
-				7501A4DB1367A16600E74F4C /* pmsCFUtility.c in Sources */,
 				75B047BF13A2E0C20012924D /* pmsDACALUtility.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

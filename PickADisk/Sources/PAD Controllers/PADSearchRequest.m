@@ -7,7 +7,8 @@
 //
 
 #import "PADSearchRequest.h"
-#import "NSString_Extensions.h"
+#import <PMSUtility/NSString_Extensions.h>
+#import <PMSUtility/NSApplication_Extensions.h>
 
 // Default # of matches before notifying target
 #define PADMATCHQUEUE_THRESHOLD		22

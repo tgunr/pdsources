@@ -48,7 +48,7 @@
 */
 
 #import "TreeNode.h"
-#import "NSArray_Extensions.h"
+#import <PMSUtility/NSArray_Extensions.h>
 
 @implementation TreeNode
 

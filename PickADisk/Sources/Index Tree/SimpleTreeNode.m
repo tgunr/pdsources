@@ -46,7 +46,8 @@
 #import "PADIndexOperation.h"
 #import "DACALTreeDataSource.h"
 #import "pmsDACALUtility.h"
-#import "NSString_Extensions.h"
+#import <PMSUtility/NSString_Extensions.h>
+#import <PMSUtility/NSApplication_Extensions.h>
 
 
 @implementation SimpleNodeData
@@ -624,7 +625,7 @@
 	PADSearchRelevance	rank = 0.0;
 	
 	if( ourDate )
-		rank = [ourDate rankWithDate:other withOptions:options];
+		rank = (PADSearchRelevance)[ourDate rankWithDate:other withOptions:options];
 	
 	return( [NSNumber numberWithFloat:rank] );
 }
@@ -635,7 +636,7 @@
 	PADSearchRelevance	rank = 0.0;
 
 	if( ourDate )
-		rank = [ourDate rankWithDate:other withOptions:options];
+		rank = (PADSearchRelevance)[ourDate rankWithDate:other withOptions:options];
 	
 	return( [NSNumber numberWithFloat:rank] );
 }
