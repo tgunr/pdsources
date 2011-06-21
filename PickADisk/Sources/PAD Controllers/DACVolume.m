@@ -211,7 +211,7 @@ int		DACVolume_nextIconID = 0;
 
 	//	Music CD?
 	//		Check if all the visible items have an "aiff" extension
-	while( workURL = (NSURL*)[volumesEnumAIFF nextObject] )
+	while( (workURL = (NSURL*)[volumesEnumAIFF nextObject]) )
 	{
 		workString = nil;
 		goodItem = FALSE;
@@ -229,7 +229,7 @@ int		DACVolume_nextIconID = 0;
 	//	One shots
 	//		Check if any item matches a known value
 	goodItem = FALSE;
-	while( workURL = (NSURL*)[volumesEnumOnce nextObject] )
+	while( (workURL = (NSURL*)[volumesEnumOnce nextObject]) )
 	{
 		workString = nil;
 		if( !workURL ) break;
@@ -520,7 +520,7 @@ bail:
 {
 	CFDictionaryRef	volumeData = NULL;
 
-	if( self = [super init] )
+	if( (self = [super init]) )
 	{
 		FSRef			theRef;
 		FSRef			iconFileRef;
@@ -730,7 +730,7 @@ bail:
 		DACALSlot*	workSlot = nil;
 		
 		if( padIdentifier )
-			if( workSlot = DACALDeviceSlotForSlotIdentifier((CFStringRef)padIdentifier) ) {
+			if( (workSlot = DACALDeviceSlotForSlotIdentifier((CFStringRef)padIdentifier)) ) {
 				padKnownVolume = YES;
 				padKnownSlot = [workSlot retain];
 				NSLog(@"Volume Identified As: %@", padKnownSlot);
@@ -972,7 +972,7 @@ FAILED:
 	NSMutableArray*		matchArray = [[NSMutableArray alloc] initWithCapacity:0];
 	NSArray*			outArray = nil;
 	
-	while ( workVolume = [knownEnum nextObject] )
+	while ( (workVolume = [knownEnum nextObject]) )
 		if( [workVolume isIdentifiedAs:theID] )
 			[matchArray addObject:workVolume];
 	
@@ -992,7 +992,7 @@ FAILED:
 	NSMutableArray*		buildArray = [NSMutableArray arrayWithCapacity:0];
 	DACVolume*			workVolume = nil;
 	
-	while ( workVolume = [listEnum nextObject] )
+	while ( (workVolume = [listEnum nextObject]) )
 		if( [workVolume isIndexable] == YES )
 			[buildArray addObject:workVolume];
 	
@@ -1008,7 +1008,7 @@ FAILED:
 	NSMutableArray*		buildArray = [NSMutableArray arrayWithCapacity:0];
 	DACVolume*			workVolume = nil;
 
-	while ( workVolume = [listEnum nextObject] )
+	while ( (workVolume = [listEnum nextObject]) )
 		if( [workVolume padKnownSlot] != nil )
 			[buildArray addObject:workVolume];
 	
@@ -1025,7 +1025,7 @@ FAILED:
 	if( recognizedAction != kDACDVKnownIDAutoCheckIn )
 		return;
 	
-	while ( workVolume = [slotEnum nextObject] ) 
+	while ( (workVolume = [slotEnum nextObject]) ) 
 		if( [[workVolume padKnownSlot] slotVolume] == nil )
 			slotsOK = [[workVolume padKnownSlot] slotMountedAsVolume:workVolume];
 	
@@ -1126,7 +1126,7 @@ FAILED:
 		matchVolumes = [self knownVolumesWithIdentifier:[aSlot slotIdentifier]];
 		matchEnum = [matchVolumes objectEnumerator];
 		
-		while ( workVolume = [matchEnum nextObject] )
+		while ( (workVolume = [matchEnum nextObject]) )
 			if( ![workVolume padKnownVolume] )
 				[workVolume setPadKnownSlot:aSlot];
 		
