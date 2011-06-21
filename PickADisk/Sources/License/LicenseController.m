@@ -42,7 +42,7 @@ static LicenseController*	shared_LicenseController = nil;
 	if (shared_LicenseController)
 		return (id)shared_LicenseController;
 	
-	if( self = [super init] ) {
+	if( (self = [super init]) ) {
 		//NSLog(@"LicenseController Created");
 		shared_LicenseController = (LicenseController*)self;
 		controllerState = kPADLicenseStateLaunching;
@@ -98,7 +98,7 @@ static LicenseController*	shared_LicenseController = nil;
 	NSModalSession	demoSession;
 
 	controllerState = kPADLicenseStateFirstAnnounce;
-	if( demoSession = [[NSApplication sharedApplication] beginModalSessionForWindow:notLicensedWindow] )
+	if( (demoSession = [[NSApplication sharedApplication] beginModalSessionForWindow:notLicensedWindow]) )
 	{
 		while ([NSApp runModalSession:demoSession] == NSRunContinuesResponse) {
 			;
