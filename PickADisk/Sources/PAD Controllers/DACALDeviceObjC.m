@@ -6,6 +6,7 @@
 //  Copyright 2008 Jack Small. All rights reserved.
 //
 
+#import <PMSUtility/pmsNSUtility.h>
 #import "DACALDeviceObjC.h"
 #import "PADOperationOpenDevice.h"
 #import "PADOperationControlDevice.h"
