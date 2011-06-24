@@ -152,14 +152,14 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 7565EFCB13AAC4360029990C /* pmsutility.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 759D16C613A879A500E671A1 /* PMSUtility.framework */;
+			remoteGlobalIDString = 759D16C613A879A500E671A1;
 			remoteInfo = PMSUtility;
 		};
 		759DD19F13B029D9004615F4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7565EFCB13AAC4360029990C /* pmsutility.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = 759D16C513A879A500E671A1 /* PMSUtility */;
+			remoteGlobalIDString = 759D16C513A879A500E671A1;
 			remoteInfo = PMSUtility;
 		};
 		75A5B3DD10F72A20001A674A /* PBXContainerItemProxy */ = {
@@ -1474,6 +1474,7 @@
 				MACOSX_DEPLOYMENT_TARGET = "";
 				PRODUCT_NAME = PickADisk;
 				SDKROOT = "";
+				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/../CLI";
 				VALID_ARCHS = i386;
 			};
 			name = "Release Test";
@@ -1524,6 +1525,7 @@
 				MACOSX_DEPLOYMENT_TARGET = "";
 				PRODUCT_NAME = PickADisk;
 				SDKROOT = "";
+				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/../CLI";
 				VALID_ARCHS = i386;
 			};
 			name = DebugPPC;
@@ -1577,6 +1579,7 @@
 				PRODUCT_NAME = PickADisk;
 				SDKROOT = "";
 				SYMROOT = /Volumes/RemoteDebug/PickADisk/build;
+				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/../CLI";
 				VALID_ARCHS = i386;
 			};
 			name = DebugRemote;
@@ -1635,6 +1638,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = PickADisk;
 				SDKROOT = "";
+				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/../CLI";
 				VALID_ARCHS = i386;
 			};
 			name = "Development Fresh Prefs";
@@ -1695,6 +1699,7 @@
 					"-seg1addr",
 					0x10000000,
 				);
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/../CLI/** \"${PROJECT_DIR}/../CLI/** \"${PROJECT_DIR}/../CLI/** \"${PROJECT_DIR}/../CLI/** \"${PROJECT_DIR}/../../../pmsutility/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Development;
@@ -1747,6 +1752,7 @@
 				PRODUCT_NAME = PickADisk;
 				SDKROOT = "";
 				SYMROOT = /Users/Shared/PickADisk;
+				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/../CLI";
 				VALID_ARCHS = i386;
 			};
 			name = Development;
@@ -1770,6 +1776,7 @@
 				MACOSX_DEPLOYMENT_TARGET = "";
 				PRODUCT_NAME = PickADisk;
 				SDKROOT = "";
+				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/../CLI";
 				VALID_ARCHS = i386;
 			};
 			name = Release;
