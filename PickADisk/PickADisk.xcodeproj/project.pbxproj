@@ -108,7 +108,7 @@
 		75339121101B99470007F931 /* daclconstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 7533911F101B99470007F931 /* daclconstants.h */; };
 		75339122101B99470007F931 /* daclconstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 75339120101B99470007F931 /* daclconstants.m */; };
 		7565EFE813AAC73A0029990C /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7565EFE713AAC73A0029990C /* IOKit.framework */; };
-		7565F01A13AB0F480029990C /* PMSUtility.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7565F01913AB0F480029990C /* PMSUtility.framework */; };
+		7570BE1913C95C72001AF81B /* PMSUtility.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7570BDF913C95A3A001AF81B /* PMSUtility.framework */; };
 		75B047BE13A2E0C20012924D /* pmsDACALUtility.h in Headers */ = {isa = PBXBuildFile; fileRef = 75B047BC13A2E0C20012924D /* pmsDACALUtility.h */; };
 		75B047BF13A2E0C20012924D /* pmsDACALUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 75B047BD13A2E0C20012924D /* pmsDACALUtility.m */; };
 		75B2FCB30EDDA9A1007356FD /* BlackPlus1.png in Resources */ = {isa = PBXBuildFile; fileRef = 75B2FCB20EDDA9A1007356FD /* BlackPlus1.png */; };
@@ -147,9 +147,9 @@
 			remoteGlobalIDString = 32D94FC30562CBF700B6AF17;
 			remoteInfo = DACALDriver;
 		};
-		7565EFD213AAC4360029990C /* PBXContainerItemProxy */ = {
+		7570BDF813C95A3A001AF81B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 7565EFCB13AAC4360029990C /* pmsutility.xcodeproj */;
+			containerPortal = 7570BDF113C95A39001AF81B /* pmsutility.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 759D16C613A879A500E671A1;
 			remoteInfo = PMSUtility;
@@ -370,9 +370,8 @@
 		751C4E2C0E9400250027BC1C /* AquaticPrime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AquaticPrime.m; path = Sources/License/AquaticPrime.m; sourceTree = "<group>"; };
 		7533911F101B99470007F931 /* daclconstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = daclconstants.h; sourceTree = "<group>"; };
 		75339120101B99470007F931 /* daclconstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = daclconstants.m; sourceTree = "<group>"; };
-		7565EFCB13AAC4360029990C /* pmsutility.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = pmsutility.xcodeproj; path = ../../../../Sources/GIT/pmsutility/pmsutility.xcodeproj; sourceTree = "<group>"; };
 		7565EFE713AAC73A0029990C /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
-		7565F01913AB0F480029990C /* PMSUtility.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = PMSUtility.framework; path = /Volumes/leopard/Sources/GIT/pmsutility/build/Release/PMSUtility.framework; sourceTree = "<absolute>"; };
+		7570BDF113C95A39001AF81B /* pmsutility.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = pmsutility.xcodeproj; path = ../../../pmsutility/pmsutility.xcodeproj; sourceTree = "<group>"; };
 		75A5B3D310F72A20001A674A /* CLI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CLI.xcodeproj; path = ../CLI/CLI.xcodeproj; sourceTree = SOURCE_ROOT; };
 		75B047BC13A2E0C20012924D /* pmsDACALUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pmsDACALUtility.h; sourceTree = "<group>"; };
 		75B047BD13A2E0C20012924D /* pmsDACALUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = pmsDACALUtility.m; sourceTree = "<group>"; };
@@ -453,7 +452,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7565F01A13AB0F480029990C /* PMSUtility.framework in Frameworks */,
+				7570BE1913C95C72001AF81B /* PMSUtility.framework in Frameworks */,
 				7565EFE813AAC73A0029990C /* IOKit.framework in Frameworks */,
 				735CC2BD049A7E2A00C919A3 /* Cocoa.framework in Frameworks */,
 				5CA07A710E2E274900F71FA7 /* Carbon.framework in Frameworks */,
@@ -520,7 +519,6 @@
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				7565F01913AB0F480029990C /* PMSUtility.framework */,
 				7565EFE713AAC73A0029990C /* IOKit.framework */,
 				0247A8BE007179D411CA0E35 /* Foundation.framework */,
 				5C2E410F0E74076A00D7DF4A /* Security.framework */,
@@ -855,7 +853,7 @@
 		7504AFFB0FB4722D00FFAA84 /* Other Projects */ = {
 			isa = PBXGroup;
 			children = (
-				7565EFCB13AAC4360029990C /* pmsutility.xcodeproj */,
+				7570BDF113C95A39001AF81B /* pmsutility.xcodeproj */,
 				75A5B3D310F72A20001A674A /* CLI.xcodeproj */,
 				7504AFFC0FB4724300FFAA84 /* DACALDriver.xcodeproj */,
 			);
@@ -870,10 +868,10 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		7565EFCC13AAC4360029990C /* Products */ = {
+		7570BDF213C95A39001AF81B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7565EFD313AAC4360029990C /* PMSUtility.framework */,
+				7570BDF913C95A3A001AF81B /* PMSUtility.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1181,8 +1179,8 @@
 					ProjectRef = 7504AFFC0FB4724300FFAA84 /* DACALDriver.xcodeproj */;
 				},
 				{
-					ProductGroup = 7565EFCC13AAC4360029990C /* Products */;
-					ProjectRef = 7565EFCB13AAC4360029990C /* pmsutility.xcodeproj */;
+					ProductGroup = 7570BDF213C95A39001AF81B /* Products */;
+					ProjectRef = 7570BDF113C95A39001AF81B /* pmsutility.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -1200,11 +1198,11 @@
 			remoteRef = 7504B0030FB4724300FFAA84 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		7565EFD313AAC4360029990C /* PMSUtility.framework */ = {
+		7570BDF913C95A3A001AF81B /* PMSUtility.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = PMSUtility.framework;
-			remoteRef = 7565EFD213AAC4360029990C /* PBXContainerItemProxy */;
+			remoteRef = 7570BDF813C95A3A001AF81B /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		75A5B3DE10F72A20001A674A /* dacal */ = {
@@ -1459,7 +1457,7 @@
 					x86_64,
 					ppc,
 				);
-				FRAMEWORK_SEARCH_PATHS = "";
+				FRAMEWORK_SEARCH_PATHS = /Volumes/mbphd/Users/davec/Desktop/pmsutility/build/Release/PMSUtility.framework;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
@@ -1491,7 +1489,9 @@
 				INFOPLIST_FILE = "Info-PickADisk.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(SRCROOT)/Frameworks",
+					"\"$(SRCROOT)\"",
+					/Volumes/mbphd/Users/davec/Desktop/pmsutility/build/Release/PMSUtility.framework,
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)\"";
 				OTHER_LDFLAGS = (
@@ -1508,7 +1508,7 @@
 			baseConfigurationReference = 7504AEA30FB389E600FFAA84 /* buildnumber.xcconfig */;
 			buildSettings = {
 				ARCHS = ppc;
-				FRAMEWORK_SEARCH_PATHS = "";
+				FRAMEWORK_SEARCH_PATHS = /Volumes/mbphd/Users/davec/Desktop/pmsutility/build/Release/PMSUtility.framework;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
@@ -1539,7 +1539,9 @@
 				INFOPLIST_FILE = "Info-PickADisk.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(SRCROOT)/Frameworks",
+					"\"$(SRCROOT)\"",
+					/Volumes/mbphd/Users/davec/Desktop/pmsutility/build/Release/PMSUtility.framework,
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)\"";
 				OTHER_LDFLAGS = (
@@ -1559,7 +1561,7 @@
 					"$(NATIVE_ARCH)",
 					ppc,
 				);
-				FRAMEWORK_SEARCH_PATHS = "";
+				FRAMEWORK_SEARCH_PATHS = /Volumes/mbphd/Users/davec/Desktop/pmsutility/build/Release/PMSUtility.framework;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
@@ -1592,7 +1594,9 @@
 				INFOPLIST_FILE = "Info-PickADisk.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(SRCROOT)/Frameworks",
+					"\"$(SRCROOT)\"",
+					/Volumes/mbphd/Users/davec/Desktop/pmsutility/build/Release/PMSUtility.framework,
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)\"";
 				ONLY_ACTIVE_ARCH = YES;
@@ -1618,7 +1622,7 @@
 				);
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/Development/$(EFFECTIVE_PLATFORM_NAME)";
 				CONFIGURATION_TEMP_DIR = "$(PROJECT_TEMP_DIR)/Development/$(EFFECTIVE_PLATFORM_NAME)";
-				FRAMEWORK_SEARCH_PATHS = "";
+				FRAMEWORK_SEARCH_PATHS = /Volumes/mbphd/Users/davec/Desktop/pmsutility/build/Release/PMSUtility.framework;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
@@ -1650,7 +1654,9 @@
 				INFOPLIST_FILE = "Info-PickADisk.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(SRCROOT)/Frameworks",
+					"\"$(SRCROOT)\"",
+					/Volumes/mbphd/Users/davec/Desktop/pmsutility/build/Release/PMSUtility.framework,
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)\"";
 				ONLY_ACTIVE_ARCH = YES;
@@ -1680,7 +1686,9 @@
 				INFOPLIST_FILE = "Info-PickADisk.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(SRCROOT)/Frameworks",
+					"\"$(SRCROOT)\"",
+					/Volumes/mbphd/Users/davec/Desktop/pmsutility/build/Release/PMSUtility.framework,
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)\"";
 				ONLY_ACTIVE_ARCH = YES;
@@ -1711,7 +1719,9 @@
 				INFOPLIST_FILE = "Info-PickADisk.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(SRCROOT)/Frameworks",
+					"\"$(SRCROOT)\"",
+					/Volumes/mbphd/Users/davec/Desktop/pmsutility/build/Release/PMSUtility.framework,
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)\"";
 				OTHER_LDFLAGS = (
@@ -1729,7 +1739,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1)";
 				ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1 = "ppc i386";
-				FRAMEWORK_SEARCH_PATHS = "";
+				FRAMEWORK_SEARCH_PATHS = /Volumes/mbphd/Users/davec/Desktop/pmsutility/build/Release/PMSUtility.framework;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
@@ -1755,7 +1765,7 @@
 					ppc,
 				);
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				FRAMEWORK_SEARCH_PATHS = "";
+				FRAMEWORK_SEARCH_PATHS = /Volumes/mbphd/Users/davec/Desktop/pmsutility/build/Release/PMSUtility.framework;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
