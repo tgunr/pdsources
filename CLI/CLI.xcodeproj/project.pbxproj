@@ -13,6 +13,7 @@
 			buildPhases = (
 			);
 			dependencies = (
+				7570BE7513CEA879001AF81B /* PBXTargetDependency */,
 				751FBCD70E3A2C2900D64628 /* PBXTargetDependency */,
 				751FBCD50E3A2C2900D64628 /* PBXTargetDependency */,
 				751FBCD90E3A2C2900D64628 /* PBXTargetDependency */,
@@ -25,18 +26,12 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		7502880F11923D47008008F8 /* pms.m in Sources */ = {isa = PBXBuildFile; fileRef = 7502880311923D47008008F8 /* pms.m */; };
 		7502881011923D47008008F8 /* dacallib.m in Sources */ = {isa = PBXBuildFile; fileRef = 7502880611923D47008008F8 /* dacallib.m */; };
 		7502881111923D47008008F8 /* dacalconstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 7502880811923D47008008F8 /* dacalconstants.m */; };
-		7502881411923D47008008F8 /* pmsCFUtility.c in Sources */ = {isa = PBXBuildFile; fileRef = 7502880E11923D47008008F8 /* pmsCFUtility.c */; };
-		7502881511923D47008008F8 /* pms.h in Headers */ = {isa = PBXBuildFile; fileRef = 7502880211923D47008008F8 /* pms.h */; };
-		7502881611923D47008008F8 /* pms.m in Sources */ = {isa = PBXBuildFile; fileRef = 7502880311923D47008008F8 /* pms.m */; };
 		7502881711923D47008008F8 /* dacallib.h in Headers */ = {isa = PBXBuildFile; fileRef = 7502880511923D47008008F8 /* dacallib.h */; };
 		7502881811923D47008008F8 /* dacallib.m in Sources */ = {isa = PBXBuildFile; fileRef = 7502880611923D47008008F8 /* dacallib.m */; };
 		7502881911923D47008008F8 /* dacalconstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 7502880711923D47008008F8 /* dacalconstants.h */; };
 		7502881A11923D47008008F8 /* dacalconstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 7502880811923D47008008F8 /* dacalconstants.m */; };
-		7502881E11923D47008008F8 /* pmsCFUtility.h in Headers */ = {isa = PBXBuildFile; fileRef = 7502880D11923D47008008F8 /* pmsCFUtility.h */; };
-		7502881F11923D47008008F8 /* pmsCFUtility.c in Sources */ = {isa = PBXBuildFile; fileRef = 7502880E11923D47008008F8 /* pmsCFUtility.c */; };
 		7502882C11923DD9008008F8 /* NSString+CarbonFSRefCreation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7502882A11923DD9008008F8 /* NSString+CarbonFSRefCreation.m */; };
 		7502882D11923DD9008008F8 /* IconFamily.h in Headers */ = {isa = PBXBuildFile; fileRef = 7502882711923DD9008008F8 /* IconFamily.h */; };
 		7502882E11923DD9008008F8 /* IconFamily.m in Sources */ = {isa = PBXBuildFile; fileRef = 7502882811923DD9008008F8 /* IconFamily.m */; };
@@ -64,9 +59,25 @@
 		75637E9511E64EF70069CA00 /* libcrypto.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 75782D6511E4F7B700496670 /* libcrypto.dylib */; };
 		75637E9911E64F670069CA00 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75637E9811E64F670069CA00 /* ApplicationServices.framework */; };
 		75637EA011E64FB50069CA00 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75637E9F11E64FB50069CA00 /* AppKit.framework */; };
+		7570BE2613CEA159001AF81B /* pmsDACALUtility.h in Headers */ = {isa = PBXBuildFile; fileRef = 7570BE2413CEA158001AF81B /* pmsDACALUtility.h */; };
+		7570BE2713CEA159001AF81B /* pmsDACALUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 7570BE2513CEA158001AF81B /* pmsDACALUtility.m */; };
+		7570BE3113CEA350001AF81B /* PMSUtility.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7570BE3013CEA2CC001AF81B /* PMSUtility.framework */; };
+		7570BE3213CEA364001AF81B /* PMSUtility.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7570BE3013CEA2CC001AF81B /* PMSUtility.framework */; };
+		7570BE5913CEA721001AF81B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7570BE5813CEA721001AF81B /* Cocoa.framework */; };
+		7570BE6313CEA721001AF81B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7570BE6113CEA721001AF81B /* InfoPlist.strings */; };
+		7570BE6A13CEA790001AF81B /* pmsDACALUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 7570BE2513CEA158001AF81B /* pmsDACALUtility.m */; };
+		7570BE6B13CEA797001AF81B /* dacallib.m in Sources */ = {isa = PBXBuildFile; fileRef = 7502880611923D47008008F8 /* dacallib.m */; };
+		7570BE6C13CEA79C001AF81B /* dacalconstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 7502880811923D47008008F8 /* dacalconstants.m */; };
+		7570BE6D13CEA7A6001AF81B /* NSString+CarbonFSRefCreation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7502882A11923DD9008008F8 /* NSString+CarbonFSRefCreation.m */; };
+		7570BE6E13CEA7B0001AF81B /* IconFamily.m in Sources */ = {isa = PBXBuildFile; fileRef = 7502882811923DD9008008F8 /* IconFamily.m */; };
+		7570BE6F13CEA831001AF81B /* IconFamily.h in Headers */ = {isa = PBXBuildFile; fileRef = 7502882711923DD9008008F8 /* IconFamily.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7570BE7013CEA83A001AF81B /* NSString+CarbonFSRefCreation.h in Headers */ = {isa = PBXBuildFile; fileRef = 7502882911923DD9008008F8 /* NSString+CarbonFSRefCreation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7570BE7113CEA841001AF81B /* pmsDACALUtility.h in Headers */ = {isa = PBXBuildFile; fileRef = 7570BE2413CEA158001AF81B /* pmsDACALUtility.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7570BE7213CEA847001AF81B /* dacallib.h in Headers */ = {isa = PBXBuildFile; fileRef = 7502880511923D47008008F8 /* dacallib.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7570BE7313CEA851001AF81B /* dacalconstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 7502880711923D47008008F8 /* dacalconstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7570BE7613CEA901001AF81B /* PMSUtility.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7570BE3013CEA2CC001AF81B /* PMSUtility.framework */; };
+		7570BE7813CEB0A3001AF81B /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7570BE7713CEB0A3001AF81B /* IOKit.framework */; };
 		75782D6611E4F7B700496670 /* libcrypto.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 75782D6511E4F7B700496670 /* libcrypto.dylib */; };
-		75D2136113A26EF20018E8E5 /* pmsDACALUtility.h in Headers */ = {isa = PBXBuildFile; fileRef = 75D2135F13A26EF20018E8E5 /* pmsDACALUtility.h */; };
-		75D2136213A26EF20018E8E5 /* pmsDACALUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 75D2136013A26EF20018E8E5 /* pmsDACALUtility.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,18 +116,35 @@
 			remoteGlobalIDString = 751FBA420E39063900D64628;
 			remoteInfo = xattr;
 		};
+		7570BE2F13CEA2CC001AF81B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7570BE2813CEA2CB001AF81B /* pmsutility.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 759D16C613A879A500E671A1;
+			remoteInfo = PMSUtility;
+		};
+		7570BE7413CEA879001AF81B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 08FB7793FE84155DC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7570BE5513CEA721001AF81B;
+			remoteInfo = DACAL;
+		};
+		7570BE8113CEBF8B001AF81B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7570BE2813CEA2CB001AF81B /* pmsutility.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 759D16C513A879A500E671A1;
+			remoteInfo = PMSUtility;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		09AB6884FE841BABC02AAC07 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = /System/Library/Frameworks/CoreFoundation.framework; sourceTree = "<absolute>"; };
-		7502880211923D47008008F8 /* pms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pms.h; path = pmsutility/pms.h; sourceTree = "<group>"; };
-		7502880311923D47008008F8 /* pms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = pms.m; path = pmsutility/pms.m; sourceTree = "<group>"; };
-		7502880511923D47008008F8 /* dacallib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dacallib.h; sourceTree = "<group>"; };
-		7502880611923D47008008F8 /* dacallib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = dacallib.m; sourceTree = "<group>"; };
+		7502880511923D47008008F8 /* dacallib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = dacallib.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		7502880611923D47008008F8 /* dacallib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = dacallib.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		7502880711923D47008008F8 /* dacalconstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dacalconstants.h; sourceTree = "<group>"; };
 		7502880811923D47008008F8 /* dacalconstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = dacalconstants.m; sourceTree = "<group>"; };
-		7502880D11923D47008008F8 /* pmsCFUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pmsCFUtility.h; sourceTree = "<group>"; };
-		7502880E11923D47008008F8 /* pmsCFUtility.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pmsCFUtility.c; sourceTree = "<group>"; };
 		7502882711923DD9008008F8 /* IconFamily.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IconFamily.h; sourceTree = "<group>"; };
 		7502882811923DD9008008F8 /* IconFamily.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IconFamily.m; sourceTree = "<group>"; };
 		7502882911923DD9008008F8 /* NSString+CarbonFSRefCreation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CarbonFSRefCreation.h"; sourceTree = "<group>"; };
@@ -138,7 +166,7 @@
 		751FBA270E39059100D64628 /* misc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = misc.c; sourceTree = "<group>"; };
 		751FBA280E39059100D64628 /* operator.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = operator.c; sourceTree = "<group>"; };
 		751FBA290E39059100D64628 /* option.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = option.c; sourceTree = "<group>"; };
-		751FBA3D0E39060A00D64628 /* dacal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = dacal.m; sourceTree = "<group>"; };
+		751FBA3D0E39060A00D64628 /* dacal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = dacal.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		751FBA3E0E39060A00D64628 /* dacal.1 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.man; path = dacal.1; sourceTree = "<group>"; };
 		751FBA430E39063900D64628 /* xattr */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = xattr; sourceTree = BUILT_PRODUCTS_DIR; };
 		751FBA6A0E39065200D64628 /* COPYING.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = COPYING.txt; sourceTree = "<group>"; };
@@ -153,9 +181,19 @@
 		75637DD811E64E650069CA00 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
 		75637E9811E64F670069CA00 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = System/Library/Frameworks/ApplicationServices.framework; sourceTree = SDKROOT; };
 		75637E9F11E64FB50069CA00 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		7570BE2413CEA158001AF81B /* pmsDACALUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = pmsDACALUtility.h; path = Classes/pmsDACALUtility.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		7570BE2513CEA158001AF81B /* pmsDACALUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = pmsDACALUtility.m; path = Classes/pmsDACALUtility.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		7570BE2813CEA2CB001AF81B /* pmsutility.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = pmsutility.xcodeproj; path = ../../../pmsutility/pmsutility.xcodeproj; sourceTree = "<group>"; };
+		7570BE5613CEA721001AF81B /* DACAL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DACAL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7570BE5813CEA721001AF81B /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		7570BE5B13CEA721001AF81B /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		7570BE5C13CEA721001AF81B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		7570BE5D13CEA721001AF81B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		7570BE6013CEA721001AF81B /* DACAL-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DACAL-Info.plist"; sourceTree = "<group>"; };
+		7570BE6213CEA721001AF81B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		7570BE6413CEA721001AF81B /* DACAL-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DACAL-Prefix.pch"; sourceTree = "<group>"; };
+		7570BE7713CEB0A3001AF81B /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = SDKs/MacOSX10.7.sdk/System/Library/Frameworks/IOKit.framework; sourceTree = DEVELOPER_DIR; };
 		75782D6511E4F7B700496670 /* libcrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcrypto.dylib; path = usr/lib/libcrypto.dylib; sourceTree = SDKROOT; };
-		75D2135F13A26EF20018E8E5 /* pmsDACALUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pmsDACALUtility.h; path = ../carlib/pmsDACALUtility.h; sourceTree = "<group>"; };
-		75D2136013A26EF20018E8E5 /* pmsDACALUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = pmsDACALUtility.m; path = ../carlib/pmsDACALUtility.m; sourceTree = "<group>"; };
 		C6859E970290921104C91782 /* CLI Tools.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = "CLI Tools.1"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -164,6 +202,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7570BE3213CEA364001AF81B /* PMSUtility.framework in Frameworks */,
 				75637E9511E64EF70069CA00 /* libcrypto.dylib in Frameworks */,
 				75637DE511E64EE00069CA00 /* IOKit.framework in Frameworks */,
 				7543D4720E3BB67E009A8AF3 /* dacallib.dylib in Frameworks */,
@@ -178,6 +217,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7570BE3113CEA350001AF81B /* PMSUtility.framework in Frameworks */,
 				751047FA0E41430C009AFDB4 /* CoreFoundation.framework in Frameworks */,
 				751FBCE10E3A340900D64628 /* IOKit.framework in Frameworks */,
 				751048060E4143A8009AFDB4 /* Cocoa.framework in Frameworks */,
@@ -206,15 +246,29 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7570BE5213CEA721001AF81B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7570BE7813CEB0A3001AF81B /* IOKit.framework in Frameworks */,
+				7570BE7613CEA901001AF81B /* PMSUtility.framework in Frameworks */,
+				7570BE5913CEA721001AF81B /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		08FB7794FE84155DC02AAC07 /* CLI Tools */ = {
 			isa = PBXGroup;
 			children = (
+				7570BE7713CEB0A3001AF81B /* IOKit.framework */,
+				7570BE2813CEA2CB001AF81B /* pmsutility.xcodeproj */,
 				08FB7795FE84155DC02AAC07 /* Sources */,
 				C6859E96029091FE04C91782 /* Documentation */,
 				08FB779DFE84155DC02AAC07 /* External Frameworks and Libraries */,
+				7570BE5E13CEA721001AF81B /* DACAL */,
+				7570BE5713CEA721001AF81B /* Frameworks */,
 				19C28FBDFE9D53C911CA2CBB /* Products */,
 			);
 			name = "CLI Tools";
@@ -257,6 +311,7 @@
 				751FBA0E0E39054600D64628 /* fabricate */,
 				751FBA170E39057100D64628 /* find */,
 				751FBA430E39063900D64628 /* xattr */,
+				7570BE5613CEA721001AF81B /* DACAL.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -264,10 +319,9 @@
 		7502880111923D47008008F8 /* pmssource */ = {
 			isa = PBXGroup;
 			children = (
-				7502880211923D47008008F8 /* pms.h */,
-				7502880311923D47008008F8 /* pms.m */,
+				7570BE2413CEA158001AF81B /* pmsDACALUtility.h */,
+				7570BE2513CEA158001AF81B /* pmsDACALUtility.m */,
 				7502880411923D47008008F8 /* carlib */,
-				7502880911923D47008008F8 /* pmsutility */,
 			);
 			name = pmssource;
 			path = ../pmssource;
@@ -282,17 +336,6 @@
 				7502880811923D47008008F8 /* dacalconstants.m */,
 			);
 			path = carlib;
-			sourceTree = "<group>";
-		};
-		7502880911923D47008008F8 /* pmsutility */ = {
-			isa = PBXGroup;
-			children = (
-				75D2135F13A26EF20018E8E5 /* pmsDACALUtility.h */,
-				75D2136013A26EF20018E8E5 /* pmsDACALUtility.m */,
-				7502880D11923D47008008F8 /* pmsCFUtility.h */,
-				7502880E11923D47008008F8 /* pmsCFUtility.c */,
-			);
-			path = pmsutility;
 			sourceTree = "<group>";
 		};
 		7502882611923DD9008008F8 /* IconFamily */ = {
@@ -347,6 +390,51 @@
 			path = xattr;
 			sourceTree = "<group>";
 		};
+		7570BE2913CEA2CB001AF81B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7570BE3013CEA2CC001AF81B /* PMSUtility.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7570BE5713CEA721001AF81B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7570BE5813CEA721001AF81B /* Cocoa.framework */,
+				7570BE5A13CEA721001AF81B /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7570BE5A13CEA721001AF81B /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7570BE5B13CEA721001AF81B /* AppKit.framework */,
+				7570BE5C13CEA721001AF81B /* CoreData.framework */,
+				7570BE5D13CEA721001AF81B /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		7570BE5E13CEA721001AF81B /* DACAL */ = {
+			isa = PBXGroup;
+			children = (
+				7570BE5F13CEA721001AF81B /* Supporting Files */,
+			);
+			path = DACAL;
+			sourceTree = "<group>";
+		};
+		7570BE5F13CEA721001AF81B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7570BE6013CEA721001AF81B /* DACAL-Info.plist */,
+				7570BE6113CEA721001AF81B /* InfoPlist.strings */,
+				7570BE6413CEA721001AF81B /* DACAL-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		C6859E96029091FE04C91782 /* Documentation */ = {
 			isa = PBXGroup;
 			children = (
@@ -362,13 +450,23 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7502881511923D47008008F8 /* pms.h in Headers */,
 				7502881711923D47008008F8 /* dacallib.h in Headers */,
 				7502881911923D47008008F8 /* dacalconstants.h in Headers */,
-				7502881E11923D47008008F8 /* pmsCFUtility.h in Headers */,
 				7502882D11923DD9008008F8 /* IconFamily.h in Headers */,
 				7502882F11923DD9008008F8 /* NSString+CarbonFSRefCreation.h in Headers */,
-				75D2136113A26EF20018E8E5 /* pmsDACALUtility.h in Headers */,
+				7570BE2613CEA159001AF81B /* pmsDACALUtility.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7570BE5313CEA721001AF81B /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7570BE7213CEA847001AF81B /* dacallib.h in Headers */,
+				7570BE7313CEA851001AF81B /* dacalconstants.h in Headers */,
+				7570BE6F13CEA831001AF81B /* IconFamily.h in Headers */,
+				7570BE7013CEA83A001AF81B /* NSString+CarbonFSRefCreation.h in Headers */,
+				7570BE7113CEA841001AF81B /* pmsDACALUtility.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -457,6 +555,25 @@
 			productReference = 751FBA430E39063900D64628 /* xattr */;
 			productType = "com.apple.product-type.tool";
 		};
+		7570BE5513CEA721001AF81B /* DACAL */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7570BE6613CEA721001AF81B /* Build configuration list for PBXNativeTarget "DACAL" */;
+			buildPhases = (
+				7570BE5113CEA721001AF81B /* Sources */,
+				7570BE5213CEA721001AF81B /* Frameworks */,
+				7570BE5313CEA721001AF81B /* Headers */,
+				7570BE5413CEA721001AF81B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7570BE8213CEBF8B001AF81B /* PBXTargetDependency */,
+			);
+			name = DACAL;
+			productName = DACAL;
+			productReference = 7570BE5613CEA721001AF81B /* DACAL.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -464,12 +581,19 @@
 			isa = PBXProject;
 			buildConfigurationList = 1DEB924B08733DCA0010E9CD /* Build configuration list for PBXProject "CLI" */;
 			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
 				en,
 			);
 			mainGroup = 08FB7794FE84155DC02AAC07 /* CLI Tools */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 7570BE2913CEA2CB001AF81B /* Products */;
+					ProjectRef = 7570BE2813CEA2CB001AF81B /* pmsutility.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				751FB9FB0E39046200D64628 /* dacal */,
@@ -477,10 +601,32 @@
 				751FBA0D0E39054600D64628 /* fabricate */,
 				751FBA160E39057100D64628 /* find */,
 				751FBA420E39063900D64628 /* xattr */,
+				7570BE5513CEA721001AF81B /* DACAL */,
 				751FBCD00E3A2C0500D64628 /* CLI Tools */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		7570BE3013CEA2CC001AF81B /* PMSUtility.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = PMSUtility.framework;
+			remoteRef = 7570BE2F13CEA2CC001AF81B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7570BE5413CEA721001AF81B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7570BE6313CEA721001AF81B /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		7543D6C90E3CFCA0009A8AF3 /* ShellScript */ = {
@@ -504,10 +650,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				751FBA3F0E39060A00D64628 /* dacal.m in Sources */,
-				7502880F11923D47008008F8 /* pms.m in Sources */,
 				7502881011923D47008008F8 /* dacallib.m in Sources */,
 				7502881111923D47008008F8 /* dacalconstants.m in Sources */,
-				7502881411923D47008008F8 /* pmsCFUtility.c in Sources */,
 				7502882C11923DD9008008F8 /* NSString+CarbonFSRefCreation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -516,13 +660,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7502881611923D47008008F8 /* pms.m in Sources */,
 				7502881811923D47008008F8 /* dacallib.m in Sources */,
 				7502881A11923D47008008F8 /* dacalconstants.m in Sources */,
-				7502881F11923D47008008F8 /* pmsCFUtility.c in Sources */,
 				7502882E11923DD9008008F8 /* IconFamily.m in Sources */,
 				7502883011923DD9008008F8 /* NSString+CarbonFSRefCreation.m in Sources */,
-				75D2136213A26EF20018E8E5 /* pmsDACALUtility.m in Sources */,
+				7570BE2713CEA159001AF81B /* pmsDACALUtility.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -558,6 +700,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7570BE5113CEA721001AF81B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7570BE6B13CEA797001AF81B /* dacallib.m in Sources */,
+				7570BE6C13CEA79C001AF81B /* dacalconstants.m in Sources */,
+				7570BE6E13CEA7B0001AF81B /* IconFamily.m in Sources */,
+				7570BE6D13CEA7A6001AF81B /* NSString+CarbonFSRefCreation.m in Sources */,
+				7570BE6A13CEA790001AF81B /* pmsDACALUtility.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -586,13 +740,35 @@
 			target = 751FBA420E39063900D64628 /* xattr */;
 			targetProxy = 751FBCDC0E3A2C2900D64628 /* PBXContainerItemProxy */;
 		};
+		7570BE7513CEA879001AF81B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7570BE5513CEA721001AF81B /* DACAL */;
+			targetProxy = 7570BE7413CEA879001AF81B /* PBXContainerItemProxy */;
+		};
+		7570BE8213CEBF8B001AF81B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PMSUtility;
+			targetProxy = 7570BE8113CEBF8B001AF81B /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		7570BE6113CEA721001AF81B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7570BE6213CEA721001AF81B /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		1DEB924C08733DCA0010E9CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				FRAMEWORK_SEARCH_PATHS = /Volumes/mbphd/Users/davec/Desktop/pmsutility/build/Debug;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -605,7 +781,8 @@
 		1DEB924D08733DCA0010E9CD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				FRAMEWORK_SEARCH_PATHS = /Volumes/mbphd/Users/davec/Desktop/pmsutility/build/Release;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -617,6 +794,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				FRAMEWORK_SEARCH_PATHS = /Volumes/mbphd/Users/davec/Desktop/pmsutility/build/Debug;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				INSTALL_PATH = /usr/local/bin;
 				OTHER_LDFLAGS = (
@@ -631,6 +809,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				FRAMEWORK_SEARCH_PATHS = /Volumes/mbphd/Users/davec/Desktop/pmsutility/build/Debug;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				INSTALL_PATH = /usr/local/bin;
 				OTHER_LDFLAGS = (
@@ -646,6 +825,10 @@
 			buildSettings = {
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Volumes/mbphd/Users/davec/Desktop/pmsutility/build/Debug,
+				);
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				INSTALL_PATH = /usr/local/lib;
 				OTHER_LDFLAGS = "";
@@ -658,6 +841,10 @@
 			buildSettings = {
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Volumes/mbphd/Users/davec/Desktop/pmsutility/build/Debug,
+				);
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				INSTALL_PATH = /usr/local/lib;
 				OTHER_LDFLAGS = "";
@@ -774,8 +961,9 @@
 		7543D49D0E3BB812009A8AF3 /* Deploy */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				DEPLOYMENT_LOCATION = YES;
+				FRAMEWORK_SEARCH_PATHS = /Volumes/mbphd/Users/davec/Desktop/pmsutility/build/Release;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -789,6 +977,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				FRAMEWORK_SEARCH_PATHS = /Volumes/mbphd/Users/davec/Desktop/pmsutility/build/Debug;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				INSTALL_PATH = /usr/local/bin;
 				OTHER_LDFLAGS = (
@@ -805,6 +994,10 @@
 				DSTROOT = "/tmp/$(PROJECT_NAME).dst";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Volumes/mbphd/Users/davec/Desktop/pmsutility/build/Debug,
+				);
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				INSTALL_PATH = "";
 				OTHER_LDFLAGS = (
@@ -867,6 +1060,83 @@
 			buildSettings = {
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				PRODUCT_NAME = "CLI Tools";
+			};
+			name = Deploy;
+		};
+		7570BE6713CEA721001AF81B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = A;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DACAL/DACAL-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				INFOPLIST_FILE = "DACAL/DACAL-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = "";
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Debug;
+		};
+		7570BE6813CEA721001AF81B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = A;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DACAL/DACAL-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				INFOPLIST_FILE = "DACAL/DACAL-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = "";
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Release;
+		};
+		7570BE6913CEA721001AF81B /* Deploy */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = A;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DACAL/DACAL-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				INFOPLIST_FILE = "DACAL/DACAL-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = "";
+				WRAPPER_EXTENSION = framework;
 			};
 			name = Deploy;
 		};
@@ -939,6 +1209,16 @@
 				751FBCD10E3A2C0600D64628 /* Debug */,
 				751FBCD20E3A2C0600D64628 /* Release */,
 				7543D4A40E3BB812009A8AF3 /* Deploy */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7570BE6613CEA721001AF81B /* Build configuration list for PBXNativeTarget "DACAL" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7570BE6713CEA721001AF81B /* Debug */,
+				7570BE6813CEA721001AF81B /* Release */,
+				7570BE6913CEA721001AF81B /* Deploy */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
