@@ -78,6 +78,11 @@
 		7570BE7613CEA901001AF81B /* PMSUtility.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7570BE3013CEA2CC001AF81B /* PMSUtility.framework */; };
 		7570BE7813CEB0A3001AF81B /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7570BE7713CEB0A3001AF81B /* IOKit.framework */; };
 		75782D6611E4F7B700496670 /* libcrypto.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 75782D6511E4F7B700496670 /* libcrypto.dylib */; };
+		75ABD90913CEF67100BB3D7A /* pad.h in Headers */ = {isa = PBXBuildFile; fileRef = 75ABD90713CEF67100BB3D7A /* pad.h */; };
+		75ABD90A13CEF67100BB3D7A /* pad.h in Headers */ = {isa = PBXBuildFile; fileRef = 75ABD90713CEF67100BB3D7A /* pad.h */; };
+		75ABD90B13CEF67100BB3D7A /* pad.m in Sources */ = {isa = PBXBuildFile; fileRef = 75ABD90813CEF67100BB3D7A /* pad.m */; };
+		75ABD90C13CEF67100BB3D7A /* pad.m in Sources */ = {isa = PBXBuildFile; fileRef = 75ABD90813CEF67100BB3D7A /* pad.m */; };
+		75ABD90D13CEF67100BB3D7A /* pad.m in Sources */ = {isa = PBXBuildFile; fileRef = 75ABD90813CEF67100BB3D7A /* pad.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -194,6 +199,8 @@
 		7570BE6413CEA721001AF81B /* DACAL-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DACAL-Prefix.pch"; sourceTree = "<group>"; };
 		7570BE7713CEB0A3001AF81B /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = SDKs/MacOSX10.7.sdk/System/Library/Frameworks/IOKit.framework; sourceTree = DEVELOPER_DIR; };
 		75782D6511E4F7B700496670 /* libcrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcrypto.dylib; path = usr/lib/libcrypto.dylib; sourceTree = SDKROOT; };
+		75ABD90713CEF67100BB3D7A /* pad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pad.h; sourceTree = "<group>"; };
+		75ABD90813CEF67100BB3D7A /* pad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = pad.m; sourceTree = "<group>"; };
 		C6859E970290921104C91782 /* CLI Tools.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = "CLI Tools.1"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -280,6 +287,7 @@
 				7502882611923DD9008008F8 /* IconFamily */,
 				751FBA3D0E39060A00D64628 /* dacal.m */,
 				751FBA3E0E39060A00D64628 /* dacal.1 */,
+				75ABD90613CEF67100BB3D7A /* padutility */,
 				7502880111923D47008008F8 /* pmssource */,
 				751FBA470E39065200D64628 /* xattr */,
 				751FBA350E3905C300D64628 /* fabricate */,
@@ -435,6 +443,16 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		75ABD90613CEF67100BB3D7A /* padutility */ = {
+			isa = PBXGroup;
+			children = (
+				75ABD90713CEF67100BB3D7A /* pad.h */,
+				75ABD90813CEF67100BB3D7A /* pad.m */,
+			);
+			name = padutility;
+			path = ../PickADisk/Sources/padutility;
+			sourceTree = "<group>";
+		};
 		C6859E96029091FE04C91782 /* Documentation */ = {
 			isa = PBXGroup;
 			children = (
@@ -455,6 +473,7 @@
 				7502882D11923DD9008008F8 /* IconFamily.h in Headers */,
 				7502882F11923DD9008008F8 /* NSString+CarbonFSRefCreation.h in Headers */,
 				7570BE2613CEA159001AF81B /* pmsDACALUtility.h in Headers */,
+				75ABD90913CEF67100BB3D7A /* pad.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -467,6 +486,7 @@
 				7570BE6F13CEA831001AF81B /* IconFamily.h in Headers */,
 				7570BE7013CEA83A001AF81B /* NSString+CarbonFSRefCreation.h in Headers */,
 				7570BE7113CEA841001AF81B /* pmsDACALUtility.h in Headers */,
+				75ABD90A13CEF67100BB3D7A /* pad.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -653,6 +673,7 @@
 				7502881011923D47008008F8 /* dacallib.m in Sources */,
 				7502881111923D47008008F8 /* dacalconstants.m in Sources */,
 				7502882C11923DD9008008F8 /* NSString+CarbonFSRefCreation.m in Sources */,
+				75ABD90B13CEF67100BB3D7A /* pad.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -665,6 +686,7 @@
 				7502882E11923DD9008008F8 /* IconFamily.m in Sources */,
 				7502883011923DD9008008F8 /* NSString+CarbonFSRefCreation.m in Sources */,
 				7570BE2713CEA159001AF81B /* pmsDACALUtility.m in Sources */,
+				75ABD90C13CEF67100BB3D7A /* pad.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -709,6 +731,7 @@
 				7570BE6E13CEA7B0001AF81B /* IconFamily.m in Sources */,
 				7570BE6D13CEA7A6001AF81B /* NSString+CarbonFSRefCreation.m in Sources */,
 				7570BE6A13CEA790001AF81B /* pmsDACALUtility.m in Sources */,
+				75ABD90D13CEF67100BB3D7A /* pad.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

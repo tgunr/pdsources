@@ -8,6 +8,7 @@
  */
 
 #import "dacallib.h"
+#import <DACAL/pad.h>
 #import <DACAL/pmsDACALUtility.h>
 #import <PMSUtility/pms.h>
 
@@ -68,9 +69,6 @@ CFStringRef			kDACALCarouselDocumentXAttrBookmarks	=CFSTR("com.polymicrosystems.
 
 CFStringRef			kDACALCarouselNoticeDeviceOpen			= CFSTR("Open Device");
 CFStringRef			kDACALCarouselNoticeDeviceClose			= CFSTR("Close Device");
-
-#define DACAL_CAROUSEL_FOLDERNAME_CFSTRING	CFSTR("PickADisk")
-#define DACAL_CAROUSEL_FOLDERNAME_PSTRING	"\pPickADisk"		// used to register the folder location with the OS for use in FSFindFolder
 
 const DACALDeviceRef	kDACALDefaultDevice = 0;
 const DACALDeviceRef	kDACALIllegalDevice = DACAL_MAXDEVICE_COUNT+1;
@@ -2585,18 +2583,18 @@ DACALClientCreate( CFAllocatorRef useAllocator, CFStringRef clientID, void* useD
 			if( ffErr ) fprintf( stderr,"No Local Library?");
 			
 			CFURLRef	sysURL = CFURLCreateFromFSRef( useAllocator, &topFolder );
-			CFURLRef	padURL = CFURLCreateCopyAppendingPathComponent( useAllocator, sysURL, DACAL_CAROUSEL_FOLDERNAME_CFSTRING, TRUE );
+			CFURLRef	padURL = CFURLCreateCopyAppendingPathComponent( useAllocator, sysURL, PAD_FOLDERNAME_CFSTRING, TRUE );
 			FSRef		padFS;
 			FSCatalogInfo			permCatInfo;
 			FSPermissionInfo		*permInfo = (FSPermissionInfo*)&(permCatInfo.permissions);
 			
 			Boolean		foundPAD = CFURLGetFSRef( padURL, &padFS );
-			CFIndex		theUniCount = CFStringGetLength( DACAL_CAROUSEL_FOLDERNAME_CFSTRING );
+			CFIndex		theUniCount = CFStringGetLength( PAD_FOLDERNAME_CFSTRING );
 			UniChar		theUniName[1024];
 			
 			if( foundPAD == FALSE ) {
 				permInfo->mode = 0755;						// drwxr-xr-x
-				CFStringGetCharacters( DACAL_CAROUSEL_FOLDERNAME_CFSTRING, CFRangeMake(0, theUniCount), theUniName );
+				CFStringGetCharacters( PAD_FOLDERNAME_CFSTRING, CFRangeMake(0, theUniCount), theUniName );
 				
 				ffErr = FSCreateDirectoryUnicode( &topFolder, theUniCount, (const UniChar*)theUniName, kFSCatInfoPermissions, &permCatInfo, &padFS, NULL, NULL );
 				if( ffErr ) fprintf( stderr, "FSCreateDirectoryUnicode: %i\n", ffErr );
@@ -2609,7 +2607,7 @@ DACALClientCreate( CFAllocatorRef useAllocator, CFStringRef clientID, void* useD
 		// setup a system folder descriptor to make finding the Carousel folder easy
 		AddFolderDescriptor( kDACALCarouselsFolderType, kFolderInLocalOrRemoteUserFolder, 
 							kRelativeFolder, kDomainLibraryFolderType, 0, 0, 
-							DACAL_CAROUSEL_FOLDERNAME_PSTRING, TRUE );
+							PAD_FOLDERNAME_PSTRING, TRUE );
 		
 		ffErr = FSFindFolder( kOnAppropriateDisk, kDACALCarouselsFolderType, TRUE, &topFolder );
 	}

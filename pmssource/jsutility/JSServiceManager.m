@@ -15,7 +15,7 @@
 
 -(void)initSelf
 {
-	
+    PMLOG(1, @"WARNING: subclass should override this method!");
 }
 
 -(id)init
@@ -47,20 +47,18 @@
 	{ return nil; }
 
 -(id)initializeService
-{ 
-	
-	
+{
 	return self;
 }
 
 -(void)openService
 {
-	
+    PMLOG(1, @"WARNING: subclass should override this method!");
 }
 
 -(void)closeService
 {
-	
+    PMLOG(1, @"WARNING: subclass should override this method!");
 }
 
 @end	//	JSServiceAbstract
