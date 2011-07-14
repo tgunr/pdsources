@@ -10,8 +10,8 @@
 #import "PADOperationOpenDevice.h"
 #import "PADOperationControlDevice.h"
 #import "LicenseService.h"
-#import "IconFamily.h"
-#import "daclconstants.h"
+#import <DACAL/IconFamily.h>
+#import <DACAL/dacalconstants.h>
 
 CFStringRef		kPADClientIdentifier = CFSTR("PAD.DACAL.CLIENT");
 

@@ -6,10 +6,11 @@
 //  Copyright 2008 __MyCompanyName__. All rights reserved.
 //
 
-//#import "pmsDACALUtility.h"
+//#import <DACAL/pmsDACALUtility.h>
 //#import "DACALDeviceObjC.h"
 #import "PADAddVolumeController.h"
 #import "LicenseController.h"
+#import "/System/Library/Frameworks/Carbon.framework/Frameworks/NavigationServices.framework/Headers/Navigation.h"
 
 @implementation PADAddVolumeController
 

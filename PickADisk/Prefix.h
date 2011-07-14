@@ -12,7 +12,6 @@
 #ifdef __OBJC__
     #import <Foundation/Foundation.h>
     #import <AppKit/AppKit.h>
-	#import "dacallib.h"
 	#import "AppController.h"
 	#import "PADLifecycleSetup.h"
 	

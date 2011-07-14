@@ -45,7 +45,7 @@
 #import "SimpleTreeNode.h"
 #import "PADIndexOperation.h"
 #import "DACALTreeDataSource.h"
-#import "pmsDACALUtility.h"
+#import <DACAL/pmsDACALUtility.h>
 #import <PMSUtility/NSString_Extensions.h>
 #import <PMSUtility/NSApplication_Extensions.h>
 

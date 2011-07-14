@@ -7,7 +7,7 @@
  *
  */
 
-#import "pmsDACALUtility.h"
+#import <DACAL/pmsDACALUtility.h>
 #include "IconFamily.h"
 #import "dacalconstants.h"
 
@@ -337,7 +337,7 @@ BAIL:
 	return( isURLVisible );
 }
 
-IconRef		DACALGetIconRefForType( int	theType )
+IconRef		DACALGetIconRefForType( OSType	theType )
 {
 	OSStatus		outResult = paramErr;
 	IconRef			theOutputIcon = NULL;
