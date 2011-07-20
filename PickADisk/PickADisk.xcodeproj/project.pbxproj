@@ -101,6 +101,7 @@
 		7504AF270FB3A1F900FFAA84 /* updates.xml in Resources */ = {isa = PBXBuildFile; fileRef = 7504AF260FB3A1F900FFAA84 /* updates.xml */; };
 		7504AFDD0FB3AEBB00FFAA84 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 7504AFDC0FB3AEBB00FFAA84 /* Credits.rtf */; };
 		7504B0050FB4724F00FFAA84 /* DACALDriver.kext in Resources */ = {isa = PBXBuildFile; fileRef = 7504B0040FB4724300FFAA84 /* DACALDriver.kext */; };
+		7512885013D41D5E00F76E89 /* DACAL.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7570BE7B13CEB9DC001AF81B /* DACAL.framework */; };
 		751C4E2D0E9400250027BC1C /* AquaticPrime.m in Sources */ = {isa = PBXBuildFile; fileRef = 751C4E2C0E9400250027BC1C /* AquaticPrime.m */; };
 		7565EFE813AAC73A0029990C /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7565EFE713AAC73A0029990C /* IOKit.framework */; };
 		7570BE1913C95C72001AF81B /* PMSUtility.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7570BDF913C95A3A001AF81B /* PMSUtility.framework */; };
@@ -225,6 +226,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				7512885013D41D5E00F76E89 /* DACAL.framework in CopyFiles */,
 				7570BE1A13CE9C52001AF81B /* PMSUtility.framework in CopyFiles */,
 				5CF4D98E0E68E9300091A77F /* ILCrashReporter.framework in CopyFiles */,
 				5C1ECE9B0E41B6A10091B446 /* Sparkle.framework in CopyFiles */,
