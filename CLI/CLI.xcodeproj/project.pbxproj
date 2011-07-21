@@ -135,7 +135,7 @@
 			remoteGlobalIDString = 7570BE5513CEA721001AF81B;
 			remoteInfo = DACAL;
 		};
-		7570BE8113CEBF8B001AF81B /* PBXContainerItemProxy */ = {
+		7589A71513D79FC10072A96F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7570BE2813CEA2CB001AF81B /* pmsutility.xcodeproj */;
 			proxyType = 1;
@@ -587,7 +587,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				7570BE8213CEBF8B001AF81B /* PBXTargetDependency */,
+				7589A71613D79FC10072A96F /* PBXTargetDependency */,
 			);
 			name = DACAL;
 			productName = DACAL;
@@ -768,10 +768,10 @@
 			target = 7570BE5513CEA721001AF81B /* DACAL */;
 			targetProxy = 7570BE7413CEA879001AF81B /* PBXContainerItemProxy */;
 		};
-		7570BE8213CEBF8B001AF81B /* PBXTargetDependency */ = {
+		7589A71613D79FC10072A96F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = PMSUtility;
-			targetProxy = 7570BE8113CEBF8B001AF81B /* PBXContainerItemProxy */;
+			targetProxy = 7589A71513D79FC10072A96F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -791,7 +791,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
-				FRAMEWORK_SEARCH_PATHS = /Volumes/mbphd/Users/davec/Desktop/pmsutility/build/Debug;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -805,7 +804,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
-				FRAMEWORK_SEARCH_PATHS = /Volumes/mbphd/Users/davec/Desktop/pmsutility/build/Release;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -986,7 +984,6 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				DEPLOYMENT_LOCATION = YES;
-				FRAMEWORK_SEARCH_PATHS = /Volumes/mbphd/Users/davec/Desktop/pmsutility/build/Release;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -1093,6 +1090,7 @@
 				COPY_PHASE_STRIP = NO;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_SEARCH_PATHS = /Volumes/mbphd/Users/davec/Projects/PMSUtility/build/Debug;
 				FRAMEWORK_VERSION = A;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1123,6 +1121,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_SEARCH_PATHS = /Volumes/mbphd/Users/davec/Projects/PMSUtility/build/Debug;
 				FRAMEWORK_VERSION = A;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -1147,6 +1146,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_SEARCH_PATHS = /Volumes/mbphd/Users/davec/Projects/PMSUtility/build/Debug;
 				FRAMEWORK_VERSION = A;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
