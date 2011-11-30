@@ -23,11 +23,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "0"
          filePath = "/Volumes/leopard/Projects/PickADisk/Sources/pmssource/carlib/dacallib.m"
-         timestampString = "344370555.954987"
+         timestampString = "344375132.145891"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "2287"
-         endingLineNumber = "2287"
+         startingLineNumber = "2291"
+         endingLineNumber = "2291"
          landmarkName = "DACALDeviceCreateWithService()"
          landmarkType = "7">
       </FileBreakpoint>
@@ -37,11 +37,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "0"
          filePath = "/Volumes/leopard/Projects/PickADisk/Sources/pmssource/carlib/dacallib.m"
-         timestampString = "344370555.954987"
+         timestampString = "344375132.145891"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "757"
-         endingLineNumber = "757"
+         startingLineNumber = "761"
+         endingLineNumber = "761"
          landmarkName = "dacalDoRequest()"
          landmarkType = "7">
       </FileBreakpoint>
@@ -86,76 +86,6 @@
          endingLineNumber = "762"
          landmarkName = "-initFromDictionary:"
          landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "0"
-         filePath = "/Volumes/leopard/Projects/PickADisk/Sources/pmssource/carlib/dacallib.m"
-         timestampString = "344370578.66871"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "559"
-         endingLineNumber = "559"
-         landmarkName = "CFStringCreateFromDacalPipe()"
-         landmarkType = "7">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "0"
-         filePath = "/Volumes/leopard/Projects/pmsutility/pms.m"
-         timestampString = "344371153.530605"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "36"
-         endingLineNumber = "36"
-         landmarkName = "PMLOGPopVerbose()"
-         landmarkType = "7">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "0"
-         filePath = "/Volumes/leopard/Projects/pmsutility/pms.m"
-         timestampString = "344371155.642624"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "27"
-         endingLineNumber = "27"
-         landmarkName = "PMLOGPushVerbose()"
-         landmarkType = "7">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "0"
-         filePath = "/Volumes/leopard/Projects/pmsutility/pms.m"
-         timestampString = "344371348.909368"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "23"
-         endingLineNumber = "23"
-         landmarkName = "PMLOGSetVerbose()"
-         landmarkType = "7">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "0"
-         filePath = "/Volumes/leopard/Projects/pmsutility/pms.m"
-         timestampString = "344371169.267314"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "86"
-         endingLineNumber = "86"
-         landmarkName = "_PMLOG()"
-         landmarkType = "7">
       </FileBreakpoint>
    </FileBreakpoints>
 </Bucket>

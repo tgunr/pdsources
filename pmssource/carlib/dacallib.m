@@ -545,10 +545,10 @@ CFStringRef		CFStringCreateFromDacalPipe( CFAllocatorRef inAllocator, CFStringRe
 	CFStringRef		outCFText = NULL;
 	CFStringRef		theCommand = CFSTR("carousel");
 	CFStringRef		errUnknown = CFSTR("carousel.sh:");
-	CFURLRef		commandURL = CFBundleCopyResourceURL( CFBundleGetMainBundle(), theCommand, CFSTR("sh"), NULL );
 	CFStringRef		doCFCommand;
 	char*			doCommand = NULL;
 	char*			utf8Name = NULL;
+    UInt8*          urlBuff;
 	FILE*			pipe;
 	int				pipeSize = 8192;
 	
@@ -556,10 +556,14 @@ CFStringRef		CFStringCreateFromDacalPipe( CFAllocatorRef inAllocator, CFStringRe
 	if( inAllocator == NULL ) 
         inAllocator = gDACALDefaultCFAllocator;
 	
-	doCFCommand = CFStringCreateWithFormat(	inAllocator, NULL, CFSTR("\"%@\" %@"), commandURL, inCommandArgs );
+	CFURLRef commandURL = CFBundleCopyResourceURL( CFBundleGetMainBundle(), theCommand, CFSTR("sh"), NULL );
+    CFIndex urlBuffSize = CFStringGetLength(CFURLGetString(commandURL));
+    urlBuff = (UInt8 *)calloc(1,urlBuffSize);
+    Boolean result = CFURLGetFileSystemRepresentation(commandURL, TRUE, urlBuff, urlBuffSize);
+
+	doCFCommand = CFStringCreateWithFormat(	inAllocator, NULL, CFSTR("\"%s\" %@"), urlBuff, inCommandArgs );
 	if( doCFCommand == NULL ) 
         goto BAIL;
-
 	PMLOG(2,@"doCFCommand: %@", (NSString*)doCFCommand);
 
 	doCommand = CFStringCreateCString( doCFCommand, kCFStringEncodingUTF8 );	
@@ -667,7 +671,7 @@ IOReturn		dacalDoRequest(DACALIOUSBDeviceInterface** indeviceIntf, dacalCmd cmd,
 	dacalString	uniBuf;
 	char	cmdStr[128];
 	
-	if( gVerbose ) {
+	if( gDebugLevel > 1 ) {
 		switch (cmd) {
 			case undocManufacturer:
 				strcpy(cmdStr, "undocManufacturer");
@@ -1475,7 +1479,7 @@ DACALSlotSetTitle( DACALDeviceRef deviceID, DACALSlotNum slotNum, CFStringRef sl
 										   boxUUID, slotNum, slotTitle );
 	if( doCFCommand == NULL ) goto BAIL;
 	
-	if( gVerbose )
+	if( gDebugLevel > 1 )
 	{
 		CFShow(CFSTR("Driver call DACALSlotSetTitle:"));
 		CFShow( doCFCommand );

@@ -1,6 +1,9 @@
+#import <PMSUtility/pms.h>
+
 int main(int argc, const char *argv[]) {
 	int killflag, ch;
 	
+    opterr = 0;
 	killflag = 0;
 	while ((ch = getopt(argc, (char * const*)argv, "kv")) != -1) {
 		switch (ch) {
