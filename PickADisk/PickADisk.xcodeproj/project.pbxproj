@@ -103,9 +103,10 @@
 		7504B0050FB4724F00FFAA84 /* DACALDriver.kext in Resources */ = {isa = PBXBuildFile; fileRef = 7504B0040FB4724300FFAA84 /* DACALDriver.kext */; };
 		751C4E2D0E9400250027BC1C /* AquaticPrime.m in Sources */ = {isa = PBXBuildFile; fileRef = 751C4E2C0E9400250027BC1C /* AquaticPrime.m */; };
 		7565EFE813AAC73A0029990C /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7565EFE713AAC73A0029990C /* IOKit.framework */; };
-		7570BE1913C95C72001AF81B /* PMSUtility.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7570BDF913C95A3A001AF81B /* PMSUtility.framework */; };
-		7570BE1A13CE9C52001AF81B /* PMSUtility.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7570BDF913C95A3A001AF81B /* PMSUtility.framework */; };
-		7570BE8313CEC7E1001AF81B /* DACAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7570BE7B13CEB9DC001AF81B /* DACAL.framework */; };
+		7597A86B13E72948005613AE /* DACAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7570BE7B13CEB9DC001AF81B /* DACAL.framework */; };
+		7597A86C13E72948005613AE /* PMSUtility.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7570BDF913C95A3A001AF81B /* PMSUtility.framework */; };
+		7597A86D13E7295F005613AE /* PMSUtility.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7570BDF913C95A3A001AF81B /* PMSUtility.framework */; };
+		7597A86E13E7295F005613AE /* DACAL.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7570BE7B13CEB9DC001AF81B /* DACAL.framework */; };
 		75B2FCB30EDDA9A1007356FD /* BlackPlus1.png in Resources */ = {isa = PBXBuildFile; fileRef = 75B2FCB20EDDA9A1007356FD /* BlackPlus1.png */; };
 		75B2FCB50EDDA9AD007356FD /* BlackSearch1.png in Resources */ = {isa = PBXBuildFile; fileRef = 75B2FCB40EDDA9AD007356FD /* BlackSearch1.png */; };
 		75E0D61C1073EF620012897D /* Multi-Folder.icns in Resources */ = {isa = PBXBuildFile; fileRef = 75E0D61B1073EF620012897D /* Multi-Folder.icns */; };
@@ -156,14 +157,28 @@
 			remoteGlobalIDString = 7570BE5613CEA721001AF81B;
 			remoteInfo = DACAL;
 		};
-		7570BE7D13CEBF0B001AF81B /* PBXContainerItemProxy */ = {
+		7597A80D13E6E6FC005613AE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7570BDF113C95A39001AF81B /* pmsutility.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 75FFF67313DDF0D6003C7786;
+			remoteInfo = PMUtilityIOS;
+		};
+		7597A80F13E6E6FC005613AE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7570BDF113C95A39001AF81B /* pmsutility.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 75FFF68113DDF0D7003C7786;
+			remoteInfo = PMUtilityIOSTests;
+		};
+		7597A86713E72936005613AE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7570BDF113C95A39001AF81B /* pmsutility.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = 759D16C513A879A500E671A1;
 			remoteInfo = PMSUtility;
 		};
-		7570BE7F13CEBF12001AF81B /* PBXContainerItemProxy */ = {
+		7597A86913E7293E005613AE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 75A5B3D310F72A20001A674A /* CLI.xcodeproj */;
 			proxyType = 1;
@@ -225,7 +240,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				7570BE1A13CE9C52001AF81B /* PMSUtility.framework in CopyFiles */,
+				7597A86D13E7295F005613AE /* PMSUtility.framework in CopyFiles */,
+				7597A86E13E7295F005613AE /* DACAL.framework in CopyFiles */,
 				5CF4D98E0E68E9300091A77F /* ILCrashReporter.framework in CopyFiles */,
 				5C1ECE9B0E41B6A10091B446 /* Sparkle.framework in CopyFiles */,
 			);
@@ -460,9 +476,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7597A86B13E72948005613AE /* DACAL.framework in Frameworks */,
+				7597A86C13E72948005613AE /* PMSUtility.framework in Frameworks */,
 				5CA07A710E2E274900F71FA7 /* Carbon.framework in Frameworks */,
-				7570BE8313CEC7E1001AF81B /* DACAL.framework in Frameworks */,
-				7570BE1913C95C72001AF81B /* PMSUtility.framework in Frameworks */,
 				7565EFE813AAC73A0029990C /* IOKit.framework in Frameworks */,
 				735CC2BD049A7E2A00C919A3 /* Cocoa.framework in Frameworks */,
 				5C0884420E26CFCA0052D931 /* AudioToolbox.framework in Frameworks */,
@@ -855,6 +871,8 @@
 			isa = PBXGroup;
 			children = (
 				7570BDF913C95A3A001AF81B /* PMSUtility.framework */,
+				7597A80E13E6E6FC005613AE /* libPMUtilityIOS.a */,
+				7597A81013E6E6FC005613AE /* PMUtilityIOSTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1119,8 +1137,8 @@
 				734E63B1049E6C2800C919A3 /* PBXBuildRule */,
 			);
 			dependencies = (
-				7570BE8013CEBF12001AF81B /* PBXTargetDependency */,
-				7570BE7E13CEBF0B001AF81B /* PBXTargetDependency */,
+				7597A86A13E7293E005613AE /* PBXTargetDependency */,
+				7597A86813E72936005613AE /* PBXTargetDependency */,
 				752C58781186598300196BB0 /* PBXTargetDependency */,
 			);
 			name = PickADisk;
@@ -1184,6 +1202,20 @@
 			fileType = wrapper.framework;
 			path = DACAL.framework;
 			remoteRef = 7570BE7A13CEB9DC001AF81B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		7597A80E13E6E6FC005613AE /* libPMUtilityIOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libPMUtilityIOS.a;
+			remoteRef = 7597A80D13E6E6FC005613AE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		7597A81013E6E6FC005613AE /* PMUtilityIOSTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = PMUtilityIOSTests.octest;
+			remoteRef = 7597A80F13E6E6FC005613AE /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		75A5B3DE10F72A20001A674A /* dacal */ = {
@@ -1327,7 +1359,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/bin/sh -x";
-			shellScript = "# was intended to copy htlp help files to resource folder, for now using PDF file\n# rsync -av --exclude=\".svn\" \"$SRCROOT/Resources/PickADiskDoc\" \"$CONFIGURATION_BUILD_DIR/$UNLOCALIZED_RESOURCES_FOLDER_PATH\"\n";
+			shellScript = "# was intended to copy htlp help files to resource folder, for now using PDF file\n# rsync -av --exclude=\".svn\" \"$SRCROOT/Resources/PickADiskDoc\" \"$CONFIGURATION_BUILD_DIR/$UNLOCALIZED_RESOURCES_FOLDER_PATH\"\n\necho \"SRCROOT: $(SRCROOT)\"\n";
 		};
 		75E4927B0EACBFB900AC85A0 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1394,15 +1426,15 @@
 			name = DACALDriver;
 			targetProxy = 752C58771186598300196BB0 /* PBXContainerItemProxy */;
 		};
-		7570BE7E13CEBF0B001AF81B /* PBXTargetDependency */ = {
+		7597A86813E72936005613AE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = PMSUtility;
-			targetProxy = 7570BE7D13CEBF0B001AF81B /* PBXContainerItemProxy */;
+			targetProxy = 7597A86713E72936005613AE /* PBXContainerItemProxy */;
 		};
-		7570BE8013CEBF12001AF81B /* PBXTargetDependency */ = {
+		7597A86A13E7293E005613AE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = DACAL;
-			targetProxy = 7570BE7F13CEBF12001AF81B /* PBXContainerItemProxy */;
+			targetProxy = 7597A86913E7293E005613AE /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1440,14 +1472,14 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1)";
 				ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1 = "ppc i386";
-				FRAMEWORK_SEARCH_PATHS = /Volumes/mbphd/Users/davec/Desktop/pmsutility/build/Release;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/Frameworks",
+					"$(SRCROOT)/../../Sources/CLI/build/Release",
+					"$(SRCROOT)/../../../PMSUtility/build/Release",
+				);
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Prefix.h;
-				MACOSX_DEPLOYMENT_TARGET = "";
-				PRODUCT_NAME = PickADisk;
 				VALID_ARCHS = i386;
 			};
 			name = "Release Test";
@@ -1455,28 +1487,15 @@
 		7504AE850FB3837C00FFAA84 /* Release Test */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/Frameworks",
-				);
-				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(DEVELOPER_DIR)/SDKs/MacOSX10.5.sdk/System/Library/Frameworks\"";
-				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../DiscID/build/Release\"";
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				GCC_MODEL_TUNING = G5;
 				"GCC_MODEL_TUNING[arch=*]" = "";
-				IBC_PLUGIN_SEARCH_PATHS = "$(inherited) $(SRCROOT)/Frameworks";
 				INFOPLIST_FILE = "Info-PickADisk.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/Frameworks",
-					/Volumes/mbphd/Users/davec/Desktop/pmsutility/build/Debug/PMSUtility.framework,
-				);
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)\"";
 				OTHER_LDFLAGS = (
 					"-lcrypto",
 					"-seg1addr",
 					0x10000000,
 				);
+				PRODUCT_NAME = PickADisk;
 				WRAPPER_EXTENSION = app;
 			};
 			name = "Release Test";
@@ -1487,15 +1506,14 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1)";
 				ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1 = "ppc i386";
-				FRAMEWORK_SEARCH_PATHS = /Volumes/mbphd/Users/davec/Desktop/pmsutility/build/Debug;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/Frameworks",
+					"$(SRCROOT)/../../Sources/CLI/build/Release",
+					"$(SRCROOT)/../../../PMSUtility/build/Release",
+				);
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Prefix.h;
-				MACOSX_DEPLOYMENT_TARGET = "";
-				PRODUCT_NAME = PickADisk;
 				VALID_ARCHS = i386;
 			};
 			name = DebugPPC;
@@ -1503,27 +1521,14 @@
 		75D3EBAC0E8BF811009A0199 /* DebugPPC */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/Frameworks",
-				);
-				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(DEVELOPER_DIR)/SDKs/MacOSX10.5.sdk/System/Library/Frameworks\"";
-				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../DiscID/build/Release\"";
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_MODEL_TUNING = G5;
-				IBC_PLUGIN_SEARCH_PATHS = "$(inherited) $(SRCROOT)/Frameworks";
 				INFOPLIST_FILE = "Info-PickADisk.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/Frameworks",
-					/Volumes/mbphd/Users/davec/Desktop/pmsutility/build/Debug/PMSUtility.framework,
-				);
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)\"";
 				OTHER_LDFLAGS = (
 					"-lcrypto",
 					"-seg1addr",
 					0x10000000,
 				);
+				PRODUCT_NAME = PickADisk;
 				WRAPPER_EXTENSION = app;
 			};
 			name = DebugPPC;
@@ -1534,17 +1539,14 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1)";
 				ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1 = "ppc i386";
-				FRAMEWORK_SEARCH_PATHS = /Volumes/mbphd/Users/davec/Desktop/pmsutility/build/Debug;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/Frameworks",
+					"$(SRCROOT)/../../Sources/CLI/build/Release",
+					"$(SRCROOT)/../../../PMSUtility/build/Release",
+				);
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Prefix.h;
-				MACOSX_DEPLOYMENT_TARGET = "";
-				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_NAME = PickADisk;
-				SYMROOT = /Volumes/RemoteDebug/PickADisk/build;
 				VALID_ARCHS = i386;
 			};
 			name = DebugRemote;
@@ -1552,27 +1554,14 @@
 		75DFAC87107FF40F0076E115 /* DebugRemote */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/Frameworks",
-				);
-				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(DEVELOPER_DIR)/SDKs/MacOSX10.5.sdk/System/Library/Frameworks\"";
-				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../DiscID/build/Release\"";
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_MODEL_TUNING = G5;
-				IBC_PLUGIN_SEARCH_PATHS = "$(inherited) $(SRCROOT)/Frameworks";
 				INFOPLIST_FILE = "Info-PickADisk.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/Frameworks",
-					/Volumes/mbphd/Users/davec/Desktop/pmsutility/build/Debug/PMSUtility.framework,
-				);
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)\"";
 				OTHER_LDFLAGS = (
 					"-lcrypto",
 					"-seg1addr",
 					0x10000000,
 				);
+				PRODUCT_NAME = PickADisk;
 				SYMROOT = /Users/Shared/PickADisk/build;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1584,22 +1573,14 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1)";
 				ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1 = "ppc i386";
-				BUILD_VARIANTS = (
-					debug,
-					normal,
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/Frameworks",
+					"$(SRCROOT)/../../Sources/CLI/build/Release",
+					"$(SRCROOT)/../../../PMSUtility/build/Release",
 				);
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/Development/$(EFFECTIVE_PLATFORM_NAME)";
-				CONFIGURATION_TEMP_DIR = "$(PROJECT_TEMP_DIR)/Development/$(EFFECTIVE_PLATFORM_NAME)";
-				FRAMEWORK_SEARCH_PATHS = /Volumes/mbphd/Users/davec/Desktop/pmsutility/build/Debug;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Prefix.h;
-				MACOSX_DEPLOYMENT_TARGET = "";
-				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_NAME = PickADisk;
 				VALID_ARCHS = i386;
 			};
 			name = "Development Fresh Prefs";
@@ -1607,27 +1588,14 @@
 		75E4927D0EACC04200AC85A0 /* Development Fresh Prefs */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/Frameworks",
-				);
-				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(DEVELOPER_DIR)/SDKs/MacOSX10.5.sdk/System/Library/Frameworks\"";
-				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../DiscID/build/Release\"";
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_MODEL_TUNING = G5;
-				IBC_PLUGIN_SEARCH_PATHS = "$(inherited) $(SRCROOT)/Frameworks";
 				INFOPLIST_FILE = "Info-PickADisk.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/Frameworks",
-					/Volumes/mbphd/Users/davec/Desktop/pmsutility/build/Debug/PMSUtility.framework,
-				);
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)\"";
 				OTHER_LDFLAGS = (
 					"-lcrypto",
 					"-seg1addr",
 					0x10000000,
 				);
+				PRODUCT_NAME = PickADisk;
 				WRAPPER_EXTENSION = app;
 			};
 			name = "Development Fresh Prefs";
@@ -1635,27 +1603,14 @@
 		B69BDD9508A2EC26008AC9B5 /* Development */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/Frameworks",
-				);
-				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(DEVELOPER_DIR)/SDKs/MacOSX10.5.sdk/System/Library/Frameworks\"";
-				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../DiscID/build/Release\"";
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				GCC_MODEL_TUNING = G5;
-				IBC_PLUGIN_SEARCH_PATHS = "$(inherited) $(SRCROOT)/Frameworks";
 				INFOPLIST_FILE = "Info-PickADisk.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/Frameworks",
-					/Volumes/mbphd/Users/davec/Desktop/pmsutility/build/Debug/PMSUtility.framework,
-				);
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)\"";
 				OTHER_LDFLAGS = (
 					"-lcrypto",
 					"-seg1addr",
 					0x10000000,
 				);
+				PRODUCT_NAME = PickADisk;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Development;
@@ -1663,27 +1618,14 @@
 		B69BDD9608A2EC26008AC9B5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/Frameworks",
-				);
-				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(DEVELOPER_DIR)/SDKs/MacOSX10.5.sdk/System/Library/Frameworks\"";
-				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../DiscID/build/Release\"";
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				GCC_MODEL_TUNING = G5;
-				IBC_PLUGIN_SEARCH_PATHS = "$(inherited) $(SRCROOT)/Frameworks";
 				INFOPLIST_FILE = "Info-PickADisk.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/Frameworks",
-					/Volumes/mbphd/Users/davec/Desktop/pmsutility/build/Debug/PMSUtility.framework,
-				);
-				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)\"";
 				OTHER_LDFLAGS = (
 					"-lcrypto",
 					"-seg1addr",
 					0x10000000,
 				);
+				PRODUCT_NAME = PickADisk;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -1695,19 +1637,13 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1)";
 				ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1 = "ppc i386";
 				FRAMEWORK_SEARCH_PATHS = (
-					/Volumes/mbphd/Users/davec/Desktop/PickADisk/Sources/CLI/build/Debug,
-					/Volumes/mbphd/Users/davec/Desktop/pmsutility/build/Debug,
+					"$(SRCROOT)/Frameworks",
+					"$(SRCROOT)/../../Sources/CLI/build/Release",
+					"$(SRCROOT)/../../../PMSUtility/build/Release",
 				);
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Prefix.h;
-				MACOSX_DEPLOYMENT_TARGET = "";
-				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_NAME = PickADisk;
-				SYMROOT = /Users/Shared/PickADisk;
 				VALID_ARCHS = i386;
 			};
 			name = Development;
@@ -1719,14 +1655,14 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1)";
 				ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1 = "ppc i386";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				FRAMEWORK_SEARCH_PATHS = /Volumes/mbphd/Users/davec/Desktop/pmsutility/build/Release;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/Frameworks",
+					"$(SRCROOT)/../../Sources/CLI/build/Release",
+					"$(SRCROOT)/../../../PMSUtility/build/Release",
+				);
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Prefix.h;
-				MACOSX_DEPLOYMENT_TARGET = "";
-				PRODUCT_NAME = PickADisk;
 				VALID_ARCHS = i386;
 			};
 			name = Release;

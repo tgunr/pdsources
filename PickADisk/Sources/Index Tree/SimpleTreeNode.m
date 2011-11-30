@@ -48,6 +48,7 @@
 #import <DACAL/pmsDACALUtility.h>
 #import <PMSUtility/NSString_Extensions.h>
 #import <PMSUtility/NSApplication_Extensions.h>
+#import <PMSUtility/NSDate_Extensions.h>
 
 
 @implementation SimpleNodeData
@@ -622,10 +623,10 @@
 - (NSNumber*)searchForDateCheckedIn:(id)other withOptions:(NSMutableDictionary*)options
 {
 	NSDate*				ourDate = [self checkedInDate];
-	PADSearchRelevance	rank = 0.0;
+	float               rank = 0.0;
 	
 	if( ourDate )
-		rank = (PADSearchRelevance)[ourDate rankWithDate:other withOptions:options];
+		rank = [ourDate rankWithDate:other withOptions:options];
 	
 	return( [NSNumber numberWithFloat:rank] );
 }
