@@ -7,7 +7,6 @@
 //
 
 #import "PADPrefsTreeController.h"
-#import "DACALTreeDataSource.h"
 
 @implementation PADPrefsTreeController
 static PADPrefsTreeController *PADPrefsTreeController_shared;

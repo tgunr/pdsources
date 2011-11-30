@@ -7,9 +7,6 @@
 //
 
 #import "DACDriverInstaller.h"
-#import <Security/AuthorizationDB.h>
-#import <Security/Authorization.h>
-#import <Security/AuthorizationTags.h>
 
 CFStringRef		dac_installer_bin = CFSTR("dacauth");
 

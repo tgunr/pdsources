@@ -6,10 +6,6 @@
 //  Copyright 2008 __MyCompanyName__. All rights reserved.
 //
 
-#import "TreeController.h"
-
-#import <CoreFoundation/CoreFoundation.h>
-
 @interface TreeController(Private)
 - (void)_addNewDataToSelection:(SimpleTreeNode *)newChild;
 @end

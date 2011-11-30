@@ -6,9 +6,6 @@
 //  Copyright 2008 Jack Small. All rights reserved.
 //
 
-#import "PADSearchRequest.h"
-#import <PMSUtility/NSString_Extensions.h>
-#import <PMSUtility/NSApplication_Extensions.h>
 #import <PMSUtility/NSDate_Extensions.h>
 
 // Default # of matches before notifying target

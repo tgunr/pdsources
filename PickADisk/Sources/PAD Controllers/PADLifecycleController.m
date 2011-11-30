@@ -6,8 +6,6 @@
 //  Copyright 2008 Jack Small. All rights reserved.
 //
 
-#import "PADLifecycleController.h"
-
 #if PADBOX_EXPIRE_CHECK != 0
 
 #import <Sparkle/SUUpdater.h>

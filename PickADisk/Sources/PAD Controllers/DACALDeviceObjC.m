@@ -6,11 +6,9 @@
 //  Copyright 2008 Jack Small. All rights reserved.
 //
 
-#import "DACALDeviceObjC.h"
 #import "PADOperationOpenDevice.h"
 #import "PADOperationControlDevice.h"
 #import "LicenseService.h"
-#import <DACAL/IconFamily.h>
 #import <DACAL/dacalconstants.h>
 
 CFStringRef		kPADClientIdentifier = CFSTR("PAD.DACAL.CLIENT");

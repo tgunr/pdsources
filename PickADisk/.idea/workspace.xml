@@ -6,10 +6,31 @@
   <component name="ChangeListManager">
     <list default="true" id="92a61635-3832-4c27-a088-3d4921c573bb" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PickADisk.xcodeproj/project.xcworkspace/xcuserdata/davec.xcuserdatad/UserInterfaceState.xcuserstate" afterPath="$PROJECT_DIR$/PickADisk.xcodeproj/project.xcworkspace/xcuserdata/davec.xcuserdatad/UserInterfaceState.xcuserstate" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PickADisk.xcodeproj/xcuserdata/davec.xcuserdatad/xcdebugger/Breakpoints.xcbkptlist" afterPath="$PROJECT_DIR$/PickADisk.xcodeproj/xcuserdata/davec.xcuserdatad/xcdebugger/Breakpoints.xcbkptlist" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Misc/buildnumber.xcconfig" afterPath="$PROJECT_DIR$/Misc/buildnumber.xcconfig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PickADisk.xcodeproj/project.pbxproj" afterPath="$PROJECT_DIR$/PickADisk.xcodeproj/project.pbxproj" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Sources/Index Tree/PADIndexNodeData.m" afterPath="$PROJECT_DIR$/Sources/Index Tree/PADIndexNodeData.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Sources/Index Tree/SimpleTreeNode.m" afterPath="$PROJECT_DIR$/Sources/Index Tree/SimpleTreeNode.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Sources/Index Tree/TreeNode.m" afterPath="$PROJECT_DIR$/Sources/Index Tree/TreeNode.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Sources/License/LicenseController.m" afterPath="$PROJECT_DIR$/Sources/License/LicenseController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Sources/PAD Controllers/AppController.m" afterPath="$PROJECT_DIR$/Sources/PAD Controllers/AppController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Sources/PAD Controllers/DACALDeviceObjC.m" afterPath="$PROJECT_DIR$/Sources/PAD Controllers/DACALDeviceObjC.m" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Sources/PAD Controllers/DACALTreeDataSource.m" afterPath="$PROJECT_DIR$/Sources/PAD Controllers/DACALTreeDataSource.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Sources/PAD Controllers/DACALViewDataSource.m" afterPath="$PROJECT_DIR$/Sources/PAD Controllers/DACALViewDataSource.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Sources/PAD Controllers/DACDriverInstaller.m" afterPath="$PROJECT_DIR$/Sources/PAD Controllers/DACDriverInstaller.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Sources/PAD Controllers/DACVolume.m" afterPath="$PROJECT_DIR$/Sources/PAD Controllers/DACVolume.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Sources/PAD Controllers/PADAddVolumeController.m" afterPath="$PROJECT_DIR$/Sources/PAD Controllers/PADAddVolumeController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Sources/PAD Controllers/PADFlavorImageView.m" afterPath="$PROJECT_DIR$/Sources/PAD Controllers/PADFlavorImageView.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Sources/PAD Controllers/PADIndexProgressController.m" afterPath="$PROJECT_DIR$/Sources/PAD Controllers/PADIndexProgressController.m" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Sources/PAD Controllers/PADIndexToolbarController.m" afterPath="$PROJECT_DIR$/Sources/PAD Controllers/PADIndexToolbarController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Sources/PAD Controllers/PADInspectorController.m" afterPath="$PROJECT_DIR$/Sources/PAD Controllers/PADInspectorController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Sources/PAD Controllers/PADLayoutView.m" afterPath="$PROJECT_DIR$/Sources/PAD Controllers/PADLayoutView.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Sources/PAD Controllers/PADLifecycleController.m" afterPath="$PROJECT_DIR$/Sources/PAD Controllers/PADLifecycleController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Sources/PAD Controllers/PADPrefsController.m" afterPath="$PROJECT_DIR$/Sources/PAD Controllers/PADPrefsController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Sources/PAD Controllers/PADPrefsTreeController.m" afterPath="$PROJECT_DIR$/Sources/PAD Controllers/PADPrefsTreeController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Sources/PAD Controllers/PADSearchRequest.m" afterPath="$PROJECT_DIR$/Sources/PAD Controllers/PADSearchRequest.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Sources/PAD Controllers/TreeController.m" afterPath="$PROJECT_DIR$/Sources/PAD Controllers/TreeController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Sources/main.m" afterPath="$PROJECT_DIR$/Sources/main.m" />
     </list>
     <ignored path="PickADisk.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -38,10 +59,37 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="PADCrashReportService.m" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Sources/Services/PADCrashReportService.m">
+      <file leaf-file-name="PADCarouselOperation.h" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Sources/PAD Controllers/PADCarouselOperation.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="28" column="192" selection-start="552" selection-end="552" vertical-scroll-proportion="0.4290092">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PADCarouselOperation.m" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Sources/PAD Controllers/PADCarouselOperation.m">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="13" column="78" selection-start="234" selection-end="234" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AppController.m" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Sources/PAD Controllers/AppController.m">
           <provider selected="true" editor-type-id="text-editor">
             <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NSPopUpButton.h" pinned="false" current="false" current-in-tab="false">
+        <entry file="file:///Developer/SDKs/MacOSX10.6.sdk/System/Library/Frameworks/AppKit.framework/Headers/NSPopUpButton.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="28" column="83" selection-start="754" selection-end="754" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -50,34 +98,16 @@
       <file leaf-file-name="PADAddVolumeController.m" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Sources/PAD Controllers/PADAddVolumeController.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="260" column="36" selection-start="9104" selection-end="9104" vertical-scroll-proportion="0.0">
+            <state line="170" column="83" selection-start="6069" selection-end="6069" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dacallib.h" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/../pmssource/carlib/dacallib.h">
+      <file leaf-file-name="PADIndexToolbarController.m" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Sources/PAD Controllers/PADIndexToolbarController.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="48" selection-start="536" selection-end="536" vertical-scroll-proportion="0.3483146">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TreeController.h" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Sources/PAD Controllers/TreeController.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="39" selection-start="272" selection-end="272" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SimpleTreeNode.h" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Sources/Index Tree/SimpleTreeNode.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="11" selection-start="555" selection-end="555" vertical-scroll-proportion="0.0">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -97,7 +127,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/pad.h" />
         <option value="$PROJECT_DIR$/Sources/padutility/pad.h" />
         <option value="$PROJECT_DIR$/Prefix.h" />
         <option value="$PROJECT_DIR$/Sources/DACAL/DACALDeviceNode.h" />
@@ -113,6 +142,7 @@
         <option value="$PROJECT_DIR$/Sources/Services/PADFolderService.m" />
         <option value="$PROJECT_DIR$/Sources/PAD Controllers/PADAddVolumeController.m" />
         <option value="$PROJECT_DIR$/../pmssource/carlib/dacallib.h" />
+        <option value="$PROJECT_DIR$/Sources/PAD Controllers/PADIndexToolbarController.m" />
       </list>
     </option>
   </component>
@@ -250,6 +280,42 @@
               <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodePBXReferenceNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PickADisk" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Classes" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodePBXReferenceNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PAD Controllers" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodePBXReferenceNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PickADisk" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Classes" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodePBXReferenceNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Operations" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodePBXReferenceNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Favorites" />
@@ -363,13 +429,13 @@
     <frame x="0" y="22" width="2560" height="1574" extended-state="0" />
     <editor active="false" />
     <layout>
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30605227" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30605227" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32953465" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32953465" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1627907" sideWeight="0.69394773" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1627907" sideWeight="0.34250343" order="0" side_tool="false" content_ui="tabs" x="45" y="22" width="310" height="1143" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18052818" sideWeight="0.69394773" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18052818" sideWeight="0.5082531" order="0" side_tool="false" content_ui="tabs" x="45" y="22" width="310" height="1143" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32953465" sideWeight="0.0" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.328585" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32953465" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -436,21 +502,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Sources/Volumes/Volume.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="0" selection-start="276" selection-end="276" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Sources/Index Tree/SimpleTreeNode.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="601" column="0" selection-start="18101" selection-end="18101" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../pmssource/jsutility/JSServiceManager.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="5" selection-start="472" selection-end="472" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../pmssource/carlib/dacallib.m">
       <provider selected="true" editor-type-id="text-editor">
         <state line="10" column="14" selection-start="173" selection-end="173" vertical-scroll-proportion="-2.6727273" />
@@ -473,9 +524,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../pmssource/jsutility/JSServiceManager.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="7" selection-start="305" selection-end="305" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="15" column="7" selection-start="305" selection-end="305" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file:///System/Library/Frameworks/Foundation.framework/Headers/NSPathUtilities.h">
@@ -485,23 +534,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Sources/Index Tree/SimpleTreeNode.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="11" selection-start="555" selection-end="555" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="28" column="11" selection-start="555" selection-end="555" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Sources/PAD Controllers/TreeController.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="39" selection-start="272" selection-end="272" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Sources/PAD Controllers/PADAddVolumeController.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="260" column="36" selection-start="9104" selection-end="9104" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="13" column="39" selection-start="272" selection-end="272" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Sources/Services/PADCrashReportService.m">
@@ -512,6 +550,48 @@
     <entry file="file://$PROJECT_DIR$/../pmssource/carlib/dacallib.h">
       <provider selected="true" editor-type-id="text-editor">
         <state line="24" column="48" selection-start="536" selection-end="536" vertical-scroll-proportion="0.3483146">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Sources/PAD Controllers/PADIndexToolbarController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Sources/PAD Controllers/PADAddVolumeController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="170" column="83" selection-start="6069" selection-end="6069" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Developer/SDKs/MacOSX10.6.sdk/System/Library/Frameworks/AppKit.framework/Headers/NSPopUpButton.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="83" selection-start="754" selection-end="754" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Sources/PAD Controllers/AppController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Sources/PAD Controllers/PADCarouselOperation.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="78" selection-start="234" selection-end="234" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Sources/PAD Controllers/PADCarouselOperation.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="192" selection-start="552" selection-end="552" vertical-scroll-proportion="0.4290092">
           <folding />
         </state>
       </provider>

@@ -6,9 +6,6 @@
 //  Copyright 2008 __MyCompanyName__. All rights reserved.
 //
 
-#import "DACALTreeDataSource.h"
-#import "PADSearchRequest.h"
-#import <DACAL/pmsDACALUtility.h>
 #import <DACAL/dacalconstants.h>
 
 NSString*	DACALFlavorToFlavorValue( NSString* flavor )

@@ -6,8 +6,6 @@
 //  Copyright 2008 Jack Small. All rights reserved.
 //
 
-#import "PADIndexNodeData.h"
-
 PADSearchRequest* PADCreateSearchForType( OSType aType );
 PADSearchRequest* PADCreateSearchForType( OSType aType )
 {

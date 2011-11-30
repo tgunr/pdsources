@@ -42,12 +42,7 @@
  OTHERWISE, EVEN IF APPLE HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#import "SimpleTreeNode.h"
 #import "PADIndexOperation.h"
-#import "DACALTreeDataSource.h"
-#import <DACAL/pmsDACALUtility.h>
-#import <PMSUtility/NSString_Extensions.h>
-#import <PMSUtility/NSApplication_Extensions.h>
 #import <PMSUtility/NSDate_Extensions.h>
 
 

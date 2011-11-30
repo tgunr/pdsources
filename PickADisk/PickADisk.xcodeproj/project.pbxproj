@@ -1489,6 +1489,7 @@
 			buildSettings = {
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				"GCC_MODEL_TUNING[arch=*]" = "";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "Info-PickADisk.plist";
 				OTHER_LDFLAGS = (
 					"-lcrypto",
@@ -1522,6 +1523,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "Info-PickADisk.plist";
 				OTHER_LDFLAGS = (
 					"-lcrypto",
@@ -1555,6 +1557,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "Info-PickADisk.plist";
 				OTHER_LDFLAGS = (
 					"-lcrypto",
@@ -1589,6 +1592,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "Info-PickADisk.plist";
 				OTHER_LDFLAGS = (
 					"-lcrypto",
@@ -1604,6 +1608,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "Info-PickADisk.plist";
 				OTHER_LDFLAGS = (
 					"-lcrypto",
@@ -1619,6 +1624,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "Info-PickADisk.plist";
 				OTHER_LDFLAGS = (
 					"-lcrypto",

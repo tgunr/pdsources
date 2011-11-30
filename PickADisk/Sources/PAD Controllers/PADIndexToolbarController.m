@@ -6,9 +6,6 @@
 //  Copyright 2008 __MyCompanyName__. All rights reserved.
 //
 
-#import "PADIndexToolbarController.h"
-#import "LicenseService.h"
-
 @implementation PADIndexToolbarController
 
 PADSearchRequest* PADIndexToolbarController_LastSearch = nil;
