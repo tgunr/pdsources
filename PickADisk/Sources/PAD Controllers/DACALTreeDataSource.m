@@ -575,7 +575,7 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 		if( [data respondsToSelector:@selector(itemSearch)] )
 		{
 			itemSearch = [data itemSearch];
-			[(MyOutlineView*)[self outlineView] setCurrentSearch:itemSearch];
+			[[self outlineView] setCurrentSearch:itemSearch];
 			//[(MyOutlineView*)[[[self secondaryController] dataSource] outlineView] setCurrentSearch:itemSearch];
 			if( itemSearch != nil )
 			{

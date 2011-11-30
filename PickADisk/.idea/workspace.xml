@@ -5,21 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="92a61635-3832-4c27-a088-3d4921c573bb" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/PickADisk.iml" afterPath="$PROJECT_DIR$/.idea/PickADisk.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PickADisk.xcodeproj/project.xcworkspace/xcuserdata/davec.xcuserdatad/UserInterfaceState.xcuserstate" afterPath="$PROJECT_DIR$/PickADisk.xcodeproj/project.xcworkspace/xcuserdata/davec.xcuserdatad/UserInterfaceState.xcuserstate" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PickADisk.xcodeproj/xcuserdata/davec.xcuserdatad/xcdebugger/Breakpoints.xcbkptlist" afterPath="$PROJECT_DIR$/PickADisk.xcodeproj/xcuserdata/davec.xcuserdatad/xcdebugger/Breakpoints.xcbkptlist" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Resources/CarouselIndex.nib/designable.nib" afterPath="$PROJECT_DIR$/Resources/CarouselIndex.nib/designable.nib" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Resources/CarouselIndex.nib/keyedobjects.nib" afterPath="$PROJECT_DIR$/Resources/CarouselIndex.nib/keyedobjects.nib" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../CLI/CLI.xcodeproj/project.pbxproj" afterPath="$PROJECT_DIR$/../CLI/CLI.xcodeproj/project.pbxproj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Misc/buildnumber.xcconfig" afterPath="$PROJECT_DIR$/Misc/buildnumber.xcconfig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PickADisk.xcodeproj/project.pbxproj" afterPath="$PROJECT_DIR$/PickADisk.xcodeproj/project.pbxproj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PickADisk.xcodeproj/xcuserdata/davec.xcuserdatad/xcschemes/PickADisk.xcscheme" afterPath="$PROJECT_DIR$/PickADisk.xcodeproj/xcuserdata/davec.xcuserdatad/xcschemes/PickADisk.xcscheme" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Sources/Index Tree/SimpleTreeNode.m" afterPath="$PROJECT_DIR$/Sources/Index Tree/SimpleTreeNode.m" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Sources/PAD Controllers/DACALTreeDataSource.m" afterPath="$PROJECT_DIR$/Sources/PAD Controllers/DACALTreeDataSource.m" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Sources/PAD Controllers/PADIndexToolbarController.m" afterPath="$PROJECT_DIR$/Sources/PAD Controllers/PADIndexToolbarController.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Sources/PAD Controllers/PADSearchRequest.m" afterPath="$PROJECT_DIR$/Sources/PAD Controllers/PADSearchRequest.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../pmssource/carlib/dacallib.m" afterPath="$PROJECT_DIR$/../pmssource/carlib/dacallib.m" />
     </list>
     <ignored path="PickADisk.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -285,6 +275,7 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="266" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
+    <property name="FullScreen" value="false" />
     <property name="OBJC.PRESERVED_TARGET_SELECTION" value="PickADisk" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />

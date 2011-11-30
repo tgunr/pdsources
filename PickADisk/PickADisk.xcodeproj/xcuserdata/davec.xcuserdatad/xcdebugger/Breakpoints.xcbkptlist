@@ -23,34 +23,6 @@
          continueAfterRunningActions = "No"
          isPathRelative = "0"
          filePath = "/Volumes/leopard/Projects/PickADisk/Sources/pmssource/carlib/dacallib.m"
-         timestampString = "329954105.125243"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "2265"
-         endingLineNumber = "2265"
-         landmarkName = "DACALDeviceCreateWithService()"
-         landmarkType = "7">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "0"
-         filePath = "/Volumes/leopard/Projects/PickADisk/Sources/pmssource/carlib/dacallib.m"
-         timestampString = "329954506.730319"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "2510"
-         endingLineNumber = "2510"
-         landmarkName = "DACALDevicesInitialize()"
-         landmarkType = "7">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "0"
-         filePath = "/Volumes/leopard/Projects/PickADisk/Sources/pmssource/carlib/dacallib.m"
          timestampString = "329955248.966419"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
@@ -78,27 +50,13 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "Sources/PAD Controllers/AppController.m"
-         timestampString = "334124084.744638"
+         filePath = "Sources/PAD Controllers/PADIndexToolbarController.m"
+         timestampString = "344363834.074916"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "197"
-         endingLineNumber = "197"
-         landmarkName = "-awakeFromNib"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "Sources/PAD Controllers/AppController.m"
-         timestampString = "334124095.515633"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "37"
-         endingLineNumber = "37"
-         landmarkName = "-init"
+         startingLineNumber = "586"
+         endingLineNumber = "586"
+         landmarkName = "-searchAction:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
