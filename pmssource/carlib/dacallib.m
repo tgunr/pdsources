@@ -553,20 +553,22 @@ CFStringRef		CFStringCreateFromDacalPipe( CFAllocatorRef inAllocator, CFStringRe
 	int				pipeSize = 8192;
 	
 	
-	if( inAllocator == NULL ) inAllocator = gDACALDefaultCFAllocator;
+	if( inAllocator == NULL ) 
+        inAllocator = gDACALDefaultCFAllocator;
 	
 	doCFCommand = CFStringCreateWithFormat(	inAllocator, NULL, CFSTR("\"%@\" %@"), commandURL, inCommandArgs );
-	if( doCFCommand == NULL ) goto BAIL;
+	if( doCFCommand == NULL ) 
+        goto BAIL;
 
-//	NSLog( (NSString*)doCFCommand );
+	PMLOG(2,@"doCFCommand: %@", (NSString*)doCFCommand);
 
 	doCommand = CFStringCreateCString( doCFCommand, kCFStringEncodingUTF8 );	
-	if( doCommand == NULL ) goto BAIL;
+	if( doCommand == NULL ) 
+        goto BAIL;
 
-//	printf("Carousel command: %s", doCommand);
+	PMLOG(2, @"Carousel command: %s", doCommand);
 
 	utf8Name = (char*)calloc(1, pipeSize);
-	if( doCommand == NULL ) goto BAIL;
 	
 	pipe = popen( doCommand, "r" );
 	if ( pipe ) {

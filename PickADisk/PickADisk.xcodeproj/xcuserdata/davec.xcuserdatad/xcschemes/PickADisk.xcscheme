@@ -28,16 +28,26 @@
       buildConfiguration = "DebugRemote">
       <Testables>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "735CC299049A7E2A00C919A3"
+            BuildableName = "PickADisk.app"
+            BlueprintName = "PickADisk"
+            ReferencedContainer = "container:PickADisk.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </TestAction>
    <LaunchAction
-      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.GDB"
-      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.GDB"
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       displayScaleIsEnabled = "NO"
       displayScale = "1.00"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Development"
-      debugDocumentVersioning = "YES">
+      debugDocumentVersioning = "YES"
+      allowLocationSimulation = "YES">
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
@@ -48,10 +58,6 @@
          </BuildableReference>
       </BuildableProductRunnable>
       <CommandLineArguments>
-         <CommandLineArgument
-            argument = "-d"
-            isEnabled = "YES">
-         </CommandLineArgument>
          <CommandLineArgument
             argument = "-k"
             isEnabled = "NO">

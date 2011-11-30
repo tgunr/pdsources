@@ -218,7 +218,7 @@ int main (int argc, const char * argv[]) {
 			}
 																		// verbose
 			case 'b':{
-				gVerbose = !gVerbose;
+				gDebugLevel++;
 				break;
 			}
 																		// status
