@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:Sources/PickADisk/PickADisk.xcodeproj">
+      location = "group:PickADisk/PickADisk.xcodeproj">
    </FileRef>
 </Workspace>
