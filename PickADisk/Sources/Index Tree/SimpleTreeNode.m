@@ -42,10 +42,8 @@
  OTHERWISE, EVEN IF APPLE HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#import "SimpleTreeNode.h"
 #import "PADIndexOperation.h"
-#import "DACALTreeDataSource.h"
-#import "pmsDACALUtility.h"
+#import <PMSUtility/NSDate_Extensions.h>
 
 
 @implementation SimpleNodeData
@@ -620,7 +618,7 @@
 - (NSNumber*)searchForDateCheckedIn:(id)other withOptions:(NSMutableDictionary*)options
 {
 	NSDate*				ourDate = [self checkedInDate];
-	PADSearchRelevance	rank = 0.0;
+	float               rank = 0.0;
 	
 	if( ourDate )
 		rank = [ourDate rankWithDate:other withOptions:options];
@@ -634,7 +632,7 @@
 	PADSearchRelevance	rank = 0.0;
 
 	if( ourDate )
-		rank = [ourDate rankWithDate:other withOptions:options];
+		rank = (PADSearchRelevance)[ourDate rankWithDate:other withOptions:options];
 	
 	return( [NSNumber numberWithFloat:rank] );
 }

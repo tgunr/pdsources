@@ -6,7 +6,7 @@
 //  Copyright 2008 Jack Small. All rights reserved.
 //
 
-#import "PADSearchRequest.h"
+#import <PMSUtility/NSDate_Extensions.h>
 
 // Default # of matches before notifying target
 #define PADMATCHQUEUE_THRESHOLD		22
@@ -138,7 +138,7 @@ const	NSString*			kPADSearchOptionResultTypeItem	= @"Default";
 - (PADSearchRelevance)compareForSearch:(id)value withOptions:(NSMutableDictionary*)options
 {	
 	id						ourData = [self compareData];
-	PADSearchRelevance		rank = 0.0;
+	float                   rank = 0.0;
 	NSStringCompareOptions	findOptions = NSCaseInsensitiveSearch || NSNumericSearch || NSDiacriticInsensitiveSearch || NSWidthInsensitiveSearch;
 
 	if( ourData == nil ) rank = 1.0;

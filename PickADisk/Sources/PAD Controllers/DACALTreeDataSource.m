@@ -6,10 +6,7 @@
 //  Copyright 2008 __MyCompanyName__. All rights reserved.
 //
 
-#import "DACALTreeDataSource.h"
-#import "PADSearchRequest.h"
-#import "pmsDACALUtility.h"
-#import "daclconstants.h"
+#import <DACAL/dacalconstants.h>
 
 NSString*	DACALFlavorToFlavorValue( NSString* flavor )
 {
@@ -575,7 +572,7 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 		if( [data respondsToSelector:@selector(itemSearch)] )
 		{
 			itemSearch = [data itemSearch];
-			[(MyOutlineView*)[self outlineView] setCurrentSearch:itemSearch];
+			[[self outlineView] setCurrentSearch:itemSearch];
 			//[(MyOutlineView*)[[[self secondaryController] dataSource] outlineView] setCurrentSearch:itemSearch];
 			if( itemSearch != nil )
 			{

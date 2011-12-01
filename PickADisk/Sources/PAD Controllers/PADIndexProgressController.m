@@ -1,5 +1,3 @@
-#import "PADIndexProgressController.h"
-
 @implementation PADIndexProgressController
 //static PADIndexProgressController* PADIndexProgressController_shared;
 

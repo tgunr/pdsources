@@ -57,7 +57,9 @@
 
 -(void)openService
 {
-	PADBOX_VALID_BEGIN DACALDevicesInitialize(&DACALDevicesAddedWithService);
+	PADBOX_VALID_BEGIN 
+	
+	DACALDevicesInitialize(&DACALDevicesAddedWithService);
 
 	PADBOX_VALID_END
 }

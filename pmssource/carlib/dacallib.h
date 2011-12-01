@@ -21,8 +21,8 @@
 #include <IOKit/usb/IOUSBLib.h>
 
 #include <CoreFoundation/CoreFoundation.h>
-#import "pms.h"
-#import "pmsCFUtility.h"
+#import <PMSUtility/pms.h>
+#import <PMSUtility/pmsCFUtility.h>
 
 typedef IOUSBDeviceInterface300 DACALIOUSBDeviceInterface;
 typedef IOUSBInterfaceInterface300 DACALIOUSBInterfaceInterface;
@@ -136,14 +136,14 @@ typedef struct {
 typedef vm_offset_t DACALClientRef;
 
 //static	mach_port_t				masterPort = 0;				// requires <mach/mach.h>
-extern io_iterator_t         gDACALAddedIter;
-extern CFAllocatorRef        gDACALDefaultCFAllocator;
-extern IONotificationPortRef gDACALNotifyPort;
-extern CFRunLoopSourceRef    gDACALRunLoopSource;
+//extern io_iterator_t         gDACALAddedIter;
+//extern CFAllocatorRef        gDACALDefaultCFAllocator;
+//extern IONotificationPortRef gDACALNotifyPort;
+//extern CFRunLoopSourceRef    gDACALRunLoopSource;
 extern DACALDeviceRef        gDACALDefaultDevice1;
-extern DACALArray            gDACALBoxes;
-extern DACALClientsArray     gDACALClients;
-extern DACALClientRef        gDACALNextClientID;
+//extern DACALArray            gDACALBoxes;
+//extern DACALClientsArray     gDACALClients;
+//extern DACALClientRef        gDACALNextClientID;
 
 extern const DACALResult kDACALOK;
 extern const DACALResult kDACALBusy;
@@ -153,8 +153,6 @@ extern const DACALResult kDACALInvalidParameter;
 extern CFStringRef DACALDC101CFName;
 extern CFStringRef DACALDC300CFName;
 extern CFStringRef DACALDC016CFName;
-
-extern Boolean gVerbose;
 
 extern CFStringRef kDACALPreferencesID;
 extern CFStringRef kDACALCarouselDocumentExtension;

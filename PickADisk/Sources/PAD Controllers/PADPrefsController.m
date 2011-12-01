@@ -1,7 +1,5 @@
 #import "PADPrefsController.h"
-#import <Sparkle/SUUpdater.h>
 #import "DACDriverInstaller.h"
-#import "PADPrefsTreeController.h"
 
 @implementation PADPrefsController
 

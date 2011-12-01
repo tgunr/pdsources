@@ -6,10 +6,8 @@
 //  Copyright 2008 Polymicro Systems. All rights reserved.
 //
 
-#import "PADPrefsController.h"
 #import "LicenseController.h"
 #import "LicenseService.h"
-#import <AudioToolbox/AudioToolbox.h>
 
 //	License Controller State values
 

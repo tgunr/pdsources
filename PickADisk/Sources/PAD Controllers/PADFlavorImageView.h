@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-
+#import "DACVolume.h"
 
 @interface PADSimpleImageView : NSView {
 

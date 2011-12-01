@@ -6,8 +6,6 @@
 //  Copyright 2008 Jack Small. All rights reserved.
 //
 
-#import "PADLayoutView.h"
-
 
 CFStringRef	CFStringCopyDateTime( CFAllocatorRef allocator, CFAbsoluteTime theTime, CFDateFormatterStyle dateForm, CFDateFormatterStyle timeForm );
 CFStringRef	CFStringCopyDateTime( CFAllocatorRef allocator, CFAbsoluteTime theTime, CFDateFormatterStyle dateForm, CFDateFormatterStyle timeForm )

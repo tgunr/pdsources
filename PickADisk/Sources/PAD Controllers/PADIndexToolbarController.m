@@ -6,9 +6,6 @@
 //  Copyright 2008 __MyCompanyName__. All rights reserved.
 //
 
-#import "PADIndexToolbarController.h"
-#import "LicenseService.h"
-
 @implementation PADIndexToolbarController
 
 PADSearchRequest* PADIndexToolbarController_LastSearch = nil;
@@ -595,7 +592,7 @@ PADSearchRequest* PADIndexToolbarController_LastSearch = nil;
 			if( [theText compare:[PADIndexToolbarController_LastSearch valueForTerm:kPADSearchByTitle]] == NSOrderedSame ) {
 				[newRoot release];
 				[dataController setTreeRoot:[PADIndexToolbarController_LastSearch resultsSubTree]];
-				[(MyOutlineView*)[dataController outlineView] setCurrentSearch:PADIndexToolbarController_LastSearch];
+				[[dataController outlineView] setCurrentSearch:PADIndexToolbarController_LastSearch];
 				if( ![PADIndexToolbarController_LastSearch searchResultsDirty] ) {
 					[self searchFoundResults:[[PADIndexToolbarController_LastSearch resultsSubTree] children] forSearch:PADIndexToolbarController_LastSearch];
 					[self searchCompleted:PADIndexToolbarController_LastSearch];
@@ -612,7 +609,7 @@ PADSearchRequest* PADIndexToolbarController_LastSearch = nil;
 		if( PADIndexToolbarController_LastSearch ) [PADIndexToolbarController_LastSearch release];
 		PADIndexToolbarController_LastSearch = nil;
 		PADIndexToolbarController_LastSearch = [[[PADSearchRequest searchCarouselsForTerm:theText] setupSearchForTarget:self onNode:nil andSubTree:newRoot] retain];
-		[(MyOutlineView*)[dataController outlineView] setCurrentSearch:PADIndexToolbarController_LastSearch];
+		[[dataController outlineView] setCurrentSearch:PADIndexToolbarController_LastSearch];
 		[PADIndexToolbarController_LastSearch startSearch];
 		
 		[[dataController dataSource] updatePrompt];

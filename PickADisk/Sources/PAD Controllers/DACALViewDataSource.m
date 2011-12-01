@@ -6,8 +6,6 @@
 //  Copyright 2008 Jack Small. All rights reserved.
 //
 
-#import "DACALViewDataSource.h"
-
 @implementation DACALViewDataSource
 
 - (void)dealloc

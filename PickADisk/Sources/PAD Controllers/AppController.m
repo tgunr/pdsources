@@ -7,18 +7,12 @@
 //
 
 
-#import "AppController.h"
-#import <DiscRecording/DiscRecording.h>
 #import <AudioToolbox/AudioToolbox.h>
-#import <fcntl.h>
 
 //#import <CoreFoundation/CoreFoundation.h>
-#import "pmsCFUtility.h"
-#import "pmsDACALUtility.h"
 #import "PADOperationOpenDevice.h"
 
 //#import <ILCrashReporter/ILCrashReporter.h>
-#import "JSServiceManager.h"
 //#import "JSTestService.h"
 
 //#import "DACDriverInstaller.h"
@@ -257,7 +251,7 @@ static AppController *shared;
 	DACALCount			boxCount = DACALDevicesGetCount();
 	DACALCount			count101 = DACALDevicesGetCountForModel( DACALDC101CFName );
 	DACALCount			count300 = DACALDevicesGetCountForModel( DACALDC300CFName );
-	DACALCount			count016 = DACALDevicesGetCountForModel( DACALDC016RWCFName );
+	DACALCount			count016 = DACALDevicesGetCountForModel( DACALDC016CFName );
 	
 	if( isSending == YES )
 	{

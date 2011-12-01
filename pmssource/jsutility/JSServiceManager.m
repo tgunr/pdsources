@@ -9,13 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "JSServiceManager.h"
 #import "JSServicesSetup.h"
-#import "pms.h"
+#import <PMSUtility/pms.h>
 
 @implementation JSServiceAbstract
 
 -(void)initSelf
 {
-	
+    PMLOG(1, @"WARNING: subclass should override this method!");
 }
 
 -(id)init
@@ -47,20 +47,18 @@
 	{ return nil; }
 
 -(id)initializeService
-{ 
-	
-	
+{
 	return self;
 }
 
 -(void)openService
 {
-	
+    PMLOG(1, @"WARNING: subclass should override this method!");
 }
 
 -(void)closeService
 {
-	
+    PMLOG(1, @"WARNING: subclass should override this method!");
 }
 
 @end	//	JSServiceAbstract

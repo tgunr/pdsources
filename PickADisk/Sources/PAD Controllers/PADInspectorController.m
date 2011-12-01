@@ -6,8 +6,6 @@
 //  Copyright 2009 Jack Small. All rights reserved.
 //
 
-#import "PADInspectorController.h"
-
 
 @implementation PADInspectorController
 
