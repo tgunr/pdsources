@@ -1,7 +1,7 @@
 // !$*UTF8*$!
 {
 	089C1669FE841209C02AAC07 /* Project object */ = {
-		activeBuildConfigurationName = Development;
+		activeBuildConfigurationName = Release;
 		activeTarget = 32D94FC30562CBF700B6AF17 /* DACALDriver */;
 		codeSenseManager = 7545AC9110F2CDC4001E73C5 /* Code sense */;
 		perUserDictionary = {
@@ -44,7 +44,7 @@
 				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
 				PBXFileTableDataSourceColumnWidthsKey = (
 					20,
-					669,
+					815,
 					60,
 					20,
 					48,
@@ -61,13 +61,17 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 329008115;
-			PBXWorkspaceStateSaveDate = 329008115;
+			PBXPerProjectTemplateStateSaveDate = 300331022;
+			PBXWorkspaceStateSaveDate = 300331022;
 		};
 		perUserProjectItems = {
-			753BFF1B139C495800938DB0 /* PBXTextBookmark */ = 753BFF1B139C495800938DB0 /* PBXTextBookmark */;
-			753BFF1C139C495800938DB0 /* PBXBookmark */ = 753BFF1C139C495800938DB0 /* PBXBookmark */;
-			753BFF1E139C4BE900938DB0 /* PlistBookmark */ = 753BFF1E139C4BE900938DB0 /* PlistBookmark */;
+			7563832B11E6AECF0069CA00 /* PBXTextBookmark */ = 7563832B11E6AECF0069CA00 /* PBXTextBookmark */;
+			7563832D11E6AECF0069CA00 /* PBXTextBookmark */ = 7563832D11E6AECF0069CA00 /* PBXTextBookmark */;
+			7563833B11E6B0090069CA00 /* PBXTextBookmark */ = 7563833B11E6B0090069CA00 /* PBXTextBookmark */;
+			7563833C11E6B0090069CA00 /* PBXTextBookmark */ = 7563833C11E6B0090069CA00 /* PBXTextBookmark */;
+			7563833D11E6B0090069CA00 /* PBXTextBookmark */ = 7563833D11E6B0090069CA00 /* PBXTextBookmark */;
+			7563833E11E6B0090069CA00 /* PlistBookmark */ = 7563833E11E6B0090069CA00 /* PlistBookmark */;
+			7563835911E6B1FA0069CA00 /* PlistBookmark */ = 7563835911E6B1FA0069CA00 /* PlistBookmark */;
 		};
 		sourceControlManager = 7545AC9010F2CDC4001E73C5 /* Source Control */;
 		userBuildSettings = {
@@ -76,44 +80,26 @@
 	32D94FC30562CBF700B6AF17 /* DACALDriver */ = {
 		activeExec = 0;
 	};
-	753BFEF8139C43B800938DB0 /* Info.plist */ = {
-		isa = PBXFileReference;
-		lastKnownFileType = file.bplist;
-		name = Info.plist;
-		path = /Volumes/leopard/Projects/PickADisk/Sources/DACALDriver/Info.plist;
-		sourceTree = "<absolute>";
+	7543D51E0E3BBDFE009A8AF3 /* VendorSpecificDriver.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1033, 1302}}";
-			sepNavSelRange = "{234, 0}";
-			sepNavVisRange = "{0, 2295}";
-			sepNavVisRect = "{{0, 0}, {1047, 1106}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1033, 899}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1396}";
 		};
 	};
-	753BFF1B139C495800938DB0 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 7565F1A5115C153900D0725D /* dacauthorize.c */;
-		name = "dacauthorize.c: 9";
-		rLen = 1;
-		rLoc = 243;
-		rType = 0;
-		vrLen = 2781;
-		vrLoc = 0;
+	7543D51F0E3BBDFE009A8AF3 /* VendorSpecificDriver.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1033, 899}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1261}";
+		};
 	};
-	753BFF1C139C495800938DB0 /* PBXBookmark */ = {
-		isa = PBXBookmark;
-		fRef = 753BFEF8139C43B800938DB0 /* Info.plist */;
-	};
-	753BFF1E139C4BE900938DB0 /* PlistBookmark */ = {
-		isa = PlistBookmark;
-		fRef = 7543D5960E3BD6A3009A8AF3 /* Info.plist */;
-		fallbackIsa = PBXBookmark;
-		isK = 0;
-		kPath = (
-			IOKitPersonalities,
-		);
-		name = /Volumes/leopard/Projects/PickADisk/Sources/DACALDriver/Info.plist;
-		rLen = 0;
-		rLoc = 9223372036854775807;
+	7543D5230E3BBE60009A8AF3 /* DACALSpecificDriver */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1033, 1072}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{352, 1444}";
+		};
 	};
 	7543D5960E3BD6A3009A8AF3 /* Info.plist */ = {
 		uiCtxt = {
@@ -134,17 +120,90 @@
 		isa = PBXCodeSenseManager;
 		indexTemplatePath = "";
 	};
-	7565F1A5115C153900D0725D /* dacauthorize.c */ = {
-		isa = PBXFileReference;
-		lastKnownFileType = sourcecode.c.c;
-		name = dacauthorize.c;
-		path = /Volumes/leopard/Projects/PMTB/branches/davec/PickADisk/DACALDriver/dacauthorize.c;
-		sourceTree = "<absolute>";
+	7563832B11E6AECF0069CA00 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 7543D5230E3BBE60009A8AF3 /* DACALSpecificDriver */;
+		name = "DACALSpecificDriver: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1444;
+		vrLoc = 352;
+	};
+	7563832D11E6AECF0069CA00 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 75C815000E4DFCE6003D8293 /* postinstall.sh */;
+		name = "postinstall.sh: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 292;
+		vrLoc = 0;
+	};
+	7563833B11E6B0090069CA00 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 75C815240E4E32E4003D8293 /* preinstall.sh */;
+		name = "preinstall.sh: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 361;
+		vrLoc = 0;
+	};
+	7563833C11E6B0090069CA00 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 7543D51E0E3BBDFE009A8AF3 /* VendorSpecificDriver.h */;
+		name = "VendorSpecificDriver.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1396;
+		vrLoc = 0;
+	};
+	7563833D11E6B0090069CA00 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 7543D51F0E3BBDFE009A8AF3 /* VendorSpecificDriver.cpp */;
+		name = "VendorSpecificDriver.cpp: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1261;
+		vrLoc = 0;
+	};
+	7563833E11E6B0090069CA00 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 7543D5960E3BD6A3009A8AF3 /* Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = /Users/davec/Projects/PickADisk/Sources/DACALDriver/Info.plist;
+		rLen = 0;
+		rLoc = 9223372036854775807;
+	};
+	7563835911E6B1FA0069CA00 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 7543D5960E3BD6A3009A8AF3 /* Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = /Users/davec/Projects/PickADisk/Sources/DACALDriver/Info.plist;
+		rLen = 0;
+		rLoc = 9223372036854775807;
+	};
+	75C815000E4DFCE6003D8293 /* postinstall.sh */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1033, 1624}}";
-			sepNavSelRange = "{243, 1}";
-			sepNavVisRange = "{0, 2781}";
-			sepNavWindowFrame = "{{15, 432}, {852, 1141}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1033, 902}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 292}";
+		};
+	};
+	75C815240E4E32E4003D8293 /* preinstall.sh */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1033, 899}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 361}";
 		};
 	};
 }
