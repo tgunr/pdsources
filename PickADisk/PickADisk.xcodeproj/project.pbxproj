@@ -108,8 +108,8 @@
 		75339121101B99470007F931 /* daclconstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 7533911F101B99470007F931 /* daclconstants.h */; };
 		75339122101B99470007F931 /* daclconstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 75339120101B99470007F931 /* daclconstants.m */; };
 		7565EFE813AAC73A0029990C /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7565EFE713AAC73A0029990C /* IOKit.framework */; };
-		7565F01A13AB0F480029990C /* PMSUtility.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7565F01913AB0F480029990C /* PMSUtility.framework */; };
-		75A7F3CA13C8BB6E00B2ABC2 /* PMSUtility.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7565EFD313AAC4360029990C /* PMSUtility.framework */; };
+		7565F01A13AB0F480029990C /* PMSUtility.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7565F01913AB0F480029990C /* PMSUtility.framework */; };
+		759DD1A513B02A5E004615F4 /* PMSUtility.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 759DD0C113B02641004615F4 /* PMSUtility.framework */; };
 		75B047BE13A2E0C20012924D /* pmsDACALUtility.h in Headers */ = {isa = PBXBuildFile; fileRef = 75B047BC13A2E0C20012924D /* pmsDACALUtility.h */; };
 		75B047BF13A2E0C20012924D /* pmsDACALUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 75B047BD13A2E0C20012924D /* pmsDACALUtility.m */; };
 		75B2FCB30EDDA9A1007356FD /* BlackPlus1.png in Resources */ = {isa = PBXBuildFile; fileRef = 75B2FCB20EDDA9A1007356FD /* BlackPlus1.png */; };
@@ -148,11 +148,18 @@
 			remoteGlobalIDString = 32D94FC30562CBF700B6AF17;
 			remoteInfo = DACALDriver;
 		};
-		7565EFD213AAC4360029990C /* PBXContainerItemProxy */ = {
+		759DD0C013B02641004615F4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7565EFCB13AAC4360029990C /* pmsutility.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 759D16C613A879A500E671A1;
+			remoteInfo = PMSUtility;
+		};
+		759DD19F13B029D9004615F4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7565EFCB13AAC4360029990C /* pmsutility.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 759D16C513A879A500E671A1;
 			remoteInfo = PMSUtility;
 		};
 		75A5B3DD10F72A20001A674A /* PBXContainerItemProxy */ = {
@@ -210,7 +217,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				75A7F3CA13C8BB6E00B2ABC2 /* PMSUtility.framework in CopyFiles */,
+				7565F01A13AB0F480029990C /* PMSUtility.framework in CopyFiles */,
 				5CF4D98E0E68E9300091A77F /* ILCrashReporter.framework in CopyFiles */,
 				5C1ECE9B0E41B6A10091B446 /* Sparkle.framework in CopyFiles */,
 			);
@@ -372,9 +379,9 @@
 		751C4E2C0E9400250027BC1C /* AquaticPrime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AquaticPrime.m; path = Sources/License/AquaticPrime.m; sourceTree = "<group>"; };
 		7533911F101B99470007F931 /* daclconstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = daclconstants.h; sourceTree = "<group>"; };
 		75339120101B99470007F931 /* daclconstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = daclconstants.m; sourceTree = "<group>"; };
-		7565EFCB13AAC4360029990C /* pmsutility.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = pmsutility.xcodeproj; path = ../../../../Sources/GIT/pmsutility/pmsutility.xcodeproj; sourceTree = "<group>"; };
+		7565EFCB13AAC4360029990C /* pmsutility.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = pmsutility.xcodeproj; path = ../../../pmsutility/pmsutility.xcodeproj; sourceTree = "<group>"; };
 		7565EFE713AAC73A0029990C /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
-		7565F01913AB0F480029990C /* PMSUtility.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = PMSUtility.framework; path = /Volumes/leopard/Sources/GIT/pmsutility/build/Release/PMSUtility.framework; sourceTree = "<absolute>"; };
+		7565F01913AB0F480029990C /* PMSUtility.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = PMSUtility.framework; path = ../../../pmsutility/build/Debug/PMSUtility.framework; sourceTree = SOURCE_ROOT; };
 		75A5B3D310F72A20001A674A /* CLI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CLI.xcodeproj; path = ../CLI/CLI.xcodeproj; sourceTree = SOURCE_ROOT; };
 		75B047BC13A2E0C20012924D /* pmsDACALUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pmsDACALUtility.h; sourceTree = "<group>"; };
 		75B047BD13A2E0C20012924D /* pmsDACALUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = pmsDACALUtility.m; sourceTree = "<group>"; };
@@ -455,7 +462,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7565F01A13AB0F480029990C /* PMSUtility.framework in Frameworks */,
+				759DD1A513B02A5E004615F4 /* PMSUtility.framework in Frameworks */,
 				7565EFE813AAC73A0029990C /* IOKit.framework in Frameworks */,
 				735CC2BD049A7E2A00C919A3 /* Cocoa.framework in Frameworks */,
 				5CA07A710E2E274900F71FA7 /* Carbon.framework in Frameworks */,
@@ -863,10 +870,10 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		7565EFCC13AAC4360029990C /* Products */ = {
+		759DD0BD13B02641004615F4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7565EFD313AAC4360029990C /* PMSUtility.framework */,
+				759DD0C113B02641004615F4 /* PMSUtility.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1143,6 +1150,7 @@
 			);
 			dependencies = (
 				752C58781186598300196BB0 /* PBXTargetDependency */,
+				759DD1A013B029D9004615F4 /* PBXTargetDependency */,
 			);
 			name = PickADisk;
 			productInstallPath = "$(LOCAL_DEVELOPER_DIR)/Demos";
@@ -1174,7 +1182,7 @@
 					ProjectRef = 7504AFFC0FB4724300FFAA84 /* DACALDriver.xcodeproj */;
 				},
 				{
-					ProductGroup = 7565EFCC13AAC4360029990C /* Products */;
+					ProductGroup = 759DD0BD13B02641004615F4 /* Products */;
 					ProjectRef = 7565EFCB13AAC4360029990C /* pmsutility.xcodeproj */;
 				},
 			);
@@ -1193,11 +1201,11 @@
 			remoteRef = 7504B0030FB4724300FFAA84 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		7565EFD313AAC4360029990C /* PMSUtility.framework */ = {
+		759DD0C113B02641004615F4 /* PMSUtility.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = PMSUtility.framework;
-			remoteRef = 7565EFD213AAC4360029990C /* PBXContainerItemProxy */;
+			remoteRef = 759DD0C013B02641004615F4 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		75A5B3DE10F72A20001A674A /* dacal */ = {
@@ -1413,6 +1421,11 @@
 			name = DACALDriver;
 			targetProxy = 752C58771186598300196BB0 /* PBXContainerItemProxy */;
 		};
+		759DD1A013B029D9004615F4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PMSUtility;
+			targetProxy = 759DD19F13B029D9004615F4 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -1461,6 +1474,7 @@
 				MACOSX_DEPLOYMENT_TARGET = "";
 				PRODUCT_NAME = PickADisk;
 				SDKROOT = "";
+				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/../CLI";
 				VALID_ARCHS = i386;
 			};
 			name = "Release Test";
@@ -1511,6 +1525,7 @@
 				MACOSX_DEPLOYMENT_TARGET = "";
 				PRODUCT_NAME = PickADisk;
 				SDKROOT = "";
+				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/../CLI";
 				VALID_ARCHS = i386;
 			};
 			name = DebugPPC;
@@ -1564,6 +1579,7 @@
 				PRODUCT_NAME = PickADisk;
 				SDKROOT = "";
 				SYMROOT = /Volumes/RemoteDebug/PickADisk/build;
+				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/../CLI";
 				VALID_ARCHS = i386;
 			};
 			name = DebugRemote;
@@ -1622,6 +1638,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = PickADisk;
 				SDKROOT = "";
+				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/../CLI";
 				VALID_ARCHS = i386;
 			};
 			name = "Development Fresh Prefs";
@@ -1662,9 +1679,9 @@
 				ARCHS = "$(NATIVE_ARCH)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/Frameworks",
 					"\"$(SRCROOT)\"",
-					"\"$(SRCROOT)/../../../../Sources/GIT/pmsutility/build/Release\"",
+					"$(SRCROOT)/Frameworks",
+					/Users/davec/Desktop/pmsutility/build/Debug,
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(DEVELOPER_DIR)/SDKs/MacOSX10.5.sdk/System/Library/Frameworks\"";
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../DiscID/build/Release\"";
@@ -1682,6 +1699,7 @@
 					"-seg1addr",
 					0x10000000,
 				);
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/../CLI/** \"${PROJECT_DIR}/../CLI/** \"${PROJECT_DIR}/../CLI/** \"${PROJECT_DIR}/../CLI/** \"${PROJECT_DIR}/../../../pmsutility/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Development;
@@ -1734,6 +1752,7 @@
 				PRODUCT_NAME = PickADisk;
 				SDKROOT = "";
 				SYMROOT = /Users/Shared/PickADisk;
+				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/../CLI";
 				VALID_ARCHS = i386;
 			};
 			name = Development;
@@ -1757,6 +1776,7 @@
 				MACOSX_DEPLOYMENT_TARGET = "";
 				PRODUCT_NAME = PickADisk;
 				SDKROOT = "";
+				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/../CLI";
 				VALID_ARCHS = i386;
 			};
 			name = Release;
