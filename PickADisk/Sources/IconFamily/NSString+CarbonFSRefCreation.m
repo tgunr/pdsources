@@ -19,11 +19,12 @@
     NSFileManager* fileManager = [NSFileManager defaultManager];
     CFURLRef urlRef;
     Boolean gotFSRef;
+    NSError *err;
     
     // Check whether the file exists already.  If not, create an empty file if requested.
     if (![fileManager fileExistsAtPath:self]) {
         if (createFile) {
-            if (![@"" writeToFile:self atomically:YES]) {
+            if (![@"" writeToFile:self atomically:YES encoding: NSUTF8StringEncoding error:&err] ) {
                 return NO;
             }
         } else {

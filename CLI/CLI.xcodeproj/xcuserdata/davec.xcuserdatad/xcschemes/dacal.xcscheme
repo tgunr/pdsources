@@ -13,9 +13,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "751FB9FB0E39046200D64628"
-               BuildableName = "dacal"
-               BlueprintName = "dacal"
+               BlueprintIdentifier = "7570BE5513CEA721001AF81B"
+               BuildableName = "DACAL.framework"
+               BlueprintName = "DACAL"
                ReferencedContainer = "container:CLI.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,45 +32,17 @@
    <LaunchAction
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.GDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.GDB"
-      displayScaleIsEnabled = "NO"
-      displayScale = "1.00"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Debug">
-      <BuildableProductRunnable>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "751FB9FB0E39046200D64628"
-            BuildableName = "dacal"
-            BlueprintName = "dacal"
-            ReferencedContainer = "container:CLI.xcodeproj">
-         </BuildableReference>
-      </BuildableProductRunnable>
-      <CommandLineArguments>
-         <CommandLineArgument
-            argument = "-h"
-            isEnabled = "YES">
-         </CommandLineArgument>
-      </CommandLineArguments>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
-      displayScaleIsEnabled = "NO"
-      displayScale = "1.00"
       shouldUseLaunchSchemeArgsEnv = "YES"
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Release">
-      <BuildableProductRunnable>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "751FB9FB0E39046200D64628"
-            BuildableName = "dacal"
-            BlueprintName = "dacal"
-            ReferencedContainer = "container:CLI.xcodeproj">
-         </BuildableReference>
-      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

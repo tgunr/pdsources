@@ -1,5 +1,7 @@
 davec.mode1v3
 davec.pbxuser
-
-CLI/build/
-DACALDriver/build/
+*/build/
+PickADisk/PickADisk.xcodeproj/jaxs.mode1v3
+PickADisk/PickADisk.xcodeproj/jaxs.pbxuser
+PickADisk/PickADisk.xcodeproj/xcuserdata
+.idea

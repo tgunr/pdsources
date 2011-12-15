@@ -6,8 +6,6 @@
 //  Copyright 2008 Jack Small. All rights reserved.
 //
 
-#import "PADFlavorImageView.h"
-
 
 @implementation PADSimpleImageView
 

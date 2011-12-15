@@ -8,8 +8,8 @@
  */
 
 #import "dacallib.h"
-#import "pmsDACALUtility.h"
-#import <PMSUtility/pms.h>
+#import "pad.h"
+#import <DACAL/pmsDACALUtility.h>
 
 #define __DCDEBUG												// define this in your pch to go verbose debug
 
@@ -68,9 +68,6 @@ CFStringRef			kDACALCarouselDocumentXAttrBookmarks	=CFSTR("com.polymicrosystems.
 
 CFStringRef			kDACALCarouselNoticeDeviceOpen			= CFSTR("Open Device");
 CFStringRef			kDACALCarouselNoticeDeviceClose			= CFSTR("Close Device");
-
-#define DACAL_CAROUSEL_FOLDERNAME_CFSTRING	CFSTR("PickADisk")
-#define DACAL_CAROUSEL_FOLDERNAME_PSTRING	"\pPickADisk"		// used to register the folder location with the OS for use in FSFindFolder
 
 const DACALDeviceRef	kDACALDefaultDevice = 0;
 const DACALDeviceRef	kDACALIllegalDevice = DACAL_MAXDEVICE_COUNT+1;
@@ -548,28 +545,34 @@ CFStringRef		CFStringCreateFromDacalPipe( CFAllocatorRef inAllocator, CFStringRe
 	CFStringRef		outCFText = NULL;
 	CFStringRef		theCommand = CFSTR("carousel");
 	CFStringRef		errUnknown = CFSTR("carousel.sh:");
-	CFURLRef		commandURL = CFBundleCopyResourceURL( CFBundleGetMainBundle(), theCommand, CFSTR("sh"), NULL );
 	CFStringRef		doCFCommand;
 	char*			doCommand = NULL;
 	char*			utf8Name = NULL;
+    UInt8*          urlBuff;
 	FILE*			pipe;
 	int				pipeSize = 8192;
 	
 	
-	if( inAllocator == NULL ) inAllocator = gDACALDefaultCFAllocator;
+	if( inAllocator == NULL ) 
+        inAllocator = gDACALDefaultCFAllocator;
 	
-	doCFCommand = CFStringCreateWithFormat(	inAllocator, NULL, CFSTR("\"%@\" %@"), commandURL, inCommandArgs );
-	if( doCFCommand == NULL ) goto BAIL;
+	CFURLRef commandURL = CFBundleCopyResourceURL( CFBundleGetMainBundle(), theCommand, CFSTR("sh"), NULL );
+    CFIndex urlBuffSize = CFStringGetLength(CFURLGetString(commandURL));
+    urlBuff = (UInt8 *)calloc(1,urlBuffSize);
+    Boolean result = CFURLGetFileSystemRepresentation(commandURL, TRUE, urlBuff, urlBuffSize);
 
-//	NSLog( (NSString*)doCFCommand );
+	doCFCommand = CFStringCreateWithFormat(	inAllocator, NULL, CFSTR("\"%s\" %@"), urlBuff, inCommandArgs );
+	if( doCFCommand == NULL ) 
+        goto BAIL;
+	PMLOG(2,@"doCFCommand: %@", (NSString*)doCFCommand);
 
 	doCommand = CFStringCreateCString( doCFCommand, kCFStringEncodingUTF8 );	
-	if( doCommand == NULL ) goto BAIL;
+	if( doCommand == NULL ) 
+        goto BAIL;
 
-//	printf("Carousel command: %s", doCommand);
+	PMLOG(2, @"Carousel command: %s", doCommand);
 
 	utf8Name = (char*)calloc(1, pipeSize);
-	if( doCommand == NULL ) goto BAIL;
 	
 	pipe = popen( doCommand, "r" );
 	if ( pipe ) {
@@ -668,7 +671,7 @@ IOReturn		dacalDoRequest(DACALIOUSBDeviceInterface** indeviceIntf, dacalCmd cmd,
 	dacalString	uniBuf;
 	char	cmdStr[128];
 	
-	if( gVerbose ) {
+	if( gDebugLevel > 1 ) {
 		switch (cmd) {
 			case undocManufacturer:
 				strcpy(cmdStr, "undocManufacturer");
@@ -1476,7 +1479,7 @@ DACALSlotSetTitle( DACALDeviceRef deviceID, DACALSlotNum slotNum, CFStringRef sl
 										   boxUUID, slotNum, slotTitle );
 	if( doCFCommand == NULL ) goto BAIL;
 	
-	if( gVerbose )
+	if( gDebugLevel > 1 )
 	{
 		CFShow(CFSTR("Driver call DACALSlotSetTitle:"));
 		CFShow( doCFCommand );
@@ -2585,18 +2588,18 @@ DACALClientCreate( CFAllocatorRef useAllocator, CFStringRef clientID, void* useD
 			if( ffErr ) fprintf( stderr,"No Local Library?");
 			
 			CFURLRef	sysURL = CFURLCreateFromFSRef( useAllocator, &topFolder );
-			CFURLRef	padURL = CFURLCreateCopyAppendingPathComponent( useAllocator, sysURL, DACAL_CAROUSEL_FOLDERNAME_CFSTRING, TRUE );
+			CFURLRef	padURL = CFURLCreateCopyAppendingPathComponent( useAllocator, sysURL, PAD_FOLDERNAME_CFSTRING, TRUE );
 			FSRef		padFS;
 			FSCatalogInfo			permCatInfo;
 			FSPermissionInfo		*permInfo = (FSPermissionInfo*)&(permCatInfo.permissions);
 			
 			Boolean		foundPAD = CFURLGetFSRef( padURL, &padFS );
-			CFIndex		theUniCount = CFStringGetLength( DACAL_CAROUSEL_FOLDERNAME_CFSTRING );
+			CFIndex		theUniCount = CFStringGetLength( PAD_FOLDERNAME_CFSTRING );
 			UniChar		theUniName[1024];
 			
 			if( foundPAD == FALSE ) {
 				permInfo->mode = 0755;						// drwxr-xr-x
-				CFStringGetCharacters( DACAL_CAROUSEL_FOLDERNAME_CFSTRING, CFRangeMake(0, theUniCount), theUniName );
+				CFStringGetCharacters( PAD_FOLDERNAME_CFSTRING, CFRangeMake(0, theUniCount), theUniName );
 				
 				ffErr = FSCreateDirectoryUnicode( &topFolder, theUniCount, (const UniChar*)theUniName, kFSCatInfoPermissions, &permCatInfo, &padFS, NULL, NULL );
 				if( ffErr ) fprintf( stderr, "FSCreateDirectoryUnicode: %i\n", ffErr );
@@ -2609,7 +2612,7 @@ DACALClientCreate( CFAllocatorRef useAllocator, CFStringRef clientID, void* useD
 		// setup a system folder descriptor to make finding the Carousel folder easy
 		AddFolderDescriptor( kDACALCarouselsFolderType, kFolderInLocalOrRemoteUserFolder, 
 							kRelativeFolder, kDomainLibraryFolderType, 0, 0, 
-							DACAL_CAROUSEL_FOLDERNAME_PSTRING, TRUE );
+							PAD_FOLDERNAME_PSTRING, TRUE );
 		
 		ffErr = FSFindFolder( kOnAppropriateDisk, kDACALCarouselsFolderType, TRUE, &topFolder );
 	}

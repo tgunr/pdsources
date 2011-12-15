@@ -21,6 +21,7 @@
 																				@"DACVolumeService", \
 																				@"DACALDeviceService", \
 																				@"PADSearchService", \
+																				@"PADFolderService", \
 																				nil]
 
 #endif	JSSMIS_SETUP

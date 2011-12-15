@@ -154,8 +154,6 @@ extern CFStringRef DACALDC101CFName;
 extern CFStringRef DACALDC300CFName;
 extern CFStringRef DACALDC016CFName;
 
-extern Boolean gVerbose;
-
 extern CFStringRef kDACALPreferencesID;
 extern CFStringRef kDACALCarouselDocumentExtension;
 extern CFStringRef kDACALCarouselDocumentDotExtension;

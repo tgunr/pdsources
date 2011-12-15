@@ -21,6 +21,7 @@
     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
+#import <err.h>
 #import "IconFamily.h"
 #import "NSString+CarbonFSRefCreation.h"
 
@@ -672,14 +673,17 @@ enum {
     Handle hExistingCustomIcon;
     Handle hIconFamilyCopy;
 	NSString *parentDirectory;
-	
+	NSError *err;
+            
+    NSFileManager *fm = [NSFileManager defaultManager];
     // Before we do anything, get the original modification time for the target file.
-    NSDate* modificationDate = [[[NSFileManager defaultManager] fileAttributesAtPath:path traverseLink:NO] objectForKey:NSFileModificationDate];
+    NSDictionary* fileDict = [fm attributesOfItemAtPath:path error:&err];
+    NSDate* modificationDate = [fileDict objectForKey:NSFileModificationDate];
 
 	if ([path isAbsolutePath])
 		parentDirectory = [path stringByDeletingLastPathComponent];
     else
-        parentDirectory = [[[NSFileManager defaultManager] currentDirectoryPath] stringByAppendingPathComponent:[path stringByDeletingLastPathComponent]];
+        parentDirectory = [[fm currentDirectoryPath] stringByAppendingPathComponent:[path stringByDeletingLastPathComponent]];
 	
     // Get an FSRef for the target file's parent directory that we can use in
     // the FSCreateResFile() and FNNotify() calls below.
@@ -789,7 +793,7 @@ enum {
 	
     // Now set the modification time back to when the file was actually last modified.
     NSDictionary* attributes = [NSDictionary dictionaryWithObjectsAndKeys:modificationDate, NSFileModificationDate, nil];
-    [[NSFileManager defaultManager] changeFileAttributes:attributes atPath:path];
+    [fm setAttributes:attributes ofItemAtPath:path error:&err];
 
     // Notify the system that the directory containing the file has changed, to
     // give Finder the chance to find out about the file's new custom icon.
@@ -878,6 +882,7 @@ enum {
     struct FSCatalogInfo catInfo;
     Handle hExistingCustomIcon;
     Handle hIconFamilyCopy;
+    NSError *err;
 
     // Confirm that "path" exists and specifies a directory.
     exists = [fm fileExistsAtPath:path isDirectory:&isDir];
@@ -892,7 +897,7 @@ enum {
     iconrPath = [path stringByAppendingPathComponent:@"Icon\r"];
     if( [fm fileExistsAtPath:iconrPath] )
     {
-        if( ![fm removeFileAtPath:iconrPath handler:nil] )
+        if( ![fm removeItemAtPath:iconrPath error:&err] )
             return NO;
     }
     if( ![iconrPath getFSRef:&iconrFSRef createFileIfNecessary:YES] )
@@ -1078,10 +1083,10 @@ enum {
     }
     if (size.width >= size.height) {
         newSize.width  = iconWidth;
-        newSize.height = floor( (float) iconWidth * size.height / size.width + 0.5 );
+        newSize.height = (CGFloat) floor( (float) iconWidth * size.height / (float) size.width + 0.5f );
     } else {
         newSize.height = iconWidth;
-        newSize.width  = floor( (float) iconWidth * size.width / size.height + 0.5 );
+        newSize.width  = (CGFloat) floor( (float) iconWidth * size.width / (float) size.height + 0.5f );
     }
     [workingImage setSize:newSize];
 
@@ -1207,7 +1212,7 @@ enum {
 	}
 	else
 	{
-		NSLog(@"get32BitDataFromBitmapImageRep:requiredPixelSize: returning NULL due to samplesPerPixel == %d, bitsPerPixel == %", samplesPerPixel, bitsPerPixel);
+		NSLog(@"get32BitDataFromBitmapImageRep:requiredPixelSize: returning NULL due to samplesPerPixel == %d, bitsPerPixel == %d", samplesPerPixel, bitsPerPixel);
 		return NULL;
 	}
 
@@ -1297,7 +1302,7 @@ enum {
 	}
 	else
 	{
-		NSLog(@"get8BitDataFromBitmapImageRep:requiredPixelSize: returning NULL due to samplesPerPixel == %d, bitsPerPixel == %", samplesPerPixel, bitsPerPixel);
+		NSLog(@"get8BitDataFromBitmapImageRep:requiredPixelSize: returning NULL due to samplesPerPixel == %d, bitsPerPixel == %d", samplesPerPixel, bitsPerPixel);
 		return NULL;
 	}
 	
@@ -1373,7 +1378,7 @@ enum {
 	}
 	else
 	{
-		NSLog(@"get8BitMaskFromBitmapImageRep:requiredPixelSize: returning NULL due to samplesPerPixel == %d, bitsPerPixel == %", samplesPerPixel, bitsPerPixel);
+		NSLog(@"get8BitMaskFromBitmapImageRep:requiredPixelSize: returning NULL due to samplesPerPixel == %d, bitsPerPixel == %d", samplesPerPixel, bitsPerPixel);
 		return NULL;
 	}
 
