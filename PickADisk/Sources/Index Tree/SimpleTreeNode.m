@@ -43,6 +43,7 @@
 */
 
 #import "PADIndexOperation.h"
+#import "PADSearchRequest.h"
 #import <PMSUtility/NSDate_Extensions.h>
 
 
@@ -528,7 +529,7 @@
 	NSString*	ourName = [self name];
 	NSRange		foundRange;
 	PADSearchRelevance	rank = 0.0;
-	NSStringCompareOptions	findOptions = NSCaseInsensitiveSearch || NSNumericSearch || NSDiacriticInsensitiveSearch || NSWidthInsensitiveSearch;
+	NSStringCompareOptions	findOptions = NSCaseInsensitiveSearch | NSNumericSearch | NSDiacriticInsensitiveSearch | NSWidthInsensitiveSearch;
 	NSNumber*	optionOption = nil;
 	
 	if( (options) && (optionOption = [options objectForKey:@"Options"]) )
@@ -592,7 +593,8 @@
 		CFTimeInterval	dayCount = [[options objectForKey:@"Days"] doubleValue];
 		CFTimeInterval	daySeconds = dayCount * 86400;
 		
-		if( other == nil ) other = [NSDate date];
+		if( other == nil )
+            other = [NSDate date];
 		if( ([other isKindOfClass:[NSString class]] ) && ([other compare:@"Yesterday"] == NSOrderedSame) )
 			other = [NSDate yesterday];
 		
@@ -604,8 +606,9 @@
 			
 			//timeBetween = CFDateGetTimeIntervalSinceDate( ourDate, otherDate );
 			if( CFAbsoluteTimeBetweenTimes( limitTime, distantTime, anchorTime ) )
-				rank = (anchorTime-distantTime)/daySeconds;
-			if( rank < 0.0 ) rank = -rank;
+				rank = (PADSearchRelevance) ((anchorTime-distantTime)/daySeconds);
+			if( rank < 0.0 )
+                rank = -rank;
 		}
 	}	
 	
@@ -684,8 +687,9 @@
 {
 	NSString*	ourComments = [self keyComments];
 	PADSearchRelevance	rank = 0.0;
-	NSStringCompareOptions	findOptions = NSCaseInsensitiveSearch || NSNumericSearch || NSDiacriticInsensitiveSearch || NSWidthInsensitiveSearch;
-	NSNumber*	optionOption = nil;
+	NSStringCompareOptions	findOptions;
+    findOptions = (NSStringCompareOptions) (NSCaseInsensitiveSearch || NSNumericSearch || NSDiacriticInsensitiveSearch || NSWidthInsensitiveSearch);
+    NSNumber*	optionOption = nil;
 	
 	if( (options) && (optionOption = [options objectForKey:@"Options"]) )
 		findOptions = [optionOption intValue];

@@ -1114,10 +1114,7 @@
 			buildSettings = {
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SRCROOT)/../../../PMSUtility/build/Release",
-					"\"/Users/davec/Library/Developer/Xcode/DerivedData/PickADisk-agbgyoaztkwcghebpbxbposnarjv/Build/Products/Release\"",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../../../PMSUtility/build/Release";
 				FRAMEWORK_VERSION = A;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1161,10 +1158,7 @@
 			buildSettings = {
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SRCROOT)/../../../PMSUtility/build/Release",
-					"\"/Users/davec/Library/Developer/Xcode/DerivedData/PickADisk-agbgyoaztkwcghebpbxbposnarjv/Build/Products/Release\"",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../../../PMSUtility/build/Release";
 				FRAMEWORK_VERSION = A;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
