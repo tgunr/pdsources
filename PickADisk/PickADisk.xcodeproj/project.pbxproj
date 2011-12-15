@@ -101,13 +101,11 @@
 		7504AFDD0FB3AEBB00FFAA84 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 7504AFDC0FB3AEBB00FFAA84 /* Credits.rtf */; };
 		751C4E2D0E9400250027BC1C /* AquaticPrime.m in Sources */ = {isa = PBXBuildFile; fileRef = 751C4E2C0E9400250027BC1C /* AquaticPrime.m */; };
 		7565EFE813AAC73A0029990C /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7565EFE713AAC73A0029990C /* IOKit.framework */; };
-		75730AEC148700D400746100 /* DACAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75730AD61486FDB500746100 /* DACAL.framework */; };
-		75730AEE1487025E00746100 /* DACAL.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 75730AD61486FDB500746100 /* DACAL.framework */; };
-		75730B16148709D600746100 /* PMSUtility.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75730B0F148709BA00746100 /* PMSUtility.framework */; };
-		75730B17148709E300746100 /* PMSUtility.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 75730B0F148709BA00746100 /* PMSUtility.framework */; };
 		75B2FCB30EDDA9A1007356FD /* BlackPlus1.png in Resources */ = {isa = PBXBuildFile; fileRef = 75B2FCB20EDDA9A1007356FD /* BlackPlus1.png */; };
 		75B2FCB50EDDA9AD007356FD /* BlackSearch1.png in Resources */ = {isa = PBXBuildFile; fileRef = 75B2FCB40EDDA9AD007356FD /* BlackSearch1.png */; };
-		75DCD2531486F1B1005DC511 /* DACALDriver.kext in CopyFiles */ = {isa = PBXBuildFile; fileRef = 75DCD2521486F1B1005DC511 /* DACALDriver.kext */; };
+		75CD348F1499433900A3F0E9 /* DACAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75CD348C1499431700A3F0E9 /* DACAL.framework */; };
+		75CD34921499434700A3F0E9 /* PMSUtility.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7573CA3C14976B0E00CA5B2A /* PMSUtility.framework */; };
+		75CD34BB149A132600A3F0E9 /* DACALDriver.kext in CopyFiles */ = {isa = PBXBuildFile; fileRef = 75CD34B8149A12EE00A3F0E9 /* DACALDriver.kext */; };
 		75E0D61C1073EF620012897D /* Multi-Folder.icns in Resources */ = {isa = PBXBuildFile; fileRef = 75E0D61B1073EF620012897D /* Multi-Folder.icns */; };
 		75E0D78E1074331A0012897D /* PickADiskDoc.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 75E0D78D1074331A0012897D /* PickADiskDoc.pdf */; };
 		75E0D91C10767E050012897D /* PAD_1.0.3_50805.html in Resources */ = {isa = PBXBuildFile; fileRef = 75E0D91B10767E040012897D /* PAD_1.0.3_50805.html */; };
@@ -128,96 +126,96 @@
 /* End PBXBuildRule section */
 
 /* Begin PBXContainerItemProxy section */
-		75730ACB1486FDB500746100 /* PBXContainerItemProxy */ = {
+		7573CA3B14976B0E00CA5B2A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 752D8F0E1486FCC600F31A6E /* CLI.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 751FB9FC0E39046200D64628;
-			remoteInfo = dacal;
-		};
-		75730ACD1486FDB500746100 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 752D8F0E1486FCC600F31A6E /* CLI.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 751FBA060E3904AB00D64628;
-			remoteInfo = dacallib;
-		};
-		75730ACF1486FDB500746100 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 752D8F0E1486FCC600F31A6E /* CLI.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 751FBA0E0E39054600D64628;
-			remoteInfo = fabricate;
-		};
-		75730AD11486FDB500746100 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 752D8F0E1486FCC600F31A6E /* CLI.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 751FBA170E39057100D64628;
-			remoteInfo = find;
-		};
-		75730AD31486FDB500746100 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 752D8F0E1486FCC600F31A6E /* CLI.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 751FBA430E39063900D64628;
-			remoteInfo = xattr;
-		};
-		75730AD51486FDB500746100 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 752D8F0E1486FCC600F31A6E /* CLI.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 7570BE5613CEA721001AF81B;
-			remoteInfo = DACAL;
-		};
-		75730ADD1486FDB600746100 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 752D8F081486FCB900F31A6E /* DACALDriver.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 32D94FD00562CBF700B6AF17;
-			remoteInfo = DACALDriver;
-		};
-		75730AE8148700BC00746100 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 752D8F0E1486FCC600F31A6E /* CLI.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 7570BE5513CEA721001AF81B;
-			remoteInfo = DACAL;
-		};
-		75730AEA148700BC00746100 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 752D8F081486FCB900F31A6E /* DACALDriver.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 32D94FC30562CBF700B6AF17;
-			remoteInfo = DACALDriver;
-		};
-		75730B0E148709BA00746100 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 75730B08148709B900746100 /* PMSUtility.xcodeproj */;
+			containerPortal = 7573CA3514976B0E00CA5B2A /* PMSUtility.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 759D16C613A879A500E671A1;
 			remoteInfo = PMSUtility;
 		};
-		75730B10148709BA00746100 /* PBXContainerItemProxy */ = {
+		7573CA3D14976B0E00CA5B2A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 75730B08148709B900746100 /* PMSUtility.xcodeproj */;
+			containerPortal = 7573CA3514976B0E00CA5B2A /* PMSUtility.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 75FFF67313DDF0D6003C7786;
 			remoteInfo = PMUtilityIOS;
 		};
-		75730B12148709BA00746100 /* PBXContainerItemProxy */ = {
+		7573CA3F14976B0E00CA5B2A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 75730B08148709B900746100 /* PMSUtility.xcodeproj */;
+			containerPortal = 7573CA3514976B0E00CA5B2A /* PMSUtility.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 75FFF68113DDF0D7003C7786;
 			remoteInfo = PMUtilityIOSTests;
 		};
-		75730B14148709CB00746100 /* PBXContainerItemProxy */ = {
+		75CD34811499431700A3F0E9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 75730B08148709B900746100 /* PMSUtility.xcodeproj */;
+			containerPortal = 75CD34731499431600A3F0E9 /* CLI.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 751FB9FC0E39046200D64628;
+			remoteInfo = dacal;
+		};
+		75CD34831499431700A3F0E9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 75CD34731499431600A3F0E9 /* CLI.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 751FBA060E3904AB00D64628;
+			remoteInfo = dacallib;
+		};
+		75CD34851499431700A3F0E9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 75CD34731499431600A3F0E9 /* CLI.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 751FBA0E0E39054600D64628;
+			remoteInfo = fabricate;
+		};
+		75CD34871499431700A3F0E9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 75CD34731499431600A3F0E9 /* CLI.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 751FBA170E39057100D64628;
+			remoteInfo = find;
+		};
+		75CD34891499431700A3F0E9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 75CD34731499431600A3F0E9 /* CLI.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 751FBA430E39063900D64628;
+			remoteInfo = xattr;
+		};
+		75CD348B1499431700A3F0E9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 75CD34731499431600A3F0E9 /* CLI.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7570BE5613CEA721001AF81B;
+			remoteInfo = DACAL;
+		};
+		75CD348D1499432E00A3F0E9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 75CD34731499431600A3F0E9 /* CLI.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 7570BE5513CEA721001AF81B;
+			remoteInfo = DACAL;
+		};
+		75CD34901499434000A3F0E9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7573CA3514976B0E00CA5B2A /* PMSUtility.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = 759D16C513A879A500E671A1;
 			remoteInfo = PMSUtility;
+		};
+		75CD34B7149A12EE00A3F0E9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 75CD34B0149A12ED00A3F0E9 /* DACALDriver.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 32D94FD00562CBF700B6AF17;
+			remoteInfo = DACALDriver;
+		};
+		75CD34B9149A130700A3F0E9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 75CD34B0149A12ED00A3F0E9 /* DACALDriver.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 32D94FC30562CBF700B6AF17;
+			remoteInfo = DACALDriver;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -228,7 +226,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 6;
 			files = (
-				75DCD2531486F1B1005DC511 /* DACALDriver.kext in CopyFiles */,
+				75CD34BB149A132600A3F0E9 /* DACALDriver.kext in CopyFiles */,
 				5C2E42610E7451E300D7DF4A /* dacauth in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -239,8 +237,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				75730B17148709E300746100 /* PMSUtility.framework in CopyFiles */,
-				75730AEE1487025E00746100 /* DACAL.framework in CopyFiles */,
 				5CF4D98E0E68E9300091A77F /* ILCrashReporter.framework in CopyFiles */,
 				5C1ECE9B0E41B6A10091B446 /* Sparkle.framework in CopyFiles */,
 			);
@@ -393,14 +389,13 @@
 		7504AF260FB3A1F900FFAA84 /* updates.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = updates.xml; sourceTree = "<group>"; };
 		7504AFDC0FB3AEBB00FFAA84 /* Credits.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 		751C4E2C0E9400250027BC1C /* AquaticPrime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AquaticPrime.m; path = Sources/License/AquaticPrime.m; sourceTree = "<group>"; };
-		752D8F081486FCB900F31A6E /* DACALDriver.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = DACALDriver.xcodeproj; path = ../DACALDriver/DACALDriver.xcodeproj; sourceTree = SOURCE_ROOT; };
-		752D8F0E1486FCC600F31A6E /* CLI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CLI.xcodeproj; path = ../CLI/CLI.xcodeproj; sourceTree = SOURCE_ROOT; };
 		75424FC413CEDB2500643A14 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = ../System/Library/Frameworks/Carbon.framework; sourceTree = DEVELOPER_DIR; };
 		7565EFE713AAC73A0029990C /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
-		75730B08148709B900746100 /* PMSUtility.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PMSUtility.xcodeproj; path = ../../../PMSUtility/PMSUtility.xcodeproj; sourceTree = "<group>"; };
+		7573CA3514976B0E00CA5B2A /* PMSUtility.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PMSUtility.xcodeproj; path = ../../../PMSUtility/PMSUtility.xcodeproj; sourceTree = "<group>"; };
 		75B2FCB20EDDA9A1007356FD /* BlackPlus1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlackPlus1.png; sourceTree = "<group>"; };
 		75B2FCB40EDDA9AD007356FD /* BlackSearch1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlackSearch1.png; sourceTree = "<group>"; };
-		75DCD2521486F1B1005DC511 /* DACALDriver.kext */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.kernel-extension"; name = DACALDriver.kext; path = ../Release/DACALDriver.kext; sourceTree = BUILT_PRODUCTS_DIR; };
+		75CD34731499431600A3F0E9 /* CLI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CLI.xcodeproj; path = ../CLI/CLI.xcodeproj; sourceTree = "<group>"; };
+		75CD34B0149A12ED00A3F0E9 /* DACALDriver.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = DACALDriver.xcodeproj; path = ../DACALDriver/DACALDriver.xcodeproj; sourceTree = "<group>"; };
 		75E0D61B1073EF620012897D /* Multi-Folder.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = "Multi-Folder.icns"; path = "../Resources/Multi-Folder.icns"; sourceTree = SOURCE_ROOT; };
 		75E0D70C1074330E0012897D /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		75E0D70D1074330E0012897D /* lesson.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = lesson.xml; sourceTree = "<group>"; };
@@ -476,8 +471,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				75730B16148709D600746100 /* PMSUtility.framework in Frameworks */,
-				75730AEC148700D400746100 /* DACAL.framework in Frameworks */,
+				75CD34921499434700A3F0E9 /* PMSUtility.framework in Frameworks */,
+				75CD348F1499433900A3F0E9 /* DACAL.framework in Frameworks */,
 				5CA07A710E2E274900F71FA7 /* Carbon.framework in Frameworks */,
 				7565EFE813AAC73A0029990C /* IOKit.framework in Frameworks */,
 				735CC2BD049A7E2A00C919A3 /* Cocoa.framework in Frameworks */,
@@ -580,9 +575,9 @@
 		29B97314FDCFA39411CA2CEA /* CocoaApp */ = {
 			isa = PBXGroup;
 			children = (
-				75730B08148709B900746100 /* PMSUtility.xcodeproj */,
-				752D8F0E1486FCC600F31A6E /* CLI.xcodeproj */,
-				752D8F081486FCB900F31A6E /* DACALDriver.xcodeproj */,
+				75CD34B0149A12ED00A3F0E9 /* DACALDriver.xcodeproj */,
+				75CD34731499431600A3F0E9 /* CLI.xcodeproj */,
+				7573CA3514976B0E00CA5B2A /* PMSUtility.xcodeproj */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				5C2E42530E7450F600D7DF4A /* Executables */,
@@ -608,7 +603,6 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				75DCD2521486F1B1005DC511 /* DACALDriver.kext */,
 				75E0D78D1074331A0012897D /* PickADiskDoc.pdf */,
 				75E0D7091074330E0012897D /* PickADiskDoc */,
 				7504AFDC0FB3AEBB00FFAA84 /* Credits.rtf */,
@@ -852,33 +846,33 @@
 			path = Misc;
 			sourceTree = "<group>";
 		};
-		75730AC21486FDB500746100 /* Products */ = {
+		7573CA3614976B0E00CA5B2A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				75730ACC1486FDB500746100 /* dacal */,
-				75730ACE1486FDB500746100 /* dacallib.dylib */,
-				75730AD01486FDB500746100 /* fabricate */,
-				75730AD21486FDB500746100 /* find */,
-				75730AD41486FDB500746100 /* xattr */,
-				75730AD61486FDB500746100 /* DACAL.framework */,
+				7573CA3C14976B0E00CA5B2A /* PMSUtility.framework */,
+				7573CA3E14976B0E00CA5B2A /* libPMUtilityIOS.a */,
+				7573CA4014976B0E00CA5B2A /* PMUtilityIOSTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		75730ADA1486FDB600746100 /* Products */ = {
+		75CD34741499431600A3F0E9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				75730ADE1486FDB600746100 /* DACALDriver.kext */,
+				75CD34821499431700A3F0E9 /* dacal */,
+				75CD34841499431700A3F0E9 /* dacallib.dylib */,
+				75CD34861499431700A3F0E9 /* fabricate */,
+				75CD34881499431700A3F0E9 /* find */,
+				75CD348A1499431700A3F0E9 /* xattr */,
+				75CD348C1499431700A3F0E9 /* DACAL.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		75730B09148709B900746100 /* Products */ = {
+		75CD34B1149A12ED00A3F0E9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				75730B0F148709BA00746100 /* PMSUtility.framework */,
-				75730B11148709BA00746100 /* libPMUtilityIOS.a */,
-				75730B13148709BA00746100 /* PMUtilityIOSTests.octest */,
+				75CD34B8149A12EE00A3F0E9 /* DACALDriver.kext */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1130,9 +1124,9 @@
 				734E63B1049E6C2800C919A3 /* PBXBuildRule */,
 			);
 			dependencies = (
-				75730B15148709CB00746100 /* PBXTargetDependency */,
-				75730AE9148700BC00746100 /* PBXTargetDependency */,
-				75730AEB148700BC00746100 /* PBXTargetDependency */,
+				75CD34BA149A130700A3F0E9 /* PBXTargetDependency */,
+				75CD34911499434000A3F0E9 /* PBXTargetDependency */,
+				75CD348E1499432E00A3F0E9 /* PBXTargetDependency */,
 			);
 			name = PickADisk;
 			productInstallPath = "$(LOCAL_DEVELOPER_DIR)/Demos";
@@ -1156,16 +1150,16 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 75730AC21486FDB500746100 /* Products */;
-					ProjectRef = 752D8F0E1486FCC600F31A6E /* CLI.xcodeproj */;
+					ProductGroup = 75CD34741499431600A3F0E9 /* Products */;
+					ProjectRef = 75CD34731499431600A3F0E9 /* CLI.xcodeproj */;
 				},
 				{
-					ProductGroup = 75730ADA1486FDB600746100 /* Products */;
-					ProjectRef = 752D8F081486FCB900F31A6E /* DACALDriver.xcodeproj */;
+					ProductGroup = 75CD34B1149A12ED00A3F0E9 /* Products */;
+					ProjectRef = 75CD34B0149A12ED00A3F0E9 /* DACALDriver.xcodeproj */;
 				},
 				{
-					ProductGroup = 75730B09148709B900746100 /* Products */;
-					ProjectRef = 75730B08148709B900746100 /* PMSUtility.xcodeproj */;
+					ProductGroup = 7573CA3614976B0E00CA5B2A /* Products */;
+					ProjectRef = 7573CA3514976B0E00CA5B2A /* PMSUtility.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -1176,74 +1170,74 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		75730ACC1486FDB500746100 /* dacal */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = dacal;
-			remoteRef = 75730ACB1486FDB500746100 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		75730ACE1486FDB500746100 /* dacallib.dylib */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.dylib";
-			path = dacallib.dylib;
-			remoteRef = 75730ACD1486FDB500746100 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		75730AD01486FDB500746100 /* fabricate */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = fabricate;
-			remoteRef = 75730ACF1486FDB500746100 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		75730AD21486FDB500746100 /* find */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = find;
-			remoteRef = 75730AD11486FDB500746100 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		75730AD41486FDB500746100 /* xattr */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = xattr;
-			remoteRef = 75730AD31486FDB500746100 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		75730AD61486FDB500746100 /* DACAL.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = DACAL.framework;
-			remoteRef = 75730AD51486FDB500746100 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		75730ADE1486FDB600746100 /* DACALDriver.kext */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = DACALDriver.kext;
-			remoteRef = 75730ADD1486FDB600746100 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		75730B0F148709BA00746100 /* PMSUtility.framework */ = {
+		7573CA3C14976B0E00CA5B2A /* PMSUtility.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = PMSUtility.framework;
-			remoteRef = 75730B0E148709BA00746100 /* PBXContainerItemProxy */;
+			remoteRef = 7573CA3B14976B0E00CA5B2A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		75730B11148709BA00746100 /* libPMUtilityIOS.a */ = {
+		7573CA3E14976B0E00CA5B2A /* libPMUtilityIOS.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libPMUtilityIOS.a;
-			remoteRef = 75730B10148709BA00746100 /* PBXContainerItemProxy */;
+			remoteRef = 7573CA3D14976B0E00CA5B2A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		75730B13148709BA00746100 /* PMUtilityIOSTests.octest */ = {
+		7573CA4014976B0E00CA5B2A /* PMUtilityIOSTests.octest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = PMUtilityIOSTests.octest;
-			remoteRef = 75730B12148709BA00746100 /* PBXContainerItemProxy */;
+			remoteRef = 7573CA3F14976B0E00CA5B2A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		75CD34821499431700A3F0E9 /* dacal */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = dacal;
+			remoteRef = 75CD34811499431700A3F0E9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		75CD34841499431700A3F0E9 /* dacallib.dylib */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.dylib";
+			path = dacallib.dylib;
+			remoteRef = 75CD34831499431700A3F0E9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		75CD34861499431700A3F0E9 /* fabricate */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = fabricate;
+			remoteRef = 75CD34851499431700A3F0E9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		75CD34881499431700A3F0E9 /* find */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = find;
+			remoteRef = 75CD34871499431700A3F0E9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		75CD348A1499431700A3F0E9 /* xattr */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = xattr;
+			remoteRef = 75CD34891499431700A3F0E9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		75CD348C1499431700A3F0E9 /* DACAL.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = DACAL.framework;
+			remoteRef = 75CD348B1499431700A3F0E9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		75CD34B8149A12EE00A3F0E9 /* DACALDriver.kext */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = DACALDriver.kext;
+			remoteRef = 75CD34B7149A12EE00A3F0E9 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -1413,20 +1407,20 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		75730AE9148700BC00746100 /* PBXTargetDependency */ = {
+		75CD348E1499432E00A3F0E9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = DACAL;
-			targetProxy = 75730AE8148700BC00746100 /* PBXContainerItemProxy */;
+			targetProxy = 75CD348D1499432E00A3F0E9 /* PBXContainerItemProxy */;
 		};
-		75730AEB148700BC00746100 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = DACALDriver;
-			targetProxy = 75730AEA148700BC00746100 /* PBXContainerItemProxy */;
-		};
-		75730B15148709CB00746100 /* PBXTargetDependency */ = {
+		75CD34911499434000A3F0E9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = PMSUtility;
-			targetProxy = 75730B14148709CB00746100 /* PBXContainerItemProxy */;
+			targetProxy = 75CD34901499434000A3F0E9 /* PBXContainerItemProxy */;
+		};
+		75CD34BA149A130700A3F0E9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = DACALDriver;
+			targetProxy = 75CD34B9149A130700A3F0E9 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1479,11 +1473,13 @@
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"/Users/davec/Library/Developer/Xcode/DerivedData/PickADisk-agbgyoaztkwcghebpbxbposnarjv/Build/Products/Release\"",
+					/Sources/Projects/PickADisk/Sources/CLI/build/Release,
+					/Sources/Projects/PMSUtility/build/Release,
 				);
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				"GCC_MODEL_TUNING[arch=*]" = "";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "Info-PickADisk.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				OTHER_LDFLAGS = (
@@ -1492,6 +1488,7 @@
 					0x10000000,
 				);
 				PRODUCT_NAME = PickADisk;
+				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = "Release Test";
@@ -1517,10 +1514,12 @@
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"/Users/davec/Library/Developer/Xcode/DerivedData/PickADisk-agbgyoaztkwcghebpbxbposnarjv/Build/Products/Release\"",
+					/Sources/Projects/PickADisk/Sources/CLI/build/Release,
+					/Sources/Projects/PMSUtility/build/Release,
 				);
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "Info-PickADisk.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				OTHER_LDFLAGS = (
@@ -1529,6 +1528,7 @@
 					0x10000000,
 				);
 				PRODUCT_NAME = PickADisk;
+				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = DebugPPC;
@@ -1554,10 +1554,12 @@
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"/Users/davec/Library/Developer/Xcode/DerivedData/PickADisk-agbgyoaztkwcghebpbxbposnarjv/Build/Products/Release\"",
+					/Sources/Projects/PickADisk/Sources/CLI/build/Release,
+					/Sources/Projects/PMSUtility/build/Release,
 				);
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "Info-PickADisk.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				OTHER_LDFLAGS = (
@@ -1567,6 +1569,7 @@
 				);
 				PRODUCT_NAME = PickADisk;
 				SYMROOT = /Users/Shared/PickADisk/build;
+				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = DebugRemote;
@@ -1592,10 +1595,12 @@
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"/Users/davec/Library/Developer/Xcode/DerivedData/PickADisk-agbgyoaztkwcghebpbxbposnarjv/Build/Products/Release\"",
+					/Sources/Projects/PickADisk/Sources/CLI/build/Release,
+					/Sources/Projects/PMSUtility/build/Release,
 				);
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "Info-PickADisk.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				OTHER_LDFLAGS = (
@@ -1604,6 +1609,7 @@
 					0x10000000,
 				);
 				PRODUCT_NAME = PickADisk;
+				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = "Development Fresh Prefs";
@@ -1613,10 +1619,10 @@
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"/Users/davec/Library/Developer/Xcode/DerivedData/PickADisk-agbgyoaztkwcghebpbxbposnarjv/Build/Products/Release\"",
+					/Sources/Projects/PickADisk/Sources/CLI/build/Release,
+					/Sources/Projects/PMSUtility/build/Release,
 				);
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "Info-PickADisk.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				OTHER_LDFLAGS = (
@@ -1625,6 +1631,7 @@
 					0x10000000,
 				);
 				PRODUCT_NAME = PickADisk;
+				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Development;
@@ -1634,10 +1641,12 @@
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"/Users/davec/Library/Developer/Xcode/DerivedData/PickADisk-agbgyoaztkwcghebpbxbposnarjv/Build/Products/Release\"",
+					/Sources/Projects/PickADisk/Sources/CLI/build/Release,
+					/Sources/Projects/PMSUtility/build/Release,
 				);
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "Info-PickADisk.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				OTHER_LDFLAGS = (
@@ -1646,6 +1655,7 @@
 					0x10000000,
 				);
 				PRODUCT_NAME = PickADisk;
+				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -1654,14 +1664,15 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7504AEA30FB389E600FFAA84 /* buildnumber.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1)";
-				ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1 = "ppc i386";
+				ARCHS = i386;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Frameworks";
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Prefix.h;
 				LD_RUNPATH_SEARCH_PATHS = "";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "-dynamic";
 				VALID_ARCHS = i386;
 			};
 			name = Development;

@@ -74,7 +74,6 @@
 		7570BE7213CEA847001AF81B /* dacallib.h in Headers */ = {isa = PBXBuildFile; fileRef = 7502880511923D47008008F8 /* dacallib.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7570BE7313CEA851001AF81B /* dacalconstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 7502880711923D47008008F8 /* dacalconstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		75730AE31487007B00746100 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 751FBCE00E3A340900D64628 /* IOKit.framework */; };
-		75730AFD1487067000746100 /* PMSUtility.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75730AF6148705E000746100 /* PMSUtility.framework */; };
 		75730B00148706CF00746100 /* PMSUtility.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75730AF6148705E000746100 /* PMSUtility.framework */; };
 		75782D6611E4F7B700496670 /* libcrypto.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 75782D6511E4F7B700496670 /* libcrypto.dylib */; };
 		75ABD90913CEF67100BB3D7A /* pad.h in Headers */ = {isa = PBXBuildFile; fileRef = 75ABD90713CEF67100BB3D7A /* pad.h */; };
@@ -82,6 +81,8 @@
 		75ABD90B13CEF67100BB3D7A /* pad.m in Sources */ = {isa = PBXBuildFile; fileRef = 75ABD90813CEF67100BB3D7A /* pad.m */; };
 		75ABD90C13CEF67100BB3D7A /* pad.m in Sources */ = {isa = PBXBuildFile; fileRef = 75ABD90813CEF67100BB3D7A /* pad.m */; };
 		75ABD90D13CEF67100BB3D7A /* pad.m in Sources */ = {isa = PBXBuildFile; fileRef = 75ABD90813CEF67100BB3D7A /* pad.m */; };
+		75BBA4E61497452D00FDD6F4 /* PMSUtility.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75BBA4E51497452D00FDD6F4 /* PMSUtility.framework */; };
+		75BBA4E71497452D00FDD6F4 /* PMSUtility.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75BBA4E51497452D00FDD6F4 /* PMSUtility.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -148,14 +149,14 @@
 			remoteGlobalIDString = 75FFF68113DDF0D7003C7786;
 			remoteInfo = PMUtilityIOSTests;
 		};
-		75730AFB148705EC00746100 /* PBXContainerItemProxy */ = {
+		75730AFE148706C600746100 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 75730AEF148705DF00746100 /* PMSUtility.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = 759D16C513A879A500E671A1;
 			remoteInfo = PMSUtility;
 		};
-		75730AFE148706C600746100 /* PBXContainerItemProxy */ = {
+		75BFC8C314993C580085EE2E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 75730AEF148705DF00746100 /* PMSUtility.xcodeproj */;
 			proxyType = 1;
@@ -220,6 +221,7 @@
 		75782D6511E4F7B700496670 /* libcrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcrypto.dylib; path = usr/lib/libcrypto.dylib; sourceTree = SDKROOT; };
 		75ABD90713CEF67100BB3D7A /* pad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pad.h; sourceTree = "<group>"; };
 		75ABD90813CEF67100BB3D7A /* pad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = pad.m; sourceTree = "<group>"; };
+		75BBA4E51497452D00FDD6F4 /* PMSUtility.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PMSUtility.framework; path = ../../../PMSUtility/build/Release/PMSUtility.framework; sourceTree = SOURCE_ROOT; };
 		C6859E970290921104C91782 /* CLI Tools.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = "CLI Tools.1"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -247,6 +249,7 @@
 				751FBCE10E3A340900D64628 /* IOKit.framework in Frameworks */,
 				751048060E4143A8009AFDB4 /* Cocoa.framework in Frameworks */,
 				75782D6611E4F7B700496670 /* libcrypto.dylib in Frameworks */,
+				75BBA4E61497452D00FDD6F4 /* PMSUtility.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,9 +278,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				75730AFD1487067000746100 /* PMSUtility.framework in Frameworks */,
 				75730AE31487007B00746100 /* IOKit.framework in Frameworks */,
 				7570BE5913CEA721001AF81B /* Cocoa.framework in Frameworks */,
+				75BBA4E71497452D00FDD6F4 /* PMSUtility.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -316,6 +319,7 @@
 		08FB779DFE84155DC02AAC07 /* External Frameworks and Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				75BBA4E51497452D00FDD6F4 /* PMSUtility.framework */,
 				75782D6511E4F7B700496670 /* libcrypto.dylib */,
 				751048050E4143A8009AFDB4 /* Cocoa.framework */,
 				7543C8430E3A37CC009A8AF3 /* Kernel.framework */,
@@ -607,7 +611,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				75730AFC148705EC00746100 /* PBXTargetDependency */,
+				75BFC8C414993C580085EE2E /* PBXTargetDependency */,
 			);
 			name = DACAL;
 			productName = DACAL;
@@ -802,15 +806,15 @@
 			target = 7570BE5513CEA721001AF81B /* DACAL */;
 			targetProxy = 7570BE7413CEA879001AF81B /* PBXContainerItemProxy */;
 		};
-		75730AFC148705EC00746100 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = PMSUtility;
-			targetProxy = 75730AFB148705EC00746100 /* PBXContainerItemProxy */;
-		};
 		75730AFF148706C600746100 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = PMSUtility;
 			targetProxy = 75730AFE148706C600746100 /* PBXContainerItemProxy */;
+		};
+		75BFC8C414993C580085EE2E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PMSUtility;
+			targetProxy = 75BFC8C314993C580085EE2E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -829,24 +833,12 @@
 		1DEB924C08733DCA0010E9CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
-				GCC_C_LANGUAGE_STANDARD = c99;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				ONLY_ACTIVE_ARCH = YES;
-				PREBINDING = NO;
 			};
 			name = Debug;
 		};
 		1DEB924D08733DCA0010E9CD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
-				GCC_C_LANGUAGE_STANDARD = c99;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				PREBINDING = NO;
 			};
 			name = Release;
 		};
@@ -888,6 +880,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Volumes/mbphd/Users/davec/Desktop/pmsutility/build/Debug,
+					"\"$(SRCROOT)/../../../PMSUtility/build/Release\"",
 				);
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				INSTALL_PATH = /usr/local/lib;
@@ -904,6 +897,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Volumes/mbphd/Users/davec/Desktop/pmsutility/build/Debug,
+					"\"$(SRCROOT)/../../../PMSUtility/build/Release\"",
 				);
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				INSTALL_PATH = /usr/local/lib;
@@ -1021,14 +1015,6 @@
 		7543D49D0E3BB812009A8AF3 /* Deploy */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
-				DEPLOYMENT_LOCATION = YES;
-				GCC_C_LANGUAGE_STANDARD = c99;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				INSTALL_GROUP = wheel;
-				INSTALL_OWNER = root;
-				PREBINDING = NO;
 			};
 			name = Deploy;
 		};
@@ -1056,6 +1042,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Volumes/mbphd/Users/davec/Desktop/pmsutility/build/Debug,
+					"\"$(SRCROOT)/../../../PMSUtility/build/Release\"",
 				);
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				INSTALL_PATH = "";
@@ -1125,8 +1112,6 @@
 		7570BE6713CEA721001AF81B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				COPY_PHASE_STRIP = NO;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1144,14 +1129,10 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				INFOPLIST_FILE = "DACAL/DACAL-Info.plist";
 				INSTALL_PATH = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = "";
 				WRAPPER_EXTENSION = framework;
 			};
 			name = Debug;
@@ -1159,28 +1140,18 @@
 		7570BE6813CEA721001AF81B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SRCROOT)/../../../PMSUtility/build/Release",
-					"\"/Users/davec/Library/Developer/Xcode/DerivedData/PickADisk-agbgyoaztkwcghebpbxbposnarjv/Build/Products/Release\"",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../../../PMSUtility/build/Release";
 				FRAMEWORK_VERSION = A;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DACAL/DACAL-Prefix.pch";
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				INFOPLIST_FILE = "DACAL/DACAL-Info.plist";
 				INSTALL_PATH = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = "";
 				WRAPPER_EXTENSION = framework;
 			};
 			name = Release;
@@ -1188,9 +1159,6 @@
 		7570BE6913CEA721001AF81B /* Deploy */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1202,14 +1170,10 @@
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DACAL/DACAL-Prefix.pch";
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				INFOPLIST_FILE = "DACAL/DACAL-Info.plist";
 				INSTALL_PATH = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = "";
 				WRAPPER_EXTENSION = framework;
 			};
 			name = Deploy;
