@@ -2561,8 +2561,10 @@ DACALClientCreate( CFAllocatorRef useAllocator, CFStringRef clientID, void* useD
 		goto BAIL;
 	}
 	
-	if( clientID ) CFRetain( clientID );
-	if( useAllocator ) CFRetain( useAllocator );
+	if( clientID ) 
+        CFRetain( clientID );
+	if( useAllocator ) 
+        CFRetain( useAllocator );
 	
 	DACAL_CLIENT_IDENTIFIER(ourClientRef) = clientID;
 	DACAL_CLIENT_CALLBACK(ourClientRef) = useCallback;
@@ -2585,7 +2587,8 @@ DACALClientCreate( CFAllocatorRef useAllocator, CFStringRef clientID, void* useD
 															// creates a folder with silly permissions
 			
 			ffErr = FSFindFolder( kUserDomain, kDomainLibraryFolderType, FALSE, &topFolder );
-			if( ffErr ) fprintf( stderr,"No Local Library?");
+			if( ffErr ) 
+                fprintf( stderr,"No Local Library?");
 			
 			CFURLRef	sysURL = CFURLCreateFromFSRef( useAllocator, &topFolder );
 			CFURLRef	padURL = CFURLCreateCopyAppendingPathComponent( useAllocator, sysURL, PAD_FOLDERNAME_CFSTRING, TRUE );
@@ -2602,11 +2605,14 @@ DACALClientCreate( CFAllocatorRef useAllocator, CFStringRef clientID, void* useD
 				CFStringGetCharacters( PAD_FOLDERNAME_CFSTRING, CFRangeMake(0, theUniCount), theUniName );
 				
 				ffErr = FSCreateDirectoryUnicode( &topFolder, theUniCount, (const UniChar*)theUniName, kFSCatInfoPermissions, &permCatInfo, &padFS, NULL, NULL );
-				if( ffErr ) fprintf( stderr, "FSCreateDirectoryUnicode: %i\n", ffErr );
+				if( ffErr ) 
+                    fprintf( stderr, "FSCreateDirectoryUnicode: %i\n", ffErr );
 			}
 			
-			if( padURL != NULL ) CFRelease( padURL );
-			if( sysURL != NULL ) CFRelease( sysURL );	
+			if( padURL != NULL ) 
+                CFRelease( padURL );
+			if( sysURL != NULL ) 
+                CFRelease( sysURL );	
 		}
 		
 		// setup a system folder descriptor to make finding the Carousel folder easy

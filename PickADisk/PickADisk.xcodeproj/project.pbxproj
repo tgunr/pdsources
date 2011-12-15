@@ -106,6 +106,8 @@
 		75CD348F1499433900A3F0E9 /* DACAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75CD348C1499431700A3F0E9 /* DACAL.framework */; };
 		75CD34921499434700A3F0E9 /* PMSUtility.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7573CA3C14976B0E00CA5B2A /* PMSUtility.framework */; };
 		75CD34BB149A132600A3F0E9 /* DACALDriver.kext in CopyFiles */ = {isa = PBXBuildFile; fileRef = 75CD34B8149A12EE00A3F0E9 /* DACALDriver.kext */; };
+		75D80966149A713000FB5E6F /* PMSUtility.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7573CA3C14976B0E00CA5B2A /* PMSUtility.framework */; };
+		75D80967149A730E00FB5E6F /* DACAL.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 75CD348C1499431700A3F0E9 /* DACAL.framework */; };
 		75E0D61C1073EF620012897D /* Multi-Folder.icns in Resources */ = {isa = PBXBuildFile; fileRef = 75E0D61B1073EF620012897D /* Multi-Folder.icns */; };
 		75E0D78E1074331A0012897D /* PickADiskDoc.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 75E0D78D1074331A0012897D /* PickADiskDoc.pdf */; };
 		75E0D91C10767E050012897D /* PAD_1.0.3_50805.html in Resources */ = {isa = PBXBuildFile; fileRef = 75E0D91B10767E040012897D /* PAD_1.0.3_50805.html */; };
@@ -237,6 +239,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				75D80967149A730E00FB5E6F /* DACAL.framework in CopyFiles */,
+				75D80966149A713000FB5E6F /* PMSUtility.framework in CopyFiles */,
 				5CF4D98E0E68E9300091A77F /* ILCrashReporter.framework in CopyFiles */,
 				5C1ECE9B0E41B6A10091B446 /* Sparkle.framework in CopyFiles */,
 			);
@@ -1345,7 +1349,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/bin/sh -x";
-			shellScript = "# was intended to copy help help files to resource folder, for now using PDF file\n# rsync -av --exclude=\".svn\" \"$SRCROOT/Resources/PickADiskDoc\" \"$CONFIGURATION_BUILD_DIR/$UNLOCALIZED_RESOURCES_FOLDER_PATH\"\n\necho \"SRCROOT: $(SRCROOT)\"\n";
+			shellScript = "# was intended to copy help help files to resource folder, for now using PDF file\n# rsync -av --exclude=\".svn\" \"$SRCROOT/Resources/PickADiskDoc\" \"$CONFIGURATION_BUILD_DIR/$UNLOCALIZED_RESOURCES_FOLDER_PATH\"\n\necho \"SRCROOT: ${SRCROOT}\"\n";
 		};
 		75E4927B0EACBFB900AC85A0 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;

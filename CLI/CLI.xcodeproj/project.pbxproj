@@ -76,6 +76,7 @@
 		75730AE31487007B00746100 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 751FBCE00E3A340900D64628 /* IOKit.framework */; };
 		75730B00148706CF00746100 /* PMSUtility.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75730AF6148705E000746100 /* PMSUtility.framework */; };
 		75782D6611E4F7B700496670 /* libcrypto.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 75782D6511E4F7B700496670 /* libcrypto.dylib */; };
+		757872ED149A977C00DE5EFF /* PMSUtility.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75730AF6148705E000746100 /* PMSUtility.framework */; };
 		75ABD90913CEF67100BB3D7A /* pad.h in Headers */ = {isa = PBXBuildFile; fileRef = 75ABD90713CEF67100BB3D7A /* pad.h */; };
 		75ABD90A13CEF67100BB3D7A /* pad.h in Headers */ = {isa = PBXBuildFile; fileRef = 75ABD90713CEF67100BB3D7A /* pad.h */; };
 		75ABD90B13CEF67100BB3D7A /* pad.m in Sources */ = {isa = PBXBuildFile; fileRef = 75ABD90813CEF67100BB3D7A /* pad.m */; };
@@ -156,6 +157,34 @@
 			remoteGlobalIDString = 759D16C513A879A500E671A1;
 			remoteInfo = PMSUtility;
 		};
+		757872E5149A963000DE5EFF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 75730AEF148705DF00746100 /* PMSUtility.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 759D16C513A879A500E671A1;
+			remoteInfo = PMSUtility;
+		};
+		757872E7149A963A00DE5EFF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 75730AEF148705DF00746100 /* PMSUtility.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 759D16C513A879A500E671A1;
+			remoteInfo = PMSUtility;
+		};
+		757872E9149A964100DE5EFF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 75730AEF148705DF00746100 /* PMSUtility.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 759D16C513A879A500E671A1;
+			remoteInfo = PMSUtility;
+		};
+		757872EB149A964700DE5EFF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 75730AEF148705DF00746100 /* PMSUtility.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 759D16C513A879A500E671A1;
+			remoteInfo = PMSUtility;
+		};
 		75BFC8C314993C580085EE2E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 75730AEF148705DF00746100 /* PMSUtility.xcodeproj */;
@@ -208,7 +237,7 @@
 		75637E9811E64F670069CA00 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = System/Library/Frameworks/ApplicationServices.framework; sourceTree = SDKROOT; };
 		75637E9F11E64FB50069CA00 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		7570BE2413CEA158001AF81B /* pmsDACALUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = pmsDACALUtility.h; path = Classes/pmsDACALUtility.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		7570BE2513CEA158001AF81B /* pmsDACALUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = pmsDACALUtility.m; path = Classes/pmsDACALUtility.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		7570BE2513CEA158001AF81B /* pmsDACALUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = pmsDACALUtility.m; path = Classes/pmsDACALUtility.m; sourceTree = "<group>"; };
 		7570BE5613CEA721001AF81B /* DACAL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DACAL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7570BE5813CEA721001AF81B /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		7570BE5B13CEA721001AF81B /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -230,6 +259,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				757872ED149A977C00DE5EFF /* PMSUtility.framework in Frameworks */,
 				75637E9511E64EF70069CA00 /* libcrypto.dylib in Frameworks */,
 				75637DE511E64EE00069CA00 /* IOKit.framework in Frameworks */,
 				7543D4720E3BB67E009A8AF3 /* dacallib.dylib in Frameworks */,
@@ -527,6 +557,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				757872E6149A963000DE5EFF /* PBXTargetDependency */,
 			);
 			name = dacal;
 			productName = dacal;
@@ -561,6 +592,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				757872E8149A963A00DE5EFF /* PBXTargetDependency */,
 			);
 			name = fabricate;
 			productName = fabricate;
@@ -577,6 +609,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				757872EA149A964100DE5EFF /* PBXTargetDependency */,
 			);
 			name = find;
 			productName = find;
@@ -593,6 +626,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				757872EC149A964700DE5EFF /* PBXTargetDependency */,
 			);
 			name = xattr;
 			productName = xattr;
@@ -811,6 +845,26 @@
 			name = PMSUtility;
 			targetProxy = 75730AFE148706C600746100 /* PBXContainerItemProxy */;
 		};
+		757872E6149A963000DE5EFF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PMSUtility;
+			targetProxy = 757872E5149A963000DE5EFF /* PBXContainerItemProxy */;
+		};
+		757872E8149A963A00DE5EFF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PMSUtility;
+			targetProxy = 757872E7149A963A00DE5EFF /* PBXContainerItemProxy */;
+		};
+		757872EA149A964100DE5EFF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PMSUtility;
+			targetProxy = 757872E9149A964100DE5EFF /* PBXContainerItemProxy */;
+		};
+		757872EC149A964700DE5EFF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PMSUtility;
+			targetProxy = 757872EB149A964700DE5EFF /* PBXContainerItemProxy */;
+		};
 		75BFC8C414993C580085EE2E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = PMSUtility;
@@ -833,12 +887,14 @@
 		1DEB924C08733DCA0010E9CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = "../../../PMSUtility/build/$(CONFIGURATION)/";
 			};
 			name = Debug;
 		};
 		1DEB924D08733DCA0010E9CD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = "../../../PMSUtility/build/$(CONFIGURATION)/";
 			};
 			name = Release;
 		};
@@ -846,7 +902,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				FRAMEWORK_SEARCH_PATHS = /Volumes/mbphd/Users/davec/Desktop/pmsutility/build/Debug;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				INSTALL_PATH = /usr/local/bin;
 				OTHER_LDFLAGS = (
@@ -861,7 +916,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				FRAMEWORK_SEARCH_PATHS = /Volumes/mbphd/Users/davec/Desktop/pmsutility/build/Debug;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				INSTALL_PATH = /usr/local/bin;
 				OTHER_LDFLAGS = (
@@ -883,7 +937,6 @@
 					"\"$(SRCROOT)/../../../PMSUtility/build/Release\"",
 				);
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				INSTALL_PATH = /usr/local/lib;
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = dacallib;
 			};
@@ -900,7 +953,6 @@
 					"\"$(SRCROOT)/../../../PMSUtility/build/Release\"",
 				);
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				INSTALL_PATH = /usr/local/lib;
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = dacallib;
 			};
@@ -910,7 +962,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				INSTALL_PATH = /usr/local/bin;
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
@@ -925,7 +976,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				INSTALL_PATH = /usr/local/bin;
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
@@ -940,7 +990,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				INSTALL_PATH = /usr/local/bin;
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
@@ -955,7 +1004,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				INSTALL_PATH = /usr/local/bin;
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
@@ -970,7 +1018,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				INSTALL_PATH = /usr/local/bin;
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
@@ -985,7 +1032,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				INSTALL_PATH = /usr/local/bin;
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
@@ -1015,6 +1061,7 @@
 		7543D49D0E3BB812009A8AF3 /* Deploy */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = "../../../PMSUtility/build/$(CONFIGURATION)/";
 			};
 			name = Deploy;
 		};
@@ -1022,7 +1069,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				FRAMEWORK_SEARCH_PATHS = /Volumes/mbphd/Users/davec/Desktop/pmsutility/build/Debug;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				INSTALL_PATH = /usr/local/bin;
 				OTHER_LDFLAGS = (
@@ -1036,7 +1082,6 @@
 		7543D49F0E3BB812009A8AF3 /* Deploy */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DSTROOT = "/tmp/$(PROJECT_NAME).dst";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1045,7 +1090,6 @@
 					"\"$(SRCROOT)/../../../PMSUtility/build/Release\"",
 				);
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				INSTALL_PATH = "";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
@@ -1060,7 +1104,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				INSTALL_PATH = /usr/local/bin;
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
@@ -1075,7 +1118,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				INSTALL_PATH = /usr/local/bin;
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
@@ -1090,7 +1132,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				INSTALL_PATH = /usr/local/bin;
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
@@ -1112,13 +1153,14 @@
 		7570BE6713CEA721001AF81B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COPY_PHASE_STRIP = NO;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
-				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../../../PMSUtility/build/Release";
 				FRAMEWORK_VERSION = A;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DACAL/DACAL-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1139,7 +1181,6 @@
 			buildSettings = {
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
-				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../../../PMSUtility/build/Release";
 				FRAMEWORK_VERSION = A;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -1158,7 +1199,6 @@
 			buildSettings = {
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
-				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../../../PMSUtility/build/Release";
 				FRAMEWORK_VERSION = A;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;

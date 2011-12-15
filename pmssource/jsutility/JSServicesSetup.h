@@ -15,13 +15,13 @@
 #ifndef	JSSMIS_SETUP
 #define JSSMIS_SETUP
 
-#define		JSServicesManagerInitialServices		 [NSArray arrayWithObjects: @"PADBOXController", \
-																				@"PADLicenseService", \
-																				@"PADCrashReportService", \
+#define		JSServicesManagerInitialServices		 [NSArray arrayWithObjects: @"DACALDeviceService", \
+                                                                                @"PADBOXController", \
 																				@"DACVolumeService", \
-																				@"DACALDeviceService", \
-																				@"PADSearchService", \
 																				@"PADFolderService", \
+                                                                                @"PADCrashReportService", \
+                                                                                @"PADLicenseService", \
+                                                                                @"PADSearchService", \
 																				nil]
 
 #endif	JSSMIS_SETUP

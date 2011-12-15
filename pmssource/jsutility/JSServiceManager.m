@@ -127,14 +127,14 @@ static id	JSServiceManager_appServiceManager = nil;
 	JSServiceAbstract*	serviceInstance = nil;
 	
 	while ( workName = [workEnum nextObject] )
-	{
-		serviceClass = NSClassFromString( workName );
+	{		serviceClass = NSClassFromString( workName );
 		if( serviceClass == nil )
 			continue;
 		
 		if( serviceInstance = [self findServiceWithName:workName] )
 			continue;
-		else serviceInstance = [[serviceClass alloc] init];
+		else
+            serviceInstance = [[serviceClass alloc] init];
 		
 		if( serviceInstance == nil )
 			continue;
