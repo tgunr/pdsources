@@ -898,6 +898,119 @@
 			};
 			name = Release;
 		};
+		751E8425149ABFA30024DBE7 /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = "../../../PMSUtility/build/$(CONFIGURATION)/";
+			};
+			name = Development;
+		};
+		751E8426149ABFA30024DBE7 /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				INSTALL_PATH = /usr/local/bin;
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+				);
+				PRODUCT_NAME = dacal;
+			};
+			name = Development;
+		};
+		751E8427149ABFA30024DBE7 /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Volumes/mbphd/Users/davec/Desktop/pmsutility/build/Debug,
+					"\"$(SRCROOT)/../../../PMSUtility/build/Release\"",
+				);
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = dacallib;
+			};
+			name = Development;
+		};
+		751E8428149ABFA30024DBE7 /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PRODUCT_NAME = fabricate;
+			};
+			name = Development;
+		};
+		751E8429149ABFA30024DBE7 /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PRODUCT_NAME = find;
+			};
+			name = Development;
+		};
+		751E842A149ABFA30024DBE7 /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PRODUCT_NAME = xattr;
+			};
+			name = Development;
+		};
+		751E842B149ABFA30024DBE7 /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = A;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DACAL/DACAL-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INFOPLIST_FILE = "DACAL/DACAL-Info.plist";
+				INSTALL_PATH = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Development;
+		};
+		751E842C149ABFA30024DBE7 /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_DYNAMIC_NO_PIC = NO;
+				PRODUCT_NAME = "CLI Tools";
+			};
+			name = Development;
+		};
 		751FB9FE0E39046400D64628 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1219,6 +1332,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1DEB924C08733DCA0010E9CD /* Debug */,
+				751E8425149ABFA30024DBE7 /* Development */,
 				1DEB924D08733DCA0010E9CD /* Release */,
 				7543D49D0E3BB812009A8AF3 /* Deploy */,
 			);
@@ -1229,6 +1343,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				751FB9FE0E39046400D64628 /* Debug */,
+				751E8426149ABFA30024DBE7 /* Development */,
 				751FB9FF0E39046400D64628 /* Release */,
 				7543D49E0E3BB812009A8AF3 /* Deploy */,
 			);
@@ -1239,6 +1354,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				751FBA070E3904AC00D64628 /* Debug */,
+				751E8427149ABFA30024DBE7 /* Development */,
 				751FBA080E3904AC00D64628 /* Release */,
 				7543D49F0E3BB812009A8AF3 /* Deploy */,
 			);
@@ -1249,6 +1365,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				751FBA100E39054700D64628 /* Debug */,
+				751E8428149ABFA30024DBE7 /* Development */,
 				751FBA110E39054700D64628 /* Release */,
 				7543D4A00E3BB812009A8AF3 /* Deploy */,
 			);
@@ -1259,6 +1376,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				751FBA190E39057100D64628 /* Debug */,
+				751E8429149ABFA30024DBE7 /* Development */,
 				751FBA1A0E39057100D64628 /* Release */,
 				7543D4A10E3BB812009A8AF3 /* Deploy */,
 			);
@@ -1269,6 +1387,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				751FBA450E39063A00D64628 /* Debug */,
+				751E842A149ABFA30024DBE7 /* Development */,
 				751FBA460E39063A00D64628 /* Release */,
 				7543D4A20E3BB812009A8AF3 /* Deploy */,
 			);
@@ -1279,6 +1398,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				751FBCD10E3A2C0600D64628 /* Debug */,
+				751E842C149ABFA30024DBE7 /* Development */,
 				751FBCD20E3A2C0600D64628 /* Release */,
 				7543D4A40E3BB812009A8AF3 /* Deploy */,
 			);
@@ -1289,6 +1409,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7570BE6713CEA721001AF81B /* Debug */,
+				751E842B149ABFA30024DBE7 /* Development */,
 				7570BE6813CEA721001AF81B /* Release */,
 				7570BE6913CEA721001AF81B /* Deploy */,
 			);

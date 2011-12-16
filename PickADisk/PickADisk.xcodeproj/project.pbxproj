@@ -100,6 +100,8 @@
 		7504AF270FB3A1F900FFAA84 /* updates.xml in Resources */ = {isa = PBXBuildFile; fileRef = 7504AF260FB3A1F900FFAA84 /* updates.xml */; };
 		7504AFDD0FB3AEBB00FFAA84 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 7504AFDC0FB3AEBB00FFAA84 /* Credits.rtf */; };
 		751C4E2D0E9400250027BC1C /* AquaticPrime.m in Sources */ = {isa = PBXBuildFile; fileRef = 751C4E2C0E9400250027BC1C /* AquaticPrime.m */; };
+		751E8433149AC02B0024DBE7 /* dacal in CopyFiles */ = {isa = PBXBuildFile; fileRef = 75CD34821499431700A3F0E9 /* dacal */; };
+		751E8434149AC02B0024DBE7 /* xattr in CopyFiles */ = {isa = PBXBuildFile; fileRef = 75CD348A1499431700A3F0E9 /* xattr */; };
 		7565EFE813AAC73A0029990C /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7565EFE713AAC73A0029990C /* IOKit.framework */; };
 		75B2FCB30EDDA9A1007356FD /* BlackPlus1.png in Resources */ = {isa = PBXBuildFile; fileRef = 75B2FCB20EDDA9A1007356FD /* BlackPlus1.png */; };
 		75B2FCB50EDDA9AD007356FD /* BlackSearch1.png in Resources */ = {isa = PBXBuildFile; fileRef = 75B2FCB40EDDA9AD007356FD /* BlackSearch1.png */; };
@@ -228,6 +230,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 6;
 			files = (
+				751E8433149AC02B0024DBE7 /* dacal in CopyFiles */,
+				751E8434149AC02B0024DBE7 /* xattr in CopyFiles */,
 				75CD34BB149A132600A3F0E9 /* DACALDriver.kext in CopyFiles */,
 				5C2E42610E7451E300D7DF4A /* dacauth in CopyFiles */,
 			);
@@ -1462,12 +1466,17 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1)";
 				ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1 = "ppc i386";
-				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Frameworks";
+				FRAMEWORK_SEARCH_PATHS = (
+					"../../../PMSUtility/build/$(CONFIGURATION)",
+					"../CLI/build/$(CONFIGURATION)",
+					"$(SRCROOT)/Frameworks",
+				);
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_OPTIMIZATION_LEVEL = s;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Prefix.h;
 				LD_RUNPATH_SEARCH_PATHS = "";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				VALID_ARCHS = i386;
 			};
 			name = "Release Test";
@@ -1475,11 +1484,6 @@
 		7504AE850FB3837C00FFAA84 /* Release Test */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					/Sources/Projects/PickADisk/Sources/CLI/build/Release,
-					/Sources/Projects/PMSUtility/build/Release,
-				);
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				"GCC_MODEL_TUNING[arch=*]" = "";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -1503,12 +1507,17 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1)";
 				ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1 = "ppc i386";
-				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Frameworks";
+				FRAMEWORK_SEARCH_PATHS = (
+					"../../../PMSUtility/build/$(CONFIGURATION)",
+					"../CLI/build/$(CONFIGURATION)",
+					"$(SRCROOT)/Frameworks",
+				);
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Prefix.h;
 				LD_RUNPATH_SEARCH_PATHS = "";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				VALID_ARCHS = i386;
 			};
 			name = DebugPPC;
@@ -1516,11 +1525,6 @@
 		75D3EBAC0E8BF811009A0199 /* DebugPPC */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					/Sources/Projects/PickADisk/Sources/CLI/build/Release,
-					/Sources/Projects/PMSUtility/build/Release,
-				);
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = "";
@@ -1543,12 +1547,17 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1)";
 				ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1 = "ppc i386";
-				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Frameworks";
+				FRAMEWORK_SEARCH_PATHS = (
+					"../../../PMSUtility/build/$(CONFIGURATION)",
+					"../CLI/build/$(CONFIGURATION)",
+					"$(SRCROOT)/Frameworks",
+				);
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Prefix.h;
 				LD_RUNPATH_SEARCH_PATHS = "";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				VALID_ARCHS = i386;
 			};
 			name = DebugRemote;
@@ -1556,11 +1565,6 @@
 		75DFAC87107FF40F0076E115 /* DebugRemote */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					/Sources/Projects/PickADisk/Sources/CLI/build/Release,
-					/Sources/Projects/PMSUtility/build/Release,
-				);
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = "";
@@ -1584,12 +1588,17 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1)";
 				ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1 = "ppc i386";
-				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Frameworks";
+				FRAMEWORK_SEARCH_PATHS = (
+					"../../../PMSUtility/build/$(CONFIGURATION)",
+					"../CLI/build/$(CONFIGURATION)",
+					"$(SRCROOT)/Frameworks",
+				);
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Prefix.h;
 				LD_RUNPATH_SEARCH_PATHS = "";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				VALID_ARCHS = i386;
 			};
 			name = "Development Fresh Prefs";
@@ -1597,11 +1606,6 @@
 		75E4927D0EACC04200AC85A0 /* Development Fresh Prefs */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					/Sources/Projects/PickADisk/Sources/CLI/build/Release,
-					/Sources/Projects/PMSUtility/build/Release,
-				);
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = "";
@@ -1621,11 +1625,6 @@
 		B69BDD9508A2EC26008AC9B5 /* Development */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					/Sources/Projects/PickADisk/Sources/CLI/build/Release,
-					/Sources/Projects/PMSUtility/build/Release,
-				);
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "Info-PickADisk.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
@@ -1643,11 +1642,6 @@
 		B69BDD9608A2EC26008AC9B5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					/Sources/Projects/PickADisk/Sources/CLI/build/Release,
-					/Sources/Projects/PMSUtility/build/Release,
-				);
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = "";
@@ -1669,12 +1663,17 @@
 			baseConfigurationReference = 7504AEA30FB389E600FFAA84 /* buildnumber.xcconfig */;
 			buildSettings = {
 				ARCHS = i386;
-				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Frameworks";
+				FRAMEWORK_SEARCH_PATHS = (
+					"../../../PMSUtility/build/$(CONFIGURATION)",
+					"../CLI/build/$(CONFIGURATION)",
+					"$(SRCROOT)/Frameworks",
+				);
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Prefix.h;
 				LD_RUNPATH_SEARCH_PATHS = "";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-dynamic";
 				VALID_ARCHS = i386;
@@ -1688,12 +1687,17 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1)";
 				ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1 = "ppc i386";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Frameworks";
+				FRAMEWORK_SEARCH_PATHS = (
+					"../../../PMSUtility/build/$(CONFIGURATION)",
+					"../CLI/build/$(CONFIGURATION)",
+					"$(SRCROOT)/Frameworks",
+				);
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_OPTIMIZATION_LEVEL = s;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Prefix.h;
 				LD_RUNPATH_SEARCH_PATHS = "";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				VALID_ARCHS = i386;
 			};
 			name = Release;
