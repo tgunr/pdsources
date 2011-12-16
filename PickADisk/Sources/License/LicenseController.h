@@ -1,8 +1,9 @@
 #import <Cocoa/Cocoa.h>
 #import <AudioToolBox/AudioServices.h>
+#import <AppKit/AppKit.h>
 #import "AquaticPrime.h"
 
-@interface LicenseController : NSWindowController
+@interface LicenseController : NSWindowController <NSPathControlDelegate>
 {
 	IBOutlet NSWindow*			notLicensedWindow;
 	IBOutlet NSWindow*			enterLicenseWindow;
