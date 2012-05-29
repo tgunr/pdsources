@@ -79,7 +79,6 @@
 		5CDAC1C50E934054003984E1 /* success.icns in Resources */ = {isa = PBXBuildFile; fileRef = 5CDAC1C40E934054003984E1 /* success.icns */; };
 		5CDAC1E50E9342C3003984E1 /* CheckedOut.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CDAC1E40E9342C3003984E1 /* CheckedOut.png */; };
 		5CE577300E590C230086A57F /* PADOperationControlDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE5772E0E590C230086A57F /* PADOperationControlDevice.m */; };
-		5CF4D9810E68E6DF0091A77F /* ILCrashReporter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CF4D9800E68E6DF0091A77F /* ILCrashReporter.framework */; };
 		5CF4D98E0E68E9300091A77F /* ILCrashReporter.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5CF4D9800E68E6DF0091A77F /* ILCrashReporter.framework */; };
 		5CF9624D0F37BE5A009D2A9B /* PADInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CF9624C0F37BE5A009D2A9B /* PADInspector.xib */; };
 		5CF962540F37E042009D2A9B /* PADExpandingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF962520F37E042009D2A9B /* PADExpandingView.m */; };
@@ -103,13 +102,14 @@
 		751E8433149AC02B0024DBE7 /* dacal in CopyFiles */ = {isa = PBXBuildFile; fileRef = 75CD34821499431700A3F0E9 /* dacal */; };
 		751E8434149AC02B0024DBE7 /* xattr in CopyFiles */ = {isa = PBXBuildFile; fileRef = 75CD348A1499431700A3F0E9 /* xattr */; };
 		7565EFE813AAC73A0029990C /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7565EFE713AAC73A0029990C /* IOKit.framework */; };
+		75A1A52E15751E1800A75DAA /* DACAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75CD348C1499431700A3F0E9 /* DACAL.framework */; };
+		75A1A52F15751E1E00A75DAA /* PMSUtility.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7573CA3C14976B0E00CA5B2A /* PMSUtility.framework */; };
+		75A1A53415751E4100A75DAA /* PMSUtility.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7573CA3C14976B0E00CA5B2A /* PMSUtility.framework */; };
+		75A1A53515751E4100A75DAA /* DACAL.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 75CD348C1499431700A3F0E9 /* DACAL.framework */; };
+		75A1A56B15752B3A00A75DAA /* ILCrashReporter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CF4D9800E68E6DF0091A77F /* ILCrashReporter.framework */; };
 		75B2FCB30EDDA9A1007356FD /* BlackPlus1.png in Resources */ = {isa = PBXBuildFile; fileRef = 75B2FCB20EDDA9A1007356FD /* BlackPlus1.png */; };
 		75B2FCB50EDDA9AD007356FD /* BlackSearch1.png in Resources */ = {isa = PBXBuildFile; fileRef = 75B2FCB40EDDA9AD007356FD /* BlackSearch1.png */; };
-		75CD348F1499433900A3F0E9 /* DACAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75CD348C1499431700A3F0E9 /* DACAL.framework */; };
-		75CD34921499434700A3F0E9 /* PMSUtility.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7573CA3C14976B0E00CA5B2A /* PMSUtility.framework */; };
 		75CD34BB149A132600A3F0E9 /* DACALDriver.kext in CopyFiles */ = {isa = PBXBuildFile; fileRef = 75CD34B8149A12EE00A3F0E9 /* DACALDriver.kext */; };
-		75D80966149A713000FB5E6F /* PMSUtility.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7573CA3C14976B0E00CA5B2A /* PMSUtility.framework */; };
-		75D80967149A730E00FB5E6F /* DACAL.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 75CD348C1499431700A3F0E9 /* DACAL.framework */; };
 		75E0D61C1073EF620012897D /* Multi-Folder.icns in Resources */ = {isa = PBXBuildFile; fileRef = 75E0D61B1073EF620012897D /* Multi-Folder.icns */; };
 		75E0D78E1074331A0012897D /* PickADiskDoc.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 75E0D78D1074331A0012897D /* PickADiskDoc.pdf */; };
 		75E0D91C10767E050012897D /* PAD_1.0.3_50805.html in Resources */ = {isa = PBXBuildFile; fileRef = 75E0D91B10767E040012897D /* PAD_1.0.3_50805.html */; };
@@ -150,6 +150,20 @@
 			proxyType = 2;
 			remoteGlobalIDString = 75FFF68113DDF0D7003C7786;
 			remoteInfo = PMUtilityIOSTests;
+		};
+		75A1A53015751E2600A75DAA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 75CD34731499431600A3F0E9 /* CLI.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 7570BE5513CEA721001AF81B;
+			remoteInfo = DACAL;
+		};
+		75A1A53215751E2A00A75DAA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7573CA3514976B0E00CA5B2A /* PMSUtility.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 759D16C513A879A500E671A1;
+			remoteInfo = PMSUtility;
 		};
 		75CD34811499431700A3F0E9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -193,32 +207,11 @@
 			remoteGlobalIDString = 7570BE5613CEA721001AF81B;
 			remoteInfo = DACAL;
 		};
-		75CD348D1499432E00A3F0E9 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 75CD34731499431600A3F0E9 /* CLI.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 7570BE5513CEA721001AF81B;
-			remoteInfo = DACAL;
-		};
-		75CD34901499434000A3F0E9 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7573CA3514976B0E00CA5B2A /* PMSUtility.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 759D16C513A879A500E671A1;
-			remoteInfo = PMSUtility;
-		};
 		75CD34B7149A12EE00A3F0E9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 75CD34B0149A12ED00A3F0E9 /* DACALDriver.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 32D94FD00562CBF700B6AF17;
-			remoteInfo = DACALDriver;
-		};
-		75CD34B9149A130700A3F0E9 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 75CD34B0149A12ED00A3F0E9 /* DACALDriver.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 32D94FC30562CBF700B6AF17;
 			remoteInfo = DACALDriver;
 		};
 /* End PBXContainerItemProxy section */
@@ -243,8 +236,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				75D80967149A730E00FB5E6F /* DACAL.framework in CopyFiles */,
-				75D80966149A713000FB5E6F /* PMSUtility.framework in CopyFiles */,
+				75A1A53415751E4100A75DAA /* PMSUtility.framework in CopyFiles */,
+				75A1A53515751E4100A75DAA /* DACAL.framework in CopyFiles */,
 				5CF4D98E0E68E9300091A77F /* ILCrashReporter.framework in CopyFiles */,
 				5C1ECE9B0E41B6A10091B446 /* Sparkle.framework in CopyFiles */,
 			);
@@ -397,7 +390,6 @@
 		7504AF260FB3A1F900FFAA84 /* updates.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = updates.xml; sourceTree = "<group>"; };
 		7504AFDC0FB3AEBB00FFAA84 /* Credits.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 		751C4E2C0E9400250027BC1C /* AquaticPrime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AquaticPrime.m; path = Sources/License/AquaticPrime.m; sourceTree = "<group>"; };
-		75424FC413CEDB2500643A14 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = ../System/Library/Frameworks/Carbon.framework; sourceTree = DEVELOPER_DIR; };
 		7565EFE713AAC73A0029990C /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
 		7573CA3514976B0E00CA5B2A /* PMSUtility.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PMSUtility.xcodeproj; path = ../../../PMSUtility/PMSUtility.xcodeproj; sourceTree = "<group>"; };
 		75B2FCB20EDDA9A1007356FD /* BlackPlus1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlackPlus1.png; sourceTree = "<group>"; };
@@ -479,8 +471,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				75CD34921499434700A3F0E9 /* PMSUtility.framework in Frameworks */,
-				75CD348F1499433900A3F0E9 /* DACAL.framework in Frameworks */,
+				75A1A52F15751E1E00A75DAA /* PMSUtility.framework in Frameworks */,
+				75A1A52E15751E1800A75DAA /* DACAL.framework in Frameworks */,
 				5CA07A710E2E274900F71FA7 /* Carbon.framework in Frameworks */,
 				7565EFE813AAC73A0029990C /* IOKit.framework in Frameworks */,
 				735CC2BD049A7E2A00C919A3 /* Cocoa.framework in Frameworks */,
@@ -490,7 +482,7 @@
 				5C1ECE5B0E41B5C80091B446 /* Sparkle.framework in Frameworks */,
 				5C6CC47A0E4F9763000EE6B3 /* Quartz.framework in Frameworks */,
 				5C2E41100E74076A00D7DF4A /* Security.framework in Frameworks */,
-				5CF4D9810E68E6DF0091A77F /* ILCrashReporter.framework in Frameworks */,
+				75A1A56B15752B3A00A75DAA /* ILCrashReporter.framework in Frameworks */,
 				5C438A5A0E8E825F0070CF56 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -547,7 +539,6 @@
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				75424FC413CEDB2500643A14 /* Carbon.framework */,
 				7565EFE713AAC73A0029990C /* IOKit.framework */,
 				0247A8BE007179D411CA0E35 /* Foundation.framework */,
 				5C2E410F0E74076A00D7DF4A /* Security.framework */,
@@ -1132,9 +1123,8 @@
 				734E63B1049E6C2800C919A3 /* PBXBuildRule */,
 			);
 			dependencies = (
-				75CD34BA149A130700A3F0E9 /* PBXTargetDependency */,
-				75CD34911499434000A3F0E9 /* PBXTargetDependency */,
-				75CD348E1499432E00A3F0E9 /* PBXTargetDependency */,
+				75A1A53315751E2A00A75DAA /* PBXTargetDependency */,
+				75A1A53115751E2600A75DAA /* PBXTargetDependency */,
 			);
 			name = PickADisk;
 			productInstallPath = "$(LOCAL_DEVELOPER_DIR)/Demos";
@@ -1415,20 +1405,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		75CD348E1499432E00A3F0E9 /* PBXTargetDependency */ = {
+		75A1A53115751E2600A75DAA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = DACAL;
-			targetProxy = 75CD348D1499432E00A3F0E9 /* PBXContainerItemProxy */;
+			targetProxy = 75A1A53015751E2600A75DAA /* PBXContainerItemProxy */;
 		};
-		75CD34911499434000A3F0E9 /* PBXTargetDependency */ = {
+		75A1A53315751E2A00A75DAA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = PMSUtility;
-			targetProxy = 75CD34901499434000A3F0E9 /* PBXContainerItemProxy */;
-		};
-		75CD34BA149A130700A3F0E9 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = DACALDriver;
-			targetProxy = 75CD34B9149A130700A3F0E9 /* PBXContainerItemProxy */;
+			targetProxy = 75A1A53215751E2A00A75DAA /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1467,9 +1452,8 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1)";
 				ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1 = "ppc i386";
 				FRAMEWORK_SEARCH_PATHS = (
-					"../../../PMSUtility/build/$(CONFIGURATION)",
-					"../CLI/build/$(CONFIGURATION)",
-					"$(SRCROOT)/Frameworks",
+					"\"$(SRCROOT)/../DerivedData/Build/Products/$(CONFIGURATION)\"",
+					"\"$(SRCROOT)/Frameworks\"",
 				);
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_OPTIMIZATION_LEVEL = s;
@@ -1477,13 +1461,16 @@
 				GCC_PREFIX_HEADER = Prefix.h;
 				LD_RUNPATH_SEARCH_PATHS = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				VALID_ARCHS = i386;
 			};
 			name = "Release Test";
 		};
 		7504AE850FB3837C00FFAA84 /* Release Test */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Frameworks\"",
+				);
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				"GCC_MODEL_TUNING[arch=*]" = "";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -1508,9 +1495,8 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1)";
 				ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1 = "ppc i386";
 				FRAMEWORK_SEARCH_PATHS = (
-					"../../../PMSUtility/build/$(CONFIGURATION)",
-					"../CLI/build/$(CONFIGURATION)",
-					"$(SRCROOT)/Frameworks",
+					"\"$(SRCROOT)/../DerivedData/Build/Products/$(CONFIGURATION)\"",
+					"\"$(SRCROOT)/Frameworks\"",
 				);
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -1518,13 +1504,16 @@
 				GCC_PREFIX_HEADER = Prefix.h;
 				LD_RUNPATH_SEARCH_PATHS = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				VALID_ARCHS = i386;
 			};
 			name = DebugPPC;
 		};
 		75D3EBAC0E8BF811009A0199 /* DebugPPC */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Frameworks\"",
+				);
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = "";
@@ -1548,9 +1537,8 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1)";
 				ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1 = "ppc i386";
 				FRAMEWORK_SEARCH_PATHS = (
-					"../../../PMSUtility/build/$(CONFIGURATION)",
-					"../CLI/build/$(CONFIGURATION)",
-					"$(SRCROOT)/Frameworks",
+					"\"$(SRCROOT)/../DerivedData/Build/Products/$(CONFIGURATION)\"",
+					"\"$(SRCROOT)/Frameworks\"",
 				);
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -1558,13 +1546,16 @@
 				GCC_PREFIX_HEADER = Prefix.h;
 				LD_RUNPATH_SEARCH_PATHS = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				VALID_ARCHS = i386;
 			};
 			name = DebugRemote;
 		};
 		75DFAC87107FF40F0076E115 /* DebugRemote */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Frameworks\"",
+				);
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = "";
@@ -1582,16 +1573,15 @@
 			};
 			name = DebugRemote;
 		};
-		75E4927C0EACC04200AC85A0 /* Development Fresh Prefs */ = {
+		75E4927C0EACC04200AC85A0 /* Debug Fresh Prefs */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7504AEA30FB389E600FFAA84 /* buildnumber.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1)";
 				ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1 = "ppc i386";
 				FRAMEWORK_SEARCH_PATHS = (
-					"../../../PMSUtility/build/$(CONFIGURATION)",
-					"../CLI/build/$(CONFIGURATION)",
-					"$(SRCROOT)/Frameworks",
+					"\"$(SRCROOT)/../DerivedData/Build/Products/$(CONFIGURATION)\"",
+					"\"$(SRCROOT)/Frameworks\"",
 				);
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -1599,13 +1589,16 @@
 				GCC_PREFIX_HEADER = Prefix.h;
 				LD_RUNPATH_SEARCH_PATHS = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				VALID_ARCHS = i386;
 			};
-			name = "Development Fresh Prefs";
+			name = "Debug Fresh Prefs";
 		};
-		75E4927D0EACC04200AC85A0 /* Development Fresh Prefs */ = {
+		75E4927D0EACC04200AC85A0 /* Debug Fresh Prefs */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Frameworks\"",
+				);
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = "";
@@ -1620,11 +1613,15 @@
 				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};
-			name = "Development Fresh Prefs";
+			name = "Debug Fresh Prefs";
 		};
-		B69BDD9508A2EC26008AC9B5 /* Development */ = {
+		B69BDD9508A2EC26008AC9B5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Frameworks\"",
+				);
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "Info-PickADisk.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
@@ -1637,11 +1634,15 @@
 				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};
-			name = Development;
+			name = Debug;
 		};
 		B69BDD9608A2EC26008AC9B5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Frameworks\"",
+				);
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = "";
@@ -1658,15 +1659,15 @@
 			};
 			name = Release;
 		};
-		B69BDD9908A2EC26008AC9B5 /* Development */ = {
+		B69BDD9908A2EC26008AC9B5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7504AEA30FB389E600FFAA84 /* buildnumber.xcconfig */;
 			buildSettings = {
-				ARCHS = i386;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1 = "ppc i386";
 				FRAMEWORK_SEARCH_PATHS = (
-					"../../../PMSUtility/build/$(CONFIGURATION)",
-					"../CLI/build/$(CONFIGURATION)",
-					"$(SRCROOT)/Frameworks",
+					"\"$(SRCROOT)/../DerivedData/Build/Products/$(CONFIGURATION)\"",
+					"\"$(SRCROOT)/Frameworks\"",
 				);
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -1674,11 +1675,9 @@
 				GCC_PREFIX_HEADER = Prefix.h;
 				LD_RUNPATH_SEARCH_PATHS = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-dynamic";
-				VALID_ARCHS = i386;
 			};
-			name = Development;
+			name = Debug;
 		};
 		B69BDD9A08A2EC26008AC9B5 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -1688,9 +1687,8 @@
 				ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1 = "ppc i386";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
-					"../../../PMSUtility/build/$(CONFIGURATION)",
-					"../CLI/build/$(CONFIGURATION)",
-					"$(SRCROOT)/Frameworks",
+					"\"$(SRCROOT)/../DerivedData/Build/Products/$(CONFIGURATION)\"",
+					"\"$(SRCROOT)/Frameworks\"",
 				);
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_OPTIMIZATION_LEVEL = s;
@@ -1698,7 +1696,6 @@
 				GCC_PREFIX_HEADER = Prefix.h;
 				LD_RUNPATH_SEARCH_PATHS = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				VALID_ARCHS = i386;
 			};
 			name = Release;
 		};
@@ -1708,28 +1705,28 @@
 		B69BDD9408A2EC26008AC9B5 /* Build configuration list for PBXNativeTarget "PickADisk" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B69BDD9508A2EC26008AC9B5 /* Development */,
+				B69BDD9508A2EC26008AC9B5 /* Debug */,
 				75DFAC87107FF40F0076E115 /* DebugRemote */,
-				75E4927D0EACC04200AC85A0 /* Development Fresh Prefs */,
+				75E4927D0EACC04200AC85A0 /* Debug Fresh Prefs */,
 				75D3EBAC0E8BF811009A0199 /* DebugPPC */,
 				B69BDD9608A2EC26008AC9B5 /* Release */,
 				7504AE850FB3837C00FFAA84 /* Release Test */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Development;
+			defaultConfigurationName = Debug;
 		};
 		B69BDD9808A2EC26008AC9B5 /* Build configuration list for PBXProject "PickADisk" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B69BDD9908A2EC26008AC9B5 /* Development */,
+				B69BDD9908A2EC26008AC9B5 /* Debug */,
 				75DFAC86107FF40F0076E115 /* DebugRemote */,
-				75E4927C0EACC04200AC85A0 /* Development Fresh Prefs */,
+				75E4927C0EACC04200AC85A0 /* Debug Fresh Prefs */,
 				75D3EBAB0E8BF811009A0199 /* DebugPPC */,
 				B69BDD9A08A2EC26008AC9B5 /* Release */,
 				7504AE840FB3837C00FFAA84 /* Release Test */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Development;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
