@@ -30,7 +30,7 @@ void CFStringPrint( CFStringRef inString, Boolean releaseInString )		//	Outputs 
 	if(inString == NULL) return;
 	outputString = STDCStringCreateFromCFString( inString );
 	if(outputString) {
-		fprintf(stdout, outputString);
+		fprintf(stdout, "%s", outputString);
 		free(outputString);
 	}		
 	if( releaseInString ) CFRelease( inString );
