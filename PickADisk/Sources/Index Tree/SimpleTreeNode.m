@@ -828,17 +828,21 @@
     id entry;
     SimpleTreeNode *child = nil;
     
-    if( [self nodeData] == nil ) self = [super initWithData:[SimpleNodeData nodeDataWithURL:loc] parent:nil children:[[NSArray alloc] init]]; // [super initWithData:data parent:nil children:[NSArray array]];
+    if( [self nodeData] == nil )
+	    self = [super initWithData:[SimpleNodeData nodeDataWithURL:loc] parent:nil children:[[NSArray alloc] init]]; // [super initWithData:data parent:nil children:[NSArray array]];
     if (self != nil) {
 		[ourElement setElementNode:self];
 		[[self nodeData] setItemElement:ourElement];
 		anElement = [DACALSlotElement slotElementForNode:self];
         while ((entry = [entryEnum nextObject])) {
 			if( CFURLIsVisible((CFURLRef)entry) ) {
-				if (CFURLHasDirectoryPath((CFURLRef)entry))
+				if (CFURLHasDirectoryPath((CFURLRef)entry)) {
+					PMLOG(1, @"tree: %@", entry);
 					child = [SimpleTreeNode treeFromLocation:entry];
-				else 
+				}
+				else
 				{
+					PMLOG(1, @"entry: %@", entry);
 					child = [[SimpleTreeNode alloc] initWithData:[SimpleNodeData nodeDataWithURL:entry] parent:nil children:[[NSArray alloc] init]];
 					anElement = [DACALSlotElement slotElementForNode:child];
 				}

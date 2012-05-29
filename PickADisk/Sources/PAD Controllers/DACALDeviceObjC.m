@@ -253,7 +253,9 @@ CFStringRef		kPADClientIdentifier = CFSTR("PAD.DACAL.CLIENT");
 	if( self = [super init] )
 	{
 		elementSlot = newSlot;
-		if( !CFURLGetFSRef( (CFURLRef)newLoc, &elementFSRef ) ) {
+        Boolean gotSlot = CFURLGetFSRef( (CFURLRef)newLoc, &elementFSRef );
+        
+		if( !gotSlot ) {
 			NSLog(@"ELement NullRef: %@", self);
 			//[self autorelease];
 			//return nil;
@@ -263,7 +265,8 @@ CFStringRef		kPADClientIdentifier = CFSTR("PAD.DACAL.CLIENT");
 		
 		[self reloadAttributes];
 		
-		if( newSlot ) [newSlot addSlotElement:self];
+		if( newSlot ) 
+            [newSlot addSlotElement:self];
 	}
 	return self;
 }

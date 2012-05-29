@@ -212,7 +212,8 @@ NSImage*	CFURLGetIconAsNSImageAtSize( CFAllocatorRef allocator, CFURLRef url, NS
 	IconRef	theItemIcon = CFURLGetIcon(allocator, url, outError);
 	NSImage*	theItemImage = NULL;
 	
-	if( theItemIcon != NULL ) theItemImage = [[NSImage alloc]initWithIconRef:theItemIcon];
+	if( theItemIcon != NULL ) 
+        theItemImage = [[NSImage alloc]initWithIconRef:theItemIcon];
 	if( (theItemImage != NULL) && (newSize != NULL) ) {
 		[theItemImage setScalesWhenResized:YES];
 		[theItemImage setSize:*newSize];

@@ -207,7 +207,7 @@ const enum {
 const enum {                                // This constant can be used with FSFindFolder()
 	kDACALCarouselsFolderType = 'Crsl',   // to locate the Carousels folder.
 	kDACALCreatorType         = 'PADr'
-}                        DACALEnumType;
+} DACALEnumType;
 
 // Callbacks
 
