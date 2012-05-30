@@ -861,7 +861,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/../DerivedData/Build/Products/$(CONFIGURATION)\"";
 				SDKROOT = macosx10.6;
+				SYMROOT = ../build;
 			};
 			name = Debug;
 		};
@@ -869,7 +871,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/../DerivedData/Build/Products/$(CONFIGURATION)\"";
 				SDKROOT = macosx10.6;
+				SYMROOT = ../build;
 			};
 			name = Release;
 		};
@@ -1016,7 +1020,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/../DerivedData/Build/Products/$(CONFIGURATION)\"";
 				SDKROOT = macosx10.6;
+				SYMROOT = ../build;
 			};
 			name = Deploy;
 		};

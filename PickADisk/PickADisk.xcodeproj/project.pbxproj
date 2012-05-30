@@ -1461,16 +1461,13 @@
 				GCC_PREFIX_HEADER = Prefix.h;
 				LD_RUNPATH_SEARCH_PATHS = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				SYMROOT = ../build;
 			};
 			name = "Release Test";
 		};
 		7504AE850FB3837C00FFAA84 /* Release Test */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/Frameworks\"",
-				);
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				"GCC_MODEL_TUNING[arch=*]" = "";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -1504,16 +1501,13 @@
 				GCC_PREFIX_HEADER = Prefix.h;
 				LD_RUNPATH_SEARCH_PATHS = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				SYMROOT = ../build;
 			};
 			name = DebugPPC;
 		};
 		75D3EBAC0E8BF811009A0199 /* DebugPPC */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/Frameworks\"",
-				);
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = "";
@@ -1546,16 +1540,13 @@
 				GCC_PREFIX_HEADER = Prefix.h;
 				LD_RUNPATH_SEARCH_PATHS = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				SYMROOT = ../build;
 			};
 			name = DebugRemote;
 		};
 		75DFAC87107FF40F0076E115 /* DebugRemote */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/Frameworks\"",
-				);
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = "";
@@ -1567,7 +1558,6 @@
 					0x10000000,
 				);
 				PRODUCT_NAME = PickADisk;
-				SYMROOT = /Users/Shared/PickADisk/build;
 				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1589,16 +1579,13 @@
 				GCC_PREFIX_HEADER = Prefix.h;
 				LD_RUNPATH_SEARCH_PATHS = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				SYMROOT = ../build;
 			};
 			name = "Debug Fresh Prefs";
 		};
 		75E4927D0EACC04200AC85A0 /* Debug Fresh Prefs */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/Frameworks\"",
-				);
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = "";
@@ -1618,10 +1605,6 @@
 		B69BDD9508A2EC26008AC9B5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/Frameworks\"",
-				);
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "Info-PickADisk.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
@@ -1639,10 +1622,6 @@
 		B69BDD9608A2EC26008AC9B5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/Frameworks\"",
-				);
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = "";
@@ -1676,6 +1655,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				OTHER_LDFLAGS = "-dynamic";
+				SYMROOT = ../build;
 			};
 			name = Debug;
 		};
@@ -1696,6 +1676,7 @@
 				GCC_PREFIX_HEADER = Prefix.h;
 				LD_RUNPATH_SEARCH_PATHS = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				SYMROOT = ../build;
 			};
 			name = Release;
 		};
