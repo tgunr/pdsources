@@ -1055,7 +1055,6 @@ enum {
     NSImageInterpolation previousImageInterpolation;
     NSImage* newImage;
     NSImage* workingImage;
-    NSImageRep* workingImageRep;
     NSSize size, pixelSize, newSize;
     NSRect iconRect;
     NSRect targetRect;
@@ -1068,10 +1067,13 @@ enum {
     // is.  We need to change some properties ("size" and "scalesWhenResized")
     // of the original image, but we shouldn't change the original, so a copy
     // is necessary.
+    NSLog(@"%s untested", __FUNCTION__);
+
     workingImage = [image copyWithZone:[image zone]];
     [workingImage setScalesWhenResized:YES];
     size = [workingImage size];
-    workingImageRep = [workingImage bestRepresentationForDevice:nil];
+    NSBitmapImageRep* workingImageRep = [NSBitmapImageRep imageRepWithData:[workingImage TIFFRepresentation]];
+
     if ([workingImageRep isKindOfClass:[NSBitmapImageRep class]]) {
         pixelSize.width  = [workingImageRep pixelsWide];
         pixelSize.height = [workingImageRep pixelsHigh];
