@@ -1474,6 +1474,7 @@
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "Info-PickADisk.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				OTHER_LDFLAGS = (
 					"-lcrypto",
 					"-seg1addr",
@@ -1513,6 +1514,7 @@
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "Info-PickADisk.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				OTHER_LDFLAGS = (
 					"-lcrypto",
 					"-seg1addr",
@@ -1552,6 +1554,7 @@
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "Info-PickADisk.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				OTHER_LDFLAGS = (
 					"-lcrypto",
 					"-seg1addr",
@@ -1591,6 +1594,7 @@
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "Info-PickADisk.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				OTHER_LDFLAGS = (
 					"-lcrypto",
 					"-seg1addr",
@@ -1608,6 +1612,7 @@
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "Info-PickADisk.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				OTHER_LDFLAGS = (
 					"-lcrypto",
 					"-seg1addr",
@@ -1627,6 +1632,7 @@
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "Info-PickADisk.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				OTHER_LDFLAGS = (
 					"-lcrypto",
 					"-seg1addr",
