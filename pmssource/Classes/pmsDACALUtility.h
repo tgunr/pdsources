@@ -9,7 +9,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import <CoreFoundation/CoreFoundation.h>
-#import <DACAL/dacallib.h>
+#import "dacallib.h"
 
 #ifndef _pmsDACALUtility
 OSStatus		DACALRegisterIconResource( CFStringRef theIconFile, OSType theIconType );

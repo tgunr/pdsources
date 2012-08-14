@@ -40,7 +40,7 @@ void CFStringPrint( CFStringRef inString, Boolean releaseInString )		//	Outputs 
 
 void usage() {
 	printf("dacal [--reset] [--close|-k] [--led 0|1] [--model] [-uid] [--devices]  \n");
-	printf("      [--slot number] [--status|-i] [--reference|-c number] [--verbose|-b] \n");
+	printf("      [--slot number] [--status|-i] [--carousel|-c number] [--verbose|-b] \n");
 	printf("      [--get-slot] [--dvd|-v number] [--eject] \n");
 	exit(1);
 }
@@ -60,7 +60,7 @@ int main (int argc, const char * argv[]) {
 		{ "get-slot",			no_argument,            NULL,				'g'	},
 		{ "status",				no_argument,            NULL,				'i'	},
 		{ "verbose",			no_argument,            NULL,				'b'	},
-		{ "reference",			required_argument,      NULL,				'c'	},
+		{ "carousel",			required_argument,      NULL,				'c'	},
 		{ "dvd",				required_argument,      NULL,				'v'	},
 		{ "eject",				no_argument,            NULL,				'e'	},
 		{ NULL,         0,								NULL,				0	}
@@ -80,7 +80,14 @@ int main (int argc, const char * argv[]) {
 		return 1;
 	}
 
+#ifdef DEBUG_COMM
+#pragma warning DEBUG_COMM
+    PMLOGPushVerbose(2);
+#endif
 	err = DACALDevicesInitialize();
+#ifdef DEBUG_COMM
+    PMLOGPopVerbose();
+#endif
 
 	while (true) {
 		if (err) {
@@ -164,7 +171,7 @@ int main (int argc, const char * argv[]) {
 				err = DACALCommandMoveToSlot( workDevice, workSlot );
 				break;
 			}
-																		// reference
+																		// carousel
 			case 'c': {
 				workDevice = atoi(optarg);
 				break;

@@ -216,8 +216,6 @@ const enum {                                // This constant can be used with FS
 typedef void *DACALClientNotificationCallback(void *clientData, DACALDeviceRef noticeDevice, CFStringRef noticeMessage, CFDictionaryRef noticeData);
 
 // Public Functions
-extern void               PMLOGSetVerbose(Boolean value);
-
 extern CFStringRef        DACALCommandCopyName(DACALDeviceRef deviceID, DACALResult *outError);
 
 extern DACALResult        DACALCommandSetName(DACALDeviceRef deviceID, CFStringRef deviceName);

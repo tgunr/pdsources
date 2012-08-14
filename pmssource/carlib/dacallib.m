@@ -462,12 +462,12 @@ DACALResult CarouselEstablishInfoFile(CFUUIDRef boxUUID) {
 
 	osErr = FSFindFolder(kUserDomain, kDACALCarouselsFolderType, TRUE, &userLibraryFolder);
 	if (osErr != 0) {
-		PMLOG(1, @"Error finding user library! - err::%i", osErr );
 		if (osErr == fnfErr) {
 			FSRef topFolder;
 			osErr = DACALCreateLibraryFolder(&topFolder);
             osErr = FSFindFolder(kUserDomain, kDACALCarouselsFolderType, TRUE, &userLibraryFolder);
-		}
+		} else
+            PMLOG(1, @"Error finding user library! - err::%i", osErr );
 	}
     dataURL = CFURLCreateFromFSRef(NULL, &userLibraryFolder);
 
@@ -867,6 +867,7 @@ DACALCount dacalDeviceRefToDeviceIndex(DACALDeviceRef deviceID) {
 //	for( checkIndex = 0; checkIndex < gDACALBoxes.boxCount; checkIndex++ )					// Node ID
 //		if( DACAL_BOX_NODE(checkIndex) == deviceID ) return( checkIndex );
 
+    // TODO: This looks wrong, should never be > 256
 	if (deviceID > kDACALIllegalDevice) {
 		CFUUIDRef   possibleID   = (CFUUIDRef)deviceID;
 		CFStringRef possibleName = (CFStringRef)deviceID;
@@ -2785,11 +2786,11 @@ DACALCreateLibraryFolder(FSRef *libraryFolder) {
         // setup a system folder descriptor to make finding the Carousel folder easy
 		ffErr = AddFolderDescriptor(
                             kDACALCarouselsFolderType, kFolderInLocalOrRemoteUserFolder,
-                            kRelativeFolder, kDomainLibraryFolderType, 0, 0,
+                            kRelativeFolder, kApplicationSupportFolderType, 0, 0,
                             (ConstStrFileNameParam)PAD_FOLDERNAME_PSTRING, TRUE
                             );
         
-		ffErr = FSFindFolder(kOnAppropriateDisk, kDACALCarouselsFolderType, TRUE, libraryFolder);
+		ffErr = FSFindFolder(kUserDomain, kDACALCarouselsFolderType, TRUE, libraryFolder);
 
         if (appSupportURL != NULL)
             CFRelease(appSupportURL);
