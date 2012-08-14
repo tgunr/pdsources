@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 44;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -94,8 +94,6 @@
 		7504AE6A0FB380E700FFAA84 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 7504AE5E0FB380E700FFAA84 /* index.html */; };
 		7504AE710FB380E700FFAA84 /* PAD_1.0_1040.html in Resources */ = {isa = PBXBuildFile; fileRef = 7504AE660FB380E700FFAA84 /* PAD_1.0_1040.html */; };
 		7504AE720FB380E700FFAA84 /* supportConfig.php in Resources */ = {isa = PBXBuildFile; fileRef = 7504AE670FB380E700FFAA84 /* supportConfig.php */; };
-		7504AEA40FB389E600FFAA84 /* buildnumber.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 7504AEA30FB389E600FFAA84 /* buildnumber.xcconfig */; };
-		7504AEBC0FB38F7400FFAA84 /* releasenumber.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 7504AEBB0FB38F7400FFAA84 /* releasenumber.xcconfig */; };
 		7504AF270FB3A1F900FFAA84 /* updates.xml in Resources */ = {isa = PBXBuildFile; fileRef = 7504AF260FB3A1F900FFAA84 /* updates.xml */; };
 		7504AFDD0FB3AEBB00FFAA84 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 7504AFDC0FB3AEBB00FFAA84 /* Credits.rtf */; };
 		751C4E2D0E9400250027BC1C /* AquaticPrime.m in Sources */ = {isa = PBXBuildFile; fileRef = 751C4E2C0E9400250027BC1C /* AquaticPrime.m */; };
@@ -461,6 +459,7 @@
 		75E666F90E92A99000A9DA07 /* AquaticPrime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AquaticPrime.h; path = Sources/License/AquaticPrime.h; sourceTree = "<group>"; };
 		75E667D50E92CA9500A9DA07 /* license.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = license.icns; path = ../Resources/license.icns; sourceTree = SOURCE_ROOT; };
 		75E816080EAFB47200C8562D /* Gray.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Gray.tif; sourceTree = "<group>"; };
+		75EB93A315D9A7B4009D74C1 /* PickADisk.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PickADisk.entitlements; sourceTree = "<group>"; };
 		75F02D180E954B1400A02B14 /* License.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = License.xib; sourceTree = "<group>"; };
 		75F02D210E955A9400A02B14 /* LicenseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LicenseController.h; path = Sources/License/LicenseController.h; sourceTree = "<group>"; };
 		75F02D220E955A9400A02B14 /* LicenseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LicenseController.m; path = Sources/License/LicenseController.m; sourceTree = "<group>"; };
@@ -574,6 +573,7 @@
 		29B97314FDCFA39411CA2CEA /* CocoaApp */ = {
 			isa = PBXGroup;
 			children = (
+				75EB93A315D9A7B4009D74C1 /* PickADisk.entitlements */,
 				75CD34B0149A12ED00A3F0E9 /* DACALDriver.xcodeproj */,
 				75CD34731499431600A3F0E9 /* CLI.xcodeproj */,
 				7573CA3514976B0E00CA5B2A /* PMSUtility.xcodeproj */,
@@ -1137,8 +1137,11 @@
 /* Begin PBXProject section */
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0450;
+			};
 			buildConfigurationList = B69BDD9808A2EC26008AC9B5 /* Build configuration list for PBXProject "PickADisk" */;
-			compatibilityVersion = "Xcode 2.4";
+			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
@@ -1294,8 +1297,6 @@
 				7504AE6A0FB380E700FFAA84 /* index.html in Resources */,
 				7504AE710FB380E700FFAA84 /* PAD_1.0_1040.html in Resources */,
 				7504AE720FB380E700FFAA84 /* supportConfig.php in Resources */,
-				7504AEA40FB389E600FFAA84 /* buildnumber.xcconfig in Resources */,
-				7504AEBC0FB38F7400FFAA84 /* releasenumber.xcconfig in Resources */,
 				7504AF270FB3A1F900FFAA84 /* updates.xml in Resources */,
 				7504AFDD0FB3AEBB00FFAA84 /* Credits.rtf in Resources */,
 				75E0D61C1073EF620012897D /* Multi-Folder.icns in Resources */,
@@ -1449,13 +1450,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7504AEBB0FB38F7400FFAA84 /* releasenumber.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1)";
-				ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1 = "ppc i386";
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SRCROOT)/../DerivedData/Build/Products/$(CONFIGURATION)\"",
 					"\"$(SRCROOT)/Frameworks\"",
 				);
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_OPTIMIZATION_LEVEL = s;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Prefix.h;
@@ -1468,7 +1467,9 @@
 		7504AE850FB3837C00FFAA84 /* Release Test */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				CODE_SIGN_ENTITLEMENTS = PickADisk.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
 				"GCC_MODEL_TUNING[arch=*]" = "";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = "";
@@ -1490,13 +1491,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7504AEA30FB389E600FFAA84 /* buildnumber.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1)";
-				ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1 = "ppc i386";
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SRCROOT)/../DerivedData/Build/Products/$(CONFIGURATION)\"",
 					"\"$(SRCROOT)/Frameworks\"",
 				);
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Prefix.h;
@@ -1509,7 +1508,9 @@
 		75D3EBAC0E8BF811009A0199 /* DebugPPC */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				CODE_SIGN_ENTITLEMENTS = PickADisk.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "Info-PickADisk.plist";
@@ -1530,13 +1531,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7504AEA30FB389E600FFAA84 /* buildnumber.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1)";
-				ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1 = "ppc i386";
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SRCROOT)/../DerivedData/Build/Products/$(CONFIGURATION)\"",
 					"\"$(SRCROOT)/Frameworks\"",
 				);
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Prefix.h;
@@ -1549,7 +1548,9 @@
 		75DFAC87107FF40F0076E115 /* DebugRemote */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				CODE_SIGN_ENTITLEMENTS = PickADisk.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "Info-PickADisk.plist";
@@ -1570,13 +1571,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7504AEA30FB389E600FFAA84 /* buildnumber.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1)";
-				ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1 = "ppc i386";
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SRCROOT)/../DerivedData/Build/Products/$(CONFIGURATION)\"",
 					"\"$(SRCROOT)/Frameworks\"",
 				);
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Prefix.h;
@@ -1589,7 +1588,9 @@
 		75E4927D0EACC04200AC85A0 /* Debug Fresh Prefs */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				CODE_SIGN_ENTITLEMENTS = PickADisk.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "Info-PickADisk.plist";
@@ -1609,6 +1610,9 @@
 		B69BDD9508A2EC26008AC9B5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = PickADisk.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "Info-PickADisk.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
@@ -1627,7 +1631,9 @@
 		B69BDD9608A2EC26008AC9B5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				CODE_SIGN_ENTITLEMENTS = PickADisk.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "Info-PickADisk.plist";
@@ -1648,13 +1654,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7504AEA30FB389E600FFAA84 /* buildnumber.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1)";
-				ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1 = "ppc i386";
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SRCROOT)/../DerivedData/Build/Products/$(CONFIGURATION)\"",
 					"\"$(SRCROOT)/Frameworks\"",
 				);
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Prefix.h;
@@ -1669,14 +1673,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7504AEBB0FB38F7400FFAA84 /* releasenumber.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1)";
-				ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1 = "ppc i386";
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SRCROOT)/../DerivedData/Build/Products/$(CONFIGURATION)\"",
 					"\"$(SRCROOT)/Frameworks\"",
 				);
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_OPTIMIZATION_LEVEL = s;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Prefix.h;
