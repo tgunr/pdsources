@@ -175,14 +175,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		1DEB91DA08733DB10010E9CD /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CURRENT_PROJECT_VERSION = 100;
-				PRODUCT_NAME = DACALDriver;
-			};
-			name = Debug;
-		};
 		1DEB91DB08733DB10010E9CD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -191,22 +183,6 @@
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
-		};
-		1DEB91DE08733DB10010E9CD /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
-				INFOPLIST_FILE = Info.plist;
-				INFOPLIST_PREPROCESS = YES;
-				INSTALL_PATH = "$(SYSTEM_LIBRARY_DIR)/Extensions";
-				MODULE_NAME = com.polymicrosystems.driver.DACALDriver;
-				MODULE_VERSION = 1.0.0;
-				ONLY_ACTIVE_ARCH = NO;
-				OTHER_LDFLAGS = "-mkernel";
-				SDKROOT = macosx10.7;
-			};
-			name = Debug;
 		};
 		1DEB91DF08733DB10010E9CD /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -224,7 +200,7 @@
 			};
 			name = Release;
 		};
-		751E8423149ABF8C0024DBE7 /* Development */ = {
+		751E8423149ABF8C0024DBE7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
@@ -238,15 +214,15 @@
 				OTHER_LDFLAGS = "-mkernel";
 				SDKROOT = macosx10.7;
 			};
-			name = Development;
+			name = Debug;
 		};
-		751E8424149ABF8C0024DBE7 /* Development */ = {
+		751E8424149ABF8C0024DBE7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CURRENT_PROJECT_VERSION = 100;
 				PRODUCT_NAME = DACALDriver;
 			};
-			name = Development;
+			name = Debug;
 		};
 		7543D5290E3BBEE5009A8AF3 /* Deploy */ = {
 			isa = XCBuildConfiguration;
@@ -278,8 +254,7 @@
 		1DEB91D908733DB10010E9CD /* Build configuration list for PBXNativeTarget "DACALDriver" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1DEB91DA08733DB10010E9CD /* Debug */,
-				751E8424149ABF8C0024DBE7 /* Development */,
+				751E8424149ABF8C0024DBE7 /* Debug */,
 				7543D52A0E3BBEE5009A8AF3 /* Deploy */,
 				1DEB91DB08733DB10010E9CD /* Release */,
 			);
@@ -289,8 +264,7 @@
 		1DEB91DD08733DB10010E9CD /* Build configuration list for PBXProject "DACALDriver" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1DEB91DE08733DB10010E9CD /* Debug */,
-				751E8423149ABF8C0024DBE7 /* Development */,
+				751E8423149ABF8C0024DBE7 /* Debug */,
 				7543D5290E3BBEE5009A8AF3 /* Deploy */,
 				1DEB91DF08733DB10010E9CD /* Release */,
 			);
