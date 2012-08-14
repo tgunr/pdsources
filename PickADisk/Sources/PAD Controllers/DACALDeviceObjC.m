@@ -9,9 +9,8 @@
 #import "PADOperationOpenDevice.h"
 #import "PADOperationControlDevice.h"
 #import "LicenseService.h"
+#import "Prefix.h"
 #import <DACAL/dacalconstants.h>
-
-CFStringRef		kPADClientIdentifier = CFSTR("PAD.DACAL.CLIENT");
 
 //	Device Array
 
@@ -1597,7 +1596,7 @@ CFStringRef		kPADClientIdentifier = CFSTR("PAD.DACAL.CLIENT");
 	DACALRegisterIconResource( CFSTR("Generic_Movie"), 'gMov' );
 	DACALRegisterIconResource( CFSTR("Generic_Image"), 'gImg' );
 		
-	DACALClientCreate( kCFAllocatorDefault, kPADClientIdentifier, (void*)self, DACALNotification );	
+	DACALClientCreate( kPADClientIdentifier, (void*)self, DACALNotification );
 
 	PADBOX_VALID_END
 	

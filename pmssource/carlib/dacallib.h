@@ -187,6 +187,8 @@ extern CFStringRef kDACALCarouselDocumentXAttrBookmarks;
 extern CFStringRef kDACALCarouselNoticeDeviceOpen;
 extern CFStringRef kDACALCarouselNoticeDeviceClose;
 
+extern CFStringRef kPADClientIdentifier;
+
 extern const DACALDeviceRef kDACALDefaultDevice;
 extern const DACALDeviceRef kDACALIllegalDevice;
 extern const DACALDeviceRef kDACALDevicesMaxCount;
@@ -312,10 +314,12 @@ extern CFTypeRef       DACALDeviceInfoCopyKey(DACALDeviceRef deviceID, CFStringR
 
 extern CFDictionaryRef DACALDeviceInfoCopyKeys(DACALDeviceRef deviceID, CFArrayRef inKeyNames, DACALResult *outResult);
 
-extern DACALResult DACALClientCreate(CFAllocatorRef useAllocator, CFStringRef clientID, void *useDataRef, void *useCallback);
+extern OSErr            DACALCreateLibraryFolder(FSRef *topFolder);
 
-extern void        DACALClientRelease(CFStringRef clientID);
+extern DACALResult      DACALClientCreate(CFStringRef clientID, void *useDataRef, void *useCallback);
 
-extern void        DACALClientNotifyAll(DACALDeviceRef noticeDevice, CFStringRef noticeMessage, CFDictionaryRef noticeData);
+extern void             DACALClientRelease(CFStringRef clientID);
+
+extern void             DACALClientNotifyAll(DACALDeviceRef noticeDevice, CFStringRef noticeMessage, CFDictionaryRef noticeData);
 
 #endif // __dacallib__
