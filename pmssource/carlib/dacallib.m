@@ -9,7 +9,6 @@
 
 #import "pad.h"
 #import <DACAL/pmsDACALUtility.h>
-#import <DACAL/dacallib.h>
 
 #define __DCDEBUG                                                // define this in your pch to go verbose debug
 
@@ -68,6 +67,8 @@ CFStringRef kDACALCarouselDocumentXAttrBookmarks    = CFSTR("com.polymicrosystem
 
 CFStringRef kDACALCarouselNoticeDeviceOpen  = CFSTR("Open Device");
 CFStringRef kDACALCarouselNoticeDeviceClose = CFSTR("Close Device");
+
+CFStringRef kPADClientIdentifier  = CFSTR("PAD.DACAL.CLIENT");
 
 const DACALDeviceRef kDACALDefaultDevice                 = 0;
 const DACALDeviceRef kDACALIllegalDevice                 = DACAL_MAXDEVICE_COUNT+ 1;
@@ -456,13 +457,19 @@ DACALResult CarouselEstablishInfoFile(CFUUIDRef boxUUID) {
 	FSRef          userLibraryFolder;
 	FSRef          fileFolder;
 	Boolean        fileFound  = FALSE;
-	OSErr          theErr;
+	OSErr           osErr;
+	DACALResult     resultErr;
 
-	theErr      = FSFindFolder(kUserDomain, kDACALCarouselsFolderType, TRUE, &userLibraryFolder);
-	if (theErr != 0)
-	PMLOG(1, @"Could not find user library! - err::%i", theErr );
-	else
-		dataURL = CFURLCreateFromFSRef(NULL, &userLibraryFolder);
+	osErr = FSFindFolder(kUserDomain, kDACALCarouselsFolderType, TRUE, &userLibraryFolder);
+	if (osErr != 0) {
+		PMLOG(1, @"Error finding user library! - err::%i", osErr );
+		if (osErr == fnfErr) {
+			FSRef topFolder;
+			osErr = DACALCreateLibraryFolder(&topFolder);
+            osErr = FSFindFolder(kUserDomain, kDACALCarouselsFolderType, TRUE, &userLibraryFolder);
+		}
+	}
+    dataURL = CFURLCreateFromFSRef(NULL, &userLibraryFolder);
 
 	if (dataURL)
 		fileURL = CFURLCreateWithString(NULL, fileTitle, dataURL);
@@ -471,19 +478,19 @@ DACALResult CarouselEstablishInfoFile(CFUUIDRef boxUUID) {
 
 		fileFound = CFURLGetFSRef(fileURL, &fileFolder);
 		if (fileFound) {
-			theErr = CarouselReadInfoFile((DACALDeviceRef)boxUUID);
+			resultErr = CarouselReadInfoFile((DACALDeviceRef)boxUUID);
 			goto BAIL;
 		}
 
-		CFIndex theUniCount = CFStringGetLength(fileTitle) - 1;
+		UniCharCount theUniCount = (UniCharCount)(CFStringGetLength(fileTitle) - 1);
 		UniChar theUniName[1024];
 
 		CFStringGetCharacters(fileTitle, CFRangeMake(0, theUniCount), theUniName);
-		theErr = FSCreateDirectoryUnicode(&userLibraryFolder, theUniCount, (const UniChar *)theUniName, kFSCatInfoNone, NULL, &fileFolder, NULL, NULL);
-		if (theErr)
+		osErr = FSCreateDirectoryUnicode(&userLibraryFolder, theUniCount, (const UniChar *)theUniName, kFSCatInfoNone, NULL, &fileFolder, NULL, NULL);
+		if (osErr)
 			goto BAIL;
 
-		theErr = CarouselWriteInfoFile((DACALDeviceRef)boxUUID);
+		resultErr = CarouselWriteInfoFile((DACALDeviceRef)boxUUID);
 	}
 
 	BAIL:
@@ -496,7 +503,7 @@ DACALResult CarouselEstablishInfoFile(CFUUIDRef boxUUID) {
 	if (uuidString)
 		CFRelease(uuidString);
 
-	outResult = theErr;
+	outResult = osErr;
 	return outResult;
 }
 
@@ -2705,8 +2712,100 @@ DACALClientNotifyAll(DACALDeviceRef noticeDevice, CFStringRef noticeMessage, CFD
 		DACALClientNotify(DACAL_CLIENT_IDENTIFIER(index), noticeDevice, noticeMessage, noticeData);
 }
 
+OSErr
+DACALCreateLibraryFolder(FSRef *libraryFolder) {
+	OSErr ffErr;
+
+	DACALDevicesSetCFAllocator(kCFAllocatorDefault);            // initialize with default allocator
+
+	{
+		// this is a workaround because AddFolderDescriptor
+		// creates a folder with silly permissions
+
+			ffErr = FSFindFolder(kUserDomain, kDomainLibraryFolderType, FALSE, libraryFolder);
+			if (ffErr)
+				fprintf(stderr, "No Local Library?");
+        
+            FSRef appSupportFolder;
+            ffErr = FSFindFolder(kUserDomain, kApplicationSupportFolderType, FALSE, &appSupportFolder);
+            if (ffErr)
+                fprintf(stderr, "No Local Application Support?");
+
+			CFURLRef      appSupportURL = CFURLCreateFromFSRef(kCFAllocatorDefault, &appSupportFolder);
+			CFURLRef      appSuportPadURL = CFURLCreateCopyAppendingPathComponent(kCFAllocatorDefault, appSupportURL, PAD_FOLDERNAME_CFSTRING, TRUE);
+            CFURLRef      libraryURL = CFURLCreateFromFSRef(kCFAllocatorDefault, libraryFolder);
+            CFURLRef      libraryPadURL = CFURLCreateCopyAppendingPathComponent(kCFAllocatorDefault, libraryURL, PAD_FOLDERNAME_CFSTRING, TRUE);
+			FSRef         appSupportPadFS, libraryPadFS;
+        
+			FSCatalogInfo permCatInfo;
+			FSPermissionInfo *permInfo = (FSPermissionInfo *)&permCatInfo.permissions;
+
+            Boolean foundAppSupportPAD    = CFURLGetFSRef(appSuportPadURL, &appSupportPadFS);
+            Boolean foundLibraryPAD    = CFURLGetFSRef(libraryPadURL, &libraryPadFS);
+        
+			CFIndex theUniCount = CFStringGetLength(PAD_FOLDERNAME_CFSTRING);
+			UniChar theUniName[1024];
+
+			if (foundAppSupportPAD == FALSE) {
+                if (foundLibraryPAD == TRUE) {
+                    // Copy libraryPAD to appSupportPAD
+                    CFStringRef libraryPADPath = CFURLCopyFileSystemPath(libraryPadURL, kCFURLPOSIXPathStyle);
+                    CFStringRef appSupportPADPath = CFURLCopyFileSystemPath(appSupportURL, kCFURLPOSIXPathStyle);
+                    CFTimeInterval  statusInterval = 1.0;
+                    CFStringRef contextString = NULL;
+                    Boolean async = false;
+
+                    OptionBits	options = kFSFileOperationDefaultOptions;
+                    
+                    long int sourcePathLen = CFStringGetLength(libraryPADPath);
+                    char *sourcePath = malloc(2048);
+                    CFStringGetCString(libraryPADPath, sourcePath, 2048, kCFStringEncodingUTF8);
+
+                    long int destPathLen = CFStringGetLength(appSupportPADPath);
+                    char *destPath = malloc(2048);
+                    CFStringGetCString(appSupportPADPath, destPath, 2048, kCFStringEncodingUTF8);
+
+                    long int destNameLen = CFStringGetLength(PAD_FOLDERNAME_CFSTRING);
+                    char *destName = malloc(2048);
+                    CFStringGetCString(PAD_FOLDERNAME_CFSTRING, destName, 2048, kCFStringEncodingUTF8);
+                                        
+                    Boolean ok = OperateByPath(false, sourcePath, destPath, NULL, statusInterval, options, async, contextString);
+                } else { // Create new appSupportPAD
+                    permInfo->mode = 0755;                        // drwxr-xr-x
+                    CFStringGetCharacters(PAD_FOLDERNAME_CFSTRING, CFRangeMake(0, theUniCount), theUniName);
+
+                    ffErr = FSCreateDirectoryUnicode(&appSupportFolder, (UniCharCount)theUniCount, (const UniChar *)theUniName, kFSCatInfoPermissions, &permCatInfo, &appSupportPadFS, NULL, NULL);
+                    if (ffErr)
+                        fprintf(stderr, "FSCreateDirectoryUnicode: %i\n", ffErr);
+                }
+            }
+            
+            libraryFolder = &appSupportFolder;
+
+        // setup a system folder descriptor to make finding the Carousel folder easy
+		ffErr = AddFolderDescriptor(
+                            kDACALCarouselsFolderType, kFolderInLocalOrRemoteUserFolder,
+                            kRelativeFolder, kDomainLibraryFolderType, 0, 0,
+                            (ConstStrFileNameParam)PAD_FOLDERNAME_PSTRING, TRUE
+                            );
+        
+		ffErr = FSFindFolder(kOnAppropriateDisk, kDACALCarouselsFolderType, TRUE, libraryFolder);
+
+        if (appSupportURL != NULL)
+            CFRelease(appSupportURL);
+        if (appSuportPadURL != NULL)
+            CFRelease(appSuportPadURL);
+        if (libraryURL != NULL)
+            CFRelease(libraryURL);
+        if (libraryPadURL != NULL)
+            CFRelease(libraryPadURL);
+		}
+	return ffErr;
+}
+
+
 DACALResult
-DACALClientCreate(CFAllocatorRef useAllocator, CFStringRef clientID, void *useDataRef, void *useCallback) {
+DACALClientCreate(CFStringRef clientID, void *useDataRef, void *useCallback) {
 	DACALClientRef ourClientRef = gDACALNextClientID++;
 	DACALResult    outError     = kDACALError;
 
@@ -2717,13 +2816,11 @@ DACALClientCreate(CFAllocatorRef useAllocator, CFStringRef clientID, void *useDa
 
 	if (clientID)
 		CFRetain(clientID);
-	if (useAllocator)
-		CFRetain(useAllocator);
 
 	DACAL_CLIENT_IDENTIFIER(ourClientRef) = clientID;
 	DACAL_CLIENT_CALLBACK(ourClientRef) = useCallback;
 	DACAL_CLIENT_USERDATA(ourClientRef) = useDataRef;
-	DACAL_CLIENT_ALLOCATOR(ourClientRef) = useAllocator;
+	DACAL_CLIENT_ALLOCATOR(ourClientRef) = kCFAllocatorDefault;
 
 	gDACALClients.clientCount = ourClientRef;
 	outError = kDACALOK;
@@ -2734,48 +2831,8 @@ DACALClientCreate(CFAllocatorRef useAllocator, CFStringRef clientID, void *useDa
 
 		gDACALBoxes.boxCount = 0;                            // start fresh
 
-		DACALDevicesSetCFAllocator(useAllocator);            // initialize with default allocator
+		ffErr = DACALCreateLibraryFolder(&topFolder);
 
-		{                                                    // this is a workaround because AddFolderDescriptor
-			// creates a folder with silly permissions
-
-			ffErr = FSFindFolder(kUserDomain, kDomainLibraryFolderType, FALSE, &topFolder);
-			if (ffErr)
-				fprintf(stderr, "No Local Library?");
-
-			CFURLRef      sysURL = CFURLCreateFromFSRef(useAllocator, &topFolder);
-			CFURLRef      padURL = CFURLCreateCopyAppendingPathComponent(useAllocator, sysURL, PAD_FOLDERNAME_CFSTRING, TRUE);
-			FSRef         padFS;
-			FSCatalogInfo permCatInfo;
-			FSPermissionInfo *permInfo = (FSPermissionInfo *)&(permCatInfo.permissions);
-
-			Boolean foundPAD    = CFURLGetFSRef(padURL, &padFS);
-			CFIndex theUniCount = CFStringGetLength(PAD_FOLDERNAME_CFSTRING);
-			UniChar theUniName[1024];
-
-			if (foundPAD == FALSE) {
-				permInfo->mode = 0755;                        // drwxr-xr-x
-				CFStringGetCharacters(PAD_FOLDERNAME_CFSTRING, CFRangeMake(0, theUniCount), theUniName);
-
-				ffErr = FSCreateDirectoryUnicode(&topFolder, theUniCount, (const UniChar *)theUniName, kFSCatInfoPermissions, &permCatInfo, &padFS, NULL, NULL);
-				if (ffErr)
-					fprintf(stderr, "FSCreateDirectoryUnicode: %i\n", ffErr);
-			}
-
-			if (padURL != NULL)
-				CFRelease(padURL);
-			if (sysURL != NULL)
-				CFRelease(sysURL);
-		}
-
-		// setup a system folder descriptor to make finding the Carousel folder easy
-		AddFolderDescriptor(
-				kDACALCarouselsFolderType, kFolderInLocalOrRemoteUserFolder,
-				kRelativeFolder, kDomainLibraryFolderType, 0, 0,
-				PAD_FOLDERNAME_PSTRING, TRUE
-		                   );
-
-		ffErr = FSFindFolder(kOnAppropriateDisk, kDACALCarouselsFolderType, TRUE, &topFolder);
 	}
 
 
