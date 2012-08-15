@@ -26,16 +26,7 @@
 /* Begin PBXBuildFile section */
 		7502881011923D47008008F8 /* dacallib.m in Sources */ = {isa = PBXBuildFile; fileRef = 7502880611923D47008008F8 /* dacallib.m */; };
 		7502881111923D47008008F8 /* dacalconstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 7502880811923D47008008F8 /* dacalconstants.m */; };
-		7502881711923D47008008F8 /* dacallib.h in Headers */ = {isa = PBXBuildFile; fileRef = 7502880511923D47008008F8 /* dacallib.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7502881811923D47008008F8 /* dacallib.m in Sources */ = {isa = PBXBuildFile; fileRef = 7502880611923D47008008F8 /* dacallib.m */; };
-		7502881911923D47008008F8 /* dacalconstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 7502880711923D47008008F8 /* dacalconstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7502881A11923D47008008F8 /* dacalconstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 7502880811923D47008008F8 /* dacalconstants.m */; };
 		7502882C11923DD9008008F8 /* NSString+CarbonFSRefCreation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7502882A11923DD9008008F8 /* NSString+CarbonFSRefCreation.m */; };
-		7502882D11923DD9008008F8 /* IconFamily.h in Headers */ = {isa = PBXBuildFile; fileRef = 7502882711923DD9008008F8 /* IconFamily.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7502882E11923DD9008008F8 /* IconFamily.m in Sources */ = {isa = PBXBuildFile; fileRef = 7502882811923DD9008008F8 /* IconFamily.m */; };
-		7502882F11923DD9008008F8 /* NSString+CarbonFSRefCreation.h in Headers */ = {isa = PBXBuildFile; fileRef = 7502882911923DD9008008F8 /* NSString+CarbonFSRefCreation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7502883011923DD9008008F8 /* NSString+CarbonFSRefCreation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7502882A11923DD9008008F8 /* NSString+CarbonFSRefCreation.m */; };
-		751047FA0E41430C009AFDB4 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09AB6884FE841BABC02AAC07 /* CoreFoundation.framework */; };
 		751FBA2A0E39059100D64628 /* find.c in Sources */ = {isa = PBXBuildFile; fileRef = 751FBA200E39059000D64628 /* find.c */; };
 		751FBA2B0E39059100D64628 /* function.c in Sources */ = {isa = PBXBuildFile; fileRef = 751FBA220E39059000D64628 /* function.c */; };
 		751FBA2C0E39059100D64628 /* getdate.y in Sources */ = {isa = PBXBuildFile; fileRef = 751FBA230E39059100D64628 /* getdate.y */; };
@@ -48,14 +39,14 @@
 		751FBA780E39065200D64628 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 751FBA6B0E39065200D64628 /* main.c */; };
 		751FBA790E39065200D64628 /* xattrfunctions.c in Sources */ = {isa = PBXBuildFile; fileRef = 751FBA710E39065200D64628 /* xattrfunctions.c */; };
 		751FBAE90E39151C00D64628 /* fabricate.c in Sources */ = {isa = PBXBuildFile; fileRef = 751FBAE80E39151C00D64628 /* fabricate.c */; };
-		751FBCE10E3A340900D64628 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 751FBCE00E3A340900D64628 /* IOKit.framework */; };
-		754C476015DB119D00316C67 /* IconFamily.m in Sources */ = {isa = PBXBuildFile; fileRef = 7502882811923DD9008008F8 /* IconFamily.m */; };
 		754C47E215DC292700316C67 /* pmsDACALUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 7570BE2513CEA158001AF81B /* pmsDACALUtility.m */; };
 		754C47F415DC2E3C00316C67 /* libpmutility.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 754C47F115DC2E2A00316C67 /* libpmutility.a */; };
 		754C47F715DC309100316C67 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 751FBCE00E3A340900D64628 /* IOKit.framework */; };
 		754C47F815DC30AA00316C67 /* libcrypto.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 75782D6511E4F7B700496670 /* libcrypto.dylib */; };
-		7570BE2613CEA159001AF81B /* pmsDACALUtility.h in Headers */ = {isa = PBXBuildFile; fileRef = 7570BE2413CEA158001AF81B /* pmsDACALUtility.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7570BE2713CEA159001AF81B /* pmsDACALUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 7570BE2513CEA158001AF81B /* pmsDACALUtility.m */; };
+		754C483B15DC3C3300316C67 /* IconFamily.m in Sources */ = {isa = PBXBuildFile; fileRef = 7502882811923DD9008008F8 /* IconFamily.m */; };
+		754C483C15DC3C4800316C67 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75637E9F11E64FB50069CA00 /* AppKit.framework */; };
+		754C483D15DC3D7E00316C67 /* PMUtility.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 754C478D15DC20E900316C67 /* PMUtility.framework */; };
+		754C483E15DC3DA000316C67 /* libcrypto.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 75782D6511E4F7B700496670 /* libcrypto.dylib */; };
 		7570BE5913CEA721001AF81B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7570BE5813CEA721001AF81B /* Cocoa.framework */; };
 		7570BE6313CEA721001AF81B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7570BE6113CEA721001AF81B /* InfoPlist.strings */; };
 		7570BE6A13CEA790001AF81B /* pmsDACALUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 7570BE2513CEA158001AF81B /* pmsDACALUtility.m */; };
@@ -69,11 +60,8 @@
 		7570BE7213CEA847001AF81B /* dacallib.h in Headers */ = {isa = PBXBuildFile; fileRef = 7502880511923D47008008F8 /* dacallib.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7570BE7313CEA851001AF81B /* dacalconstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 7502880711923D47008008F8 /* dacalconstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		75730AE31487007B00746100 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 751FBCE00E3A340900D64628 /* IOKit.framework */; };
-		75782D6611E4F7B700496670 /* libcrypto.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 75782D6511E4F7B700496670 /* libcrypto.dylib */; };
-		75ABD90913CEF67100BB3D7A /* pad.h in Headers */ = {isa = PBXBuildFile; fileRef = 75ABD90713CEF67100BB3D7A /* pad.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		75ABD90A13CEF67100BB3D7A /* pad.h in Headers */ = {isa = PBXBuildFile; fileRef = 75ABD90713CEF67100BB3D7A /* pad.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		75ABD90B13CEF67100BB3D7A /* pad.m in Sources */ = {isa = PBXBuildFile; fileRef = 75ABD90813CEF67100BB3D7A /* pad.m */; };
-		75ABD90C13CEF67100BB3D7A /* pad.m in Sources */ = {isa = PBXBuildFile; fileRef = 75ABD90813CEF67100BB3D7A /* pad.m */; };
 		75ABD90D13CEF67100BB3D7A /* pad.m in Sources */ = {isa = PBXBuildFile; fileRef = 75ABD90813CEF67100BB3D7A /* pad.m */; };
 /* End PBXBuildFile section */
 
@@ -140,7 +128,6 @@
 		7502882911923DD9008008F8 /* NSString+CarbonFSRefCreation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CarbonFSRefCreation.h"; sourceTree = "<group>"; };
 		7502882A11923DD9008008F8 /* NSString+CarbonFSRefCreation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+CarbonFSRefCreation.m"; sourceTree = "<group>"; };
 		751FB9FC0E39046200D64628 /* dacal */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = dacal; sourceTree = BUILT_PRODUCTS_DIR; };
-		751FBA060E3904AB00D64628 /* dacallib.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = dacallib.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		751FBA0E0E39054600D64628 /* fabricate */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = fabricate; sourceTree = BUILT_PRODUCTS_DIR; };
 		751FBA170E39057100D64628 /* find */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = find; sourceTree = BUILT_PRODUCTS_DIR; };
 		751FBA1E0E39059000D64628 /* extern.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = extern.h; sourceTree = "<group>"; };
@@ -191,19 +178,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				754C483C15DC3C4800316C67 /* AppKit.framework in Frameworks */,
 				754C47F815DC30AA00316C67 /* libcrypto.dylib in Frameworks */,
 				754C47F715DC309100316C67 /* IOKit.framework in Frameworks */,
 				754C47F415DC2E3C00316C67 /* libpmutility.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		751FBA040E3904AB00D64628 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				751047FA0E41430C009AFDB4 /* CoreFoundation.framework in Frameworks */,
-				751FBCE10E3A340900D64628 /* IOKit.framework in Frameworks */,
-				75782D6611E4F7B700496670 /* libcrypto.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -232,6 +210,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				754C483E15DC3DA000316C67 /* libcrypto.dylib in Frameworks */,
+				754C483D15DC3D7E00316C67 /* PMUtility.framework in Frameworks */,
 				75730AE31487007B00746100 /* IOKit.framework in Frameworks */,
 				7570BE5913CEA721001AF81B /* Cocoa.framework in Frameworks */,
 			);
@@ -271,7 +251,6 @@
 			isa = PBXGroup;
 			children = (
 				751FB9FC0E39046200D64628 /* dacal */,
-				751FBA060E3904AB00D64628 /* dacallib.dylib */,
 				751FBA0E0E39054600D64628 /* fabricate */,
 				751FBA170E39057100D64628 /* find */,
 				751FBA430E39063900D64628 /* xattr */,
@@ -421,19 +400,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		751FBA020E3904AB00D64628 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7502881711923D47008008F8 /* dacallib.h in Headers */,
-				7502881911923D47008008F8 /* dacalconstants.h in Headers */,
-				7502882D11923DD9008008F8 /* IconFamily.h in Headers */,
-				7502882F11923DD9008008F8 /* NSString+CarbonFSRefCreation.h in Headers */,
-				7570BE2613CEA159001AF81B /* pmsDACALUtility.h in Headers */,
-				75ABD90913CEF67100BB3D7A /* pad.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		7570BE5313CEA721001AF81B /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -467,23 +433,6 @@
 			productName = dacal;
 			productReference = 751FB9FC0E39046200D64628 /* dacal */;
 			productType = "com.apple.product-type.tool";
-		};
-		751FBA050E3904AB00D64628 /* dacallib */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 751FBA0A0E3904BE00D64628 /* Build configuration list for PBXNativeTarget "dacallib" */;
-			buildPhases = (
-				751FBA020E3904AB00D64628 /* Headers */,
-				751FBA030E3904AB00D64628 /* Sources */,
-				751FBA040E3904AB00D64628 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = dacallib;
-			productName = dacallib;
-			productReference = 751FBA060E3904AB00D64628 /* dacallib.dylib */;
-			productType = "com.apple.product-type.library.dynamic";
 		};
 		751FBA0D0E39054600D64628 /* fabricate */ = {
 			isa = PBXNativeTarget;
@@ -577,7 +526,6 @@
 			projectRoot = "";
 			targets = (
 				751FB9FB0E39046200D64628 /* dacal */,
-				751FBA050E3904AB00D64628 /* dacallib */,
 				751FBA0D0E39054600D64628 /* fabricate */,
 				751FBA160E39057100D64628 /* find */,
 				751FBA420E39063900D64628 /* xattr */,
@@ -636,26 +584,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				754C476015DB119D00316C67 /* IconFamily.m in Sources */,
+				754C483B15DC3C3300316C67 /* IconFamily.m in Sources */,
 				751FBA3F0E39060A00D64628 /* dacal.m in Sources */,
 				7502881011923D47008008F8 /* dacallib.m in Sources */,
 				7502881111923D47008008F8 /* dacalconstants.m in Sources */,
 				7502882C11923DD9008008F8 /* NSString+CarbonFSRefCreation.m in Sources */,
 				75ABD90B13CEF67100BB3D7A /* pad.m in Sources */,
 				754C47E215DC292700316C67 /* pmsDACALUtility.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		751FBA030E3904AB00D64628 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7502881811923D47008008F8 /* dacallib.m in Sources */,
-				7502881A11923D47008008F8 /* dacalconstants.m in Sources */,
-				7502882E11923DD9008008F8 /* IconFamily.m in Sources */,
-				7502883011923DD9008008F8 /* NSString+CarbonFSRefCreation.m in Sources */,
-				7570BE2713CEA159001AF81B /* pmsDACALUtility.m in Sources */,
-				75ABD90C13CEF67100BB3D7A /* pad.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -796,26 +731,6 @@
 			};
 			name = Release;
 		};
-		751FBA070E3904AC00D64628 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = dacallib;
-			};
-			name = Debug;
-		};
-		751FBA080E3904AC00D64628 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = dacallib;
-			};
-			name = Release;
-		};
 		751FBA100E39054700D64628 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -929,21 +844,6 @@
 					Foundation,
 				);
 				PRODUCT_NAME = dacal;
-			};
-			name = Deploy;
-		};
-		7543D49F0E3BB812009A8AF3 /* Deploy */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					AppKit,
-				);
-				PRODUCT_NAME = dacallib;
 			};
 			name = Deploy;
 		};
@@ -1064,16 +964,6 @@
 				751FB9FE0E39046400D64628 /* Debug */,
 				751FB9FF0E39046400D64628 /* Release */,
 				7543D49E0E3BB812009A8AF3 /* Deploy */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		751FBA0A0E3904BE00D64628 /* Build configuration list for PBXNativeTarget "dacallib" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				751FBA070E3904AC00D64628 /* Debug */,
-				751FBA080E3904AC00D64628 /* Release */,
-				7543D49F0E3BB812009A8AF3 /* Deploy */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
