@@ -100,7 +100,6 @@
 		751E8433149AC02B0024DBE7 /* dacal in CopyFiles */ = {isa = PBXBuildFile; fileRef = 75CD34821499431700A3F0E9 /* dacal */; };
 		751E8434149AC02B0024DBE7 /* xattr in CopyFiles */ = {isa = PBXBuildFile; fileRef = 75CD348A1499431700A3F0E9 /* xattr */; };
 		7565EFE813AAC73A0029990C /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7565EFE713AAC73A0029990C /* IOKit.framework */; };
-		75A1A52E15751E1800A75DAA /* DACAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75CD348C1499431700A3F0E9 /* DACAL.framework */; };
 		75A1A53515751E4100A75DAA /* DACAL.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 75CD348C1499431700A3F0E9 /* DACAL.framework */; };
 		75A1A56B15752B3A00A75DAA /* ILCrashReporter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CF4D9800E68E6DF0091A77F /* ILCrashReporter.framework */; };
 		75B2FCB30EDDA9A1007356FD /* BlackPlus1.png in Resources */ = {isa = PBXBuildFile; fileRef = 75B2FCB20EDDA9A1007356FD /* BlackPlus1.png */; };
@@ -139,13 +138,6 @@
 			proxyType = 2;
 			remoteGlobalIDString = 754C47EE15DC2DF100316C67;
 			remoteInfo = pmutility;
-		};
-		75A1A53015751E2600A75DAA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 75CD34731499431600A3F0E9 /* CLI.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 7570BE5513CEA721001AF81B;
-			remoteInfo = DACAL;
 		};
 		75CD34811499431700A3F0E9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -453,7 +445,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				75A1A52E15751E1800A75DAA /* DACAL.framework in Frameworks */,
 				5CA07A710E2E274900F71FA7 /* Carbon.framework in Frameworks */,
 				7565EFE813AAC73A0029990C /* IOKit.framework in Frameworks */,
 				735CC2BD049A7E2A00C919A3 /* Cocoa.framework in Frameworks */,
@@ -1104,7 +1095,6 @@
 				734E63B1049E6C2800C919A3 /* PBXBuildRule */,
 			);
 			dependencies = (
-				75A1A53115751E2600A75DAA /* PBXTargetDependency */,
 			);
 			name = PickADisk;
 			productInstallPath = "$(LOCAL_DEVELOPER_DIR)/Demos";
@@ -1377,14 +1367,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		75A1A53115751E2600A75DAA /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = DACAL;
-			targetProxy = 75A1A53015751E2600A75DAA /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		089C165CFE840E0CC02AAC07 /* InfoPlist.strings */ = {
