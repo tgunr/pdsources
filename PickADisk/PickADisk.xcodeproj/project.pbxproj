@@ -128,6 +128,13 @@
 /* End PBXBuildRule section */
 
 /* Begin PBXContainerItemProxy section */
+		754C477F15DC041100316C67 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7573CA3514976B0E00CA5B2A /* PMSUtility.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 754C473C15DB079000316C67;
+			remoteInfo = pmsutility;
+		};
 		7573CA3B14976B0E00CA5B2A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7573CA3514976B0E00CA5B2A /* PMSUtility.xcodeproj */;
@@ -851,6 +858,7 @@
 				7573CA3C14976B0E00CA5B2A /* PMSUtility.framework */,
 				7573CA3E14976B0E00CA5B2A /* libPMUtilityIOS.a */,
 				7573CA4014976B0E00CA5B2A /* PMUtilityIOSTests.octest */,
+				754C478015DC041100316C67 /* libpmsutility.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1171,6 +1179,13 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		754C478015DC041100316C67 /* libpmsutility.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libpmsutility.a;
+			remoteRef = 754C477F15DC041100316C67 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		7573CA3C14976B0E00CA5B2A /* PMSUtility.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
