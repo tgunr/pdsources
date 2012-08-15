@@ -886,7 +886,7 @@
 		751FB9FE0E39046400D64628 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				GCC_PREPROCESSOR_DEFINITIONS = DEBUG_COMM;
+				GCC_PREPROCESSOR_DEFINITIONS = "";
 				INSTALL_PATH = /usr/local/bin;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
