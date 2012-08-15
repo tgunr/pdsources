@@ -101,8 +101,6 @@
 		751E8434149AC02B0024DBE7 /* xattr in CopyFiles */ = {isa = PBXBuildFile; fileRef = 75CD348A1499431700A3F0E9 /* xattr */; };
 		7565EFE813AAC73A0029990C /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7565EFE713AAC73A0029990C /* IOKit.framework */; };
 		75A1A52E15751E1800A75DAA /* DACAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75CD348C1499431700A3F0E9 /* DACAL.framework */; };
-		75A1A52F15751E1E00A75DAA /* PMSUtility.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7573CA3C14976B0E00CA5B2A /* PMSUtility.framework */; };
-		75A1A53415751E4100A75DAA /* PMSUtility.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7573CA3C14976B0E00CA5B2A /* PMSUtility.framework */; };
 		75A1A53515751E4100A75DAA /* DACAL.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 75CD348C1499431700A3F0E9 /* DACAL.framework */; };
 		75A1A56B15752B3A00A75DAA /* ILCrashReporter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CF4D9800E68E6DF0091A77F /* ILCrashReporter.framework */; };
 		75B2FCB30EDDA9A1007356FD /* BlackPlus1.png in Resources */ = {isa = PBXBuildFile; fileRef = 75B2FCB20EDDA9A1007356FD /* BlackPlus1.png */; };
@@ -128,33 +126,19 @@
 /* End PBXBuildRule section */
 
 /* Begin PBXContainerItemProxy section */
-		754C477F15DC041100316C67 /* PBXContainerItemProxy */ = {
+		754C479515DC20F600316C67 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 7573CA3514976B0E00CA5B2A /* PMSUtility.xcodeproj */;
+			containerPortal = 754C479015DC20F600316C67 /* PMUtility.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 754C473C15DB079000316C67;
-			remoteInfo = pmsutility;
+			remoteGlobalIDString = 7535D1CF14DF240C00613F39;
+			remoteInfo = PMUtility;
 		};
-		7573CA3B14976B0E00CA5B2A /* PBXContainerItemProxy */ = {
+		754C479715DC20F600316C67 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 7573CA3514976B0E00CA5B2A /* PMSUtility.xcodeproj */;
+			containerPortal = 754C479015DC20F600316C67 /* PMUtility.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 759D16C613A879A500E671A1;
-			remoteInfo = PMSUtility;
-		};
-		7573CA3D14976B0E00CA5B2A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7573CA3514976B0E00CA5B2A /* PMSUtility.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 75FFF67313DDF0D6003C7786;
-			remoteInfo = PMUtilityIOS;
-		};
-		7573CA3F14976B0E00CA5B2A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7573CA3514976B0E00CA5B2A /* PMSUtility.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 75FFF68113DDF0D7003C7786;
-			remoteInfo = PMUtilityIOSTests;
+			remoteGlobalIDString = 751186B91559A0E700D064F2;
+			remoteInfo = pmutilitylib;
 		};
 		75A1A53015751E2600A75DAA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -162,13 +146,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 7570BE5513CEA721001AF81B;
 			remoteInfo = DACAL;
-		};
-		75A1A53215751E2A00A75DAA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7573CA3514976B0E00CA5B2A /* PMSUtility.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 759D16C513A879A500E671A1;
-			remoteInfo = PMSUtility;
 		};
 		75CD34811499431700A3F0E9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -241,7 +218,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				75A1A53415751E4100A75DAA /* PMSUtility.framework in CopyFiles */,
 				75A1A53515751E4100A75DAA /* DACAL.framework in CopyFiles */,
 				5CF4D98E0E68E9300091A77F /* ILCrashReporter.framework in CopyFiles */,
 				5C1ECE9B0E41B6A10091B446 /* Sparkle.framework in CopyFiles */,
@@ -395,8 +371,8 @@
 		7504AF260FB3A1F900FFAA84 /* updates.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = updates.xml; sourceTree = "<group>"; };
 		7504AFDC0FB3AEBB00FFAA84 /* Credits.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 		751C4E2C0E9400250027BC1C /* AquaticPrime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AquaticPrime.m; path = Sources/License/AquaticPrime.m; sourceTree = "<group>"; };
+		754C479015DC20F600316C67 /* PMUtility.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PMUtility.xcodeproj; path = ../PMUtility/PMUtility.xcodeproj; sourceTree = "<group>"; };
 		7565EFE713AAC73A0029990C /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
-		7573CA3514976B0E00CA5B2A /* PMSUtility.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PMSUtility.xcodeproj; path = ../../../PMSUtility/PMSUtility.xcodeproj; sourceTree = "<group>"; };
 		75B2FCB20EDDA9A1007356FD /* BlackPlus1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlackPlus1.png; sourceTree = "<group>"; };
 		75B2FCB40EDDA9AD007356FD /* BlackSearch1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlackSearch1.png; sourceTree = "<group>"; };
 		75CD34731499431600A3F0E9 /* CLI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CLI.xcodeproj; path = ../CLI/CLI.xcodeproj; sourceTree = "<group>"; };
@@ -477,7 +453,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				75A1A52F15751E1E00A75DAA /* PMSUtility.framework in Frameworks */,
 				75A1A52E15751E1800A75DAA /* DACAL.framework in Frameworks */,
 				5CA07A710E2E274900F71FA7 /* Carbon.framework in Frameworks */,
 				7565EFE813AAC73A0029990C /* IOKit.framework in Frameworks */,
@@ -583,7 +558,7 @@
 				75EB93A315D9A7B4009D74C1 /* PickADisk.entitlements */,
 				75CD34B0149A12ED00A3F0E9 /* DACALDriver.xcodeproj */,
 				75CD34731499431600A3F0E9 /* CLI.xcodeproj */,
-				7573CA3514976B0E00CA5B2A /* PMSUtility.xcodeproj */,
+				754C479015DC20F600316C67 /* PMUtility.xcodeproj */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				5C2E42530E7450F600D7DF4A /* Executables */,
@@ -852,13 +827,11 @@
 			path = Misc;
 			sourceTree = "<group>";
 		};
-		7573CA3614976B0E00CA5B2A /* Products */ = {
+		754C479115DC20F600316C67 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7573CA3C14976B0E00CA5B2A /* PMSUtility.framework */,
-				7573CA3E14976B0E00CA5B2A /* libPMUtilityIOS.a */,
-				7573CA4014976B0E00CA5B2A /* PMUtilityIOSTests.octest */,
-				754C478015DC041100316C67 /* libpmsutility.a */,
+				754C479615DC20F600316C67 /* PMUtility.framework */,
+				754C479815DC20F600316C67 /* libpmutilitylib.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1131,7 +1104,6 @@
 				734E63B1049E6C2800C919A3 /* PBXBuildRule */,
 			);
 			dependencies = (
-				75A1A53315751E2A00A75DAA /* PBXTargetDependency */,
 				75A1A53115751E2600A75DAA /* PBXTargetDependency */,
 			);
 			name = PickADisk;
@@ -1167,8 +1139,8 @@
 					ProjectRef = 75CD34B0149A12ED00A3F0E9 /* DACALDriver.xcodeproj */;
 				},
 				{
-					ProductGroup = 7573CA3614976B0E00CA5B2A /* Products */;
-					ProjectRef = 7573CA3514976B0E00CA5B2A /* PMSUtility.xcodeproj */;
+					ProductGroup = 754C479115DC20F600316C67 /* Products */;
+					ProjectRef = 754C479015DC20F600316C67 /* PMUtility.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -1179,32 +1151,18 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		754C478015DC041100316C67 /* libpmsutility.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libpmsutility.a;
-			remoteRef = 754C477F15DC041100316C67 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		7573CA3C14976B0E00CA5B2A /* PMSUtility.framework */ = {
+		754C479615DC20F600316C67 /* PMUtility.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			path = PMSUtility.framework;
-			remoteRef = 7573CA3B14976B0E00CA5B2A /* PBXContainerItemProxy */;
+			path = PMUtility.framework;
+			remoteRef = 754C479515DC20F600316C67 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		7573CA3E14976B0E00CA5B2A /* libPMUtilityIOS.a */ = {
+		754C479815DC20F600316C67 /* libpmutilitylib.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
-			path = libPMUtilityIOS.a;
-			remoteRef = 7573CA3D14976B0E00CA5B2A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		7573CA4014976B0E00CA5B2A /* PMUtilityIOSTests.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = PMUtilityIOSTests.octest;
-			remoteRef = 7573CA3F14976B0E00CA5B2A /* PBXContainerItemProxy */;
+			path = libpmutilitylib.a;
+			remoteRef = 754C479715DC20F600316C67 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		75CD34821499431700A3F0E9 /* dacal */ = {
@@ -1425,11 +1383,6 @@
 			isa = PBXTargetDependency;
 			name = DACAL;
 			targetProxy = 75A1A53015751E2600A75DAA /* PBXContainerItemProxy */;
-		};
-		75A1A53315751E2A00A75DAA /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = PMSUtility;
-			targetProxy = 75A1A53215751E2A00A75DAA /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
