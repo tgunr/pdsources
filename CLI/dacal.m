@@ -5,7 +5,6 @@
 #include <getopt.h>
 #include <stdlib.h>
 #import "dacallib.h"
-#import <PMSUtility/pms.h>
 
 char* STDCStringCreateFromCFString( CFStringRef inString )
 {
