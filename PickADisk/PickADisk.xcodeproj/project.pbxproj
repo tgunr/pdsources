@@ -133,12 +133,12 @@
 			remoteGlobalIDString = 7535D1CF14DF240C00613F39;
 			remoteInfo = PMUtility;
 		};
-		754C479715DC20F600316C67 /* PBXContainerItemProxy */ = {
+		754C483315DC35BA00316C67 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 754C479015DC20F600316C67 /* PMUtility.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 751186B91559A0E700D064F2;
-			remoteInfo = pmutilitylib;
+			remoteGlobalIDString = 754C47EE15DC2DF100316C67;
+			remoteInfo = pmutility;
 		};
 		75A1A53015751E2600A75DAA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -831,7 +831,7 @@
 			isa = PBXGroup;
 			children = (
 				754C479615DC20F600316C67 /* PMUtility.framework */,
-				754C479815DC20F600316C67 /* libpmutilitylib.a */,
+				754C483415DC35BA00316C67 /* libpmutility.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1158,11 +1158,11 @@
 			remoteRef = 754C479515DC20F600316C67 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		754C479815DC20F600316C67 /* libpmutilitylib.a */ = {
+		754C483415DC35BA00316C67 /* libpmutility.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
-			path = libpmutilitylib.a;
-			remoteRef = 754C479715DC20F600316C67 /* PBXContainerItemProxy */;
+			path = libpmutility.a;
+			remoteRef = 754C483315DC35BA00316C67 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		75CD34821499431700A3F0E9 /* dacal */ = {
