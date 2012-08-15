@@ -1,3 +1,6 @@
 [submodule "PMUtility"]
 	path = PMUtility
 	url = git@bitbucket.org:tgunr/pmutility.git
+[submodule "AquaticPrime"]
+	path = AquaticPrime
+	url = git@bitbucket.org:tgunr/aqpmanager.git
