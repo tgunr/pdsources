@@ -89,6 +89,10 @@
          </CommandLineArgument>
          <CommandLineArgument
             argument = "--led 1"
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "--status"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
