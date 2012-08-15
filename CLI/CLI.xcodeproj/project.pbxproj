@@ -36,7 +36,6 @@
 		7502882F11923DD9008008F8 /* NSString+CarbonFSRefCreation.h in Headers */ = {isa = PBXBuildFile; fileRef = 7502882911923DD9008008F8 /* NSString+CarbonFSRefCreation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7502883011923DD9008008F8 /* NSString+CarbonFSRefCreation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7502882A11923DD9008008F8 /* NSString+CarbonFSRefCreation.m */; };
 		751047FA0E41430C009AFDB4 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09AB6884FE841BABC02AAC07 /* CoreFoundation.framework */; };
-		751048060E4143A8009AFDB4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 751048050E4143A8009AFDB4 /* Cocoa.framework */; };
 		751FBA2A0E39059100D64628 /* find.c in Sources */ = {isa = PBXBuildFile; fileRef = 751FBA200E39059000D64628 /* find.c */; };
 		751FBA2B0E39059100D64628 /* function.c in Sources */ = {isa = PBXBuildFile; fileRef = 751FBA220E39059000D64628 /* function.c */; };
 		751FBA2C0E39059100D64628 /* getdate.y in Sources */ = {isa = PBXBuildFile; fileRef = 751FBA230E39059100D64628 /* getdate.y */; };
@@ -53,7 +52,6 @@
 		754C476015DB119D00316C67 /* IconFamily.m in Sources */ = {isa = PBXBuildFile; fileRef = 7502882811923DD9008008F8 /* IconFamily.m */; };
 		754C47E215DC292700316C67 /* pmsDACALUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 7570BE2513CEA158001AF81B /* pmsDACALUtility.m */; };
 		754C47F415DC2E3C00316C67 /* libpmutility.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 754C47F115DC2E2A00316C67 /* libpmutility.a */; };
-		754C47F615DC305800316C67 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7570BE5B13CEA721001AF81B /* AppKit.framework */; };
 		754C47F715DC309100316C67 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 751FBCE00E3A340900D64628 /* IOKit.framework */; };
 		754C47F815DC30AA00316C67 /* libcrypto.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 75782D6511E4F7B700496670 /* libcrypto.dylib */; };
 		7570BE2613CEA159001AF81B /* pmsDACALUtility.h in Headers */ = {isa = PBXBuildFile; fileRef = 7570BE2413CEA158001AF81B /* pmsDACALUtility.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -108,20 +106,6 @@
 			remoteGlobalIDString = 7535D1CF14DF240C00613F39;
 			remoteInfo = PMUtility;
 		};
-		754C47D315DC23B900316C67 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 754C478115DC20E900316C67 /* PMUtility.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 754C47A615DC239F00316C67;
-			remoteInfo = "PMUitility-NOARC";
-		};
-		754C47D515DC23B900316C67 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 754C478115DC20E900316C67 /* PMUtility.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 754C47BB15DC23A000316C67;
-			remoteInfo = "PMUitility-NOARCTests";
-		};
 		754C47F015DC2E2A00316C67 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 754C478115DC20E900316C67 /* PMUtility.xcodeproj */;
@@ -155,7 +139,6 @@
 		7502882811923DD9008008F8 /* IconFamily.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IconFamily.m; sourceTree = "<group>"; };
 		7502882911923DD9008008F8 /* NSString+CarbonFSRefCreation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CarbonFSRefCreation.h"; sourceTree = "<group>"; };
 		7502882A11923DD9008008F8 /* NSString+CarbonFSRefCreation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+CarbonFSRefCreation.m"; sourceTree = "<group>"; };
-		751048050E4143A8009AFDB4 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		751FB9FC0E39046200D64628 /* dacal */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = dacal; sourceTree = BUILT_PRODUCTS_DIR; };
 		751FBA060E3904AB00D64628 /* dacallib.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = dacallib.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		751FBA0E0E39054600D64628 /* fabricate */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = fabricate; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -192,7 +175,6 @@
 		7570BE2513CEA158001AF81B /* pmsDACALUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = pmsDACALUtility.m; path = Classes/pmsDACALUtility.m; sourceTree = "<group>"; };
 		7570BE5613CEA721001AF81B /* DACAL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DACAL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7570BE5813CEA721001AF81B /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
-		7570BE5B13CEA721001AF81B /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		7570BE5C13CEA721001AF81B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		7570BE5D13CEA721001AF81B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7570BE6013CEA721001AF81B /* DACAL-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DACAL-Info.plist"; sourceTree = "<group>"; };
@@ -211,7 +193,6 @@
 			files = (
 				754C47F815DC30AA00316C67 /* libcrypto.dylib in Frameworks */,
 				754C47F715DC309100316C67 /* IOKit.framework in Frameworks */,
-				754C47F615DC305800316C67 /* AppKit.framework in Frameworks */,
 				754C47F415DC2E3C00316C67 /* libpmutility.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -222,7 +203,6 @@
 			files = (
 				751047FA0E41430C009AFDB4 /* CoreFoundation.framework in Frameworks */,
 				751FBCE10E3A340900D64628 /* IOKit.framework in Frameworks */,
-				751048060E4143A8009AFDB4 /* Cocoa.framework in Frameworks */,
 				75782D6611E4F7B700496670 /* libcrypto.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -266,8 +246,7 @@
 				754C478115DC20E900316C67 /* PMUtility.xcodeproj */,
 				08FB7795FE84155DC02AAC07 /* Sources */,
 				C6859E96029091FE04C91782 /* Documentation */,
-				08FB779DFE84155DC02AAC07 /* External Frameworks and Libraries */,
-				7570BE5E13CEA721001AF81B /* DACAL */,
+				7570BE5E13CEA721001AF81B /* DACAL Framework */,
 				7570BE5713CEA721001AF81B /* Frameworks */,
 				19C28FBDFE9D53C911CA2CBB /* Products */,
 			);
@@ -277,7 +256,6 @@
 		08FB7795FE84155DC02AAC07 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				7502882611923DD9008008F8 /* IconFamily */,
 				751FBA3D0E39060A00D64628 /* dacal.m */,
 				751FBA3E0E39060A00D64628 /* dacal.1 */,
 				75ABD90613CEF67100BB3D7A /* padutility */,
@@ -287,21 +265,6 @@
 				751FBA1D0E39059000D64628 /* find */,
 			);
 			name = Sources;
-			sourceTree = "<group>";
-		};
-		08FB779DFE84155DC02AAC07 /* External Frameworks and Libraries */ = {
-			isa = PBXGroup;
-			children = (
-				75782D6511E4F7B700496670 /* libcrypto.dylib */,
-				751048050E4143A8009AFDB4 /* Cocoa.framework */,
-				7543C8430E3A37CC009A8AF3 /* Kernel.framework */,
-				751FBCE00E3A340900D64628 /* IOKit.framework */,
-				09AB6884FE841BABC02AAC07 /* CoreFoundation.framework */,
-				75637DD811E64E650069CA00 /* CoreServices.framework */,
-				75637E9811E64F670069CA00 /* ApplicationServices.framework */,
-				75637E9F11E64FB50069CA00 /* AppKit.framework */,
-			);
-			name = "External Frameworks and Libraries";
 			sourceTree = "<group>";
 		};
 		19C28FBDFE9D53C911CA2CBB /* Products */ = {
@@ -395,8 +358,6 @@
 			isa = PBXGroup;
 			children = (
 				754C478D15DC20E900316C67 /* PMUtility.framework */,
-				754C47D415DC23B900316C67 /* PMUitility-NOARC.framework */,
-				754C47D615DC23B900316C67 /* PMUitility-NOARCTests.octest */,
 				754C47F115DC2E2A00316C67 /* libpmutility.a */,
 			);
 			name = Products;
@@ -405,27 +366,27 @@
 		7570BE5713CEA721001AF81B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				75782D6511E4F7B700496670 /* libcrypto.dylib */,
+				7570BE5C13CEA721001AF81B /* CoreData.framework */,
+				7570BE5D13CEA721001AF81B /* Foundation.framework */,
+				75637E9F11E64FB50069CA00 /* AppKit.framework */,
+				75637E9811E64F670069CA00 /* ApplicationServices.framework */,
+				75637DD811E64E650069CA00 /* CoreServices.framework */,
+				09AB6884FE841BABC02AAC07 /* CoreFoundation.framework */,
+				751FBCE00E3A340900D64628 /* IOKit.framework */,
+				7543C8430E3A37CC009A8AF3 /* Kernel.framework */,
 				7570BE5813CEA721001AF81B /* Cocoa.framework */,
-				7570BE5A13CEA721001AF81B /* Other Frameworks */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		7570BE5A13CEA721001AF81B /* Other Frameworks */ = {
+		7570BE5E13CEA721001AF81B /* DACAL Framework */ = {
 			isa = PBXGroup;
 			children = (
-				7570BE5B13CEA721001AF81B /* AppKit.framework */,
-				7570BE5C13CEA721001AF81B /* CoreData.framework */,
-				7570BE5D13CEA721001AF81B /* Foundation.framework */,
-			);
-			name = "Other Frameworks";
-			sourceTree = "<group>";
-		};
-		7570BE5E13CEA721001AF81B /* DACAL */ = {
-			isa = PBXGroup;
-			children = (
+				7502882611923DD9008008F8 /* IconFamily */,
 				7570BE5F13CEA721001AF81B /* Supporting Files */,
 			);
+			name = "DACAL Framework";
 			path = DACAL;
 			sourceTree = "<group>";
 		};
@@ -634,20 +595,6 @@
 			remoteRef = 754C478C15DC20E900316C67 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		754C47D415DC23B900316C67 /* PMUitility-NOARC.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = "PMUitility-NOARC.framework";
-			remoteRef = 754C47D315DC23B900316C67 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		754C47D615DC23B900316C67 /* PMUitility-NOARCTests.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "PMUitility-NOARCTests.octest";
-			remoteRef = 754C47D515DC23B900316C67 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		754C47F115DC2E2A00316C67 /* libpmutility.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -802,26 +749,24 @@
 		1DEB924C08733DCA0010E9CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/../DerivedData/Build/Products/$(CONFIGURATION)\"";
 				GCC_OPTIMIZATION_LEVEL = 0;
 				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../PMUtility/PMUtility\"";
 				SDKROOT = macosx10.7;
-				SYMROOT = ../build;
 			};
 			name = Debug;
 		};
 		1DEB924D08733DCA0010E9CD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/../DerivedData/Build/Products/$(CONFIGURATION)\"";
 				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../PMUtility/PMUtility\"";
 				SDKROOT = macosx10.7;
-				SYMROOT = ../build;
 			};
 			name = Release;
 		};
@@ -967,12 +912,11 @@
 		7543D49D0E3BB812009A8AF3 /* Deploy */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/../DerivedData/Build/Products/$(CONFIGURATION)\"";
 				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../PMUtility/PMUtility\"";
 				SDKROOT = macosx10.7;
-				SYMROOT = ../build;
 			};
 			name = Deploy;
 		};
