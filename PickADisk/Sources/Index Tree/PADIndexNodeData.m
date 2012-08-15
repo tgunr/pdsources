@@ -2,9 +2,11 @@
 //  PADIndexNodeData.m
 //  PickADisk
 //
-//  Created by Jack Small on 8/27/08.
-//  Copyright 2008 Jack Small. All rights reserved.
+//  Copyright 2008 PolyMicro Systems. All rights reserved.
 //
+
+#import "PADIndexNodeData.h"
+#import "DACALTreeDataSource.h"
 
 PADSearchRequest* PADCreateSearchForType( OSType aType );
 PADSearchRequest* PADCreateSearchForType( OSType aType )

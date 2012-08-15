@@ -2,9 +2,10 @@
 //  TreeController.m
 //  DragNDropOutlineView
 //
-//  Created by Jack Small on 7/4/08.
-//  Copyright 2008 __MyCompanyName__. All rights reserved.
+//  Copyright 2008 PolyMicro Systems. All rights reserved.
 //
+
+#import "TreeController.h"
 
 @interface TreeController(Private)
 - (void)_addNewDataToSelection:(SimpleTreeNode *)newChild;

@@ -2,11 +2,11 @@
 //  PADIndexOperation.m
 //  PickADisc
 //
-//  Created by Jack Small on 7/15/08.
-//  Copyright 2008 __MyCompanyName__. All rights reserved.
+//  Copyright 2008 PolyMicro Systems. All rights reserved.
 //
 
 #import "PADIndexOperation.h"
+#import "PADSearchRequest.h"
 
 @implementation PADIndexOperation
 

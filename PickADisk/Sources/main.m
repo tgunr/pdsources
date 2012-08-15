@@ -1,4 +1,4 @@
-#import <PMSUtility/pms.h>
+#import <PMUtility/pm.h>
 
 int main(int argc, const char *argv[]) {
 	int killflag, ch;

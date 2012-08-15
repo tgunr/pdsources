@@ -47,6 +47,8 @@
  OTHERWISE, EVEN IF APPLE HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
+#import "TreeNode.h"
+
 @implementation TreeNode
 
 + (id)treeNodeWithData:(id)data {

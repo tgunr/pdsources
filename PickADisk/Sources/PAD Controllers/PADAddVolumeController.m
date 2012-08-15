@@ -2,12 +2,10 @@
 //  PADAddVolumeController.m
 //  PickADisc
 //
-//  Created by Jack Small on 7/7/08.
-//  Copyright 2008 __MyCompanyName__. All rights reserved.
+//  Copyright 2008 PolyMicro Systems. All rights reserved.
 //
 
-//#import <DACAL/pmsDACALUtility.h>
-//#import "DACALDeviceObjC.h"
+#import "PADAddVolumeController.h"
 #import "LicenseController.h"
 #import "/System/Library/Frameworks/Carbon.framework/Frameworks/NavigationServices.framework/Headers/Navigation.h"
 

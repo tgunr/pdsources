@@ -2,10 +2,11 @@
 //  PADFlavorImageView.m
 //  PickADisk
 //
-//  Created by Jack Small on 10/20/08.
-//  Copyright 2008 Jack Small. All rights reserved.
+//  Copyright 2008 PolyMicro Systems. All rights reserved.
 //
 
+#import "PADFlavorImageView.h"
+#import "DACALTreeDataSource.h"
 
 @implementation PADSimpleImageView
 

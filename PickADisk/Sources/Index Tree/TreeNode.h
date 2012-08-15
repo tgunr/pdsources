@@ -1,4 +1,6 @@
-#import <Foundation/Foundation.h>
+#import <Cocoa/Cocoa.h>
+
+@class SimpleTreeNode;
 
 @interface TreeNode : NSObject {
 @protected

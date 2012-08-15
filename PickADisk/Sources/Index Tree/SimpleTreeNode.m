@@ -42,10 +42,11 @@
  OTHERWISE, EVEN IF APPLE HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
+#import "SimpleTreeNode.h"
 #import "PADIndexOperation.h"
 #import "PADSearchRequest.h"
-#import <PMSUtility/NSDate_Extensions.h>
-
+#import <PMUtility/NSDate_Extensions.h>
+#import "DACALTreeDataSource.h"
 
 @implementation SimpleNodeData
 

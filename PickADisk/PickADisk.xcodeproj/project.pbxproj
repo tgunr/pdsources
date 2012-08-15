@@ -99,6 +99,10 @@
 		751C4E2D0E9400250027BC1C /* AquaticPrime.m in Sources */ = {isa = PBXBuildFile; fileRef = 751C4E2C0E9400250027BC1C /* AquaticPrime.m */; };
 		751E8433149AC02B0024DBE7 /* dacal in CopyFiles */ = {isa = PBXBuildFile; fileRef = 75CD34821499431700A3F0E9 /* dacal */; };
 		751E8434149AC02B0024DBE7 /* xattr in CopyFiles */ = {isa = PBXBuildFile; fileRef = 75CD348A1499431700A3F0E9 /* xattr */; };
+		754C484715DC55D300316C67 /* PMUtility.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 754C479615DC20F600316C67 /* PMUtility.framework */; };
+		754C484A15DC564300316C67 /* DACAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75CD348C1499431700A3F0E9 /* DACAL.framework */; };
+		754C485815DC5C3000316C67 /* AquaticPrime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 754C485415DC5BCC00316C67 /* AquaticPrime.framework */; };
+		754C485C15DC5FAD00316C67 /* pmNSUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 754C485B15DC5FAD00316C67 /* pmNSUtility.m */; };
 		7565EFE813AAC73A0029990C /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7565EFE713AAC73A0029990C /* IOKit.framework */; };
 		75A1A53515751E4100A75DAA /* DACAL.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 75CD348C1499431700A3F0E9 /* DACAL.framework */; };
 		75A1A56B15752B3A00A75DAA /* ILCrashReporter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CF4D9800E68E6DF0091A77F /* ILCrashReporter.framework */; };
@@ -139,19 +143,47 @@
 			remoteGlobalIDString = 754C47EE15DC2DF100316C67;
 			remoteInfo = pmutility;
 		};
+		754C484115DC3E1A00316C67 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 75CD34B0149A12ED00A3F0E9 /* DACALDriver.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 32D94FC30562CBF700B6AF17;
+			remoteInfo = DACALDriver;
+		};
+		754C484515DC3E2B00316C67 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 754C479015DC20F600316C67 /* PMUtility.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 7535D1CE14DF240C00613F39;
+			remoteInfo = PMUtility;
+		};
+		754C484815DC561C00316C67 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 75CD34731499431600A3F0E9 /* CLI.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 7570BE5513CEA721001AF81B;
+			remoteInfo = DACAL;
+		};
+		754C485315DC5BCC00316C67 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 754C484B15DC5BCB00316C67 /* AquaticPrime.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8DC2EF5B0486A6940098B216;
+			remoteInfo = AquaticPrime;
+		};
+		754C485515DC5BCC00316C67 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 754C484B15DC5BCB00316C67 /* AquaticPrime.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3D9B64D7086DCB44006322F1;
+			remoteInfo = libAquaticPrime;
+		};
 		75CD34811499431700A3F0E9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 75CD34731499431600A3F0E9 /* CLI.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 751FB9FC0E39046200D64628;
 			remoteInfo = dacal;
-		};
-		75CD34831499431700A3F0E9 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 75CD34731499431600A3F0E9 /* CLI.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 751FBA060E3904AB00D64628;
-			remoteInfo = dacallib;
 		};
 		75CD34851499431700A3F0E9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -240,8 +272,8 @@
 		5C2D25F30E304B1C005F9FB5 /* PADIndexProgressController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PADIndexProgressController.m; sourceTree = "<group>"; };
 		5C2D25F40E304B1C005F9FB5 /* PADIndexProgressController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PADIndexProgressController.h; sourceTree = "<group>"; };
 		5C2D25FB0E305079005F9FB5 /* CarouselProgress.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; path = CarouselProgress.nib; sourceTree = "<group>"; };
-		5C2E40E00E73FBD300D7DF4A /* DACDriverInstaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DACDriverInstaller.h; path = "../PAD Controllers/DACDriverInstaller.h"; sourceTree = "<group>"; };
-		5C2E40E10E73FBD300D7DF4A /* DACDriverInstaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DACDriverInstaller.m; path = "../PAD Controllers/DACDriverInstaller.m"; sourceTree = "<group>"; };
+		5C2E40E00E73FBD300D7DF4A /* DACDriverInstaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = DACDriverInstaller.h; path = "../PAD Controllers/DACDriverInstaller.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		5C2E40E10E73FBD300D7DF4A /* DACDriverInstaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = DACDriverInstaller.m; path = "../PAD Controllers/DACDriverInstaller.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		5C2E410F0E74076A00D7DF4A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
 		5C2E42540E74519C00D7DF4A /* dacauth */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = dacauth; path = ../DACALDriver/dacauth; sourceTree = SOURCE_ROOT; };
 		5C2E42550E74519C00D7DF4A /* DACALDriver.kext */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.kernel-extension"; name = DACALDriver.kext; path = ../DACALDriver/build/Release/DACALDriver.kext; sourceTree = SOURCE_ROOT; };
@@ -252,8 +284,8 @@
 		5C3038390EA5C8CE0067A8A8 /* PADPrefsTreeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PADPrefsTreeController.h; sourceTree = "<group>"; };
 		5C30383A0EA5C8CE0067A8A8 /* PADPrefsTreeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PADPrefsTreeController.m; sourceTree = "<group>"; };
 		5C303C270EA7E7740067A8A8 /* FullskiesAltostratus0007_M.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = FullskiesAltostratus0007_M.jpg; sourceTree = "<group>"; };
-		5C3FAEE50EBA6FB30048BBA1 /* LicenseService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LicenseService.h; path = Sources/License/LicenseService.h; sourceTree = "<group>"; };
-		5C3FAEE60EBA6FB30048BBA1 /* LicenseService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LicenseService.m; path = Sources/License/LicenseService.m; sourceTree = "<group>"; };
+		5C3FAEE50EBA6FB30048BBA1 /* LicenseService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = LicenseService.h; path = Sources/License/LicenseService.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		5C3FAEE60EBA6FB30048BBA1 /* LicenseService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = LicenseService.m; path = Sources/License/LicenseService.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		5C440D720E5C27DF0020A588 /* Generic_Music.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Generic_Music.icns; sourceTree = "<group>"; };
 		5C440D730E5C27DF0020A588 /* Generic_Files.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Generic_Files.icns; sourceTree = "<group>"; };
 		5C440D740E5C27DF0020A588 /* Generic_Movie.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Generic_Movie.icns; sourceTree = "<group>"; };
@@ -265,8 +297,8 @@
 		5C57B62D0E6635600063190F /* PADIndexNodeData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PADIndexNodeData.h; sourceTree = "<group>"; };
 		5C57B62E0E6635600063190F /* PADIndexNodeData.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = PADIndexNodeData.m; sourceTree = "<group>"; };
 		5C57B7F60E66EF630063190F /* Generic_Image.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Generic_Image.icns; sourceTree = "<group>"; };
-		5C5F7DBC0E771E83003111DF /* DACVolume.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DACVolume.h; path = "../PAD Controllers/DACVolume.h"; sourceTree = "<group>"; };
-		5C5F7DBD0E771E83003111DF /* DACVolume.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DACVolume.m; path = "../PAD Controllers/DACVolume.m"; sourceTree = "<group>"; };
+		5C5F7DBC0E771E83003111DF /* DACVolume.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = DACVolume.h; path = "../PAD Controllers/DACVolume.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		5C5F7DBD0E771E83003111DF /* DACVolume.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = DACVolume.m; path = "../PAD Controllers/DACVolume.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		5C5F7E2C0E772EF5003111DF /* DiskArbitration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DiskArbitration.framework; path = /System/Library/Frameworks/DiskArbitration.framework; sourceTree = "<absolute>"; };
 		5C62ACB80E20B00900A26788 /* CarouselIndex.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; path = CarouselIndex.nib; sourceTree = "<group>"; };
 		5C6657010E3822D400414ECB /* xattr */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = xattr; path = ../pmssource/carlib/xattr; sourceTree = SOURCE_ROOT; };
@@ -306,11 +338,11 @@
 		5C7C50280E3DA51C00FCEBD8 /* blueplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueplate.png; sourceTree = "<group>"; };
 		5C7F73F90F3934B30053681D /* PADInspectorController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PADInspectorController.h; sourceTree = "<group>"; };
 		5C7F73FA0F3934B30053681D /* PADInspectorController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PADInspectorController.m; sourceTree = "<group>"; };
-		5C81A0E70EC39D9B00E75319 /* JSServiceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSServiceManager.h; sourceTree = "<group>"; };
+		5C81A0E70EC39D9B00E75319 /* JSServiceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = JSServiceManager.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		5C81A0E80EC39D9B00E75319 /* JSServiceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSServiceManager.m; sourceTree = "<group>"; };
-		5C81A0E90EC39D9B00E75319 /* JSServicesSetup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSServicesSetup.h; sourceTree = "<group>"; };
-		5C81A1630EC3BBD000E75319 /* JSTestService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSTestService.h; sourceTree = "<group>"; };
-		5C81A1640EC3BBD000E75319 /* JSTestService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSTestService.m; sourceTree = "<group>"; };
+		5C81A0E90EC39D9B00E75319 /* JSServicesSetup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = JSServicesSetup.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		5C81A1630EC3BBD000E75319 /* JSTestService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = JSTestService.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		5C81A1640EC3BBD000E75319 /* JSTestService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = JSTestService.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		5C81A2250EC585CB00E75319 /* PADCrashReportService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PADCrashReportService.h; sourceTree = "<group>"; };
 		5C81A2260EC585CB00E75319 /* PADCrashReportService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PADCrashReportService.m; sourceTree = "<group>"; };
 		5C829C750E46AC730069483D /* PADLifecycleSetup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PADLifecycleSetup.h; path = "../PAD Controllers/PADLifecycleSetup.h"; sourceTree = "<group>"; };
@@ -318,10 +350,10 @@
 		5C88C00F0EB7B7CA005D267C /* PADFlavorImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PADFlavorImageView.h; path = "Sources/PAD Controllers/PADFlavorImageView.h"; sourceTree = "<group>"; };
 		5C88C1880EB83A51005D267C /* BlueSearch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlueSearch.png; sourceTree = "<group>"; };
 		5C88C1890EB83A51005D267C /* BluePlus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BluePlus.png; sourceTree = "<group>"; };
-		5C8B8BB30E3FCCF9007A1505 /* PADCarouselOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PADCarouselOperation.h; path = "Sources/PAD Controllers/PADCarouselOperation.h"; sourceTree = "<group>"; };
+		5C8B8BB30E3FCCF9007A1505 /* PADCarouselOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = PADCarouselOperation.h; path = "Sources/PAD Controllers/PADCarouselOperation.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		5C8B8BB40E3FCCF9007A1505 /* PADCarouselOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PADCarouselOperation.m; path = "Sources/PAD Controllers/PADCarouselOperation.m"; sourceTree = "<group>"; };
-		5C8E54F30E6A1D690029D83A /* DACALViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DACALViewDataSource.h; path = "../PAD Controllers/DACALViewDataSource.h"; sourceTree = "<group>"; };
-		5C8E54F40E6A1D690029D83A /* DACALViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DACALViewDataSource.m; path = "../PAD Controllers/DACALViewDataSource.m"; sourceTree = "<group>"; };
+		5C8E54F30E6A1D690029D83A /* DACALViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = DACALViewDataSource.h; path = "../PAD Controllers/DACALViewDataSource.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		5C8E54F40E6A1D690029D83A /* DACALViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = DACALViewDataSource.m; path = "../PAD Controllers/DACALViewDataSource.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		5C90847B0E2D748800162C13 /* PADIndexOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PADIndexOperation.h; path = "Sources/PAD Controllers/PADIndexOperation.h"; sourceTree = "<group>"; };
 		5C90847C0E2D748800162C13 /* PADIndexOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PADIndexOperation.m; path = "Sources/PAD Controllers/PADIndexOperation.m"; sourceTree = "<group>"; };
 		5C9C3E700E5796720004DA00 /* PADOperationOpenDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PADOperationOpenDevice.h; path = "Sources/PAD Controllers/PADOperationOpenDevice.h"; sourceTree = "<group>"; };
@@ -333,7 +365,7 @@
 		5CC83F6E0E6F957B000903AD /* PADURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PADURL.h; sourceTree = "<group>"; };
 		5CC83F6F0E6F957B000903AD /* PADURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PADURL.m; sourceTree = "<group>"; };
 		5CC83FC40E6FB34C000903AD /* DACALDeviceObjC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = DACALDeviceObjC.h; path = "../PAD Controllers/DACALDeviceObjC.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		5CC83FC50E6FB34C000903AD /* DACALDeviceObjC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DACALDeviceObjC.m; path = "../PAD Controllers/DACALDeviceObjC.m"; sourceTree = "<group>"; };
+		5CC83FC50E6FB34C000903AD /* DACALDeviceObjC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = DACALDeviceObjC.m; path = "../PAD Controllers/DACALDeviceObjC.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		5CD985150E4E60A700441ED7 /* PADHomeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PADHomeView.h; path = "Sources/PAD Controllers/PADHomeView.h"; sourceTree = "<group>"; };
 		5CD985160E4E60A700441ED7 /* PADHomeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PADHomeView.m; path = "Sources/PAD Controllers/PADHomeView.m"; sourceTree = "<group>"; };
 		5CDAC1C40E934054003984E1 /* success.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = success.icns; sourceTree = "<group>"; };
@@ -364,6 +396,9 @@
 		7504AFDC0FB3AEBB00FFAA84 /* Credits.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 		751C4E2C0E9400250027BC1C /* AquaticPrime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AquaticPrime.m; path = Sources/License/AquaticPrime.m; sourceTree = "<group>"; };
 		754C479015DC20F600316C67 /* PMUtility.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PMUtility.xcodeproj; path = ../PMUtility/PMUtility.xcodeproj; sourceTree = "<group>"; };
+		754C484B15DC5BCB00316C67 /* AquaticPrime.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AquaticPrime.xcodeproj; path = ../AquaticPrime/Source/Cocoa/AquaticPrime.xcodeproj; sourceTree = "<group>"; };
+		754C485915DC5CBF00316C67 /* NavigationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NavigationServices.framework; path = ../../../../../../../System/Library/Frameworks/Carbon.framework/Frameworks/NavigationServices.framework; sourceTree = "<group>"; };
+		754C485B15DC5FAD00316C67 /* pmNSUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file; name = pmNSUtility.m; path = ../PMUtility/PMUtility/pmNSUtility.m; sourceTree = "<group>"; };
 		7565EFE713AAC73A0029990C /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
 		75B2FCB20EDDA9A1007356FD /* BlackPlus1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlackPlus1.png; sourceTree = "<group>"; };
 		75B2FCB40EDDA9AD007356FD /* BlackSearch1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlackSearch1.png; sourceTree = "<group>"; };
@@ -445,6 +480,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				754C485815DC5C3000316C67 /* AquaticPrime.framework in Frameworks */,
+				754C484715DC55D300316C67 /* PMUtility.framework in Frameworks */,
+				754C484A15DC564300316C67 /* DACAL.framework in Frameworks */,
 				5CA07A710E2E274900F71FA7 /* Carbon.framework in Frameworks */,
 				7565EFE813AAC73A0029990C /* IOKit.framework in Frameworks */,
 				735CC2BD049A7E2A00C919A3 /* Cocoa.framework in Frameworks */,
@@ -508,33 +546,6 @@
 			name = Classes;
 			sourceTree = "<group>";
 		};
-		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				7565EFE713AAC73A0029990C /* IOKit.framework */,
-				0247A8BE007179D411CA0E35 /* Foundation.framework */,
-				5C2E410F0E74076A00D7DF4A /* Security.framework */,
-				5CF4D9800E68E6DF0091A77F /* ILCrashReporter.framework */,
-				5C6CC4790E4F9763000EE6B3 /* Quartz.framework */,
-				5C1ECE5A0E41B5C80091B446 /* Sparkle.framework */,
-				5C7C4EE80E3C006C00FCEBD8 /* DiscID.framework */,
-				5CA07A700E2E274900F71FA7 /* Carbon.framework */,
-				011669A0FFC1E3D311CA0E35 /* Cocoa.framework */,
-				5C0884410E26CFCA0052D931 /* AudioToolbox.framework */,
-				5C5F7E2C0E772EF5003111DF /* DiskArbitration.framework */,
-				5C2741760E27686A00A32C40 /* DiscRecording.framework */,
-			);
-			name = "Linked Frameworks";
-			sourceTree = "<group>";
-		};
-		1058C7A2FEA54F0111CA2CBB /* Other Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				0247A8BD007179D411CA0E35 /* AppKit.framework */,
-			);
-			name = "Other Frameworks";
-			sourceTree = "<group>";
-		};
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -546,7 +557,10 @@
 		29B97314FDCFA39411CA2CEA /* CocoaApp */ = {
 			isa = PBXGroup;
 			children = (
+				754C485B15DC5FAD00316C67 /* pmNSUtility.m */,
+				754C485915DC5CBF00316C67 /* NavigationServices.framework */,
 				75EB93A315D9A7B4009D74C1 /* PickADisk.entitlements */,
+				754C484B15DC5BCB00316C67 /* AquaticPrime.xcodeproj */,
 				75CD34B0149A12ED00A3F0E9 /* DACALDriver.xcodeproj */,
 				75CD34731499431600A3F0E9 /* CLI.xcodeproj */,
 				754C479015DC20F600316C67 /* PMUtility.xcodeproj */,
@@ -601,8 +615,19 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
-				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
+				0247A8BD007179D411CA0E35 /* AppKit.framework */,
+				7565EFE713AAC73A0029990C /* IOKit.framework */,
+				0247A8BE007179D411CA0E35 /* Foundation.framework */,
+				5C2E410F0E74076A00D7DF4A /* Security.framework */,
+				5CF4D9800E68E6DF0091A77F /* ILCrashReporter.framework */,
+				5C6CC4790E4F9763000EE6B3 /* Quartz.framework */,
+				5C1ECE5A0E41B5C80091B446 /* Sparkle.framework */,
+				5C7C4EE80E3C006C00FCEBD8 /* DiscID.framework */,
+				5CA07A700E2E274900F71FA7 /* Carbon.framework */,
+				011669A0FFC1E3D311CA0E35 /* Cocoa.framework */,
+				5C0884410E26CFCA0052D931 /* AudioToolbox.framework */,
+				5C5F7E2C0E772EF5003111DF /* DiskArbitration.framework */,
+				5C2741760E27686A00A32C40 /* DiscRecording.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -827,11 +852,19 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		754C484C15DC5BCB00316C67 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				754C485415DC5BCC00316C67 /* AquaticPrime.framework */,
+				754C485615DC5BCC00316C67 /* libAquaticPrime.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		75CD34741499431600A3F0E9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
 				75CD34821499431700A3F0E9 /* dacal */,
-				75CD34841499431700A3F0E9 /* dacallib.dylib */,
 				75CD34861499431700A3F0E9 /* fabricate */,
 				75CD34881499431700A3F0E9 /* find */,
 				75CD348A1499431700A3F0E9 /* xattr */,
@@ -1095,6 +1128,9 @@
 				734E63B1049E6C2800C919A3 /* PBXBuildRule */,
 			);
 			dependencies = (
+				754C484915DC561C00316C67 /* PBXTargetDependency */,
+				754C484615DC3E2B00316C67 /* PBXTargetDependency */,
+				754C484215DC3E1A00316C67 /* PBXTargetDependency */,
 			);
 			name = PickADisk;
 			productInstallPath = "$(LOCAL_DEVELOPER_DIR)/Demos";
@@ -1109,6 +1145,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = "PolyMicro Systems";
 			};
 			buildConfigurationList = B69BDD9808A2EC26008AC9B5 /* Build configuration list for PBXProject "PickADisk" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1120,6 +1157,10 @@
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CocoaApp */;
 			projectDirPath = "";
 			projectReferences = (
+				{
+					ProductGroup = 754C484C15DC5BCB00316C67 /* Products */;
+					ProjectRef = 754C484B15DC5BCB00316C67 /* AquaticPrime.xcodeproj */;
+				},
 				{
 					ProductGroup = 75CD34741499431600A3F0E9 /* Products */;
 					ProjectRef = 75CD34731499431600A3F0E9 /* CLI.xcodeproj */;
@@ -1155,18 +1196,25 @@
 			remoteRef = 754C483315DC35BA00316C67 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		754C485415DC5BCC00316C67 /* AquaticPrime.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = AquaticPrime.framework;
+			remoteRef = 754C485315DC5BCC00316C67 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		754C485615DC5BCC00316C67 /* libAquaticPrime.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libAquaticPrime.a;
+			remoteRef = 754C485515DC5BCC00316C67 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		75CD34821499431700A3F0E9 /* dacal */ = {
 			isa = PBXReferenceProxy;
 			fileType = "compiled.mach-o.executable";
 			path = dacal;
 			remoteRef = 75CD34811499431700A3F0E9 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		75CD34841499431700A3F0E9 /* dacallib.dylib */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.dylib";
-			path = dacallib.dylib;
-			remoteRef = 75CD34831499431700A3F0E9 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		75CD34861499431700A3F0E9 /* fabricate */ = {
@@ -1363,10 +1411,29 @@
 				5C81A2280EC585CB00E75319 /* PADCrashReportService.m in Sources */,
 				5CF962540F37E042009D2A9B /* PADExpandingView.m in Sources */,
 				5C7F73FC0F3934B30053681D /* PADInspectorController.m in Sources */,
+				754C485C15DC5FAD00316C67 /* pmNSUtility.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		754C484215DC3E1A00316C67 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = DACALDriver;
+			targetProxy = 754C484115DC3E1A00316C67 /* PBXContainerItemProxy */;
+		};
+		754C484615DC3E2B00316C67 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PMUtility;
+			targetProxy = 754C484515DC3E2B00316C67 /* PBXContainerItemProxy */;
+		};
+		754C484915DC561C00316C67 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = DACAL;
+			targetProxy = 754C484815DC561C00316C67 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		089C165CFE840E0CC02AAC07 /* InfoPlist.strings */ = {
@@ -1408,9 +1475,9 @@
 				GCC_OPTIMIZATION_LEVEL = s;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Prefix.h;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../DerivedData/Build/Products/$(CONFIGURATION)\"";
 				LD_RUNPATH_SEARCH_PATHS = "";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				SYMROOT = ../build;
+				SDKROOT = macosx10.7;
 			};
 			name = "Release Test";
 		};
@@ -1420,16 +1487,17 @@
 				CODE_SIGN_ENTITLEMENTS = PickADisk.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				"GCC_MODEL_TUNING[arch=*]" = "";
-				HEADER_SEARCH_PATHS = "";
-				INFOPLIST_FILE = "Info-PickADisk.plist";
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				OTHER_LDFLAGS = (
-					"-lcrypto",
-					"-seg1addr",
-					0x10000000,
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Frameworks\"",
 				);
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)/../DerivedData/Build/Products/$(CONFIGURATION)/PMUtility.framework/Headers\"",
+					"\"$(SRCROOT)/../DerivedData/Build/Products/$(CONFIGURATION)/DACAL.framework/Headers\"",
+				);
+				INFOPLIST_FILE = "Info-PickADisk.plist";
+				LD_RUNPATH_SEARCH_PATHS = "@rpath/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = PickADisk;
 				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
@@ -1448,9 +1516,9 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Prefix.h;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../DerivedData/Build/Products/$(CONFIGURATION)\"";
 				LD_RUNPATH_SEARCH_PATHS = "";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				SYMROOT = ../build;
+				SDKROOT = macosx10.7;
 			};
 			name = DebugPPC;
 		};
@@ -1460,15 +1528,17 @@
 				CODE_SIGN_ENTITLEMENTS = PickADisk.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				HEADER_SEARCH_PATHS = "";
-				INFOPLIST_FILE = "Info-PickADisk.plist";
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				OTHER_LDFLAGS = (
-					"-lcrypto",
-					"-seg1addr",
-					0x10000000,
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Frameworks\"",
 				);
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)/../DerivedData/Build/Products/$(CONFIGURATION)/PMUtility.framework/Headers\"",
+					"\"$(SRCROOT)/../DerivedData/Build/Products/$(CONFIGURATION)/DACAL.framework/Headers\"",
+				);
+				INFOPLIST_FILE = "Info-PickADisk.plist";
+				LD_RUNPATH_SEARCH_PATHS = "@rpath/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = PickADisk;
 				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
@@ -1487,9 +1557,9 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Prefix.h;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../DerivedData/Build/Products/$(CONFIGURATION)\"";
 				LD_RUNPATH_SEARCH_PATHS = "";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				SYMROOT = ../build;
+				SDKROOT = macosx10.7;
 			};
 			name = DebugRemote;
 		};
@@ -1499,15 +1569,17 @@
 				CODE_SIGN_ENTITLEMENTS = PickADisk.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				HEADER_SEARCH_PATHS = "";
-				INFOPLIST_FILE = "Info-PickADisk.plist";
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				OTHER_LDFLAGS = (
-					"-lcrypto",
-					"-seg1addr",
-					0x10000000,
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Frameworks\"",
 				);
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)/../DerivedData/Build/Products/$(CONFIGURATION)/PMUtility.framework/Headers\"",
+					"\"$(SRCROOT)/../DerivedData/Build/Products/$(CONFIGURATION)/DACAL.framework/Headers\"",
+				);
+				INFOPLIST_FILE = "Info-PickADisk.plist";
+				LD_RUNPATH_SEARCH_PATHS = "@rpath/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = PickADisk;
 				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
@@ -1526,9 +1598,9 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Prefix.h;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../DerivedData/Build/Products/$(CONFIGURATION)\"";
 				LD_RUNPATH_SEARCH_PATHS = "";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				SYMROOT = ../build;
+				SDKROOT = macosx10.7;
 			};
 			name = "Debug Fresh Prefs";
 		};
@@ -1538,15 +1610,17 @@
 				CODE_SIGN_ENTITLEMENTS = PickADisk.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				HEADER_SEARCH_PATHS = "";
-				INFOPLIST_FILE = "Info-PickADisk.plist";
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				OTHER_LDFLAGS = (
-					"-lcrypto",
-					"-seg1addr",
-					0x10000000,
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Frameworks\"",
 				);
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)/../DerivedData/Build/Products/$(CONFIGURATION)/PMUtility.framework/Headers\"",
+					"\"$(SRCROOT)/../DerivedData/Build/Products/$(CONFIGURATION)/DACAL.framework/Headers\"",
+				);
+				INFOPLIST_FILE = "Info-PickADisk.plist";
+				LD_RUNPATH_SEARCH_PATHS = "@rpath/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = PickADisk;
 				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
@@ -1559,15 +1633,17 @@
 				CODE_SIGN_ENTITLEMENTS = PickADisk.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				HEADER_SEARCH_PATHS = "";
-				INFOPLIST_FILE = "Info-PickADisk.plist";
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				OTHER_LDFLAGS = (
-					"-lcrypto",
-					"-seg1addr",
-					0x10000000,
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Frameworks\"",
 				);
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)/../DerivedData/Build/Products/$(CONFIGURATION)/PMUtility.framework/Headers\"",
+					"\"$(SRCROOT)/../DerivedData/Build/Products/$(CONFIGURATION)/DACAL.framework/Headers\"",
+				);
+				INFOPLIST_FILE = "Info-PickADisk.plist";
+				LD_RUNPATH_SEARCH_PATHS = "@rpath/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = PickADisk;
 				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
@@ -1580,15 +1656,17 @@
 				CODE_SIGN_ENTITLEMENTS = PickADisk.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				HEADER_SEARCH_PATHS = "";
-				INFOPLIST_FILE = "Info-PickADisk.plist";
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				OTHER_LDFLAGS = (
-					"-lcrypto",
-					"-seg1addr",
-					0x10000000,
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Frameworks\"",
 				);
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)/../DerivedData/Build/Products/$(CONFIGURATION)/PMUtility.framework/Headers\"",
+					"\"$(SRCROOT)/../DerivedData/Build/Products/$(CONFIGURATION)/DACAL.framework/Headers\"",
+				);
+				INFOPLIST_FILE = "Info-PickADisk.plist";
+				LD_RUNPATH_SEARCH_PATHS = "@rpath/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = PickADisk;
 				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
@@ -1607,10 +1685,10 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Prefix.h;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../DerivedData/Build/Products/$(CONFIGURATION)\"";
 				LD_RUNPATH_SEARCH_PATHS = "";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				OTHER_LDFLAGS = "-dynamic";
-				SYMROOT = ../build;
+				SDKROOT = macosx10.7;
 			};
 			name = Debug;
 		};
@@ -1627,9 +1705,9 @@
 				GCC_OPTIMIZATION_LEVEL = s;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Prefix.h;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../DerivedData/Build/Products/$(CONFIGURATION)\"";
 				LD_RUNPATH_SEARCH_PATHS = "";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				SYMROOT = ../build;
+				SDKROOT = macosx10.7;
 			};
 			name = Release;
 		};

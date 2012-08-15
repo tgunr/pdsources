@@ -2,8 +2,7 @@
 //  PADLifecycleController.m
 //  PickADisk
 //
-//  Created by Jack Small on 8/2/08.
-//  Copyright 2008 Jack Small. All rights reserved.
+//  Copyright 2008 PolyMicro Systems. All rights reserved.
 //
 
 #if PADBOX_EXPIRE_CHECK != 0

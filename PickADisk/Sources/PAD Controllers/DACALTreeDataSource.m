@@ -2,11 +2,12 @@
 //  DACALTreeDataSource.m
 //  DragNDropOutlineView
 //
-//  Created by Jack Small on 7/5/08.
-//  Copyright 2008 __MyCompanyName__. All rights reserved.
+//  Copyright 2008 PolyMicro Systems. All rights reserved.
 //
 
+#import "DACALTreeDataSource.h"
 #import <DACAL/dacalconstants.h>
+#import "PADLifecycleSetup.h"
 
 NSString*	DACALFlavorToFlavorValue( NSString* flavor )
 {
