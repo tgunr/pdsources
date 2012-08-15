@@ -25,7 +25,7 @@
 #import <PMSUtility/pms.h>
 
 
-typedef IOUSBDeviceInterface300    DACALIOUSBDeviceInterface;
+typedef IOUSBDeviceInterface320    DACALIOUSBDeviceInterface;
 typedef IOUSBInterfaceInterface300 DACALIOUSBInterfaceInterface;
 
 #define DACAL_MAXDEVICE_COUNT   64 * 4                            // 64 boxes + 64 hubs = 128 devices/per port for possible 4 ports.  Total 256 devices.
