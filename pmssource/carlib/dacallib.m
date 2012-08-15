@@ -672,14 +672,15 @@ IOReturn dacalGetDescriptor(DACALIOUSBDeviceInterface **deviceIntf, UInt16 index
 	USBDeviceAddress usbAddr;
 	int              i;
 
+    bzero(&req, sizeof(req));
+    req.bmRequestType = USBmakebmRequestType(kUSBAnyDirn, kUSBStandard, kUSBDevice);
+    req.bRequest      = kUSBRqGetDescriptor;
+    req.wValue        = (descType << 8) | descIndex;
+    req.wIndex        = index;
+    req.wLength       = len;
+    req.pData         = buf;
+
 	for (i = 0; i < 3; i++) {
-		bzero(&req, sizeof(req));
-		req.bmRequestType = USBmakebmRequestType(kUSBAnyDirn, kUSBStandard, kUSBDevice);
-		req.bRequest      = kUSBRqGetDescriptor;
-		req.wValue        = (descType << 8) | descIndex;
-		req.wIndex        = index;
-		req.wLength       = len;
-		req.pData         = buf;
 		bzero(buf, len);
 		err = (*deviceIntf)->DeviceRequest(deviceIntf, &req);
 		*result = req.wLenDone;
@@ -811,12 +812,12 @@ IOReturn dacalDoRequest(DACALIOUSBDeviceInterface **indeviceIntf, dacalCmd cmd, 
 			usleep(5000);
 			goto tryagain;
 		}
-//		if (err == kIOUSBPipeStalled) {
-//			PMLOG(1, @"DoCmd reporting stall from device: %x\n", err);
-//			// reset stall on endpoint
-//			err = dacalGetDescriptor(indeviceIntf, 0x0086, kUSBAnyDesc, 0, &uniBuf, 0, &result);
-//			goto tryagain;
-//		}
+		if (err == kIOUSBPipeStalled) {
+			PMLOG(1, @"DoCmd reporting stall from device: %x\n", err);
+			// reset stall on endpoint
+			err = dacalGetDescriptor(indeviceIntf, 0x0086, kUSBAnyDesc, 0, &uniBuf, 0, &result);
+			goto tryagain;
+		}
 		if (err) {
 			PMLOG(1, @"DoCmd reporting error from device: %x\n", err);
 			return err;
@@ -2617,7 +2618,6 @@ DACALDevicesInitialize(void) {
 		return kIOReturnNoDevice;
 	}
 
-	PMLOGPushVerbose(TRUE);
 	// Setup vendorID
 	numberRef = CFNumberCreate(gDACALDefaultCFAllocator, kCFNumberSInt32Type, &kDACALVendorID);
 	if (!numberRef) {
@@ -2675,8 +2675,6 @@ DACALDevicesInitialize(void) {
 
 	mach_port_deallocate(mach_task_self(), masterPort);            // Don't do this in the future so we can get hot plugs.
 	masterPort = 0;
-
-	PMLOGPopVerbose();
 
 	return kIOReturnSuccess;
 }
