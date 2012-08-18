@@ -42,7 +42,8 @@ int		DACVolume_nextIconID = 0;
 	padKnownSlot	= nil;
 	padFlavorGuess	= nil;
 	padKnownVolume	= NO;
-	
+
+	[volumeURL release];
 	[super dealloc];
 }
 
@@ -1078,7 +1079,10 @@ FAILED:
 -(void)scanMountedRemovableMedia
 {
 	NSArray*		mediaPaths = [[NSWorkspace sharedWorkspace] mountedRemovableMedia];
-	[self newMediaDetected:mediaPaths];
+    if ([mediaPaths count]) {
+        [self newMediaDetected:mediaPaths];
+    } else
+        PMLOG(1, @"mediaPath count = 0");
 }
 
 -(void)existingMediaRemoved:(NSString*)oldMediaPath
