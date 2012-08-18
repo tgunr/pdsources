@@ -108,6 +108,12 @@ NSString*		kPADLicenseDictKeyInvoiceNum	=	@"Invoice";
 	return newSelf;
 }
 
+- (void)dealloc {
+	[licenseDict release];
+	[licenseData release];
+	[super dealloc];
+}
+
 + (id)licenseFromPrefsKey:(NSString*)theKey
 {
 	NSData*		newData = [[NSUserDefaults standardUserDefaults] objectForKey:theKey];

@@ -39,6 +39,11 @@ PADSearchRequest* PADCreateSearchForType( OSType aType )
 	itemSearch = newSearch;
 }
 
+- (void)dealloc {
+	[itemSearch release];
+	[super dealloc];
+}
+
 + (id)leafDataWithName:(NSString*)str {
     // Convenience method to return a leaf node with its name set.
     return [[IndexNodeData alloc] initWithName:str isLeaf:YES];

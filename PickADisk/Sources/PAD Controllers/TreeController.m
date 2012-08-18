@@ -32,7 +32,9 @@
     [draggedNodes release];
 
 	//if( dataSource != nil ) [dataSource release];
-    [super dealloc];
+	[treeData release];
+	[outlineView release];
+	[super dealloc];
 }
 
 
@@ -1386,6 +1388,12 @@ NSURL *NewFileURLForWritingFile(NSString *dirpath, NSString *basename, NSString 
 
 - (void)updateChangesWithAction:(BOOL)doAction
 { [self updateChangesForItem:nil withAction:doAction]; }
+
+- (void)dealloc {
+	[treeControl release];
+	[toolbarControl release];
+	[super dealloc];
+}
 
 @end	// TreeControllerDataSource
 

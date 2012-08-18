@@ -106,8 +106,9 @@ static AppController *shared;
 	[busyBodies release], busyBodies = nil;
 	
 	DACALClientRelease( kPADClientIdentifier );
-	
-    [super dealloc];
+
+	[addVolumeController release];
+	[super dealloc];
 }
 
 /*

@@ -104,7 +104,12 @@
 	elementSlot = nil;
 	elementNode = nil;
 	elementURL  = nil;
-	
+
+	[elementBookmarks release];
+	[comments release];
+	[tags release];
+	[comments release];
+	[tags release];
 	[super dealloc];
 }
 

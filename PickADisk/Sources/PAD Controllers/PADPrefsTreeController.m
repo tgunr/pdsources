@@ -214,4 +214,9 @@ static PADPrefsTreeController *PADPrefsTreeController_shared;
 
 }
 
+- (void)dealloc {
+	[itemInfo release];
+	[super dealloc];
+}
+
 @end

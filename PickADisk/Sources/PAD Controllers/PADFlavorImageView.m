@@ -12,7 +12,9 @@
 -(void)dealloc
 {
 	[self setCurrentImage:nil];
-	
+
+	[currentImage release];
+	[currentImage release];
 	[super dealloc];
 }
 
@@ -432,6 +434,11 @@ const	CGFloat		kPADVIVStateRotateCounterClockwise		= 1.0f;
 	[self setResourceAlpha:newAlpha];
 	[self setCurrentAlpha:newAlpha];
 	[self setNeedsDisplay:YES];
+}
+
+- (void)dealloc {
+	[resourceName release];
+	[super dealloc];
 }
 
 @end
