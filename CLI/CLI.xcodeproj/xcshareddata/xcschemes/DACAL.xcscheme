@@ -61,6 +61,10 @@
       <CommandLineArguments>
          <CommandLineArgument
             argument = "-h"
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "--led 1"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
