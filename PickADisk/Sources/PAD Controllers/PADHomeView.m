@@ -21,7 +21,8 @@
 		[backImageTimer invalidate];
 		backImageTimer = nil;
 	}
-	
+
+	[currentURL release];
 	[super dealloc];
 }
 

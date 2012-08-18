@@ -41,7 +41,8 @@
 	[self setCustomTitle:nil];
 	[self setCustomFlavor:nil];
 
-    [super dealloc];
+	[pendingSlot release];
+	[super dealloc];
 }
 
 - (void)awakeFromNib

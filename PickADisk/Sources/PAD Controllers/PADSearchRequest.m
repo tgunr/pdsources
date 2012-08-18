@@ -271,7 +271,9 @@ PADSearchTerm*	PADCopySearchTermWithTitleOrID( NSString* aTermName )
 	searchNode = nil;
 	searchSubTree = nil;
 	searchingNow = NO;
-	
+
+	[searchOriginalSelection release];
+	[searchTermParents release];
 	[super dealloc];
 }
 
@@ -693,7 +695,8 @@ PADSearchTerm*	PADCopySearchTermWithTitleOrID( NSString* aTermName )
 	if( inQueue ) [inQueue release];
 	if( matchQueue ) [matchQueue release];
 	if( parentQueue ) [parentQueue release];
-	
+
+	[messageTarget release];
 	[super dealloc];
 }
 
