@@ -2377,145 +2377,150 @@ DACALDeviceCreateWithService(io_service_t ioDeviceObj, DACALResult *outErr) {
 	SInt32             config                 = 0;
 
 	deviceIntf = getUSBDevice(ioDeviceObj);
-	config     = openUSBDevice(deviceIntf);
-	if (config > 0)
-		useUSBDevice(deviceIntf, config);
-	else
-			PMLOG(1, @"What use is a device with a zero configuration????\n");
-	err = (*deviceIntf)->USBDeviceClose(deviceIntf);
-	err = (*deviceIntf)->Release(deviceIntf);
-
-	err = IOCreatePlugInInterfaceForService(ioDeviceObj, kIOUSBDeviceUserClientTypeID, kIOCFPlugInInterfaceID, &ioPlugin, &score);
-	if (err || !ioPlugin) {
-		IOObjectRelease(ioDeviceObj);
-		PMLOG(1, @"unable to create plugin. ret = %08x, iodev = %p\n", err, ioPlugin);
-		if (outErr != NULL)
-			*outErr = err;
-		return (thisRef);
-	}
-	err = (*ioPlugin)->QueryInterface(ioPlugin, CFUUIDGetUUIDBytes(kIOUSBDeviceInterfaceID), (LPVOID)&deviceIntf);
-	IODestroyPlugInInterface(ioPlugin);        // done with this
-	ioPlugin = NULL;
-
-	if (err || !deviceIntf) {
-		PMLOG(1, @"unable to create a device interface. ret = %08x, dev = %p\n", err, ioPlugin);
-		if (outErr != NULL)
-			*outErr = err;
-		return (thisRef);
-	}
-
-	err = (*deviceIntf)->USBDeviceOpen(deviceIntf);
-	if (err) {
-		PMLOG(1, @"Unable to open device: %08x\n", err);
-		(void)(*deviceIntf)->Release(deviceIntf);
-		if (outErr != NULL)
-			*outErr = err;
-		return (thisRef);
-	}
-
-	UInt16 devVendor;
-	UInt16 devProduct;
-	UInt8  intfNumber;
-
-	(*deviceIntf)->GetDeviceVendor(deviceIntf, &devVendor);
-	(*deviceIntf)->GetDeviceProduct(deviceIntf, &devProduct);
-
-	PMLOG(2, @"Found device vendor:%x product:%x\n", devVendor, devProduct);
-
-	thisRef = gDACALBoxes.boxCount++;
-	newNode = thisRef + 1;
-
-	DACAL_BOX_DEVICE(thisRef) = ioDeviceObj;
-	DACAL_BOX_REF(thisRef) = deviceIntf;
-	DACAL_BOX_BUSY(thisRef) = FALSE;
-	DACAL_BOX_UUID(thisRef) = NULL;
-	DACAL_BOX_MODEL(thisRef) = NULL;
-	DACAL_BOX_LASTSLOT(thisRef) = 0;
-	DACAL_BOX_LASTSLOTTIME(thisRef) = -1;
-//	DACAL_BOX_NODE(thisRef)			= index+1;
-	UInt8  direction, number, transferType, interval;
-	UInt16 maxPacketSize;
-//	err = (*deviceIntf)->GetNumEndpoints(deviceIntf, &intfNumEndpoints);
-//	err = (*deviceIntf)->GetPipeProperties(deviceIntf, 1, &direction, &number, &transferType, &maxPacketSize, &interval);
-
-	newModel = DACALCommandCopyModel(newNode, NULL);
-	newID    = DACALCommandCopyUUID(newNode, NULL);
-	if (newID == NULL) {
-		sleep(1);
-
-		newID = DACALCommandCopyUUID(newNode, NULL);
-
-		if (newID == NULL) {
-			err = kDACALError;
-			PMLOG(1, @"Could Not Identify Device %p\n", (void *)ioDeviceObj);
-			if (outErr != NULL)
-				*outErr = err;
-			return (thisRef);
-		}
-	}
-
-	CFComparisonResult modelDC300Check = CFStringCompare(newModel, CFSTR("DC-300"), 0);
-	CFComparisonResult modelDC101Check = CFStringCompare(newModel, CFSTR("DC-101"), 0);
-	CFComparisonResult modelDC016Check = CFStringCompare(newModel, CFSTR("DC-016RW"), 0);
-	if (modelDC300Check == 0 | modelDC101Check == 0 | modelDC016Check == 0) {
-		err = CarouselEstablishInfoFile(newID);
-		CFRelease(newID);
-		CFRelease(newModel);
-		if (err) {
-			PMLOG(1, @"unable to create a device file. ret = %i, dev = %p\n", err, (void *)ioDeviceObj);
-			if (outErr != NULL)
-				*outErr = err;
-			return (thisRef);
-		}
-	}
-	else {
-		PMLOG(1, @"unknown device: %@ ,unable to create a device file. ret = %i, dev = %p\n", newModel, err, (void *)ioDeviceObj);
-		CFRelease(newID);
-		CFRelease(newModel);
-		if (outErr != NULL)
-			*outErr = err;
-		return (thisRef);
-	}
-
-	err = IOServiceAddInterestNotification(gDACALNotifyPort, ioDeviceObj, kIOGeneralInterest, DACALDeviceNotification, (void *)newID, &(DACAL_BOX_NOTIFICATION(thisRef)));
-
-	DACALClientNotifyAll((DACALDeviceRef)newID, kDACALCarouselNoticeDeviceOpen, (CFDictionaryRef)NULL);
-
-	// Use the default device ID to bootstrap the new node
-	// Can't use the API because it checks for a valid id!
-//	gDACALDefaultDevice = thisRef + 1;
-
-//	DACAL_BOX_NODE(thisRef)			= thisRef + 1;
-//	newID = DACALCommandCopyUUID( thisRef+1, NULL );
-//	newModel = DACALCommandCopyModel( thisRef+1, NULL );
-//	DACAL_BOX_NAME(thisRef)			= CopyUSBProductData( thisRef, &newNode );
-
-//	newID							= DACALCommandCopyUUID( kDACALDefaultDevice, NULL );
-//	newModel						= DACALCommandCopyModel( kDACALDefaultDevice, NULL );
-//	DACAL_BOX_NAME(thisRef)			= CopyUSBProductData( (DACALDeviceRef)newID, &newNode );
-
-	// If the node doesn't exist assign a new one.
-//	if( newNode == 0 ) newNode = thisRef + 1;
-
-//	NSLog(@"Opened node: %i", newNode);
-
-/*	if( DACAL_BOX_NAME(thisRef)	== NULL )
-	{
-		userName = CSCopyUserName(TRUE);
-		newName = CFStringCreateWithFormat( NULL, NULL, CFSTR("%@'s Carousel %i"), userName, newNode );
-		//SaveUSBProductData( (DACALDeviceRef)newID, newName, newNode );
-		SaveUSBProductData( kDACALDefaultDevice, newName, newNode );
-		DACAL_BOX_NAME(thisRef) = newName;
-		CFRelease( userName );
-	}
-		
-	if( newID ) CFRelease( newID );
-	if( newModel) CFRelease( newModel );
-*/
-//	DACALDevicesSetDefaultDevice( originalDefault );
+    if (deviceIntf) {
+        config     = openUSBDevice(deviceIntf);
+        if (config > 0)
+            useUSBDevice(deviceIntf, config);
+        else {
+			PMLOG(1, @"ERROR: Zero configuration\n");
+            goto BAIL;
+        }
+        err = (*deviceIntf)->USBDeviceClose(deviceIntf);
+        err = (*deviceIntf)->Release(deviceIntf);
+        
+        err = IOCreatePlugInInterfaceForService(ioDeviceObj, kIOUSBDeviceUserClientTypeID, kIOCFPlugInInterfaceID, &ioPlugin, &score);
+        if (err || !ioPlugin) {
+            IOObjectRelease(ioDeviceObj);
+            PMLOG(1, @"unable to create plugin. ret = %08x, iodev = %p\n", err, ioPlugin);
+            if (outErr != NULL)
+                *outErr = err;
+            return (thisRef);
+        }
+        err = (*ioPlugin)->QueryInterface(ioPlugin, CFUUIDGetUUIDBytes(kIOUSBDeviceInterfaceID), (LPVOID)&deviceIntf);
+        IODestroyPlugInInterface(ioPlugin);        // done with this
+        ioPlugin = NULL;
+        
+        if (err || !deviceIntf) {
+            PMLOG(1, @"unable to create a device interface. ret = %08x, dev = %p\n", err, ioPlugin);
+            if (outErr != NULL)
+                *outErr = err;
+            return (thisRef);
+        }
+        
+        err = (*deviceIntf)->USBDeviceOpen(deviceIntf);
+        if (err) {
+            PMLOG(1, @"Unable to open device: %08x\n", err);
+            (void)(*deviceIntf)->Release(deviceIntf);
+            if (outErr != NULL)
+                *outErr = err;
+            return (thisRef);
+        }
+        
+        UInt16 devVendor;
+        UInt16 devProduct;
+        UInt8  intfNumber;
+        
+        (*deviceIntf)->GetDeviceVendor(deviceIntf, &devVendor);
+        (*deviceIntf)->GetDeviceProduct(deviceIntf, &devProduct);
+        
+        PMLOG(2, @"Found device vendor:%x product:%x\n", devVendor, devProduct);
+        
+        thisRef = gDACALBoxes.boxCount++;
+        newNode = thisRef + 1;
+        
+        DACAL_BOX_DEVICE(thisRef) = ioDeviceObj;
+        DACAL_BOX_REF(thisRef) = deviceIntf;
+        DACAL_BOX_BUSY(thisRef) = FALSE;
+        DACAL_BOX_UUID(thisRef) = NULL;
+        DACAL_BOX_MODEL(thisRef) = NULL;
+        DACAL_BOX_LASTSLOT(thisRef) = 0;
+        DACAL_BOX_LASTSLOTTIME(thisRef) = -1;
+        //	DACAL_BOX_NODE(thisRef)			= index+1;
+        UInt8  direction, number, transferType, interval;
+        UInt16 maxPacketSize;
+        //	err = (*deviceIntf)->GetNumEndpoints(deviceIntf, &intfNumEndpoints);
+        //	err = (*deviceIntf)->GetPipeProperties(deviceIntf, 1, &direction, &number, &transferType, &maxPacketSize, &interval);
+        
+        newModel = DACALCommandCopyModel(newNode, NULL);
+        newID    = DACALCommandCopyUUID(newNode, NULL);
+        if (newID == NULL) {
+            sleep(1);
+            
+            newID = DACALCommandCopyUUID(newNode, NULL);
+            
+            if (newID == NULL) {
+                err = kDACALError;
+                PMLOG(1, @"Could Not Identify Device %p\n", (void *)ioDeviceObj);
+                if (outErr != NULL)
+                    *outErr = err;
+                return (thisRef);
+            }
+        }
+        
+        CFComparisonResult modelDC300Check = CFStringCompare(newModel, CFSTR("DC-300"), 0);
+        CFComparisonResult modelDC101Check = CFStringCompare(newModel, CFSTR("DC-101"), 0);
+        CFComparisonResult modelDC016Check = CFStringCompare(newModel, CFSTR("DC-016RW"), 0);
+        if (modelDC300Check == 0 | modelDC101Check == 0 | modelDC016Check == 0) {
+            err = CarouselEstablishInfoFile(newID);
+            CFRelease(newID);
+            CFRelease(newModel);
+            if (err) {
+                PMLOG(1, @"unable to create a device file. ret = %i, dev = %p\n", err, (void *)ioDeviceObj);
+                if (outErr != NULL)
+                    *outErr = err;
+                return (thisRef);
+            }
+        }
+        else {
+            PMLOG(1, @"unknown device: %@ ,unable to create a device file. ret = %i, dev = %p\n", newModel, err, (void *)ioDeviceObj);
+            CFRelease(newID);
+            CFRelease(newModel);
+            if (outErr != NULL)
+                *outErr = err;
+            return (thisRef);
+        }
+        
+        err = IOServiceAddInterestNotification(gDACALNotifyPort, ioDeviceObj, kIOGeneralInterest, DACALDeviceNotification, (void *)newID, &(DACAL_BOX_NOTIFICATION(thisRef)));
+        
+        DACALClientNotifyAll((DACALDeviceRef)newID, kDACALCarouselNoticeDeviceOpen, (CFDictionaryRef)NULL);
+        
+        // Use the default device ID to bootstrap the new node
+        // Can't use the API because it checks for a valid id!
+        //	gDACALDefaultDevice = thisRef + 1;
+        
+        //	DACAL_BOX_NODE(thisRef)			= thisRef + 1;
+        //	newID = DACALCommandCopyUUID( thisRef+1, NULL );
+        //	newModel = DACALCommandCopyModel( thisRef+1, NULL );
+        //	DACAL_BOX_NAME(thisRef)			= CopyUSBProductData( thisRef, &newNode );
+        
+        //	newID							= DACALCommandCopyUUID( kDACALDefaultDevice, NULL );
+        //	newModel						= DACALCommandCopyModel( kDACALDefaultDevice, NULL );
+        //	DACAL_BOX_NAME(thisRef)			= CopyUSBProductData( (DACALDeviceRef)newID, &newNode );
+        
+        // If the node doesn't exist assign a new one.
+        //	if( newNode == 0 ) newNode = thisRef + 1;
+        
+        //	NSLog(@"Opened node: %i", newNode);
+        
+        /*	if( DACAL_BOX_NAME(thisRef)	== NULL )
+         {
+         userName = CSCopyUserName(TRUE);
+         newName = CFStringCreateWithFormat( NULL, NULL, CFSTR("%@'s Carousel %i"), userName, newNode );
+         //SaveUSBProductData( (DACALDeviceRef)newID, newName, newNode );
+         SaveUSBProductData( kDACALDefaultDevice, newName, newNode );
+         DACAL_BOX_NAME(thisRef) = newName;
+         CFRelease( userName );
+         }
+         
+         if( newID ) CFRelease( newID );
+         if( newModel) CFRelease( newModel );
+         */
+        //	DACALDevicesSetDefaultDevice( originalDefault );
+    }
 
 	if (outErr != NULL)
 		*outErr = err;
+    BAIL:
 	return (thisRef);
 }
 
@@ -2555,54 +2560,6 @@ DACALDevicesInitialize(void) {
 
 //    io_iterator_t			devIter = 0;
 //    io_service_t			ioDeviceObj;
-
-/*
-	FSRef					topFolder;
-	OSErr					ffErr;
-	
-	gDACALBoxes.boxCount = 0;							// start fresh
-	
-	DACALDevicesSetCFAllocator( kCFAllocatorDefault );	// initialize with default allocator
-	
-	{
-		
-		ffErr = FSFindFolder( kUserDomain, kDomainLibraryFolderType, FALSE, &topFolder );
-		if( ffErr ) fprintf( stderr,"No Local Library?");
-		
-		CFURLRef	sysURL = CFURLCreateFromFSRef( kCFAllocatorDefault, &topFolder );
-		CFURLRef	padURL = CFURLCreateCopyAppendingPathComponent( kCFAllocatorDefault, sysURL, DACAL_CAROUSEL_FOLDERNAME_CFSTRING, TRUE );
-		FSRef		padFS;
-		FSCatalogInfo			permCatInfo;
-		FSPermissionInfo		*permInfo = (FSPermissionInfo*)&(permCatInfo.permissions);
-	
-		Boolean		foundPAD = CFURLGetFSRef( padURL, &padFS );
-		CFIndex		theUniCount = CFStringGetLength( DACAL_CAROUSEL_FOLDERNAME_CFSTRING );
-		UniChar		theUniName[1024];
-		
-		if( foundPAD == FALSE ) {
-			permInfo->mode = 0755;			// drwxr-xr-x
-			CFStringGetCharacters( DACAL_CAROUSEL_FOLDERNAME_CFSTRING, CFRangeMake(0, theUniCount), theUniName );
-
-			ffErr = FSCreateDirectoryUnicode( &topFolder, theUniCount, (const UniChar*)theUniName, kFSCatInfoPermissions, &permCatInfo, &padFS, NULL, NULL );
-			if( ffErr ) fprintf( stderr, "FSCreateDirectoryUnicode: %i\n", ffErr );
-		}
-		
-		if( padURL != NULL ) CFRelease( padURL );
-		if( sysURL != NULL ) CFRelease( sysURL );
-	}
-	
-	
-	
-	
-	// setup a system folder descriptor to make finding the Carousel folder easy
-	AddFolderDescriptor( kDACALCarouselsFolderType, kFolderInLocalOrRemoteUserFolder, 
-							kRelativeFolder, kDomainLibraryFolderType, 0, 0, 
-							DACAL_CAROUSEL_FOLDERNAME_PSTRING, TRUE );
-
-	
-	ffErr = FSFindFolder( kOnAppropriateDisk, kDACALCarouselsFolderType, TRUE, &topFolder );
-	
- */
 
 	// Find USB Interface
 	err = IOMasterPort(MACH_PORT_NULL, &masterPort);
@@ -2666,7 +2623,7 @@ DACALDevicesInitialize(void) {
 
 	err = IOServiceAddMatchingNotification(gDACALNotifyPort, kIOFirstMatchNotification, matchingDictionary, DACALDevicesAdded, NULL, &gDACALAddedIter);
 	if (err)
-	PMLOG(1, @"IOServiceAddMatchingNotification returned err: %x", err);
+        PMLOG(1, @"IOServiceAddMatchingNotification returned err: %x", err);
 
 	DACALDevicesAdded(NULL, gDACALAddedIter);
 
