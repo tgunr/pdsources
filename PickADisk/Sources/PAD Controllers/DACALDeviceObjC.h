@@ -1,9 +1,8 @@
 //
-//  DACALDevice.h
+//  DACALDeviceObjC.m
 //  PickADisk
 //
-//  Created by Jack Small on 9/3/08.
-//  Copyright 2008 Jack Small. All rights reserved.
+//  Copyright 2008 PolyMicro Systems. All rights reserved.
 //
 
 #import <Cocoa/Cocoa.h>

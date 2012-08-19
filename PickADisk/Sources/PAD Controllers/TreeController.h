@@ -2,8 +2,7 @@
 //  TreeController.h
 //  DragNDropOutlineView
 //
-//  Created by Jack Small on 7/4/08.
-//  Copyright 2008 __MyCompanyName__. All rights reserved.
+//  Copyright 2008 PolyMicro Systems. All rights reserved.
 //
 
 #import <Cocoa/Cocoa.h>
@@ -11,9 +10,9 @@
 //#import "AppController.h"
 #import "SimpleTreeNode.h"
 
-#import <PMSUtility/ImageAndTextCell.h>
-#import <PMSUtility/NSArray_Extensions.h>
-#import <PMSUtility/NSOutlineView_Extensions.h>
+#import <PMUtility/ImageAndTextCell.h>
+#import <PMUtility/NSArray_Extensions.h>
+#import <PMUtility/NSOutlineView_Extensions.h>
 
 // ================================================================
 // Useful Macros

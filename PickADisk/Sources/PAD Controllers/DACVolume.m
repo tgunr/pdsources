@@ -2,12 +2,15 @@
 //  DACVolume.m
 //  PickADisk
 //
-//  Created by Jack Small on 9/9/08.
-//  Copyright 2008 Jack Small. All rights reserved.
+//  Copyright 2008 PolyMicro Systems. All rights reserved.
 //
 
 #import <DACAL/dacalconstants.h>
-
+#import "DACVolume.h"
+#import "PADLifeCycleSetup.h"
+#import "dacallib.h"
+#import "AppController.h"
+#import "DACALTreeDataSource.h"
 
 @implementation DACVolume
 
@@ -39,7 +42,8 @@ int		DACVolume_nextIconID = 0;
 	padKnownSlot	= nil;
 	padFlavorGuess	= nil;
 	padKnownVolume	= NO;
-	
+
+	[volumeURL release];
 	[super dealloc];
 }
 
@@ -1075,7 +1079,10 @@ FAILED:
 -(void)scanMountedRemovableMedia
 {
 	NSArray*		mediaPaths = [[NSWorkspace sharedWorkspace] mountedRemovableMedia];
-	[self newMediaDetected:mediaPaths];
+    if ([mediaPaths count]) {
+        [self newMediaDetected:mediaPaths];
+    } else
+        PMLOG(1, @"mediaPath count = 0");
 }
 
 -(void)existingMediaRemoved:(NSString*)oldMediaPath

@@ -2,14 +2,13 @@
 //  JSServiceManager.m
 //  PickADisk
 //
-//  Created by Jack Small on 9/27/08.
 //  Copyright 2008 PolyMicro Systems. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import "JSServiceManager.h"
 #import "JSServicesSetup.h"
-#import <PMSUtility/pms.h>
+#import <PMUtility/pm.h>
 
 @implementation JSServiceAbstract
 

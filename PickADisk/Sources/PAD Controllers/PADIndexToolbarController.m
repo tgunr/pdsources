@@ -2,9 +2,9 @@
 //  PADIndexToolbarController.m
 //  PickADisc
 //
-//  Created by Jack Small on 7/7/08.
-//  Copyright 2008 __MyCompanyName__. All rights reserved.
+//  Copyright 2008 PolyMicro Systems. All rights reserved.
 //
+#import "PADIndexToolbarController.h"
 
 @implementation PADIndexToolbarController
 

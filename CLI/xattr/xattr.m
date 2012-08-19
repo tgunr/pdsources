@@ -36,7 +36,14 @@
 	return self;
 }
 
-- (NSArray *)keys error:(NSError **)anError {
+- (NSArray *)keys
+
+- (void)dealloc {
+	[URL release];
+	[super dealloc];
+}
+
+error:(NSError **)anError {
 	size_t bufferSize = listxattr([URL path], NULL, 0, options);                        // find out the buffer size.
 	if (bufferSize < 0 || bufferSize == -1) {
 		if (anError != NULL) {

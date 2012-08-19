@@ -2,11 +2,12 @@
 //  PADSearchRequest.m
 //  PickADisc
 //
-//  Created by Jack Small on 7/30/08.
-//  Copyright 2008 Jack Small. All rights reserved.
+//  Copyright 2008 PolyMicro Systems. All rights reserved.
 //
 
-#import <PMSUtility/NSDate_Extensions.h>
+#import "PADSearchRequest.h"
+#import <PMUtility/NSDate_Extensions.h>
+#import "DACALTreeDataSource.h"
 
 // Default # of matches before notifying target
 #define PADMATCHQUEUE_THRESHOLD		22
@@ -270,7 +271,9 @@ PADSearchTerm*	PADCopySearchTermWithTitleOrID( NSString* aTermName )
 	searchNode = nil;
 	searchSubTree = nil;
 	searchingNow = NO;
-	
+
+	[searchOriginalSelection release];
+	[searchTermParents release];
 	[super dealloc];
 }
 
@@ -692,7 +695,8 @@ PADSearchTerm*	PADCopySearchTermWithTitleOrID( NSString* aTermName )
 	if( inQueue ) [inQueue release];
 	if( matchQueue ) [matchQueue release];
 	if( parentQueue ) [parentQueue release];
-	
+
+	[messageTarget release];
 	[super dealloc];
 }
 

@@ -1,3 +1,5 @@
+#import "PADIndexProgressController.h"
+
 @implementation PADIndexProgressController
 //static PADIndexProgressController* PADIndexProgressController_shared;
 
@@ -22,7 +24,8 @@
 - (void)dealloc
 {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
-	
+
+	[completionData release];
 	[super dealloc];
 }
 

@@ -2,17 +2,20 @@
 //  PADFlavorImageView.m
 //  PickADisk
 //
-//  Created by Jack Small on 10/20/08.
-//  Copyright 2008 Jack Small. All rights reserved.
+//  Copyright 2008 PolyMicro Systems. All rights reserved.
 //
 
+#import "PADFlavorImageView.h"
+#import "DACALTreeDataSource.h"
 
 @implementation PADSimpleImageView
 
 -(void)dealloc
 {
 	[self setCurrentImage:nil];
-	
+
+	[currentImage release];
+	[currentImage release];
 	[super dealloc];
 }
 
@@ -432,6 +435,11 @@ const	CGFloat		kPADVIVStateRotateCounterClockwise		= 1.0f;
 	[self setResourceAlpha:newAlpha];
 	[self setCurrentAlpha:newAlpha];
 	[self setNeedsDisplay:YES];
+}
+
+- (void)dealloc {
+	[resourceName release];
+	[super dealloc];
 }
 
 @end

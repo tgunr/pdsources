@@ -2,8 +2,7 @@
 //  DACDriverInstaller.m
 //  PickADisk
 //
-//  Created by Jack Small on 9/7/08.
-//  Copyright 2008 Jack Small. All rights reserved.
+//  Copyright 2008 PolyMicro Systems. All rights reserved.
 //
 
 #import "DACDriverInstaller.h"
@@ -61,8 +60,7 @@ CFStringRef CFBundleRunPrivledgedInternalExecutable( CFAllocatorRef inAllocator,
             AuthorizationItem myItems = { kAuthorizationRightExecute, 0, NULL, 0 };
             AuthorizationRights myRights = { 1, &myItems };
 			
-            myFlags = kAuthorizationFlagDefaults | kAuthorizationFlagInteractionAllowed |
-						kAuthorizationFlagPreAuthorize | kAuthorizationFlagExtendRights;
+            myFlags = kAuthorizationFlagDefaults | kAuthorizationFlagExtendRights | kAuthorizationFlagInteractionAllowed ;
             myStatus = AuthorizationCopyRights( myAuthorizationRef, &myRights, NULL, myFlags, NULL );
         }
 		

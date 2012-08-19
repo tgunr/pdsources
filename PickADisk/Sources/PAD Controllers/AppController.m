@@ -2,11 +2,10 @@
 //  AppDelegate.m
 //  Async Downloader
 //
-//  Created by Jack Small on 7/7/08.
-//  Copyright 2008 Jack Small. All rights reserved.
+//  Copyright 2008 PolyMicro Systems. All rights reserved.
 //
 
-
+#import "AppController.h"
 #import <AudioToolbox/AudioToolbox.h>
 
 //#import <CoreFoundation/CoreFoundation.h>
@@ -19,6 +18,8 @@
 //#import "DACVolume.h"
 #import "LicenseController.h"
 #import "LicenseService.h"
+#import "PADLifecycleController.h"
+#import "DACALTreeDataSource.h"
 
 #define PAD_BUSYBODY_DELAY	0.1
 #define PAD_PREFS_VERSION	(const char*)"0.6"
@@ -106,8 +107,9 @@ static AppController *shared;
 	[busyBodies release], busyBodies = nil;
 	
 	DACALClientRelease( kPADClientIdentifier );
-	
-    [super dealloc];
+
+	[addVolumeController release];
+	[super dealloc];
 }
 
 /*

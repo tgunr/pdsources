@@ -2,12 +2,13 @@
 //  PADInspectorController.h
 //  PickADisk
 //
-//  Created by Jack Small on 2/3/09.
-//  Copyright 2009 Jack Small. All rights reserved.
+//  Copyright 2009 PolyMicro Systems. All rights reserved.
 //
 
 #import <Cocoa/Cocoa.h>
 #import "PADFlavorImageView.h"
+#import "SimpleTreeNode.h"
+#import "PADSearchRequest.h"
 
 @interface PADInspectorController : NSWindowController
 {

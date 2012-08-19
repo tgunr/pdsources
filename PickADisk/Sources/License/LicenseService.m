@@ -2,11 +2,13 @@
 //  LicenseService.m
 //  PickADisk
 //
-//  Created by Jack Small on 10/30/08.
-//  Copyright 2008 Jack Small. All rights reserved.
+//  Copyright 2008 PolyMicro Systems. All rights reserved.
 //
 
 #import "LicenseService.h"
+#import "PADLifeCycleSetup.h"
+#import "AppController.h"
+#import "DACALTreeDataSource.h"
 
 NSString*		kPADLicenseDataPrefKey			=	@"licenseDict";
 NSString*		kPADLicenseFirstRunPrefKey		=	@"demoAnnounce";
@@ -106,6 +108,12 @@ NSString*		kPADLicenseDictKeyInvoiceNum	=	@"Invoice";
 		[self autorelease];
 	
 	return newSelf;
+}
+
+- (void)dealloc {
+	[licenseDict release];
+	[licenseData release];
+	[super dealloc];
 }
 
 + (id)licenseFromPrefsKey:(NSString*)theKey

@@ -1,16 +1,19 @@
 //
-//  DACALDevice.m
+//  DACALDeviceObjC.m
 //  PickADisk
 //
-//  Created by Jack Small on 9/3/08.
-//  Copyright 2008 Jack Small. All rights reserved.
+//  Copyright 2008 PolyMicro Systems. All rights reserved.
 //
 
+#import "DACALDeviceObjC.h"
 #import "PADOperationOpenDevice.h"
 #import "PADOperationControlDevice.h"
 #import "LicenseService.h"
 #import "Prefix.h"
 #import <DACAL/dacalconstants.h>
+#import "SimpleTreeNode.h"
+#import "DACALTreeDataSource.h"
+#import "PADLifecycleSetup.h"
 
 //	Device Array
 
@@ -104,7 +107,12 @@
 	elementSlot = nil;
 	elementNode = nil;
 	elementURL  = nil;
-	
+
+	[elementBookmarks release];
+	[comments release];
+	[tags release];
+	[comments release];
+	[tags release];
 	[super dealloc];
 }
 
