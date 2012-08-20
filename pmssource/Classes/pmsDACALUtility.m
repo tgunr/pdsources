@@ -42,7 +42,7 @@ Boolean	CFURLIsSlot( CFURLRef url )
 	CFStringRef		slotNumber = NULL;
 	Boolean			isSlot = FALSE;
 	
-	slotNumber = CFURLCopyXattr( kCFAllocatorDefault, url, kDACALCarouselDocumentXAttrSlotAddDate, (OSStatus*)NULL );
+	slotNumber = CFURLCopyXattr( kCFAllocatorDefault, url, kDACALCarouselDocumentXAttrSlot, (OSStatus*)NULL );
 	if( slotNumber != NULL ) 
 	{	
 		isSlot = TRUE;
