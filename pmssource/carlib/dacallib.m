@@ -875,8 +875,9 @@ DACALCount dacalDeviceRefToDeviceIndex(DACALDeviceRef deviceID) {
 
 		if (CFGetTypeID(possibleID) == CFUUIDGetTypeID())                                    // UUID?
 			for (checkIndex = 0; checkIndex < gDACALBoxes.boxCount; checkIndex++)
-				if (DACAL_BOX_UUID(checkIndex)) if (CFEqual(DACAL_BOX_UUID(checkIndex), possibleID))
-					return (checkIndex);
+				if (DACAL_BOX_UUID(checkIndex))
+                    if (CFEqual(DACAL_BOX_UUID(checkIndex), possibleID))
+                        return (checkIndex);
 
 		if (CFGetTypeID(possibleName) == CFStringGetTypeID())                                // Name?
 			for (checkIndex = 0; checkIndex < gDACALBoxes.boxCount; checkIndex++)
