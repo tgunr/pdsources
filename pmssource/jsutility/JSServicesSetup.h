@@ -23,4 +23,4 @@
                                                                                 @"PADSearchService", \
 																				nil]
 
-#endif	JSSMIS_SETUP
+#endif	// JSSMIS_SETUP

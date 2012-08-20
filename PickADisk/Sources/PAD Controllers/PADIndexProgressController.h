@@ -3,7 +3,7 @@
 @interface PADIndexProgressController : NSObject {
     IBOutlet NSButton *cancelButton;
     IBOutlet id completionData;
-    IBOutlet SEL completionSelector;
+    SEL completionSelector;
     IBOutlet id completionTarget;
     IBOutlet NSTextField *primaryPrompt;
     IBOutlet NSProgressIndicator *progressBar;

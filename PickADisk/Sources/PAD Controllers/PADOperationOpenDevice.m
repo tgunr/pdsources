@@ -6,7 +6,7 @@
 //
 
 #import "PADOperationOpenDevice.h"
-
+#import "DACALDevice.h"
 
 @implementation PADOperationOpenDevice
 

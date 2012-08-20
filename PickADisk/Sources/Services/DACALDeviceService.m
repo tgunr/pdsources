@@ -5,6 +5,7 @@
 //
 
 
+#import <PMUtility/pmUtility.h>
 #import "DACALDeviceService.h"
 #import "DACALSlotElement.h"
 #import "DACALSlot.h"
@@ -69,7 +70,8 @@
 -(DACALDevice*)DACALDeviceForDeviceRef:(DACALDeviceRef)aBoxRef
 {
 	DACALDevice*	foundBox = nil;
-	int				boxIndex, boxCount = [deviceList count];
+	int                        boxCount = [deviceList count];
+	NSUInteger boxIndex;
 
 	if( aBoxRef < kDACALIllegalDevice )
 		aBoxRef = DACALDevicesCopyDeviceRefForIndex( aBoxRef, NULL );
@@ -105,8 +107,8 @@
 	DACALDevice*	workBox = nil;
 	NSEnumerator*	boxEnum = [deviceList objectEnumerator];
 
-	while ( workBox = [boxEnum nextObject] )
-		if( foundSlot = [workBox slotWithIdentifier:findID] )
+	while ((workBox = [boxEnum nextObject]))
+		if( (foundSlot = [workBox slotWithIdentifier:findID]) )
 			break;
 
 	return foundSlot;
@@ -139,7 +141,7 @@
 	NSEnumerator*		deviceEnum = [deviceList objectEnumerator];
 	DACALDevice*		workDevice = nil;
 
-	while ( workDevice = [deviceEnum nextObject] )
+	while ((workDevice = [deviceEnum nextObject]))
 		outCount += [workDevice slotsUsed];
 
 	if( [[PADLicenseService sharedLicenseService] licenseValid] != YES )
@@ -159,7 +161,7 @@
 	DACALDevice*	workDevice = nil;
 	NSNumber*		workNumber = [NSNumber zero];
 
-	while ( workDevice = [slotEnum nextObject] )
+	while ((workDevice = [slotEnum nextObject]))
 		workNumber = [workNumber addToNumber:[workDevice totalVolumeSize]];
 
 	return workNumber;
