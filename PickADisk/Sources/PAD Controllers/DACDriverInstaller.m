@@ -79,7 +79,8 @@ CFStringRef CFBundleRunPrivledgedInternalExecutable( CFAllocatorRef inAllocator,
                 for(;;)
                 {
                     int bytesRead = read (fileno (myCommunicationsPipe), myReadBuffer, sizeof (myReadBuffer));
-                    if (bytesRead < 1) break;
+                    if (bytesRead < 1)
+                        break;
 					
 					myReadBuffer[ bytesRead ] = 0;
 					CFStringAppendCString( myCFOut, myReadBuffer, kCFStringEncodingUTF8 );
@@ -89,16 +90,20 @@ CFStringRef CFBundleRunPrivledgedInternalExecutable( CFAllocatorRef inAllocator,
 	
 EXIT:
 	
-	if( myCFOut ) CFShow( myCFOut );
-    if( myStatus ) printf( "runPrivledgedInternalTool Error: %ld\n", myStatus );
+	if( myCFOut )
+        CFShow( myCFOut );
+    if( myStatus )
+        printf( "runPrivledgedInternalTool Error: %ld\n", myStatus );
 
     AuthorizationFree( myAuthorizationRef, kAuthorizationFlagDefaults );
 
 	//if( myToolPath ) free( myToolPath );
 	//if( myArguments ) free( myArguments );
-	if( myToolURL ) CFRelease( myToolURL );
+	if( myToolURL )
+        CFRelease( myToolURL );
 	
-	if( outError != NULL ) *outError = myStatus;
+	if( outError != NULL )
+        *outError = myStatus;
     return myCFOut;
 }
 

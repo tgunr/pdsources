@@ -139,10 +139,11 @@ static Boolean	PADPrefsControllerB = false;
 		CFRelease( thisDate );
 	}
 	
-	if( updateText ) [updateText setStringValue:theUpdateString];
+	if( updateText )
+        [updateText setStringValue:theUpdateString];
 	
-	CFRelease( thisFormat );
-	CFRelease( thisLocale );	
+	IFCFRELEASE( thisFormat );
+	IFCFRELEASE( thisLocale );	
 }
 
 /*
@@ -178,8 +179,10 @@ static Boolean	PADPrefsControllerB = false;
 	[driverNotImage setHidden:haveDriver];
 		
 	if( haveDriver ) {
-		if( gotDate == nil ) gotDate = NSLocalizedString(@"Yes","Prefs Window Driver Pane Default Date when date is not found but driver is installed");
-		if( gotVers == nil ) gotVers = NSLocalizedString(@"100 Series","Prefs Window Driver Pane Default Version when version is not found but driver is installed");
+		if( gotDate == nil )
+            gotDate = NSLocalizedString(@"Yes","Prefs Window Driver Pane Default Date when date is not found but driver is installed");
+		if( gotVers == nil )
+            gotVers = NSLocalizedString(@"100 Series","Prefs Window Driver Pane Default Version when version is not found but driver is installed");
 		outPrompt = [NSString stringWithFormat:NSLocalizedString(@"DACAL Driver v%@\nInstalled %@",@"Prefs Window Driver Pane Prompt Format for driver version on installed date"), gotVers, gotDate];
 	}
 	
