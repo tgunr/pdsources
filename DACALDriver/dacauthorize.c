@@ -19,7 +19,7 @@ char* kext_unload_args[] = { "/System/Library/Extensions/DACALDriver.kext", NULL
 char kext_load_bin[] = "/sbin/kextload";
 char* kext_load_args[] = { "/System/Library/Extensions/DACALDriver.kext", NULL };
 
-int doPrivledged( char myToolPath[], char *myArguments[] )
+int doPiviledged( char myToolPath[], char *myArguments[] )
 {
  
     OSStatus myStatus;
