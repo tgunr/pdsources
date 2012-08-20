@@ -273,7 +273,7 @@
 		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		08DC403BFF0C20FA11CA0E35 /* TreeNode.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = TreeNode.h; sourceTree = "<group>"; };
 		08DC403CFF0C20FA11CA0E35 /* TreeNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TreeNode.m; sourceTree = "<group>"; };
-		08DC4041FF0C22D111CA0E35 /* SimpleTreeNode.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = SimpleTreeNode.h; sourceTree = "<group>"; };
+		08DC4041FF0C22D111CA0E35 /* SimpleTreeNode.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = SimpleTreeNode.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		08DC4042FF0C22D111CA0E35 /* SimpleTreeNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SimpleTreeNode.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Sources/main.m; sourceTree = SOURCE_ROOT; };
 		29B97319FDCFA39411CA2CEA /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/MainMenu.nib; sourceTree = "<group>"; };
@@ -354,7 +354,7 @@
 		5C7F73F90F3934B30053681D /* PADInspectorController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PADInspectorController.h; sourceTree = "<group>"; };
 		5C7F73FA0F3934B30053681D /* PADInspectorController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PADInspectorController.m; sourceTree = "<group>"; };
 		5C81A0E70EC39D9B00E75319 /* JSServiceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = JSServiceManager.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		5C81A0E80EC39D9B00E75319 /* JSServiceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSServiceManager.m; sourceTree = "<group>"; };
+		5C81A0E80EC39D9B00E75319 /* JSServiceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = JSServiceManager.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		5C81A0E90EC39D9B00E75319 /* JSServicesSetup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = JSServicesSetup.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		5C81A1630EC3BBD000E75319 /* JSTestService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = JSTestService.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		5C81A1640EC3BBD000E75319 /* JSTestService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = JSTestService.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
@@ -493,15 +493,15 @@
 		75F02D210E955A9400A02B14 /* LicenseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LicenseController.h; path = Sources/License/LicenseController.h; sourceTree = "<group>"; };
 		75F02D220E955A9400A02B14 /* LicenseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LicenseController.m; path = Sources/License/LicenseController.m; sourceTree = "<group>"; };
 		B69BDD9A08A2EC26008AC9B6 /* DACALSlotElementBookmark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DACALSlotElementBookmark.m; sourceTree = "<group>"; };
-		B69BDD9A08A2EC26008AC9B8 /* DACALSlotElementBookmark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DACALSlotElementBookmark.h; sourceTree = "<group>"; };
+		B69BDD9A08A2EC26008AC9B8 /* DACALSlotElementBookmark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = DACALSlotElementBookmark.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		B69BDD9A08A2EC26008AC9BA /* DACALSlotElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DACALSlotElement.m; sourceTree = "<group>"; };
-		B69BDD9A08A2EC26008AC9BC /* DACALSlotElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DACALSlotElement.h; sourceTree = "<group>"; };
+		B69BDD9A08A2EC26008AC9BC /* DACALSlotElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = DACALSlotElement.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		B69BDD9A08A2EC26008AC9BE /* DACALSlot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DACALSlot.m; sourceTree = "<group>"; };
-		B69BDD9A08A2EC26008AC9C0 /* DACALSlot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DACALSlot.h; sourceTree = "<group>"; };
+		B69BDD9A08A2EC26008AC9C0 /* DACALSlot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = DACALSlot.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		B69BDD9A08A2EC26008AC9C2 /* DACALDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DACALDevice.m; sourceTree = "<group>"; };
-		B69BDD9A08A2EC26008AC9C4 /* DACALDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DACALDevice.h; sourceTree = "<group>"; };
+		B69BDD9A08A2EC26008AC9C4 /* DACALDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = DACALDevice.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		B69BDD9A08A2EC26008AC9C6 /* DACALDeviceService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DACALDeviceService.m; sourceTree = "<group>"; };
-		B69BDD9A08A2EC26008AC9C8 /* DACALDeviceService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DACALDeviceService.h; sourceTree = "<group>"; };
+		B69BDD9A08A2EC26008AC9C8 /* DACALDeviceService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = DACALDeviceService.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1562,7 +1562,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@rpath/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = PickADisk;
-				USER_HEADER_SEARCH_PATHS = "";
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/../PMUtility/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = "Release Test";
@@ -1603,7 +1603,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@rpath/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = PickADisk;
-				USER_HEADER_SEARCH_PATHS = "";
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/../PMUtility/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = DebugPPC;
@@ -1644,7 +1644,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@rpath/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = PickADisk;
-				USER_HEADER_SEARCH_PATHS = "";
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/../PMUtility/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = DebugRemote;
@@ -1685,7 +1685,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@rpath/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = PickADisk;
-				USER_HEADER_SEARCH_PATHS = "";
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/../PMUtility/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = "Debug Fresh Prefs";
@@ -1708,7 +1708,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@rpath/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = PickADisk;
-				USER_HEADER_SEARCH_PATHS = "";
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/../PMUtility/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1731,7 +1731,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@rpath/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = PickADisk;
-				USER_HEADER_SEARCH_PATHS = "";
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/../PMUtility/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
