@@ -1,6 +1,5 @@
 //
 //  DACALDeviceNode.h
-//  DACALTester
 //
 //  Created by Dave Carlton on 01/11/10.
 //  Copyright 2010 PolyMicro Systems. All rights reserved.
