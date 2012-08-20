@@ -30,7 +30,8 @@
 
 -(id)initWithFrame:(NSRect)newFrame
 {
-	if( self = [super initWithFrame:newFrame] )
+	self = [super initWithFrame:newFrame];
+	if(self)
 		self = [self initSelfWithFrame:newFrame];
 	
 	return self;

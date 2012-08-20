@@ -7,7 +7,7 @@
 //
 
 #import "PADHomeView.h"
-
+#import "NSArray_Extensions.h"
 
 @implementation PADHomeView
 
@@ -183,7 +183,8 @@
 
 - (id)initWithFrame:(NSRect)frame
 {
-    if( self = [super initWithFrame:frame] )
+	self = [super initWithFrame:frame];
+	if(self)
     {
 		NSNumber*	prefFireTime = [[NSUserDefaults standardUserDefaults] objectForKey:@"PADHomeViewDelay"];
 		NSArray*	dropTypes = [NSArray arrayWithObjects: NSFilenamesPboardType, NSColorPboardType, nil];

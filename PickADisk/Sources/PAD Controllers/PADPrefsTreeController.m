@@ -18,7 +18,8 @@ static PADPrefsTreeController *PADPrefsTreeController_shared;
         [self autorelease];
         return PADPrefsTreeController_shared;
     }
-	if (self = [super init]) 
+	self = [super init];
+	if (self)
 	{
 		PADPrefsTreeController_shared = self;
 	}

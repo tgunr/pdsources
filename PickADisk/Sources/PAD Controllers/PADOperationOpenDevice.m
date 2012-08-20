@@ -26,7 +26,7 @@
 
 -(id)endTaskForOperation:(PADCarouselOperation*)ownerOp
 { 
-	return (id)theBoxRef;
+	return theBoxRef;
 }
 
 +(BOOL)addDeviceToSourceTree:(DACALDevice*)newBox

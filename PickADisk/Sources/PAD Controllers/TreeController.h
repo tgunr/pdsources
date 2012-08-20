@@ -70,6 +70,9 @@
 - (void)setTreeRoot:(SimpleTreeNode*)root;
 - (void)addTreeRoot:(SimpleTreeNode*)newChild;
 - (void)addDataToTree:(SimpleTreeNode*)newChild startEdit:(BOOL)doEdit;
+
+- (TreeController *)init;
+
 - (void)recreateInitialTree;
 
 - (id)dataSource;
@@ -116,7 +119,7 @@
 
 - (void)removeAllChildren;
 
-- (id)toolbarControl;
+- (PADIndexToolbarController *)toolbarControl;
 - (void)setToolbarControl:(id)tbar;
 
 - (SimpleTreeNode*)createInitialTree:(id)tree;
@@ -145,6 +148,11 @@
 - (void)updateChangesForItem:(id)changeItem withAction:(BOOL)doAction;
 - (void)updateChangesForItems:(NSArray*)changedItems withAction:(BOOL)doAction;
 - (void)updateChangesWithAction:(BOOL)doAction;
+
+- (BOOL)outlineView: (NSOutlineView *) ov shouldExpandItem: (id) item;
+
+- (BOOL)outlineView: (id) ov isGroupItem: (id) item;
+
 
 @end
 
