@@ -5,8 +5,7 @@
 //
 
 
-#import <Foundation/Foundation.h>
-
+#import <Cocoa/Cocoa.h>
 @class DACALSlot;
 @class SimpleTreeNode;
 @class DACALDevice;
