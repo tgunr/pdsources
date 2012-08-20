@@ -108,6 +108,13 @@
 			remoteGlobalIDString = 754C47E615DC2DF100316C67;
 			remoteInfo = pmutility;
 		};
+		754DD89715E1FFE7001A6F89 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 754C478115DC20E900316C67 /* PMUtility.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 7535D1CE14DF240C00613F39;
+			remoteInfo = PMUtility;
+		};
 		7570BE7413CEA879001AF81B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 08FB7793FE84155DC02AAC07 /* Project object */;
@@ -494,6 +501,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				754DD89815E1FFE7001A6F89 /* PBXTargetDependency */,
 			);
 			name = DACAL;
 			productName = DACAL;
@@ -661,6 +669,11 @@
 			isa = PBXTargetDependency;
 			name = pmutility;
 			targetProxy = 754C47F215DC2E3100316C67 /* PBXContainerItemProxy */;
+		};
+		754DD89815E1FFE7001A6F89 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PMUtility;
+			targetProxy = 754DD89715E1FFE7001A6F89 /* PBXContainerItemProxy */;
 		};
 		7570BE7513CEA879001AF81B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
