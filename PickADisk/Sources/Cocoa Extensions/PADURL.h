@@ -16,10 +16,11 @@
 	AliasHandle		localAlias;
 }
 
--(id)resolve;
--(BOOL)localize;
-
--(id)initURLFromFileURL:(NSURL*)refURL;
+//- (id)resolve: (id (^)()) resolve;
+//
+//- (BOOL)localize: (BOOL (^)()) localize;
+//
+//-(id)initURLFromFileURL:(NSURL*)refURL;
 +(id)padURLFromFileURL:(NSURL*)refURL;
 
 @end

@@ -19,52 +19,77 @@
 	[super dealloc];
 }
 
--(id)resolve
-{
-	Boolean		changed = FALSE;
-	OSErr		aErr = FSResolveAlias( NULL, localAlias, &localRef, &changed );
-	CFURLRef	newURL = NULL;
-//	PADURL*		newSelf = NULL;
-	
-	localValid = NO;
-	
-	if( changed && (aErr == 0) )
-	{
-		newURL = CFURLCreateFromFSRef( kCFAllocatorDefault, (const FSRef*)&localRef );
-		if( newURL ) 
-		{
-			if( self = [self initURLFromFileURL:(NSURL*)newURL] );
-				localValid = [self localize];
-		}
-	} else if( aErr == 0 )
-		localValid = YES;
-	
-	return self;		
-}
+//- (id)resolve: (id (^)()) resolve {
+//	return resolve();
+//
+//}
 
--(BOOL)localize
-{
-	if( localValid == YES ) return( ((self = [self resolve]) != nil) );
-	
-	Boolean		didFSLocal = CFURLGetFSRef( (CFURLRef)self, &localRef );
-	OSErr		aErr = (OSErr)!didFSLocal;
-	
-	if( didFSLocal )
-		aErr = FSNewAlias( NULL, &localRef, &localAlias );
-	
-	if( aErr ) localValid = NO;
-	else localValid = YES;
-	
-	return localValid;
-}
+//- (BOOL)localize: (BOOL (^)()) localize {
+//	return localize();
+//
+//}
 
--(id)initURLFromFileURL:(NSURL*)refURL
-{
-	if( self = [self initFileURLWithPath:[refURL path] isDirectory:(BOOL)CFURLHasDirectoryPath((CFURLRef)refURL)] )
-		if( ![self localize] ) return nil;
-		
-	return self;
-}
+//-(id)initURLFromFileURL:(NSURL*)refURL
+//{
+//	self = [self initFileURLWithPath:[refURL path] isDirectory:(BOOL)CFURLHasDirectoryPath((CFURLRef)refURL)];
+//	if(self)
+//		if( ![self localize: ^BOOL {
+//			if (localValid == YES)
+//				return (((self = [self resolve: ^id {
+//					Boolean  changed = FALSE;
+//					OSErr    aErr    = FSResolveAlias(NULL, localAlias, &localRef, &changed);
+//					CFURLRef newURL;
+//
+//					localValid = NO;
+//
+//					if (changed && (aErr == 0)) {
+//						newURL = CFURLCreateFromFSRef(kCFAllocatorDefault, (const FSRef *)&localRef);
+//						if (newURL) {
+//							self = [self initURLFromFileURL: (NSURL *)newURL];
+//							if (self);
+//							localValid = [self localize: ^BOOL {
+//								if (localValid == YES)
+//									return (((self = [self resolve]) != nil));
+//
+//								Boolean didFSLocal = CFURLGetFSRef((CFURLRef)self, &localRef);
+//								OSErr   aErr       = (OSErr)!didFSLocal;
+//
+//								if (didFSLocal)
+//									aErr = FSNewAlias(NULL, &localRef, &localAlias);
+//
+//								if (aErr)
+//									localValid = NO;
+//								else
+//									localValid = YES;
+//
+//								return localValid;
+//							}];
+//						}
+//					}
+//					else
+//						if (aErr == 0)
+//							localValid = YES;
+//
+//					return self;
+//				}]
+//				         ) != nil));
+//
+//			Boolean didFSLocal = CFURLGetFSRef((CFURLRef)self, &localRef);
+//			OSErr   aErr       = (OSErr)!didFSLocal;
+//
+//			if (didFSLocal)
+//				aErr = FSNewAlias(NULL, &localRef, &localAlias);
+//
+//			if (aErr)
+//				localValid = NO;
+//			else
+//				localValid = YES;
+//
+//			return localValid;
+//		}]) return nil;
+//
+//	return self;
+//}
 
 +(id)padURLFromFileURL:(NSURL*)refURL
 	{ return [[PADURL alloc] initURLFromFileURL:refURL]; }
