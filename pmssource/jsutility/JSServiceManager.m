@@ -6,7 +6,7 @@
 //  Copyright 2008 PolyMicro Systems. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <Cocoa/Cocoa.h>
 #import "JSServiceManager.h"
 #import "JSServicesSetup.h"
 #import <PMSUtility/pms.h>
@@ -137,7 +137,7 @@ static id	JSServiceManager_appServiceManager = nil;
 		if( serviceClass == nil )
 			continue;
 		
-		if( serviceInstance = [self findServiceWithName:workName] )
+		if( (serviceInstance = [self findServiceWithName:workName]) )
 			continue;
 		else
             serviceInstance = [[serviceClass alloc] init];
@@ -145,7 +145,7 @@ static id	JSServiceManager_appServiceManager = nil;
 		if( serviceInstance == nil )
 			continue;
 		
-		if( serviceInstance = [serviceInstance initializeService] )
+		if( (serviceInstance = [serviceInstance initializeService]) )
 			[activeServices addObject:serviceInstance];
 	}
 	
