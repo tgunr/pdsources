@@ -11,7 +11,7 @@
 #import "PADIndexProgressController.h"
 #import "DACALTreeDataSource.h"
 #import "DACALDeviceObjC.h"
-#import "DACVolume.h"
+#import "DACALVolume.h"
 #import "PADFlavorImageView.h"
 
 @interface PADAddVolumeController : NSObject {
