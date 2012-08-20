@@ -7,13 +7,6 @@
 
 #import "DACALDeviceObjC.h"
 #import "PADOperationOpenDevice.h"
-#import "PADOperationControlDevice.h"
-#import "LicenseService.h"
-#import "Prefix.h"
-#import <DACAL/dacalconstants.h>
-#import "SimpleTreeNode.h"
-#import "DACALTreeDataSource.h"
-#import "PADLifecycleSetup.h"
 #import "DACALDeviceService.h"
 
 //	Device Array

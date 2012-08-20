@@ -6,6 +6,7 @@
 
 
 #import <DACAL/dacallib.h>
+#import <PMUtility/pmUtility.h>
 #import "DACALDevice.h"
 #import "SimpleTreeNode.h"
 #import "DACALSlot.h"
@@ -64,7 +65,7 @@
 
 -(DACALSlot*)slotWithNumber:(DACALSlotNum)aSlot
 {
-	int		slotIndex = aSlot - 1;
+	NSUInteger slotIndex = aSlot - 1;
 
 	if( (slotIndex >= 0) && (slotIndex <= [deviceSlots count]) )
 		return [deviceSlots objectAtIndex:slotIndex];
@@ -78,10 +79,11 @@
 	DACALSlot*		workSlot = nil;
 	DACALSlot*		outSlot = nil;
 
-	while ( workSlot = [slotEnum nextObject] )
-		if( outSlot = [workSlot slotWithIdentifier:slotID] )
+	while ((workSlot = [slotEnum nextObject])) {
+		outSlot = [workSlot slotWithIdentifier:slotID];
+		if(outSlot)
 			break;
-
+	}
 	return outSlot;
 }
 
@@ -98,7 +100,7 @@
 	CFURLRef			slotTopURL;
 	NSURL*				slotURL;
 
-	int					slotindex, slotcount;
+	NSUInteger			slotindex, slotcount;
 
 	[theChildNode setBusy:YES];
 
@@ -135,7 +137,6 @@
 		}
 	}
 
-	[theSlot retain];
 	[theChildNode setBusy:NO];
 
 	if( slotFolders ) [slotFolders release];
@@ -143,7 +144,8 @@
 
 -(id)initDeviceWithDeviceRef:(DACALDeviceRef)newDeviceRef
 {
-	if( self = [super init] )
+	self = [super init];
+	if(self)
 	{
 		deviceRef = newDeviceRef;
 
@@ -151,11 +153,12 @@
 		//[gDACALDevices addObject:self];
 		[[DACALDeviceService sharedService] addDACALDevice:self];
 
-		int					tempIndex, tempCount = DACALCommandGetSlotCount( newDeviceRef );
+		int					tempIndex;
+		NSUInteger tempCount = DACALCommandGetSlotCount(newDeviceRef);
 		NSMutableArray*		tempArray = [NSMutableArray arrayWithCapacity:tempCount];
 
 		for( tempIndex=0; tempIndex < tempCount; tempIndex++ )
-			[tempArray addObject:[DACALSlot slotForDevice:self inSlot:tempIndex+1]];
+			[tempArray addObject:[DACALSlot slotForDevice:self inSlot: (DACALSlotNum)(tempIndex+1)]];
 
 		deviceSlots = [[NSArray alloc] initWithArray:tempArray];
 
@@ -277,7 +280,7 @@
 	DACALSlot*		workSlot = nil;
 	NSNumber*		workNumber = [NSNumber zero];
 
-	while ( workSlot = [slotEnum nextObject] )
+	while ((workSlot = [slotEnum nextObject]))
 		workNumber = [workNumber addToNumber:[workSlot volumeSize]];
 
 	return workNumber;

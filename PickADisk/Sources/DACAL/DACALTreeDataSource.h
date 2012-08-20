@@ -33,6 +33,8 @@ NSString*	DACALFlavorToFlavorValue( NSString* flavor );
 NSString*	DACALFlavorToFlavorTitle( NSString* flavor );
 
 @class DACALIndexState;
+@class PADSearchRequest;
+
 @interface DACALTreeDataSource : TreeControllerDataSource {
 
 	IBOutlet	NSTextField		*promptText;
@@ -57,6 +59,13 @@ NSString*	DACALFlavorToFlavorTitle( NSString* flavor );
 - (void)reportGoodRegistration;
 - (void)setPrompt:(NSString*)newPrompt;
 - (void)updatePrompt;
+
+- (void)searchFoundResults: (NSArray *) itemsFound forSearch: (PADSearchRequest *) theSearch;
+
+- (void)searchCompleted: (PADSearchRequest *) theSearch;
+
+- (void)outlineViewAction: (id) tree;
+
 - (void)doReport;
 - (void)doAction;
 

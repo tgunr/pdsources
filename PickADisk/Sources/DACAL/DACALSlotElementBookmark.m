@@ -9,8 +9,9 @@
 #import "DACALDeviceObjC.h"
 #import "TreeController.h"
 #import "DACALTreeDataSource.h"
-#import "SimpleTreeNode.h"
-#import "dacalconstants.h"
+#import "/Volumes/data/Sources/Projects/PickADisk/Sources/pmssource/carlib/dacalconstants.h"
+#import "DACALSlotElement.h"
+#import <PMUtility/pmNSUtility.h>
 
 @implementation DACALSlotElementBookmark
 
@@ -53,7 +54,8 @@
 
 -(id)initBookmarkForElement:(DACALSlotElement*)theElement atLocation:(NSString*)theLocation attachNow:(BOOL)doAttach
 {
-	if( self = [super init] )
+	self = [super init];
+	if(self)
 	{
 		markElement = theElement;
 		markLocation = theLocation;

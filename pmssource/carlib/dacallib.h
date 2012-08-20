@@ -21,8 +21,8 @@
 #include <IOKit/usb/IOUSBLib.h>
 
 #include <CoreFoundation/CoreFoundation.h>
-#import "pmCFUtility.h"
-#import "pm.h"
+#import <PMUtility/pmCFUtility.h>
+#import <PMUtility/pm.h>
 
 
 typedef IOUSBDeviceInterface320    DACALIOUSBDeviceInterface;

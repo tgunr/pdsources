@@ -38,8 +38,8 @@ static Boolean	PADPrefsControllerB = false;
 - (NSArray *)toolbarSelectableItemIdentifiers:(NSToolbar *)toolbar {
 	
 	NSArray* theItems = [toolbar items];
-	NSInteger theCount = [theItems count];
-	NSInteger index;
+	NSUInteger theCount = [theItems count];
+	NSUInteger index;
 	NSMutableArray* theArray = [NSMutableArray arrayWithCapacity:theCount];
 	
 	for(index=0; index<theCount; index++)
@@ -54,8 +54,9 @@ static Boolean	PADPrefsControllerB = false;
 {
 	NSToolbarItem*		outToolbarItem = nil;
 	NSArray*			toolbarItems = [tabToolbar visibleItems];
-	int					index, count = [toolbarItems count];
-	
+	int                            count = [toolbarItems count];
+	NSUInteger index;
+
 	for( index=0; index < count; index++ )
 	{
 		outToolbarItem = [toolbarItems objectAtIndex:index];

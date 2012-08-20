@@ -35,6 +35,9 @@
 -(DACALDeviceRef)slotDeviceRef;
 -(DACALSlotNum)slotNumber;
 -(SimpleTreeNode*)slotNode;
+
+- (void)setSlotNode: (SimpleTreeNode *) newNode;
+
 -(DACVolume*)slotVolume;
 -(FSRef*)slotFSRef;
 -(BOOL)validSlotFSRef;

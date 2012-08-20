@@ -32,7 +32,7 @@ CFStringRef	CFStringCopyDateTime( CFAllocatorRef allocator, CFAbsoluteTime theTi
 void	CFStringDrawInContext( CFStringRef drawWords, CGRect drawFrame, ThemeFontID drawFont, HIThemeTextHorizontalFlush hFlush, CGContextRef drawContext );
 void	CFStringDrawInContext( CFStringRef drawWords, CGRect drawFrame, ThemeFontID drawFont, HIThemeTextHorizontalFlush hFlush, CGContextRef drawContext )
 {
-	CFMutableStringRef		slotTitle = NULL;
+	CFMutableStringRef		slotTitle;
 	HIThemeTextInfo			slotThemeInfo;
 	
 	slotTitle = CFStringCreateMutableCopy( kCFAllocatorDefault, 0, drawWords );

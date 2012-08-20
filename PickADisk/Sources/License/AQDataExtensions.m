@@ -25,22 +25,23 @@
 
 #import "AQDataExtensions.h"
 #include <openssl/aes.h>
+#import <openssl/sha.h>
 
 @implementation NSData (AQDataExtensions)
 
 - (NSData*)dataEncryptedWithPassword:(NSString*)password
 {
 	// Create a random 128-bit initialization vector
-	srand(time(NULL));
+	srand((unsigned int)time(NULL));
 	int ivIndex;
 	unsigned char iv[16];
 	for (ivIndex = 0; ivIndex < 16; ivIndex++)
-		iv[ivIndex] = rand() & 0xff;
+		iv[ivIndex] = (unsigned char)(rand() & 0xff);
 		
 	// Calculate the 16-byte AES block padding
-	int dataLength = [self length];
-	int paddedLength = dataLength + (32 - (dataLength % 16));
-	int totalLength = paddedLength + 16; // Data plus IV
+	size_t dataLength = [self length];
+	size_t paddedLength = dataLength + (32 - (dataLength % 16));
+	size_t totalLength = paddedLength + 16; // Data plus IV
 	
 	// Allocate enough space for the IV + ciphertext
 	unsigned char *encryptedBytes = calloc(1, totalLength);
@@ -56,7 +57,7 @@
 	
 	// Create the key from first 128-bits of the 160-bit password hash
 	unsigned char passwordDigest[20];
-	SHA1([password UTF8String], strlen([password UTF8String]), passwordDigest);
+	SHA1((unsigned char const *)[password UTF8String], strlen([password UTF8String]), passwordDigest);
 	AES_KEY aesKey;
 	AES_set_encrypt_key(passwordDigest, 128, &aesKey);
 	
@@ -71,15 +72,15 @@
 {
 	// Create the key from the password hash
 	unsigned char passwordDigest[20];
-	SHA1([password UTF8String], strlen([password UTF8String]), passwordDigest);
+	SHA1((unsigned char const *)[password UTF8String], strlen([password UTF8String]), passwordDigest);
 	
 	// AES-128-cbc decrypt the data
 	AES_KEY aesKey;
 	AES_set_decrypt_key(passwordDigest, 128, &aesKey);
 	
 	// Total length = encrypted length + IV
-	int totalLength = [self length];
-	int encryptedLength = totalLength - 16;
+	size_t totalLength = [self length];
+	size_t encryptedLength = totalLength - 16;
 	
 	// Take the IV from the first 128-bit block
 	unsigned char iv[16];
@@ -98,8 +99,8 @@
 	}
 	
 	// Get the size of the data from the last 32-bit chunk
-	int bigIntDataLength = *((unsigned int*)decryptedBytes + ((encryptedLength / 4) - 1));
-	int dataLength = NSSwapBigIntToHost(bigIntDataLength);
+	unsigned int bigIntDataLength = *((unsigned int*)decryptedBytes + ((encryptedLength / 4) - 1));
+	NSUInteger dataLength = NSSwapBigIntToHost(bigIntDataLength);
 	
 	return [NSData dataWithBytesNoCopy:decryptedBytes length:dataLength];
 }

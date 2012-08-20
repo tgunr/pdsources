@@ -6,6 +6,7 @@
 //
 
 #import "TreeController.h"
+#import "PADIndexToolbarController.h"
 
 @interface TreeController(Private)
 - (void)_addNewDataToSelection:(SimpleTreeNode *)newChild;
@@ -20,7 +21,7 @@
 
 @implementation TreeController
 
-- (id)init {
+- (TreeController *)init {
     if ((self = [super init])) {
 		
 	}
@@ -194,7 +195,8 @@ AFTERRELOAD:
     // This message is sent from the outlineView as it's action (see the connection in IB).
 
 	// Tell data source
-	if( dataSource != nil ) [dataSource performSelector:@selector(outlineViewAction:) withObject:self];
+	if( dataSource != nil )
+		[dataSource performSelector:@selector(outlineViewAction:) withObject:self];
 
 }
 
@@ -899,11 +901,15 @@ NSURL *NewFileURLForWritingFile(NSString *dirpath, NSString *basename, NSString 
 	[[[self treeControl] outlineView] reloadData];
 }
 
-- (id)toolbarControl { return toolbarControl; }
-- (void)setToolbarControl:(id)tbar
-{
-	if( toolbarControl != nil ) [toolbarControl release];
-	if( tbar != nil ) [tbar retain];
+- (PADIndexToolbarController *)toolbarControl {
+	return toolbarControl;
+}
+
+- (void)setToolbarControl: (id) tbar {
+	if (toolbarControl != nil)
+		[toolbarControl release];
+	if (tbar != nil)
+		[tbar retain];
 	toolbarControl = tbar;
 }
 

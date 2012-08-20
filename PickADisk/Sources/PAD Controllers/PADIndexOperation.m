@@ -7,6 +7,7 @@
 
 #import "PADIndexOperation.h"
 #import "PADSearchRequest.h"
+#import "DACALDevice.h"
 
 @implementation PADIndexOperation
 
@@ -16,7 +17,8 @@
 
 - (id)initWithLocation:(NSURL*)url forChild:(SimpleTreeNode*)child completionTarget:(id)target;
 {
-    if( self = [super init] )
+	self = [super init];
+	if(self)
 	{
 		[self setSubtreeChild:child];
 		[self setItemLocation:url];

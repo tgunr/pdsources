@@ -5,16 +5,20 @@
 //  Copyright 2008 PolyMicro Systems. All rights reserved.
 //
 
+#import <PMUtility/pmUtility.h>
 #import "AppController.h"
 #import "PADAddVolumeController.h"
 #import "LicenseController.h"
 #import "/System/Library/Frameworks/Carbon.framework/Frameworks/NavigationServices.framework/Headers/Navigation.h"
 #import "DACALDeviceService.h"
+#import "DACALSlot.h"
+#import "DACALDevice.h"
 
 @implementation PADAddVolumeController
 
 - (id)init {
-    if (self = [super init]) {
+	self = [super init];
+	if (self) {
 		pendingVolumes = [[NSMutableArray alloc] initWithCapacity:0];
 		indexProgressTask = nil;
 		
@@ -415,7 +419,7 @@ void MyNavEventProc (NavEventCallbackMessage callBackSelector, NavCBRecPtr callB
 
 - (void)changeToFlavor:(NSString*)slotType
 {
-	float			doLevel = 5.0;
+	int			doLevel = 5;
 	NSString*		actualFlavor = DACALFlavorToFlavorValue( slotType );
 	
 	if( slotType && ([slotType isEqual:[self customFlavor]]) )
@@ -432,7 +436,7 @@ void MyNavEventProc (NavEventCallbackMessage callBackSelector, NavCBRecPtr callB
 	else
 		doLevel = [[NSUserDefaults standardUserDefaults] floatForKey:@"PADScanDepthData"];
 	
-	[depthLevel animateToFloatValue:doLevel allowsTicksOnly:YES];
+	[depthLevel animateToIntValue:doLevel allowsTicksOnly:YES];
 	[flavorIcon changeToLibraryFlavor:slotType];
 }
 

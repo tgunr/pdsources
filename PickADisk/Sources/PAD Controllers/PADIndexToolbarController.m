@@ -6,6 +6,11 @@
 //
 #import "PADIndexToolbarController.h"
 #import "DACALDeviceService.h"
+#import "DACALSlotElement.h"
+#import "DACALSlot.h"
+#import "PADOutlineView.h"
+#import <PMUtility/NSMutableArray_Extensions.h>
+
 
 @implementation PADIndexToolbarController
 
@@ -26,7 +31,8 @@ PADSearchRequest* PADIndexToolbarController_LastSearch = nil;
 
 - (id)init
 {
-	if( self = [super init] )
+	self = [super init];
+	if(self)
 	{
 		selectedDevices	= [[NSMutableArray alloc] initWithCapacity:0];
 //		selectedSlots	= [[NSMutableArray alloc] initWithCapacity:0];
@@ -147,10 +153,12 @@ PADSearchRequest* PADIndexToolbarController_LastSearch = nil;
 	BOOL			hasMounts = NO;
 	NSEnumerator*	nodeEnum = [nodeArray objectEnumerator];
 	SimpleTreeNode*	workNode = nil;
-	
-	while ( workNode = [nodeEnum nextObject] ) {
+
+	workNode = [nodeEnum nextObject];
+	while (workNode) {
 		hasMounts = [[[[workNode nodeData] itemElement] elementSlot] isSlotMounted];
 		if( hasMounts ) break;
+		workNode = [nodeEnum nextObject];
 	}
 	
 	return hasMounts;
@@ -258,7 +266,15 @@ PADSearchRequest* PADIndexToolbarController_LastSearch = nil;
 	if( [workArray count] > 1 )
 	{
 		workCell = [[NSPathComponentCell alloc] init];
-		[workCell setStringValue:[[[[lastNode nodeData] itemElement] elementSlot] title]];
+		id const itemElement = [[lastNode nodeData] itemElement];
+		if (itemElement) {
+			DACALSlot *const elementSlot = [itemElement elementSlot];
+			if (elementSlot) {
+				NSString *const title = [elementSlot title];
+				if (title)
+					[workCell setStringValue:title];
+			}
+		}
 		[workCell setImage:[[lastNode nodeData] iconRep]];
 		[workCell setControlSize:NSSmallControlSize];
 		
@@ -334,7 +350,7 @@ PADSearchRequest* PADIndexToolbarController_LastSearch = nil;
 	NSEnumerator*		nodeEnum = [selectedNodes objectEnumerator];
 	SimpleTreeNode*		workNode = nil;
 	
-	while ( workNode = [nodeEnum nextObject] )
+	while ((workNode = [nodeEnum nextObject]))
 		[[[workNode nodeData] itemElement] openMountedElement];
 
 }

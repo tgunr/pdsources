@@ -7,16 +7,20 @@
 
 #import "PADCarouselOperation.h"
 #import "AppController.h"
+#import "DACALDevice.h"
 
 @implementation PADOperationTask
 
--(DACALDevice*)theBoxRef
-{ return theBoxRef; }
--(void)setTheBoxRef:(DACALDevice*)newBox
-{
-	if( newBox ) [newBox retain];
-	if( theBoxRef ) [theBoxRef release];
-	theBoxRef = newBox; 
+- (DACALDevice *)theBoxRef {
+	return theBoxRef;
+}
+
+- (void)setTheBoxRef: (DACALDevice *) newBox {
+	if (newBox)
+		[newBox retain];
+	if (theBoxRef)
+		[theBoxRef release];
+	theBoxRef = newBox;
 }
 
 -(void)dealloc
@@ -62,7 +66,8 @@
 
 -(id)init
 {
-	if(self = [super init])
+	self = [super init];
+	if(self)
 	{
 		canceled = NO;	
 	}
@@ -71,7 +76,8 @@
 
 -(id)initWithTarget:(id)theTarget endSelector:(SEL)theSelector
 {
-	if( self = [self init] )
+	self = [self init];
+	if(self)
 	{
 		finishTarget = theTarget;
 		finishSelector = theSelector;

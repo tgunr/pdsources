@@ -12,6 +12,11 @@
 #import "DACALDeviceService.h"
 #import "PADIndexNodeData.h"
 #import "DACALSlotElementBookmark.h"
+#import "PADIndexToolbarController.h"
+#import "PADOutlineView.h"
+#import "DACALDevice.h"
+#import "DACALIndexState.h"
+#import "DACALSlotElement.h"
 
 NSString*	DACALFlavorToFlavorValue( NSString* flavor )
 {
@@ -432,7 +437,8 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 		index = [[secondaryController outlineView] numberOfRows];
 		
 		if( [[[self treeControl] selectedNodes] count] > 0 ) {
-			if( sizeDevice = DACALDeviceForDeviceRef( [[[[[self treeControl] selectedNodes] objectAtIndex:0] nodeData] itemDevice]) )
+			sizeDevice = DACALDeviceForDeviceRef( [[[[[self treeControl] selectedNodes] objectAtIndex:0] nodeData] itemDevice]);
+			if(sizeDevice)
 				sizeString = [NSString stringFromByteCount:[sizeDevice totalVolumeSize]];
 			
 			if( [[[[[self treeControl] selectedNodes] objectAtIndex:0] nodeData] respondsToSelector:@selector(itemSearch)] )
@@ -481,7 +487,7 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 	int							index = 0;
 	DACALDeviceRef				theDevice = kDACALNullDevice;
 	DACALSlotNum				theSlot = 0;
-	PADIndexToolbarController*	toolControl = (PADIndexToolbarController*)[self toolbarControl];
+	PADIndexToolbarController*	toolControl = [self toolbarControl];
 //	NSArray*					dataRowsSelected = [secondaryController selectedNodes];
 	SimpleTreeNode*				originalTree = nil;
 	
@@ -503,7 +509,7 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 		{
 			itemSearch = [data itemSearch];
 			[[self outlineView] setCurrentSearch:itemSearch];
-			//[(MyOutlineView*)[[[self secondaryController] dataSource] outlineView] setCurrentSearch:itemSearch];
+			//[(PADOutlineView*)[[[self secondaryController] dataSource] outlineView] setCurrentSearch:itemSearch];
 			if( itemSearch != nil )
 			{
 				if( subTree == nil ) {

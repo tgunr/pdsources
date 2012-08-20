@@ -8,19 +8,22 @@
 #import <Cocoa/Cocoa.h>
 #import "AppController.h"
 #import "DACALSlotElement.h"
-#import "DACALDeviceObjC.h"
 #import "DACALSlotElementBookmark.h"
 #import "DACALTreeDataSource.h"
+#import "DACALSlot.h"
 
 @implementation DACALSlotElement
 
--(void)dealloc
-{
-	if( elementSlot ) [elementSlot removeSlotElement:self];
+- (void)dealloc {
+	if (elementSlot)
+		[elementSlot removeSlotElement: self];
 
-	if( elementSlot ) [elementSlot release];
-	if( elementNode ) [elementNode release];
-	if( elementURL  ) [elementURL  release];
+	if (elementSlot)
+		[elementSlot release];
+	if (elementNode)
+		[elementNode release];
+	if (elementURL)
+		[elementURL release];
 
 	elementSlot = nil;
 	elementNode = nil;
@@ -175,7 +178,8 @@
 
 -(id)initElementForSlot:(DACALSlot*)newSlot atLocation:(NSURL*)newLoc
 {
-	if( self = [super init] )
+	self = [super init];
+	if(self)
 	{
 		elementSlot = newSlot;
         Boolean gotSlot = CFURLGetFSRef( (CFURLRef)newLoc, &elementFSRef );

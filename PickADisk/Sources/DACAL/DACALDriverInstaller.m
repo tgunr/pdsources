@@ -7,9 +7,6 @@
 //
 
 #import "DACALDriverInstaller.h"
-#import <Security/AuthorizationDB.h>
-#import <Security/Authorization.h>
-#import <Security/AuthorizationTags.h>
 
 CFStringRef		dac_installer_bin = CFSTR("dacauth");
 
@@ -31,7 +28,7 @@ CFStringRef CFBundleRunPrivledgedInternalExecutable( CFAllocatorRef inAllocator,
 	UInt8		myToolPath[4096];
 	char*		myArguments[16] = { NULL };
 	int			index = 0;
-	int			count = 0;
+	int			count;
 
 	CFMutableStringRef	myCFOut = NULL;
 	

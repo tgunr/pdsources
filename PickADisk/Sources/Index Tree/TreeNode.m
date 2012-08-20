@@ -48,6 +48,9 @@
 */
 
 #import "TreeNode.h"
+#import "SimpleTreeNode.h"
+#import <PMUtility/NSMutableArray_Extensions.h>
+#import <PMUtility/NSArray_Extensions.h>
 
 @implementation TreeNode
 
@@ -56,7 +59,8 @@
 }
 
 - (id)initWithData:(id)data parent:(TreeNode *)parent children:(NSArray *)children {
-    if (self = [super init]) {
+	self = [super init];
+	if (self) {
         nodeData = [data retain];
         nodeChildren = [[NSMutableArray arrayWithArray:children] retain];
         nodeParent = parent;

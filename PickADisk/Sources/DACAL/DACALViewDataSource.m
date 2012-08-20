@@ -5,8 +5,12 @@
 //  Copyright 2008 PolyMicro Systems. All rights reserved.
 //
 
+#import "AppController.h"
 #import "DACALViewDataSource.h"
 #import "PADLifecycleSetup.h"
+#import "DACALSlot.h"
+#import "DACALSlotElement.h"
+#import "DACALDevice.h"
 
 @implementation DACALViewDataSource
 
@@ -196,11 +200,11 @@
 	SimpleTreeNode*	item = nil;
 	int				count = [selectedNodes count];
 
-	PADIndexToolbarController* toolControl = (PADIndexToolbarController*)[self toolbarControl];
+	PADIndexToolbarController* toolControl = [self toolbarControl];
 	
 	[toolControl resetSelectedNodesAndAdoptSelection:(count == 0)];
 	
-	while( item = [selectedEnum nextObject] )
+	while((item = [selectedEnum nextObject]))
 		if( [[item nodeData] itemSlot] != 0 ) 
 			[toolControl addSelectedNode:item adoptSelection:([item isEqual:[selectedNodes lastObject]])];
 
@@ -295,7 +299,7 @@ SLOTNAMEFAILED:
 	NSUndoManager*	undo = [self undoManager];
 //	SimpleNodeData*	theData = [node nodeData];
 	DACALSlotNum	oldSlot = [[node nodeData] itemSlot];
-	DACALSlotNum	newSlot = [slotString intValue];
+	DACALSlotNum newSlot = (DACALSlotNum)[slotString intValue];
 	DACALDevice*	oldBox = DACALDeviceForDeviceRef( [[node nodeData] itemDevice] );
 	NSString*		nowSlot = nil;
 	
@@ -633,7 +637,8 @@ SLOTTYPEFAILED:
    
     if (menu == outlineViewContextMenu) 
 	{
-		while( workItem = (NSMenuItem*)[menuItemEnum nextObject] )
+		workItem = (NSMenuItem*)[menuItemEnum nextObject];
+		while(workItem)
 		{
 			workSelector = [workItem action];
 			//NSLog(@"Testing Item: %@", NSStringFromSelector(workSelector));
@@ -649,6 +654,7 @@ SLOTTYPEFAILED:
 			if( workSelector == @selector(ctmInspector:) )	{					//	Show/Hide Inspector
 				[workItem setEnabled:[[PADInspectorController sharedInspector] validateContextualMenuItem:workItem withSelection:clickedItems]];
 			}
+			workItem = (NSMenuItem*)[menuItemEnum nextObject];
 		}
 	}
 	
@@ -659,13 +665,15 @@ SLOTTYPEFAILED:
 	NSArray*		theItems = [self ctmClickedRows];
 	NSEnumerator*	arrayEnum = [theItems objectEnumerator];
 	SimpleTreeNode*	workItem = nil;
-	
-	while( workItem = [arrayEnum nextObject] )
+
+	workItem = [arrayEnum nextObject];
+	while(workItem)
 	{
 		workItem = [workItem matchActual];
 		
 		if( [[[workItem nodeData] itemElement] isCheckedOut] == YES )
 			[[[workItem nodeData] itemElement] openMountedElement];
+		workItem = [arrayEnum nextObject];
 	}
 }
 
@@ -689,18 +697,25 @@ SLOTTYPEFAILED:
 	NSArray*		theItems = [self ctmClickedRows];
 	NSEnumerator*	arrayEnum = [theItems objectEnumerator];
 	SimpleTreeNode*	workItem = nil;
-	
-	while( workItem = [arrayEnum nextObject] )
+
+	workItem = [arrayEnum nextObject];
+	while(workItem)
 	{
 		workItem = [workItem matchActual];
 		
 		if( [[[workItem nodeData] itemElement] isCheckedOut] == NO )
 			[[[[workItem nodeData] itemElement] elementSlot] toggleReservationForUser:nil onHost:nil withUI:YES];
+		workItem = [arrayEnum nextObject];
 	}
 }
 
 - (IBAction)ctmDeleteSlot:(id)sender
-	{ [[[AppController shared] toolbarControl] unassignNodes:[self ctmClickedRows]]; }
+	{
+		AppController *sharedAppController = [AppController shared];
+		PADIndexToolbarController *aToolbarController = [sharedAppController toolbarController];
+		if (aToolbarController) {
+			[aToolbarController unassignNodes:[self ctmClickedRows]]; }
+	}
 
 - (IBAction)ctmGotoSlot:(id)sender
 	{ [DACALSlot moveDevicesToSlotsOfNodes:[self ctmClickedRows]]; }

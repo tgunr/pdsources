@@ -6,37 +6,64 @@
 
 #import "AppController.h"
 #import "DACALSlot.h"
-#import "DACALDeviceObjC.h"
-#import "SimpleTreeNode.h"
 #import "DACALVolume.h"
 #import "DACALSlotElement.h"
 #import "PADSearchRequest.h"
-#import "dacalconstants.h"
+#import "/Volumes/data/Sources/Projects/PickADisk/Sources/pmssource/carlib/dacalconstants.h"
 #import "DACALTreeDataSource.h"
+#import "DACALDevice.h"
+#import <PMUtility/pmNSUtility.h>
+#import <PMUtility/NSNumber_Extensions.h>
 
 @implementation DACALSlot
 
--(void)dealloc
-{
+- (id)initSlotForDevice: (DACALDevice *) newDevice inSlot: (DACALSlotNum) newSlot {
+	self = [super init];
+	if (self) {
+		slotDevice = [newDevice retain];
+		slotNumber = newSlot;
+
+		slotNode         = nil;
+		slotVolume       = nil;
+		slotIdentifier   = nil;
+		slotCheckedOut   = nil;
+		slotCheckedIn    = nil;
+		slotIsCheckedOut = NO;
+
+		slotElements = [[NSMutableArray alloc] initWithCapacity: 0];
+
+		[self fileURL];
+	}
+	return self;
+}
+
+- (void)dealloc {
 	NSLog(@"Dealloc Slot: %@", [self title]);
 
-	if( slotDevice )		[slotDevice release];
-	if( slotNode )			[slotNode release];
-	if( slotVolume )		[slotVolume release];
-	if( slotIdentifier )	[slotIdentifier release];
-	if( slotCheckedOut )	[slotCheckedOut release];
-	if( slotCheckedIn )		[slotCheckedIn release];
+	if (slotDevice)
+		[slotDevice release];
+	if (slotNode)
+		[slotNode release];
+	if (slotVolume)
+		[slotVolume release];
+	if (slotIdentifier)
+		[slotIdentifier release];
+	if (slotCheckedOut)
+		[slotCheckedOut release];
+	if (slotCheckedIn)
+		[slotCheckedIn release];
 
-	if( slotElements )		[slotElements release];
+	if (slotElements)
+		[slotElements release];
 
-	slotDevice			= nil;
-	slotNode			= nil;
-	slotVolume			= nil;
-	slotIdentifier		= nil;
-	slotCheckedOut		= nil;
-	slotCheckedIn		= nil;
-	slotElements		= nil;
-	slotIsCheckedOut	= NO;
+	slotDevice       = nil;
+	slotNode         = nil;
+	slotVolume       = nil;
+	slotIdentifier   = nil;
+	slotCheckedOut   = nil;
+	slotCheckedIn    = nil;
+	slotElements     = nil;
+	slotIsCheckedOut = NO;
 
 	[super dealloc];
 }
@@ -117,20 +144,20 @@
 
 			slotID = FSCopyXattr( kCFAllocatorDefault, &slotFSRef, kDACALCarouselDocumentXAttrSlotID, NULL );
 			if( slotID != NULL ) {
-				[self setSlotIdentifier:[[NSString alloc] initWithString:(NSString*)slotID]];
+				[self setSlotIdentifier: [[[NSString alloc] initWithString:(NSString*)slotID] autorelease]];
 				NSLog(@"%@ has ID: %@", [self title], [self slotIdentifier]);
 				CFRelease( slotID );
 			}
 		}
 
 		if( checkedOut != NULL ) {
-			[self setCheckedOutDate:[[NSDate alloc] initWithString:(NSString*)checkedOut]];
+			[self setCheckedOutDate: [[[NSDate alloc] initWithString:(NSString*)checkedOut] autorelease]];
 			CFRelease( checkedOut );
 		} else
 			[self setCheckedOutDate:nil];
 
 		if( checkedIn != NULL ) {
-			[self setCheckedInDate:[[NSDate alloc] initWithString:(NSString*)checkedIn]];
+			[self setCheckedInDate: [[[NSDate alloc] initWithString:(NSString*)checkedIn] autorelease]];
 			CFRelease( checkedIn );
 		} else
 			[self setCheckedInDate:nil];
@@ -154,11 +181,10 @@
 	}
 }
 
--(void)addSlotElement:(DACALSlotElement*)newElement
-{
-	if( [slotElements indexOfObject:newElement] == NSNotFound )
-	{
-		[slotElements addObject:newElement];
+// TODO: Examine effect of retain on newElement
+- (void)addSlotElement: (DACALSlotElement *) newElement {
+	if ([slotElements indexOfObject: newElement] == NSNotFound) {
+		[slotElements addObject: newElement];
 		[newElement retain];
 	}
 }
@@ -171,13 +197,14 @@
 
 -(DACALSlotElement*)elementWithFSRef:(const FSRef*)otherFSRef
 {
-	DACALSlotElement*		foundElement = nil;
-	int						eIndex, eCount = [slotElements count];
+	DACALSlotElement *foundElement = nil;
+	int        eCount = [slotElements count];
+	NSUInteger eIndex;
 
-	for( eIndex=0; eIndex < eCount; eIndex++ )
-	{
-		foundElement = [slotElements objectAtIndex:eIndex];
-		if( [foundElement isElementFSRef:otherFSRef] ) break;
+	for (eIndex = 0; eIndex < eCount; eIndex++) {
+		foundElement = [slotElements objectAtIndex: eIndex];
+		if ([foundElement isElementFSRef: otherFSRef])
+			break;
 		foundElement = nil;
 	}
 	return foundElement;
@@ -185,13 +212,14 @@
 
 -(DACALSlotElement*)elementWithURL:(NSURL*)otherURL
 {
-	DACALSlotElement*		foundElement = nil;
-	int						eIndex, eCount = [slotElements count];
+	DACALSlotElement *foundElement = nil;
+	int        eCount = [slotElements count];
+	NSUInteger eIndex;
 
-	for( eIndex=0; eIndex < eCount; eIndex++ )
-	{
-		foundElement = [slotElements objectAtIndex:eIndex];
-		if( [foundElement isElementURL:otherURL] ) break;
+	for (eIndex = 0; eIndex < eCount; eIndex++) {
+		foundElement = [slotElements objectAtIndex: eIndex];
+		if ([foundElement isElementURL: otherURL])
+			break;
 		foundElement = nil;
 	}
 	return foundElement;
@@ -218,27 +246,6 @@
 		outSlot = self;
 
 	return outSlot;
-}
-
--(id)initSlotForDevice:(DACALDevice*)newDevice inSlot:(DACALSlotNum)newSlot
-{
-	if( self = [super init] )
-	{
-		slotDevice = [newDevice retain];
-		slotNumber = newSlot;
-
-		slotNode = nil;
-		slotVolume = nil;
-		slotIdentifier = nil;
-		slotCheckedOut = nil;
-		slotCheckedIn = nil;
-		slotIsCheckedOut = NO;
-
-		slotElements = [[NSMutableArray alloc] initWithCapacity:0];
-
-		[self fileURL];
-	}
-	return self;
 }
 
 +(id)slotForDevice:(DACALDevice*)newDevice inSlot:(DACALSlotNum)newSlot
@@ -386,15 +393,18 @@
 	NSEnumerator*		slotEnum = nil;
 	BOOL				slotOne = YES;
 
-	while ( workNode = [nodeEnum nextObject] ) {
+	workNode = [nodeEnum nextObject];
+	while (workNode) {
 		workSlot = [[[workNode nodeData] itemElement] elementSlot];
 		if( [slotArray indexOfObject:workSlot] == NSNotFound )
 			[slotArray addObject:workSlot];
+		workNode = [nodeEnum nextObject];
 	}
 
 	slotEnum = [slotArray objectEnumerator];
 
-	while ( workSlot = [slotEnum nextObject] ) {
+	workSlot = [slotEnum nextObject];
+	while (workSlot) {
 		outDidMove = ([workSlot moveDeviceToSlotWithOptions:kDACALOptionMoveDefault] == kDACALOK);
 		if( slotOne )
 			slotOne = NO;
@@ -403,6 +413,7 @@
 				sleep( 7.0 );
 
 		lastSlot = workSlot;
+		workSlot = [slotEnum nextObject];
 	}
 
 	return outDidMove;
@@ -417,15 +428,17 @@
 	NSMutableArray*		slotArray = [NSMutableArray arrayWithCapacity:0];
 	NSEnumerator*		slotEnum = nil;
 
-	while ( workNode = [nodeEnum nextObject] ) {
+	workNode = [nodeEnum nextObject];
+	while (workNode) {
 		workSlot = [[[workNode nodeData] itemElement] elementSlot];
 		if( [slotArray indexOfObject:workSlot] == NSNotFound )
 			[slotArray addObject:workSlot];
+		workNode = [nodeEnum nextObject];
 	}
 
 	slotEnum = [slotArray objectEnumerator];
 
-	while ( workSlot = [slotEnum nextObject] )
+	while ((workSlot = [slotEnum nextObject]))
 		if( [workSlot slotVolume] )
 			outDidEject = [[workSlot slotVolume] ejectVolume];
 

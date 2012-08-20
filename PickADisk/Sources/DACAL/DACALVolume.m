@@ -7,41 +7,49 @@
 
 #import <DACAL/dacalconstants.h>
 #import "DACALVolume.h"
-#import "PADLifeCycleSetup.h"
 #import "dacallib.h"
 #import "AppController.h"
 #import "DACALTreeDataSource.h"
+#import "DACALSlot.h"
 
 @implementation DACVolume
 
 int		DACVolume_nextIconID = 0;
 
--(void)dealloc
-{
-	if( volumeDiskRef != NULL )	CFRelease( volumeDiskRef );
-	if( mediaTitle != nil )		[mediaTitle release];
-	if( mediaType != nil )		[mediaType release];
-	if( mediaSize != nil )		[mediaSize release];
-	if( mediaIcon != NULL ) 
-		if( IsValidIconRef( mediaIcon ) )
-								ReleaseIconRef( mediaIcon );
-	if( mediaUUID != NULL )		CFRelease( mediaUUID );
-	if( padIdentifier != nil )	[padIdentifier release];
-	if( padKnownHost != nil )	[padKnownHost release];
-	if( padKnownSlot != nil )	[padKnownSlot release];
-	if( padFlavorGuess != nil )	[padFlavorGuess release];
-	
-	volumeDiskRef	= NULL;
-	mediaTitle		= nil;
-	mediaType		= nil;
-	mediaSize		= nil;
-	mediaIcon		= NULL;
-	mediaUUID		= NULL;
-	padIdentifier	= nil;
-	padKnownHost	= nil;
-	padKnownSlot	= nil;
-	padFlavorGuess	= nil;
-	padKnownVolume	= NO;
+- (void)dealloc {
+	if (volumeDiskRef != NULL)
+		CFRelease(volumeDiskRef);
+	if (mediaTitle != nil)
+		[mediaTitle release];
+	if (mediaType != nil)
+		[mediaType release];
+	if (mediaSize != nil)
+		[mediaSize release];
+	if (mediaIcon != NULL)
+		if (IsValidIconRef(mediaIcon))
+			ReleaseIconRef(mediaIcon);
+	if (mediaUUID != NULL)
+		CFRelease(mediaUUID);
+	if (padIdentifier != nil)
+		[padIdentifier release];
+	if (padKnownHost != nil)
+		[padKnownHost release];
+	if (padKnownSlot != nil)
+		[padKnownSlot release];
+	if (padFlavorGuess != nil)
+		[padFlavorGuess release];
+
+	volumeDiskRef  = NULL;
+	mediaTitle     = nil;
+	mediaType      = nil;
+	mediaSize      = nil;
+	mediaIcon      = NULL;
+	mediaUUID      = NULL;
+	padIdentifier  = nil;
+	padKnownHost   = nil;
+	padKnownSlot   = nil;
+	padFlavorGuess = nil;
+	padKnownVolume = NO;
 
 	[volumeURL release];
 	[super dealloc];

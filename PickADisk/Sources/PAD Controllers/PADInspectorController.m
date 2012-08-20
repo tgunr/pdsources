@@ -5,8 +5,12 @@
 //  Copyright 2009 PolyMicro Systems. All rights reserved.
 //
 
+#import <PMUtility/pmUtility.h>
 #import "PADInspectorController.h"
 #import "DACALViewDataSource.h"
+#import "DACALSlotElement.h"
+#import "DACALDevice.h"
+#import "DACALSlot.h"
 
 @implementation PADInspectorController
 
@@ -27,7 +31,8 @@ static	PADInspectorController*		PADInspectorController_shared = nil;
         [self autorelease];
         return PADInspectorController_shared;
     }
-	if( self = [super initWithWindowNibName:@"PADInspector"] )
+	self = [super initWithWindowNibName:@"PADInspector"];
+	if(self)
 	{
 		PADInspectorController_shared = self;
 		
