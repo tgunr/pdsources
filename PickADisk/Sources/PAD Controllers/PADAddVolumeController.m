@@ -5,9 +5,11 @@
 //  Copyright 2008 PolyMicro Systems. All rights reserved.
 //
 
+#import "AppController.h"
 #import "PADAddVolumeController.h"
 #import "LicenseController.h"
 #import "/System/Library/Frameworks/Carbon.framework/Frameworks/NavigationServices.framework/Headers/Navigation.h"
+#import "DACALDeviceService.h"
 
 @implementation PADAddVolumeController
 

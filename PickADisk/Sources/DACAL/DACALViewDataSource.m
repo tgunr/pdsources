@@ -2,15 +2,11 @@
 //  DACALViewDataSource.m
 //  PickADisk
 //
-//  Created by Jack Small on 8/30/08.
-//  Copyright 2008 Jack Small. All rights reserved.
+//  Copyright 2008 PolyMicro Systems. All rights reserved.
 //
 
 #import "DACALViewDataSource.h"
-#import "DACALSlot.h"
-#import "DACALDeviceNode.h"
-#import "PADLifecycleController.h"
-#import "AppController.h"
+#import "PADLifecycleSetup.h"
 
 @implementation DACALViewDataSource
 
@@ -296,11 +292,11 @@ SLOTNAMEFAILED:
 
 - (void)nodeSlotChanged:(SimpleTreeNode*)node toSlot:(NSString*)slotString
 {
-	NSUndoManager*		undo = [self undoManager];
-//	SimpleNodeData*		theData = [node nodeData];
-	DACALSlotNum		oldSlot = [[node nodeData] itemSlot];
-	DACALSlotNum		newSlot = [slotString intValue];
-	DACALDeviceNode*	oldBox = DACALDeviceNodeForDeviceRef( [[node nodeData] itemDevice] );
+	NSUndoManager*	undo = [self undoManager];
+//	SimpleNodeData*	theData = [node nodeData];
+	DACALSlotNum	oldSlot = [[node nodeData] itemSlot];
+	DACALSlotNum	newSlot = [slotString intValue];
+	DACALDevice*	oldBox = DACALDeviceForDeviceRef( [[node nodeData] itemDevice] );
 	NSString*		nowSlot = nil;
 	
 	if( oldSlot == newSlot ) return;
@@ -446,22 +442,21 @@ SLOTTYPEFAILED:
 
 - (NSInteger)shouldEditTableColumn:(NSTableColumn *)tc item:(id)item
 {
-	NSString * tcString = (NSString *)[tc identifier];
-	if([tcString compare:COLUMNID_SLOT] == NSOrderedSame) 
+	if([[tc identifier] compare:COLUMNID_SLOT] == NSOrderedSame) 
 		return YES;	
 	
-	if([tcString compare:COLUMNID_NAME] == NSOrderedSame) {
+	if([[tc identifier] compare:COLUMNID_NAME] == NSOrderedSame) {
 		if( ![[item nodeData] location] ) return NO;
 		return YES;
 	}
 	
-	if([tcString compare:COLUMNID_COMMENT] == NSOrderedSame) 
+	if([[tc identifier] compare:COLUMNID_COMMENT] == NSOrderedSame) 
 		return NO;	
 
-	if([tcString compare:COLUMNID_TAGS] == NSOrderedSame) 
+	if([[tc identifier] compare:COLUMNID_TAGS] == NSOrderedSame) 
 		return NO;	
 
-	if([tcString compare:COLUMNID_STARS] == NSOrderedSame) 
+	if([[tc identifier] compare:COLUMNID_STARS] == NSOrderedSame) 
 		return YES;	
 
 	return NO;

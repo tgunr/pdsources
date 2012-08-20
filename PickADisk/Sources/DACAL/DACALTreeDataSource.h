@@ -32,18 +32,7 @@
 NSString*	DACALFlavorToFlavorValue( NSString* flavor );
 NSString*	DACALFlavorToFlavorTitle( NSString* flavor );
 
-@interface DACALIndexState : NSObject
-{
-	NSMutableDictionary*	savedViewData;	
-}
-
--(void)restoreSettings;
--(void)removeSetting:(NSString*)settingName forKey:(NSString*)keyName;
--(void)addSettingsForKey:(NSString*)keyName saveView:(NSOutlineView*)doView saveSelection:(BOOL)doSelect saveSorts:(BOOL)doSorts;
-+(id)saveSetupForKey:(NSString*)keyName saveView:(NSOutlineView*)doView saveSelection:(BOOL)doSelect saveSorts:(BOOL)doSorts;
-
-@end
-
+@class DACALIndexState;
 @interface DACALTreeDataSource : TreeControllerDataSource {
 
 	IBOutlet	NSTextField		*promptText;

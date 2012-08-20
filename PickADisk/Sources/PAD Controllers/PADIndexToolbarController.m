@@ -5,6 +5,7 @@
 //  Copyright 2008 PolyMicro Systems. All rights reserved.
 //
 #import "PADIndexToolbarController.h"
+#import "DACALDeviceService.h"
 
 @implementation PADIndexToolbarController
 
