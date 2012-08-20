@@ -15,7 +15,9 @@
 
 -(void)initSelf
 {
-    PMLOG(1, @"WARNING: subclass should override this method!");
+    if ([self class] == [NSKeyedUnarchiver classForClassName:@"JSServiceAbstract"]) {
+        PMLOG(1, @"WARNING: subclass should override this method!");
+    }
 }
 
 -(id)init
@@ -53,12 +55,16 @@
 
 -(void)openService
 {
-    PMLOG(1, @"WARNING: subclass should override this method!");
+    if ([self class] == [NSKeyedUnarchiver classForClassName:@"JSServiceAbstract"]) {
+        PMLOG(1, @"WARNING: subclass should override this method!");
+    }
 }
 
 -(void)closeService
 {
-    PMLOG(1, @"WARNING: subclass should override this method!");
+    if ([self class] == [NSKeyedUnarchiver classForClassName:@"JSServiceAbstract"]) {
+        PMLOG(1, @"WARNING: subclass should override this method!");
+    }
 }
 
 @end	//	JSServiceAbstract
