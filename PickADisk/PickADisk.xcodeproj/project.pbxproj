@@ -88,6 +88,8 @@
 		735CC2B7049A7E2A00C919A3 /* SimpleTreeNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 08DC4042FF0C22D111CA0E35 /* SimpleTreeNode.m */; settings = {ATTRIBUTES = (); }; };
 		735CC2B9049A7E2A00C919A3 /* TreeNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 08DC403CFF0C20FA11CA0E35 /* TreeNode.m */; settings = {ATTRIBUTES = (); }; };
 		735CC2BD049A7E2A00C919A3 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 011669A0FFC1E3D311CA0E35 /* Cocoa.framework */; };
+		7501706015E2B60A0075842E /* PADOutlineView.h in Headers */ = {isa = PBXBuildFile; fileRef = 7501705E15E2B60A0075842E /* PADOutlineView.h */; };
+		7501706115E2B60A0075842E /* PADOutlineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7501705F15E2B60A0075842E /* PADOutlineView.m */; };
 		7504AE680FB380E700FFAA84 /* report.css in Resources */ = {isa = PBXBuildFile; fileRef = 7504AE5C0FB380E700FFAA84 /* report.css */; };
 		7504AE690FB380E700FFAA84 /* simplelist.css in Resources */ = {isa = PBXBuildFile; fileRef = 7504AE5D0FB380E700FFAA84 /* simplelist.css */; };
 		7504AE6A0FB380E700FFAA84 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 7504AE5E0FB380E700FFAA84 /* index.html */; };
@@ -394,6 +396,8 @@
 		735CC297049A7E1F00C919A3 /* Prefix.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = Prefix.h; path = Sources/Prefix.h; sourceTree = SOURCE_ROOT; };
 		735CC2C0049A7E2A00C919A3 /* Info-PickADisk.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-PickADisk.plist"; sourceTree = SOURCE_ROOT; };
 		735CC2C1049A7E2A00C919A3 /* PickADisk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PickADisk.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7501705E15E2B60A0075842E /* PADOutlineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = PADOutlineView.h; path = "Sources/Cocoa Extensions/PADOutlineView.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		7501705F15E2B60A0075842E /* PADOutlineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = PADOutlineView.m; path = "Sources/Cocoa Extensions/PADOutlineView.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		7504AE5C0FB380E700FFAA84 /* report.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = report.css; sourceTree = "<group>"; };
 		7504AE5D0FB380E700FFAA84 /* simplelist.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = simplelist.css; sourceTree = "<group>"; };
 		7504AE5E0FB380E700FFAA84 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
@@ -417,7 +421,7 @@
 		754DD88E15E1F4AF001A6F89 /* DACALIndexState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DACALIndexState.h; sourceTree = "<group>"; };
 		754DD88F15E1F4AF001A6F89 /* DACALIndexState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DACALIndexState.m; sourceTree = "<group>"; };
 		754DD89215E1F5E3001A6F89 /* DACALTreeDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DACALTreeDataSource.h; sourceTree = "<group>"; };
-		754DD89315E1F5E3001A6F89 /* DACALTreeDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DACALTreeDataSource.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		754DD89315E1F5E3001A6F89 /* DACALTreeDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = DACALTreeDataSource.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		7565EFE713AAC73A0029990C /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
 		75B2FCB20EDDA9A1007356FD /* BlackPlus1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlackPlus1.png; sourceTree = "<group>"; };
 		75B2FCB40EDDA9AD007356FD /* BlackSearch1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlackSearch1.png; sourceTree = "<group>"; };
@@ -793,6 +797,8 @@
 		5C81A2380EC58B8600E75319 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				7501705E15E2B60A0075842E /* PADOutlineView.h */,
+				7501705F15E2B60A0075842E /* PADOutlineView.m */,
 				5C88C00F0EB7B7CA005D267C /* PADFlavorImageView.h */,
 				5C88C00E0EB7B7CA005D267C /* PADFlavorImageView.m */,
 				5CD985150E4E60A700441ED7 /* PADHomeView.h */,
@@ -1162,6 +1168,7 @@
 				B69BDD9A08A2EC26008AC9C9 /* DACALDeviceService.h in Headers */,
 				754DD89015E1F4AF001A6F89 /* DACALIndexState.h in Headers */,
 				754DD89415E1F5E3001A6F89 /* DACALTreeDataSource.h in Headers */,
+				7501706015E2B60A0075842E /* PADOutlineView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1475,6 +1482,7 @@
 				B69BDD9A08A2EC26008AC9C3 /* DACALDevice.m in Sources */,
 				B69BDD9A08A2EC26008AC9C7 /* DACALDeviceService.m in Sources */,
 				754DD89115E1F4AF001A6F89 /* DACALIndexState.m in Sources */,
+				7501706115E2B60A0075842E /* PADOutlineView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1551,18 +1559,17 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
 					"\"$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Frameworks\"",
+					"\"$(SRCROOT)/../DerivedData/Build/Products/$CONFIGURATION)\"/**",
+					"\"$(SRCROOT)/Frameworks\"",
 				);
-				HEADER_SEARCH_PATHS = (
-					"\"$(SRCROOT)/../DerivedData/Build/Products/$(CONFIGURATION)/PMUtility.framework/Headers\"",
-					"\"$(SRCROOT)/../DerivedData/Build/Products/$(CONFIGURATION)/DACAL.framework/Headers\"",
-				);
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../pmssource\"/**";
 				INFOPLIST_FILE = "Info-PickADisk.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@rpath/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = PickADisk;
-				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/../PMUtility/**";
+				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = "Release Test";
@@ -1592,18 +1599,17 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
 					"\"$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Frameworks\"",
+					"\"$(SRCROOT)/../DerivedData/Build/Products/$CONFIGURATION)\"/**",
+					"\"$(SRCROOT)/Frameworks\"",
 				);
-				HEADER_SEARCH_PATHS = (
-					"\"$(SRCROOT)/../DerivedData/Build/Products/$(CONFIGURATION)/PMUtility.framework/Headers\"",
-					"\"$(SRCROOT)/../DerivedData/Build/Products/$(CONFIGURATION)/DACAL.framework/Headers\"",
-				);
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../pmssource\"/**";
 				INFOPLIST_FILE = "Info-PickADisk.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@rpath/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = PickADisk;
-				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/../PMUtility/**";
+				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = DebugPPC;
@@ -1633,18 +1639,17 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
 					"\"$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Frameworks\"",
+					"\"$(SRCROOT)/../DerivedData/Build/Products/$CONFIGURATION)\"/**",
+					"\"$(SRCROOT)/Frameworks\"",
 				);
-				HEADER_SEARCH_PATHS = (
-					"\"$(SRCROOT)/../DerivedData/Build/Products/$(CONFIGURATION)/PMUtility.framework/Headers\"",
-					"\"$(SRCROOT)/../DerivedData/Build/Products/$(CONFIGURATION)/DACAL.framework/Headers\"",
-				);
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../pmssource\"/**";
 				INFOPLIST_FILE = "Info-PickADisk.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@rpath/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = PickADisk;
-				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/../PMUtility/**";
+				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = DebugRemote;
@@ -1674,18 +1679,17 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
 					"\"$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Frameworks\"",
+					"\"$(SRCROOT)/../DerivedData/Build/Products/$CONFIGURATION)\"/**",
+					"\"$(SRCROOT)/Frameworks\"",
 				);
-				HEADER_SEARCH_PATHS = (
-					"\"$(SRCROOT)/../DerivedData/Build/Products/$(CONFIGURATION)/PMUtility.framework/Headers\"",
-					"\"$(SRCROOT)/../DerivedData/Build/Products/$(CONFIGURATION)/DACAL.framework/Headers\"",
-				);
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../pmssource\"/**";
 				INFOPLIST_FILE = "Info-PickADisk.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@rpath/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = PickADisk;
-				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/../PMUtility/**";
+				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = "Debug Fresh Prefs";
@@ -1697,18 +1701,17 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
 					"\"$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Frameworks\"",
+					"\"$(SRCROOT)/../DerivedData/Build/Products/$CONFIGURATION)\"/**",
+					"\"$(SRCROOT)/Frameworks\"",
 				);
-				HEADER_SEARCH_PATHS = (
-					"\"$(SRCROOT)/../DerivedData/Build/Products/$(CONFIGURATION)/PMUtility.framework/Headers\"",
-					"\"$(SRCROOT)/../DerivedData/Build/Products/$(CONFIGURATION)/DACAL.framework/Headers\"",
-				);
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../pmssource\"/**";
 				INFOPLIST_FILE = "Info-PickADisk.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@rpath/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = PickADisk;
-				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/../PMUtility/**";
+				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1720,18 +1723,17 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
 					"\"$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Frameworks\"",
+					"\"$(SRCROOT)/../DerivedData/Build/Products/$CONFIGURATION)\"/**",
+					"\"$(SRCROOT)/Frameworks\"",
 				);
-				HEADER_SEARCH_PATHS = (
-					"\"$(SRCROOT)/../DerivedData/Build/Products/$(CONFIGURATION)/PMUtility.framework/Headers\"",
-					"\"$(SRCROOT)/../DerivedData/Build/Products/$(CONFIGURATION)/DACAL.framework/Headers\"",
-				);
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../pmssource\"/**";
 				INFOPLIST_FILE = "Info-PickADisk.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@rpath/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = PickADisk;
-				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/../PMUtility/**";
+				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
