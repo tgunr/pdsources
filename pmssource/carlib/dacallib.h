@@ -284,7 +284,7 @@ extern DACALResult    DACALDevicesFinalize(void);
 
 extern DACALCount     DACALDevicesGetCount(void);
 
-extern DACALDeviceRef DACALDevicesCopyDeviceRefForIndex(DACALCount deviceID, DACALResult *outError);
+extern DACALDeviceRef DACALDevicesCopyDeviceRefForIndex(DACALDeviceRef deviceID, DACALResult *outError);
 
 extern CFArrayRef     DACALDevicesCopyAllNames(void);
 
