@@ -5,7 +5,7 @@
 #  Copyright (c) 2008 polyMicro Systems. All rights reserved.
 #
 USER_INTERRUPT=13
-CAROUSELPATH=${CAROUSELPATH:-"$HOME/Library/PickADisk"}
+CAROUSELPATH=${CAROUSELPATH:-"~/Library/Application Support/PickADisk"}
 CMDPATH="`dirname $0`"
 CMDNAME="`basename $0`"
 DACALCMD="$CMDPATH/dacal" 
@@ -22,13 +22,13 @@ volumepath="/Volumes/Untitled"
 volumename=`basename "$volumepath"`
 slotfile="$CAROUSELPATH/.dacalslot"
 
-if [[ ! -e $slotfile ]] ; then 
-    echo "1" > $slotfile
-fi
-
 if [[ ! -e "$CAROUSELPATH" ]] ; then
 	mkdir -p "$CAROUSELPATH"
 	chmod 755 "$CAROUSELPATH"
+fi
+
+if [[ ! -e $slotfile ]] ; then
+    echo "1" > "$slotfile"
 fi
 
 slot=`cat "$slotfile"`
