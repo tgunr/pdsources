@@ -8,7 +8,7 @@
 #import <Cocoa/Cocoa.h>
 #import <DACAL/pmsDACALUtility.h>
 #import "SimpleTreeNode.h"
-#import "DACVolume.h"
+#import "DACALVolume.h"
 
 extern CFStringRef			kPADClientIdentifier;
 

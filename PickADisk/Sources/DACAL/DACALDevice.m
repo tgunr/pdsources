@@ -9,7 +9,7 @@
 #import "DACALDevice.h"
 #import "SimpleTreeNode.h"
 #import "DACALSlot.h"
-#import "DACVolume.h"
+#import "DACALVolume.h"
 #import "DACALViewDataSource.h"
 #import "PADOperationControlDevice.h"
 #import "DACALDeviceService.h"

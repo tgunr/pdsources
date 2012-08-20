@@ -1,12 +1,12 @@
 //
-//  DACVolume.m
+//  DACALVolume.m
 //  PickADisk
 //
 //  Copyright 2008 PolyMicro Systems. All rights reserved.
 //
 
 #import <DACAL/dacalconstants.h>
-#import "DACVolume.h"
+#import "DACALVolume.h"
 #import "PADLifeCycleSetup.h"
 #import "dacallib.h"
 #import "AppController.h"
