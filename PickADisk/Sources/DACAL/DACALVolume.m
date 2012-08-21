@@ -55,8 +55,10 @@ int		DACALVolume_nextIconID = 0;
 {
 	if( !padKnownSlot || ![padKnownSlot isEqual:newSlot] )
 	{
-		if( newSlot ) [newSlot retain];
-		if( padKnownSlot ) [padKnownSlot release];
+		if( newSlot )
+            [newSlot retain];
+		if( padKnownSlot )
+            [padKnownSlot release];
 		padKnownSlot = newSlot;
 		padKnownVolume = (padKnownSlot != nil);
 	}
@@ -94,8 +96,10 @@ int		DACALVolume_nextIconID = 0;
 	return NO;
 }
 
--(BOOL)isIndexable
-	{ return !padKnownVolume; }
+-(BOOL)isIndexable {
+    return YES;
+    return !padKnownVolume;
+}
 
 -(NSString*)guessPADFlavor
 {
