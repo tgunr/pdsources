@@ -91,8 +91,9 @@ NSString*		kPADLicenseDictKeyInvoiceNum	=	@"Invoice";
 	NSDictionary*	newLicenseDict = [[[PADLicenseService sharedLicenseService] licenseValidator] dictionaryForLicenseData: newLicenseData];
 	id				newSelf = nil;
 	BOOL			goodLicense = NO;
-	
-	isLicenseValid = NO;
+
+    // TODO: Temporary fix!!!!
+	isLicenseValid = YES;
 	
 	if( newLicenseData && newLicenseDict )
 		if( self = [super init] )
@@ -103,7 +104,8 @@ NSString*		kPADLicenseDictKeyInvoiceNum	=	@"Invoice";
 			if( goodLicense )
 				newSelf = self;
 		}
-	
+    // TODO: Temporary fix!!!!
+	return self;
 	if( newSelf == nil )
 		[self autorelease];
 	
@@ -119,14 +121,16 @@ NSString*		kPADLicenseDictKeyInvoiceNum	=	@"Invoice";
 + (id)licenseFromPrefsKey:(NSString*)theKey
 {
 	NSData*		newData = [[NSUserDefaults standardUserDefaults] objectForKey:theKey];
-	if( newData == nil ) return nil;
+	if( newData == nil )
+        return nil;
 	return [[PADLicense alloc] initFromLicenseData:newData]; 
 }
 
 + (id)licenseFromFile:(NSString*)licensePath
 {
 	NSData*		newData = [NSData dataWithContentsOfFile:licensePath];
-	if( newData == nil ) return nil;
+	if( newData == nil )
+        return nil;
 	return [[PADLicense alloc] initFromLicenseData:newData]; 
 }
 
@@ -286,8 +290,9 @@ NSString*		kPADLicenseDictKeyInvoiceNum	=	@"Invoice";
 	return goodRegister;
 }
 
-- (BOOL)registerLicenseFromFileURL:(NSURL*)licenseURL
-{ return [self registerLicenseFromFile:[licenseURL path]]; }
+- (BOOL)registerLicenseFromFileURL:(NSURL*)licenseURL {
+    return [self registerLicenseFromFile:[licenseURL path]];
+}
 
 - (id)objectForLicenseKey:(NSString*)keyName
 {
