@@ -403,12 +403,16 @@ void MyNavEventProc (NavEventCallbackMessage callBackSelector, NavCBRecPtr callB
 	if( [[alternateTitle stringValue] compare:@""] == NSOrderedSame )
 		isBlankBlank = YES;
 	
-	[okButton setEnabled: !isBlankBlank && !isExistingSlot];
-	[depthLevel setEnabled: !isBlankBlank && !isExistingSlot && isExistingVolume];
-	[slotTypeList setEnabled: !isExistingSlot];
-	[volumeList setEnabled: !isExistingSlot];
-	[alternateTitle setEnabled: !isExistingSlot];
-	[ejectButton setHidden:([volumeList indexOfSelectedItem] < 2)];
+    BOOL setif = !isBlankBlank && !isExistingSlot;
+	[okButton setEnabled: setif];
+    setif = !isExistingSlot && isExistingVolume;
+	[depthLevel setEnabled: setif];
+    setif =  !isExistingSlot;
+	[slotTypeList setEnabled: setif];
+	[volumeList setEnabled: setif];
+	[alternateTitle setEnabled: setif];
+    setif = ([volumeList indexOfSelectedItem] < 2);
+	[ejectButton setHidden: setif];
 	
 	if( !isExistingSlot )
 		[clearTitleButton setHidden:!(!isBlankBlank && !isExistingTitle)];
@@ -892,7 +896,8 @@ NAVERR:
 	//for( index=1; index <= count; index++ )
 	//	[carouselList addItemWithTitle:(NSString*)DACALCommandCopyName( index, NULL )];
 	
-	if( node == 0 ) node = 1;
+	if( node == 0 )
+        node = 1;
 	[carouselList selectItemAtIndex:node-1];
 	
 	// Do Media
