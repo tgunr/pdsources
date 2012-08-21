@@ -422,10 +422,13 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 	else 
 		slotString = NSLocalizedString(@"slots", @"Dava View Prompt Plural form of carousel device slots");
 	
-	if( [[[tabView selectedTabViewItem] identifier] compare:@"Home"] == NSOrderedSame )
+    NSString *identifier = [[tabView selectedTabViewItem] identifier];
+	if( [identifier compare:@"Home"] == NSOrderedSame )
 	{
-		if( count == 0) promptData = NSLocalizedString(@"No carousels detected", @"Data View Prompt when no carousel devices are currently detected");
-		else promptData = [NSString stringWithFormat:NSLocalizedString(@"%i %@ using %i %@ storing %@", @"Data View Prompt Format for number of carousel devices attached and number of used slots"),
+		if( count == 0)
+            promptData = NSLocalizedString(@"No carousels detected", @"Data View Prompt when no carousel devices are currently detected");
+		else
+            promptData = [NSString stringWithFormat:NSLocalizedString(@"%i %@ using %i %@ storing %@", @"Data View Prompt Format for number of carousel devices attached and number of used slots"),
 						   count, carouselString, usedCount, slotString, [NSString stringFromByteCount:[[DACALDeviceService sharedService] totalVolumeSize]]];
 	} else {
 		NSArray *selectedNodes = [secondaryController selectedNodes];

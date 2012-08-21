@@ -12,8 +12,7 @@
 #import "/Volumes/data/Sources/Projects/PickADisk/Sources/pmssource/carlib/dacalconstants.h"
 #import "DACALTreeDataSource.h"
 #import "DACALDevice.h"
-#import <PMUtility/pmNSUtility.h>
-#import <PMUtility/NSNumber_Extensions.h>
+#import <PMUtility/PMUtility.h>
 
 @implementation DACALSlot
 
@@ -232,8 +231,10 @@
 {
 	if( !slotIdentifier || ![slotIdentifier isEqual:newID] )
 	{
-		if( newID ) [newID retain];
-		if( slotIdentifier ) [slotIdentifier release];
+		if( newID )
+            [newID retain];
+		if( slotIdentifier )
+            [slotIdentifier release];
 		slotIdentifier = newID;
 	}
 }

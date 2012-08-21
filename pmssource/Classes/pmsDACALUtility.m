@@ -277,7 +277,8 @@ CFStringRef	CFURLCopyDisplayName( CFAllocatorRef allocator, CFURLRef url, OSStat
 	
 	theOutResult = 	LSCopyDisplayNameForURL(url, &theOutputName);
 	
-	if( outError != NULL ) *outError = theOutResult;
+	if( outError != NULL )
+        *outError = theOutResult;
 	return( theOutputName );
 }	
 
@@ -310,7 +311,8 @@ CFStringRef	CFURLCopyReferenceTitle( CFAllocatorRef inAllocator, CFURLRef url, O
 	CFStringRef		itemName = NULL;
 	
 	itemName = CFURLCopyXattr( inAllocator, url, kDACALCarouselDocumentXAttrUserTitle, outError );
-	if( itemName == NULL ) itemName = CFURLCopyDisplayName( inAllocator, url, outError );
+	if( itemName == NULL )
+        itemName = CFURLCopyDisplayName( inAllocator, url, outError );
 	
 	return( itemName );
 }

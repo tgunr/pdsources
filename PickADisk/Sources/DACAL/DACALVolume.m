@@ -11,6 +11,8 @@
 #import "AppController.h"
 #import "DACALTreeDataSource.h"
 #import "DACALSlot.h"
+#import "PADIndexToolbarController.h"
+#import <PMUtility/PMUtility.h>
 
 @implementation DACVolume
 
