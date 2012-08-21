@@ -6,12 +6,12 @@ int main(int argc, const char *argv[]) {
 	
     opterr = 0;
 	killflag = 0;
-	while ((ch = getopt(argc, (char * const*)argv, "kv")) != -1) {
+	while ((ch = getopt(argc, (char * const*)argv, "kd")) != -1) {
 		switch (ch) {
 			case 'k':
 				killflag = 1;
 				break;
-			case 'v':
+			case 'd':
 				gDebugLevel++;
 				break;
 		}
