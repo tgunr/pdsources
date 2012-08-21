@@ -13,10 +13,11 @@ char* STDCStringCreateFromCFString( CFStringRef inString )
 	Boolean	goodCoerce = FALSE;
 
 	maxlen = CFStringGetMaximumSizeForEncoding( CFStringGetLength( inString ), kCFStringEncodingUTF8 ) + 1;
-	cstring = (char*)calloc( 1, maxlen );
-	if( cstring != NULL ) goodCoerce = CFStringGetCString(inString, cstring, maxlen, kCFStringEncodingUTF8);
-	if( !goodCoerce & (cstring != NULL) ) {
-		free( cstring );
+	cstring = (char *)calloc(1, (size_t)maxlen);
+	if (cstring != NULL)
+		goodCoerce = CFStringGetCString(inString, cstring, maxlen, kCFStringEncodingUTF8);
+	if (!goodCoerce & (cstring != NULL)) {
+		free(cstring);
 		cstring = NULL;
 	}
 	return cstring;
@@ -67,13 +68,15 @@ int main (int argc, const char * argv[]) {
 	
 	int option_index = 0;
 
-	DACALResult		err = 0;	
-	DACALDeviceRef	workDevice = 1;
-	DACALCount		workCount = 0;
-	DACALSlotNum	workSlot = 0;
-	CFStringRef		workCFString, modelCFString, nameCFString;
-	CFUUIDRef		workCFUUID;
-	
+	DACALResult     err             = 0;
+	DACALDeviceRef  workDevice      = 1;
+	DACALCount      workCount       = 0;
+	DACALSlotNum    workSlot        = 0;
+	CFStringRef     workCFString    = NULL ;
+	CFStringRef     modelCFString;
+	CFStringRef     nameCFString;
+	CFUUIDRef       workCFUUID;
+
 	if (argc == 1 ) {
 		usage();
 		return 1;
@@ -106,7 +109,7 @@ int main (int argc, const char * argv[]) {
 #endif
 				switch (option_index) {
 					case 3: {
-						err = DACALCommandSetLED( workDevice, atoi(optarg));
+						err = DACALCommandSetLED( workDevice, (Boolean)atoi(optarg));
 						break;
 					}
 				}
@@ -129,20 +132,22 @@ int main (int argc, const char * argv[]) {
 			}
 																		// led
 			case 'l': {
-				err = DACALCommandSetLED( workDevice, atoi(optarg));
+				err = DACALCommandSetLED( workDevice, (Boolean)atoi(optarg));
 				break;
 			}
 																		// model
 			case 'm': {
-				modelCFString = (CFStringRef)DACALCommandCopyModel( workDevice, &err );
-				if(modelCFString) workCFString = CFStringCreateWithFormat( NULL, NULL, CFSTR("Model Number: %@\n"), modelCFString );
-				else workCFString = CFSTR("Error Finding Model\n");
-				
-				if(workCFString) {
-					CFStringPrint( workCFString, TRUE );
+				modelCFString    = (CFStringRef)DACALCommandCopyModel(workDevice, &err);
+				if (modelCFString)
+					workCFString = CFStringCreateWithFormat(NULL, NULL, CFSTR("Model Number: %@\n"), modelCFString);
+				else
+					workCFString = CFSTR("Error Finding Model\n");
+
+				if (workCFString) {
+					CFStringPrint(workCFString, TRUE);
 					workCFString = NULL;
 				}
-				if(modelCFString) {
+				if (modelCFString) {
 					CFRelease(modelCFString);
 					modelCFString = NULL;
 				}
@@ -150,64 +155,70 @@ int main (int argc, const char * argv[]) {
 			}
 																		// uid
 			case 'u': {
-				workCFUUID = (CFUUIDRef)DACALCommandCopyUUID( workDevice, &err );
-				if(workCFUUID) workCFString = CFStringCreateWithFormat( NULL, NULL, CFSTR("Model UID: %@\n"), workCFUUID );
-				else workCFString = CFSTR("Error Finding UID\n");
-				
-				if(workCFString) {
-					CFStringPrint( workCFString, TRUE );
+				workCFUUID = (CFUUIDRef)DACALCommandCopyUUID(workDevice, &err);
+				if (workCFUUID)
+					workCFString = CFStringCreateWithFormat(NULL, NULL, CFSTR("Model UID: %@\n"), workCFUUID);
+				else
+					workCFString = CFSTR("Error Finding UID\n");
+
+				if (workCFString) {
+					CFStringPrint(workCFString, TRUE);
 					workCFString = NULL;
 				}
-				if(workCFUUID) {
+				if (workCFUUID) {
 					CFRelease(workCFUUID);
 					workCFUUID = NULL;
 				}
 				break;
 			}
-																		// move to
+		        // move to
 			case 's': {
-				workSlot = atoi(optarg);
+				workSlot = (DACALSlotNum)atoi(optarg);
 				err = DACALCommandMoveToSlot( workDevice, workSlot );
 				break;
 			}
 																		// carousel
 			case 'c': {
-				workDevice = atoi(optarg);
+				workDevice = (DACALDeviceRef)atoi(optarg);
 				break;
 			}
 																		// devices
 			case 'd': {
 				workCount = DACALDevicesGetCount();
-				int loop;
+				DACALDeviceRef loop;
 				
 				printf( "Device Count: %i\n", workCount );
 				if( workCount )
-					for( loop=1;loop<=workCount;loop++ ) {
-						modelCFString = (CFStringRef)DACALCommandCopyModel( loop, &err );
-						if( modelCFString == NULL ) modelCFString = CFSTR("Unknown Model");
-						
-						workCFUUID = (CFUUIDRef)DACALCommandCopyUUID( loop, &err );
-						if( workCFUUID == NULL ) workCFUUID = (CFUUIDRef)CFSTR("Unknown ID");
-						
-						nameCFString = (CFStringRef)DACALCommandCopyName( loop, &err );
-						if( nameCFString == NULL ) nameCFString = CFSTR("Unnamed");
-						
-						workCFString = CFStringCreateWithFormat( DACALDevicesGetCFAllocator(), NULL, CFSTR("%i: %@ %@\n\tName: %@\n"), loop, workCFUUID, modelCFString, nameCFString );
-						if( workCFString == NULL ) workCFString = CFSTR("Memory Error\n");
+					for (loop = 1; loop <= workCount; loop++) {
+						modelCFString = (CFStringRef)DACALCommandCopyModel(loop, &err);
+						if (modelCFString == NULL)
+							modelCFString = CFSTR("Unknown Model");
 
-						if(workCFString) {
-							CFStringPrint( workCFString, TRUE );
+						workCFUUID = (CFUUIDRef)DACALCommandCopyUUID(loop, &err);
+						if (workCFUUID == NULL)
+							workCFUUID = (CFUUIDRef)CFSTR("Unknown ID");
+
+						nameCFString = (CFStringRef)DACALCommandCopyName(loop, &err);
+						if (nameCFString == NULL)
+							nameCFString = CFSTR("Unnamed");
+
+						workCFString = CFStringCreateWithFormat(DACALDevicesGetCFAllocator(), NULL, CFSTR("%i: %@ %@\n\tName: %@\n"), loop, workCFUUID, modelCFString, nameCFString);
+						if (workCFString == NULL)
+							workCFString = CFSTR("Memory Error\n");
+
+						if (workCFString) {
+							CFStringPrint(workCFString, TRUE);
 							workCFString = NULL;
 						}
-						if(modelCFString) {
+						if (modelCFString) {
 							CFRelease(modelCFString);
 							modelCFString = NULL;
 						}
-						if(nameCFString) {
+						if (nameCFString) {
 							CFRelease(nameCFString);
 							nameCFString = NULL;
 						}
-						if(workCFUUID) {
+						if (workCFUUID) {
 							CFRelease(workCFUUID);
 							workCFUUID = NULL;
 						}
@@ -229,15 +240,17 @@ int main (int argc, const char * argv[]) {
 			}
 																		// status
 			case 'i': {
-				nameCFString = (CFStringRef)DACALCommandCopyStatus( workDevice, &err );
-				if(workCFString) workCFString = CFStringCreateWithFormat( DACALDevicesGetCFAllocator(), NULL, CFSTR("Device status: %@\n"), nameCFString );
-				else workCFString = CFSTR("Error Finding Status\n");
+				nameCFString = (CFStringRef)DACALCommandCopyStatus(workDevice, &err);
+				if (workCFString)
+					workCFString = CFStringCreateWithFormat(DACALDevicesGetCFAllocator(), NULL, CFSTR("Device status: %@\n"), nameCFString);
+				else
+					workCFString = CFSTR("Error Finding Status\n");
 
-				if(workCFString) {
-					CFStringPrint( workCFString, TRUE );
+				if (workCFString) {
+					CFStringPrint(workCFString, TRUE);
 					workCFString = NULL;
 				}
-				if(nameCFString) {
+				if (nameCFString) {
 					CFRelease(nameCFString);
 					nameCFString = NULL;
 				}
@@ -245,7 +258,7 @@ int main (int argc, const char * argv[]) {
 			}
 																		// dvd move to
 			case 'v': {
-				workSlot = atoi(optarg);
+				workSlot = (DACALSlotNum)atoi(optarg);
 				err = DACALCommandDVDMoveTo( workDevice, workSlot );
 				break;
 			}

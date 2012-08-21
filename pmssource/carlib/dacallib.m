@@ -596,14 +596,14 @@ CFStringRef CFStringCreateFromDacalPipe(CFAllocatorRef inAllocator, CFStringRef 
 	char  *utf8Name  = NULL;
 	UInt8 *urlBuff;
 	FILE  *pipe;
-	int pipeSize = 8192;
+	size_t pipeSize = 8192;
 
 
 	if (inAllocator == NULL)
 		inAllocator = gDACALDefaultCFAllocator;
 
 	CFURLRef commandURL  = CFBundleCopyResourceURL(CFBundleGetMainBundle(), theCommand, CFSTR("sh"), NULL);
-	CFIndex  urlBuffSize = CFStringGetLength(CFURLGetString(commandURL));
+	size_t urlBuffSize = (size_t)CFStringGetLength(CFURLGetString(commandURL));
 	urlBuff = (UInt8 *)calloc(1, urlBuffSize);
 	Boolean result = CFURLGetFileSystemRepresentation(commandURL, TRUE, urlBuff, urlBuffSize);
 
