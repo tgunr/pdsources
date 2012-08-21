@@ -1,9 +1,9 @@
-#!/bin/bash
+#!/bin/bash -x
 #  Created by Dave Carlton on 2008-05-31.
 #  Copyright (c) 2008 polyMicro Systems. All rights reserved.
 #
 USER_INTERRUPT=13
-CAROUSELPATH=${CAROUSELPATH:-"~/Library/Application Support/PickADisk"}
+CAROUSELPATH="$HOME/Library/Application Support/PickADisk"
 CMDPATH="`dirname $0`"
 CMDNAME="`basename $0`"
 DACALCMD="$CMDPATH/dacal" 
@@ -120,8 +120,8 @@ fi
 	
 if [[ $listslots == 1 ]] ; then 
 	if [[ -d "$carouselbase" ]] ; then
-		cd "$carouselbase"
-		find . -type d -maxdepth 2 -depth 2
+		$DEBUGCMD cd "$carouselbase"
+		$DEBUGCMD find . -type d -maxdepth 2 -depth 2
 		exit 0
 	fi
 	exit 1
@@ -129,7 +129,7 @@ fi
 
 if [[ $whichtitle == 1 ]] ; then
     if [[ -d "$carouselbaseslot" ]] ; then 
-		ls -1 "$carouselbaseslot/"|head -1
+		$DEBUGCMD ls -1 "$carouselbaseslot/"|head -1
 		exit 0
     else
 		echo "$CMDNAME: Error - carousel $carousel slot $slot not avaialable"
@@ -139,7 +139,7 @@ if [[ $whichtitle == 1 ]] ; then
 fi
 
 if [[ "$findslot" != "" ]] ; then
-	find "$CAROUSELPATH" -iname "$findslot" -type d
+	$DEBUGCMD find "$CAROUSELPATH" -iname "$findslot" -type d
 	exit 0
 fi
 
@@ -172,7 +172,7 @@ fi
 
 if [[ $clearslot == 1 ]] ; then 
     if [[ -d "$carouselbaseslot" ]] ; then 
-	/bin/rm -fr "$carouselbaseslot"
+	$DEBUGCMD /bin/rm -fr "$carouselbaseslot"
     else
 	echo "$CMDNAME: No slot at slot $slot"
 	exit 1
@@ -192,7 +192,7 @@ if [[ "$getfileslot" == "" ]] ; then
     fi
     
     if [[ -d "$carouselbaseslot" ]] ; then 
-	/bin/rm -fr "$carouselbaseslot"
+	$DEBUGCMD /bin/rm -fr "$carouselbaseslot"
     fi
     
     # no real disc, faking one from the a given -t title
