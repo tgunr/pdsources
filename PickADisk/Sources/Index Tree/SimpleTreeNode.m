@@ -837,12 +837,12 @@
         while ((entry = [entryEnum nextObject])) {
 			if( CFURLIsVisible((CFURLRef)entry) ) {
 				if (CFURLHasDirectoryPath((CFURLRef)entry)) {
-					PMLOG(1, @"tree: %@", entry);
+					PMLOG(2, @"tree: %@", entry);
 					child = [SimpleTreeNode treeFromLocation:entry];
 				}
 				else
 				{
-					PMLOG(1, @"entry: %@", entry);
+					PMLOG(2, @"entry: %@", entry);
 					child = [[SimpleTreeNode alloc] initWithData:[SimpleNodeData nodeDataWithURL:entry] parent:nil children:[[NSArray alloc] init]];
 					anElement = [DACALSlotElement slotElementForNode:child];
 				}
@@ -938,8 +938,10 @@
 	self = ourNode;	
 
 	PADIndexOperation *indexOp = [[PADIndexOperation alloc] initWithLocation:loc forChild:ourNode];
-	if( uiQueue ) [[AppController shared] queueUIOperation:indexOp];
-	else [[AppController shared] queueOperation:indexOp];
+	if( uiQueue )
+        [[AppController shared] queueUIOperation:indexOp];
+	else
+        [[AppController shared] queueOperation:indexOp];
 
 	[indexOp release];
 	
