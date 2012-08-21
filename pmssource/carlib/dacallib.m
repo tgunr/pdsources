@@ -1961,21 +1961,20 @@ CFArrayRef
 DACALDevicesCopyAllNames(void) {
 	DACALCount boxIndex = 0;
 	DACALCount boxCount = DACALDevicesGetCount();
-	CFStringRef *boxNames;
-	CFArrayRef boxArray;
+    CFStringRef boxName;
 
 	if (boxCount == 0)
 		return (CFArrayCreate(gDACALDefaultCFAllocator, NULL, 0, &kCFTypeArrayCallBacks));
 
-	boxNames = (CFStringRef *)malloc(sizeof(CFStringRef) * boxCount);
+	CFMutableArrayRef boxArray = CFArrayCreateMutable(gDACALDefaultCFAllocator, boxCount, &kCFTypeArrayCallBacks);
 
-	for (boxIndex = 0; boxIndex < boxCount; boxIndex++)
-		boxNames[boxIndex] = CFStringCreateCopy(gDACALDefaultCFAllocator, DACAL_BOX_NAME(boxIndex));
+	for (boxIndex = 0; boxIndex < boxCount; boxIndex++) {
+		boxName = CFStringCreateCopy(gDACALDefaultCFAllocator, DACAL_BOX_NAME(boxIndex));
+        CFArrayAppendValue(boxArray, boxName);
+    }
 
-	boxArray = CFArrayCreate(gDACALDefaultCFAllocator, (const void **)boxNames, boxCount, &kCFTypeArrayCallBacks);
-
-	free(boxNames);
-	return (boxArray);
+    CFRelease(boxName);
+	return (CFArrayRef)(boxArray);
 }
 
 DACALResult
