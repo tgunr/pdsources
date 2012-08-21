@@ -16,7 +16,7 @@ OSStatus DACALRegisterIconResource( CFStringRef theIconFile, OSType theIconType 
 	CFURLRef	anIconURL = CFBundleCopyResourceURL( CFBundleGetMainBundle(), theIconFile, CFSTR("icns"), NULL );
 	FSRef		anIconFS;
 	Boolean		anIconFound = CFURLGetFSRef( anIconURL, &anIconFS );
-	IconRef		anIconRef;
+	IconRef		anIconRef = 0;
 	OSStatus	anIconErr = -1;
 	
 	if( anIconFound ) anIconErr = RegisterIconRefFromFSRef( kDACALCreatorType, theIconType, &anIconFS, &anIconRef );
@@ -87,9 +87,11 @@ DACALSlotNum	CFURLGetSlotNumber( CFURLRef url, Boolean onlySlotFolders )
 	if( onlySlotFolders && !CFURLIsSlot(url) ) return outSlot;
 	
 	slotNumber = CFURLCopyXattr( kCFAllocatorDefault, url, kDACALCarouselDocumentXAttrSlot, (OSStatus*)NULL );
-	if( slotNumber != NULL ) outSlot = CFStringGetIntValue( slotNumber );
-	if( slotNumber != NULL ) CFRelease( slotNumber );
-	
+	if (slotNumber != NULL)
+		outSlot = (DACALSlotNum)CFStringGetIntValue(slotNumber);
+	if (slotNumber != NULL)
+		CFRelease(slotNumber);
+
 	return( outSlot );
 	/*	
 	 if( onlySlotFolders && !CFURLIsSlot(url) ) return outSlot;
@@ -122,7 +124,7 @@ DACALSlotNum	CFURLGetSlotNumber( CFURLRef url, Boolean onlySlotFolders )
 	 */
 }
 
-int		DACUtility_nextIconID = 0;
+OSType		DACUtility_nextIconID = 0;
 
 IconRef	CFURLGetIcon( CFAllocatorRef allocator, CFURLRef url, OSStatus* outError )
 {
