@@ -106,6 +106,7 @@
 
 	slotFolders = (NSArray*)DACALCommandCopyAllSlotPaths( theBoxRef, NULL );
 	slotcount = [slotFolders count];
+    // TODO: Compare slotCount with folder count, should be equal, if not, errors occurred
 	for( slotindex = 1; slotindex <= slotcount; slotindex++ )
 	{
 		slotNum = CFURLGetSlotNumber( (CFURLRef)[slotFolders objectAtIndex:slotindex-1], FALSE );
