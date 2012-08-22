@@ -81,7 +81,8 @@
 	for( boxIndex=0; boxIndex < boxCount; boxIndex++ )
 	{
 		foundBox = [deviceList objectAtIndex:boxIndex];
-		if( [foundBox isDeviceRef:aBoxRef] ) break;
+		if( [foundBox isDeviceRef:aBoxRef] )
+            break;
 		foundBox = nil;
 	}
 

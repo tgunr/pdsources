@@ -347,15 +347,16 @@ void MyNavEventProc (NavEventCallbackMessage callBackSelector, NavCBRecPtr callB
 	return pendingSlot; 
 }
 
--(DACALSlot*)pendingSlot
-{ return pendingSlot; }
+-(DACALSlot*)pendingSlot {
+    return pendingSlot;
+}
 
--(void)setPendingSlot:(DACALSlot*)newSlot
-{
-	if( !pendingSlot || ![pendingSlot isEqual:newSlot] )
-	{
-		if( newSlot ) [newSlot retain];
-		if( pendingSlot ) [pendingSlot release];
+-(void)setPendingSlot:(DACALSlot*)newSlot {
+	if( !pendingSlot || ![pendingSlot isEqual:newSlot] ) {
+		if( newSlot )
+            [newSlot retain];
+		if( pendingSlot )
+            [pendingSlot release];
 		pendingSlot = newSlot;
 	}
 }
@@ -403,6 +404,7 @@ void MyNavEventProc (NavEventCallbackMessage callBackSelector, NavCBRecPtr callB
 	if( [[alternateTitle stringValue] compare:@""] == NSOrderedSame )
 		isBlankBlank = YES;
 	
+    PMLOG(1, @"isBlankBlank: %u isExistingVolume: %u isExistingSlot: %u isExistingTitle: %u", isBlankBlank, isExistingVolume, isExistingSlot, isExistingTitle );
     BOOL setif = !isBlankBlank && !isExistingSlot;
 	[okButton setEnabled: setif];
     setif = !isExistingSlot && isExistingVolume;
@@ -958,8 +960,10 @@ NAVERR:
 	int			mediaIndex;
 	int			lastIndex = [pendingVolumes count];
 	
-	if( [sheetWindow isVisible] == NO ) return;
+	if( [sheetWindow isVisible] == NO )
+        return;
 	
+    // TODO: Add check for mounted volume detection to auto matically set title field if present.ta
 	if( lastIndex == 0 ) {
 		NSMenu*		theMenu = [volumeList menu];
 		[theMenu addItem:[NSMenuItem separatorItem]];
