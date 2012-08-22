@@ -93,6 +93,7 @@
 }
 
 - (void)insertChild:(TreeNode *)child atIndex:(NSInteger)index {
+    // TODO: Execption occured here on device unplug
     [nodeChildren insertObject:child atIndex:index];
     [child setNodeParent:self];
 }

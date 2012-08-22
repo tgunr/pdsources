@@ -442,6 +442,7 @@ PADSearchTerm*	PADCopySearchTermWithTitleOrID( NSString* aTermName )
 	
 	[self createTermsForKeys];
 	
+    // TODO: Uncaught exception here
 	if( locCount == 0 ) {
 		devicesNode = [[[[DACALTreeDataSource shared] treeControl] treeRoot] childWithItemType:kPADTypeGroupDevices];
 		searchLocations = [[NSArray alloc] initWithArray:[[devicesNode children] arrayWithSubTrees]];
