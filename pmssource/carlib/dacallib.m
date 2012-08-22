@@ -2047,7 +2047,7 @@ void
 DACALDeviceNotification(void *refCon, io_service_t service, natural_t messageType, void *messageArgument) {
 	DACALDeviceRef theDevice = (DACALDeviceRef)refCon;
 
-	//NSLog(@"Device:%i Message:%i",(int)theDevice, messageType);
+	NSLog(@"Device:%i Message:%i",(int)theDevice, messageType);
 
 	switch (messageType) {
 		case kIOMessageServiceIsTerminated:
@@ -2458,6 +2458,20 @@ DACALDeviceCreateWithService(io_service_t ioDeviceObj, DACALResult *outErr) {
             }
         }
         
+        if (newModel == NULL) {
+            sleep(1);
+            
+            newModel = DACALCommandCopyModel(newNode, NULL);
+            
+            if (newModel == NULL) {
+                err = kDACALError;
+                PMLOG(1, @"Could Not Identify Model %p\n", (void *)ioDeviceObj);
+                if (outErr != NULL)
+                    *outErr = err;
+                return (thisRef);
+            }
+        }
+        
         CFComparisonResult modelDC300Check = CFStringCompare(newModel, CFSTR("DC-300"), 0);
         CFComparisonResult modelDC101Check = CFStringCompare(newModel, CFSTR("DC-101"), 0);
         CFComparisonResult modelDC016Check = CFStringCompare(newModel, CFSTR("DC-016RW"), 0);
@@ -2656,7 +2670,7 @@ DACALClientNotify(
 	DACALClientRef clientIndex = DACALClientGetIndexForID(noticeClient);
 	DACALClientNotificationCallback *userCallback = DACAL_CLIENT_CALLBACK(clientIndex);
 
-	PMLOG(2, @"DACALClientNotify: Device: %i Message: %@", (int)noticeDevice, noticeMessage );
+	PMLOG(1, @"DACALClientNotify: Device: %i Message: %@", (int)noticeDevice, noticeMessage );
 
 	if (userCallback != NULL)
 		userCallback(DACAL_CLIENT_USERDATA(clientIndex), noticeDevice, noticeMessage, noticeData);
