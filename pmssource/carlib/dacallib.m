@@ -1512,7 +1512,7 @@ DACALSlotMove(
 
 	if ((fromSlotNum < 1) || (fromSlotNum > DACALCommandGetSlotCount(fromDeviceID)))
 		goto BAIL;
-	if ((toIndexID < 1) || (toIndexID > DACALCommandGetSlotCount(toDeviceID)))
+	if ((toSlotNum < 1) || (toSlotNum > DACALCommandGetSlotCount(toDeviceID)))
 		goto BAIL;
 
 	fromBoxUUID = CFUUIDCreateString(gDACALDefaultCFAllocator, DACAL_BOX_UUID(fromIndexID));
@@ -1526,8 +1526,8 @@ DACALSlotMove(
 	returnText = CFBundleRunShellScript(gDACALDefaultCFAllocator, CFBundleGetMainBundle(), CFSTR("swapslot"), scriptArgs, (OSStatus *)&outResult);
 
 	BAIL:
-			if (fromBoxUUID)
-				CFRelease(fromBoxUUID);
+    if (fromBoxUUID)
+        CFRelease(fromBoxUUID);
 	if (destBoxUUID)
 		CFRelease(destBoxUUID);
 	if (scriptArgs)

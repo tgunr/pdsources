@@ -1,13 +1,12 @@
 #!/bin/bash
-#  $Id$
 #
 #  Created by Dave Carlton on 2008-09-01.
 #  Copyright (c) 2008 polyMicro Systems. All rights reserved.
 #
 
-DEBUGCMD=
+DEBUGCMD=echonot
 USER_INTERRUPT=13
-CAROUSELPATH=${CAROUSELPATH:-"$HOME/Library/PickADisk"}
+CAROUSELPATH="$HOME/Library/Application Support/PickADisk"
 CMDPATH="`dirname $0`"
 CMDNAME="`basename $0`"
 DACALCMD="$CMDPATH/dacal" 
@@ -28,12 +27,18 @@ xattrvolname="$xattrslot.volname"
 OLDXATTR="$xattrcarousel
 $xattrslot
 "
+
+function echonot () {
+	echo $@ > /dev/null
+}
+
 function usage () {
 echo "swapslot --from-carousel carousel --from-slot slot --to-ccarousel carousel --to-slot slot
     -h Help
     -v Verbose
     -c Carousel number; default = 1
     -s Slot number
+    -d Debug
 	swapslot expects at least 3 arguments; -from-carousel --from-slot --to-slot
 	Alternate usage: swapslot -c carousel -s from -s to 
 	If --to-carosuel is not specified, --from-carousel is assumed
@@ -44,7 +49,7 @@ echo "swapslot --from-carousel carousel --from-slot slot --to-ccarousel carousel
 
 # see if we can even get started
 if [[ ! -e "$CAROUSELPATH" ]] ; then
-	echo "$CMDNAME: No folder at $HOME/Library/PickADisk"
+	echo "$CMDNAME: No folder at $CAROUSELPATH"
 	exit 1
 fi
 
@@ -83,6 +88,10 @@ while [ "${1+isset}" ]; do
 	    # no shifting needed here, we'll quit!
 	    exit 
     ;;
+	-d|--debug)
+		DEBUGCMD=echo
+        shift
+	;;
     *)
 		echo "Error: Unknown option: $1" >&2
 		exit 1
@@ -120,8 +129,9 @@ function del-xattr { # filepath
 		# echo $xattr
 		for oldattr in $OLDXATTR ; do
 			if [[ "${xattr}" == "${oldattr}" ]] ; then
-				#echo "$CMDNAME: deleting $xattr in $1"
+				# echo "$CMDNAME: deleting $xattr in $1"
 				$DEBUGCMD $XATTRCMD -d "${oldattr}" "$1" >/dev/null
+				$XATTRCMD -d "${oldattr}" "$1" >/dev/null
 			fi
 		done
 	done
@@ -135,7 +145,9 @@ function set-xattr { # filepath carousel slot
 	del-xattr "$filename"
 	# add in new ones
 	$DEBUGCMD $XATTRCMD -w "$xattrcarousel" $2 "$filename"
+	$XATTRCMD -w "$xattrcarousel" $2 "$filename"
 	$DEBUGCMD $XATTRCMD -w "$xattrslot" $3 "$filename"
+	$XATTRCMD -w "$xattrslot" $3 "$filename"
 	#$XATTRCMD -l "$filename"
 	done # with files in slot
 }
@@ -148,14 +160,23 @@ fi
 
 # go find the --to-slot and move it aside
 if [[ -e "$to_carouselbaseslot" ]] ; then
+	# echo "Move aside to-slot"
 	$DEBUGCMD mv -f $verbose "$to_carouselbaseslot" "$CAROUSELPATH/"
+	mv -f $verbose "$to_carouselbaseslot" "$CAROUSELPATH/"
 fi
 
 # now move the from_slot to the to_slot
+# echo "Move from-slot to-slot"
 $DEBUGCMD mv -f $verbose "$from_carouselbaseslot" "$to_carouselbaseslot"
+mv -f $verbose "$from_carouselbaseslot" "$to_carouselbaseslot"
+# echo "Set new xattr on to-slot"
 $DEBUGCMD set-xattr "$to_carouselbaseslot" $to_carousel $to_slot
+set-xattr "$to_carouselbaseslot" $to_carousel $to_slot
 
+# echo "Check for moved aside"
 if [[ -e "$CAROUSELPATH/Slot $to_slot" ]] ; then
 	$DEBUGCMD mv -f $verbose "$CAROUSELPATH/Slot $to_slot" "$from_carouselbaseslot"
+	mv -f $verbose "$CAROUSELPATH/Slot $to_slot" "$from_carouselbaseslot"
 	$DEBUGCMD set-xattr "$from_carouselbaseslot" $from_carousel $from_slot
+	set-xattr "$from_carouselbaseslot" $from_carousel $from_slot
 fi
