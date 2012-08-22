@@ -180,6 +180,10 @@
 	}
 }
 
+-(NSString *)description {
+    return [NSString stringWithFormat:@"%@ slotNumber: %d slotIdentifier: %@", slotDevice, slotNumber, slotIdentifier];
+}
+
 // TODO: Examine effect of retain on newElement
 - (void)addSlotElement: (DACALSlotElement *) newElement {
 	if ([slotElements indexOfObject: newElement] == NSNotFound) {
