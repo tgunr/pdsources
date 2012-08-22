@@ -1212,6 +1212,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C7C51130E3DEC4D00FCEBD8 /* carousel.sh in Resources */,
+				5CC83EED0E6F6C81000903AD /* swapslot.sh in Resources */,
 				5C7C51140E3DEC4D00FCEBD8 /* xattr in Resources */,
 				735CC2A3049A7E2A00C919A3 /* MainMenu.nib in Resources */,
 				735CC2A4049A7E2A00C919A3 /* InfoPlist.strings in Resources */,
@@ -1241,7 +1242,6 @@
 				5C440D760E5C27DF0020A588 /* Generic_Files.icns in Resources */,
 				5C440D770E5C27DF0020A588 /* Generic_Movie.icns in Resources */,
 				5C57B7F70E66EF630063190F /* Generic_Image.icns in Resources */,
-				5CC83EED0E6F6C81000903AD /* swapslot.sh in Resources */,
 				5CBA913B0E739484000279A2 /* Localizable.strings in Resources */,
 				5CBA91670E73D380000279A2 /* driver.icns in Resources */,
 				75E667D60E92CA9500A9DA07 /* license.icns in Resources */,
