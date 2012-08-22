@@ -122,9 +122,10 @@
 								<string key="NSToolbarItemPaletteLabel">Reset</string>
 								<nil key="NSToolbarItemToolTip"/>
 								<object class="NSButton" key="NSToolbarItemView" id="980575610">
-									<nil key="NSNextResponder"/>
+									<reference key="NSNextResponder"/>
 									<int key="NSvFlags">265</int>
 									<string key="NSFrame">{{5, 14}, {26, 25}}</string>
+									<reference key="NSSuperview"/>
 									<bool key="NSEnabled">YES</bool>
 									<object class="NSButtonCell" key="NSCell" id="305833565">
 										<int key="NSCellFlags">603979776</int>
@@ -168,9 +169,10 @@
 								<string key="NSToolbarItemPaletteLabel">Check In</string>
 								<string key="NSToolbarItemToolTip"/>
 								<object class="NSButton" key="NSToolbarItemView" id="203140719">
-									<nil key="NSNextResponder"/>
+									<reference key="NSNextResponder"/>
 									<int key="NSvFlags">300</int>
 									<string key="NSFrame">{{14, 14}, {27, 25}}</string>
+									<reference key="NSSuperview"/>
 									<bool key="NSEnabled">YES</bool>
 									<object class="NSButtonCell" key="NSCell" id="765340832">
 										<int key="NSCellFlags">603979776</int>
@@ -207,9 +209,10 @@
 								<string key="NSToolbarItemPaletteLabel">Close Door</string>
 								<string key="NSToolbarItemToolTip"/>
 								<object class="NSButton" key="NSToolbarItemView" id="182495432">
-									<nil key="NSNextResponder"/>
+									<reference key="NSNextResponder"/>
 									<int key="NSvFlags">300</int>
 									<string key="NSFrame">{{21, 14}, {26, 25}}</string>
+									<reference key="NSSuperview"/>
 									<bool key="NSEnabled">YES</bool>
 									<object class="NSButtonCell" key="NSCell" id="148205497">
 										<int key="NSCellFlags">603979776</int>
@@ -246,9 +249,10 @@
 								<string key="NSToolbarItemPaletteLabel">Add</string>
 								<string key="NSToolbarItemToolTip"/>
 								<object class="NSButton" key="NSToolbarItemView" id="74392442">
-									<nil key="NSNextResponder"/>
+									<reference key="NSNextResponder"/>
 									<int key="NSvFlags">300</int>
 									<string key="NSFrame">{{2, 14}, {26, 25}}</string>
+									<reference key="NSSuperview"/>
 									<bool key="NSEnabled">YES</bool>
 									<object class="NSButtonCell" key="NSCell" id="274715062">
 										<int key="NSCellFlags">603979776</int>
@@ -288,9 +292,10 @@
 								<string key="NSToolbarItemPaletteLabel">Eject</string>
 								<nil key="NSToolbarItemToolTip"/>
 								<object class="NSButton" key="NSToolbarItemView" id="489182493">
-									<nil key="NSNextResponder"/>
+									<reference key="NSNextResponder"/>
 									<int key="NSvFlags">300</int>
 									<string key="NSFrame">{{4, 14}, {26, 25}}</string>
+									<reference key="NSSuperview"/>
 									<bool key="NSEnabled">YES</bool>
 									<object class="NSButtonCell" key="NSCell" id="806969127">
 										<int key="NSCellFlags">67108864</int>
@@ -327,9 +332,10 @@
 								<string key="NSToolbarItemPaletteLabel">Info</string>
 								<nil key="NSToolbarItemToolTip"/>
 								<object class="NSButton" key="NSToolbarItemView" id="736746809">
-									<nil key="NSNextResponder"/>
+									<reference key="NSNextResponder"/>
 									<int key="NSvFlags">265</int>
 									<string key="NSFrame">{{1, 14}, {26, 25}}</string>
+									<reference key="NSSuperview"/>
 									<bool key="NSEnabled">YES</bool>
 									<object class="NSButtonCell" key="NSCell" id="765647442">
 										<int key="NSCellFlags">67108864</int>
@@ -369,9 +375,10 @@
 								<string key="NSToolbarItemPaletteLabel">Search</string>
 								<nil key="NSToolbarItemToolTip"/>
 								<object class="NSSearchField" key="NSToolbarItemView" id="992160500">
-									<nil key="NSNextResponder"/>
+									<reference key="NSNextResponder"/>
 									<int key="NSvFlags">268</int>
 									<string key="NSFrame">{{0, 14}, {200, 22}}</string>
+									<reference key="NSSuperview"/>
 									<bool key="NSEnabled">YES</bool>
 									<object class="NSSearchFieldCell" key="NSCell" id="632644168">
 										<int key="NSCellFlags">342884416</int>
@@ -466,9 +473,10 @@
 								<string key="NSToolbarItemPaletteLabel">Check Out</string>
 								<string key="NSToolbarItemToolTip"/>
 								<object class="NSButton" key="NSToolbarItemView" id="574483757">
-									<nil key="NSNextResponder"/>
+									<reference key="NSNextResponder"/>
 									<int key="NSvFlags">300</int>
 									<string key="NSFrame">{{18, 14}, {27, 25}}</string>
+									<reference key="NSSuperview"/>
 									<bool key="NSEnabled">YES</bool>
 									<object class="NSButtonCell" key="NSCell" id="845048245">
 										<int key="NSCellFlags">603979776</int>
@@ -505,9 +513,10 @@
 								<string key="NSToolbarItemPaletteLabel">Delete</string>
 								<string key="NSToolbarItemToolTip"/>
 								<object class="NSButton" key="NSToolbarItemView" id="856079879">
-									<nil key="NSNextResponder"/>
+									<reference key="NSNextResponder"/>
 									<int key="NSvFlags">300</int>
 									<string key="NSFrame">{{8, 14}, {26, 25}}</string>
+									<reference key="NSSuperview"/>
 									<bool key="NSEnabled">YES</bool>
 									<object class="NSButtonCell" key="NSCell" id="105331837">
 										<int key="NSCellFlags">603979776</int>
@@ -547,9 +556,10 @@
 								<string key="NSToolbarItemPaletteLabel">Go To</string>
 								<nil key="NSToolbarItemToolTip"/>
 								<object class="NSButton" key="NSToolbarItemView" id="279361742">
-									<nil key="NSNextResponder"/>
+									<reference key="NSNextResponder"/>
 									<int key="NSvFlags">300</int>
 									<string key="NSFrame">{{7, 14}, {26, 25}}</string>
+									<reference key="NSSuperview"/>
 									<bool key="NSEnabled">YES</bool>
 									<object class="NSButtonCell" key="NSCell" id="434031449">
 										<int key="NSCellFlags">603979776</int>
@@ -586,9 +596,10 @@
 								<string key="NSToolbarItemPaletteLabel">Mount</string>
 								<nil key="NSToolbarItemToolTip"/>
 								<object class="NSButton" key="NSToolbarItemView" id="643415823">
-									<nil key="NSNextResponder"/>
+									<reference key="NSNextResponder"/>
 									<int key="NSvFlags">300</int>
 									<string key="NSFrame">{{8, 14}, {26, 25}}</string>
+									<reference key="NSSuperview"/>
 									<bool key="NSEnabled">YES</bool>
 									<object class="NSButtonCell" key="NSCell" id="213884021">
 										<int key="NSCellFlags">603979776</int>
@@ -2204,7 +2215,6 @@
 							<int key="NSvFlags">289</int>
 							<string key="NSFrame">{{377, 12}, {96, 32}}</string>
 							<reference key="NSSuperview" ref="88245059"/>
-							<reference key="NSNextKeyView"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="496948417">
 								<int key="NSCellFlags">67108864</int>
