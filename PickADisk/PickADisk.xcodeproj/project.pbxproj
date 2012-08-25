@@ -1470,7 +1470,7 @@
 					0x10000000,
 				);
 				PRODUCT_NAME = PickADisk;
-				USER_HEADER_SEARCH_PATHS = "";
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/../PMUtility\"/** \"${PROJECT_DIR}/../PMUtility\"/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = DebugPPC;
@@ -1509,7 +1509,7 @@
 					0x10000000,
 				);
 				PRODUCT_NAME = PickADisk;
-				USER_HEADER_SEARCH_PATHS = "";
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/../PMUtility\"/** \"${PROJECT_DIR}/../PMUtility\"/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = DebugRemote;
@@ -1548,7 +1548,7 @@
 					0x10000000,
 				);
 				PRODUCT_NAME = PickADisk;
-				USER_HEADER_SEARCH_PATHS = "";
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/../PMUtility\"/** \"${PROJECT_DIR}/../PMUtility\"/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = "Debug Fresh Prefs";
@@ -1569,7 +1569,7 @@
 					0x10000000,
 				);
 				PRODUCT_NAME = PickADisk;
-				USER_HEADER_SEARCH_PATHS = "";
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/../PMUtility\"/** \"${PROJECT_DIR}/../PMUtility\"/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1590,7 +1590,7 @@
 					0x10000000,
 				);
 				PRODUCT_NAME = PickADisk;
-				USER_HEADER_SEARCH_PATHS = "";
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/../PMUtility\"/** \"${PROJECT_DIR}/../PMUtility\"/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
