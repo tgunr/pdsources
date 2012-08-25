@@ -270,7 +270,6 @@
 		5C2E40E10E73FBD300D7DF4A /* DACALDriverInstaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = DACALDriverInstaller.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		5C2E410F0E74076A00D7DF4A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
 		5C2E42540E74519C00D7DF4A /* dacauth */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = dacauth; path = ../DACALDriver/dacauth; sourceTree = SOURCE_ROOT; };
-		5C2E42550E74519C00D7DF4A /* DACALDriver.kext */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.kernel-extension"; name = DACALDriver.kext; path = ../DACALDriver/build/Release/DACALDriver.kext; sourceTree = SOURCE_ROOT; };
 		5C2EBE920E29719B009BAF4C /* update.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = update.icns; sourceTree = "<group>"; };
 		5C2EBE950E2979B3009BAF4C /* sidebarpref.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = sidebarpref.icns; sourceTree = "<group>"; };
 		5C2EBE990E2991BF009BAF4C /* PADPrefsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PADPrefsController.h; sourceTree = "<group>"; };
@@ -649,7 +648,6 @@
 			isa = PBXGroup;
 			children = (
 				5C2E42540E74519C00D7DF4A /* dacauth */,
-				5C2E42550E74519C00D7DF4A /* DACALDriver.kext */,
 			);
 			name = Executables;
 			sourceTree = "<group>";
@@ -1514,53 +1512,6 @@
 			};
 			name = "Release Test";
 		};
-		75D3EBAB0E8BF811009A0199 /* DebugPPC */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7504AEA30FB389E600FFAA84 /* buildnumber.xcconfig */;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SRCROOT)/../DerivedData/Build/Products/$(CONFIGURATION)\"",
-					"\"$(SRCROOT)/Frameworks\"",
-				);
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = Prefix.h;
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../DerivedData/Build/Products/$(CONFIGURATION)\"";
-				LD_RUNPATH_SEARCH_PATHS = "";
-				SDKROOT = macosx10.7;
-				SYMROOT = ../build;
-			};
-			name = DebugPPC;
-		};
-		75D3EBAC0E8BF811009A0199 /* DebugPPC */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = PickADisk.entitlements;
-				CODE_SIGN_IDENTITY = "Mac Developer";
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Frameworks\"",
-					"\"$(SRCROOT)/../DerivedData/Build/Products/$CONFIGURATION)\"/**",
-					"\"$(SRCROOT)/Frameworks\"",
-					"\"$(SRCROOT)/../DerivedData/Build/Products/Development\"",
-					"\"$(SRCROOT)/../build/Development\"",
-				);
-				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../pmssource\"/**";
-				INFOPLIST_FILE = "Info-PickADisk.plist";
-				LD_RUNPATH_SEARCH_PATHS = "@rpath/../Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					/opt/local/lib,
-				);
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				PRODUCT_NAME = PickADisk;
-				USER_HEADER_SEARCH_PATHS = "";
-				WRAPPER_EXTENSION = app;
-			};
-			name = DebugPPC;
-		};
 		75DFAC86107FF40F0076E115 /* DebugRemote */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7504AEA30FB389E600FFAA84 /* buildnumber.xcconfig */;
@@ -1760,7 +1711,6 @@
 				B69BDD9508A2EC26008AC9B5 /* Development */,
 				75DFAC87107FF40F0076E115 /* DebugRemote */,
 				75E4927D0EACC04200AC85A0 /* Debug Fresh Prefs */,
-				75D3EBAC0E8BF811009A0199 /* DebugPPC */,
 				B69BDD9608A2EC26008AC9B5 /* Release */,
 				7504AE850FB3837C00FFAA84 /* Release Test */,
 			);
@@ -1773,7 +1723,6 @@
 				B69BDD9908A2EC26008AC9B5 /* Development */,
 				75DFAC86107FF40F0076E115 /* DebugRemote */,
 				75E4927C0EACC04200AC85A0 /* Debug Fresh Prefs */,
-				75D3EBAB0E8BF811009A0199 /* DebugPPC */,
 				B69BDD9A08A2EC26008AC9B5 /* Release */,
 				7504AE840FB3837C00FFAA84 /* Release Test */,
 			);
