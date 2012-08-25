@@ -142,7 +142,7 @@
 - (void)windowWillBeginSheet:(NSNotification *)notification
 {
 	NSLog(@"%s", __PRETTY_FUNCTION__);
-	[super windowWillBeginSheet:notification];
+//	[super windowWillBeginSheet:notification];
 }
 
 #pragma mark ###	Index Progress Window (unused)	###

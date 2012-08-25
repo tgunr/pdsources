@@ -299,7 +299,7 @@ const	CGFloat		kPADVIVStateRotateCounterClockwise		= 1.0f;
 {
 	BOOL	superChange = NO;
 	
-	if( superChange = [super changeToDefaultImage] )
+	if( (superChange = [super changeToDefaultImage]) )
 	{
 		[self setCurrentCompositingOp:NSCompositeSourceAtop];
 		[self setCurrentAlpha:0.69];
