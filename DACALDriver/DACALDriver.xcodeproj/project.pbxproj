@@ -202,10 +202,11 @@
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-mkernel";
 				SDKROOT = macosx10.7;
+				SYMROOT = ../build;
 			};
 			name = Release;
 		};
-		751E8423149ABF8C0024DBE7 /* Debug */ = {
+		751E8423149ABF8C0024DBE7 /* Development */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
@@ -218,10 +219,11 @@
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-mkernel";
 				SDKROOT = macosx10.7;
+				SYMROOT = ../build;
 			};
-			name = Debug;
+			name = Development;
 		};
-		751E8424149ABF8C0024DBE7 /* Debug */ = {
+		751E8424149ABF8C0024DBE7 /* Development */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
@@ -229,7 +231,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				PRODUCT_NAME = DACALDriver;
 			};
-			name = Debug;
+			name = Development;
 		};
 		7543D5290E3BBEE5009A8AF3 /* Deploy */ = {
 			isa = XCBuildConfiguration;
@@ -244,6 +246,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-mkernel";
 				SDKROOT = macosx10.7;
+				SYMROOT = ../build;
 			};
 			name = Deploy;
 		};
@@ -263,7 +266,7 @@
 		1DEB91D908733DB10010E9CD /* Build configuration list for PBXNativeTarget "DACALDriver" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				751E8424149ABF8C0024DBE7 /* Debug */,
+				751E8424149ABF8C0024DBE7 /* Development */,
 				7543D52A0E3BBEE5009A8AF3 /* Deploy */,
 				1DEB91DB08733DB10010E9CD /* Release */,
 			);
@@ -273,7 +276,7 @@
 		1DEB91DD08733DB10010E9CD /* Build configuration list for PBXProject "DACALDriver" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				751E8423149ABF8C0024DBE7 /* Debug */,
+				751E8423149ABF8C0024DBE7 /* Development */,
 				7543D5290E3BBEE5009A8AF3 /* Deploy */,
 				1DEB91DF08733DB10010E9CD /* Release */,
 			);
