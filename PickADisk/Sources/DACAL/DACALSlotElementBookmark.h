@@ -24,7 +24,7 @@
 -(BOOL)isBookmarkLocation:(NSString*)theLocation;
 -(BOOL)removeBookmark;
 -(void)removeMarkNode;
-
+-(void)removeBookmarkForLocation;
 -(id)initBookmarkForElement:(DACALSlotElement*)theElement atLocation:(NSString*)theLocation attachNow:(BOOL)doAttach;
 +(id)bookmarkForElement:(DACALSlotElement*)theElement atLocation:(NSString*)theLocation attachNow:(BOOL)doAttach;
 

@@ -71,7 +71,7 @@
 
 		markNode = newMark;
 
-		if( doAttach == YES )
+		if( doAttach == YES ) {
 			if( [theLocation compare:kDACBookmarkLocationInSidebar] == NSOrderedSame ) {
 				SimpleTreeNode* workNode = [[[[DACALTreeDataSource shared] treeControl] treeRoot] childWithName:PADINDEX_GROUPTITLE_FAVORITES];
 				[workNode insertChild:(TreeNode*)markNode atIndex:[workNode numberOfChildren]];
@@ -79,6 +79,7 @@
 				[[[[DACALTreeDataSource shared] treeControl] outlineView] reloadItem:workNode reloadChildren:YES];
 			} else
 				NSLog(@"Unimplemented bookmark location: %@", theLocation);
+        }
 	}
 	return self;
 }

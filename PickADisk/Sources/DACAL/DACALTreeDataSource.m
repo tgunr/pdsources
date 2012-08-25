@@ -17,6 +17,8 @@
 #import "DACALDevice.h"
 #import "DACALIndexState.h"
 #import "DACALSlotElement.h"
+#import <PMUtility/PMUtility.h>
+#import "TreeController.h"
 
 NSString*	DACALFlavorToFlavorValue( NSString* flavor )
 {

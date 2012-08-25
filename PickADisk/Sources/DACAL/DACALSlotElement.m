@@ -11,6 +11,7 @@
 #import "DACALSlotElementBookmark.h"
 #import "DACALTreeDataSource.h"
 #import "DACALSlot.h"
+#import "TreeController.h"
 
 @implementation DACALSlotElement
 

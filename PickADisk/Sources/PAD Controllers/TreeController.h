@@ -38,6 +38,7 @@
 
 @class SimpleTreeNode;
 @class PADIndexToolbarController;
+@class PADOutlineView;
 
 @interface TreeController : NSObject {
 
@@ -53,7 +54,7 @@
 	BOOL						onlyAcceptDropOnRoot;
 	
 	IBOutlet id					dataSource;
-    IBOutlet NSOutlineView		*outlineView;	
+    IBOutlet PADOutlineView		*outlineView;	
 }
 
 - (IBAction)addGroup:(id)sender;
