@@ -131,6 +131,7 @@
 	[super dealloc];
 }
 
+// TODO: 2012-08-25 This needs to be looked at. Causing severe delay as it goes thru every node, outlineViewAction is called over 100000 times
 -(void)reloadData
 {
 	
