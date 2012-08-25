@@ -688,7 +688,7 @@
 	NSString*	ourComments = [self keyComments];
 	PADSearchRelevance	rank = 0.0;
 	NSStringCompareOptions	findOptions;
-    findOptions = (NSStringCompareOptions) (NSCaseInsensitiveSearch || NSNumericSearch || NSDiacriticInsensitiveSearch || NSWidthInsensitiveSearch);
+    findOptions = (NSStringCompareOptions) (NSCaseInsensitiveSearch | NSNumericSearch | NSDiacriticInsensitiveSearch | NSWidthInsensitiveSearch);
     NSNumber*	optionOption = nil;
 	
 	if( (options) && (optionOption = [options objectForKey:@"Options"]) )
@@ -709,7 +709,7 @@
 	NSInteger	tagIndex, tagCount = [ourTags count];
 	PADSearchRelevance	rank = 0.0;
 	PADSearchRelevance	tagRank = 0.0;
-	NSStringCompareOptions	findOptions = NSCaseInsensitiveSearch || NSNumericSearch || NSDiacriticInsensitiveSearch || NSWidthInsensitiveSearch;
+	NSStringCompareOptions	findOptions = NSCaseInsensitiveSearch | NSNumericSearch | NSDiacriticInsensitiveSearch | NSWidthInsensitiveSearch;
 	NSNumber*	optionOption = nil;
 	
 	if( (options) && (optionOption = [options objectForKey:@"Options"]) )

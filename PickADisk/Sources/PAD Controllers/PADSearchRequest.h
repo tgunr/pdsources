@@ -160,7 +160,7 @@ extern const	NSString*			kPADSearchOptionResultTypeItem;
 +(id)searchCarouselsForStars:(NSString*)inUTI resultType:(const NSString*)inType;
 +(id)searchCarouselsForFileUTI:(NSString*)inUTI resultType:(const NSString*)inType;
 +(id)searchCarouselsForDateAddedBeforeDays:(NSTimeInterval)inDays ofDate:(id)inDate resultType:(const NSString*)inType;
-+(id)searchCarouselsForCheckedInOutBeforeDays:(NSTimeInterval)inDays ofDate:(id)inDate resultType:(const NSString*)inType;
++(id)searchCarouselsForCheckedOutBeforeDays:(NSTimeInterval)inDays ofDate:(id)inDate resultType:(const NSString*)inType;
 +(id)searchCarouselsForKind:(NSString*)inTerm resultType:(const NSString*)inType;
 +(id)searchCarouselsForTitle:(NSString*)inKind resultType:(const NSString*)inType;
 +(id)searchCarouselsForTerm:(NSString*)inTerm;
