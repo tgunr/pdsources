@@ -306,6 +306,7 @@ AFTERRELOAD:
 	[outCell setRepresentedObject:item];
 	// If we return a cell for the 'nil' tableColumn, it will be used as a "full width" cell and span all the columns
     if ([self allowGroupRowLook] && (tableColumn == nil)) {
+        // TODO: 2012-08-25 Exception thrown here after all night running and reactivated
         if ([[item nodeData] isGroup]) {
             // We want to use the cell for the name column, but we could construct a new cell if we wanted to, or return a different cell for each row.
             return [[outlineView tableColumnWithIdentifier:COLUMNID_NAME] dataCell];

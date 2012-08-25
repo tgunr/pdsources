@@ -151,7 +151,8 @@
 }
 
 - (TreeNode*)childAtIndex:(NSInteger)index {
-    return [nodeChildren objectAtIndex:index];
+    id child = [nodeChildren objectAtIndex:index];
+    return child;
 }
 
 - (BOOL)isDescendantOfNode:(TreeNode *)node {
