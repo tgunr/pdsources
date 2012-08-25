@@ -181,7 +181,6 @@ int		DACVolume_nextIconID = 0;
 }
 
 -(BOOL)isIndexable {
-    return YES;
     return !padKnownVolume;
 }
 
@@ -1075,7 +1074,7 @@ FAILED:
 		
 	[knownVolumes addUniqueObjectsFromArray:newVolumes];
 	
-	if( (unrecogAction == kDACDVUnknownIDDisplayAddWindow ) )
+	if( unrecogAction == kDACDVUnknownIDDisplayAddWindow )
 		if( ([indexMounts count] > 0) && (mainWindow != nil) && ([mainWindow attachedSheet] == nil) )
 			[[AppControl toolbarController] clickAssign:self];
 
