@@ -46,8 +46,6 @@ static const char sccsid[] = "@(#)function.c	8.10 (Berkeley) 5/4/95";
 #include <sys/param.h>
 #include <sys/ucred.h>
 #include <sys/stat.h>
-#include <sys/types.h>
-#include <sys/acl.h>
 #include <sys/wait.h>
 #include <sys/mount.h>
 #include <sys/timeb.h>
@@ -58,7 +56,6 @@ static const char sccsid[] = "@(#)function.c	8.10 (Berkeley) 5/4/95";
 #include <fnmatch.h>
 #include <fts.h>
 #include <grp.h>
-#include <limits.h>
 #include <pwd.h>
 #include <regex.h>
 #include <stdio.h>
@@ -655,6 +652,8 @@ doexec:	if ((plan->flags & F_NEEDOK) && !queryuser(plan->e_argv))
 		execvp(plan->e_argv[0], plan->e_argv);
 		warn("%s", plan->e_argv[0]);
 		_exit(1);
+		default:
+	        break;
 	}
 	if (plan->flags & F_EXECPLUS) {
 		while (--plan->e_ppos >= plan->e_pbnum)
@@ -942,6 +941,8 @@ c_fstype(OPTION *option, char ***argvp)
 			return new;
 		}
 		break;
+		default:
+	        break;
 	}
 
 	/*
@@ -1435,7 +1436,6 @@ c_size(OPTION *option, char ***argvp)
 		default:
 			errx(1, "%s: %s: illegal trailing character",
 				option->name, size_str);
-			break;
 		}
 		if (new->o_data > QUAD_MAX / scale)
 			errx(1, "%s: %s: value too large",

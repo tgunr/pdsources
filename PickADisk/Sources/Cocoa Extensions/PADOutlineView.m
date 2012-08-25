@@ -137,11 +137,6 @@
 	
 	PADSearchRequest*	ourSearch = [self currentSearch];
 	NSArray*			saveSelection = nil;
-	
-	saveSelection = [self allSelectedNodes];
-	[super reloadData];
-	[self selectNodes:saveSelection byExtendingSelection:NO];
-	return;
 
 	if( ourSearch != nil ) {
 		NSLog(@"Our Search: %@", ourSearch);
@@ -218,7 +213,7 @@
 	BOOL isValid = YES;
 	
 	if( [[self delegate] respondsToSelector:@selector(validateMenuItem:)] )
-		isValid = [[self delegate] validateMenuItem:menuItem];
+		isValid = (BOOL)[[self delegate] validateMenuItem:menuItem];
 	else
         isValid = [super validateMenuItem:menuItem];
 	
@@ -232,7 +227,8 @@
 - (void)draggedImage:(NSImage *)image endedAt:(NSPoint)screenPoint operation:(NSDragOperation)operation
 {
 	
-	if( [[self delegate] respondsToSelector:@selector(draggedImage:endedAt:operation:)] )
+	if( [[self delegate]
+         respondsToSelector:@selector(draggedImage:endedAt:operation:)] )
 	   [[self delegate] draggedImage:image endedAt:screenPoint operation:operation];
 	else {
         [super draggedImage:image endedAt:screenPoint operation:operation];

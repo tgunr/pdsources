@@ -41,15 +41,11 @@ static char sccsid[] = "@(#)misc.c	8.2 (Berkeley) 4/1/94";
 #endif
 #endif /* not lint */
 
-#include <sys/cdefs.h>
 //__FBSDID("$FreeBSD: src/usr.bin/find/misc.c,v 1.8 2005/04/02 07:44:12 tjr Exp $");
 
 #include <sys/types.h>
-#include <sys/stat.h>
 
 #include <err.h>
-#include <errno.h>
-#include <fts.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

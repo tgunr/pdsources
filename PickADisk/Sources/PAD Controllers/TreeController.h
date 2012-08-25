@@ -77,8 +77,8 @@
 
 - (id)dataSource;
 
-- (NSOutlineView*)outlineView;
-- (void)setOutlineView:(NSOutlineView*)view;
+- (PADOutlineView*)outlineView;
+- (void)setOutlineView:(PADOutlineView*)view;
 - (NSUndoManager*)undoManager;
 
 - (NSArray*)draggedNodes;
@@ -114,7 +114,7 @@
 - (id)treeControl;
 - (void)setTreeControl:(id)tree;
 
-- (NSOutlineView*)outlineView;
+- (PADOutlineView*)outlineView;
 - (NSUndoManager*)undoManager;
 
 - (void)removeAllChildren;
@@ -149,7 +149,7 @@
 - (void)updateChangesForItems:(NSArray*)changedItems withAction:(BOOL)doAction;
 - (void)updateChangesWithAction:(BOOL)doAction;
 
-- (BOOL)outlineView: (NSOutlineView *) ov shouldExpandItem: (id) item;
+- (BOOL)outlineView: (PADOutlineView *) ov shouldExpandItem: (id) item;
 
 - (BOOL)outlineView: (id) ov isGroupItem: (id) item;
 

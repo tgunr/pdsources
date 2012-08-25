@@ -41,7 +41,6 @@ static char sccsid[] = "@(#)find.c	8.5 (Berkeley) 8/5/94";
 #endif
 #endif /* not lint */
 
-#include <sys/cdefs.h>
 //__FBSDID("$FreeBSD: src/usr.bin/find/find.c,v 1.18 2006/05/14 20:23:00 krion Exp $");
 
 #include <sys/types.h>
@@ -50,7 +49,6 @@ static char sccsid[] = "@(#)find.c	8.5 (Berkeley) 8/5/94";
 #include <err.h>
 #include <errno.h>
 #include <fts.h>
-#include <regex.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -288,6 +286,8 @@ find_execute(PLAN *plan, char *paths[])
 		case FTS_W:
 			continue;
 #endif /* FTS_W */
+			default:
+		        break;
 		}
 #define	BADCH	" \t\n\\'\""
 		if (isxargs && strpbrk(entry->fts_path, BADCH)) {

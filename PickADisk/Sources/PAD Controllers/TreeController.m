@@ -125,11 +125,13 @@ AFTERRELOAD:
 
 - (id)dataSource { return dataSource; }
 
-- (NSOutlineView*)outlineView { return outlineView; }
+- (PADOutlineView*)outlineView { return outlineView; }
 - (void)setOutlineView:(NSOutlineView*)view
 {
-	if( outlineView != nil ) [outlineView release];
-	if( view != nil ) [view retain];
+	if( outlineView != nil )
+        [outlineView release];
+	if( view != nil )
+        [view retain];
 	outlineView = view;
 }
 
@@ -431,7 +433,7 @@ AFTERRELOAD:
 	return NO;
 }
 
-- (BOOL)outlineView:(NSOutlineView *)ov shouldTrackCell:(NSCell *)cell forTableColumn:(NSTableColumn *)tableColumn item:(id)item {
+- (BOOL)outlineView:(PADOutlineView *)ov shouldTrackCell:(NSCell *)cell forTableColumn:(NSTableColumn *)tableColumn item:(id)item {
     // We want to allow tracking for all the button cells, even if we don't allow selecting that particular row. 
     if ([cell isKindOfClass:[NSButtonCell class]]) {
         // We can also take a peek and make sure that the part of the cell clicked is an area that is normally tracked. Otherwise, clicking outside of the checkbox may make it check the checkbox
@@ -459,7 +461,7 @@ AFTERRELOAD:
 }
 
 
-- (NSString *)outlineView:(NSOutlineView *)ov toolTipForCell:(NSCell *)cell rect:(NSRectPointer)inRect tableColumn:(NSTableColumn *)tc item:(id)inItem mouseLocation:(NSPoint)inMouseLocation
+- (NSString *)outlineView:(PADOutlineView *)ov toolTipForCell:(NSCell *)cell rect:(NSRectPointer)inRect tableColumn:(NSTableColumn *)tc item:(id)inItem mouseLocation:(NSPoint)inMouseLocation
 {
 	if( dataSource != nil )
 		return [dataSource toolTipForCell:cell rect:inRect tableColumn:tc item:inItem mouseLocation:inMouseLocation];
@@ -1340,8 +1342,10 @@ NSURL *NewFileURLForWritingFile(NSString *dirpath, NSString *basename, NSString 
 
 - (void)sortExpandedChildrenWithCurrentDescriptors:(SimpleTreeNode*)theNode
 {
-	if( theNode == nil ) theNode = [[self treeControl] treeRoot];
-	if( theNode ) [theNode sortExpandedChildrenUsingDescriptors:[[[self treeControl] outlineView] sortDescriptors ]];
+	if( theNode == nil )
+        theNode = [[self treeControl] treeRoot];
+	if( theNode )
+        [theNode sortExpandedChildrenUsingDescriptors:[[[self treeControl] outlineView] sortDescriptors ]];
 }
 
 - (BOOL)shouldShowCellExpansionForTableColumn:(NSTableColumn *)tc item:(id)inItem

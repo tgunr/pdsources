@@ -19,6 +19,7 @@
 #import "DACALSlotElement.h"
 #import <PMUtility/PMUtility.h>
 #import "TreeController.h"
+#import "DACALViewDataSource.h"
 
 NSString*	DACALFlavorToFlavorValue( NSString* flavor )
 {
@@ -247,19 +248,19 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 	[[theGroupNode nodeData] setItemType:kPADTypeGroupSearches];
 	theWorkNode = [theGroupNode childWithName:@"Today"];
 	theWorkData = [theWorkNode nodeData];
-	[theWorkData setItemSearch:[PADSearchRequest searchCarouselsForCheckedInOutBeforeDays:1 ofDate:nil resultType:kPADSearchOptionResultTypeItem]];
+	[theWorkData setItemSearch:[PADSearchRequest searchCarouselsForCheckedOutBeforeDays:1 ofDate:nil resultType:kPADSearchOptionResultTypeItem]];
 	
 	theWorkNode = [theGroupNode childWithName:@"Yesterday"];
 	theWorkData = [theWorkNode nodeData];
-	[theWorkData setItemSearch:[PADSearchRequest searchCarouselsForCheckedInOutBeforeDays:1 ofDate:@"Yesterday" resultType:kPADSearchOptionResultTypeItem]];
+	[theWorkData setItemSearch:[PADSearchRequest searchCarouselsForCheckedOutBeforeDays:1 ofDate:@"Yesterday" resultType:kPADSearchOptionResultTypeItem]];
 	
 	theWorkNode = [theGroupNode childWithName:@"Past Week"];
 	theWorkData = [theWorkNode nodeData];
-	[theWorkData setItemSearch:[PADSearchRequest searchCarouselsForCheckedInOutBeforeDays:7 ofDate:nil resultType:kPADSearchOptionResultTypeItem]];
+	[theWorkData setItemSearch:[PADSearchRequest searchCarouselsForCheckedOutBeforeDays:7 ofDate:nil resultType:kPADSearchOptionResultTypeItem]];
 	
 	theWorkNode = [theGroupNode childWithName:@"Past Month"];
 	theWorkData = [theWorkNode nodeData];
-	[theWorkData setItemSearch:[PADSearchRequest searchCarouselsForCheckedInOutBeforeDays:30 ofDate:nil resultType:kPADSearchOptionResultTypeItem]];
+	[theWorkData setItemSearch:[PADSearchRequest searchCarouselsForCheckedOutBeforeDays:30 ofDate:nil resultType:kPADSearchOptionResultTypeItem]];
 	
 	theWorkNode = [theGroupNode childWithName:@"My Favorites"];
 	theWorkData = [theWorkNode nodeData];
@@ -496,7 +497,8 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 //	NSArray*					dataRowsSelected = [secondaryController selectedNodes];
 	SimpleTreeNode*				originalTree = nil;
 	
-	if( [selectedNodes count] == 0 ) [tabView selectTabViewItemWithIdentifier:@"Home"];
+	if( [selectedNodes count] == 0 )
+        [tabView selectTabViewItemWithIdentifier:@"Home"];
 	else  {
 		[tabView selectTabViewItemWithIdentifier:@"Data"];
 		[self toolbarSearchFinish:tree];

@@ -7,6 +7,7 @@
 
 #import "PADOperationControlDevice.h"
 #import "AppController.h"
+#import "DACALDevice.h"
 
 @implementation PADOperationControlDevice
 

@@ -67,7 +67,7 @@
 {
 	NSUInteger slotIndex = aSlot - 1;
 
-	if( (slotIndex >= 0) && (slotIndex <= [deviceSlots count]) )
+	if( (slotIndex > 0) && (slotIndex <= [deviceSlots count]) )
 		return [deviceSlots objectAtIndex:slotIndex];
 
 	return nil;

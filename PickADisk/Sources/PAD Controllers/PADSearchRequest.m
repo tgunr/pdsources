@@ -124,9 +124,12 @@ const	NSString*			kPADSearchOptionResultTypeItem	= @"Default";
 	PADSearchRelevance	elementRank = 0.0;
 	float				elementWeight = [self termWeight];
 	
-	if( element )
-		if( [self getSelector] != nil ) elementValue = [element performSelector:[self getSelector]];
-		else elementValue = element;
+	if( element ) {
+		if( [self getSelector] != nil )
+            elementValue = [element performSelector:[self getSelector]];
+		else
+            elementValue = element;
+    }
 	if( elementValue != nil )
 		elementNSRank = [elementValue performSelector:[self compareSelector] withObject:[self compareData] withObject:[self termOptions]];
 	
@@ -140,7 +143,7 @@ const	NSString*			kPADSearchOptionResultTypeItem	= @"Default";
 {	
 	id						ourData = [self compareData];
 	float                   rank = 0.0;
-	NSStringCompareOptions	findOptions = NSCaseInsensitiveSearch || NSNumericSearch || NSDiacriticInsensitiveSearch || NSWidthInsensitiveSearch;
+	NSStringCompareOptions	findOptions = NSCaseInsensitiveSearch | NSNumericSearch | NSDiacriticInsensitiveSearch | NSWidthInsensitiveSearch;
 
 	if( ourData == nil ) rank = 1.0;
 	else if( [ourData isKindOfClass:[NSString class]] )
@@ -611,7 +614,7 @@ PADSearchTerm*	PADCopySearchTermWithTitleOrID( NSString* aTermName )
 	return newRequest;
 }
 
-+(id)searchCarouselsForCheckedInOutBeforeDays:(NSTimeInterval)inDays ofDate:(id)inDate resultType:(const NSString*)inType
++(id)searchCarouselsForCheckedOutBeforeDays:(NSTimeInterval)inDays ofDate:(id)inDate resultType:(const NSString*)inType
 { 
 	NSDictionary*			optionDict = [NSDictionary dictionaryWithObject:inType forKey:kPADSearchOptionResultType];
 	PADSearchRequest*		newRequest = [[PADSearchRequest alloc] initSearchInLocations:nil andOptions:optionDict];
@@ -622,7 +625,7 @@ PADSearchTerm*	PADCopySearchTermWithTitleOrID( NSString* aTermName )
 	
 	if( newRequest )
 	{
-		[newRequest addSearchTerm:kPADSearchByDateCheckedInOut forValue:inDate inOrder:0 andConjunction:kPADSearchConjunctionNormal withWeight:kPADSearchWeightNormal andOptions:dateOptions];
+		[newRequest addSearchTerm:kPADSearchByDateCheckedOut forValue:inDate inOrder:0 andConjunction:kPADSearchConjunctionNormal withWeight:kPADSearchWeightNormal andOptions:dateOptions];
 	}
 	
 	return newRequest;

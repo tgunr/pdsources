@@ -37,15 +37,12 @@ static char sccsid[] = "@(#)ls.c	8.1 (Berkeley) 6/6/93";
 #endif
 #endif /* not lint */
 
-#include <sys/cdefs.h>
 //__FBSDID("$FreeBSD: src/usr.bin/find/ls.c,v 1.17 2004/01/20 09:27:03 des Exp $");
 
 #include <sys/param.h>
 #include <sys/stat.h>
 
 #include <err.h>
-#include <errno.h>
-#include <fts.h>
 #include <grp.h>
 #include <inttypes.h>
 #include <langinfo.h>

@@ -6,6 +6,7 @@
 
 
 #import <Cocoa/Cocoa.h>
+#import <PMUtility/pmUtility.h>
 #import "AppController.h"
 #import "DACALSlotElement.h"
 #import "DACALSlotElementBookmark.h"
@@ -136,8 +137,9 @@
 -(BOOL)saveBookmarks
 {
 	BOOL			didSave = NO;
-	NSInteger		markIndex, markCount = [elementBookmarks count];
-	NSMutableArray*	markNames = [NSMutableArray arrayWithCapacity:markCount];
+	NSUInteger markCount = [elementBookmarks count];
+	NSUInteger markIndex;
+	NSMutableArray*	markNames = [NSMutableArray arrayWithCapacity: markCount];
 
 	for( markIndex=0; markIndex < markCount; markIndex++ )
 		[markNames addObject:[[elementBookmarks objectAtIndex:markIndex] markLocation]];
@@ -157,7 +159,7 @@
 	CFStringRef		newStars = FSCopyXattr( kCFAllocatorDefault, &elementFSRef, kDACALCarouselDocumentXAttrUserStars, NULL );
 	if( newStars != NULL ) {
 		stars = CFStringGetIntValue( newStars );
-		CFRelease( newStars );
+		CFRelease((CFTypeRef)newStars);
 	} else
 		stars = 0;
 

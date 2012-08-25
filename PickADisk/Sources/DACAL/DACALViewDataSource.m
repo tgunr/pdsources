@@ -30,7 +30,8 @@
 
 - (void)awakeFromNib 
 {
-	if( !PADBOX_VALIDATED ) [[[treeControl outlineView] window] orderOut:self];
+	if( !PADBOX_VALIDATED )
+		[[[treeControl outlineView] window] orderOut:self];
 	
 	[[AppController shared] setDataView: treeControl];
 

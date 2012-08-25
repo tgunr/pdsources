@@ -49,8 +49,8 @@
 
 #import "TreeNode.h"
 #import "SimpleTreeNode.h"
-#import <PMUtility/NSMutableArray_Extensions.h>
-#import <PMUtility/NSArray_Extensions.h>
+#import "PADOutlineView.h"
+#import <PMUtility/PMUtility.h>
 
 @implementation TreeNode
 
@@ -157,8 +157,12 @@
 }
 
 - (TreeNode*)childAtIndex:(NSInteger)index {
-    id child = [nodeChildren objectAtIndex:index];
-    return child;
+    NSUInteger c = [nodeChildren count];
+    if (c) {
+        id child = [nodeChildren objectAtIndex:index];
+        return child;
+    } else
+        return nil;
 }
 
 - (BOOL)isDescendantOfNode:(TreeNode *)node {
@@ -266,7 +270,7 @@
 - (void)sortExpandedChildrenForView:(NSOutlineView*)theView
 	{ [self sortExpandedChildrenUsingDescriptors:[theView sortDescriptors]]; }
 
-- (void)recursiveReExpandInView:(NSOutlineView*)theView
+- (void)recursiveReExpandInView:(PADOutlineView*)theView
 {
     [nodeChildren makeObjectsPerformSelector:@selector(recursiveReExpandInView:) withObject:theView];
 	if( [[self nodeData] isExpanded] ) [theView expandItem:self];

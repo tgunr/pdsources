@@ -4,6 +4,7 @@
 
 #include <getopt.h>
 #include <stdlib.h>
+#import <PMUtility/pm.h>
 #import "dacallib.h"
 
 char* STDCStringCreateFromCFString( CFStringRef inString )
@@ -112,6 +113,8 @@ int main (int argc, const char * argv[]) {
 						err = DACALCommandSetLED( workDevice, (Boolean)atoi(optarg));
 						break;
 					}
+					default:
+				        break;
 				}
 				break;
 			}

@@ -55,7 +55,6 @@ static const char sccsid[] = "@(#)touch.c	8.1 (Berkeley) 6/6/93";
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <time.h>
 #include <unistd.h>
 
 int	rw(char *, struct stat *, int);
@@ -71,7 +70,7 @@ main(int argc, char *argv[])
 	struct timeval tv[2];
 	int (*stat_f)(const char *, struct stat *);
 	int (*utimes_f)(const char *, const struct timeval *);
-	int aflag, cflag, fflag, mflag, ch, fd, len, rval, timeset;
+	int aflag, cflag, fflag, mflag, fd, len, rval, timeset;
 	char *p;
 
 	aflag = cflag = fflag = mflag = timeset = 0;
@@ -83,7 +82,7 @@ main(int argc, char *argv[])
 #ifndef __APPLE__
 	while ((ch = getopt(argc, argv, "acfhmr:t:")) != -1)
 #else
-	while ((ch = getopt(argc, argv, "acfmr:t:")) != -1)
+	while ((getopt(argc, argv, "acfmr:t:")) != -1)
 #endif
 		switch(ch) {
 		case 'a':
