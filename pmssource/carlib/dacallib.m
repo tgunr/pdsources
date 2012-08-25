@@ -1537,7 +1537,6 @@ DACALSlotMove(
 	return outResult;
 }
 
-
 CFStringRef
 DACALSlotCopyTitle(DACALDeviceRef deviceID, DACALSlotNum slotNum, DACALResult *outError) {
 	DACALResult theErr = kIOReturnBadArgument;
@@ -1717,8 +1716,6 @@ DACALResult DACALSlotSetType(DACALDeviceRef deviceID, DACALSlotNum slotNum, CFSt
 	return (outResult);
 }
 
-
-
 /*	DACALResult		outResult = kIOReturnBadArgument;
 	CFStringRef		doCFCommand;
 	CFStringRef		doCommand;
@@ -1746,7 +1743,6 @@ BAIL:
 	if( boxUUID )		CFRelease( boxUUID );
 	return( outResult );
 */
-
 
 DACALSlotNum
 DACALSlotNextFreeNumber(
@@ -1818,7 +1814,6 @@ DACALSlotNextFreeNumber(
 
 	return (outSlot);
 }
-
 
 DACALResult
 DACALDevicesSetCFAllocator(CFAllocatorRef defaultAlloc) {
@@ -2547,7 +2542,6 @@ DACALDevicesAdded(void *refCon, io_iterator_t iterator) {
 		DACALDeviceCreateWithService(aCarousel, NULL);
 }
 
-
 DACALResult
 DACALDevicesFinalize(void) {
 	DACALResult closeErr, outErr = 0;
@@ -2661,7 +2655,6 @@ DACALClientGetIndexForID(CFStringRef aClient) {
 	return 0;
 }
 
-
 void
 DACALClientNotify(
 		CFStringRef noticeClient, DACALDeviceRef noticeDevice, CFStringRef noticeMessage,
@@ -2773,7 +2766,6 @@ DACALCreateLibraryFolder(FSRef *libraryFolder) {
 		}
 	return ffErr;
 }
-
 
 DACALResult
 DACALClientCreate(CFStringRef clientID, void *useDataRef, void *useCallback) {
