@@ -48,7 +48,6 @@
 	aqError = [[NSString alloc] init];
 	blacklist = [[NSArray alloc] init];
 	hash = [[NSString alloc] init];
-    rsaKey = nil;
 	
 	[self setKey:key privateKey:privateKey];
 	
@@ -62,9 +61,12 @@
 	if (rsaKey)
 		RSA_free(rsaKey);
 
-	[blacklist release];
-	[aqError release];
-	[hash release];
+	if (blacklist)
+		[blacklist release];
+	if (aqError)
+		[aqError release];
+	if (hash)
+		[hash release];
 	
 	[super dealloc];
 }
@@ -74,7 +76,7 @@
 	return [[[AquaticPrime alloc] initWithKey:key privateKey:privateKey] autorelease];
 }
 
-+ (id)aquaticPrimeWithKey:(NSString *)key 
++ (id)aquaticPrimeWithKey:(NSString *)key
 {
 	return [[[AquaticPrime alloc] initWithKey:key privateKey:nil] autorelease];
 }
@@ -86,7 +88,6 @@
 
 - (BOOL)setKey:(NSString *)key privateKey:(NSString *)privateKey
 {
-
 	// Must have public modulus, private key is optional
 	if (!key || [key isEqualToString:@""]) {
 		[self _setError:@"Empty public key parameter"];
@@ -103,11 +104,9 @@
 	
 	// Determine if we have hex or decimal values
 	int result;
-	if ([[key lowercaseString] hasPrefix:@"0x"]) {
-		// Plug in last byte of public key here for obfuscation
-		pkey =  [key stringByAppendingString:@"3F"];
-		result = BN_hex2bn(&rsaKey->n, (const char *)[[pkey substringFromIndex:2] UTF8String]);
-	}	else
+	if ([[key lowercaseString] hasPrefix:@"0x"])
+		result = BN_hex2bn(&rsaKey->n, (const char *)[[key substringFromIndex:2] UTF8String]);
+	else
 		result = BN_dec2bn(&rsaKey->n, (const char *)[key UTF8String]);
 		
 	if (!result) {
@@ -159,7 +158,9 @@
 
 - (void)setHash:(NSString *)newHash
 {
-	[hash release];
+	if (hash)
+		[hash release];
+	
 	hash = [newHash retain];
 }
 
@@ -173,7 +174,9 @@
 // This array should contain a list of NSStrings representing hexadecimal hashcodes for blacklisted licenses
 - (void)setBlacklist:(NSArray*)hashArray
 {
-	[blacklist release];
+	if (blacklist)
+		[blacklist release];
+	
 	blacklist = [hashArray retain];
 }
 
@@ -209,11 +212,18 @@
 	
 	// Create the signature from 20 byte hash
 	int rsaLength = RSA_size(rsaKey);
+	if (rsaLength <= 0) {
+		[self _setError:[NSString stringWithFormat:@"Invalid RSA_size: %d", rsaLength]];
+		return nil;
+	}
+	
 	unsigned char *signature = (unsigned char*)malloc(rsaLength);
 	int bytes = RSA_private_encrypt(20, digest, signature, rsaKey, RSA_PKCS1_PADDING);
 	
-	if (bytes == -1) {
+	if (bytes < 0) {
 		[self _setError:[NSString stringWithUTF8String:(char*)ERR_error_string(ERR_get_error(), NULL)]];
+		if (signature)
+			free(signature);
 		return nil;
 	}
 	
@@ -267,9 +277,17 @@
 	
 	// Decrypt the signature - should get 20 bytes back
 	unsigned char checkDigest[20];
-	if (RSA_public_decrypt([signature length], [signature bytes], checkDigest, rsaKey, RSA_PKCS1_PADDING) != 20)
-		return nil;
-	
+    int resultCode = -1;
+	resultCode = RSA_public_decrypt([signature length], [signature bytes], checkDigest, rsaKey, RSA_PKCS1_PADDING);
+//	if (resultCode != 20) {
+        const char *file;
+        int line;
+        const char *rsaData;
+        int flags;
+        unsigned long err = ERR_peek_last_error_line_data(&file, &line, &rsaData, &flags);
+//		return nil;
+//	}
+    
 	// Make sure the license hash isn't on the blacklist
 	NSMutableString *hashCheck = [NSMutableString string];
 	int hashIndex;
@@ -315,6 +333,75 @@
 	return [NSDictionary dictionaryWithDictionary:licenseDict];
 }
 
+- (NSData*)signatureForLicenseData:(NSData *)data
+{	
+	// Make sure public key is set up
+	if (!rsaKey || !rsaKey->n) {
+		[self _setError:@"RSA key is invalid"];
+		return nil;
+	}
+	
+	// Create a dictionary from the data
+	NSPropertyListFormat format;
+	NSString *error;
+	NSMutableDictionary *licenseDict = [NSPropertyListSerialization propertyListFromData:data mutabilityOption:NSPropertyListMutableContainersAndLeaves format:&format errorDescription:&error];
+	if (error)
+		return nil;
+	
+	NSData *signature = [licenseDict objectForKey:@"Signature"];
+	if (!signature)
+		return nil;
+	
+	// Decrypt the signature - should get 20 bytes back
+	unsigned char checkDigest[20];
+	if (RSA_public_decrypt([signature length], [signature bytes], checkDigest, rsaKey, RSA_PKCS1_PADDING) != 20)
+		return nil;
+	
+	// Make sure the license hash isn't on the blacklist
+	NSMutableString *hashCheck = [NSMutableString string];
+	int hashIndex;
+	for (hashIndex = 0; hashIndex < 20; hashIndex++)
+		[hashCheck appendFormat:@"%02x", checkDigest[hashIndex]];
+	
+	// Store the license hash in case we need it later
+	[self setHash:hashCheck];
+	
+	if (blacklist && [blacklist containsObject:hashCheck])
+		return nil;
+	
+	// Remove the signature element
+	[licenseDict removeObjectForKey:@"Signature"];
+	
+	// Grab all values from the dictionary
+	NSMutableArray *keyArray = [NSMutableArray arrayWithArray:[licenseDict allKeys]];
+	NSMutableData *dictData = [NSMutableData data];
+	
+	// Sort the keys so we always have a uniform order
+	[keyArray sortUsingSelector:@selector(caseInsensitiveCompare:)];
+	
+	int objectIndex;
+	for (objectIndex = 0; objectIndex < [keyArray count]; objectIndex++)
+	{
+		id currentValue = [licenseDict objectForKey:[keyArray objectAtIndex:objectIndex]];
+		char *description = (char *)[[currentValue description] UTF8String];
+		// We use strlen instead of [string length] so we can get all the bytes of accented characters
+		[dictData appendBytes:description length:strlen(description)];
+	}
+	
+	// Hash the data
+	unsigned char digest[20];
+	SHA1([dictData bytes], [dictData length], digest);
+	
+	// Check if the signature is a match	
+	int checkIndex;
+	for (checkIndex = 0; checkIndex < 20; checkIndex++) {
+		if (checkDigest[checkIndex] ^ digest[checkIndex])
+			return nil;
+	}
+	
+	return signature;
+}
+
 - (NSDictionary*)dictionaryForLicenseFile:(NSString *)path
 {
 	NSData *licenseFile = [NSData dataWithContentsOfFile:path];
@@ -341,19 +428,16 @@
 
 #pragma mark Error Handling
 
+- (void)_setError:(NSString *)err
+{
+	if (aqError)
+		[aqError release];
+	aqError = [err retain];
+}
+
 - (NSString*)getLastError
 {
 	return aqError;
-}
-
-@end
-
-@implementation AquaticPrime (Private)
-
-- (void)_setError:(NSString *)err
-{
-	[aqError release];
-	aqError = [err retain];
 }
 
 @end

@@ -57,6 +57,7 @@
 - (BOOL)writeLicenseFileForDictionary:(NSDictionary *)dict toPath:(NSString *)path;
 
 // Validating license data/files
+- (NSData*)signatureForLicenseData:(NSData *)data;
 - (NSDictionary *)dictionaryForLicenseData:(NSData *)data;
 - (NSDictionary *)dictionaryForLicenseFile:(NSString *)path;
 - (BOOL)verifyLicenseData:(NSData *)data;
@@ -66,6 +67,7 @@
 - (void)setBlacklist:(NSArray *)hashArray;
 
 // Error handling
+- (void)_setError:(NSString *)err;
 - (NSString *)getLastError;
 
 @end
