@@ -4,3 +4,6 @@
 [submodule "AquaticPrime"]
 	path = AquaticPrime
 	url = git@bitbucket.org:tgunr/aqpmanager.git
+[submodule "CLI/xattr"]
+	path = CLI/xattr
+	url = git@bitbucket.org:tgunr/xattr.git
