@@ -446,7 +446,9 @@ PADSearchTerm*	PADCopySearchTermWithTitleOrID( NSString* aTermName )
     // TODO: Uncaught exception here
 	if( locCount == 0 ) {
 		devicesNode = [[[[DACALTreeDataSource shared] treeControl] treeRoot] childWithItemType:kPADTypeGroupDevices];
-		searchLocations = [[NSArray alloc] initWithArray:[[devicesNode children] arrayWithSubTrees]];
+        NSArray *theChildren = [devicesNode children];
+        NSArray *theSubTrees = [theChildren arrayWithSubTrees];
+		searchLocations = [[NSArray alloc] initWithArray:theSubTrees];
 		locCount = [searchLocations count];
 	}
 
@@ -458,7 +460,8 @@ PADSearchTerm*	PADCopySearchTermWithTitleOrID( NSString* aTermName )
 	for( locIndex=0; locIndex < locCount; locIndex++ )
 	{
 		newTerm = [PADSearchTermOperation searchOperationsForTreeNode:[searchLocations objectAtIndex:locIndex] forTerms:searchTermElements andTarget:self];
-		if( newTerm ) [searchTermOperations addObject:newTerm];
+		if( newTerm )
+            [searchTermOperations addObject:newTerm];
 	}
 	
 	[searchTermOperations makeObjectsPerformSelector:@selector(startSearch)];
