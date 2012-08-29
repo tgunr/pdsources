@@ -7,7 +7,7 @@
 //
 
 #import "PADHomeView.h"
-#import <PMUtility/PMUtility.h>
+#import <PMUtility/pmUtility.h>
 
 @implementation PADHomeView
 
@@ -246,7 +246,7 @@
 	NSDragOperation		outOper = NSDragOperationNone;
 	
 	if( !isLocal )
-		outOper = NSDragOperationCopy || NSDragOperationLink || NSDragOperationGeneric;
+		outOper = NSDragOperationCopy | NSDragOperationLink | NSDragOperationGeneric;
 	
 	return outOper;
 }
