@@ -166,7 +166,7 @@ static PADPrefsTreeController *PADPrefsTreeController_shared;
 	[super setObjectValue:object forTableColumn:tableColumn byItem:item];
 }
 
-- (BOOL)outlineView:(NSOutlineView *)ov shouldExpandItem:(id)item
+- (BOOL)outlineView:(PADOutlineView *)ov shouldExpandItem:(id)item
 {
 	return NO;
     return [super outlineView:ov shouldExpandItem:item];

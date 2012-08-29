@@ -12,6 +12,8 @@
 #ifdef __OBJC__
     #import <Cocoa/Cocoa.h>
     #import <Carbon/Carbon.h>
+    #import <PMUtility/pmUtility.h>
+    #import <DACAL/dacallib.h>
 
 	#if MAC_OS_X_VERSION_MIN_REQUIRED < MAC_OS_X_VERSION_10_5
 		typedef float CGFloat;

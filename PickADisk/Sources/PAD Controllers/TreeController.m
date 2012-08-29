@@ -7,6 +7,7 @@
 
 #import "TreeController.h"
 #import "PADIndexToolbarController.h"
+#import "PADOutlineView.h"
 
 @interface TreeController(Private)
 - (void)_addNewDataToSelection:(SimpleTreeNode *)newChild;
@@ -126,7 +127,7 @@ AFTERRELOAD:
 - (id)dataSource { return dataSource; }
 
 - (PADOutlineView*)outlineView { return outlineView; }
-- (void)setOutlineView:(NSOutlineView*)view
+- (void)setOutlineView:(PADOutlineView*)view
 {
 	if( outlineView != nil )
         [outlineView release];

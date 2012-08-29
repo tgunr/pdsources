@@ -1,4 +1,4 @@
-#import <PMUtility/pm.h>
+#import <PMUtility/pmUtility.h>
 #import <Cocoa/Cocoa.h>
 
 int main(int argc, const char *argv[]) {

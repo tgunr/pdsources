@@ -9,7 +9,7 @@
 #import "AppController.h"
 #import "PADAddVolumeController.h"
 #import "LicenseController.h"
-#import "/System/Library/Frameworks/Carbon.framework/Frameworks/NavigationServices.framework/Headers/Navigation.h"
+#import <NavigationServices/Navigation.h>
 #import "DACALDeviceService.h"
 #import "DACALSlot.h"
 #import "DACALDevice.h"

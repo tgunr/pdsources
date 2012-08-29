@@ -488,7 +488,7 @@ SLOTTYPEFAILED:
 - (void)doubleClickCellContent:(id)item inCell:(NSCell*)cell
 {
 	SimpleNodeData	*theData = [item nodeData];
-	NSOutlineView	*theView = [[self treeControl] outlineView];
+	PADOutlineView	*theView = [[self treeControl] outlineView];
 	
 	if( [theView clickedColumn] == [theView columnWithIdentifier:COLUMNID_CHECKEDOUT] )
 		[self doubleClickToggleItemReservation:item];

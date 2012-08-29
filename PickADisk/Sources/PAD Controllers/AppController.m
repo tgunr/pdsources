@@ -407,7 +407,7 @@ static AppController *sharedAppController;
 
 - (void)removeBusyBody:(id)item
 {
-	NSOutlineView* theTable = nil;
+	PADOutlineView* theTable = nil;
 	int				theRow;
 	
 	busyBusy = YES;
@@ -463,7 +463,7 @@ static AppController *sharedAppController;
 
 - (void)doBusyWork:(NSTimer*)busyTimer
 { 
-	NSOutlineView* theTable = nil;
+	PADOutlineView* theTable = nil;
 	int				theRow;
 	
 	if( busyBusy == YES ) return;

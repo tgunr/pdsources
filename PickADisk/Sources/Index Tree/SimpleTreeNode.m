@@ -16,7 +16,7 @@
  terms.  If you do not agree with these terms, please do not use, install, modify or 
  redistribute this Apple software.
  
- In consideration of your agreement to abide by the following terms, and subject to these 
+ In consideration of your agreement to abide by the following terms, and subject to these
  terms, Apple grants you a personal, non-exclusive license, under Apple‚Äö√Ñ√¥s copyrights in 
  this original Apple software (the "Apple Software"), to use, reproduce, modify and 
  redistribute the Apple Software, with or without modifications, in source and/or binary 
@@ -47,6 +47,7 @@
 #import "PADSearchRequest.h"
 #import <PMUtility/NSDate_Extensions.h>
 #import "DACALTreeDataSource.h"
+#import "DACALSlotElement.h"
 
 @implementation SimpleNodeData
 
@@ -596,9 +597,12 @@
 		
 		if( other == nil )
             other = [NSDate date];
-		if( ([other isKindOfClass:[NSString class]] ) && ([other compare:@"Yesterday"] == NSOrderedSame) )
-			other = [NSDate yesterday];
-		
+		if( [other isKindOfClass:[NSString class]] ) {
+            NSString *otherAsString = other;
+            if ([otherAsString compare:@"Yesterday"] == NSOrderedSame) {
+                other = [NSDate yesterday];
+            }
+        }
 		if( (other != nil) && (ourDate != nil) )
 		{
 			anchorTime = CFDateGetAbsoluteTime((CFDateRef)other);

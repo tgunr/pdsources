@@ -10,7 +10,7 @@
 #import "DACALSlot.h"
 #import "PADOutlineView.h"
 #import <PMUtility/NSMutableArray_Extensions.h>
-
+#import "DACALViewDataSource.h"
 
 @implementation PADIndexToolbarController
 
