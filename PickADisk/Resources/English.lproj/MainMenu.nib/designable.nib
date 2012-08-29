@@ -1175,7 +1175,7 @@
 																	<reference key="NSSupport" ref="535736222"/>
 																	<reference key="NSControlView" ref="356568269"/>
 																	<int key="NSButtonFlags">1211912448</int>
-																	<int key="NSButtonFlags2">130</int>
+																	<int key="NSButtonFlags2">2</int>
 																	<reference key="NSNormalImage" ref="745894245"/>
 																	<reference key="NSAlternateImage" ref="950110462"/>
 																	<string key="NSAlternateContents"/>
@@ -1470,7 +1470,6 @@
 												<int key="NSvFlags">-2147483380</int>
 												<string key="NSFrame">{{0, 149}, {449, 14}}</string>
 												<reference key="NSSuperview" ref="128928063"/>
-												<reference key="NSNextKeyView" ref="832787458"/>
 												<int key="NSTag">13</int>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSTextFieldCell" key="NSCell" id="550065909">
@@ -2514,7 +2513,6 @@
 												<int key="NSvFlags">-2147483380</int>
 												<string key="NSFrame">{{0, 136}, {449, 14}}</string>
 												<reference key="NSSuperview" ref="307449676"/>
-												<reference key="NSNextKeyView" ref="832787458"/>
 												<int key="NSTag">13</int>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSTextFieldCell" key="NSCell" id="413671059">
@@ -3238,6 +3236,7 @@
 					</object>
 					<string key="NSFrameSize">{449, 437}</string>
 					<reference key="NSSuperview"/>
+					<reference key="NSNextKeyView" ref="832787458"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {2560, 1578}}</string>
 				<string key="NSMaxSize">{10000000000000, 10000000000000}</string>
