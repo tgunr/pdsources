@@ -13,8 +13,8 @@
 			buildPhases = (
 			);
 			dependencies = (
+				7522199815EA94280003E5B9 /* PBXTargetDependency */,
 				75FEA2DF15E82A6C000A7283 /* PBXTargetDependency */,
-				75FEA2E115E82A6C000A7283 /* PBXTargetDependency */,
 				75FEA2E315E82A6C000A7283 /* PBXTargetDependency */,
 			);
 			name = "CLI Tools";
@@ -26,6 +26,7 @@
 		7502881011923D47008008F8 /* dacallib.m in Sources */ = {isa = PBXBuildFile; fileRef = 7502880611923D47008008F8 /* dacallib.m */; };
 		7502881111923D47008008F8 /* dacalconstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 7502880811923D47008008F8 /* dacalconstants.m */; };
 		7502882C11923DD9008008F8 /* NSString+CarbonFSRefCreation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7502882A11923DD9008008F8 /* NSString+CarbonFSRefCreation.m */; };
+		750429AB15EE83EF0031BAFB /* PMUtility.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 754C478D15DC20E900316C67 /* PMUtility.framework */; };
 		751FBA2A0E39059100D64628 /* find.c in Sources */ = {isa = PBXBuildFile; fileRef = 751FBA200E39059000D64628 /* find.c */; };
 		751FBA2B0E39059100D64628 /* function.c in Sources */ = {isa = PBXBuildFile; fileRef = 751FBA220E39059000D64628 /* function.c */; };
 		751FBA2C0E39059100D64628 /* getdate.y in Sources */ = {isa = PBXBuildFile; fileRef = 751FBA230E39059100D64628 /* getdate.y */; };
@@ -35,12 +36,9 @@
 		751FBA310E39059100D64628 /* operator.c in Sources */ = {isa = PBXBuildFile; fileRef = 751FBA280E39059100D64628 /* operator.c */; };
 		751FBA320E39059100D64628 /* option.c in Sources */ = {isa = PBXBuildFile; fileRef = 751FBA290E39059100D64628 /* option.c */; };
 		751FBA3F0E39060A00D64628 /* dacal.m in Sources */ = {isa = PBXBuildFile; fileRef = 751FBA3D0E39060A00D64628 /* dacal.m */; };
-		751FBA780E39065200D64628 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 751FBA6B0E39065200D64628 /* main.c */; };
-		751FBA790E39065200D64628 /* xattrfunctions.c in Sources */ = {isa = PBXBuildFile; fileRef = 751FBA710E39065200D64628 /* xattrfunctions.c */; };
 		751FBAE90E39151C00D64628 /* fabricate.c in Sources */ = {isa = PBXBuildFile; fileRef = 751FBAE80E39151C00D64628 /* fabricate.c */; };
 		7522192E15E848F60003E5B9 /* PMUtility.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 754C478D15DC20E900316C67 /* PMUtility.framework */; };
 		7522193215E84A1F0003E5B9 /* DACAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7570BE5613CEA721001AF81B /* DACAL.framework */; };
-		7522193515E84BCA0003E5B9 /* libpmutility.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 754C47F115DC2E2A00316C67 /* libpmutility.a */; };
 		7548266C15E83A4200A1AAAB /* libcrypto.0.9.8.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7548266B15E83A4200A1AAAB /* libcrypto.0.9.8.dylib */; };
 		754C47E215DC292700316C67 /* pmsDACALUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 7570BE2513CEA158001AF81B /* pmsDACALUtility.m */; };
 		754C47F715DC309100316C67 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 751FBCE00E3A340900D64628 /* IOKit.framework */; };
@@ -65,19 +63,26 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		7522193315E84BC30003E5B9 /* PBXContainerItemProxy */ = {
+		750429A615EE69970031BAFB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 754C478115DC20E900316C67 /* PMUtility.xcodeproj */;
+			containerPortal = 08FB7793FE84155DC02AAC07 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 754C47E615DC2DF100316C67;
-			remoteInfo = pmutility;
+			remoteGlobalIDString = 7570BE5513CEA721001AF81B;
+			remoteInfo = DACAL;
 		};
-		7548266715E8393800A1AAAB /* PBXContainerItemProxy */ = {
+		750429A915EE839A0031BAFB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 754C478115DC20E900316C67 /* PMUtility.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = 754C47E615DC2DF100316C67;
-			remoteInfo = pmutility;
+			remoteGlobalIDString = 7535D1CE14DF240C00613F39;
+			remoteInfo = PMUtility;
+		};
+		7522199715EA94280003E5B9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 754C478115DC20E900316C67 /* PMUtility.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 7535D1CE14DF240C00613F39;
+			remoteInfo = PMUtility;
 		};
 		754C478C15DC20E900316C67 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -106,13 +111,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 751FB9FB0E39046200D64628;
 			remoteInfo = dacal;
-		};
-		75FEA2E015E82A6C000A7283 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 08FB7793FE84155DC02AAC07 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 751FBA420E39063900D64628;
-			remoteInfo = xattr;
 		};
 		75FEA2E215E82A6C000A7283 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -150,7 +148,6 @@
 		751FBA290E39059100D64628 /* option.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = option.c; sourceTree = "<group>"; };
 		751FBA3D0E39060A00D64628 /* dacal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = dacal.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		751FBA3E0E39060A00D64628 /* dacal.1 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.man; path = dacal.1; sourceTree = "<group>"; };
-		751FBA430E39063900D64628 /* xattr */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = xattr; sourceTree = BUILT_PRODUCTS_DIR; };
 		751FBA6A0E39065200D64628 /* COPYING.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = COPYING.txt; sourceTree = "<group>"; };
 		751FBA6B0E39065200D64628 /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		751FBA6D0E39065200D64628 /* xattr.1 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.man; path = xattr.1; sourceTree = "<group>"; };
@@ -158,6 +155,7 @@
 		751FBA720E39065200D64628 /* xattrfunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xattrfunctions.h; sourceTree = "<group>"; };
 		751FBAE80E39151C00D64628 /* fabricate.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = fabricate.c; sourceTree = "<group>"; };
 		751FBCE00E3A340900D64628 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		7522198515EA933E0003E5B9 /* xattr.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = xattr.xcodeproj; path = xattr/xattr.xcodeproj; sourceTree = "<group>"; };
 		7543C8430E3A37CC009A8AF3 /* Kernel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kernel.framework; path = System/Library/Frameworks/Kernel.framework; sourceTree = SDKROOT; };
 		7543C8600E3B7071009A8AF3 /* stat.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = stat.c; sourceTree = "<group>"; };
 		7548266B15E83A4200A1AAAB /* libcrypto.0.9.8.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcrypto.0.9.8.dylib; path = ../../../../../../../usr/lib/libcrypto.0.9.8.dylib; sourceTree = "<group>"; };
@@ -184,7 +182,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7522193515E84BCA0003E5B9 /* libpmutility.a in Frameworks */,
+				750429AB15EE83EF0031BAFB /* PMUtility.framework in Frameworks */,
 				7522193215E84A1F0003E5B9 /* DACAL.framework in Frameworks */,
 				7548266C15E83A4200A1AAAB /* libcrypto.0.9.8.dylib in Frameworks */,
 				754C483C15DC3C4800316C67 /* AppKit.framework in Frameworks */,
@@ -200,13 +198,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		751FBA150E39057100D64628 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		751FBA410E39063900D64628 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -229,6 +220,7 @@
 		08FB7794FE84155DC02AAC07 /* CLI Tools */ = {
 			isa = PBXGroup;
 			children = (
+				7522198515EA933E0003E5B9 /* xattr.xcodeproj */,
 				7548266B15E83A4200A1AAAB /* libcrypto.0.9.8.dylib */,
 				754C478115DC20E900316C67 /* PMUtility.xcodeproj */,
 				08FB7795FE84155DC02AAC07 /* Sources */,
@@ -260,7 +252,6 @@
 				751FB9FC0E39046200D64628 /* dacal */,
 				751FBA0E0E39054600D64628 /* fabricate */,
 				751FBA170E39057100D64628 /* find */,
-				751FBA430E39063900D64628 /* xattr */,
 				7570BE5613CEA721001AF81B /* DACAL.framework */,
 			);
 			name = Products;
@@ -433,7 +424,8 @@
 			buildRules = (
 			);
 			dependencies = (
-				7522193415E84BC30003E5B9 /* PBXTargetDependency */,
+				750429AA15EE839A0031BAFB /* PBXTargetDependency */,
+				750429A715EE69970031BAFB /* PBXTargetDependency */,
 			);
 			name = dacal;
 			productName = dacal;
@@ -472,23 +464,6 @@
 			productReference = 751FBA170E39057100D64628 /* find */;
 			productType = "com.apple.product-type.tool";
 		};
-		751FBA420E39063900D64628 /* xattr */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 751FBA830E39065200D64628 /* Build configuration list for PBXNativeTarget "xattr" */;
-			buildPhases = (
-				751FBA400E39063900D64628 /* Sources */,
-				751FBA410E39063900D64628 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				7548266815E8393800A1AAAB /* PBXTargetDependency */,
-			);
-			name = xattr;
-			productName = xattr;
-			productReference = 751FBA430E39063900D64628 /* xattr */;
-			productType = "com.apple.product-type.tool";
-		};
 		7570BE5513CEA721001AF81B /* DACAL */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7570BE6613CEA721001AF81B /* Build configuration list for PBXNativeTarget "DACAL" */;
@@ -514,7 +489,7 @@
 		08FB7793FE84155DC02AAC07 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0450;
+				LastUpgradeCheck = 0440;
 			};
 			buildConfigurationList = 1DEB924B08733DCA0010E9CD /* Build configuration list for PBXProject "CLI" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -536,7 +511,6 @@
 				751FB9FB0E39046200D64628 /* dacal */,
 				751FBA0D0E39054600D64628 /* fabricate */,
 				751FBA160E39057100D64628 /* find */,
-				751FBA420E39063900D64628 /* xattr */,
 				7570BE5513CEA721001AF81B /* DACAL */,
 				751FBCD00E3A2C0500D64628 /* CLI Tools */,
 			);
@@ -625,15 +599,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		751FBA400E39063900D64628 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				751FBA780E39065200D64628 /* main.c in Sources */,
-				751FBA790E39065200D64628 /* xattrfunctions.c in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		7570BE5113CEA721001AF81B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -650,15 +615,20 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		7522193415E84BC30003E5B9 /* PBXTargetDependency */ = {
+		750429A715EE69970031BAFB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = pmutility;
-			targetProxy = 7522193315E84BC30003E5B9 /* PBXContainerItemProxy */;
+			target = 7570BE5513CEA721001AF81B /* DACAL */;
+			targetProxy = 750429A615EE69970031BAFB /* PBXContainerItemProxy */;
 		};
-		7548266815E8393800A1AAAB /* PBXTargetDependency */ = {
+		750429AA15EE839A0031BAFB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = pmutility;
-			targetProxy = 7548266715E8393800A1AAAB /* PBXContainerItemProxy */;
+			name = PMUtility;
+			targetProxy = 750429A915EE839A0031BAFB /* PBXContainerItemProxy */;
+		};
+		7522199815EA94280003E5B9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PMUtility;
+			targetProxy = 7522199715EA94280003E5B9 /* PBXContainerItemProxy */;
 		};
 		754DD89815E1FFE7001A6F89 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -669,11 +639,6 @@
 			isa = PBXTargetDependency;
 			target = 751FB9FB0E39046200D64628 /* dacal */;
 			targetProxy = 75FEA2DE15E82A6C000A7283 /* PBXContainerItemProxy */;
-		};
-		75FEA2E115E82A6C000A7283 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 751FBA420E39063900D64628 /* xattr */;
-			targetProxy = 75FEA2E015E82A6C000A7283 /* PBXContainerItemProxy */;
 		};
 		75FEA2E315E82A6C000A7283 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -790,32 +755,6 @@
 			};
 			name = Release;
 		};
-		751FBA450E39063A00D64628 /* Development */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					AppKit,
-				);
-				PRODUCT_NAME = xattr;
-			};
-			name = Development;
-		};
-		751FBA460E39063A00D64628 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					AppKit,
-				);
-				PRODUCT_NAME = xattr;
-			};
-			name = Release;
-		};
 		751FBCD10E3A2C0600D64628 /* Development */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -877,19 +816,6 @@
 					AppKit,
 				);
 				PRODUCT_NAME = find;
-			};
-			name = Deploy;
-		};
-		7543D4A20E3BB812009A8AF3 /* Deploy */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					AppKit,
-				);
-				PRODUCT_NAME = xattr;
 			};
 			name = Deploy;
 		};
@@ -995,16 +921,6 @@
 				751FBA190E39057100D64628 /* Development */,
 				751FBA1A0E39057100D64628 /* Release */,
 				7543D4A10E3BB812009A8AF3 /* Deploy */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		751FBA830E39065200D64628 /* Build configuration list for PBXNativeTarget "xattr" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				751FBA450E39063A00D64628 /* Development */,
-				751FBA460E39063A00D64628 /* Release */,
-				7543D4A20E3BB812009A8AF3 /* Deploy */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
