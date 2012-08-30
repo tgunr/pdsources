@@ -49,14 +49,14 @@
 		7570BE6A13CEA790001AF81B /* pmsDACALUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 7570BE2513CEA158001AF81B /* pmsDACALUtility.m */; };
 		7570BE6B13CEA797001AF81B /* dacallib.m in Sources */ = {isa = PBXBuildFile; fileRef = 7502880611923D47008008F8 /* dacallib.m */; };
 		7570BE6C13CEA79C001AF81B /* dacalconstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 7502880811923D47008008F8 /* dacalconstants.m */; };
-		7570BE6D13CEA7A6001AF81B /* NSString+CarbonFSRefCreation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7502882A11923DD9008008F8 /* NSString+CarbonFSRefCreation.m */; };
-		7570BE6E13CEA7B0001AF81B /* IconFamily.m in Sources */ = {isa = PBXBuildFile; fileRef = 7502882811923DD9008008F8 /* IconFamily.m */; };
 		7570BE6F13CEA831001AF81B /* IconFamily.h in Headers */ = {isa = PBXBuildFile; fileRef = 7502882711923DD9008008F8 /* IconFamily.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7570BE7013CEA83A001AF81B /* NSString+CarbonFSRefCreation.h in Headers */ = {isa = PBXBuildFile; fileRef = 7502882911923DD9008008F8 /* NSString+CarbonFSRefCreation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7570BE7113CEA841001AF81B /* pmsDACALUtility.h in Headers */ = {isa = PBXBuildFile; fileRef = 7570BE2413CEA158001AF81B /* pmsDACALUtility.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7570BE7213CEA847001AF81B /* dacallib.h in Headers */ = {isa = PBXBuildFile; fileRef = 7502880511923D47008008F8 /* dacallib.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7570BE7313CEA851001AF81B /* dacalconstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 7502880711923D47008008F8 /* dacalconstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		75730AE31487007B00746100 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 751FBCE00E3A340900D64628 /* IOKit.framework */; };
+		757D4AB215F00F500072E8D4 /* IconFamily.m in Sources */ = {isa = PBXBuildFile; fileRef = 7502882811923DD9008008F8 /* IconFamily.m */; };
+		757D4AB315F00F500072E8D4 /* NSString+CarbonFSRefCreation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7502882A11923DD9008008F8 /* NSString+CarbonFSRefCreation.m */; };
 		75ABD90A13CEF67100BB3D7A /* pad.h in Headers */ = {isa = PBXBuildFile; fileRef = 75ABD90713CEF67100BB3D7A /* pad.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		75ABD90B13CEF67100BB3D7A /* pad.m in Sources */ = {isa = PBXBuildFile; fileRef = 75ABD90813CEF67100BB3D7A /* pad.m */; };
 		75ABD90D13CEF67100BB3D7A /* pad.m in Sources */ = {isa = PBXBuildFile; fileRef = 75ABD90813CEF67100BB3D7A /* pad.m */; };
@@ -83,6 +83,27 @@
 			proxyType = 1;
 			remoteGlobalIDString = 7535D1CE14DF240C00613F39;
 			remoteInfo = PMUtility;
+		};
+		7548472E15EFEE2D00DB1436 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7522198515EA933E0003E5B9 /* xattr.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8DD76FB20486AB0100D96B5E;
+			remoteInfo = xattr;
+		};
+		7548473015EFEE2D00DB1436 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7522198515EA933E0003E5B9 /* xattr.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 75C8355B153DFAB8009021F4;
+			remoteInfo = XATTR;
+		};
+		7548473215EFEE2D00DB1436 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7522198515EA933E0003E5B9 /* xattr.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 751186AF1559A08C00D064F2;
+			remoteInfo = xattrlib;
 		};
 		754C478C15DC20E900316C67 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -331,6 +352,16 @@
 			path = xattr;
 			sourceTree = "<group>";
 		};
+		7548472815EFEE2D00DB1436 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7548472F15EFEE2D00DB1436 /* xattr */,
+				7548473115EFEE2D00DB1436 /* XATTR.framework */,
+				7548473315EFEE2D00DB1436 /* libxattrlib.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		754C478215DC20E900316C67 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -505,6 +536,10 @@
 					ProductGroup = 754C478215DC20E900316C67 /* Products */;
 					ProjectRef = 754C478115DC20E900316C67 /* PMUtility.xcodeproj */;
 				},
+				{
+					ProductGroup = 7548472815EFEE2D00DB1436 /* Products */;
+					ProjectRef = 7522198515EA933E0003E5B9 /* xattr.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -518,6 +553,27 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		7548472F15EFEE2D00DB1436 /* xattr */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = xattr;
+			remoteRef = 7548472E15EFEE2D00DB1436 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		7548473115EFEE2D00DB1436 /* XATTR.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = XATTR.framework;
+			remoteRef = 7548473015EFEE2D00DB1436 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		7548473315EFEE2D00DB1436 /* libxattrlib.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libxattrlib.a;
+			remoteRef = 7548473215EFEE2D00DB1436 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		754C478D15DC20E900316C67 /* PMUtility.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -603,11 +659,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				757D4AB215F00F500072E8D4 /* IconFamily.m in Sources */,
+				757D4AB315F00F500072E8D4 /* NSString+CarbonFSRefCreation.m in Sources */,
 				7570BE6A13CEA790001AF81B /* pmsDACALUtility.m in Sources */,
 				7570BE6B13CEA797001AF81B /* dacallib.m in Sources */,
 				7570BE6C13CEA79C001AF81B /* dacalconstants.m in Sources */,
-				7570BE6E13CEA7B0001AF81B /* IconFamily.m in Sources */,
-				7570BE6D13CEA7A6001AF81B /* NSString+CarbonFSRefCreation.m in Sources */,
 				75ABD90D13CEF67100BB3D7A /* pad.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
