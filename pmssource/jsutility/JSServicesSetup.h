@@ -19,7 +19,6 @@
                                                                                 @"PADBOXController", \
 																				@"DACVolumeService", \
 																				@"PADFolderService", \
-                                                                                @"PADCrashReportService", \
                                                                                 @"PADLicenseService", \
                                                                                 @"PADSearchService", \
 																				nil]
