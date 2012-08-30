@@ -10,9 +10,8 @@
 //#import "AppController.h"
 #import "SimpleTreeNode.h"
 
-#import <PMUtility/ImageAndTextCell.h>
-#import <PMUtility/NSArray_Extensions.h>
-#import <PMUtility/NSOutlineView_Extensions.h>
+#import "ImageAndTextCell.h"
+#import <PMUtility/PMUtility.h>
 
 // ================================================================
 // Useful Macros

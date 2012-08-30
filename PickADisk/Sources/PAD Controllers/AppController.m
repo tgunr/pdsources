@@ -399,7 +399,8 @@ static AppController *sharedAppController;
 
 - (void)scheduledAddBusyBody:(NSTimer*)busyTimer
 { 
-	if( busyBusy == YES ) return;
+	if( busyBusy == YES )
+        return;
 	
 	[self addBusyBody:[busyTimer userInfo] ofView:nil];
 	[busyTimer invalidate];
@@ -466,8 +467,10 @@ static AppController *sharedAppController;
 	PADOutlineView* theTable = nil;
 	int				theRow;
 	
-	if( busyBusy == YES ) return;
-	if( [busyBodies count] == 0 ) return;
+	if( busyBusy == YES )
+        return;
+	if( [busyBodies count] == 0 )
+        return;
 	
 	busyBusy = YES;	
 	
@@ -479,19 +482,21 @@ static AppController *sharedAppController;
 			theTable = [[[DACALTreeDataSource shared] treeControl] outlineView];
 			[theTable reloadItem:[[entry nodeParent] nodeParent] reloadChildren:YES];
 			theRow = [theTable rowForItem:entry];
-			if( ![[theTable itemAtRow:theRow] isEqual:entry] ) theTable = nil;
+			if( ![[theTable itemAtRow:theRow] isEqual:entry] )
+                theTable = nil;
 		}
 		else
 			theTable = [dataView outlineView];
 		if(theTable != nil)
 			[theTable reloadItem:(id)entry reloadChildren:[[entry nodeData] isExpanded]];
-		//if( [[[entry nodeParent] nodeData] isExpanded] ) 
-		//NSLog( @"Got Busy: %@ <%@>\n\tBodies: %@", [entry description], entry, [busyBodies description] );
+		if( [[[entry nodeParent] nodeData] isExpanded] ) 
+            PMLOG(2,@"Got Busy: %@ <%@>\n\tBodies: %@", [entry description], entry, [busyBodies description] );
 		theTable = nil;
 	}
 	
 	jPADBusyBodyBeat++;
-	if( jPADBusyBodyBeat > 11 ) jPADBusyBodyBeat = 0;
+	if( jPADBusyBodyBeat > 11 )
+        jPADBusyBodyBeat = 0;
 	
 	busyBusy = NO;
 }

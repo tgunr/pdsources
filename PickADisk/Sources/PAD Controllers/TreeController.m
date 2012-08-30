@@ -395,8 +395,10 @@ AFTERRELOAD:
         // We know that the cell at this column is our image and text cell, so grab it
         ImageAndTextCell *imageAndTextCell = (ImageAndTextCell *)cell;
 	// Set the image here since the value returned from outlineView:objectValueForTableColumn:... didn't specify the image part...
-	if ([data iconRep]) [imageAndTextCell setImage:[data iconRep]];
-	else [imageAndTextCell setImage:nil];
+	if ([data iconRep])
+        [imageAndTextCell setImage:[data iconRep]];
+	else
+        [imageAndTextCell setImage:nil];
 	}
 /*
  *	These are additional column data suppliers from the original example:
