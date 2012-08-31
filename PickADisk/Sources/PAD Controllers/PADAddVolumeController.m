@@ -400,7 +400,6 @@ void MyNavEventProc (NavEventCallbackMessage callBackSelector, NavCBRecPtr callB
 	if( [[alternateTitle stringValue] compare:@""] == NSOrderedSame )
 		isBlankBlank = YES;
 	
-    PMLOG(1, @"isBlankBlank: %u isExistingVolume: %u isExistingSlot: %u isExistingTitle: %u", isBlankBlank, isExistingVolume, isExistingSlot, isExistingTitle );
     BOOL setif = !isBlankBlank && !isExistingSlot;
 	[okButton setEnabled: setif];
     setif = !isExistingSlot && isExistingVolume;

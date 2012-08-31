@@ -837,12 +837,12 @@
         while ((entry = [entryEnum nextObject])) {
 			if( CFURLIsVisible((CFURLRef)entry) ) {
 				if (CFURLHasDirectoryPath((CFURLRef)entry)) {
-					PMLOG(2, @"tree: %@", entry);
+					PMLOG(PMLogLevelDebug3, @"tree: %@", entry);
 					child = [SimpleTreeNode treeFromLocation:entry];
 				}
 				else
 				{
-					PMLOG(2, @"entry: %@", entry);
+					PMLOG(PMLogLevelDebug3, @"entry: %@", entry);
 					child = [[SimpleTreeNode alloc] initWithData:[SimpleNodeData nodeDataWithURL:entry] parent:nil children:[[NSArray alloc] init]];
 					anElement = [DACALSlotElement slotElementForNode:child];
 				}
