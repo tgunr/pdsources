@@ -451,7 +451,8 @@ SLOTTYPEFAILED:
 		return YES;	
 	
 	if([[tc identifier] compare:COLUMNID_NAME] == NSOrderedSame) {
-		if( ![[item nodeData] location] ) return NO;
+		if( ![[item nodeData] location] )
+            return NO;
 		return YES;
 	}
 	

@@ -36,9 +36,9 @@
 - (id)initWithCoder:(NSCoder *)coder {
     self = [super initWithCoder:coder];
     busySet = NO;
-//    busySpinner = [[NSProgressIndicator alloc] init];
-//    [busySpinner setControlSize:NSSmallControlSize];
-//    [busySpinner setStyle:NSProgressIndicatorSpinningStyle];
+    busySpinner = [[NSProgressIndicator alloc] init];
+    [busySpinner setControlSize:NSSmallControlSize];
+    [busySpinner setStyle:NSProgressIndicatorSpinningStyle];
     return self;
 }
 
@@ -67,14 +67,16 @@
 
 - (NSRect)imageRectForBounds:(NSRect)cellFrame {
     NSRect result;
+    NSRect busySize = [busySpinner bounds];
     if (image != nil) {
         result.size = [image size];
-//        result.size =  NSMakeSize( 16.0, 16.0 );
         result.origin = cellFrame.origin;
         result.origin.x += DACIATCImageIndent;
         result.origin.y += (CGFloat)ceil(((float)cellFrame.size.height - (float)result.size.height) / 2.0f);
+        result.size.width -= busySize.size.width;
     } else {
-        result = NSZeroRect;
+        result = cellFrame;
+        result.size.width -= busySize.size.width;
     }
     return result;
 }
@@ -82,13 +84,17 @@
 // We could manually implement expansionFrameWithFrame:inView: and drawWithExpansionFrame:inView: or just properly implement titleRectForBounds to get expansion tooltips to automatically work for us
 - (NSRect)titleRectForBounds:(NSRect)cellFrame {
     NSRect result;
+    NSRect busySize = [busySpinner bounds];
+
     if (image != nil) {
         CGFloat imageWidth = [image size].width;
         result = cellFrame;
         result.origin.x += (DACIATCImageIndent + imageWidth);
         result.size.width -= (DACIATCImageIndent + imageWidth);
+        result.size.width -= busySize.size.width;
     } else {
-        result = NSZeroRect;
+        result = cellFrame;
+        result.size.width -= busySize.size.width;
     }
     return result;
 }
@@ -148,12 +154,11 @@
     }
 	
     if (busySpinner) {
-        NSRect	spinRect = [self spinnerRectForBounds:cellFrame];
-        [busySpinner setFrame:spinRect];
-//        [busySpinner setStyle:NSProgressIndicatorSpinningStyle];
         // TODO: Better way of progress indicator. This will cause repeating cells until finished.
         if (!busySet) {
-//            [controlView addSubview:busySpinner];
+            NSRect	spinRect = [self spinnerRectForBounds:cellFrame];
+            [busySpinner setFrame:spinRect];
+            [controlView addSubview:busySpinner];
         }
     }
     if( busy == YES ) {

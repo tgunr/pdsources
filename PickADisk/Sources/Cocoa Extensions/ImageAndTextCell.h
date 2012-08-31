@@ -8,7 +8,6 @@
  */
 
 #import <Cocoa/Cocoa.h>
-#import <Carbon/Carbon.h>
 
 enum {
 	// Our trackable icon in the cell
