@@ -29,6 +29,10 @@ if [[ ! -e $slotfile ]] ; then
     echo "1" > "$slotfile"
 fi
 
+function echonot () {
+    echo $@ > /dev/null
+}
+
 slot=$(cat "$slotfile")
 getslot=""
 level=1
@@ -38,7 +42,8 @@ nodisc=0
 nomove=0
 eject=0
 kind="Files"
-DEBUGCMD='logger -s -t "carousel.sh"'
+#DEBUGCMD='logger -s -t "carousel.sh"'
+DEBUGCMD='echonot '
 verbose=""
 maxlevel="-maxdepth 1"
 
