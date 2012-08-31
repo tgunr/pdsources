@@ -1070,7 +1070,7 @@ FAILED:
 	AppController*	AppControl = [AppController shared];
 	NSInteger		unrecogAction = [[NSUserDefaults standardUserDefaults] integerForKey:kDACDiscKeyUnrecognized];
 	
-	NSLog(@"Mounted Volumes: %@", newVolumes);	
+	PMLOGDEBUG(@"Mounted Volumes: %@", newVolumes);
 		
 	[knownVolumes addUniqueObjectsFromArray:newVolumes];
 	
@@ -1095,7 +1095,7 @@ FAILED:
     if ([mediaPaths count]) {
         [self newMediaDetected:mediaPaths];
     } else
-        PMLOG(1, @"mediaPath count = 0");
+        PMLOGINFO(@"mediaPath count = 0");
 }
 
 -(void)existingMediaRemoved:(NSString*)oldMediaPath
@@ -1104,7 +1104,7 @@ FAILED:
 	
 	if( foundMedia )
 	{
-		NSLog(@"Removed Volume: %@", foundMedia);	
+		PMLOGDEBUG(@"Removed Volume: %@", foundMedia);	
 
 		//	Notify the Add Volumes Window
 		if( [foundMedia isIndexable] == YES )

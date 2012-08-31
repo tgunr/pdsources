@@ -254,7 +254,7 @@
 	[PADSearchService performSelector:@selector(updateAllSearches) withObject:nil afterDelay:0.42];
 	[[DACALTreeDataSource shared] doAction];
 
-	NSLog( @"Attached Device: %@", [self title] );
+	PMLOGINFO( @"Attached Device: %@", [self title] );
 }
 
 -(void)attachingDevice

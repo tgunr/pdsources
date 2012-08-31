@@ -144,7 +144,7 @@
 			slotID = FSCopyXattr( kCFAllocatorDefault, &slotFSRef, kDACALCarouselDocumentXAttrSlotID, NULL );
 			if( slotID != NULL ) {
 				[self setSlotIdentifier: [[[NSString alloc] initWithString:(NSString*)slotID] autorelease]];
-				NSLog(@"%@ has ID: %@", [self title], [self slotIdentifier]);
+				PMLOGDEBUG(@"%@ has ID: %@", [self title], [self slotIdentifier]);
 				CFRelease( slotID );
 			}
 		}

@@ -15,7 +15,7 @@
 -(void)initSelf
 {
     if ([self class] == [NSKeyedUnarchiver classForClassName:@"JSServiceAbstract"]) {
-        PMLOG(1, @"WARNING: subclass should override this method!");
+        PMLOGNOTICE(@"WARNING: subclass should override this method!");
     }
 }
 
@@ -55,14 +55,14 @@
 -(void)openService
 {
     if ([self class] == [NSKeyedUnarchiver classForClassName:@"JSServiceAbstract"]) {
-        PMLOG(1, @"WARNING: subclass should override this method!");
+        PMLOGNOTICE(@"WARNING: subclass should override this method!");
     }
 }
 
 -(void)closeService
 {
     if ([self class] == [NSKeyedUnarchiver classForClassName:@"JSServiceAbstract"]) {
-        PMLOG(1, @"WARNING: subclass should override this method!");
+        PMLOGNOTICE(@"WARNING: subclass should override this method!");
     }
 }
 
@@ -91,7 +91,7 @@ static id	JSServiceManager_appServiceManager = nil;
 	if( self = [super init] ) {
 		JSServiceManager_appServiceManager = [self retain];
 		activeServices = [[NSMutableArray alloc] initWithCapacity:0];
-		PMLOG(3, @"JSService Manager Created");
+		PMLOGNOTICE(@"JSService Manager Created");
 	}
 	return self;
 }
