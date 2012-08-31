@@ -8,6 +8,7 @@
 
 #import "ImageAndTextCell.h"
 #import <AppKit/NSCell.h>
+#import <PMUtility/PMUtility.h>
 
 #define		DACIATCImageIndent		3
 
@@ -34,6 +35,10 @@
 
 - (id)initWithCoder:(NSCoder *)coder {
     self = [super initWithCoder:coder];
+    busySet = NO;
+//    busySpinner = [[NSProgressIndicator alloc] init];
+//    [busySpinner setControlSize:NSSmallControlSize];
+//    [busySpinner setStyle:NSProgressIndicatorSpinningStyle];
     return self;
 }
 
@@ -142,11 +147,14 @@
         [image compositeToPoint:imageFrame.origin operation:NSCompositeSourceOver];
     }
 	
-    if (!busySpinner) {
+    if (busySpinner) {
         NSRect	spinRect = [self spinnerRectForBounds:cellFrame];
-        busySpinner = [[NSProgressIndicator alloc] initWithFrame:spinRect];
-        [busySpinner setStyle:NSProgressIndicatorSpinningStyle];
-        [[self controlView ]addSubview:busySpinner];
+        [busySpinner setFrame:spinRect];
+//        [busySpinner setStyle:NSProgressIndicatorSpinningStyle];
+        // TODO: Better way of progress indicator. This will cause repeating cells until finished.
+        if (!busySet) {
+//            [controlView addSubview:busySpinner];
+        }
     }
     if( busy == YES ) {
         // If the node is busy, draw a chasing arrows in the corner.

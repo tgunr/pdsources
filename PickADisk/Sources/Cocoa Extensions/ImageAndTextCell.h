@@ -19,8 +19,8 @@ enum {
 @private
     NSImage *image;
 	BOOL	busy;
-//	BOOL	busyBody;
 	NSInteger busyCount;
+	BOOL	busySet;
     NSProgressIndicator *busySpinner;
 }
 
