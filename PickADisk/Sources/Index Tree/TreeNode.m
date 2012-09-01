@@ -290,7 +290,8 @@
 - (void)recursiveReExpandInView:(PADOutlineView*)theView
 {
     [nodeChildren makeObjectsPerformSelector:@selector(recursiveReExpandInView:) withObject:theView];
-	if( [[self nodeData] isExpanded] ) [theView expandItem:self];
+	if( [[self nodeData] isExpanded] )
+        [theView expandItem:self];
 }
 
 
