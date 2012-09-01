@@ -11,6 +11,7 @@
 #import "PADOutlineView.h"
 #import <PMUtility/NSMutableArray_Extensions.h>
 #import "DACALViewDataSource.h"
+#import "TreeController.h"
 
 @implementation PADIndexToolbarController
 
@@ -316,7 +317,7 @@ PADSearchRequest* PADIndexToolbarController_LastSearch = nil;
 	[self adoptPathSelection];
 	[[PADInspectorController sharedInspector] adoptInspectorSelection:[self selectedNodes]];
 	
-	if( dataController )	[[dataController dataSource] updatePrompt];
+	if( dataController )	[[dataController treeDataSource] updatePrompt];
 }
 
 - (void)reportNoDevice:(BOOL)hasBox
@@ -324,7 +325,7 @@ PADSearchRequest* PADIndexToolbarController_LastSearch = nil;
 	hasBoxes = hasBox;
 	
 	[noBoxIcon setHidden:hasBox];
-	[[dataController dataSource] setPrompt:(hasBox==YES) ? @"Ready" : @"No carousels detected"];	
+	[[dataController treeDataSource] setPrompt:(hasBox==YES) ? @"Ready" : @"No carousels detected"];	
 }
 
 
@@ -555,10 +556,10 @@ PADSearchRequest* PADIndexToolbarController_LastSearch = nil;
 
 - (void)searchFoundResults:(NSArray*)itemsFound forSearch:(PADSearchRequest*)theSearch
 {
-	[[dataController dataSource] sortExpandedChildrenWithCurrentDescriptors:[theSearch resultsSubTree]];
+	[[dataController treeDataSource] sortExpandedChildrenWithCurrentDescriptors:[theSearch resultsSubTree]];
 	
 	[[dataController outlineView] reloadData];
-	[[dataController dataSource] updatePrompt];
+	[[dataController treeDataSource] updatePrompt];
 	//NSLog(@"Items Found: %@", itemsFound);
 }
 
@@ -597,7 +598,7 @@ PADSearchRequest* PADIndexToolbarController_LastSearch = nil;
 	{
 		if( [theText compare:@"TESTSIGEMT"] == NSOrderedSame ) kill( getpid(), SIGEMT );
 		
-		[[indexController dataSource] toolbarSearchStart:self];
+		[[indexController treeDataSource] toolbarSearchStart:self];
 		
 		[dataController setTreeRoot:nil];
 		
@@ -616,7 +617,7 @@ PADSearchRequest* PADIndexToolbarController_LastSearch = nil;
 					return;
 				} else {
 					[PADIndexToolbarController_LastSearch startSearch];
-					[[dataController dataSource] updatePrompt];
+					[[dataController treeDataSource] updatePrompt];
 				}
 			}
 		}
@@ -629,7 +630,7 @@ PADSearchRequest* PADIndexToolbarController_LastSearch = nil;
 		[[dataController outlineView] setCurrentSearch:PADIndexToolbarController_LastSearch];
 		[PADIndexToolbarController_LastSearch startSearch];
 		
-		[[dataController dataSource] updatePrompt];
+		[[dataController treeDataSource] updatePrompt];
 		
 		
 /*		Old Way
@@ -667,7 +668,7 @@ PADSearchRequest* PADIndexToolbarController_LastSearch = nil;
  */
 	} else {
 
-		[[indexController dataSource] toolbarSearchFinish:self];
+		[[indexController treeDataSource] toolbarSearchFinish:self];
 	}
 }
 

@@ -335,7 +335,7 @@
 			[slotElements makeObjectsPerformSelector:@selector(reloadElement)];
 			[[PADSearchService sharedSearch] searchDataChanged:slotElements];
             
-			//[[[[AppController shared] dataView] dataSource] sortExpandedChildrenWithCurrentDescriptors:nil];
+			//[[[[AppController shared] dataView] treeDataSource] sortExpandedChildrenWithCurrentDescriptors:nil];
 			//[[[[AppController shared] dataView] outlineView] reloadData];
 		}
 		//else
@@ -351,8 +351,8 @@
 	[theElement reloadElement];
 	[[PADSearchService sharedSearch] searchDataChanged:[NSArray arrayWithObject:theElement]];
     
-	[[[[AppController shared] dataView] dataSource] updateChangesWithAction:YES];
-	//[[[[AppController shared] dataView] dataSource] sortExpandedChildrenWithCurrentDescriptors:nil];
+	[[[[AppController shared] dataView] treeDataSource] updateChangesWithAction:YES];
+	//[[[[AppController shared] dataView] treeDataSource] sortExpandedChildrenWithCurrentDescriptors:nil];
 	//[[[[AppController shared] dataView] outlineView] reloadData];
 }
 
@@ -774,7 +774,7 @@ BAIL:
 	SimpleTreeNode*		theSubtreeChild = nil;
     
 	theSubtreeNode = [[[AppController shared] dataView] treeRoot];
-	//theSubtreeNode = [[[[AppController shared] dataView] dataSource] treeRoot];
+	//theSubtreeNode = [[[[AppController shared] dataView] treeDataSource] treeRoot];
     
 	if( theSlotContentPath != nil )
 	{
@@ -794,8 +794,8 @@ BAIL:
 		[[PADSearchService sharedSearch] searchDataChanged:[NSArray arrayWithObject:theSubtreeChild]];
 	}
     
-	//[[[[AppController shared] dataView] dataSource] updateChangesWithAction:YES];
-	[[[[DACALTreeDataSource shared] secondaryController] dataSource] updateChangesWithAction:YES];
+	//[[[[AppController shared] dataView] treeDataSource] updateChangesWithAction:YES];
+	[[[[DACALTreeDataSource shared] secondaryController] treeDataSource] updateChangesWithAction:YES];
     
 	if( theSubtreeChild )
 		[[[[DACALTreeDataSource shared] secondaryController] outlineView] performSelector:@selector(selectItems:)

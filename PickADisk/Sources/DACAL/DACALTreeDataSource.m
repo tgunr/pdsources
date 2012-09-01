@@ -83,8 +83,9 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 	return self;
 }
 
--(id)secondaryController
-{ return secondaryController; }
+-(TreeController  *)secondaryController {
+    return secondaryController;
+}
 
 -(void)orderForUser:(SimpleTreeNode*)treeNode
 {
@@ -467,10 +468,10 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 
 - (void)searchFoundResults:(NSArray*)itemsFound forSearch:(PADSearchRequest*)theSearch
 {
-	[[secondaryController dataSource] sortExpandedChildrenWithCurrentDescriptors:[theSearch resultsSubTree]];
+	[[secondaryController treeDataSource] sortExpandedChildrenWithCurrentDescriptors:[theSearch resultsSubTree]];
 	
 	[[secondaryController outlineView] reloadData];
-	[[secondaryController dataSource] updatePrompt];
+	[[secondaryController treeDataSource] updatePrompt];
 	// NSLog(@"Items Found: %@", itemsFound);
 }
 
@@ -516,7 +517,7 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 		{
 			itemSearch = [data itemSearch];
 			[[self outlineView] setCurrentSearch:itemSearch];
-			//[(PADOutlineView*)[[[self secondaryController] dataSource] outlineView] setCurrentSearch:itemSearch];
+			//[(PADOutlineView*)[[[self secondaryController] treeDataSource] outlineView] setCurrentSearch:itemSearch];
 			if( itemSearch != nil )
 			{
 				if( subTree == nil ) {
@@ -601,8 +602,8 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 		
         while ((_draggedNode = [draggedNodesEnum nextObject])) {
 			
-			if( [dragDataSource dataSource] != nil )
-				[[dragDataSource dataSource] performSelector:@selector(nodeTypeChanged:toType:)
+			if( [dragDataSource treeDataSource] != nil )
+				[[dragDataSource treeDataSource] performSelector:@selector(nodeTypeChanged:toType:)
 												  withObject:(SimpleTreeNode*)_draggedNode
 												  withObject:destinationFlavor];
 			
@@ -657,7 +658,7 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 - (NSDragOperation)validateDropSource:(id <NSDraggingInfo>)info proposedItem:(id)item proposedChildIndex:(NSInteger)childIndex
 {
 	BOOL	fromThisView = [[[info draggingSource] dataSource] isEqual:treeControl];
-	NSArray *_draggedNodes = [[[info draggingSource] dataSource] draggedNodes];
+	NSArray *_draggedNodes = [[[info draggingSource] treeDataSource] draggedNodes];
 	int		nodeIndex, nodeCount = [_draggedNodes count];
 	
 	if( fromThisView )
@@ -689,7 +690,7 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 		else return NSDragOperationCopy;
 	}
 	if( [[[item nodeParent] nodeData] itemType] == kPADTypeGroupLibrary ) {
-		//NSArray *_draggedNodes = [[[info draggingSource] dataSource] draggedNodes];
+		//NSArray *_draggedNodes = [[[info draggingSource] treeDataSource] draggedNodes];
 		//int		nodeIndex, nodeCount = [_draggedNodes count];
 		
 		for(nodeIndex=0; nodeIndex<nodeCount; nodeIndex++)
