@@ -6,6 +6,7 @@
 //
 
 #import "DACALTreeDataSource.h"
+#import "DACALViewDataSource.h"
 #import <DACAL/dacalconstants.h>
 #import "PADLifecycleSetup.h"
 #import "PADSearchRequest.h"
@@ -19,28 +20,27 @@
 #import "DACALSlotElement.h"
 #import <PMUtility/PMUtility.h>
 #import "TreeController.h"
-#import "DACALViewDataSource.h"
 
 NSString*	DACALFlavorToFlavorValue( NSString* flavor )
 {
 	NSString*	theFlavorValue = nil;
 	
-	if( flavor )
+	if( flavor ) {
 		if(	[flavor isEqual:PADINDEX_FLAVORVALUE_FILES] ||
 		   [flavor isEqual:PADINDEX_FLAVORTITLE_FILES] )
 			theFlavorValue = PADINDEX_FLAVORVALUE_FILES;
-		else if( [flavor isEqual:PADINDEX_FLAVORVALUE_IMAGE] ||
-				[flavor isEqual:PADINDEX_FLAVORTITLE_IMAGE] )
-			theFlavorValue = PADINDEX_FLAVORVALUE_IMAGE;
-		else if( [flavor isEqual:PADINDEX_FLAVORVALUE_MOVIE] ||
-				[flavor isEqual:PADINDEX_FLAVORTITLE_MOVIE] )
-			theFlavorValue = PADINDEX_FLAVORVALUE_MOVIE;
-		else if( [flavor isEqual:PADINDEX_FLAVORVALUE_MUSIC] ||
-				[flavor isEqual:PADINDEX_FLAVORTITLE_MUSIC] )
-			theFlavorValue = PADINDEX_FLAVORVALUE_MUSIC;
-		else if( [flavor isEqual:@"data"] )
-			theFlavorValue = PADINDEX_FLAVORVALUE_FILES;
-	
+        else if( [flavor isEqual:PADINDEX_FLAVORVALUE_IMAGE] ||
+                [flavor isEqual:PADINDEX_FLAVORTITLE_IMAGE] )
+            theFlavorValue = PADINDEX_FLAVORVALUE_IMAGE;
+        else if( [flavor isEqual:PADINDEX_FLAVORVALUE_MOVIE] ||
+                [flavor isEqual:PADINDEX_FLAVORTITLE_MOVIE] )
+            theFlavorValue = PADINDEX_FLAVORVALUE_MOVIE;
+        else if( [flavor isEqual:PADINDEX_FLAVORVALUE_MUSIC] ||
+                [flavor isEqual:PADINDEX_FLAVORTITLE_MUSIC] )
+            theFlavorValue = PADINDEX_FLAVORVALUE_MUSIC;
+        else if( [flavor isEqual:@"data"] )
+            theFlavorValue = PADINDEX_FLAVORVALUE_FILES;
+    }
 	return theFlavorValue;
 }
 
@@ -48,7 +48,7 @@ NSString*	DACALFlavorToFlavorTitle( NSString* flavor )
 {
 	NSString*	theFlavorTitle = nil;
 	
-	if( flavor )
+	if( flavor ) {
 		if(	[flavor isEqual:PADINDEX_FLAVORVALUE_FILES] ||
 		   [flavor isEqual:PADINDEX_FLAVORTITLE_FILES] )
 			theFlavorTitle = PADINDEX_FLAVORTITLE_FILES;
@@ -63,7 +63,7 @@ NSString*	DACALFlavorToFlavorTitle( NSString* flavor )
 			theFlavorTitle = PADINDEX_FLAVORTITLE_MUSIC;
 		else if( [flavor isEqual:@"data"] )
 			theFlavorTitle = PADINDEX_FLAVORTITLE_FILES;
-	
+	}
 	return theFlavorTitle;
 }
 
@@ -423,7 +423,7 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 	if( usedCount == 1 )
 		slotString = NSLocalizedString(@"slot", @"Data View Prompt Singular form of carousel device slot");
 	else 
-		slotString = NSLocalizedString(@"slots", @"Dava View Prompt Plural form of carousel device slots");
+		slotString = NSLocalizedString(@"slots", @"Data View Prompt Plural form of carousel device slots");
 	
     NSString *identifier = [[tabView selectedTabViewItem] identifier];
 	if( [identifier compare:@"Home"] == NSOrderedSame )
@@ -467,10 +467,10 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 	   	   
 - (void)searchFoundResults:(NSArray*)itemsFound forSearch:(PADSearchRequest*)theSearch
 {
-	[[secondaryController dataSource] sortExpandedChildrenWithCurrentDescriptors:[theSearch resultsSubTree]];
+	[[secondaryController treeDataSource] sortExpandedChildrenWithCurrentDescriptors:[theSearch resultsSubTree]];
 	
 	[[secondaryController outlineView] reloadData];
-	[[secondaryController dataSource] updatePrompt];
+	[[secondaryController treeDataSource] updatePrompt];
 	// NSLog(@"Items Found: %@", itemsFound);
 }
 
@@ -601,8 +601,8 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 		
         while ((_draggedNode = [draggedNodesEnum nextObject])) {
 			
-			if( [dragDataSource dataSource] != nil )
-				[[dragDataSource dataSource] performSelector:@selector(nodeTypeChanged:toType:)
+			if( [dragDataSource treeDataSource] != nil )
+				[[dragDataSource treeDataSource] performSelector:@selector(nodeTypeChanged:toType:)
 												  withObject:(SimpleTreeNode*)_draggedNode
 												  withObject:destinationFlavor];
 			
@@ -634,8 +634,8 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
         while ((_draggedNode = [draggedNodesEnum nextObject])) 
 		{
 			if( !sourceWasUs ) {
-				//newMark = (SimpleTreeNode*)[SimpleTreeNode nodeDataWithURL:(NSURL*)[(SimpleNodeData*)[_draggedNode nodeData] location]];
-				//newMarkTree = (SimpleTreeNode*)[SimpleTreeNode treeOperationFromLocation:(NSURL*)[(SimpleNodeData*)[_draggedNode nodeData] location] forUI:YES];
+				//newMark = (SimpleTreeNode*)[SimpleTreeNode nodeDataWithURL:(NSURL*)[(SimpleNodeData*)[_draggedNode nodeData] itemURL]];
+				//newMarkTree = (SimpleTreeNode*)[SimpleTreeNode treeOperationFromLocation:(NSURL*)[(SimpleNodeData*)[_draggedNode nodeData] itemURL] forUI:YES];
 				//[[newMark nodeData] setSubTree:newMarkTree];
 				//[[newMark nodeData] setIsLeaf:YES];
 				//[[newMark nodeData] setExpandable:NO];
@@ -657,7 +657,7 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 - (NSDragOperation)validateDropSource:(id <NSDraggingInfo>)info proposedItem:(id)item proposedChildIndex:(NSInteger)childIndex
 {
 	BOOL	fromThisView = [[[info draggingSource] dataSource] isEqual:treeControl];
-	NSArray *_draggedNodes = [[[info draggingSource] dataSource] draggedNodes];
+	NSArray *_draggedNodes = [[[info draggingSource] treeDataSource] draggedNodes];
 	int		nodeIndex, nodeCount = [_draggedNodes count];
 	
 	if( fromThisView )
@@ -834,6 +834,7 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 
 - (void)windowWillClose:(NSNotification *)notification
 {
+    // TODO: not sure we need to call toolbarSearchFinish unless there was some dirty data in the inspector or view
 	[self toolbarSearchFinish:self];
 	[[NSApplication sharedApplication] terminate:self];
 }
