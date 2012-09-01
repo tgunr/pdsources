@@ -169,7 +169,7 @@
 	NSString*	actualFlavor = DACALFlavorToFlavorValue( flavorName );
 	NSString*	theImageFile = @"Generic_Files.icns";
 	
-	if( actualFlavor )
+	if( actualFlavor ) {
 		if(	[actualFlavor isEqual:PADINDEX_FLAVORVALUE_FILES] )
 			theImageFile = @"Generic_Files.icns";
 		else if( [actualFlavor isEqual:PADINDEX_FLAVORVALUE_IMAGE] )
@@ -178,7 +178,8 @@
 			theImageFile = @"Generic_Movie.icns";
 		else if( [actualFlavor isEqual:PADINDEX_FLAVORVALUE_MUSIC] )
 			theImageFile = @"Generic_Music.icns";
-	
+	}
+    
 	if( theImageFile )
 		outGoodChange = [self changeToImageResource:theImageFile];
 	

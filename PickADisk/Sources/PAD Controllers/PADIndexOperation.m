@@ -57,23 +57,25 @@
 	SimpleTreeNode*		theNode = [self subtreeChild];
 	id					theTarget = [self finishTarget];
 	
-	if( [self isCancelled] ) return;
+	if( [self isCancelled] )
+        return;
 	
 //	[theNode setBusy:YES];
 	[theNode initFromLocation:[self itemLocation]];
 
-	if( [self isCancelled] ) return;
+	if( [self isCancelled] )
+        return;
 
 	[theNode setBusy:NO];
 
-	if( [self isCancelled] ) return;
+	if( [self isCancelled] )
+        return;
 	[PADSearchService updateAllSearches];
 	
-#ifdef __DCDEBUG
-	NSLog(@"Finished location: %@", itemLocation);
-#endif
+	PMLOGDEBUG(@"Finished location: %@", itemLocation);
 	
-	if( [self isCancelled] ) return;
+	if( [self isCancelled] )
+        return;
 
 	if( theTarget != nil )
 		[theTarget	performSelectorOnMainThread:@selector(subTreeCompletedLoad:)

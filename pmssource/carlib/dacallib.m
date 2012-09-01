@@ -1126,7 +1126,8 @@ DACALCommandMoveToSlotWithOptions(DACALDeviceRef deviceID, DACALSlotNum newSlot,
 			goto ERRORBAIL;
 	}
 
-	if (doClose && doOpen) DACAL_SHORT_SLEEP
+	if (doClose && doOpen)
+        DACAL_SHORT_SLEEP
 
 	if (doOpen) {
 		theErr = DACALCommandRequestNoResult(deviceID, cmdMoveToSlot);
@@ -1134,13 +1135,14 @@ DACALCommandMoveToSlotWithOptions(DACALDeviceRef deviceID, DACALSlotNum newSlot,
 	}
 
 	ERRORBAIL:
-			if ((theErr == 0) && (moveToggle)) if (theLastSlot == newSlot) {
-				if (theLastTime == -1)
+    if ((theErr == 0) && (moveToggle))
+        if (theLastSlot == newSlot) {
+            if (theLastTime == -1)
 				DACAL_BOX_LASTSLOTTIME(indexID) = time(NULL);
-				if (theLastTime != -1)
+            if (theLastTime != -1)
 				DACAL_BOX_LASTSLOTTIME(indexID) = -1;
-				return (theErr);
-			}
+            return (theErr);
+        }
 
 	if (theErr == 0) {
 		DACAL_BOX_LASTSLOT(indexID) = newSlot;
@@ -1728,7 +1730,7 @@ DACALResult DACALSlotSetType(DACALDeviceRef deviceID, DACALSlotNum slotNum, CFSt
 										   boxUUID, slotNum, slotType );
 	if( doCFCommand == NULL ) goto BAIL;
 	
-	if( gVerbose )
+	if( pmCFUtilityVerbose )
 	{
 		CFShow(CFSTR("Driver call DACALSlotSetType:"));
 		CFShow( doCFCommand );
@@ -2079,7 +2081,7 @@ getUSBDevice(io_object_t usbDevice) {
 	IODestroyPlugInInterface(plugInInterface);            // done with this
 
 	if (res || !dev) {
-        PMLOGEMERG("Unable to create USB device with QueryInterface error: %i\n", stderr);
+        PMLOGEMERG(@"Unable to create USB device with QueryInterface error: %i\n", stderr);
 		return (nil);
 	}
 
@@ -2610,7 +2612,7 @@ DACALDevicesInitialize(void) {
 	// Setup bRelease
 	//	numberRef = CFNumberCreate(gDACALDefaultCFAllocator, kCFNumberSInt32Type, &kDACALReleaseID);
 	//	if (!numberRef) {
-	//		if( gVerbose )
+	//		if( pmCFUtilityVerbose )
 	//				printf("could not create CFNumberRef for product\n");
 	//		return kIOReturnNoMemory;
 	//	}
