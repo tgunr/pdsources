@@ -130,7 +130,8 @@
 		}
 	}
 
-	if( searchDevice ) CFRelease( (CFTypeRef)searchDevice );
+	if( searchDevice )
+        CFRelease( (CFTypeRef)searchDevice );
 	return foundElement;
 }
 

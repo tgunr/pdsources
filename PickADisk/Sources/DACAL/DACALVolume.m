@@ -503,7 +503,7 @@ HAVEDVD:
     if(data != NULL) {
        // [dict setObject:data forKey:[NSNumber numberWithInt:format]];
 		//	Modified by Jack to emit a string key
-		 [dict setObject:data forKey:[NSString stringWithFormat:@"%ld",format]];
+		 [dict setObject:data forKey:[NSString stringWithFormat:@"%hhd",format]];
     }
     
 bail:

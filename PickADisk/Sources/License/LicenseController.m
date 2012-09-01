@@ -81,22 +81,16 @@ static LicenseController*	shared_LicenseController = nil;
 
 - (void)closeStateWindow
 {
-	if( controllerState )
-		if( [controllerState isEqual:kPADLicenseStateFirstAnnounce] ) {
+	if( controllerState ) {
+		if( [controllerState isEqual:kPADLicenseStateFirstAnnounce] )
 			[self closeNotLicensedWindow];
-        } else {
-            if( [controllerState isEqual:kPADLicenseStateEnterLicense] ) {
-                [enterLicenseWindow performClose:self];
-            } else {
-                if( [controllerState isEqual:kPADLicenseStateRequestLicense] ) {
-                    [requestLicenseWindow performClose:self];
-                } else {
-                    if( [controllerState isEqual:kPADLicenseStateShowLicense] ) {
-                        [licenseWindow performClose:self];
-                    }
-                }
-            }
-        }
+        else if( [controllerState isEqual:kPADLicenseStateEnterLicense] )
+            [enterLicenseWindow performClose:self];
+        else if( [controllerState isEqual:kPADLicenseStateRequestLicense] )
+            [requestLicenseWindow performClose:self];
+        else if( [controllerState isEqual:kPADLicenseStateShowLicense] )
+            [licenseWindow performClose:self];
+    }
 
 	// Note this leaves the state unchanged so the caller is responsible for updating it
 }
@@ -119,7 +113,6 @@ static LicenseController*	shared_LicenseController = nil;
 - (void)runChooseLicenseWindow
 {
 	controllerState = kPADLicenseStateEnterLicense;
-	[enterLicenseWindow setDelegate:self];
 	[enterLicenseWindow makeKeyAndOrderFront:self];
 }
 
@@ -426,7 +419,6 @@ static LicenseController*	shared_LicenseController = nil;
 - (IBAction)enterLicenseBtn:(id)sender {
 	[self closeNotLicensedWindow];
 	controllerState = kPADLicenseStateEnterLicense;
-	[enterLicenseWindow setDelegate: self];
 	[enterLicenseWindow performSelector:@selector(makeKeyAndOrderFront:) withObject:self afterDelay:0.42];
 }
 

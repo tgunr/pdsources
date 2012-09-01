@@ -12,6 +12,7 @@
 #import "/Volumes/data/Sources/Projects/PickADisk/Sources/pmssource/carlib/dacalconstants.h"
 #import "DACALTreeDataSource.h"
 #import "DACALDevice.h"
+#import "TreeController.h"
 #import <PMUtility/PMUtility.h>
 
 @implementation DACALSlot
@@ -70,9 +71,9 @@
 -(DACALDevice*)slotDevice
 	{ return slotDevice; }
 
--(DACALDeviceRef)slotDeviceRef
-{
-	if( slotDevice == nil) return kDACALNullDevice;
+-(DACALDeviceRef)slotDeviceRef {
+	if( slotDevice == nil)
+        return kDACALNullDevice;
 	return [slotDevice deviceRef];
 }
 
@@ -350,7 +351,7 @@
 	[theElement reloadElement];
 	[[PADSearchService sharedSearch] searchDataChanged:[NSArray arrayWithObject:theElement]];
 
-	[[[[AppController shared] dataView] dataSource] updateChangesWithAction:YES];
+	[[[[AppController shared] dataView] treeDataSource] updateChangesWithAction:YES];
 	//[[[[AppController shared] dataView] dataSource] sortExpandedChildrenWithCurrentDescriptors:nil];
 	//[[[[AppController shared] dataView] outlineView] reloadData];
 }
@@ -384,8 +385,9 @@
 	[self reloadSlot];
 }
 
--(DACALResult)moveDeviceToSlotWithOptions:(DACALOptionBits)slotOptions
-	{ return DACALCommandMoveToSlotWithOptions( [self slotDeviceRef], [self slotNumber], slotOptions ); }
+-(DACALResult)moveDeviceToSlotWithOptions:(DACALOptionBits)slotOptions {
+    return DACALCommandMoveToSlotWithOptions( [self slotDeviceRef], [self slotNumber], slotOptions );
+}
 
 +(BOOL)moveDevicesToSlotsOfNodes:(NSArray*)theTreeNodes
 {
@@ -396,31 +398,41 @@
 	DACALSlot*			lastSlot = nil;
 	NSMutableArray*		slotArray = [NSMutableArray arrayWithCapacity:0];
 	NSEnumerator*		slotEnum = nil;
-	BOOL				slotOne = YES;
 
 	workNode = [nodeEnum nextObject];
 	while (workNode) {
 		workSlot = [[[workNode nodeData] itemElement] elementSlot];
-		if( [slotArray indexOfObject:workSlot] == NSNotFound )
-			[slotArray addObject:workSlot];
+        if (workSlot) {
+            if( [slotArray indexOfObject:workSlot] == NSNotFound )
+                [slotArray addObject:workSlot];
+        } else
+            PMLOGWARNING(@"workslot at workNode %@ was nil!", workNode);
 		workNode = [nodeEnum nextObject];
 	}
 
 	slotEnum = [slotArray objectEnumerator];
-
+    NSUInteger slotCount = [slotArray count];
 	workSlot = [slotEnum nextObject];
+    lastSlot = workSlot;
 	while (workSlot) {
-		outDidMove = ([workSlot moveDeviceToSlotWithOptions:kDACALOptionMoveDefault] == kDACALOK);
-		if( slotOne )
-			slotOne = NO;
-		else
-			if( lastSlot && [[lastSlot slotDevice] isDeviceRef:[workSlot slotDeviceRef]] )
-				sleep( 7.0 );
+        DACALResult result = [workSlot moveDeviceToSlotWithOptions:kDACALOptionMoveDefault];
+		outDidMove = (result == kDACALOK);
+        slotCount--;
+        if (outDidMove == YES) {
+            if( lastSlot && [[lastSlot slotDevice] isDeviceRef:[workSlot slotDeviceRef]] )
+                // TODO: Make this sleep value a preference. Also, skip this if lastSlot
+                if (slotCount) {
+                    sleep( 7.0 );
+                }
+        } else {
+            PMLOGERROR(@"Error while trying to move to slot");
+            goto BAIL;
+        }
 
-		lastSlot = workSlot;
+        lastSlot = workSlot;
 		workSlot = [slotEnum nextObject];
 	}
-
+BAIL:
 	return outDidMove;
 }
 
@@ -783,7 +795,7 @@
 	}
 
 	//[[[[AppController shared] dataView] dataSource] updateChangesWithAction:YES];
-	[[[[DACALTreeDataSource shared] secondaryController] dataSource] updateChangesWithAction:YES];
+	[[[[DACALTreeDataSource shared] secondaryController] treeDataSource] updateChangesWithAction:YES];
 
 	if( theSubtreeChild )
 		[[[[DACALTreeDataSource shared] secondaryController] outlineView] performSelector:@selector(selectItems:)
