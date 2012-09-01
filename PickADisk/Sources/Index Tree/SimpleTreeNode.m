@@ -59,7 +59,7 @@
         isExpandable = !isLeaf;
 		isExpanded = NO;
         isSelectable = isLeaf;    
-		location = NULL;
+		itemURL = NULL;
 		itemType = 0;
 		itemDevice = (DACALDeviceRef)NULL;
 		itemSlot = 0;
@@ -75,7 +75,7 @@
 //	BOOL	isASlot = (CFURLIsSlot((CFURLRef)loc)) ? YES : NO;
 
     if (self = [super init]) {
-        location = [loc retain];
+        itemURL = [loc retain];
 		name = (NSString*)CFURLCopyReferenceTitle( NULL, (CFURLRef)loc, NULL);
         isLeaf = !isAFolder;
         iconRep = CFURLGetIconAsNSImage( NULL, (CFURLRef)loc, NULL);
@@ -108,7 +108,7 @@
 //	BOOL	isASlot = (CFURLIsSlot((CFURLRef)loc)) ? YES : NO;
 
     if (self = [super init]) {
-        location = [loc retain];
+        itemURL = [loc retain];
 		name = (NSString*)CFURLCopyReferenceTitle( NULL, (CFURLRef)loc, NULL);
         isLeaf = leaf;
         iconRep = CFURLGetIconAsNSImage( NULL, (CFURLRef)loc, NULL);
@@ -147,19 +147,19 @@
 }
 
 + (id)nodeDataWithURL:(NSURL*)loc {
-    // Convenience method to return a leaf node with its location set.
+    // Convenience method to return a leaf node with its itemURL set.
     return [[SimpleNodeData alloc] initWithLocation:loc];
 }
 
 + (id)nodeDataWithURL:(NSURL*)loc isLeaf:(BOOL)leaf {
-    // Convenience method to return a leaf node with its location set.
+    // Convenience method to return a leaf node with its itemURL set.
     return [[SimpleNodeData alloc] initWithLocation:loc isLeaf:leaf];
 }
 
 - (void)dealloc {
     if(name)		[name release];
     if(iconRep)		[iconRep release];
-	if(location)	[location release];
+	if(itemURL)	[itemURL release];
 	if(itemFlavor)	[itemFlavor release];
 	if(itemAddDate)	[itemAddDate release];
 	if(itemDevice)	CFRelease((CFTypeRef)itemDevice);
@@ -244,14 +244,14 @@
 */
 
 - (void)setLocation:(NSURL *)loc {
-    if (!location || ![location isEqual:loc]) {
+    if (!itemURL || ![itemURL isEqual:loc]) {
 		[loc retain];
-		[location release];
-		location = loc;
+		[itemURL release];
+		itemURL = loc;
     }
 }
-- (NSURL *)location {
-    return location;
+- (NSURL *)itemURL {
+    return itemURL;
 }
 - (void)setLocationForIcon:(NSURL *)loc {
 	// A convience function to set the url data and grab the icon
@@ -295,7 +295,7 @@
 - (NSString *)itemFlavor { return itemFlavor; }
 
 - (void)setSubTree:(SimpleTreeNode*)tree {
-    if (!subTree || ![location isEqual:tree]) {
+    if (!subTree || ![itemURL isEqual:tree]) {
 	[subTree release];
 	subTree = [tree retain];
     }
@@ -320,7 +320,9 @@
 	
 }
 
-- (id)itemElement { return itemElement; }
+- (id)itemElement {
+    return itemElement;
+}
 
 - (BOOL)busy { return isBusy; }
 - (void)setBusy:(BOOL)value { isBusy = value; }
@@ -383,7 +385,7 @@
 - (id)reload
 {
 	
-	NSURL*		loc = [self location];
+	NSURL*		loc = [self itemURL];
 	//BOOL		isAFolder = (CFURLHasDirectoryPath((CFURLRef)loc)) ? YES : NO;
 	
 	name = (NSString*)CFURLCopyReferenceTitle( NULL, (CFURLRef)loc, NULL);
@@ -663,7 +665,7 @@
 
 - (NSNumber*)searchForFileUTI:(NSString*)other withOptions:(NSMutableDictionary*)options
 {
-	CFStringRef			ourUTI = CFURLCopyUTI( kCFAllocatorDefault, (CFURLRef)[self location], NULL );
+	CFStringRef			ourUTI = CFURLCopyUTI( kCFAllocatorDefault, (CFURLRef)[self itemURL], NULL );
 	PADSearchRelevance	rank = 0.0;
 	
 	if( other ) {
@@ -923,7 +925,7 @@
 }
 
 + (id)nodeDataWithURL:(NSURL*)loc {
-    // Convenience method to return a leaf node with its location set.
+    // Convenience method to return a leaf node with its itemURL set.
 	return [[SimpleTreeNode alloc] initWithData:[SimpleNodeData nodeDataWithURL:loc] parent:nil children:[NSArray array]];
 }
 
@@ -936,11 +938,9 @@
     return [[SimpleTreeNode alloc] initFromLocation:loc];
 }
 
-+ (id)treeOperationFromLocation:(NSURL *)loc forUI:(BOOL)uiQueue
++ (SimpleTreeNode *)treeOperationFromLocation:(NSURL *)loc forUI:(BOOL)uiQueue
 {
 	SimpleTreeNode*		ourNode = [[SimpleTreeNode alloc] initWithData:[SimpleNodeData nodeDataWithURL:loc] parent:nil children:[[NSArray alloc] init]];// [SimpleTreeNode nodeDataWithURL:loc];
-
-	self = ourNode;	
 
 	PADIndexOperation *indexOp = [[PADIndexOperation alloc] initWithLocation:loc forChild:ourNode];
 	if( uiQueue )
@@ -950,7 +950,7 @@
 
 	[indexOp release];
 	
-    return self;
+    return ourNode;
 }
 
 + (id)treeOperationFromLocation:(NSURL *)loc
@@ -1135,7 +1135,7 @@ FOUND:
 - (NSString*)absolutePathName
 {
 	NSString*	outName = nil;
-	CFStringRef	workName = CFURLCopyActualName( kCFAllocatorDefault, (CFURLRef)[(SimpleNodeData*)[self nodeData] location], NULL );
+	CFStringRef	workName = CFURLCopyActualName( kCFAllocatorDefault, (CFURLRef)[(SimpleNodeData*)[self nodeData] itemURL], NULL );
 	
 	if( workName != NULL )
 	{
@@ -1153,7 +1153,7 @@ FOUND:
 	NSString*				outName = nil;
 	NSMutableString*		workNames = [NSMutableString stringWithCapacity:0];
 	SimpleTreeNode*			aParent = [self matchActual];
-	CFURLRef				aSpot = (CFURLRef)[(SimpleNodeData*)[aParent nodeData] location];
+	CFURLRef				aSpot = (CFURLRef)[(SimpleNodeData*)[aParent nodeData] itemURL];
 	
 	if( CFURLIsTopInSlot( kCFAllocatorDefault, aSpot ) || CFURLIsSlot( aSpot ) )
 		[workNames setString:@"/"];
@@ -1161,7 +1161,7 @@ FOUND:
 		while ([aParent nodeParent] != nil) {
 			[workNames setString:[NSString stringWithFormat:@"%@/%@",[aParent absolutePathName],workNames]];
 			aParent = (SimpleTreeNode*)[aParent nodeParent];
-			aSpot = (CFURLRef)[(SimpleNodeData*)[aParent nodeData] location];
+			aSpot = (CFURLRef)[(SimpleNodeData*)[aParent nodeData] itemURL];
 			if( CFURLIsTopInSlot( kCFAllocatorDefault, aSpot ) || CFURLIsSlot( aSpot ) ) break;
 		}
 	

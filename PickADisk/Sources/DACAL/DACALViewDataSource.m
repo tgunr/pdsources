@@ -7,6 +7,7 @@
 
 #import "AppController.h"
 #import "DACALViewDataSource.h"
+#import "DACALTreeDataSource.h"
 #import "PADLifecycleSetup.h"
 #import "DACALSlot.h"
 #import "DACALSlotElement.h"
@@ -218,7 +219,7 @@
 {
 	NSUndoManager*		undo = [self undoManager];
 	SimpleNodeData*		theData = [theNode nodeData];
-	DACALSlotElement*	theElement = [theData itemElement]; //	DACALDeviceSlotElementForURL( (CFURLRef)[theData location] );
+	DACALSlotElement*	theElement = [theData itemElement]; //	DACALDeviceSlotElementForURL( (CFURLRef)[theData itemURL] );
 	NSString*			nowName = nil;
 	
 	if( [[theData name] compare:theName] == NSOrderedSame ) return;
@@ -266,11 +267,11 @@ SLOTNAMEFAILED:
 	// theErr = DACALSlotSetTitle( theBox, theSlot, (CFStringRef)theName );
 	// if( theErr != 0 ) goto SLOTNAMEFAILED;
 	
-	theErr = CFURLSetReferenceTitle( (CFURLRef)[theData location], (CFStringRef)theName );
+	theErr = CFURLSetReferenceTitle( (CFURLRef)[theData itemURL], (CFStringRef)theName );
 	if( theErr != 0 ) goto SLOTNAMEFAILED;
 
 	[theData setName:theName];
-	// theShortURL = CFURLCreateCopyDeletingLastPathComponent( kCFAllocatorDefault, (CFURLRef)[theData location] );
+	// theShortURL = CFURLCreateCopyDeletingLastPathComponent( kCFAllocatorDefault, (CFURLRef)[theData itemURL] );
 	// theNewURL = CFURLCreateCopyAppendingPathComponent( kCFAllocatorDefault, theShortURL, (CFStringRef)theName, TRUE );
 	// CFRelease( theShortURL );
 	// [theData setLocation:(NSURL*)theNewURL];
@@ -319,7 +320,7 @@ SLOTNAMEFAILED:
 {
 	NSUndoManager*		undo = [self undoManager];
 	SimpleNodeData*		theData = [theNode nodeData];
-	DACALSlotElement*	theElement = [theData itemElement];	// DACALDeviceSlotElementForURL( (CFURLRef)[theData location] );
+	DACALSlotElement*	theElement = [theData itemElement];	// DACALDeviceSlotElementForURL( (CFURLRef)[theData itemURL] );
 	NSString*			nowType = nil;
 	
 	if( [[theData itemFlavor] compare:theName] == NSOrderedSame ) return;
@@ -389,9 +390,9 @@ SLOTNAMEFAILED:
 - (void)nodeTypeChanged:(SimpleTreeNode*)theNode toType:(NSString*)theName
 {
 	SimpleNodeData	*theData = [theNode nodeData];
-	CFURLRef		theURL = (CFURLRef)[theData location];
+	CFURLRef		theURL = (CFURLRef)[theData itemURL];
 	
-//	CFURLRef		testURL = (CFURLRef)[(SimpleNodeData*)[theNode nodeData] location];
+//	CFURLRef		testURL = (CFURLRef)[(SimpleNodeData*)[theNode nodeData] itemURL];
 	DACALResult		theErr;
 	
 //	CFShow(testURL);
@@ -451,7 +452,7 @@ SLOTTYPEFAILED:
 		return YES;	
 	
 	if([[tc identifier] compare:COLUMNID_NAME] == NSOrderedSame) {
-		if( ![[item nodeData] location] )
+		if( ![[item nodeData] itemURL] )
             return NO;
 		return YES;
 	}

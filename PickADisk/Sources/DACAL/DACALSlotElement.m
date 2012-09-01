@@ -208,7 +208,7 @@
 	if( [[newNode nodeData] itemElement] != nil )
 		return [[newNode nodeData] itemElement];
 
-	DACALSlotElement*	ourElement = DACALDeviceSlotElementForURL( (CFURLRef)[(SimpleNodeData*)[newNode nodeData] location] );
+	DACALSlotElement*	ourElement = DACALDeviceSlotElementForURL( (CFURLRef)[(SimpleNodeData*)[newNode nodeData] itemURL] );
 
 	if( ourElement != nil ) {
 		[ourElement setElementNode:newNode];
@@ -222,7 +222,7 @@
 	{ return [[DACALSlotElement alloc] initElementForSlot:newSlot atLocation:newLoc]; }
 
 -(void)updateElementChanges:(BOOL)doAction
-	{ [[[[AppController shared] dataView] dataSource] updateChangesForItem:elementNode withAction:doAction]; }
+	{ [[[[AppController shared] dataView] treeDataSource] updateChangesForItem:elementNode withAction:doAction]; }
 
 -(void)reloadElement
 {
