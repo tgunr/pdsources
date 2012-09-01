@@ -54,7 +54,7 @@
 	BOOL						allowToggleVerticalBeginsDrag;
 	BOOL						onlyAcceptDropOnRoot;
 	
-	IBOutlet id					dataSource;
+	IBOutlet id treeDataSource;
     IBOutlet PADOutlineView		*outlineView;	
 }
 
@@ -76,7 +76,7 @@
 
 - (void)recreateInitialTree;
 
-- (id)dataSource;
+- (id)treeDataSource;
 
 - (PADOutlineView*)outlineView;
 - (void)setOutlineView:(PADOutlineView*)view;

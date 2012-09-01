@@ -199,8 +199,8 @@
             // By returning the correct parts, we allow NSTableView to correctly begin an edit when the text portion is clicked on.
 			
 //			if( ([event type] == NSLeftMouseDown) && ([event clickCount] == 2 ) )
-//				if( [[[dataView delegate] dataSource] respondsToSelector:@selector(doubleClickImage:)] == YES )
-//					[[[dataView delegate] dataSource] performSelector:@selector(doubleClickImage:) withObject:(id)[self representedObject]];
+//				if( [[[dataView delegate] treeDataSource] respondsToSelector:@selector(doubleClickImage:)] == YES )
+//					[[[dataView delegate] treeDataSource] performSelector:@selector(doubleClickImage:) withObject:(id)[self representedObject]];
 			
             outHit = NSCellHitIconArea;
 			goto BAIL;
@@ -215,8 +215,8 @@
 //	}
 //	if( ([event type] == NSLeftMouseDown) && ([event clickCount] == 2 ) )
 //		if( (outHit == NSCellHitNone) && (imageHit == NSCellHitNone) )
-//			if( [[[dataView delegate] dataSource] respondsToSelector:@selector(doubleClickCellContent:)] == YES )
-//				[[[dataView delegate] dataSource] performSelector:@selector(doubleClickCellContent:) withObject:(id)[self representedObject]];
+//			if( [[[dataView delegate] treeDataSource] respondsToSelector:@selector(doubleClickCellContent:)] == YES )
+//				[[[dataView delegate] treeDataSource] performSelector:@selector(doubleClickCellContent:) withObject:(id)[self representedObject]];
 
 BAIL:
 	return outHit;

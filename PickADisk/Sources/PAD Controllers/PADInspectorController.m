@@ -122,7 +122,7 @@ static	PADInspectorController*		PADInspectorController_shared = nil;
 //	[[[AppController shared] toolbarController] setInspectorController:self];
 //	[[PADSearchService sharedSearch] addActiveWatcher:self];
 	
-//	DACALViewDataSource*	dataController = (DACALViewDataSource*)[[[DACALTreeDataSource shared] secondaryController] dataSource];
+//	DACALViewDataSource*	dataController = (DACALViewDataSource*)[[[DACALTreeDataSource shared] secondaryController] treeDataSource];
 //	[[self window] setUndoManager:[dataController undoManager]];
 
     [super windowDidLoad];  // It's documented to do nothing, but still a good idea to invoke...
@@ -166,7 +166,7 @@ static	PADInspectorController*		PADInspectorController_shared = nil;
 
 - (IBAction)exitImage:(id)sender
 {
-//	DACALViewDataSource*	dataController = (DACALViewDataSource*)[[[DACALTreeDataSource shared] secondaryController] dataSource];
+//	DACALViewDataSource*	dataController = (DACALViewDataSource*)[[[DACALTreeDataSource shared] secondaryController] treeDataSource];
 	SimpleTreeNode*			nodeActual = [[selectedRecords objectAtIndex:0] matchActual];
 	
 	if( [sender objectValue] == [(SimpleNodeData*)[nodeActual nodeData] iconRep] ) return;
