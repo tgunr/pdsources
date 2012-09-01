@@ -38,7 +38,6 @@
 @class SimpleTreeNode;
 @class PADIndexToolbarController;
 @class PADOutlineView;
-@class PADPrefsTreeController;
 
 @interface TreeController : NSObject {
 
@@ -53,8 +52,8 @@
 	BOOL						allowToggleVerticalBeginsDrag;
 	BOOL						onlyAcceptDropOnRoot;
 	
-	IBOutlet PADPrefsTreeController*    treeDataSource;
-    IBOutlet PADOutlineView*            outlineView;
+	IBOutlet id					dataSource;
+    IBOutlet PADOutlineView		*outlineView;	
 }
 
 - (IBAction)addGroup:(id)sender;
@@ -64,7 +63,6 @@
 - (IBAction)sortData:(id)sender;
 - (IBAction)expandableMenuItemAction:(id)sender;
 
-- (BOOL)validateMenuItem:(NSMenuItem *)menuItem;
 - (void)deletedSelections;
 
 - (SimpleTreeNode*)treeRoot ;
@@ -76,7 +74,7 @@
 
 - (void)recreateInitialTree;
 
-- (id)treeDataSource;
+- (id)dataSource;
 
 - (PADOutlineView*)outlineView;
 - (void)setOutlineView:(PADOutlineView*)view;
