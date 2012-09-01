@@ -222,7 +222,7 @@
 	{ return [[DACALSlotElement alloc] initElementForSlot:newSlot atLocation:newLoc]; }
 
 -(void)updateElementChanges:(BOOL)doAction
-	{ [[[[AppController shared] dataView] dataSource] updateChangesForItem:elementNode withAction:doAction]; }
+	{ [[[[AppController shared] dataView] treeDataSource] updateChangesForItem:elementNode withAction:doAction]; }
 
 -(void)reloadElement
 {

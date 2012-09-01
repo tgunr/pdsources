@@ -1,5 +1,9 @@
 #import <Cocoa/Cocoa.h>
 
+@interface NSArray(TreeNode)
+-(NSArray*)arrayWithSubTrees;
+@end
+
 @class SimpleTreeNode;
 
 @interface TreeNode : NSObject {
