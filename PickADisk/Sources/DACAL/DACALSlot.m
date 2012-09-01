@@ -12,6 +12,7 @@
 #import "/Volumes/data/Sources/Projects/PickADisk/Sources/pmssource/carlib/dacalconstants.h"
 #import "DACALTreeDataSource.h"
 #import "DACALDevice.h"
+#import "TreeController.h"
 #import <PMUtility/PMUtility.h>
 
 @implementation DACALSlot
@@ -21,16 +22,16 @@
 	if (self) {
 		slotDevice = [newDevice retain];
 		slotNumber = newSlot;
-
+        
 		slotNode         = nil;
 		slotVolume       = nil;
 		slotIdentifier   = nil;
 		slotCheckedOut   = nil;
 		slotCheckedIn    = nil;
 		slotIsCheckedOut = NO;
-
+        
 		slotElements = [[NSMutableArray alloc] initWithCapacity: 0];
-
+        
 		[self fileURL];
 	}
 	return self;
@@ -38,7 +39,7 @@
 
 - (void)dealloc {
 	NSLog(@"Dealloc Slot: %@", [self title]);
-
+    
 	if (slotDevice)
 		[slotDevice release];
 	if (slotNode)
@@ -51,10 +52,10 @@
 		[slotCheckedOut release];
 	if (slotCheckedIn)
 		[slotCheckedIn release];
-
+    
 	if (slotElements)
 		[slotElements release];
-
+    
 	slotDevice       = nil;
 	slotNode         = nil;
 	slotVolume       = nil;
@@ -63,24 +64,24 @@
 	slotCheckedIn    = nil;
 	slotElements     = nil;
 	slotIsCheckedOut = NO;
-
+    
 	[super dealloc];
 }
 
 -(DACALDevice*)slotDevice
-	{ return slotDevice; }
+{ return slotDevice; }
 
--(DACALDeviceRef)slotDeviceRef
-{
-	if( slotDevice == nil) return kDACALNullDevice;
+-(DACALDeviceRef)slotDeviceRef {
+	if( slotDevice == nil)
+        return kDACALNullDevice;
 	return [slotDevice deviceRef];
 }
 
 -(DACALSlotNum)slotNumber
-	{ return slotNumber; }
+{ return slotNumber; }
 
 -(SimpleTreeNode*)slotNode
-	{ return slotNode; }
+{ return slotNode; }
 
 -(void)setSlotNode:(SimpleTreeNode*)newNode
 {
@@ -93,7 +94,7 @@
 }
 
 -(DACVolume*)slotVolume
-	{ return slotVolume; }
+{ return slotVolume; }
 
 -(void)setSlotVolume:(DACVolume*)newVolume
 {
@@ -106,28 +107,28 @@
 }
 
 -(FSRef*)slotFSRef
-	{ return &slotFSRef; }
+{ return &slotFSRef; }
 
 -(BOOL)setSlotFSRefFromURL:(NSURL*)slotURL
-	{ return( (CFURLGetFSRef( (CFURLRef)slotURL, &slotFSRef ) == TRUE) ? YES : NO ); }
+{ return( (CFURLGetFSRef( (CFURLRef)slotURL, &slotFSRef ) == TRUE) ? YES : NO ); }
 
 -(BOOL)validSlotFSRef
-	{ return( BooleanToBOOL(FSIsFSRefValid(&slotFSRef)) ); }
+{ return( BooleanToBOOL(FSIsFSRefValid(&slotFSRef)) ); }
 
 -(BOOL)setSlotLocation:(NSURL*)slotURL
 {
 	BOOL	goodSet = [self setSlotFSRefFromURL:slotURL];
-
+    
 	[self setIsCheckedOut:NO];
-
+    
 	if( goodSet == YES )
 	{		//	Is Checked out?
-
+        
 		CFStringRef		checkedOut = NULL;
 		CFStringRef		isCheckedOut = NULL;
 		CFStringRef		checkedIn = NULL;
 		CFStringRef		slotID = NULL;
-
+        
 		if( FSIsFSRefValid( &slotFSRef ) )
 		{
 			isCheckedOut = FSCopyXattr( kCFAllocatorDefault, &slotFSRef, kDACALCarouselDocumentXAttrSlotIsOut, NULL );
@@ -135,12 +136,12 @@
 				[self setIsCheckedOut:YES];
 				CFRelease( isCheckedOut );
 			}
-
+            
 			checkedOut = FSCopyXattr( kCFAllocatorDefault, &slotFSRef, kDACALCarouselDocumentXAttrSlotCheckout, NULL );
 			checkedIn = FSCopyXattr( kCFAllocatorDefault, &slotFSRef, kDACALCarouselDocumentXAttrSlotCheckIn, NULL );
 			if( checkedIn == NULL )
 				checkedIn = FSCopyXattr( kCFAllocatorDefault, &slotFSRef, kDACALCarouselDocumentXAttrSlotAddDate, NULL );
-
+            
 			slotID = FSCopyXattr( kCFAllocatorDefault, &slotFSRef, kDACALCarouselDocumentXAttrSlotID, NULL );
 			if( slotID != NULL ) {
 				[self setSlotIdentifier: [[[NSString alloc] initWithString:(NSString*)slotID] autorelease]];
@@ -148,25 +149,25 @@
 				CFRelease( slotID );
 			}
 		}
-
+        
 		if( checkedOut != NULL ) {
 			[self setCheckedOutDate: [[[NSDate alloc] initWithString:(NSString*)checkedOut] autorelease]];
 			CFRelease( checkedOut );
 		} else
 			[self setCheckedOutDate:nil];
-
+        
 		if( checkedIn != NULL ) {
 			[self setCheckedInDate: [[[NSDate alloc] initWithString:(NSString*)checkedIn] autorelease]];
 			CFRelease( checkedIn );
 		} else
 			[self setCheckedInDate:nil];
 	}
-
+    
 	return goodSet;
 }
 
 -(NSMutableArray*)slotElements
-	{ return slotElements; }
+{ return slotElements; }
 
 -(void)setSlotElements:(NSMutableArray*)newElements
 {
@@ -175,7 +176,7 @@
 		if( newElements ) [newElements retain];
 		if( slotElements ) [slotElements release];
 		slotElements = newElements;
-
+        
 		[slotElements makeObjectsPerformSelector:@selector(setElementSlot:) withObject:self];
 	}
 }
@@ -203,7 +204,7 @@
 	DACALSlotElement *foundElement = nil;
 	int        eCount = [slotElements count];
 	NSUInteger eIndex;
-
+    
 	for (eIndex = 0; eIndex < eCount; eIndex++) {
 		foundElement = [slotElements objectAtIndex: eIndex];
 		if ([foundElement isElementFSRef: otherFSRef])
@@ -218,7 +219,7 @@
 	DACALSlotElement *foundElement = nil;
 	int        eCount = [slotElements count];
 	NSUInteger eIndex;
-
+    
 	for (eIndex = 0; eIndex < eCount; eIndex++) {
 		foundElement = [slotElements objectAtIndex: eIndex];
 		if ([foundElement isElementURL: otherURL])
@@ -229,7 +230,7 @@
 }
 
 -(NSString*)slotIdentifier
-	{ return slotIdentifier; }
+{ return slotIdentifier; }
 
 -(void)setSlotIdentifier:(NSString*)newID
 {
@@ -246,15 +247,15 @@
 -(DACALSlot*)slotWithIdentifier:(NSString*)slotID
 {
 	DACALSlot*	outSlot = nil;
-
+    
 	if( slotIdentifier && ([slotIdentifier compare:slotID] == NSOrderedSame) )
 		outSlot = self;
-
+    
 	return outSlot;
 }
 
 +(id)slotForDevice:(DACALDevice*)newDevice inSlot:(DACALSlotNum)newSlot
-	{ return [[DACALSlot alloc] initSlotForDevice:newDevice inSlot:newSlot]; }
+{ return [[DACALSlot alloc] initSlotForDevice:newDevice inSlot:newSlot]; }
 
 //	This is "Slot #"
 -(NSString*)title
@@ -264,7 +265,7 @@
 
 //	This is the user settable value
 -(NSString*)displayTitle
-	{ return (NSString*)DACALSlotCopyTitle( [self slotDeviceRef], [self slotNumber], NULL ); }
+{ return (NSString*)DACALSlotCopyTitle( [self slotDeviceRef], [self slotNumber], NULL ); }
 
 -(void)swapWithSlot:(DACALSlot*)otherSlot
 {
@@ -276,20 +277,20 @@
 	NSDate*				swapInDate = nil;
 	NSString*			swapIdentifier = nil;
 	NSMutableArray*		swapElements = nil;
-
+    
 	theErr = DACALSlotMove( [[self slotDevice] deviceRef], [self slotNumber], [[otherSlot slotDevice] deviceRef], [otherSlot slotNumber] );
-
+    
 	if( theErr == 0 )
 	{
 		swapNode = [[self slotNode] retain];
 		swapVolume = [[self slotVolume] retain];
 		swapIdentifier = [[self slotIdentifier] retain];
 		swapElements = [[self slotElements] retain];
-
+        
 		swapIsOut = [self isCheckedOut];
 		swapOutDate = [[self checkedOutDate] retain];
 		swapInDate = [[self checkedInDate] retain];
-
+        
 		[self setSlotNode:[otherSlot slotNode]];
 		[self setSlotVolume:[otherSlot slotVolume]];
 		[self setSlotIdentifier:[otherSlot slotIdentifier]];
@@ -297,7 +298,7 @@
 		[self setIsCheckedOut:[otherSlot isCheckedOut]];
 		[self setCheckedOutDate:[otherSlot checkedOutDate]];
 		[self setCheckedInDate:[otherSlot checkedInDate]];
-
+        
 		[otherSlot setSlotNode:swapNode];
 		[otherSlot setSlotVolume:swapVolume];
 		[otherSlot setSlotIdentifier:swapIdentifier];
@@ -305,51 +306,51 @@
 		[otherSlot setIsCheckedOut:swapIsOut];
 		[otherSlot setCheckedOutDate:swapOutDate];
 		[otherSlot setCheckedInDate:swapInDate];
-
+        
 		//[swapNode release];
 		//[swapElements release];
-
+        
 		[self reloadSlot];
 		[otherSlot reloadSlot];
 	}
-
+    
 	if( theErr != 0 )
 		NSLog(@"Error:%i Changing Slot", (int)theErr);
-
+    
 	[AppController playUISoundForResult:theErr];
 }
 
 -(void)reloadSlot
 {
 	NSURL*		newURL = [self fileURL];
-
+    
 	if( newURL )
 	{
 		// NSLog(@"Reloading Slot: %@", newURL);
 		[[slotNode nodeData] setLocation:newURL];
 		[slotNode reloadData:nil reloadChildren:NO];
-
+        
 		if( (slotElements != nil) && ([slotElements count] > 0) )
 		{
 			[slotElements makeObjectsPerformSelector:@selector(reloadElement)];
 			[[PADSearchService sharedSearch] searchDataChanged:slotElements];
-
+            
 			//[[[[AppController shared] dataView] dataSource] sortExpandedChildrenWithCurrentDescriptors:nil];
 			//[[[[AppController shared] dataView] outlineView] reloadData];
 		}
 		//else
-			// NSLog(@"Empty Slot Elements: %@", slotElements);
+        // NSLog(@"Empty Slot Elements: %@", slotElements);
 	}
-
+    
 }
 
 -(void)reloadElement:(DACALSlotElement*)theElement
 {
 	if( theElement == nil ) return;
-
+    
 	[theElement reloadElement];
 	[[PADSearchService sharedSearch] searchDataChanged:[NSArray arrayWithObject:theElement]];
-
+    
 	[[[[AppController shared] dataView] dataSource] updateChangesWithAction:YES];
 	//[[[[AppController shared] dataView] dataSource] sortExpandedChildrenWithCurrentDescriptors:nil];
 	//[[[[AppController shared] dataView] outlineView] reloadData];
@@ -358,23 +359,23 @@
 -(NSURL*)fileURL
 {
 	NSURL*		newURL = nil; // (NSURL*)CFURLCreateFromFSRef( kCFAllocatorDefault, [self slotFSRef] );
-
+    
 	//newURL = [NSURL URLWithString:[self title] relativeToURL:[slotDevice fileURL]];
 	newURL = (NSURL*)CFURLCreateWithFileSystemPathRelativeToBase( kCFAllocatorDefault, (CFStringRef)[self title], kCFURLPOSIXPathStyle, TRUE, (CFURLRef)[slotDevice fileURL] );
 	//newURL = (NSURL*)DACALSlotCopyPath( [self slotDeviceRef], [self slotNumber], NULL );
 	if( newURL != nil )
 		CFURLGetFSRef( (CFURLRef)newURL, &slotFSRef );		// not sure why this happens here
-
+    
 	return newURL;
 }
 
 -(NSString*)flavor
 {
 	CFStringRef		itemName = NULL;
-
+    
 	itemName = FSCopyXattr( kCFAllocatorDefault, &slotFSRef, kDACALCarouselDocumentXAttrSlotKind, NULL );
 	if( itemName == NULL ) itemName = (CFStringRef)PADINDEX_FLAVORVALUE_FILES;
-
+    
 	return( (NSString*)itemName );
 }
 
@@ -384,8 +385,9 @@
 	[self reloadSlot];
 }
 
--(DACALResult)moveDeviceToSlotWithOptions:(DACALOptionBits)slotOptions
-	{ return DACALCommandMoveToSlotWithOptions( [self slotDeviceRef], [self slotNumber], slotOptions ); }
+-(DACALResult)moveDeviceToSlotWithOptions:(DACALOptionBits)slotOptions {
+    return DACALCommandMoveToSlotWithOptions( [self slotDeviceRef], [self slotNumber], slotOptions );
+}
 
 +(BOOL)moveDevicesToSlotsOfNodes:(NSArray*)theTreeNodes
 {
@@ -396,31 +398,41 @@
 	DACALSlot*			lastSlot = nil;
 	NSMutableArray*		slotArray = [NSMutableArray arrayWithCapacity:0];
 	NSEnumerator*		slotEnum = nil;
-	BOOL				slotOne = YES;
-
+    
 	workNode = [nodeEnum nextObject];
 	while (workNode) {
 		workSlot = [[[workNode nodeData] itemElement] elementSlot];
-		if( [slotArray indexOfObject:workSlot] == NSNotFound )
-			[slotArray addObject:workSlot];
+        if (workSlot) {
+            if( [slotArray indexOfObject:workSlot] == NSNotFound )
+                [slotArray addObject:workSlot];
+        } else
+            PMLOGWARNING(@"workslot at workNode %@ was nil!", workNode);
 		workNode = [nodeEnum nextObject];
 	}
-
+    
 	slotEnum = [slotArray objectEnumerator];
-
+    NSUInteger slotCount = [slotArray count];
 	workSlot = [slotEnum nextObject];
+    lastSlot = workSlot;
 	while (workSlot) {
-		outDidMove = ([workSlot moveDeviceToSlotWithOptions:kDACALOptionMoveDefault] == kDACALOK);
-		if( slotOne )
-			slotOne = NO;
-		else
-			if( lastSlot && [[lastSlot slotDevice] isDeviceRef:[workSlot slotDeviceRef]] )
-				sleep( 7.0 );
-
-		lastSlot = workSlot;
+        DACALResult result = [workSlot moveDeviceToSlotWithOptions:kDACALOptionMoveDefault];
+		outDidMove = (result == kDACALOK);
+        slotCount--;
+        if (outDidMove == YES) {
+            if( lastSlot && [[lastSlot slotDevice] isDeviceRef:[workSlot slotDeviceRef]] )
+                // TODO: Make this sleep value a preference. Also, skip this if lastSlot
+                if (slotCount) {
+                    sleep( 7.0 );
+                }
+        } else {
+            PMLOGERROR(@"Error while trying to move to slot");
+            goto BAIL;
+        }
+        
+        lastSlot = workSlot;
 		workSlot = [slotEnum nextObject];
 	}
-
+BAIL:
 	return outDidMove;
 }
 
@@ -432,7 +444,7 @@
 	DACALSlot*			workSlot = nil;
 	NSMutableArray*		slotArray = [NSMutableArray arrayWithCapacity:0];
 	NSEnumerator*		slotEnum = nil;
-
+    
 	workNode = [nodeEnum nextObject];
 	while (workNode) {
 		workSlot = [[[workNode nodeData] itemElement] elementSlot];
@@ -440,24 +452,24 @@
 			[slotArray addObject:workSlot];
 		workNode = [nodeEnum nextObject];
 	}
-
+    
 	slotEnum = [slotArray objectEnumerator];
-
+    
 	while ((workSlot = [slotEnum nextObject]))
 		if( [workSlot slotVolume] )
 			outDidEject = [[workSlot slotVolume] ejectVolume];
-
+    
 	return outDidEject;
 }
 
 -(BOOL)isCheckedOut
-	{ return slotIsCheckedOut; }
+{ return slotIsCheckedOut; }
 
 -(void)setIsCheckedOut:(BOOL)isOut
-	{ slotIsCheckedOut = isOut; }
+{ slotIsCheckedOut = isOut; }
 
 -(NSDate*)checkedOutDate
-	{ return slotCheckedOut; }
+{ return slotCheckedOut; }
 
 -(void)setCheckedOutDate:(NSDate*)newDate
 {
@@ -488,14 +500,14 @@
 	NSDictionary*			thisReservation = nil;
 	NSDate*					checkOutDate = [self checkedOutDate];
 	NSDate*					checkInDate = [self checkedInDate];
-
+    
 	if( manifestDict != nil ) {
 		if( checkOutDate != nil )
 			thisReservation = [manifestDict objectForKey:[checkOutDate description]];
 		else
 			thisReservation = [manifestDict objectForKey:[checkInDate description]];
 	}
-
+    
 	return thisReservation;
 }
 
@@ -503,10 +515,10 @@
 {
 	NSURL*					manifestURL = [NSURL URLWithString:kDACSlotReservationFileNameWithExtension relativeToURL:[self fileURL]];
 	NSDictionary*			manifestDict = nil;
-
+    
 	if( manifestURL != nil )
 		[NSDictionary dictionaryWithContentsOfURL:manifestURL];
-
+    
 	return manifestDict;
 }
 
@@ -519,29 +531,29 @@
 	NSMutableDictionary*	newManEntry = [NSMutableDictionary dictionaryWithCapacity:0];
 	NSDate*					newDate = [NSDate date];
 	NSInteger				newCount = 0;
-
+    
 	if( BOOLToBoolean([self isCheckedOut]) ) return didWork;
-
+    
 	if( manifestURL != nil )
 	{
 		if( manifestDict != nil ) {
 			[newManDict addEntriesFromDictionary:manifestDict];
 			newCount = [[newManDict objectForKey:kDACSlotReservationKeyCountCheckOut] integerValue];
 		}
-
+        
 		newCount++;
 		[newManDict setValue:[NSNumber numberWithInteger:newCount]
 					  forKey:kDACSlotReservationKeyCountCheckOut];
-
+        
 		[newManEntry setValue:newDate		forKey:kDACSlotReservationKeyTime];
 		[newManEntry setValue:userName		forKey:kDACSlotReservationKeyUser];
 		[newManEntry setValue:userHost		forKey:kDACSlotReservationKeyHost];
 		[newManEntry setValue:kDACSlotReservationTypeCheckOut
 					   forKey:kDACSlotReservationKeyType];
-
+        
 		[newManDict setValue:newManEntry	forKey:[newDate description]];
 		didWork = [newManDict writeToURL:manifestURL atomically:YES];
-
+        
 		if( didWork ) {
 			FSSetXattr( &slotFSRef, kDACALCarouselDocumentXAttrSlotCheckout, (CFStringRef)[newDate description] );
 			FSSetXattr( &slotFSRef, kDACALCarouselDocumentXAttrSlotIsOut, (CFStringRef)@"YES" );
@@ -549,15 +561,15 @@
 			[self setIsCheckedOut:YES];
 		}
 	}
-
+    
 	[self reloadSlot];
-
+    
 	// NSLog(@"Slot Checkout:%@\nManifset URL:%@\nManifest Dictionary:%@", self, manifestURL, manifestDict);
-
+    
 	if( doUI )
 		if( didWork && ([self slotVolume] == nil) )
 			didWork = ([self moveDeviceToSlotWithOptions:kDACALOptionMoveDefault] == kDACALOK);
-
+    
 	return didWork;
 }
 
@@ -566,55 +578,55 @@
 -(BOOL)checkInForUser:(NSString*)userName onHost:(NSString*)userHost withUI:(BOOL)doUI
 {
 	BOOL					didWork = NO;
-//	NSDate*					checkOutDate = [self checkedOutDate];
+    //	NSDate*					checkOutDate = [self checkedOutDate];
 	NSURL*					manifestURL = [NSURL URLWithString:kDACSlotReservationFileNameWithExtension relativeToURL:[self fileURL]];
 	NSDictionary*			manifestDict = [NSDictionary dictionaryWithContentsOfURL:manifestURL];
-//	NSDictionary*			checkInEntry = [manifestDict objectForKey:[checkOutDate description]];
+    //	NSDictionary*			checkInEntry = [manifestDict objectForKey:[checkOutDate description]];
 	NSMutableDictionary*	newManDict = [NSMutableDictionary dictionaryWithCapacity:0];
 	NSMutableDictionary*	newManEntry = [NSMutableDictionary dictionaryWithCapacity:0];
 	NSDate*					newDate = [NSDate date];
 	NSInteger				checkInAction = [[NSUserDefaults standardUserDefaults] integerForKey:kDACDiscKeyCheckIn];
-
+    
 	if( manifestURL == nil ) return didWork;
-
-//	if( checkInEntry != nil )
+    
+    //	if( checkInEntry != nil )
 	{
 		if( manifestDict != nil )
 			[newManDict addEntriesFromDictionary:manifestDict];
-
+        
 		[newManEntry setValue:newDate		forKey:kDACSlotReservationKeyTime];
 		[newManEntry setValue:userName		forKey:kDACSlotReservationKeyUser];
 		[newManEntry setValue:userHost		forKey:kDACSlotReservationKeyHost];
 		[newManEntry setValue:kDACSlotReservationTypeCheckIn
 					   forKey:kDACSlotReservationKeyType];
-
+        
 		[newManDict setValue:newManEntry	forKey:[newDate description]];
 		didWork = [newManDict writeToURL:manifestURL atomically:YES];
-
+        
 		if( didWork ) {
 			FSSetXattr( &slotFSRef, kDACALCarouselDocumentXAttrSlotIsOut, (CFStringRef)NULL );
 			FSSetXattr( &slotFSRef, kDACALCarouselDocumentXAttrSlotCheckIn, (CFStringRef)[newDate description] );
 			[self setIsCheckedOut:NO];
 			[self setCheckedInDate:newDate];
-
+            
 			if( [[slotNode nodeData] itemAddDate] == nil ) {
 				FSSetXattr( &slotFSRef, kDACALCarouselDocumentXAttrSlotAddDate, (CFStringRef)[newDate description] );
 				[[slotNode nodeData] setItemAddDate:newDate];
 			}
-
+            
 			if( doUI && [self slotVolume] )
 				[[self slotVolume] ejectVolume];
 		}
 	}
-
+    
 	[self reloadSlot];
-
+    
 	if( doUI && didWork )
 		if( (checkInAction == kDACDVCheckInOpenToSlot) || (checkInAction == kDACDVCheckInOpenAndDisplay) )
 			didWork = ([self moveDeviceToSlotWithOptions:kDACALOptionMoveDefault] == kDACALOK);
-
+    
 	// NSLog(@"Slot Check In:%@\nManifset URL:%@\nManifest Dictionary:%@", self, manifestURL, manifestDict);
-
+    
 	return didWork;
 }
 
@@ -624,29 +636,29 @@
 	NSString*		host = (userHost == nil) ? [[NSHost currentHost] name] : userHost;
 	BOOL			alreadyOut = [self isCheckedOut];
 	BOOL			goodCheck = NO;
-
+    
 	if( alreadyOut == YES )
 		goodCheck = [self checkInForUser:user onHost:host withUI:doUI];
 	else
 		goodCheck = [self checkOutForUser:user onHost:host withUI:doUI];
-
+    
 	if( doUI )
 		[AppController playUISoundForBOOL:goodCheck];
-
+    
 	return goodCheck;
 }
 
 -(BOOL)isSlotMounted
-	{ return (slotVolume != nil); }
+{ return (slotVolume != nil); }
 
 -(NSString*)slotHost
 {
 	NSString*		outHostName = nil;
 	DACVolume*		thisVolume = slotVolume;
-
+    
 	if( thisVolume )
 		outHostName = [NSString stringWithString:[thisVolume padKnownHost]];
-
+    
 	return outHostName;
 }
 
@@ -656,28 +668,28 @@
 	BOOL		wasCheckedIn = ![self isCheckedOut];
 	BOOL		wasOurRequest = [[DACVolumeService sharedVolumeService] isPendingMount:[mountVolume padIdentifier]];
 	NSInteger	checkOutAction = [[NSUserDefaults standardUserDefaults] integerForKey:kDACDiscKeyCheckOut];
-
+    
 	if( wasOurRequest || ((checkOutAction == kDACDVCheckOutAutoMatch ) || (checkOutAction == kDACDVCheckOutMatchAndCloseDoor)) )
 	{
 		outClaimedSlot = YES;
 		[self setSlotVolume:mountVolume];
-
+        
 		if( wasCheckedIn )
 			[self toggleReservationForUser:nil onHost:nil withUI:NO];
 		else
 			[self reloadSlot];
-
+        
 		if( !wasOurRequest )
 			[AppController playUISoundForBOOL:[self isCheckedOut]];
 	}
-
+    
 	if( !wasOurRequest )
 		if( (checkOutAction == kDACDVCheckOutCloseDoor ) || (checkOutAction == kDACDVCheckOutMatchAndCloseDoor) )
 			[[self slotDevice] commandCloseDoor];
-
+    
 	if( outClaimedSlot )
 		NSLog(@"Mounted %@ As Volume: %@", [self title], [[mountVolume mediaTitle] autorelease]);
-
+    
 	return outClaimedSlot;
 }
 
@@ -686,44 +698,44 @@
 	BOOL	outReleasedSlot = YES;
 	BOOL	stillCheckedOut = [self isCheckedOut];
 	BOOL	wasOurRequest = [[DACVolumeService sharedVolumeService] isPendingUnmount:[self slotIdentifier]];
-
+    
 	[self setSlotVolume:nil];
-
+    
 	//	if( user wants to auto checkin & not already handled )
 	if( stillCheckedOut )
 	{
 		if( !wasOurRequest )
 			[self moveDeviceToSlotWithOptions:kDACALOptionMoveDefault];
-
+        
 		[self toggleReservationForUser:nil onHost:nil withUI:NO];
 	}
 	[self reloadSlot];
-
+    
 	if( outReleasedSlot )
 		NSLog(@"Unmounted %@", [self title]);
-
+    
 	return outReleasedSlot;
 }
 
 -(BOOL)isSlotAssigned
-	{ return( slotNode != nil ); }
+{ return( slotNode != nil ); }
 
 - (BOOL)slotAssignedIndexFromVolume:(DACVolume*)indexVolume asType:(NSString*)newType
 {
 	BOOL			outWasAssigned = NO;
 	CFURLRef		slotURL = (CFURLRef)[self fileURL];
-
+    
 	if( !slotURL ) return outWasAssigned;
-
+    
 	CFURLSetXattr( slotURL, kDACALCarouselDocumentXAttrSlotKind, (CFStringRef)newType );
 	CFURLSetXattr( slotURL, kDACALCarouselDocumentXAttrSlotID, (CFStringRef)[indexVolume padIdentifier] );
 	CFURLSetXattr( slotURL, kDACALCarouselDocumentXAttrVolumeSize, (CFStringRef)[[indexVolume mediaSize] stringValue] );
-
+    
 	[self setSlotIdentifier:[indexVolume padIdentifier]];
-
+    
 	NSURL*		iconURL = [NSURL URLWithString:kDACSlotIconFileNameWithExtension relativeToURL:(NSURL*)slotURL];
 	NSError*	iconError = nil;
-
+    
 	CFDictionaryRef	volumeData = DADiskCopyDescription( [indexVolume volumeDiskRef] );
 	if( volumeData != NULL ) {
 		//	Aquire the media "type" icon
@@ -747,54 +759,54 @@
 		CFRelease( volumeData );
 	}
 	NSLog(@"Did Icon");
-
+    
 	// Go ahead and check in
 	[self checkInForUser:NSFullUserName() onHost:[[NSHost currentHost] name] withUI:NO];
-
+    
 	NSLog(@"Checked in");
-
+    
 	//	Configure Slot Subtree
-
+    
 	NSString*			theSlotTitle = (NSString*)DACALSlotCopyTitle( [self slotDeviceRef], [self slotNumber], NULL );
 	NSURL*				theSlotContentPath = (NSURL*)CFURLCreateCopyAppendingPathComponent( NULL, (CFURLRef)slotURL, (CFStringRef)theSlotTitle, TRUE );
 	SimpleTreeNode*		theSubtreeNode = nil;
 	SimpleTreeNode*		theBoxTreeNode = [[[[self slotDevice] deviceNode] nodeData] subTree]; //[[[self findTreeNodeForDevice:theBoxRef] nodeData] subTree];
 	SimpleTreeNode*		theSubtreeChild = nil;
-
+    
 	theSubtreeNode = [[[AppController shared] dataView] treeRoot];
 	//theSubtreeNode = [[[[AppController shared] dataView] dataSource] treeRoot];
-
+    
 	if( theSlotContentPath != nil )
 	{
 		// Transfer kind xattr to top
 		CFURLSetItemFlavor( (CFURLRef)theSlotContentPath, (CFStringRef)newType );
-
+        
 		theSubtreeChild = [SimpleTreeNode treeOperationFromLocation:(NSURL*)theSlotContentPath forUI:NO];
-
+        
 		[(SimpleNodeData*)[theSubtreeChild nodeData] setName: theSlotTitle];
 		[(SimpleNodeData*)[theSubtreeChild nodeData] setItemSlot: [self slotNumber]];
 		[(SimpleNodeData*)[theSubtreeChild nodeData] setItemDevice: [self slotDeviceRef]];
-
+        
 		NSLog(@"Node established");
-
+        
 		[theBoxTreeNode insertChild:theSubtreeChild atIndex:[theBoxTreeNode numberOfChildren]];
-
+        
 		[[PADSearchService sharedSearch] searchDataChanged:[NSArray arrayWithObject:theSubtreeChild]];
 	}
-
+    
 	//[[[[AppController shared] dataView] dataSource] updateChangesWithAction:YES];
 	[[[[DACALTreeDataSource shared] secondaryController] dataSource] updateChangesWithAction:YES];
-
+    
 	if( theSubtreeChild )
 		[[[[DACALTreeDataSource shared] secondaryController] outlineView] performSelector:@selector(selectItems:)
 																			   withObject:[NSArray arrayWithObject:theSubtreeChild]
 																			   afterDelay:0.2];
-
-//		[[[[DACALTreeDataSource shared] secondaryController] outlineView] selectItems:[NSArray arrayWithObject:theSubtreeChild] byExtendingSelection:NO];
+    
+    //		[[[[DACALTreeDataSource shared] secondaryController] outlineView] selectItems:[NSArray arrayWithObject:theSubtreeChild] byExtendingSelection:NO];
 	NSLog(@"Updated and selected");
-
+    
 	outWasAssigned = YES;
-
+    
 	return outWasAssigned;
 }
 
@@ -802,7 +814,7 @@
 {
 	BOOL			goodBye = NO;
 	DACALResult		workErr = 0;
-
+    
 	workErr = DACALSlotDeleteIndex( [self slotDeviceRef], [self slotNumber] );
 	if( workErr == kDACALOK )
 	{
@@ -810,19 +822,19 @@
 		[slotElements removeAllObjects];
 		if( slotVolume )
 			[slotVolume setPadKnownSlot:nil];
-
+        
 		[self setSlotNode:nil];
 		[self setSlotVolume:nil];
 		[self setSlotIdentifier:nil];
 		[self setCheckedInDate:nil];
 		[self setCheckedOutDate:nil];
 		slotIsCheckedOut = NO;
-
+        
 		[[self slotDevice] indexUnassignedForSlot:self];
-
+        
 		goodBye = YES;
 	}
-
+    
 	return goodBye;
 }
 
@@ -830,14 +842,14 @@
 {
 	CFStringRef		itemName = NULL;
 	NSNumber*		outSize = nil;
-
+    
 	itemName = FSCopyXattr( kCFAllocatorDefault, &slotFSRef, kDACALCarouselDocumentXAttrVolumeSize, NULL );
-
+    
 	if( itemName == NULL )
 		outSize = [NSNumber zero];
 	else
 		outSize = [NSNumber numberWithLongLong:[(NSString*)itemName longLongValue]];
-
+    
 	return( outSize );
 }
 

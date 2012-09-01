@@ -268,11 +268,12 @@
 		NSArray*	files = [pboard propertyListForType:NSFilenamesPboardType];
 		NSArray*	matches = [files arrayOfPathsThatConformToUTIs:testUTIs resultsAsURL:YES];
 		
-		if( [matches count] > 0 ) 
+		if( [matches count] > 0 ) {
 			if (sourceDragMask & NSDragOperationLink) 
 				return NSDragOperationLink;
 			else if (sourceDragMask & NSDragOperationCopy)
 				return NSDragOperationCopy;
+        }
     }
 	
     return NSDragOperationNone;

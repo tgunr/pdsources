@@ -6,6 +6,7 @@
 //
 
 #import "DACALTreeDataSource.h"
+#import "DACALViewDataSource.h"
 #import <DACAL/dacalconstants.h>
 #import "PADLifecycleSetup.h"
 #import "PADSearchRequest.h"
@@ -19,28 +20,27 @@
 #import "DACALSlotElement.h"
 #import <PMUtility/PMUtility.h>
 #import "TreeController.h"
-#import "DACALViewDataSource.h"
 
 NSString*	DACALFlavorToFlavorValue( NSString* flavor )
 {
 	NSString*	theFlavorValue = nil;
 	
-	if( flavor )
+	if( flavor ) {
 		if(	[flavor isEqual:PADINDEX_FLAVORVALUE_FILES] ||
 		   [flavor isEqual:PADINDEX_FLAVORTITLE_FILES] )
 			theFlavorValue = PADINDEX_FLAVORVALUE_FILES;
-		else if( [flavor isEqual:PADINDEX_FLAVORVALUE_IMAGE] ||
-				[flavor isEqual:PADINDEX_FLAVORTITLE_IMAGE] )
-			theFlavorValue = PADINDEX_FLAVORVALUE_IMAGE;
-		else if( [flavor isEqual:PADINDEX_FLAVORVALUE_MOVIE] ||
-				[flavor isEqual:PADINDEX_FLAVORTITLE_MOVIE] )
-			theFlavorValue = PADINDEX_FLAVORVALUE_MOVIE;
-		else if( [flavor isEqual:PADINDEX_FLAVORVALUE_MUSIC] ||
-				[flavor isEqual:PADINDEX_FLAVORTITLE_MUSIC] )
-			theFlavorValue = PADINDEX_FLAVORVALUE_MUSIC;
-		else if( [flavor isEqual:@"data"] )
-			theFlavorValue = PADINDEX_FLAVORVALUE_FILES;
-	
+        else if( [flavor isEqual:PADINDEX_FLAVORVALUE_IMAGE] ||
+                [flavor isEqual:PADINDEX_FLAVORTITLE_IMAGE] )
+            theFlavorValue = PADINDEX_FLAVORVALUE_IMAGE;
+        else if( [flavor isEqual:PADINDEX_FLAVORVALUE_MOVIE] ||
+                [flavor isEqual:PADINDEX_FLAVORTITLE_MOVIE] )
+            theFlavorValue = PADINDEX_FLAVORVALUE_MOVIE;
+        else if( [flavor isEqual:PADINDEX_FLAVORVALUE_MUSIC] ||
+                [flavor isEqual:PADINDEX_FLAVORTITLE_MUSIC] )
+            theFlavorValue = PADINDEX_FLAVORVALUE_MUSIC;
+        else if( [flavor isEqual:@"data"] )
+            theFlavorValue = PADINDEX_FLAVORVALUE_FILES;
+    }
 	return theFlavorValue;
 }
 
@@ -48,7 +48,7 @@ NSString*	DACALFlavorToFlavorTitle( NSString* flavor )
 {
 	NSString*	theFlavorTitle = nil;
 	
-	if( flavor )
+	if( flavor ) {
 		if(	[flavor isEqual:PADINDEX_FLAVORVALUE_FILES] ||
 		   [flavor isEqual:PADINDEX_FLAVORTITLE_FILES] )
 			theFlavorTitle = PADINDEX_FLAVORTITLE_FILES;
@@ -63,7 +63,7 @@ NSString*	DACALFlavorToFlavorTitle( NSString* flavor )
 			theFlavorTitle = PADINDEX_FLAVORTITLE_MUSIC;
 		else if( [flavor isEqual:@"data"] )
 			theFlavorTitle = PADINDEX_FLAVORTITLE_FILES;
-	
+	}
 	return theFlavorTitle;
 }
 
@@ -72,7 +72,7 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 
 - (id)init
 {
-    if (DACALTreeDataSource_shared) 
+    if (DACALTreeDataSource_shared)
 	{
         [self autorelease];
         return DACALTreeDataSource_shared;
@@ -84,7 +84,7 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 }
 
 -(id)secondaryController
-	{ return secondaryController; }
+{ return secondaryController; }
 
 -(void)orderForUser:(SimpleTreeNode*)treeNode
 {
@@ -124,7 +124,7 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 			if( childNames != nil )
 				[visibleNames addObjectsFromArray:childNames];
 			
-			while ( itemNode = [addEnum nextObject] ) 
+			while ( itemNode = [addEnum nextObject] )
 			{
 				itemVisible = [groupDict objectForKey:itemNode];
 				if( itemVisible && ([itemVisible boolValue] == YES) )
@@ -156,7 +156,7 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 				NSEnumerator*	deviceEnum = [[[DACALDeviceService sharedService] deviceList] objectEnumerator];
 				DACALDevice*	aDevice = nil;
 				
-				while ( aDevice = [deviceEnum nextObject] ) 
+				while ( aDevice = [deviceEnum nextObject] )
 					[workGroupNode insertChild:[aDevice deviceNode] atIndex:[workGroupNode numberOfChildren]];
 			}
 		}
@@ -170,7 +170,7 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 	NSMutableDictionary*	groupList = [NSMutableDictionary dictionaryWithCapacity:0];
 	SimpleTreeNode*			treeNode = [[self treeControl] treeRoot];
 	SimpleTreeNode*			groupNode = nil;
-//	SimpleTreeNode*			childNode = nil;
+    //	SimpleTreeNode*			childNode = nil;
 	NSInteger				groupIndex, groupCount = [treeNode numberOfChildren];
 	NSInteger				childIndex, childCount;
 	NSMutableDictionary*	childDict = nil;
@@ -190,7 +190,7 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 		[childDict setObject:(id)BOOLToCFBoolean([[groupNode nodeData] isExpanded]) forKey:@"Expanded"];
 		
 		[groupNames addObject:[[groupNode nodeData] name]];
-		[groupList setObject:[NSDictionary dictionaryWithDictionary:childDict] forKey:[[groupNode nodeData] name]];	
+		[groupList setObject:[NSDictionary dictionaryWithDictionary:childDict] forKey:[[groupNode nodeData] name]];
 	}
 	
 	[groupList setObject:groupNames forKey:@"Groups"];
@@ -209,18 +209,18 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 	
 	[tree setAllowGroupRowLook:YES];
 	[tree setAllowBetweenDrop:YES];
-
+    
 	PADBOX_VALID_BEGIN
-		
+    
 	// Load our initial outline view data from the "InitInfo" dictionary.
 	NSDictionary *initData = [NSDictionary dictionaryWithContentsOfFile: [[NSBundle mainBundle] pathForResource:@"InitInfo" ofType: @"dict"]];
-	if( initData != nil ) theOutputTree = [SimpleTreeNode treeIndexFromDictionary: initData];	
+	if( initData != nil ) theOutputTree = [SimpleTreeNode treeIndexFromDictionary: initData];
 	
 	[[theOutputTree nodeData] setExpanded:YES];
 	
-	theWorkNode = (SimpleTreeNode*)[theOutputTree childWithName:PADINDEX_GROUPTITLE_DEVICES];											
+	theWorkNode = (SimpleTreeNode*)[theOutputTree childWithName:PADINDEX_GROUPTITLE_DEVICES];
 	[[theWorkNode nodeData] setItemType: kPADTypeGroupDevices];
-
+    
 	[[[theOutputTree childWithName:PADINDEX_GROUPTITLE_FAVORITES] nodeData] setItemType: kPADTypeGroupFavorites];
 	[[[theOutputTree childWithName:PADINDEX_GROUPTITLE_LIBRARY] nodeData] setItemType:kPADTypeGroupLibrary];
 	
@@ -233,7 +233,7 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 	theWorkData = (IndexNodeData*)[[[theOutputTree childWithName:PADINDEX_GROUPTITLE_LIBRARY] childWithName:PADINDEX_FLAVORTITLE_IMAGE] nodeData];
 	[theWorkData setItemType:kPADTypeDataImage];
 	[theWorkData setItemFlavor:PADINDEX_FLAVORVALUE_IMAGE];
-
+    
 	theWorkData = (IndexNodeData*)[[[theOutputTree childWithName:PADINDEX_GROUPTITLE_LIBRARY] childWithName:PADINDEX_FLAVORTITLE_MUSIC] nodeData];
 	[theWorkData setItemType:kPADTypeDataMuisc];
 	[theWorkData setItemFlavor:PADINDEX_FLAVORVALUE_MUSIC];
@@ -269,23 +269,23 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 	theWorkNode = [theGroupNode childWithName:@"All Images"];
 	theWorkData = [theWorkNode nodeData];
 	[theWorkData setItemSearch:[PADSearchRequest searchCarouselsForFileUTI:(NSString*)kUTTypeImage resultType:kPADSearchOptionResultTypeItem]];
-
+    
 	theWorkNode = [theGroupNode childWithName:@"All Music"];
 	theWorkData = [theWorkNode nodeData];
 	[theWorkData setItemSearch:[PADSearchRequest searchCarouselsForFileUTI:(NSString*)kUTTypeAudio resultType:kPADSearchOptionResultTypeItem]];
-
+    
 	theWorkNode = [theGroupNode childWithName:@"All Movies"];
 	theWorkData = [theWorkNode nodeData];
 	[theWorkData setItemSearch:[PADSearchRequest searchCarouselsForFileUTI:(NSString*)kUTTypeMovie resultType:kPADSearchOptionResultTypeItem]];
-
+    
 	theWorkNode = [theGroupNode childWithName:@"All Documents"];
 	theWorkData = [theWorkNode nodeData];
 	[theWorkData setItemSearch:[PADSearchRequest searchCarouselsForFileUTI:(NSString*)kUTTypeContent resultType:kPADSearchOptionResultTypeItem]];
-
+    
 	[self orderForUser:theOutputTree];
 	
 	[self doReport];
-
+    
 	PADBOX_VALID_END
 	
 	return theOutputTree;
@@ -294,7 +294,7 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 - (void)outlineViewInit
 {
 	[super outlineViewInit];
-	[[self treeControl] setAllowOnDropOnLeaf:YES]; 
+	[[self treeControl] setAllowOnDropOnLeaf:YES];
 	//[[self treeControl] setAllowOnDropOnGroup:YES];
 	
 	[[self outlineView] expandItem:nil expandChildren:YES];
@@ -303,30 +303,30 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 }
 
 - (void)reinitOutlineView
-{ 
-	//[[self outlineView] autoExpandItemAndChildren:nil]; 
+{
+	//[[self outlineView] autoExpandItemAndChildren:nil];
 	[[self outlineView] expandItem:nil expandChildren:YES];
-
+    
 }
 
 - (void)recreateInitialTree
 {
 	[super recreateInitialTree];
-
+    
 	if( [[NSUserDefaults standardUserDefaults] dictionaryForKey:@"PADMainSidebarOrder"] == nil )
-	{	
+	{
 		SimpleTreeNode*	workGroupNode = [[[self treeControl] treeRoot] childWithItemType:kPADTypeGroupDevices];
 		NSEnumerator*	deviceEnum = [[[DACALDeviceService sharedService] deviceList] objectEnumerator];
 		DACALDevice*	aDevice = nil;
 		
 		if( workGroupNode && ([workGroupNode numberOfChildren] == 0) )
 		{
-			while ( aDevice = [deviceEnum nextObject] ) 
+			while ( aDevice = [deviceEnum nextObject] )
 				[workGroupNode insertChild:[aDevice deviceNode] atIndex:[workGroupNode numberOfChildren]];
-		
+            
 			[[self outlineView] reloadItem:workGroupNode reloadChildren:YES];
 		}
-	}	
+	}
 }
 
 - (void)toolbarSearchStart:(id)sender
@@ -336,11 +336,11 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 		[savedSelection addSettingsForKey:@"DataIndex" saveView:[[self treeControl] outlineView] saveSelection:YES saveSorts:NO];
 	}
 	
-	[[[self treeControl] outlineView] deselectAll:self]; 
+	[[[self treeControl] outlineView] deselectAll:self];
 	
 	[[[secondaryController outlineView] tableColumnWithIdentifier:COLUMNID_SCORE] setHidden:NO];
 	[tabView selectTabViewItemWithIdentifier:@"Data"];
-
+    
 	if( sortedSelection ) {
 		[sortedSelection restoreSettings];
 		[sortedSelection release];
@@ -355,9 +355,9 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 		[savedSelection addSettingsForKey:@"SortIndex" saveView:[[self treeControl] outlineView] saveSelection:YES saveSorts:NO];
 	}
 	
-	[[secondaryController outlineView] deselectAll:self]; 
+	[[secondaryController outlineView] deselectAll:self];
 	[[[secondaryController outlineView] tableColumnWithIdentifier:COLUMNID_SCORE] setHidden:YES];
-
+    
 	
 	if( savedSelection ) {
 		if( sender == [self treeControl] )										// if the view control did the action
@@ -367,20 +367,20 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 		savedSelection = nil;
 	}
 	
-	if( sender != self ) [self outlineViewAction:self]; 
+	if( sender != self ) [self outlineViewAction:self];
 }
 
 - (void)doReport
-	{ [self reportNoDevice:(DACALDevicesGetCount()!=0) ? YES : NO]; }
+{ [self reportNoDevice:(DACALDevicesGetCount()!=0) ? YES : NO]; }
 
 - (void)doAction
-	{ [self outlineViewAction:self]; }
+{ [self outlineViewAction:self]; }
 
 - (void)reportNoDevice:(BOOL)hasBox
 {
 	[noBoxIcon setImage:[NSImage imageNamed:@"noBox.png"]];
 	[noBoxIcon setHidden:hasBox];
-	[self updatePrompt];	
+	[self updatePrompt];
 }
 
 - (void)reportGoodRegistration
@@ -422,8 +422,8 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 	
 	if( usedCount == 1 )
 		slotString = NSLocalizedString(@"slot", @"Data View Prompt Singular form of carousel device slot");
-	else 
-		slotString = NSLocalizedString(@"slots", @"Dava View Prompt Plural form of carousel device slots");
+	else
+		slotString = NSLocalizedString(@"slots", @"Data View Prompt Plural form of carousel device slots");
 	
     NSString *identifier = [[tabView selectedTabViewItem] identifier];
 	if( [identifier compare:@"Home"] == NSOrderedSame )
@@ -432,14 +432,14 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
             promptData = NSLocalizedString(@"No carousels detected", @"Data View Prompt when no carousel devices are currently detected");
 		else
             promptData = [NSString stringWithFormat:NSLocalizedString(@"%i %@ using %i %@ storing %@", @"Data View Prompt Format for number of carousel devices attached and number of used slots"),
-						   count, carouselString, usedCount, slotString, [NSString stringFromByteCount:[[DACALDeviceService sharedService] totalVolumeSize]]];
+                          count, carouselString, usedCount, slotString, [NSString stringFromByteCount:[[DACALDeviceService sharedService] totalVolumeSize]]];
 	} else {
 		NSArray *selectedNodes = [secondaryController selectedNodes];
 		
 		int			index = 0;
 		int			count = [selectedNodes count];
 		bool		isSearch = FALSE;
-
+        
 		index = [[secondaryController outlineView] numberOfRows];
 		
 		if( [[[self treeControl] selectedNodes] count] > 0 ) {
@@ -449,7 +449,7 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 			
 			if( [[[[[self treeControl] selectedNodes] objectAtIndex:0] nodeData] respondsToSelector:@selector(itemSearch)] )
 				isSearch = TRUE;
-		}		
+		}
 		
 		if( count )			promptData = [NSString stringWithFormat:NSLocalizedString(@"%i of %i selected", @"Data View Standard Prompt Format for number of elements selected of total count"), count, index];
 		else if( isSearch )	promptData = [NSString stringWithFormat:NSLocalizedString(@"%i %@", @"Data View Prompt Format for total count of visible elements of a search"), index, itemString, sizeString];
@@ -462,9 +462,9 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 		[noBoxIcon setHidden:NO];
 	}
 	
-	   [self setPrompt:promptData];
+    [self setPrompt:promptData];
 }
-	   	   
+
 - (void)searchFoundResults:(NSArray*)itemsFound forSearch:(PADSearchRequest*)theSearch
 {
 	[[secondaryController dataSource] sortExpandedChildrenWithCurrentDescriptors:[theSearch resultsSubTree]];
@@ -494,7 +494,7 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 	DACALDeviceRef				theDevice = kDACALNullDevice;
 	DACALSlotNum				theSlot = 0;
 	PADIndexToolbarController*	toolControl = [self toolbarControl];
-//	NSArray*					dataRowsSelected = [secondaryController selectedNodes];
+    //	NSArray*					dataRowsSelected = [secondaryController selectedNodes];
 	SimpleTreeNode*				originalTree = nil;
 	
 	if( [selectedNodes count] == 0 )
@@ -531,11 +531,11 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 					[itemSearch startSearch];
 				} else {
 					if( ![itemSearch searchBusy] && [itemSearch searchResultsDirty] )
-						[itemSearch startSearch];					
+						[itemSearch startSearch];
 				}
 			}
 		}
-
+        
 		if( subTree != nil )
 			[secondaryController addTreeRoot:subTree];
 		
@@ -547,7 +547,7 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 			[toolControl addSelectedDevice:theDevice adoptSelection:YES];
 		//else
 		//	[toolControl resetSelectedNodesAndAdoptSelection:YES];
-   }
+    }
 	
 	//if( originalTree && [originalTree isEqual:subTree] )
 	//	[[secondaryController outlineView] selectItems:dataRowsSelected byExtendingSelection:NO];
@@ -564,10 +564,10 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 	DACALDeviceRef		theDevice = [theData itemDevice];
 	NSInteger			theType = [theData itemType];
 	NSString*			nowName = [NSString stringWithString:[theData name]];
-
+    
 	[[undo prepareWithInvocationTarget:self] nodeNameChanged:theNode toName:nowName];
 	[undo setActionName:NSLocalizedString(@"Change Name", @"Undo Action when sidebar name column is changed")];
-
+    
 	[theData setName:theName];
 	
 	if( (theType == kPADTypeIndexDevice) & (theDevice != kDACALNullDevice) )
@@ -579,14 +579,14 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 {
 	if( [[item nodeData] itemType] == kPADTypeIndexDevice ) return YES;
 	if( [[[item nodeParent] nodeData] itemType] == kPADTypeGroupFavorites ) return YES;
-
+    
 	return NO;
 }
 
-- (void)dropNodesOntoLibraryGroup:(id <NSDraggingInfo>)info onNode:(TreeNode *)parentNode atIndex:(NSInteger)childIndex 
+- (void)dropNodesOntoLibraryGroup:(id <NSDraggingInfo>)info onNode:(TreeNode *)parentNode atIndex:(NSInteger)childIndex
 {
  	NSUndoManager*		undo = [self undoManager];
-	NSPasteboard*		pboard = [info draggingPasteboard];	
+	NSPasteboard*		pboard = [info draggingPasteboard];
 	NSString*			destinationFlavor = [[parentNode nodeData] itemFlavor];
     
     if ([pboard availableTypeFromArray:[NSArray arrayWithObjects:DragDropSimplePboardType, nil]] != nil) {
@@ -594,8 +594,8 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
         NSArray *_draggedNodes = [dragDataSource draggedNodes];
         NSEnumerator *draggedNodesEnum = [_draggedNodes objectEnumerator];
         SimpleTreeNode *_draggedNode = nil;
-//		SimpleTreeNode *_bioParent = nil;
-//		int				itemRow = 0;
+        //		SimpleTreeNode *_bioParent = nil;
+        //		int				itemRow = 0;
         
 		[undo beginUndoGrouping];
 		
@@ -618,11 +618,11 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 	}
 }
 
-- (void)dropNodesOntoFavoritesGroup:(id <NSDraggingInfo>)info onNode:(TreeNode *)parentNode atIndex:(NSInteger)childIndex 
+- (void)dropNodesOntoFavoritesGroup:(id <NSDraggingInfo>)info onNode:(TreeNode *)parentNode atIndex:(NSInteger)childIndex
 {
-    NSPasteboard*	pboard = [info draggingPasteboard];	
+    NSPasteboard*	pboard = [info draggingPasteboard];
 	SimpleTreeNode*	newMark = nil;
-//	SimpleTreeNode* newMarkTree = nil;
+    //	SimpleTreeNode* newMarkTree = nil;
     
     if ([pboard availableTypeFromArray:[NSArray arrayWithObjects:DragDropSimplePboardType, nil]] != nil) {
         TreeController *dragDataSource = [[info draggingSource] dataSource];
@@ -630,12 +630,12 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
         NSEnumerator *draggedNodesEnum = [_draggedNodes objectEnumerator];
         SimpleTreeNode *_draggedNode = nil;
 		BOOL	sourceWasUs = [[self treeControl] isEqual:dragDataSource];
-       
-        while ((_draggedNode = [draggedNodesEnum nextObject])) 
+        
+        while ((_draggedNode = [draggedNodesEnum nextObject]))
 		{
 			if( !sourceWasUs ) {
-				//newMark = (SimpleTreeNode*)[SimpleTreeNode nodeDataWithURL:(NSURL*)[(SimpleNodeData*)[_draggedNode nodeData] location]];
-				//newMarkTree = (SimpleTreeNode*)[SimpleTreeNode treeOperationFromLocation:(NSURL*)[(SimpleNodeData*)[_draggedNode nodeData] location] forUI:YES];
+				//newMark = (SimpleTreeNode*)[SimpleTreeNode nodeDataWithURL:(NSURL*)[(SimpleNodeData*)[_draggedNode nodeData] itemURL]];
+				//newMarkTree = (SimpleTreeNode*)[SimpleTreeNode treeOperationFromLocation:(NSURL*)[(SimpleNodeData*)[_draggedNode nodeData] itemURL] forUI:YES];
 				//[[newMark nodeData] setSubTree:newMarkTree];
 				//[[newMark nodeData] setIsLeaf:YES];
 				//[[newMark nodeData] setExpandable:NO];
@@ -698,7 +698,7 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 	}
 	
 	if( fromThisView )
-	   return [super validateDropSource:info proposedItem:item proposedChildIndex:childIndex];
+        return [super validateDropSource:info proposedItem:item proposedChildIndex:childIndex];
 	
 	return NSDragOperationNone;
 }
@@ -711,14 +711,14 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
     if ([data isLeaf]) {
 		if( [[[node nodeParent] nodeData] itemType] == kPADTypeGroupLibrary )
 		{
-		    [self dropNodesOntoLibraryGroup:info onNode:node atIndex:childIndex];	
+		    [self dropNodesOntoLibraryGroup:info onNode:node atIndex:childIndex];
 			return YES;
 		}
-	} 
+	}
 	
 	if( [[node nodeData] itemType] == kPADTypeGroupFavorites )
 	{
-		[self dropNodesOntoFavoritesGroup:info onNode:node atIndex:childIndex];	
+		[self dropNodesOntoFavoritesGroup:info onNode:node atIndex:childIndex];
 		return YES;
 	}
 	
@@ -726,7 +726,7 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 }
 
 - (BOOL)outlineView:(NSOutlineView *)ov acceptDrop:(id <NSDraggingInfo>)info item:(id)item childIndex:(NSInteger)childIndex {
-
+    
 	BOOL	wasDropped = [self actualOutlineView:ov acceptDrop:info item:item childIndex:childIndex];
 	
 	if( wasDropped )					// Save the tree order
@@ -736,7 +736,7 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 }
 
 - (SimpleTreeNode*)findTreeNodeForDevice:(DACALDeviceRef)theBoxRef
-	{ return [[[[self treeControl] treeRoot] childWithItemType:kPADTypeGroupDevices] childWithDevice:theBoxRef]; }
+{ return [[[[self treeControl] treeRoot] childWithItemType:kPADTypeGroupDevices] childWithDevice:theBoxRef]; }
 
 // moved to DACALSlot - (BOOL)slotAssignedIndexFromVolume:(DACVolume*)indexVolume asType:(NSString*)newType
 - (void)slotAddedToDevice:(DACALDeviceRef)theBoxRef forSlot:(DACALSlotNum)newSlot
@@ -748,11 +748,11 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 	NSString*			theSlotTitle = (NSString*)DACALSlotCopyTitle( theBoxRef, newSlot, NULL );
 	NSURL*				theSlotContentPath = (NSURL*)CFURLCreateCopyAppendingPathComponent( NULL, (CFURLRef)theSlotPath, (CFStringRef)theSlotTitle, TRUE );
 	SimpleTreeNode*		theSubtreeNode = nil;
-//	SimpleTreeNode*		theOthertTreeNode = [[secondaryController treeControl] treeRoot];
+    //	SimpleTreeNode*		theOthertTreeNode = [[secondaryController treeControl] treeRoot];
 	SimpleTreeNode*		theBoxTreeNode = [[[self findTreeNodeForDevice:theBoxRef] nodeData] subTree];
 	SimpleTreeNode*		theSubtreeChild = nil;
-//	OSType				slotIconType = kGenericCDROMIcon;
-//	OSType				compareIconType = 0;
+    //	OSType				slotIconType = kGenericCDROMIcon;
+    //	OSType				compareIconType = 0;
 	
 	// Find box
 	
@@ -765,34 +765,34 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 		CFURLSetItemFlavor( (CFURLRef)theSlotContentPath, CFURLCopyItemFlavor( (CFURLRef)theSlotPath, NULL) );
 		
 		theSubtreeChild = [SimpleTreeNode treeOperationFromLocation:(NSURL*)theSlotContentPath forUI:YES];
-//		theSubtreeChild = [SimpleTreeNode treeFromLocation:(NSURL*)theSlotContentPath];
+        //		theSubtreeChild = [SimpleTreeNode treeFromLocation:(NSURL*)theSlotContentPath];
 		
 		[(SimpleNodeData*)[theSubtreeChild nodeData] setName: theSlotTitle];
 		[(SimpleNodeData*)[theSubtreeChild nodeData] setItemSlot: newSlot];
 		[(SimpleNodeData*)[theSubtreeChild nodeData] setItemDevice: theBoxRef];
 		//[[theSubtreeChild nodeData] setLocation:theSlotContentPath];
-
+        
 		//compareIconType = [[theSubtreeChild nodeData] itemType];
 		//if		( compareIconType == kPADTypeDataMuisc ) slotIconType = 'cdda';				// CDAudioVolume
 		//else if	( compareIconType == kPADTypeDataMovie ) slotIconType = 'dvd ';				// public.dvd-media
 		//else											 slotIconType = kGenericCDROMIcon;  // public.cd-media
 		//[[theSubtreeChild nodeData] setIconRep:DACALGetIconImageForType(slotIconType)];
 		
-
+        
 		
-
+        
 		[theBoxTreeNode insertChild:theSubtreeChild atIndex:[theBoxTreeNode numberOfChildren]];
 		//[[theBoxTreeNode nodeParent] sortExpandedChildrenForView:[secondaryController outlineView]];
 		
-		//[theSubtreeChild setBusy:YES];		
-
+		//[theSubtreeChild setBusy:YES];
+        
 		//[theBoxTreeNode recursiveSortChildren];
 		
 		//[secondaryController addDataToTree:theSubtreeChild startEdit:NO];
-
+        
 		//		[theSubtreeNode insertChild:theSubtreeChild atIndex:[theSubtreeNode numberOfChildren]];
 		//[theOthertTreeNode insertChild:theSubtreeChild atIndex:[theOthertTreeNode numberOfChildren]];
-
+        
 		//CFRelease( theSlotContentPath );
 		//CFRelease( theSlotTitle );
 		//CFRelease( theSlotPath );
@@ -834,6 +834,7 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 
 - (void)windowWillClose:(NSNotification *)notification
 {
+    // TODO: not sure we need to call toolbarSearchFinish unless there was some dirty data in the inspector or view
 	[self toolbarSearchFinish:self];
 	[[NSApplication sharedApplication] terminate:self];
 }
@@ -842,41 +843,41 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 {
 	// NSLog(@"Dragged Operation: %i", operation);
 	
-	if( operation == NSDragOperationNone ) 
+	if( operation == NSDragOperationNone )
 	{
 		NSPoint		mousePoint = [NSEvent mouseLocation];
 		NSPoint		localPoint = [[self outlineView] convertPoint:[[[self outlineView] window] convertScreenToBase:mousePoint] fromView:nil];
-		if( [[self outlineView] hitTest:localPoint] == nil ) 
+		if( [[self outlineView] hitTest:localPoint] == nil )
 		{
 			//	Actual delete removed because it is too intense!
-			//[super draggedImage:image endedAt:screenPoint operation:NSDragOperationDelete];				
-	/*	
-			NSDictionary*			visActDict = [[NSUserDefaults standardUserDefaults] dictionaryForKey:@"PADPrefsTreeIndexAvailability"];
-			NSMutableDictionary*	visDict = [NSMutableDictionary dictionaryWithCapacity:0];
-			
-			if( visActDict != nil )
-				[visDict addEntriesFromDictionary:visActDict];
-			
-			NSArray*		byebye = [[self treeControl] draggedNodes];
-			NSEnumerator*	byeEnum = [byebye objectEnumerator];
-			SimpleTreeNode*	byeNode = nil;
-			SimpleTreeNode*	byeParent = nil;
-			NSMutableDictionary*	byeDict = nil;
-			
-			while ( byeNode = (SimpleTreeNode*)[byeEnum nextObject] )
-			{
-				byeParent = (SimpleTreeNode*)[byeNode nodeParent];
-				
-				byeDict = [NSMutableDictionary dictionaryWithCapacity:0];
-				[byeDict setObject:(id)kCFBooleanFalse forKey:[[byeNode nodeData] name]];
-				
-				[visDict setObject:byeDict forKey:[[byeParent nodeData] name]];
-			}
-			
-			[[NSUserDefaults standardUserDefaults] setObject:visDict forKey:@"PADPrefsTreeIndexAvailability"];
-			
-			[[self treeControl] recreateInitialTree];
-	*/
+			//[super draggedImage:image endedAt:screenPoint operation:NSDragOperationDelete];
+            /*
+             NSDictionary*			visActDict = [[NSUserDefaults standardUserDefaults] dictionaryForKey:@"PADPrefsTreeIndexAvailability"];
+             NSMutableDictionary*	visDict = [NSMutableDictionary dictionaryWithCapacity:0];
+             
+             if( visActDict != nil )
+             [visDict addEntriesFromDictionary:visActDict];
+             
+             NSArray*		byebye = [[self treeControl] draggedNodes];
+             NSEnumerator*	byeEnum = [byebye objectEnumerator];
+             SimpleTreeNode*	byeNode = nil;
+             SimpleTreeNode*	byeParent = nil;
+             NSMutableDictionary*	byeDict = nil;
+             
+             while ( byeNode = (SimpleTreeNode*)[byeEnum nextObject] )
+             {
+             byeParent = (SimpleTreeNode*)[byeNode nodeParent];
+             
+             byeDict = [NSMutableDictionary dictionaryWithCapacity:0];
+             [byeDict setObject:(id)kCFBooleanFalse forKey:[[byeNode nodeData] name]];
+             
+             [visDict setObject:byeDict forKey:[[byeParent nodeData] name]];
+             }
+             
+             [[NSUserDefaults standardUserDefaults] setObject:visDict forKey:@"PADPrefsTreeIndexAvailability"];
+             
+             [[self treeControl] recreateInitialTree];
+             */
 			NSShowAnimationEffect(NSAnimationEffectPoof, mousePoint, NSZeroSize, nil, nil, nil);
 			return;
 		}
@@ -897,7 +898,7 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 			return YES;
 		
 		return NO;
-    }    
+    }
 	
 	if( [menuItem action]==@selector(selectAll:) )
 		return NO;
@@ -920,7 +921,7 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
         nodeData = [item nodeData];
     }
     
-    if (menu == outlineViewContextMenu) 
+    if (menu == outlineViewContextMenu)
 	{
 		for( itemIndex=0; itemIndex < itemCount; itemIndex++ ) {
 			workItem = [menu itemAtIndex:itemIndex];
@@ -931,7 +932,7 @@ static DACALTreeDataSource *DACALTreeDataSource_shared;
 				[workItem setEnabled:[nodeData respondsToSelector:@selector(itemSearch)] && [nodeData isLeaf]];
 		}
 	}
-
+    
 }
 
 -(IBAction)ctmRefreshSearch:(id)sender

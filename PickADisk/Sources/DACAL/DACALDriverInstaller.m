@@ -7,6 +7,7 @@
 //
 
 #import "DACALDriverInstaller.h"
+#import <PMUtility/PMUtility.h>
 
 CFStringRef		dac_installer_bin = CFSTR("dacauth");
 
