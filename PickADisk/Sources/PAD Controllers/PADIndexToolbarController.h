@@ -38,8 +38,8 @@
 	
 	IBOutlet	NSPathControl*			pathControl;
 	
-	IBOutlet	id						indexController;
-	IBOutlet	id						dataController;
+	IBOutlet	TreeController*			indexController;
+	IBOutlet	TreeController*			dataController;
 	IBOutlet	id						addVolumeController;
 //	IBOutlet	id						inspectorController;
 	

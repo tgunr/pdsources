@@ -89,8 +89,10 @@
 
 - (void)autoExpandItemAndChildren:(id)item
 {
-	if( item == nil )
-		item = [[self dataSource] treeRoot];
+	if( item == nil ) {
+        TreeController *myDataSource = [self delegate];
+		item = [myDataSource treeRoot];
+    }
 	
 	if( [[(SimpleTreeNode*)item nodeData] isExpanded] )
 	{
@@ -139,7 +141,7 @@
 	NSArray*			saveSelection = nil;
 
 	if( ourSearch != nil ) {
-		NSLog(@"Our Search: %@", ourSearch);
+		PMLOGINFO(@"Our Search: %@", ourSearch);
 		saveSelection = [self allSelectedNodes];
 		[super reloadData];
 		[self selectNodes:saveSelection byExtendingSelection:NO];
@@ -212,8 +214,9 @@
 
 	BOOL isValid = YES;
 	
-	if( [[self delegate] respondsToSelector:@selector(validateMenuItem:)] )
-		isValid = (BOOL)[[self delegate] validateMenuItem:menuItem];
+    TreeController *myDelegate = [self delegate];
+	if( [myDelegate respondsToSelector:@selector(validateMenuItem:)] )
+		isValid = [myDelegate validateMenuItem:menuItem];
 	else
         isValid = [super validateMenuItem:menuItem];
 	
@@ -226,10 +229,10 @@
 
 - (void)draggedImage:(NSImage *)image endedAt:(NSPoint)screenPoint operation:(NSDragOperation)operation
 {
-	
-	if( [[self delegate]
-         respondsToSelector:@selector(draggedImage:endedAt:operation:)] )
-	   [[self delegate] draggedImage:image endedAt:screenPoint operation:operation];
+    TreeController *myDelegate = [self delegate];
+
+	if( [myDelegate respondsToSelector:@selector(draggedImage:endedAt:operation:)] )
+        [myDelegate draggedImage:image endedAt:screenPoint operation:operation];
 	else {
         [super draggedImage:image endedAt:screenPoint operation:operation];
     }
