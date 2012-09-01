@@ -37,13 +37,13 @@ const enum {
 // This is a convenience method to return a tree root of a tree derived from an input dictionary. (see InitInfo.dict)
 + (id)treeFromLocation:(NSURL *)loc;
 
-+ (id)treeOperationFromLocation:(NSURL *)loc forUI:(BOOL)uiQueue;
++ (SimpleTreeNode *)treeOperationFromLocation:(NSURL *)loc forUI:(BOOL)uiQueue;
 + (id)treeOperationFromLocation:(NSURL *)loc;
 - (id)initWithData:(id)data;
 - (id)initFromLocation:(NSURL*)loc;
 - (id)initOperationFromLocation:(NSURL*)loc;
 
-// Convenience method to return a leaf node with its location set.
+// Convenience method to return a leaf node with its itemURL set.
 + (id)nodeDataWithURL:(NSURL*)loc;
 
 // This method is called to transfer device and slot data down the tree from a data object.
@@ -89,7 +89,7 @@ const enum {
 @private
     NSString		*name;
     NSImage			*iconRep;
-	NSURL			*location;
+	NSURL			*itemURL;
 	NSString		*itemFlavor;
 	NSDate			*itemAddDate;
 	NSInteger		itemType;
@@ -115,10 +115,10 @@ const enum {
 // Convenience method to return a branch node with its name set.
 + (id)groupDataWithName:(NSString *)name;
 
-// Convenience method to return a leaf node with its location set.
+// Convenience method to return a leaf node with its itemURL set.
 + (id)nodeDataWithURL:(NSURL*)loc;
 
-// Convenience method to return a leaf node with its location set and specific type.
+// Convenience method to return a leaf node with its itemURL set and specific type.
 + (id)nodeDataWithURL:(NSURL*)loc isLeaf:(BOOL)leaf;
    
 
@@ -144,9 +144,9 @@ const enum {
 - (BOOL)isSelectable;
 - (void)setSelectable:(BOOL)value;
 
-// Set and get the location url 
+// Set and get the itemURL url 
 - (void)setLocation:(NSURL *)loc;
-- (NSURL *)location;
+- (NSURL *)itemURL;
 
 // A convience function to set the url data and grab the icon
 - (void)setLocationForIcon:(NSURL *)loc;
