@@ -335,8 +335,8 @@ static AppController *sharedAppController;
 	dataView = tc;
 }
 
-- (id)dataView {
-	return (id)dataView;
+- (TreeController *)dataView {
+	return dataView;
 }
 
 - (PADIndexToolbarController *)toolbarController {

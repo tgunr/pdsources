@@ -40,7 +40,7 @@ NSString*	DACALFlavorToFlavorTitle( NSString* flavor );
 	IBOutlet	NSTextField		*promptText;
 	IBOutlet	NSImageView		*noBoxIcon;
 	IBOutlet	NSTabView		*tabView;
-	IBOutlet	id				secondaryController;
+	IBOutlet	TreeController  *secondaryController;
 	
 	DACALIndexState*			savedSelection;
 	DACALIndexState*			sortedSelection;
