@@ -1532,9 +1532,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Frameworks\"",
-					"\"$(SRCROOT)/../DerivedData/Build/Products/$CONFIGURATION)\"/**",
 					"\"$(SRCROOT)/Frameworks\"",
-					"\"$(SRCROOT)/../DerivedData/Build/Products/Development\"",
 					"\"$(SRCROOT)/../build/Development\"",
 				);
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
@@ -1579,9 +1577,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Frameworks\"",
-					"\"$(SRCROOT)/../DerivedData/Build/Products/$CONFIGURATION)\"/**",
 					"\"$(SRCROOT)/Frameworks\"",
-					"\"$(SRCROOT)/../DerivedData/Build/Products/Development\"",
 					"\"$(SRCROOT)/../build/Development\"",
 				);
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
@@ -1626,9 +1622,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Frameworks\"",
-					"\"$(SRCROOT)/../DerivedData/Build/Products/$CONFIGURATION)\"/**",
 					"\"$(SRCROOT)/Frameworks\"",
-					"\"$(SRCROOT)/../DerivedData/Build/Products/Development\"",
 					"\"$(SRCROOT)/../build/Development\"",
 				);
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
@@ -1654,9 +1648,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Frameworks\"",
-					"\"$(SRCROOT)/../DerivedData/Build/Products/$CONFIGURATION)\"/**",
 					"\"$(SRCROOT)/Frameworks\"",
-					"\"$(SRCROOT)/../DerivedData/Build/Products/Development\"",
 					"\"$(SRCROOT)/../build/Development\"",
 				);
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
@@ -1682,9 +1674,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Frameworks\"",
-					"\"$(SRCROOT)/../DerivedData/Build/Products/$CONFIGURATION)\"/**",
 					"\"$(SRCROOT)/Frameworks\"",
-					"\"$(SRCROOT)/../DerivedData/Build/Products/Development\"",
 					"\"$(SRCROOT)/../build/Development\"",
 				);
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
