@@ -15,6 +15,7 @@
 #import "PADOperationControlDevice.h"
 #import "DACALDeviceService.h"
 #import "PADOperationOpenDevice.h"
+#import "TreeController.h"
 
 @implementation DACALDevice
 
@@ -31,15 +32,17 @@
 	[super dealloc];
 }
 
--(DACALDeviceRef)deviceRef
-	{ return deviceRef; }
+-(DACALDeviceRef)deviceRef {
+    return deviceRef;
+}
 
 -(void)setDeviceRef:(DACALDeviceRef)newDevice
 	{ deviceRef = newDevice; }
 
 -(BOOL)isDeviceRef:(DACALDeviceRef)aDevice
 {
-	if( (aDevice==kDACALNullDevice) || (deviceRef==kDACALNullDevice) ) return NO;
+	if( (aDevice==kDACALNullDevice) || (deviceRef==kDACALNullDevice) )
+        return NO;
 
 	return (CFEqual((CFTypeRef)deviceRef, (CFTypeRef)aDevice )) ? YES : NO;
 }
@@ -67,7 +70,7 @@
 {
 	NSUInteger slotIndex = aSlot - 1;
 
-	if( (slotIndex > 0) && (slotIndex <= [deviceSlots count]) )
+	if( (aSlot > 0) && (aSlot <= [deviceSlots count]) )
 		return [deviceSlots objectAtIndex:slotIndex];
 
 	return nil;
@@ -239,7 +242,7 @@
 	[deviceNode removeFromParent];
 	[self setDeviceNode:nil];
 
-	[[[[AppController shared] dataView] dataSource] updateChangesWithAction:YES];
+	[[[[AppController shared] dataView] treeDataSource] updateChangesWithAction:YES];
 	//[[[[DACALTreeDataSource shared] treeControl] outlineView] reloadItem:(id)boxParent reloadChildren:YES];
 	//[[DACALTreeDataSource shared] doAction];
 
