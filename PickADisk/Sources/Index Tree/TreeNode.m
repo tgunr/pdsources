@@ -52,6 +52,23 @@
 #import "PADOutlineView.h"
 #import <PMUtility/PMUtility.h>
 
+@implementation NSArray (TreeNode)
+
+-(NSArray*)arrayWithSubTrees
+{
+	int		aIndex, aCount = [self count];
+	NSMutableArray*		workArray = [NSMutableArray arrayWithCapacity:256];
+	NSArray*			outArray = nil;
+	
+	for( aIndex=0; aIndex < aCount; aIndex++ )
+		[workArray addObject:[[[self objectAtIndex:aIndex] nodeData] subTree]];
+    
+	outArray = [NSArray arrayWithArray:workArray];
+	return outArray;
+}
+
+@end
+
 @implementation TreeNode
 
 + (id)treeNodeWithData:(id)data {
