@@ -10,18 +10,10 @@
 //#define __DCDEBUG												// define this to get debug output in the driver specifically.
 
 #ifdef __OBJC__
-    #import <Foundation/Foundation.h>
-    #import <AppKit/AppKit.h>
-	#import "pms.h"
-	#import "DACALDeviceObjC.h"
-	#import "NSApplication_Extensions.h"
-	#import "NSArray_Extensions.h"
-	#import "NSData_Extensions.h"
-	#import "NSString_Extensions.h"
-	#import "NSSlider_Animation.h"
-	#import "AppController.h"
-	#import "JSServicesSetup.h"
-	#import "PADLifecycleSetup.h"
+    #import <Cocoa/Cocoa.h>
+    #import <Carbon/Carbon.h>
+    #import <PMUtility/pmUtility.h>
+    #import <DACAL/dacallib.h>
 
 	#if MAC_OS_X_VERSION_MIN_REQUIRED < MAC_OS_X_VERSION_10_5
 		typedef float CGFloat;

@@ -2,15 +2,16 @@
 //  DACALViewDataSource.m
 //  PickADisk
 //
-//  Created by Jack Small on 8/30/08.
-//  Copyright 2008 Jack Small. All rights reserved.
+//  Copyright 2008 PolyMicro Systems. All rights reserved.
 //
 
-#import "DACALViewDataSource.h"
-#import "DACALSlot.h"
-#import "DACALDeviceNode.h"
-#import "PADLifecycleController.h"
 #import "AppController.h"
+#import "DACALViewDataSource.h"
+#import "DACALTreeDataSource.h"
+#import "PADLifecycleSetup.h"
+#import "DACALSlot.h"
+#import "DACALSlotElement.h"
+#import "DACALDevice.h"
 
 @implementation DACALViewDataSource
 
@@ -201,11 +202,11 @@
 	SimpleTreeNode*	item = nil;
 	int				count = [selectedNodes count];
 
-	PADIndexToolbarController* toolControl = (PADIndexToolbarController*)[self toolbarControl];
+	PADIndexToolbarController* toolControl = [self toolbarControl];
 	
 	[toolControl resetSelectedNodesAndAdoptSelection:(count == 0)];
 	
-	while( item = [selectedEnum nextObject] )
+	while((item = [selectedEnum nextObject]))
 		if( [[item nodeData] itemSlot] != 0 ) 
 			[toolControl addSelectedNode:item adoptSelection:([item isEqual:[selectedNodes lastObject]])];
 
@@ -218,7 +219,7 @@
 {
 	NSUndoManager*		undo = [self undoManager];
 	SimpleNodeData*		theData = [theNode nodeData];
-	DACALSlotElement*	theElement = [theData itemElement]; //	DACALDeviceSlotElementForURL( (CFURLRef)[theData location] );
+	DACALSlotElement*	theElement = [theData itemElement]; //	DACALDeviceSlotElementForURL( (CFURLRef)[theData itemURL] );
 	NSString*			nowName = nil;
 	
 	if( [[theData name] compare:theName] == NSOrderedSame ) return;
@@ -266,11 +267,11 @@ SLOTNAMEFAILED:
 	// theErr = DACALSlotSetTitle( theBox, theSlot, (CFStringRef)theName );
 	// if( theErr != 0 ) goto SLOTNAMEFAILED;
 	
-	theErr = CFURLSetReferenceTitle( (CFURLRef)[theData location], (CFStringRef)theName );
+	theErr = CFURLSetReferenceTitle( (CFURLRef)[theData itemURL], (CFStringRef)theName );
 	if( theErr != 0 ) goto SLOTNAMEFAILED;
 
 	[theData setName:theName];
-	// theShortURL = CFURLCreateCopyDeletingLastPathComponent( kCFAllocatorDefault, (CFURLRef)[theData location] );
+	// theShortURL = CFURLCreateCopyDeletingLastPathComponent( kCFAllocatorDefault, (CFURLRef)[theData itemURL] );
 	// theNewURL = CFURLCreateCopyAppendingPathComponent( kCFAllocatorDefault, theShortURL, (CFStringRef)theName, TRUE );
 	// CFRelease( theShortURL );
 	// [theData setLocation:(NSURL*)theNewURL];
@@ -297,11 +298,11 @@ SLOTNAMEFAILED:
 
 - (void)nodeSlotChanged:(SimpleTreeNode*)node toSlot:(NSString*)slotString
 {
-	NSUndoManager*		undo = [self undoManager];
-//	SimpleNodeData*		theData = [node nodeData];
-	DACALSlotNum		oldSlot = [[node nodeData] itemSlot];
-	DACALSlotNum		newSlot = [slotString intValue];
-	DACALDeviceNode*	oldBox = DACALDeviceNodeForDeviceRef( [[node nodeData] itemDevice] );
+	NSUndoManager*	undo = [self undoManager];
+//	SimpleNodeData*	theData = [node nodeData];
+	DACALSlotNum	oldSlot = [[node nodeData] itemSlot];
+	DACALSlotNum newSlot = (DACALSlotNum)[slotString intValue];
+	DACALDevice*	oldBox = DACALDeviceForDeviceRef( [[node nodeData] itemDevice] );
 	NSString*		nowSlot = nil;
 	
 	if( oldSlot == newSlot ) return;
@@ -319,7 +320,7 @@ SLOTNAMEFAILED:
 {
 	NSUndoManager*		undo = [self undoManager];
 	SimpleNodeData*		theData = [theNode nodeData];
-	DACALSlotElement*	theElement = [theData itemElement];	// DACALDeviceSlotElementForURL( (CFURLRef)[theData location] );
+	DACALSlotElement*	theElement = [theData itemElement];	// DACALDeviceSlotElementForURL( (CFURLRef)[theData itemURL] );
 	NSString*			nowType = nil;
 	
 	if( [[theData itemFlavor] compare:theName] == NSOrderedSame ) return;
@@ -389,9 +390,9 @@ SLOTNAMEFAILED:
 - (void)nodeTypeChanged:(SimpleTreeNode*)theNode toType:(NSString*)theName
 {
 	SimpleNodeData	*theData = [theNode nodeData];
-	CFURLRef		theURL = (CFURLRef)[theData location];
+	CFURLRef		theURL = (CFURLRef)[theData itemURL];
 	
-//	CFURLRef		testURL = (CFURLRef)[(SimpleNodeData*)[theNode nodeData] location];
+//	CFURLRef		testURL = (CFURLRef)[(SimpleNodeData*)[theNode nodeData] itemURL];
 	DACALResult		theErr;
 	
 //	CFShow(testURL);
@@ -447,22 +448,22 @@ SLOTTYPEFAILED:
 
 - (NSInteger)shouldEditTableColumn:(NSTableColumn *)tc item:(id)item
 {
-	NSString * tcString = (NSString *)[tc identifier];
-	if([tcString compare:COLUMNID_SLOT] == NSOrderedSame) 
+	if([[tc identifier] compare:COLUMNID_SLOT] == NSOrderedSame) 
 		return YES;	
 	
-	if([tcString compare:COLUMNID_NAME] == NSOrderedSame) {
-		if( ![[item nodeData] location] ) return NO;
+	if([[tc identifier] compare:COLUMNID_NAME] == NSOrderedSame) {
+		if( ![[item nodeData] itemURL] )
+            return NO;
 		return YES;
 	}
 	
-	if([tcString compare:COLUMNID_COMMENT] == NSOrderedSame) 
+	if([[tc identifier] compare:COLUMNID_COMMENT] == NSOrderedSame) 
 		return NO;	
 
-	if([tcString compare:COLUMNID_TAGS] == NSOrderedSame) 
+	if([[tc identifier] compare:COLUMNID_TAGS] == NSOrderedSame) 
 		return NO;	
 
-	if([tcString compare:COLUMNID_STARS] == NSOrderedSame) 
+	if([[tc identifier] compare:COLUMNID_STARS] == NSOrderedSame) 
 		return YES;	
 
 	return NO;
@@ -639,7 +640,8 @@ SLOTTYPEFAILED:
    
     if (menu == outlineViewContextMenu) 
 	{
-		while( workItem = (NSMenuItem*)[menuItemEnum nextObject] )
+		workItem = (NSMenuItem*)[menuItemEnum nextObject];
+		while(workItem)
 		{
 			workSelector = [workItem action];
 			//NSLog(@"Testing Item: %@", NSStringFromSelector(workSelector));
@@ -655,6 +657,7 @@ SLOTTYPEFAILED:
 			if( workSelector == @selector(ctmInspector:) )	{					//	Show/Hide Inspector
 				[workItem setEnabled:[[PADInspectorController sharedInspector] validateContextualMenuItem:workItem withSelection:clickedItems]];
 			}
+			workItem = (NSMenuItem*)[menuItemEnum nextObject];
 		}
 	}
 	
@@ -665,13 +668,15 @@ SLOTTYPEFAILED:
 	NSArray*		theItems = [self ctmClickedRows];
 	NSEnumerator*	arrayEnum = [theItems objectEnumerator];
 	SimpleTreeNode*	workItem = nil;
-	
-	while( workItem = [arrayEnum nextObject] )
+
+	workItem = [arrayEnum nextObject];
+	while(workItem)
 	{
 		workItem = [workItem matchActual];
 		
 		if( [[[workItem nodeData] itemElement] isCheckedOut] == YES )
 			[[[workItem nodeData] itemElement] openMountedElement];
+		workItem = [arrayEnum nextObject];
 	}
 }
 
@@ -695,18 +700,25 @@ SLOTTYPEFAILED:
 	NSArray*		theItems = [self ctmClickedRows];
 	NSEnumerator*	arrayEnum = [theItems objectEnumerator];
 	SimpleTreeNode*	workItem = nil;
-	
-	while( workItem = [arrayEnum nextObject] )
+
+	workItem = [arrayEnum nextObject];
+	while(workItem)
 	{
 		workItem = [workItem matchActual];
 		
 		if( [[[workItem nodeData] itemElement] isCheckedOut] == NO )
 			[[[[workItem nodeData] itemElement] elementSlot] toggleReservationForUser:nil onHost:nil withUI:YES];
+		workItem = [arrayEnum nextObject];
 	}
 }
 
 - (IBAction)ctmDeleteSlot:(id)sender
-	{ [[[AppController shared] toolbarControl] unassignNodes:[self ctmClickedRows]]; }
+	{
+		AppController *sharedAppController = [AppController shared];
+		PADIndexToolbarController *aToolbarController = [sharedAppController toolbarController];
+		if (aToolbarController) {
+			[aToolbarController unassignNodes:[self ctmClickedRows]]; }
+	}
 
 - (IBAction)ctmGotoSlot:(id)sender
 	{ [DACALSlot moveDevicesToSlotsOfNodes:[self ctmClickedRows]]; }

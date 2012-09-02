@@ -2,10 +2,21 @@
 //  PADInspectorController.m
 //  PickADisk
 //
-//  Created by Jack Small on 2/3/09.
-//  Copyright 2009 Jack Small. All rights reserved.
+//  Copyright 2009 PolyMicro Systems. All rights reserved.
 //
 
+#import <PMUtility/pmUtility.h>
+#import "PADInspectorController.h"
+#import "DACALViewDataSource.h"
+#import "DACALSlotElement.h"
+#import "DACALDevice.h"
+#import "DACALSlot.h"
+#import <AppKit/AppKit.h>
+
+@interface PADInspectorController ()
+- (void)notifyWithWorkString:(NSString *)workString titleString:(NSString *)title commentString:(NSString *)comment;
+
+@end
 
 @implementation PADInspectorController
 
@@ -26,7 +37,8 @@ static	PADInspectorController*		PADInspectorController_shared = nil;
         [self autorelease];
         return PADInspectorController_shared;
     }
-	if( self = [super initWithWindowNibName:@"PADInspector"] )
+	self = [super initWithWindowNibName:@"PADInspector"];
+	if(self)
 	{
 		PADInspectorController_shared = self;
 		
@@ -342,11 +354,26 @@ static	PADInspectorController*		PADInspectorController_shared = nil;
 	if( [selectedRecords count] == 1 )
 		item = [[selectedRecords objectAtIndex:0] matchActual];
 	
+    if( !selectedRecords | ([selectedRecords count] == 0) ) {
+        workString = @"No Selection";
+        windowTitle = @"No Selection";
+    } else {
+        workString = [NSString stringWithFormat:@"%i Items Selected", [selectedRecords count]];
+        windowTitle = @"Multiple Selection";
+    }
+
 	if( item != nil )
 	{
 		data = [item nodeData];
 		element = [data itemElement];
 		
+        if ([NSNumber numberWithChar:0] == element) {
+            PMLOGERROR(@"No element for node %@", data);
+            workString = @"No Data For Selection";
+            [self notifyWithWorkString:workString titleString:windowTitle commentString:@"Try deleting the slot and then adding it back."];
+            return;
+        }
+        
 		if( [element isCheckedOut] == YES )
 		{
 			statusString = @"◎ Checked Out";
@@ -413,61 +440,59 @@ static	PADInspectorController*		PADInspectorController_shared = nil;
 		[titleText setStringValue:[element title]];
 		[titleText setEnabled:YES];
 	} else {
-		
-		if( !selectedRecords | ([selectedRecords count] == 0) ) {
-			workString = @"No Selection";
-			windowTitle = @"No Selection";
-		} else {
-			workString = [NSString stringWithFormat:@"%i Items Selected", [selectedRecords count]];
-			windowTitle = @"Multiple Selection";
-		}
-		
-		[topTitle setStringValue:workString];
-		[topIcon setImage:nil];
-		[topIcon setEnabled:NO];
-		[topButton setEnabled:NO];
-		[topStatus setStringValue:@""];
-		
-		[commentsText setStringValue:@""];
-		[commentsText setEnabled:NO];
-		
-		[tagsTokens setStringValue:@""];
-		[tagsTokens setEnabled:NO];
-		
-//		[generalTypeIcon changeToLibraryFlavor:@"Movie"];
-		[generalTypeIcon changeToNillImage];
-//		[generalTypeIcon changeCurrentAlpha:0.42f];
-		[generalType selectItemWithTitle:@"Movie"];
-		[generalType setEnabled:NO];
-		[generalDeviceIcon setHidden:YES];
-		[generalDeviceName setStringValue:@""];
-		[generalDeviceName setEnabled:NO];
-		[generalDeviceSlot setStringValue:@""];
-		[generalDeviceSlot setEnabled:NO];
-		[generalPath setStringValue:@""];
-		[generalPath setEnabled:NO];
-		[generalSize setStringValue:@""];
-		[generalStatus setStringValue:@""];
-		[generalAdded setStringValue:@""];
-		[generalRating setIntValue:0];
-		[generalRating setEnabled:NO];
-		
-		[titleText setStringValue:@""];
-		[titleText setEnabled:NO];
-		
-	}
+        [self notifyWithWorkString:workString titleString:windowTitle commentString:@""];
+    }
 	
-	if( [self isWindowLoaded] == YES )
-		[[self window] setTitle:windowTitle];
 }
 
+- (void)notifyWithWorkString:(NSString *)workString titleString: (NSString *)title commentString: (NSString *)comment {
+    [topTitle setStringValue:workString];
+    [topIcon setImage:nil];
+    [topIcon setEnabled:NO];
+    [topButton setEnabled:NO];
+    [topStatus setStringValue:@""];
+
+    [commentsText setStringValue:comment];
+    [commentsText setEnabled:NO];
+
+    [tagsTokens setStringValue:@""];
+    [tagsTokens setEnabled:NO];
+
+//		[generalTypeIcon changeToLibraryFlavor:@"Movie"];
+    [generalTypeIcon changeToNillImage];
+//		[generalTypeIcon changeCurrentAlpha:0.42f];
+    [generalType selectItemWithTitle:@"Movie"];
+    [generalType setEnabled:NO];
+    [generalDeviceIcon setHidden:YES];
+    [generalDeviceName setStringValue:@""];
+    [generalDeviceName setEnabled:NO];
+    [generalDeviceSlot setStringValue:@""];
+    [generalDeviceSlot setEnabled:NO];
+    [generalPath setStringValue:@""];
+    [generalPath setEnabled:NO];
+    [generalSize setStringValue:@""];
+    [generalStatus setStringValue:@""];
+    [generalAdded setStringValue:@""];
+    [generalRating setIntValue:0];
+    [generalRating setEnabled:NO];
+
+    [titleText setStringValue:@""];
+    [titleText setEnabled:NO];
+    if( [self isWindowLoaded] == YES )
+        [[self window] setTitle:title];
+}
+
+// TODO: adoptInspectorSelection gets called twice, first from outlineViewDidChange, then from outlineViewAction
 - (void)adoptInspectorSelection:(NSArray*)newSelection
 {
-	if( [selectedRecords isEqualToArray:newSelection] == YES ) return;
+	if( [selectedRecords isEqualToArray:newSelection] == YES )
+        return;
 	
 	[self extractSelectionDataAndClear:YES];
-	[selectedRecords addObjectsFromArray:newSelection];
-	[self installSelectionData];
+    if (newSelection) {
+        [selectedRecords addObjectsFromArray:newSelection];
+        [self installSelectionData];
+    }
 }
 
 @end		//	PADInspectorController

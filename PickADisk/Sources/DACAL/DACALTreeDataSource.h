@@ -32,17 +32,8 @@
 NSString*	DACALFlavorToFlavorValue( NSString* flavor );
 NSString*	DACALFlavorToFlavorTitle( NSString* flavor );
 
-@interface DACALIndexState : NSObject
-{
-	NSMutableDictionary*	savedViewData;	
-}
-
--(void)restoreSettings;
--(void)removeSetting:(NSString*)settingName forKey:(NSString*)keyName;
--(void)addSettingsForKey:(NSString*)keyName saveView:(NSOutlineView*)doView saveSelection:(BOOL)doSelect saveSorts:(BOOL)doSorts;
-+(id)saveSetupForKey:(NSString*)keyName saveView:(NSOutlineView*)doView saveSelection:(BOOL)doSelect saveSorts:(BOOL)doSorts;
-
-@end
+@class DACALIndexState;
+@class PADSearchRequest;
 
 @interface DACALTreeDataSource : TreeControllerDataSource {
 
@@ -68,6 +59,13 @@ NSString*	DACALFlavorToFlavorTitle( NSString* flavor );
 - (void)reportGoodRegistration;
 - (void)setPrompt:(NSString*)newPrompt;
 - (void)updatePrompt;
+
+- (void)searchFoundResults: (NSArray *) itemsFound forSearch: (PADSearchRequest *) theSearch;
+
+- (void)searchCompleted: (PADSearchRequest *) theSearch;
+
+- (void)outlineViewAction: (id) tree;
+
 - (void)doReport;
 - (void)doAction;
 

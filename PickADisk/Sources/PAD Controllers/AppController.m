@@ -2,11 +2,10 @@
 //  AppDelegate.m
 //  Async Downloader
 //
-//  Created by Jack Small on 7/7/08.
-//  Copyright 2008 Jack Small. All rights reserved.
+//  Copyright 2008 PolyMicro Systems. All rights reserved.
 //
 
-
+#import "AppController.h"
 #import <AudioToolbox/AudioToolbox.h>
 
 //#import <CoreFoundation/CoreFoundation.h>
@@ -19,24 +18,28 @@
 //#import "DACVolume.h"
 #import "LicenseController.h"
 #import "LicenseService.h"
+#import "PADLifecycleController.h"
+#import "DACALTreeDataSource.h"
+#import "PADIndexToolbarController.h"
 
 #define PAD_BUSYBODY_DELAY	0.1
 #define PAD_PREFS_VERSION	(const char*)"0.6"
 
 @implementation AppController
-static AppController *shared;
+static AppController *sharedAppController;
 
 - (id)init
 {
-    if (shared) 
+    if (sharedAppController)
 	{
         [self autorelease];
-        return shared;
+        return sharedAppController;
     }
-    if (self = [super init])
+	self = [super init];
+	if (self)
 	{	
 		//	Initializtion 
-		shared = self;
+		sharedAppController = self;
 
 		queue = [[NSOperationQueue alloc] init];
 		[queue setMaxConcurrentOperationCount:6];
@@ -321,20 +324,28 @@ static AppController *shared;
 	
 }
 
-+ (id)shared
-{
-    if (!shared) {
-        [[AppController alloc] init];
-    }
-    return shared;
++ (id)shared {
+	if (!sharedAppController) {
+		[[[AppController alloc] init] retain];
+	}
+	return sharedAppController;
 }
 
-- (void)setDataView:(TreeController*)tc { dataView = tc; }
-- (id)dataView { return (id)dataView; }
+- (void)setDataView: (TreeController *) tc {
+	dataView = tc;
+}
 
-- (PADIndexToolbarController*)toolbarController { return toolbarController; }
+- (TreeController *)dataView {
+	return dataView;
+}
 
-- (void)setToolbarController:(PADIndexToolbarController*)tb { toolbarController = tb; }
+- (PADIndexToolbarController *)toolbarController {
+	return toolbarController;
+}
+
+- (void)setToolbarController: (PADIndexToolbarController *) tb {
+	toolbarController = tb;
+}
 
 - (IBAction)addSlot:(id)sender { [toolbarController clickAssign:self]; }
 - (IBAction)mountDisc:(id)sender { [toolbarController clickPlay:self]; }

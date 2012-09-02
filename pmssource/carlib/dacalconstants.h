@@ -1,5 +1,5 @@
 //
-//  dacalstrings.h
+//  dacalconstants.h
 //  PickADisk
 //
 //  Created by Dave Carlton on 07/25/09.

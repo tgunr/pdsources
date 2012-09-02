@@ -2,9 +2,12 @@
 //  TreeController.m
 //  DragNDropOutlineView
 //
-//  Created by Jack Small on 7/4/08.
-//  Copyright 2008 __MyCompanyName__. All rights reserved.
+//  Copyright 2008 PolyMicro Systems. All rights reserved.
 //
+
+#import "TreeController.h"
+#import "PADIndexToolbarController.h"
+#import "PADOutlineView.h"
 
 @interface TreeController(Private)
 - (void)_addNewDataToSelection:(SimpleTreeNode *)newChild;
@@ -19,19 +22,19 @@
 
 @implementation TreeController
 
-- (id)init {
+- (TreeController *)init {
     if ((self = [super init])) {
-		
+
 	}
 
-    return self; 
+    return self;
 }
 
 - (void)dealloc {
     //[treeData release];
     [draggedNodes release];
 
-	//if( dataSource != nil ) [dataSource release];
+	//if( treeDataSource != nil ) [treeDataSource release];
 	[treeData release];
 	[outlineView release];
 	[super dealloc];
@@ -41,25 +44,27 @@
 - (void)awakeFromNib {
 
 	// Install Data for Tree
-	if( dataSource != nil ) [self setTreeRoot:[dataSource performSelector:@selector(createInitialTree:) withObject:self]];
+	if( treeDataSource != nil )
+        [self setTreeRoot:[treeDataSource performSelector:@selector(createInitialTree:) withObject:self]];
 
 	// Initialize the View
-	if( dataSource != nil ) [dataSource performSelector:@selector(outlineViewInit)];
-	
+	if( treeDataSource != nil )
+        [treeDataSource performSelector:@selector(outlineViewInit)];
+
 	// Setup doubles
 	[[self outlineView] setDoubleAction:@selector(outlineViewDoubleAction:)];
-	
+
 }
 
 
 - (void)recreateInitialTree
 {
 	// Install Data for Tree
-	if( dataSource != nil ) [dataSource performSelector:@selector(recreateInitialTree)];
+	if( treeDataSource != nil ) [treeDataSource performSelector:@selector(recreateInitialTree)];
 }
 
-- (NSArray *)draggedNodes { 
-    return draggedNodes; 
+- (NSArray *)draggedNodes {
+    return draggedNodes;
 }
 
 - (NSArray *)selectedNodes { return [outlineView allSelectedItems]; }
@@ -81,12 +86,15 @@
 - (void)setOnlyAcceptDropOnRoot:(BOOL)allow					{ onlyAcceptDropOnRoot = allow; if(outlineView) [outlineView setNeedsDisplay:YES]; }
 
 - (SimpleTreeNode*)treeRoot { return treeData; }
-	
+
 - (void)setTreeRoot:(SimpleTreeNode*)root
 {
-	if( treeData == root ) return;
-	if( root != NULL ) [root retain];
-	if( treeData != NULL ) [treeData release];
+	if( treeData == root )
+        return;
+	if( root != NULL )
+        [root retain];
+	if( treeData != NULL )
+        [treeData release];
 	treeData = root;
     [outlineView reloadData];
 	//[outlineView setNeedsDisplay:YES];
@@ -97,34 +105,39 @@
     NSInteger childIndex = 0;
     SimpleTreeNode *selectedNode = treeData;
     TreeNode *parentNode = nil;
-	
+
 	if( treeData == nil ) {
 		[newChild sortChildrenUsingDescriptors:[outlineView sortDescriptors]];
 		[self setTreeRoot:newChild];
 		goto AFTERRELOAD;
 	}
 
-    if ([[selectedNode nodeData] isGroup]) { 
-	parentNode = selectedNode; 
-	childIndex = 0; 
+    if ([[selectedNode nodeData] isGroup]) {
+	parentNode = selectedNode;
+	childIndex = 0;
     }
-    else { 
-	parentNode = [selectedNode nodeParent]; 
-	childIndex = [parentNode indexOfChildIdenticalTo:selectedNode]+1; 
+    else {
+	parentNode = [selectedNode nodeParent];
+	childIndex = [parentNode indexOfChildIdenticalTo:selectedNode]+1;
     }
-    
+
     [parentNode insertChild: newChild atIndex: childIndex];
- 	[parentNode sortChildrenUsingDescriptors:[outlineView sortDescriptors]];	
+ 	[parentNode sortChildrenUsingDescriptors:[outlineView sortDescriptors]];
    [outlineView reloadData];
-	
+
 AFTERRELOAD:
 	[newChild recursiveReExpandInView:outlineView];
 }
 
-- (id)dataSource { return dataSource; }
+- (id)treeDataSource {
+    return treeDataSource;
+}
 
-- (PADOutlineView*)outlineView { return outlineView; }
-- (void)setOutlineView:(NSOutlineView*)view
+- (PADOutlineView*)outlineView {
+    return outlineView;
+}
+
+- (void)setOutlineView:(PADOutlineView*)view
 {
 	if( outlineView != nil )
         [outlineView release];
@@ -137,11 +150,11 @@ AFTERRELOAD:
 - (NSUndoManager*)undoManager
 {
 	NSOutlineView*		ourView = [self outlineView];
-	
+
 	if( ourView )
 		return [ourView undoManager];
-	
-	return nil; 
+
+	return nil;
 }
 
 // ================================================================
@@ -165,29 +178,29 @@ AFTERRELOAD:
 //		SimpleTreeNode *selectedNode = ([selectedNodes count] ? [selectedNodes objectAtIndex:0] : treeData);
 //		SimpleTreeNode *selectedNode = treeData;
 //		TreeNode *parentNode = nil;
-		
+
 /*		if ([[selectedNode nodeData] isGroup]) { 
-			parentNode = selectedNode; 
-			childIndex = 0; 
+			parentNode = selectedNode;
+			childIndex = 0;
 		}
-		else { 
-			parentNode = [selectedNode nodeParent]; 
-			childIndex = [treeData numberOfChildren];// [parentNode indexOfChildIdenticalTo:selectedNode]+1; 
+		else {
+			parentNode = [selectedNode nodeParent];
+			childIndex = [treeData numberOfChildren];// [parentNode indexOfChildIdenticalTo:selectedNode]+1;
 		}
-		
+
 		[parentNode insertChild: newChild atIndex: childIndex];
 */
-	
-	
-	
+
+
+
 	childIndex = [treeData numberOfChildren];
 	[treeData insertChild:newChild atIndex:childIndex];
 	[outlineView reloadData];
-		
+
 	newRow = [outlineView rowForItem: newChild];
 	if (newRow>=0) [outlineView selectRow: newRow byExtendingSelection: NO];
 	if( (doEdit==YES) && (newRow>=0))
-		[outlineView editColumn:0 row:newRow withEvent:nil select:YES];		
+		[outlineView editColumn:0 row:newRow withEvent:nil select:YES];
 }
 
 
@@ -195,7 +208,8 @@ AFTERRELOAD:
     // This message is sent from the outlineView as it's action (see the connection in IB).
 
 	// Tell data source
-	if( dataSource != nil ) [dataSource performSelector:@selector(outlineViewAction:) withObject:self];
+	if( treeDataSource != nil )
+		[treeDataSource performSelector:@selector(outlineViewAction:) withObject:self];
 
 }
 
@@ -203,12 +217,12 @@ AFTERRELOAD:
 	// This message is sent from th outlineView as it's double-action (see awakeFromNib)
 
 	// Tell data source
-	if( dataSource != nil ) [dataSource performSelector:@selector(outlineViewDoubleAction:) withObject:self];
+	if( treeDataSource != nil ) [treeDataSource performSelector:@selector(outlineViewDoubleAction:) withObject:self];
 }
 
 - (void)deleteSelections:(id)sender {
     NSArray *selection = [self selectedNodes];
-    
+
     // Tell all of the selected nodes to remove themselves from the model.
     [selection makeObjectsPerformSelector: @selector(removeFromParent)];
 	[self deletedSelections];
@@ -233,13 +247,13 @@ AFTERRELOAD:
 }
 
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem {
-	
-	return [dataSource validateMenuItem:menuItem];
-	
+
+	return [treeDataSource validateMenuItem:menuItem];
+
     if ([menuItem action]==@selector(deleteSelections:)) {
 	// The delete selection item should be disabled if nothing is selected.
 	return ([[self selectedNodes] count] > 0);
-    }    
+    }
     return YES;
 }
 
@@ -267,10 +281,10 @@ AFTERRELOAD:
 - (id)outlineView:(NSOutlineView *)ov objectValueForTableColumn:(NSTableColumn *)tableColumn byItem:(id)item
 {
     id objectValue = nil;
-    
+
     // The return value from this method is used to configure the state of the items cell via setObjectValue:
-	if( dataSource != nil )
-		objectValue = [dataSource performSelector:@selector(objectValueForTableColumn:byItem:) withObject:tableColumn withObject:item];
+	if( treeDataSource != nil )
+		objectValue = [treeDataSource performSelector:@selector(objectValueForTableColumn:byItem:) withObject:tableColumn withObject:item];
 	else
 		NSLog(@"Unknown Column: %@", [tableColumn identifier]);
 
@@ -281,8 +295,8 @@ AFTERRELOAD:
 - (void)outlineView:(NSOutlineView *)ov setObjectValue:(id)object forTableColumn:(NSTableColumn *)tableColumn byItem:(id)item
 {
 	//	Here, we call the data source to fill in the value.
-	if( dataSource != nil )
-		[dataSource setObjectValue:object forTableColumn:tableColumn byItem:item];
+	if( treeDataSource != nil )
+		[treeDataSource setObjectValue:object forTableColumn:tableColumn byItem:item];
 }
 
 /*  
@@ -314,40 +328,40 @@ AFTERRELOAD:
             return [[outlineView tableColumnWithIdentifier:COLUMNID_NAME] dataCell];
         }
     }
-	
+
 	// If the item is a new cell, startup busy if necessary
 	if ((tableColumn != nil) && [[tableColumn identifier] isEqualToString:COLUMNID_NAME])
 		[outCell setBusy: [item busy]];
-	
+
     return outCell;
 }
 
 // To get the "group row" look, we implement this method.
 - (BOOL)outlineView:ov isGroupItem:(id)item {
-	if( dataSource != nil )
-		return [dataSource outlineView:ov isGroupItem:item];
+	if( treeDataSource != nil )
+		return [treeDataSource outlineView:ov isGroupItem:item];
 	else
 		return [[item nodeData] isGroup] && [self allowGroupRowLook];
 }
 
 - (BOOL)outlineView:(NSOutlineView *)ov shouldExpandItem:(id)item {
-	if( dataSource != nil )
-		return [dataSource outlineView:ov shouldExpandItem:item];
+	if( treeDataSource != nil )
+		return [treeDataSource outlineView:ov shouldExpandItem:item];
 	else
 		return [[item nodeData] isGroup];
 }
 
 - (BOOL)outlineView:(NSOutlineView *)ov shouldCollapseItem:(id)item {
-	if( dataSource != nil )
-		return [dataSource outlineView:ov shouldCollapseItem:item];
+	if( treeDataSource != nil )
+		return [treeDataSource outlineView:ov shouldCollapseItem:item];
 	else
 		return [[item nodeData] isGroup];
 }
 
 - (void)outlineViewItemWillExpand:(NSNotification *)notification {
 	SimpleTreeNode*		theItem = [[notification userInfo] valueForKey:@"NSObject"];
-	
-	if( theItem ) 
+
+	if( theItem )
 	{
 		[[theItem nodeData] setExpanded:YES];
 		[theItem sortChildrenUsingDescriptors:[[self outlineView] sortDescriptors]];
@@ -357,24 +371,24 @@ AFTERRELOAD:
 - (void)outlineViewItemDidExpand:(NSNotification *)notification
 {
 	SimpleTreeNode*		theItem = [[notification userInfo] valueForKey:@"NSObject"];
-	
-	if( dataSource != nil )
-		[dataSource performSelector:@selector(nodeDidExpand:) withObject:theItem];
+
+	if( treeDataSource != nil )
+		[treeDataSource performSelector:@selector(nodeDidExpand:) withObject:theItem];
 }
 
 - (void)outlineViewItemDidCollapse:(NSNotification *)notification {
 	SimpleTreeNode*		theItem = [[notification userInfo] valueForKey:@"NSObject"];
-	
+
 	if( theItem ) [[theItem nodeData] setExpanded:NO];
-	
-	if( dataSource != nil )
-		[dataSource performSelector:@selector(nodeDidCollapse:) withObject:theItem];	
+
+	if( treeDataSource != nil )
+		[treeDataSource performSelector:@selector(nodeDidCollapse:) withObject:theItem];
 }
 
 - (void)outlineViewSelectionDidChange:(NSNotification *)notification
 {
-	if( dataSource != nil )
-		[dataSource performSelector:@selector(selectionDidChange)];
+	if( treeDataSource != nil )
+		[treeDataSource performSelector:@selector(selectionDidChange)];
 }
 
 
@@ -382,7 +396,7 @@ AFTERRELOAD:
 //	if( [[item nodeData] isExpanded] ) [ov expandItem:item];
 }
 
-- (void)outlineView:(NSOutlineView *)ov willDisplayCell:(NSCell *)cell forTableColumn:(NSTableColumn *)tableColumn item:(id)item {    
+- (void)outlineView:(NSOutlineView *)ov willDisplayCell:(NSCell *)cell forTableColumn:(NSTableColumn *)tableColumn item:(id)item {
     SimpleNodeData *data = [item nodeData];
     if ((tableColumn == nil) || [[tableColumn identifier] isEqualToString:COLUMNID_NAME]) {
 
@@ -404,28 +418,28 @@ AFTERRELOAD:
         // On MacOS 10.5 and later, in willDisplayCell: we can dynamically set the contextual menu (right click menu) for a particular cell. If nothing is set, then the contextual menu for the NSOutlineView itself will be used. We will set a different menu for the "Expandable?" column, and leave the default one for everything else.
         [cell setMenu:expandableColumnMenu];
     }
-*/ 
+*/
    // For all the other columns, we don't do anything.
 }
 
 - (BOOL)outlineView:(NSOutlineView *)ov shouldEditTableColumn:(NSTableColumn *)tc item:(id)item
 {
-	if( dataSource != nil )
-		if( [dataSource performSelector:@selector(shouldEditTableColumn:item:) withObject:tc withObject:item] == 0 ) return NO;
+	if( treeDataSource != nil )
+		if( [treeDataSource performSelector:@selector(shouldEditTableColumn:item:) withObject:tc withObject:item] == 0 ) return NO;
 	return YES;
 }
 
 - (BOOL)outlineView:(NSTableView *)outView shouldSelectTableColumn:(NSTableColumn *)tc
 {
-	if( dataSource != nil )
-		if( [dataSource performSelector:@selector(shouldSelectColumn:) withObject:tc] == 0 ) return NO;
+	if( treeDataSource != nil )
+		if( [treeDataSource performSelector:@selector(shouldSelectColumn:) withObject:tc] == 0 ) return NO;
 	return YES;
 }
 
 - (BOOL)outlineView:(NSOutlineView *)ov shouldSelectItem:(id)item {
     // Control selection of a particular item. 
-	if( dataSource != nil )
-		return [dataSource outlineView:ov shouldSelectItem:item];
+	if( treeDataSource != nil )
+		return [treeDataSource outlineView:ov shouldSelectItem:item];
 	else
 		return [[item nodeData] isSelectable];
 
@@ -453,7 +467,7 @@ AFTERRELOAD:
 {
 	NSArray* selectedItems = [outlineView allSelectedItems];
 	NSArray* newDescriptors = [outlineView sortDescriptors];
-	
+
 	[treeData sortExpandedChildrenUsingDescriptors:newDescriptors];
     [outlineView reloadData];
 	[outlineView selectItems:selectedItems byExtendingSelection:NO];
@@ -462,17 +476,17 @@ AFTERRELOAD:
 
 - (NSString *)outlineView:(PADOutlineView *)ov toolTipForCell:(NSCell *)cell rect:(NSRectPointer)inRect tableColumn:(NSTableColumn *)tc item:(id)inItem mouseLocation:(NSPoint)inMouseLocation
 {
-	if( dataSource != nil )
-		return [dataSource toolTipForCell:cell rect:inRect tableColumn:tc item:inItem mouseLocation:inMouseLocation];
-	
+	if( treeDataSource != nil )
+		return [treeDataSource toolTipForCell:cell rect:inRect tableColumn:tc item:inItem mouseLocation:inMouseLocation];
+
 	return nil;
 }
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView shouldShowCellExpansionForTableColumn:(NSTableColumn *)tc item:(id)inItem
 {
-	if( dataSource != nil )
-		return [dataSource shouldShowCellExpansionForTableColumn:tc item:inItem];
-	
+	if( treeDataSource != nil )
+		return [treeDataSource shouldShowCellExpansionForTableColumn:tc item:inItem];
+
 	return NO;
 }
 
@@ -500,12 +514,12 @@ NSFileHandle *NewFileHandleForWritingFile(NSString *dirpath, NSString *basename,
     if (fdForWriting>0) {
         fileHandle = [[NSFileHandle alloc] initWithFileDescriptor:fdForWriting closeOnDealloc:YES];
     }
-    
+
     if (oFilename) {
         *oFilename = (fileHandle ? filename : nil);
     }
-    
-	
+
+
     return fileHandle;
 }
 
@@ -515,7 +529,7 @@ NSURL *NewFileURLForWritingFile(NSString *dirpath, NSString *basename, NSString 
  //   NSInteger fdForWriting = -1, uniqueNum = 0;
 	NSInteger uniqueNum = 0;
 	NSURL*	outURL = nil;
-	
+
     while (!done) {
         filename = [NSString stringWithFormat:@"%@%@.%@", basename, (uniqueNum ? [NSString stringWithFormat:@"-%ld", (long)uniqueNum] : @""), extension];
  //       fdForWriting = open([[NSString stringWithFormat:@"%@/%@", dirpath, filename] UTF8String], O_WRONLY | O_CREAT | O_EXCL, 0666);
@@ -526,9 +540,9 @@ NSURL *NewFileURLForWritingFile(NSString *dirpath, NSString *basename, NSString 
             done = YES;
  //       }
     }
-	
+
 	outURL = [NSURL fileURLWithPath:filename];
-	
+
     return outURL;
 }
 
@@ -540,16 +554,16 @@ NSURL *NewFileURLForWritingFile(NSString *dirpath, NSString *basename, NSString 
     NSMutableArray *filenames = [NSMutableArray array];
     for (i=0; i<count; i++) {
 //		NSString *urlFile = [NSString stringWithFormat:@"[InternetShortcut]\nURL=%@\n", [[items objectAtIndex:i] description]];
-		
-		
-		
+
+
+
 		NSDictionary*	urlDict = [NSDictionary dictionaryWithObject:[[items objectAtIndex:i] description] forKey:@"URL"];
 		NSURL*			urlPlace = NewFileURLForWritingFile([dropDestination path], @"PromiseTestFile", @"url");
 		NSLog(@"URL: %@", urlPlace);
-		
+
 		BOOL	good = [urlDict writeToURL:urlPlace atomically:NO];
 		NSLog(@"Good: %@", good?@"YES":@"NO");
-		
+
 /*
         NSString *filename  = nil;
         NSFileHandle *fileHandle = NewFileHandleForWritingFile([dropDestination path], @"PromiseTestFile", @"url", &filename);
@@ -559,7 +573,7 @@ NSURL *NewFileURLForWritingFile(NSString *dirpath, NSString *basename, NSString 
             [fileHandle writeData: fileData];
             [fileHandle release];
             fileHandle = nil;
-			
+
 
 //			NSString *filename = nil;
 			FSRef	fileRef;
@@ -569,9 +583,9 @@ NSURL *NewFileURLForWritingFile(NSString *dirpath, NSString *basename, NSString 
 			ResFileRefNum saveFileNum = CurResFile();
 			const void*	theData = [fileData bytes];
 			Handle	theDataHandle;
-			
+
 			PtrToHand( theData, &theDataHandle, [fileData length]);
-			
+
 			FSGetResourceForkName(&theResFileName);
 
 			filename = [NSString stringWithFormat:@"%@/%@.%@", [dropDestination path], @"PromiseTestFile", @"webloc"];
@@ -581,63 +595,63 @@ NSURL *NewFileURLForWritingFile(NSString *dirpath, NSString *basename, NSString 
 				printf("here\n");
 				err = FSCreateResourceFork( &fileRef, theResFileName.length, theResFileName.unicode, 0 );
 				err = FSOpenResourceFile( &fileRef,  theResFileName.length, theResFileName.unicode, fsWrPerm, &theResFileNum);
-				
+
 				if(err == 0) {
 					UseResFile( theResFileNum );
 					AddResource( theDataHandle, 'url ', 0, (ConstStr255Param)"" );
 					err = ResError();
 					printf("AddResource: %i\n", (int)err);
-					
+
 					UseResFile( saveFileNum );
 					CloseResFile( theResFileNum );
-				} else 
+				} else
 					 printf("FSOpenResourceFile: %i\n",(int) err);
-			
+
 			}
  */
             [filenames addObject: [urlPlace path]];
         }
-    
+
     return ([filenames count] ? filenames : nil);
 }
 
 - (BOOL)outlineView:(NSOutlineView *)ov writeItems:(NSArray *)items toPasteboard:(NSPasteboard *)pboard {
-	
+
 	draggedNodes = items; // Don't retain since this is just holding temporaral drag information, and it is only used during a drag!  We could put this in the pboard actually.
-	
-	if( dataSource != nil ) return [dataSource outlineView:ov writeItems:items toPasteboard:pboard];
-	
+
+	if( treeDataSource != nil ) return [treeDataSource outlineView:ov writeItems:items toPasteboard:pboard];
+
 	draggedNodes = nil;
 	return NO;
 }
-/*	
+/*
     draggedNodes = items; // Don't retain since this is just holding temporaral drag information, and it is only used during a drag!  We could put this in the pboard actually.
     
     // Provide data for our custom type, and simple NSStrings.
     //[pboard declareTypes:[NSArray arrayWithObjects:DragDropSimplePboardType, NSStringPboardType, NSFilesPromisePboardType, nil] owner:self];
 	[pboard declareTypes:[NSArray arrayWithObjects:DragDropSimplePboardType, NSURLPboardType, nil] owner:self];
-    
+
 	// the actual data doesn't matter since DragDropSimplePboardType drags aren't recognized by anyone but us!.
-    [pboard setData:[NSData data] forType:DragDropSimplePboardType]; 
-    
+    [pboard setData:[NSData data] forType:DragDropSimplePboardType];
+
     // Put string data on the pboard... notice you candrag into TextEdit!
     //[pboard setString: [draggedNodes description] forType: NSStringPboardType];
-    
+
     // Put the promised type we handle on the pasteboard.
     //[pboard setPropertyList:[NSArray arrayWithObjects:@"txt", nil] forType:NSFilesPromisePboardType];
 
 	// Put URL data on the pboard
 	[[NSURL URLWithString:[[items objectAtIndex:0] description]] writeToPasteboard:pboard];
-	
+
     return YES;
 }
 */
 
 - (NSDragOperation)outlineView:(NSOutlineView *)ov validateDrop:(id <NSDraggingInfo>)info proposedItem:(id)item proposedChildIndex:(NSInteger)childIndex {
     // This method validates whether or not the proposal is a valid one. Returns NO if the drop should not be allowed.
-	
-	if( dataSource != nil ) return [dataSource outlineView:ov validateDrop:info proposedItem:item proposedChildIndex:childIndex];
-	
+
+	if( treeDataSource != nil ) return [treeDataSource outlineView:ov validateDrop:info proposedItem:item proposedChildIndex:childIndex];
+
 	return NSDragOperationNone;
 }
 
@@ -669,7 +683,7 @@ NSURL *NewFileURLForWritingFile(NSString *dirpath, NSString *basename, NSString 
 	    
 	// Check to make sure we don't allow a node to be inserted into one of its descendants!
 	if (targetNodeIsValid && ([info draggingSource]==outlineView) && [[info draggingPasteboard] availableTypeFromArray:[NSArray arrayWithObject: DragDropSimplePboardType]] != nil) {
-	    NSArray *_draggedNodes = [[[info draggingSource] dataSource] draggedNodes];
+	    NSArray *_draggedNodes = [[[info draggingSource] treeDataSource] draggedNodes];
 		//SimpleTreeNode *targetParent = (SimpleTreeNode*)[targetNode nodeParent];
 	    targetNodeIsValid = ![targetNode isDescendantOfNodeInArray: _draggedNodes];
 		if( targetNodeIsValid ) targetNodeIsValid = [targetNode isParentOfNodesInArray: draggedNodes];
@@ -686,7 +700,7 @@ NSURL *NewFileURLForWritingFile(NSString *dirpath, NSString *basename, NSString 
 	if (targetNodeIsValid && !([info draggingSource]==outlineView)) {
 		if( [[targetNode nodeData] itemType] == kPADTypeGroupFavorites ) return NSDragOperationCopy;
 		else if( [[[targetNode nodeParent] nodeData] itemType] == kPADTypeGroupLibrary ) {
-			NSArray *_draggedNodes = [[[info draggingSource] dataSource] draggedNodes];
+			NSArray *_draggedNodes = [[[info draggingSource] treeDataSource] draggedNodes];
 			int		nodeIndex, nodeCount = [_draggedNodes count];
 			
 			for(nodeIndex=0; nodeIndex<nodeCount; nodeIndex++)
@@ -714,7 +728,7 @@ NSURL *NewFileURLForWritingFile(NSString *dirpath, NSString *basename, NSString 
 //	OSStatus	theErr = 0;
     
     if ([pboard availableTypeFromArray:[NSArray arrayWithObjects:DragDropSimplePboardType, nil]] != nil) {
-        TreeController *dragDataSource = [[info draggingSource] dataSource];
+        TreeController *dragDataSource = [[info draggingSource] treeDataSource];
         NSArray *_draggedNodes = [dragDataSource draggedNodes];
         NSEnumerator *draggedNodesEnum = [_draggedNodes objectEnumerator];
         SimpleTreeNode *_draggedNode = nil;
@@ -724,7 +738,7 @@ NSURL *NewFileURLForWritingFile(NSString *dirpath, NSString *basename, NSString 
         while ((_draggedNode = [draggedNodesEnum nextObject])) {
 			
 
-			if( [dragDataSource dataSource] != nil ) [[dragDataSource dataSource] performSelector:@selector(nodeTypeChanged:toType:) withObject:(SimpleTreeNode*)_draggedNode withObject:destinationFlavor];
+			if( [dragDataSource treeDataSource] != nil ) [[dragDataSource treeDataSource] performSelector:@selector(nodeTypeChanged:toType:) withObject:(SimpleTreeNode*)_draggedNode withObject:destinationFlavor];
 
 			[[dragDataSource outlineView] reloadItem:_draggedNode];
 			
@@ -739,7 +753,7 @@ NSURL *NewFileURLForWritingFile(NSString *dirpath, NSString *basename, NSString 
 	}
 }
  */
- 
+
 //			if( slotURL ) {
 //				theErr = CFURLSetXattr( slotURL, kDACALCarouselDocumentXAttrSlotKind, (CFStringRef)destinationFlavor );
 //			
@@ -747,13 +761,13 @@ NSURL *NewFileURLForWritingFile(NSString *dirpath, NSString *basename, NSString 
 //				[[dragDataSource outlineView] reloadItem:_draggedNode];
 //			}
 //		}
-//		[[dragDataSource dataSource] sortExpandedChildrenWithCurrentDescriptors:nil];
-		
+//		[[dragDataSource treeDataSource] sortExpandedChildrenWithCurrentDescriptors:nil];
+
 //	}
 /*
 	// Do the appropriate thing depending on wether the data is DragDropSimplePboardType or NSStringPboardType.
     if ([pboard availableTypeFromArray:[NSArray arrayWithObjects:DragDropSimplePboardType, nil]] != nil) {
-        TreeController *dragDataSource = [[info draggingSource] dataSource];
+        TreeController *dragDataSource = [[info draggingSource] treeDataSource];
         NSArray *_draggedNodes = [TreeNode minimumNodeCoverFromNodesInArray:[dragDataSource draggedNodes]];
         NSEnumerator *draggedNodesEnum = [_draggedNodes objectEnumerator];
         SimpleTreeNode *_draggedNode = nil, *_draggedNodeParent = nil;
@@ -780,24 +794,24 @@ NSURL *NewFileURLForWritingFile(NSString *dirpath, NSString *basename, NSString 
 
 - (BOOL)outlineView:(NSOutlineView *)ov acceptDrop:(id <NSDraggingInfo>)info item:(id)item childIndex:(NSInteger)childIndex {
 
-	if( dataSource != nil ) return [dataSource outlineView:ov acceptDrop:info item:item childIndex:childIndex];
-	
+	if( treeDataSource != nil ) return [treeDataSource outlineView:ov acceptDrop:info item:item childIndex:childIndex];
+
     return YES;
 }
 /*
 	SimpleTreeNode *node = item;
     SimpleNodeData *data = [node nodeData];
-    
+
     if ([data isLeaf]) {
 		if( [[[node nodeParent] nodeData] itemType] == kPADTypeGroupLibrary ) {
-			
-		    [self _performDropOperation:info onNode:node atIndex:childIndex];	
-			
+
+		    [self _performDropOperation:info onNode:node atIndex:childIndex];
+
 		}
-		
-		
+
+
 	}
-		
+
 	if( [data itemType] == kPADTypeGroupDevices ) {
 //		SimpleTreeNode *parent = (SimpleTreeNode*)[item nodeParent];
 		DACALDeviceRef boxRef;
@@ -812,10 +826,10 @@ NSURL *NewFileURLForWritingFile(NSString *dirpath, NSString *basename, NSString 
     }
  }
 */
-        
+
 - (void)draggedImage:(NSImage *)image endedAt:(NSPoint)screenPoint operation:(NSDragOperation)operation
 {
-	if( dataSource ) [dataSource draggedImage:image endedAt:screenPoint operation:operation];
+	if(treeDataSource) [treeDataSource draggedImage:image endedAt:screenPoint operation:operation];
 }
 
 // On MacOS 10.5 and above, NSTableView and NSOutlineView have better contextual menu support. We now see a highlighted item for what was clicked on,
@@ -823,7 +837,7 @@ NSURL *NewFileURLForWritingFile(NSString *dirpath, NSString *basename, NSString 
 // have the delegate set to be the AppController instance. In menuNeedsUpdate, we dynamically update the menus based on the currently clicked upon row/column pair.
 - (void)menuNeedsUpdate:(NSMenu *)menu {
 	// Tell data source
-	if( dataSource != nil ) [dataSource performSelector:@selector(menuNeedsUpdate:fromTree:) withObject:menu withObject:self];
+	if( treeDataSource != nil ) [treeDataSource performSelector:@selector(menuNeedsUpdate:fromTree:) withObject:menu withObject:self];
 }
 
 - (IBAction)expandableMenuItemAction:(id)sender {
@@ -849,18 +863,18 @@ NSURL *NewFileURLForWritingFile(NSString *dirpath, NSString *basename, NSString 
     SimpleTreeNode *selectedNode = ([selectedNodes count]>0) ? [selectedNodes objectAtIndex:0] : treeData;
     TreeNode *parentNode = nil;
 
-    if ([[selectedNode nodeData] isGroup]) { 
-	parentNode = selectedNode; 
-	childIndex = 0; 
+    if ([[selectedNode nodeData] isGroup]) {
+	parentNode = selectedNode;
+	childIndex = 0;
     }
-    else { 
-	parentNode = [selectedNode nodeParent]; 
-	childIndex = [parentNode indexOfChildIdenticalTo:selectedNode]+1; 
+    else {
+	parentNode = [selectedNode nodeParent];
+	childIndex = [parentNode indexOfChildIdenticalTo:selectedNode]+1;
     }
-    
+
     [parentNode insertChild: newChild atIndex: childIndex];
     [outlineView reloadData];
-    
+
     newRow = [outlineView rowForItem: newChild];
     if (newRow>=0) [outlineView selectRow: newRow byExtendingSelection: NO];
     if (newRow>=0) [outlineView editColumn:0 row:newRow withEvent:nil select:YES];
@@ -880,9 +894,9 @@ NSURL *NewFileURLForWritingFile(NSString *dirpath, NSString *basename, NSString 
 
 - (NSOutlineView*)outlineView
 {
-	if( [self treeControl] ) 
+	if( [self treeControl] )
 		return [[self treeControl] outlineView];
-	
+
 	return nil;
 }
 
@@ -890,11 +904,11 @@ NSURL *NewFileURLForWritingFile(NSString *dirpath, NSString *basename, NSString 
 - (NSUndoManager*)undoManager
 {
 	NSOutlineView*		ourView = [self outlineView];
-	
+
 	if( ourView )
 		return [ourView undoManager];
-	
-	return nil; 
+
+	return nil;
 }
 
 - (void)removeAllChildren
@@ -903,11 +917,15 @@ NSURL *NewFileURLForWritingFile(NSString *dirpath, NSString *basename, NSString 
 	[[[self treeControl] outlineView] reloadData];
 }
 
-- (id)toolbarControl { return toolbarControl; }
-- (void)setToolbarControl:(id)tbar
-{
-	if( toolbarControl != nil ) [toolbarControl release];
-	if( tbar != nil ) [tbar retain];
+- (PADIndexToolbarController *)toolbarControl {
+	return toolbarControl;
+}
+
+- (void)setToolbarControl: (id) tbar {
+	if (toolbarControl != nil)
+		[toolbarControl release];
+	if (tbar != nil)
+		[tbar retain];
 	toolbarControl = tbar;
 }
 
@@ -919,15 +937,15 @@ NSURL *NewFileURLForWritingFile(NSString *dirpath, NSString *basename, NSString 
 
 	// Load our initial outline view data from the "InitInfo" dictionary.
 	NSDictionary *initData = [NSDictionary dictionaryWithContentsOfFile: [[NSBundle mainBundle] pathForResource:@"InitInfo" ofType: @"dict"]];
-	if( initData != nil ) theOutputTree = [SimpleTreeNode treeFromDictionary: initData];	
-	
+	if( initData != nil ) theOutputTree = [SimpleTreeNode treeFromDictionary: initData];
+
 	return theOutputTree;
 }
 
 - (void)outlineViewInit
 {
 	NSOutlineView* outlineView = [[self treeControl] outlineView];
-	
+
     // Register to get our custom type, strings, and filenames. Try dragging each into the view!
     [outlineView registerForDraggedTypes:[NSArray arrayWithObjects:DragDropSimplePboardType, NSStringPboardType, NSFilenamesPboardType, nil]];
     [outlineView setDraggingSourceOperationMask:NSDragOperationEvery forLocal:YES];
@@ -937,20 +955,20 @@ NSURL *NewFileURLForWritingFile(NSString *dirpath, NSString *basename, NSString 
 
 - (void)reinitOutlineView
 {
-	
+
 }
 
 - (void)recreateInitialTree
-{	
+{
 	// Install Data for Tree
 	[[self treeControl] setTreeRoot:[self createInitialTree:[self treeControl]]];
-	
+
 	// Initialize the View
 	[self reinitOutlineView];
-	
+
 	// Refresh
 	[[self outlineView] reloadData];
-	
+
 }
 
 - (void)outlineViewAction:(id)tree
@@ -980,41 +998,43 @@ NSURL *NewFileURLForWritingFile(NSString *dirpath, NSString *basename, NSString 
 	NSRect			rowFrame	= [theView frameOfCellAtColumn:0 row:rowIndex];
 	SimpleTreeNode	*workNode	= nil;
 	NSCell			*workCell	= nil;
-	
+
 	//if( [[treeControl outlineView] clickedColumn] != -1 ) return;
-	
+
 	if( rowIndex == -1 ) return;		//  That is a double-click in a blank row.
-	
+
 	if( colIndex == [theView columnWithIdentifier:COLUMNID_NAME] )
 	{
 		workNode = [theView itemAtRow:rowIndex];
-		workCell = [theView preparedCellAtColumn:colIndex row:rowIndex];		
-
+		workCell = [theView preparedCellAtColumn:colIndex row:rowIndex];
+        
 		partHit = [workCell hitTestForEvent:[[NSApplication sharedApplication]currentEvent] inRect:rowFrame ofView:theView];
-		
+        
 		if( partHit == NSCellHitIconArea ) {
 			if( [self respondsToSelector:@selector(doubleClickImage:inCell:)] == YES )
 				[self performSelector:@selector(doubleClickImage:inCell:) withObject:(id)workNode withObject:workCell];
 		} else if( [self respondsToSelector:@selector(doubleClickCellContent:inCell:)] == YES )
-				[self performSelector:@selector(doubleClickCellContent:inCell:) withObject:(id)workNode withObject:workCell];
-			else if([[workNode nodeData] isExpandable] == YES ) 
-				if( [theView isItemExpanded:workNode] == YES ) {
-					[theView collapseItem:workNode];
-				} else {
-					[theView expandItem:workNode];
-				}
+            [self performSelector:@selector(doubleClickCellContent:inCell:) withObject:(id)workNode withObject:workCell];
+        else if([[workNode nodeData] isExpandable] == YES ) {
+            if( [theView isItemExpanded:workNode] == YES ) {
+                [theView collapseItem:workNode];
+            } else {
+                [theView expandItem:workNode];
+            }
+        }
 	} else if( colIndex != -1 )
 	{
 		workNode = [theView itemAtRow:rowIndex];
-		workCell = [theView preparedCellAtColumn:colIndex row:rowIndex];		
+		workCell = [theView preparedCellAtColumn:colIndex row:rowIndex];
 		if( [self respondsToSelector:@selector(doubleClickCellContent:inCell:)] == YES )
 			[self performSelector:@selector(doubleClickCellContent:inCell:) withObject:(id)workNode withObject:workCell];
-		else if([[workNode nodeData] isExpandable] == YES ) 
+		else if([[workNode nodeData] isExpandable] == YES ) {
 			if( [theView isItemExpanded:workNode] == YES ) {
 				[theView collapseItem:workNode];
 			} else {
 				[theView expandItem:workNode];
 			}
+        }
 	}
 	return;
 }
@@ -1023,12 +1043,12 @@ NSURL *NewFileURLForWritingFile(NSString *dirpath, NSString *basename, NSString 
 -(id)objectValueForTableColumn:(NSTableColumn *)tableColumn byItem:(id)item
 {
     id objectValue = nil;
- 
+
     if ((tableColumn == nil) || [[tableColumn identifier] isEqualToString:COLUMNID_NAME]) {
 		objectValue = [[item nodeData] name];
    } else
 		NSLog(@"Data Request for Unknown Column: %@", [tableColumn identifier]);
-	
+
 	return objectValue;
 }
 
@@ -1069,16 +1089,16 @@ NSURL *NewFileURLForWritingFile(NSString *dirpath, NSString *basename, NSString 
     // Helper method to insert dropped data into the model. 
     NSPasteboard *pboard = [info draggingPasteboard];
 	NSMutableArray* itemsToSelect = nil;
-	
+
 	// Do the appropriate thing depending on wether the data is DragDropSimplePboardType or NSStringPboardType.
     if ([pboard availableTypeFromArray:[NSArray arrayWithObjects:DragDropSimplePboardType, nil]] != nil) {
         TreeController *dragDataSource = [[info draggingSource] dataSource];
         NSArray *_draggedNodes = [TreeNode minimumNodeCoverFromNodesInArray:[dragDataSource draggedNodes]];
         NSEnumerator *draggedNodesEnum = [_draggedNodes objectEnumerator];
         SimpleTreeNode *_draggedNode = nil, *_draggedNodeParent = nil;
-        
+
 		itemsToSelect = [NSMutableArray arrayWithArray:[treeControl selectedNodes]];
-		
+
         while ((_draggedNode = [draggedNodesEnum nextObject])) {
             _draggedNodeParent = (SimpleTreeNode *)[_draggedNode nodeParent];
             if (parentNode == _draggedNodeParent && [parentNode indexOfChild:_draggedNode] < childIndex) childIndex--;
@@ -1088,36 +1108,36 @@ NSURL *NewFileURLForWritingFile(NSString *dirpath, NSString *basename, NSString 
     }  else if ([pboard availableTypeFromArray:[NSArray arrayWithObject:NSStringPboardType]]) {
         NSString *string = [pboard stringForType:NSStringPboardType];
 		SimpleTreeNode *newItem = [SimpleTreeNode treeNodeWithData:[SimpleNodeData leafDataWithName:string]];
-		
+
 		itemsToSelect = [NSMutableArray arrayWithObject:newItem];
 		[parentNode insertChild:newItem atIndex:childIndex++];
     }
-	
+
 	[[treeControl outlineView] reloadData];
 	[[treeControl outlineView] selectItems:itemsToSelect byExtendingSelection: NO];
-	
+
 	return (itemsToSelect!=nil) ? YES : NO;
 }
 
 - (BOOL)outlineView:(NSOutlineView *)ov writeItems:(NSArray *)items toPasteboard:(NSPasteboard *)pboard {
-	
+
     // Provide data for our custom type, and simple NSStrings.
     //[pboard declareTypes:[NSArray arrayWithObjects:DragDropSimplePboardType, NSStringPboardType, NSFilesPromisePboardType, nil] owner:self];
 	[pboard declareTypes:[NSArray arrayWithObjects:DragDropSimplePboardType, NSURLPboardType, nil] owner:self];
-    
+
 	// the actual data doesn't matter since DragDropSimplePboardType drags aren't recognized by anyone but us!.
-    [pboard setData:[NSData data] forType:DragDropSimplePboardType]; 
-    
+    [pboard setData:[NSData data] forType:DragDropSimplePboardType];
+
     // Put string data on the pboard... notice you candrag into TextEdit!
     //[pboard setString: [draggedNodes description] forType: NSStringPboardType];
-    
+
     // Put the promised type we handle on the pasteboard.
     //[pboard setPropertyList:[NSArray arrayWithObjects:@"txt", nil] forType:NSFilesPromisePboardType];
-	
+
 	// Put URL data on the pboard
 	if( items && ([items count]>0) )
 		[[NSURL URLWithString:[[items objectAtIndex:0] description]] writeToPasteboard:pboard];
-	
+
     return YES;
 }
 
@@ -1131,54 +1151,54 @@ NSURL *NewFileURLForWritingFile(NSString *dirpath, NSString *basename, NSString 
     SimpleTreeNode *targetNode = item;
     BOOL targetNodeIsValid = YES;
 	NSDragOperation targetNodeDragOp = NSDragOperationNone;
-	
+
     if ([treeControl onlyAcceptDropOnRoot]) {
 		targetNode = nil;
 		childIndex = NSOutlineViewDropOnItemIndex;
     } else {
 		BOOL isOnDropTypeProposal = childIndex==NSOutlineViewDropOnItemIndex;
-		
+
 		// Refuse if: dropping "on" the view itself unless we have no data in the view.
-		if (targetNode==nil && childIndex==NSOutlineViewDropOnItemIndex && [[treeControl treeRoot] numberOfChildren]!=0) 
+		if (targetNode==nil && childIndex==NSOutlineViewDropOnItemIndex && [[treeControl treeRoot] numberOfChildren]!=0)
 			targetNodeIsValid = NO;
-		
+
 		if (targetNode==nil && childIndex==NSOutlineViewDropOnItemIndex && [treeControl allowOnDropOnLeaf]==NO)
 			targetNodeIsValid = NO;
-		
+
         SimpleTreeNode *node = (item == nil) ? [treeControl treeRoot] : item;
         SimpleNodeData *data = [node nodeData];
-		
+
 		// Refuse if: we are trying to do something which is not allowed as specified by the UI check boxes.
 		if ((targetNodeIsValid && isOnDropTypeProposal==NO && [treeControl allowBetweenDrop]==NO) ||
 			([data isGroup] && isOnDropTypeProposal==YES && [treeControl allowOnDropOnGroup]==NO) ||
 			([data isLeaf ] && isOnDropTypeProposal==YES && [treeControl allowOnDropOnLeaf]==NO))
 			targetNodeIsValid = NO;
-	    
+
 		// Check to make sure we don't allow a node to be inserted into one of its descendants!
 		if (targetNodeIsValid && ([info draggingSource]==[treeControl outlineView]) && [[info draggingPasteboard] availableTypeFromArray:[NSArray arrayWithObject: DragDropSimplePboardType]] != nil) {
-			NSArray *_draggedNodes = [[[info draggingSource] dataSource] draggedNodes];
+			NSArray *_draggedNodes = [[[info draggingSource] treeDataSource] draggedNodes];
 			//SimpleTreeNode *targetParent = (SimpleTreeNode*)[targetNode nodeParent];
 			targetNodeIsValid = ![targetNode isDescendantOfNodeInArray: _draggedNodes];
 			//if( targetNodeIsValid ) targetNodeIsValid = [targetNode isParentOfNodesInArray: [treeControl draggedNodes]];
 		}
     }
-    
+
 	if( targetNodeIsValid )
 		targetNodeDragOp = [self validateDropSource:info proposedItem:item proposedChildIndex:childIndex];
-	
+
     // Set the item and child index in case we computed a retargeted one.
     [[treeControl outlineView] setDropItem:targetNode dropChildIndex:childIndex];
-    
+
     return targetNodeIsValid ? targetNodeDragOp : NSDragOperationNone;
 }
 
 - (BOOL)outlineView:(NSOutlineView *)ov acceptDrop:(id <NSDraggingInfo>)info item:(id)item childIndex:(NSInteger)childIndex
 {
-	
+
     // Determine the parent to insert into and the child index to insert at.
     SimpleTreeNode *node = (item == nil) ? [treeControl treeRoot] : item;
     SimpleNodeData *data = [node nodeData];
-    
+
     if ([data isLeaf]) {
         // If our target is a leaf, and we are dropping on it
         if (childIndex == NSOutlineViewDropOnItemIndex) {
@@ -1191,14 +1211,14 @@ NSURL *NewFileURLForWritingFile(NSString *dirpath, NSString *basename, NSString 
             childIndex = [[node nodeParent]indexOfChild:node] + 1;
             node = (SimpleTreeNode *)[node nodeParent];
         }
-    } else {            
+    } else {
         if (childIndex == NSOutlineViewDropOnItemIndex) {
             // Insert it at the start, if we were dropping on it
             childIndex = 0;
         }
     }
-    
-    return [self performDropOperation:info onNode:node atIndex:childIndex];	
+
+    return [self performDropOperation:info onNode:node atIndex:childIndex];
 }
 
 
@@ -1213,19 +1233,19 @@ NSURL *NewFileURLForWritingFile(NSString *dirpath, NSString *basename, NSString 
         [[self outlineView] deselectAll:nil];
         [[self outlineView] reloadData];
 	}
-	
+
 	//[super draggedImage:image endedAt:screenPoint operation:op];
 }
 
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem {
 
 	//NSLog(@"Validate Menu Item: %@", [menuItem title]);
-	
+
     if ([menuItem action]==@selector(deleteSelections:)) {
 		// The delete selection item should be disabled if nothing is selected.
 		return ([[[self treeControl] selectedNodes] count] > 0);
-    }    
-	
+    }
+
     return YES;
 }
 
@@ -1236,13 +1256,13 @@ NSURL *NewFileURLForWritingFile(NSString *dirpath, NSString *basename, NSString 
     NSInteger		clickedRow = [outlineView clickedRow];
     id				item = nil;
     BOOL			clickedOnMultipleItems = NO;
-	
+
     if (clickedRow != -1) {
         // If we clicked on a selected row, then we want to consider all rows in the selection. Otherwise, we only consider the clicked on row.
         item = [outlineView itemAtRow:clickedRow];
         clickedOnMultipleItems = [outlineView isRowSelected:clickedRow] && ([outlineView numberOfSelectedRows] > 1);
     }
-    
+
 	if( clickedOnMultipleItems )
 		outRowArray = [outlineView allSelectedItems];
 	else
@@ -1253,7 +1273,7 @@ NSURL *NewFileURLForWritingFile(NSString *dirpath, NSString *basename, NSString 
 
 // On MacOS 10.5 and above, NSTableView and NSOutlineView have better contextual menu support. We now see a highlighted item for what was clicked on, and can access that item to do particular things (such as dynamically change the menu, as we do here!). Each of the contextual menus in the nib file have the delegate set to be the AppController instance. In menuNeedsUpdate, we dynamically update the menus based on the currently clicked upon row/column pair.
 - (void)menuNeedsUpdate:(NSMenu *)menu {
-	
+
 	NSOutlineView* outlineView = [ treeControl outlineView ];
     NSInteger clickedRow = [outlineView clickedRow];
     id item = nil;
@@ -1266,7 +1286,7 @@ NSURL *NewFileURLForWritingFile(NSString *dirpath, NSString *basename, NSString 
         nodeData = [item nodeData];
         clickedOnMultipleItems = [outlineView isRowSelected:clickedRow] && ([outlineView numberOfSelectedRows] > 1);
     }
-    
+
     if (menu == outlineViewContextMenu) {
         NSMenuItem *menuItem = [menu itemAtIndex:0];
         if (nodeData != nil) {
@@ -1281,9 +1301,9 @@ NSURL *NewFileURLForWritingFile(NSString *dirpath, NSString *basename, NSString 
             [menuItem setTitle:@"You didn't click on any rows..."];
             [menuItem setEnabled:NO];
         }
-        
+
     }
-	
+
 /*	else if (menu == expandableColumnMenu) {
         NSMenuItem *menuItem = [menu itemAtIndex:0];
         if (!clickedOnMultipleItems && (nodeData != nil)) {
@@ -1359,18 +1379,18 @@ NSURL *NewFileURLForWritingFile(NSString *dirpath, NSString *basename, NSString 
 	[[self outlineView] reloadData];
 	if( doAction == YES )
 		[self outlineViewAction:self];
-	
+
 	return;
-	
+
 	SimpleTreeNode*		itemParent = nil; //(SimpleTreeNode*)[changeItem nodeParent];
-	
+
 	if( itemParent == nil )
 		itemParent = [[self treeControl] treeRoot];
-	
+
 	[self sortExpandedChildrenWithCurrentDescriptors:itemParent];
 	[[self outlineView] reloadItem:(id)itemParent reloadChildren:YES];
 	[[self outlineView] reloadItem:(id)changeItem reloadChildren:YES];
-	
+
 	if( doAction == YES )
 		[self outlineViewAction:self];
 }
@@ -1379,16 +1399,16 @@ NSURL *NewFileURLForWritingFile(NSString *dirpath, NSString *basename, NSString 
 {
 	NSInteger	itemIndex, itemCount = [changedItems count];
 	NSArray*	saveSelection = [[self outlineView] allSelectedItems];
-	
+
 	if( itemCount == 0 )
 		[self updateChangesForItem:nil withAction:NO];
 	else
 		for( itemIndex=0; itemIndex < itemCount; itemIndex++ )
 			[self updateChangesForItem:[changedItems objectAtIndex:itemIndex] withAction:NO];
-	
+
 	if( saveSelection )
 		[[self outlineView] selectItems:saveSelection byExtendingSelection:NO];
-	
+
 	if( doAction == YES )
 		[self outlineViewAction:self];
 }

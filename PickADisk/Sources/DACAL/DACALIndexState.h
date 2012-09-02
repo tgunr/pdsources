@@ -6,13 +6,11 @@
 //  Copyright 2011 Polymicro Systems. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <Cocoa/Cocoa.h>
 
-
-@interface DACALIndexState : NSObject {
-	NSMutableDictionary*	savedViewData;	
-@private
-    
+@interface DACALIndexState : NSObject
+{
+	NSMutableDictionary*	savedViewData;
 }
 
 -(void)restoreSettings;
@@ -21,3 +19,4 @@
 +(id)saveSetupForKey:(NSString*)keyName saveView:(NSOutlineView*)doView saveSelection:(BOOL)doSelect saveSorts:(BOOL)doSorts;
 
 @end
+

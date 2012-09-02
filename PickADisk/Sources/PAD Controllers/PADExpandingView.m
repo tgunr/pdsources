@@ -2,8 +2,7 @@
 //  PADExpandingView.m
 //  PickADisk
 //
-//  Created by Jack Small on 2/2/09.
-//  Copyright 2009 Jack Small. All rights reserved.
+//  Copyright 2009 PolyMicro Systems. All rights reserved.
 //
 
 #import "PADExpandingView.h"

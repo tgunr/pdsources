@@ -1,10 +1,10 @@
 #import "PADPrefsController.h"
-#import "DACDriverInstaller.h"
+#import "DACALDriverInstaller.h"
+#import "AppController.h"
 
 @implementation PADPrefsController
 
 static Boolean	PADPrefsControllerB = false;
-#pragma unused (PADPrefsControllerB)
 
 - (void)awakeFromNib {
 	

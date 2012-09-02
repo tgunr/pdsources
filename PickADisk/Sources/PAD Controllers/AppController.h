@@ -2,13 +2,14 @@
 //  AppController.h
 
 #import <Cocoa/Cocoa.h>
-#import "PADAddVolumeController.h"
 #import "TreeController.h"
 #import "PADLayoutView.h"
+#import "DACALDeviceObjC.h"
 
 int				jPADBusyBodyBeat;			// Used internally as the counter for row spinning arrows
 BOOL			busyBusy;
 
+@class PADAddVolumeController;
 
 @interface AppController : NSObject {
 	NSOperationQueue*		queue;

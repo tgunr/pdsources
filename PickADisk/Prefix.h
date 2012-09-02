@@ -10,10 +10,6 @@
 //#define __DCDEBUG												// define this to get debug output in the driver specifically.
 
 #ifdef __OBJC__
-    #import <Foundation/Foundation.h>
-    #import <AppKit/AppKit.h>
-	#import "AppController.h"
-	#import "PADLifecycleSetup.h"
 	
 	#if MAC_OS_X_VERSION_MIN_REQUIRED < MAC_OS_X_VERSION_10_5
 		typedef float CGFloat;

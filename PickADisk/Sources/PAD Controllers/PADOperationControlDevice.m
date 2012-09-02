@@ -2,12 +2,12 @@
 //  PADOperationControlDevice.m
 //  PickADisk
 //
-//  Created by Jack Small on 8/17/08.
-//  Copyright 2008 Jack Small. All rights reserved.
+//  Copyright 2008 PolyMicro Systems. All rights reserved.
 //
 
 #import "PADOperationControlDevice.h"
-
+#import "AppController.h"
+#import "DACALDevice.h"
 
 @implementation PADOperationControlDevice
 

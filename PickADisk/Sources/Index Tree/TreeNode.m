@@ -47,6 +47,28 @@
  OTHERWISE, EVEN IF APPLE HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
+#import "TreeNode.h"
+#import "SimpleTreeNode.h"
+#import "PADOutlineView.h"
+#import <PMUtility/PMUtility.h>
+
+@implementation NSArray (TreeNode)
+
+-(NSArray*)arrayWithSubTrees
+{
+	int		aIndex, aCount = [self count];
+	NSMutableArray*		workArray = [NSMutableArray arrayWithCapacity:256];
+	NSArray*			outArray = nil;
+	
+	for( aIndex=0; aIndex < aCount; aIndex++ )
+		[workArray addObject:[[[self objectAtIndex:aIndex] nodeData] subTree]];
+    
+	outArray = [NSArray arrayWithArray:workArray];
+	return outArray;
+}
+
+@end
+
 @implementation TreeNode
 
 + (id)treeNodeWithData:(id)data {
@@ -54,7 +76,8 @@
 }
 
 - (id)initWithData:(id)data parent:(TreeNode *)parent children:(NSArray *)children {
-    if (self = [super init]) {
+	self = [super init];
+	if (self) {
         nodeData = [data retain];
         nodeChildren = [[NSMutableArray arrayWithArray:children] retain];
         nodeParent = parent;
@@ -151,8 +174,12 @@
 }
 
 - (TreeNode*)childAtIndex:(NSInteger)index {
-    id child = [nodeChildren objectAtIndex:index];
-    return child;
+    NSUInteger c = [nodeChildren count];
+    if (c) {
+        id child = [nodeChildren objectAtIndex:index];
+        return child;
+    } else
+        return nil;
 }
 
 - (BOOL)isDescendantOfNode:(TreeNode *)node {
@@ -260,7 +287,7 @@
 - (void)sortExpandedChildrenForView:(NSOutlineView*)theView
 	{ [self sortExpandedChildrenUsingDescriptors:[theView sortDescriptors]]; }
 
-- (void)recursiveReExpandInView:(NSOutlineView*)theView
+- (void)recursiveReExpandInView:(PADOutlineView*)theView
 {
     [nodeChildren makeObjectsPerformSelector:@selector(recursiveReExpandInView:) withObject:theView];
 	if( [[self nodeData] isExpanded] )

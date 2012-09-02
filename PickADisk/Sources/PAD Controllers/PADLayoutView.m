@@ -2,10 +2,11 @@
 //  PADLayoutView.m
 //  PickADisk
 //
-//  Created by Jack Small on 8/2/08.
-//  Copyright 2008 Jack Small. All rights reserved.
+//  Copyright 2008 PolyMicro Systems. All rights reserved.
 //
 
+#import "PADLayoutView.h"
+#import <Carbon/Carbon.h>
 
 CFStringRef	CFStringCopyDateTime( CFAllocatorRef allocator, CFAbsoluteTime theTime, CFDateFormatterStyle dateForm, CFDateFormatterStyle timeForm );
 CFStringRef	CFStringCopyDateTime( CFAllocatorRef allocator, CFAbsoluteTime theTime, CFDateFormatterStyle dateForm, CFDateFormatterStyle timeForm )

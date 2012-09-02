@@ -1,4 +1,5 @@
-#import <PMSUtility/pms.h>
+#import <PMUtility/pmUtility.h>
+#import <Cocoa/Cocoa.h>
 
 int main(int argc, const char *argv[]) {
 	int killflag, ch;
@@ -20,5 +21,14 @@ int main(int argc, const char *argv[]) {
 	if (killflag) {
 		system("rm $HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist");
 	}
-    return NSApplicationMain(argc, argv);
+
+    @autoreleasepool {
+        @try {
+            NSApplicationMain(argc, argv);
+        }
+        @catch (NSException *exception) {
+            return -1;
+        }
+        return 0;
+    }
 }
