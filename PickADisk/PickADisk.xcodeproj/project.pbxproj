@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5AF0D39F409EDF4A44F12ED4 /* PADVersionCheckService.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0D4508865D959CB5C0566 /* PADVersionCheckService.m */; };
+		5AF0DEAD56257631D663516C /* PADVersionCheckService.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5AF0D6019A4D5F147234C5E2 /* PADVersionCheckService.h */; };
 		5C0884420E26CFCA0052D931 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C0884410E26CFCA0052D931 /* AudioToolbox.framework */; };
 		5C1A0F6B0F3FC1B9004F3605 /* ToolbarInfo.icns in Resources */ = {isa = PBXBuildFile; fileRef = 5C1A0F6A0F3FC1B9004F3605 /* ToolbarInfo.icns */; };
 		5C1ECC100E4120050091B446 /* PADSearchRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1ECC0E0E4120050091B446 /* PADSearchRequest.m */; };
@@ -114,6 +116,9 @@
 		75A1A56B15752B3A00A75DAA /* ILCrashReporter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CF4D9800E68E6DF0091A77F /* ILCrashReporter.framework */; };
 		75B2FCB30EDDA9A1007356FD /* BlackPlus1.png in Resources */ = {isa = PBXBuildFile; fileRef = 75B2FCB20EDDA9A1007356FD /* BlackPlus1.png */; };
 		75B2FCB50EDDA9AD007356FD /* BlackSearch1.png in Resources */ = {isa = PBXBuildFile; fileRef = 75B2FCB40EDDA9AD007356FD /* BlackSearch1.png */; };
+		75C925CA15F90FDD00703EFC /* VersionCheckController.h in Headers */ = {isa = PBXBuildFile; fileRef = 75C925C715F90FDD00703EFC /* VersionCheckController.h */; };
+		75C925CB15F90FDD00703EFC /* VersionCheckController.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C925C815F90FDD00703EFC /* VersionCheckController.m */; };
+		75C925CC15F90FDD00703EFC /* VersionCheckController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75C925C915F90FDD00703EFC /* VersionCheckController.xib */; };
 		75CD34BB149A132600A3F0E9 /* DACALDriver.kext in CopyFiles */ = {isa = PBXBuildFile; fileRef = 75CD34B8149A12EE00A3F0E9 /* DACALDriver.kext */; };
 		75E0D61C1073EF620012897D /* Multi-Folder.icns in Resources */ = {isa = PBXBuildFile; fileRef = 75E0D61B1073EF620012897D /* Multi-Folder.icns */; };
 		75E0D78E1074331A0012897D /* PickADiskDoc.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 75E0D78D1074331A0012897D /* PickADiskDoc.pdf */; };
@@ -253,6 +258,7 @@
 				75A1A53515751E4100A75DAA /* DACAL.framework in CopyFiles */,
 				5CF4D98E0E68E9300091A77F /* ILCrashReporter.framework in CopyFiles */,
 				5C1ECE9B0E41B6A10091B446 /* Sparkle.framework in CopyFiles */,
+				5AF0DEAD56257631D663516C /* PADVersionCheckService.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,6 +276,8 @@
 		08DC4042FF0C22D111CA0E35 /* SimpleTreeNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SimpleTreeNode.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Sources/main.m; sourceTree = SOURCE_ROOT; };
 		29B97319FDCFA39411CA2CEA /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/MainMenu.nib; sourceTree = "<group>"; };
+		5AF0D4508865D959CB5C0566 /* PADVersionCheckService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PADVersionCheckService.m; path = Sources/Services/PADVersionCheckService.m; sourceTree = "<group>"; };
+		5AF0D6019A4D5F147234C5E2 /* PADVersionCheckService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PADVersionCheckService.h; path = Sources/Services/PADVersionCheckService.h; sourceTree = "<group>"; };
 		5C0884410E26CFCA0052D931 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = /System/Library/Frameworks/AudioToolbox.framework; sourceTree = "<absolute>"; };
 		5C1A0F6A0F3FC1B9004F3605 /* ToolbarInfo.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = ToolbarInfo.icns; sourceTree = "<group>"; };
 		5C1ECC0D0E4120050091B446 /* PADSearchRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PADSearchRequest.h; path = "../PAD Controllers/PADSearchRequest.h"; sourceTree = "<group>"; };
@@ -404,6 +412,7 @@
 		7504AF260FB3A1F900FFAA84 /* updates.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = updates.xml; sourceTree = "<group>"; };
 		7504AFDC0FB3AEBB00FFAA84 /* Credits.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 		7522192C15E848BF0003E5B9 /* PMUtility.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PMUtility.framework; path = ../build/Development/PMUtility.framework; sourceTree = "<group>"; };
+		7532C31315F93F4200187160 /* build.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = build.sh; sourceTree = "<group>"; };
 		75455CC915F00A1E004703C1 /* BTHIconResources.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTHIconResources.h; sourceTree = "<group>"; };
 		75455CCA15F00A1E004703C1 /* BTHIconResources.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTHIconResources.m; sourceTree = "<group>"; };
 		75455CCB15F00A1E004703C1 /* ImageAndTextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageAndTextCell.h; sourceTree = "<group>"; };
@@ -419,6 +428,9 @@
 		7565EFE713AAC73A0029990C /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
 		75B2FCB20EDDA9A1007356FD /* BlackPlus1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlackPlus1.png; sourceTree = "<group>"; };
 		75B2FCB40EDDA9AD007356FD /* BlackSearch1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlackSearch1.png; sourceTree = "<group>"; };
+		75C925C715F90FDD00703EFC /* VersionCheckController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VersionCheckController.h; path = Sources/VersionCheck/VersionCheckController.h; sourceTree = "<group>"; };
+		75C925C815F90FDD00703EFC /* VersionCheckController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VersionCheckController.m; path = Sources/VersionCheck/VersionCheckController.m; sourceTree = "<group>"; };
+		75C925C915F90FDD00703EFC /* VersionCheckController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VersionCheckController.xib; path = Sources/VersionCheck/VersionCheckController.xib; sourceTree = "<group>"; };
 		75CD34731499431600A3F0E9 /* CLI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CLI.xcodeproj; path = ../CLI/CLI.xcodeproj; sourceTree = "<group>"; };
 		75CD34B0149A12ED00A3F0E9 /* DACALDriver.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = DACALDriver.xcodeproj; path = ../DACALDriver/DACALDriver.xcodeproj; sourceTree = "<group>"; };
 		75E0D61B1073EF620012897D /* Multi-Folder.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = "Multi-Folder.icns"; path = "../Resources/Multi-Folder.icns"; sourceTree = SOURCE_ROOT; };
@@ -570,6 +582,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				75C925C415F90F1900703EFC /* Version */,
 				B69BDD9A08A2EC26008AC9CA /* DACAL */,
 				5C6C12E70E240BEA0097CC7A /* PAD Controllers */,
 				5C81A2370EC58B2800E75319 /* Operations */,
@@ -875,6 +888,7 @@
 			isa = PBXGroup;
 			children = (
 				7504AEBB0FB38F7400FFAA84 /* releasenumber.xcconfig */,
+				7532C31315F93F4200187160 /* build.sh */,
 				7504AEA30FB389E600FFAA84 /* buildnumber.xcconfig */,
 			);
 			path = Misc;
@@ -887,6 +901,18 @@
 				7548472715EFEE2C00DB1436 /* libpmutility.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		75C925C415F90F1900703EFC /* Version */ = {
+			isa = PBXGroup;
+			children = (
+				5AF0D6019A4D5F147234C5E2 /* PADVersionCheckService.h */,
+				5AF0D4508865D959CB5C0566 /* PADVersionCheckService.m */,
+				75C925C715F90FDD00703EFC /* VersionCheckController.h */,
+				75C925C815F90FDD00703EFC /* VersionCheckController.m */,
+				75C925C915F90FDD00703EFC /* VersionCheckController.xib */,
+			);
+			name = Version;
 			sourceTree = "<group>";
 		};
 		75CD34741499431600A3F0E9 /* Products */ = {
@@ -1167,6 +1193,7 @@
 				75FEA2DC15E8272F000A7283 /* AquaticPrime.h in Headers */,
 				75455CCD15F00A1E004703C1 /* BTHIconResources.h in Headers */,
 				75455CCF15F00A1E004703C1 /* ImageAndTextCell.h in Headers */,
+				75C925CA15F90FDD00703EFC /* VersionCheckController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1356,6 +1383,7 @@
 				75E60ADD15F6940B0009888B /* PAD_1.0.2_050801.html in Resources */,
 				75E60ADE15F6940B0009888B /* PAD_1.0.4_50816.html in Resources */,
 				75E60ADF15F6940B0009888B /* PAD_1.0.5b10_51893.html in Resources */,
+				75C925CC15F90FDD00703EFC /* VersionCheckController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1412,7 +1440,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/bin/bash -x";
-			shellScript = "logger \"Starting PickADisk Xcode Script\"\n\n# Test for kill prefs file on each build\nif [[ \"$CONFIGURATION\" == 'Development Fresh Prefs' ]]; then\n\tif [ -e \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist\" ]; then\n\t\tif [ -e \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist.1\" ]; then\n\t\t    logger \"Removing prefs\"\n\t\t    /bin/rm \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist\"\t\t\n\t\telse\n\t\t    logger \"Moving prefs aside\"\n\t\t    /bin/mv \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist\" \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist.1\"\n\t\tfi\n\tfi\nfi\n\n# If no long kill prefs, check for prexisting pref file and restore it\nif [[ -e \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist.1\" ]]; then\n\tlogger \"restoring old pref\"\n\t/bin/mv \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist.1\" \"$HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist\"\nfi\n\n### If not releasing increment build number\nif [[ ! \"$CONFIGURATION\" =~ 'Release' ]]; then\n    /usr/bin/perl -pe 's/(BUILD_NUMBER = )(\\d+)/$1.($2+1)/eg' -i \"$SRCROOT/Misc/buildnumber.xcconfig\"\n    BUILD_NUMBER=`head -n 1 \"$SRCROOT/Misc/buildnumber.xcconfig\" | sed -e 's/BUILD_NUMBER = //'`\nfi\n\n## Pre-release construction of release files\nif [[ \"$CONFIGURATION\" == 'Release Test' ]]; then\n    # copy build number over to release number\n    # as long as we stay in a release mode this number will not change in case we have to run again\n    RELEASE_NUMBER=`head -n 1 \"$SRCROOT/Misc/releasenumber.xcconfig\" | sed -e 's/BUILD_NUMBER = //'`\n    RELEASE_VERSION=`tail -n 1 \"$SRCROOT/Misc/releasenumber.xcconfig\" | sed -e 's/VERSION_NUMBER = //'`\n    BUILD_NUMBER=`head -n 1 \"$SRCROOT/Misc/buildnumber.xcconfig\" | sed -e 's/BUILD_NUMBER = //'`\n    BUILD_VERSION=`tail -n 1 \"$SRCROOT/Misc/buildnumber.xcconfig\" | sed -e 's/VERSION_NUMBER = //'`\n    # first, insure versions are not the same, warn if so\n    if [[ \"$RELEASE_VERSION\" == \"$BUILD_VERSION\" ]] ; then\n\techo \"Build version $BUILD_VERSION is same as Release version!\"\n\techo \"Edit releasenumber.xcconfig and change it\"\n\texit 1\n    fi\n    # check that release number is same as build number\n    if [[ \"$BUILD_NUMBER\" != \"$RELEASE_NUMBER\" ]] ; then\n\t# replace RELEASE_NUMBER with previous BUILD_NUMBER\n\tsed -e \"1,1s/BUILD_NUMBER = .*/BUILD_NUMBER = $BUILD_NUMBER/\" -i.bak \"$SRCROOT/Misc/releasenumber.xcconfig\"\n\tRELEASE_NUMBER=`head -n 1 \"$SRCROOT/Misc/releasenumber.xcconfig\" | sed -e 's/RELEASE_NUMBER = //'`\n    fi\n    # construct file paths\n    ZIP_FILE=`echo \"$PRODUCT_NAME-$VERSION_NUMBER-$RELEASE_NUMBER.zip\" | tr \"-\" \"_\"`\n    HTML_FILE=`echo \"PAD-$VERSION_NUMBER-$RELEASE_NUMBER.html\" | tr \"-\" \"_\"`\n\n    # see if release notes file for this release already exists, may be 2nd or more build so only do it once\n    RELEASE_NOTES_PATH=$SRCROOT/Sources/sparkle/support/releasenotes\n    if [[ ! -e \"$RELEASE_NOTES_PATH/$HTML_FILE\" ]] ; then\n\t\techo \"$RELEASE_NOTES_PATH/$HTML_FILE\"\n\t\tcat >  \"$RELEASE_NOTES_PATH/$HTML_FILE\" <<End-of-html\n<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 TRANSITIONAL//EN\">\n<html>\n\n\t<head>\n\t\t<title>Version $RELEASE_VERSION Build $RELEASE_NUMBER</title>\n\t\t<link href=\"../css/simplelist.css\" type=\"text/css\" rel=\"stylesheet\" media=\"all\">\n\t</head>\n\t<body>\n\t\t<p class=\"p1\" align=\"center\">PickADisk Version $RELEASE_VERSION Build $RELEASE_NUMBER </p>\n\t\t<ul class=\"ul1\">\n\t\t\t<li class=\"li1\">Item1</li>\n\t\t</ul>\n\t</body>\n</html>\nEnd-of-html\n    fi\n\n    open -e \"$RELEASE_NOTES_PATH/$HTML_FILE\"\n\n    XML_UPDATE_FILE=$SRCROOT/Sources/sparkle/updates.xml\n    TODAY_DATE=`date`\n\n# New item is in clipboard, paste it in\n    pbcopy<<End-of-item\n\t\t<item>\n\t\t\t<title>Version $RELEASE_VERSION Build $BUILD_NUMBER</title>\n\t\t\t<sparkle:releaseNotesLink>http://updates.pickadisk.com/trunk/support/releasenotes/$HTML_FILE</sparkle:releaseNotesLink>\n\t\t\t<description>Version $RELEASE_VERSION Build $BUILD_NUMBER </description>\n\t\t\t<pubDate>$TODAY_DATE</pubDate>\n\t\t\t<enclosure sparkle:shortVersionString=\"$RELEASE_VERSION\" sparkle:version=\"$RELEASE_NUMBER\" url=\"http://updates.pickadisk.com/trunk/archives/$ZIP_FILE\" type=\"application/octet-stream\"/>\n\t\t</item>\nEnd-of-item\n\nopen -a /Applications/Feeder.app \"$XML_UPDATE_FILE\"\n\n\trsync -auv \"$SRCROOT/Sources/sparkle/\" \"$SRCROOT/../../marketing/WebSite/updates/\" --exclude=\".*\"\n\tpushd \"$TARGET_BUILD_DIR\" >/dev/null\n\tfind \"$WRAPPER_NAME\" -name \".svn\" -delete\n\tzip -q -r \"$ZIP_FILE\" \"$WRAPPER_NAME\"\n\tcp \"$ZIP_FILE\" \"$SRCROOT/../../marketing/WebSite/updates/archives/\"\n\tpopd >/dev/null\n\techo \"Prelease checklist\"\n\techo \"- Update updates.xml with new version, paste in from clip board\"\n\techo \"- Update release notes\"\n\techo \"- Update known issues\"\n\techo \"- Update URL for new version, copy next line\"\n\techo \"../updates/assets/updates/archives/$ZIP_FILE\"\n\techo \"- Turn on local hosts for pickadisk.com\"\n\techo \"- Publish site\"\n\techo \"- Verify site\"\n\techo \"- Change build to release\"\n\techo \"- Verify not using local hosts\"\nfi\n\nif [[ \"$CONFIGURATION\" == 'Release' ]]; then\n\techo \"Update remote web site\"\n#rsync -auv /web/sites/pickadisk.com/ polymicrosystems.com:sites/staging.pickadisk.com/\nfi\n";
+			shellScript = "logger \"Starting Scripts\"\n\nsource $SRCROOT/Misc/build.sh\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1463,6 +1491,8 @@
 				75FEA2DD15E8272F000A7283 /* AquaticPrime.m in Sources */,
 				75455CCE15F00A1E004703C1 /* BTHIconResources.m in Sources */,
 				75455CD015F00A1E004703C1 /* ImageAndTextCell.m in Sources */,
+				5AF0D39F409EDF4A44F12ED4 /* PADVersionCheckService.m in Sources */,
+				75C925CB15F90FDD00703EFC /* VersionCheckController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

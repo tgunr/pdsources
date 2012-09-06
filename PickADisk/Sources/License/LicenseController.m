@@ -58,19 +58,17 @@ static LicenseController*	shared_LicenseController = nil;
     [licensePathControl setTarget:self];
     [licensePathControl setDoubleAction:@selector(pathControlDoubleClick:)];
 	[licensePathControl setDelegate:self];
-	
-	if( ![[PADLicenseService sharedLicenseService] licenseValid] )
-	{
-		BOOL	haveFirstRun = [[NSUserDefaults standardUserDefaults] boolForKey:kPADLicenseFirstRunPrefKey];
-		
-		if( !haveFirstRun )
-		{
-			[[NSUserDefaults standardUserDefaults] setBool:YES forKey:kPADLicenseFirstRunPrefKey];
-			//[self runNotLicensedModalWindow];
-			[self performSelectorOnMainThread:@selector(runNotLicensedModalWindow) withObject:nil waitUntilDone:NO];
-		}
-		
-	}
+
+    if (![[PADLicenseService sharedLicenseService] licenseValid]) {
+        BOOL haveFirstRun = [[NSUserDefaults standardUserDefaults] boolForKey:kPADLicenseFirstRunPrefKey];
+
+        if (!haveFirstRun) {
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kPADLicenseFirstRunPrefKey];
+            //[self runNotLicensedModalWindow];
+            [self performSelectorOnMainThread:@selector(runNotLicensedModalWindow) withObject:nil waitUntilDone:NO];
+        }
+
+    }
 }
 
 - (void)closeNotLicensedWindow
@@ -428,185 +426,5 @@ static LicenseController*	shared_LicenseController = nil;
 }
 
 @end
-
-/*
-@implementation License
-
-static License*	shared_License = nil;
-static BOOL	shared_LicenseB = false;
-static BOOL *PADCS[5];
-
-+ (id)shared {
-    if (!shared_License)
-        [[License alloc] init];
-    return shared_License;
-}
-
-
--(id)init {
-	if (shared_License)
-		return (id)shared_License;
-	
-	if( self = [super init] ) {
-		NSLog(@"License Created");
-		shared_License = (License*)self;
-	}
-	
-	// This string is specially constructed to prevent key replacement 	
-	// *** Begin Public Key ***
-	licenseKey = [NSMutableString string];
-	[licenseKey appendString:@"0x9F7B984C1758F45A31E162D27B76"];
-	[licenseKey appendString:@"A2460DE570C1F2C6C51080707FC5C5"];
-	[licenseKey appendString:@"2D480EDCF54F57B54BA5"];
-	[licenseKey appendString:@"7"];
-	[licenseKey appendString:@"7"];
-	[licenseKey appendString:@"A28908DD"];
-	[licenseKey appendString:@"ABE26C974C2436053483"];
-	[licenseKey appendString:@"6"];
-	[licenseKey appendString:@"6"];
-	[licenseKey appendString:@"C649C455"];
-	[licenseKey appendString:@"D10B4EB382C36763A60F8C"];
-	[licenseKey appendString:@"E"];
-	[licenseKey appendString:@"E"];
-	[licenseKey appendString:@"C24AE5"];
-	[licenseKey appendString:@"4035C4CEA0108B31"];
-	[licenseKey appendString:@"D"];
-	[licenseKey appendString:@"D"];
-	[licenseKey appendString:@"1D9915450B96"];
-	[licenseKey appendString:@"7B510B07379"];
-	[licenseKey appendString:@"33"];
-	[licenseKey appendString:@"CA428780D997E6DB3"];
-	[licenseKey appendString:@"94238E65A53919B127A76B9FEB6184"];
-	[licenseKey appendString:@"11A5B211A3FA6B87"];
-	// Last byte of public key in in AquaticPrime.m -setKey
-	// *** End Public Key *** 
-	
-	PADCS[0] = &shared_LicenseB;
-	PADCS[1] = &shared_LicenseControllerB;
-	PADCS[2] = &shared_LicenseB;
-	PADCS[3] = &shared_LicenseControllerB;
-	PADCS[4] = (BOOL *)1;
-	
-	// Instantiate AquaticPrime
-	[self setLicenseValidator: [AquaticPrime aquaticPrimeWithKey:licenseKey]];
-	
-	// Blacklist bad licenses
-	[licenseValidator setBlacklist:[NSArray arrayWithObject:@"56237cb06e032ba9d7ed5c4b5f5f89790493386e"]];
-	// init from prefs if possible
-	licenseData  = [[NSUserDefaults standardUserDefaults] objectForKey:@"licenseDict"];
-	NSUInteger len = [licenseData length];
-	const void * data = [licenseData bytes];
-	licenseDict = [licenseValidator dictionaryForLicenseData: licenseData];
-	
-#pragma unused ( len, data )
-	
-//	if (!licenseDict)
-//		return self;
-	return self;
-}
-
-- (AquaticPrime *)licenseValidator { return licenseValidator; }
-- (NSDictionary *)licenseDict { return licenseDict; }
-
-- (void)setLicenseValidator:(AquaticPrime *)newValidator {
-	if( !licenseValidator || licenseValidator != newValidator ) {
-		if( licenseValidator ) 
-			[licenseValidator release];
-		if( newValidator ) 
-			[newValidator retain];
-		licenseValidator = newValidator;
-	}
-}
-
-- (void)setLicenseData:(NSData *)data {
-	licenseData = data; 
-}
-
-static BOOL isValid = false;
-
-- (BOOL)licenseValid {
-//	[self limit];
-	isValid = false;
-	*PADCS[(int)PADCS[4]] = false;
-	long r = random();
-	r = r % 4;
-	PADCS[4]= (BOOL *)r;
-	if (licenseDict)
-		if( [licenseValidator verifyLicenseData: licenseData] ) {
-			*PADCS[r] = true;
-			return *PADCS[r];
-		}
-	
-	return isValid;
-}
-
-- (NSDictionary*)checkLicenseFile:(NSString*)licensePath {
-    // Get the dictionary from the license file
-    // If the license is invalid, we get nil back instead of a dictionary
-    licenseDict = [licenseValidator dictionaryForLicenseFile:licensePath];
-	return licenseDict;
-}
-
-- (BOOL)checkLicenseData:(NSData*)data {
-    // Get the dictionary from the license file
-    // If the license is invalid, we get nil back instead of a dictionary
-    return [licenseValidator verifyLicenseData:data];
-}
-
-- (BOOL) openLicenseFile:(NSString*)licensePath {
-	NSDictionary *theDict = [self checkLicenseFile: licensePath];
-	if (!theDict)
-		return true;
-	return false;
-}
-
-- (int)limit {
-	NSString * pkey = [licenseValidator key];
-	NSUInteger index = [pkey lengthOfBytesUsingEncoding: NSASCIIStringEncoding];
-	NSString * string = [NSString string];
-	unichar l =	[pkey characterAtIndex: 254] << 8;
-
-#pragma unused (index, string)
-	
-	return l;
-}
-
-// Check the boolean pointers, only 1 can be on
-- (BOOL *)checkV {
-	int i, n;
-	isValid = false;
-	for(i=0; i<4; i++)
-		isValid += *PADCS[i];
-	isValid = isValid < 2;
-	
-#pragma unused (n)
-	
-	return &isValid;
-}
-
-- (BOOL)registerLicenseFromFile:(NSString*)licensePath {
-	
-	if( [self licenseValid] == YES )
-		return NO;
-	
-	BOOL			goodRegister = NO;
-	NSDictionary*	newLicenseDict = [self checkLicenseFile: licensePath];
-	if (newLicenseDict)
-	{
-		NSData * newLicenseData = [NSData dataWithContentsOfFile:licensePath];
-		//NSString * licenseSignature = [newLicenseDict objectForKey: @"Signature"];
-		//const void * data = [newLicenseData bytes];
-		[[NSUserDefaults standardUserDefaults] setObject: newLicenseData forKey:@"licenseDict"];
-		[self setLicenseData: newLicenseData];
-		goodRegister = YES;
-	}
-	
-	[AppController playUISoundForBOOL:goodRegister];
-	
-	return goodRegister;
-}
-
-@end
-*/
 
 

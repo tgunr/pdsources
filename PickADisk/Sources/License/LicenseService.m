@@ -137,7 +137,9 @@ NSString*		kPADLicenseDictKeyInvoiceNum	=	@"Invoice";
 
 @implementation PADLicenseService
 
-+ (id)sharedLicenseService { return [PADLicenseService sharedService]; }
++ (id)sharedLicenseService {
+    return [PADLicenseService sharedService];
+}
 
 
 -(void)initSelf

@@ -21,6 +21,7 @@
 #import "PADLifecycleController.h"
 #import "DACALTreeDataSource.h"
 #import "PADIndexToolbarController.h"
+#import "PADOutlineView.h"
 
 #define PAD_BUSYBODY_DELAY	0.1
 #define PAD_PREFS_VERSION	(const char*)"0.6"
@@ -55,6 +56,8 @@ static AppController *sharedAppController;
 		jPADBusyBodyBeat = 0;
 		
 		[self initPreferences];
+
+        [NSBundle loadNibNamed:@"VersionCheckController" owner:[NSApplication sharedApplication]];
 
 		[[JSServiceManager sharedServices] initializeServices];
 		
@@ -205,14 +208,13 @@ static AppController *sharedAppController;
 	
 	// *** new nibs
 	[NSBundle loadNibNamed:@"CarouselIndex" owner:[NSApplication sharedApplication]];
-	//[NSBundle loadNibNamed:@"CarouselProgress" owner:[NSApplication sharedApplication]];
-	
+
 	// Add busy body heartbeat
 	[NSTimer scheduledTimerWithTimeInterval:PAD_BUSYBODY_DELAY target:self selector:@selector(doBusyWork:) userInfo:nil repeats:YES];
 	
 //	DACALClientInitialize();
 	
-	//[[LicenseController shared] showNotLicensed];
+//	[[LicenseController shared] showNotLicensed];
 	
 	//	if (!valid)
 	//		NSLog(@"License invalid");
@@ -294,9 +296,10 @@ static AppController *sharedAppController;
 
 - (BOOL)validateMenuItem:(NSMenuItem *)item
 {
-	if( toolbarController != nil ) return [toolbarController validateMenuItem:item];
-	
-	return NO;
+    if (toolbarController != nil)
+        return [toolbarController validateMenuItem:item];
+
+    return NO;
 }
 
 + (void)playUISound:(NSInteger)theSound
@@ -501,7 +504,7 @@ static AppController *sharedAppController;
 	busyBusy = NO;
 }
 
-- (IBAction)runLicense:(id)sender 
+- (IBAction)runLicense:(id)sender
 	{ [[LicenseController sharedLicenseController] chooseAppLicensedMenu:self]; }
 
 - (IBAction)requestLicense:(id)sender 
