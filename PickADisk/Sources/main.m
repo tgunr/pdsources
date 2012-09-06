@@ -21,14 +21,5 @@ int main(int argc, const char *argv[]) {
 	if (killflag) {
 		system("rm $HOME/Library/Preferences/com.polymicrosystems.pickadisk.plist");
 	}
-
-    @autoreleasepool {
-        @try {
-            NSApplicationMain(argc, argv);
-        }
-        @catch (NSException *exception) {
-            return -1;
-        }
-        return 0;
-    }
+    return NSApplicationMain(argc, argv);
 }
