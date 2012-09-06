@@ -6,6 +6,13 @@
         <description>Most recent changes with links to updates.</description>
         <language>en</language>
 		<item>
+			<title>Version 1.0.5b10 Build 51893</title>
+			<sparkle:releaseNotesLink>http://updates.pickadisk.com/trunk/support/releasenotes/PAD_1.0.5b10_51893.html</sparkle:releaseNotesLink>
+			<description>Version 1.0.5 Build 51893 </description>
+			<pubDate>Tue Sep  4 12:38:55 PDT 2012</pubDate>
+			<enclosure sparkle:shortVersionString="1.0.5" sparkle:version="51893" url="http://updates.pickadisk.com/trunk/archives/PickADisk_1.0.5_51893.zip" type="application/octet-stream"/>
+		</item>
+		<item>
 			<title>Version 1.0.4 Build 50816</title>
 			<sparkle:releaseNotesLink>http://updates.pickadisk.com/trunk/support/releasenotes/PAD_1.0.4_50816.html</sparkle:releaseNotesLink>
 			<description>Version 1.0.4 Build 50816 </description>
