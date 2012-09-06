@@ -367,7 +367,7 @@ static	PADInspectorController*		PADInspectorController_shared = nil;
 		data = [item nodeData];
 		element = [data itemElement];
 		
-        if ([NSNumber numberWithChar:0] == element) {
+        if (element == NULL) {
             PMLOGERROR(@"No element for node %@", data);
             workString = @"No Data For Selection";
             [self notifyWithWorkString:workString titleString:windowTitle commentString:@"Try deleting the slot and then adding it back."];
@@ -485,10 +485,16 @@ static	PADInspectorController*		PADInspectorController_shared = nil;
 // TODO: adoptInspectorSelection gets called twice, first from outlineViewDidChange, then from outlineViewAction
 - (void)adoptInspectorSelection:(NSArray*)newSelection
 {
-	if( [selectedRecords isEqualToArray:newSelection] == YES )
+	if( [selectedRecords isEqualToArray:newSelection] == YES ) {
+        if ([newSelection count] == 0) {
+            [self extractSelectionDataAndClear:YES];
+            [self installSelectionData];
+      }
         return;
-	
-	[self extractSelectionDataAndClear:YES];
+    }
+    
+    [self extractSelectionDataAndClear:YES];
+
     if (newSelection) {
         [selectedRecords addObjectsFromArray:newSelection];
         [self installSelectionData];
