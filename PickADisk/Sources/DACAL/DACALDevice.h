@@ -12,6 +12,12 @@
 @class DACALSlot;
 @class DACVolume;
 
+enum  DacalDeviceType {
+    unknown,
+    dc101,
+    dc300,
+    dc016rw
+};
 
 @interface DACALDevice : NSObject {
 
@@ -21,7 +27,9 @@
 
 	NSArray*			deviceSlots;
 	NSInteger			slotsUsed;
-
+    NSString*			boxName;
+    NSURL*              boxURL;
+    enum DacalDeviceType    boxType;
 }
 
 -(DACALDeviceRef)deviceRef;
@@ -60,3 +68,9 @@
 
 @end		//	DACALDevice
 
+@interface DACALRWDevice : DACALDevice {
+    DACALSlotNum slotInDrive;
+}
+
+-(id)initDeviceWithDeviceRef:(DACALDeviceRef)newDeviceRef;
+@end

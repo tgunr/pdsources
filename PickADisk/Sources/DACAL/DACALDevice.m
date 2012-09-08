@@ -173,10 +173,19 @@
 		SimpleTreeNode*		theChildNode;
 		SimpleTreeNode*		theSubtreeNode;
 
-		NSString*			boxName = (NSString*)DACALCommandCopyName( newDeviceRef, NULL );
-		CFURLRef			boxURL = DACALCommandCopyPath( newDeviceRef, NULL );
+		boxName = (NSString*)DACALCommandCopyName( newDeviceRef, NULL );
+		boxURL = (NSURL *)DACALCommandCopyPath( newDeviceRef, NULL );
+        NSString *type = (NSString *)DACALCommandCopyModel(newDeviceRef, NULL);
+        if ([type isEqualToString:@"DC-101"])
+            boxType = dc101;
+        else if ([type isEqualToString:@"DC-300"])
+            boxType = dc300;
+        else if ([type isEqualToString:@"DC-016RW"])
+            boxType = dc016rw;
+        else
+            return unknown;
 
-		CFURLGetFSRef( boxURL, &deviceFSRef );
+		CFURLGetFSRef( (CFURLRef)boxURL, &deviceFSRef );
 		theChildNode = [[SimpleTreeNode alloc] initWithData:[SimpleNodeData leafDataWithName:boxName] parent:nil children:[[NSArray alloc] init]];
 
 		deviceNode = theChildNode;
@@ -205,8 +214,13 @@
 	return self;
 }
 
-+(id)deviceWithDeviceRef:(DACALDeviceRef)newDeviceRef
-	{ return [[DACALDevice alloc] initDeviceWithDeviceRef:newDeviceRef]; }
++(id)deviceWithDeviceRef:(DACALDeviceRef)newDeviceRef {
+    NSString *type = (NSString *)DACALCommandCopyModel(newDeviceRef, NULL);
+    if ([type isEqualToString:@"DC-016RW"])
+        return [[DACALRWDevice alloc] initDeviceWithDeviceRef:newDeviceRef];
+    else
+        return [[DACALDevice alloc] initDeviceWithDeviceRef:newDeviceRef];
+}
 
 -(void)indexedNewVolume:(DACVolume*)newVolume forSlot:(DACALSlotNum)newSlot ofType:(NSString*)newType forTarget:(id)finishedTarget
 {
@@ -233,6 +247,10 @@
 
 -(NSURL*)fileURL
 	{ return( (NSURL*)DACALCommandCopyPath( deviceRef, NULL ) ); }
+
+-(enum DacalDeviceType)type {
+    return boxType;
+}
 
 -(void)detachingDevice
 {
@@ -266,7 +284,8 @@
 
 -(void)swapSlotNumber:(DACALSlotNum)fromSlotNum toDevice:(DACALDevice*)toBox toSlotNumber:(DACALSlotNum)toSlotNum
 {
-	if( toBox == nil ) toBox = self;
+	if( toBox == nil )
+        toBox = self;
 
 	DACALSlot*	fromSlot = [self slotWithNumber:fromSlotNum];
 	DACALSlot*	destSlot = [toBox slotWithNumber:toSlotNum];
@@ -275,11 +294,11 @@
 
 }
 
--(NSInteger)slotsUsed
-	{ return slotsUsed; }
+-(NSInteger)slotsUsed {
+    return slotsUsed;
+}
 
--(NSNumber*)totalVolumeSize
-{
+-(NSNumber*)totalVolumeSize {
 	NSEnumerator*	slotEnum = [deviceSlots objectEnumerator];
 	DACALSlot*		workSlot = nil;
 	NSNumber*		workNumber = [NSNumber zero];
@@ -290,7 +309,21 @@
 	return workNumber;
 }
 
--(DACALResult)commandCloseDoor
-	{ return DACALCommandCloseDoor( deviceRef ); }
+-(DACALResult)commandCloseDoor {
+    return DACALCommandCloseDoor( deviceRef );
+}
 
 @end		// DACALDevice
+
+@implementation DACALRWDevice
+
+-(id)initDeviceWithDeviceRef:(DACALDeviceRef)newDeviceRef {
+    [super initDeviceWithDeviceRef:newDeviceRef];
+    slotInDrive = DACALCommandDVDGetSlot(newDeviceRef, NULL);
+    return self;
+}
+
+-(DACALSlotNum)slotInDrive {
+    return slotInDrive;
+}
+@end
