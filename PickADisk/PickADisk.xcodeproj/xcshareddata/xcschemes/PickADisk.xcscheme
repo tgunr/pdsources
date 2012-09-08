@@ -44,7 +44,7 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.GDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Release Test"
+      buildConfiguration = "Development"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       enableOpenGLFrameCaptureMode = "0"
