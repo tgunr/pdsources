@@ -805,7 +805,7 @@ IOReturn dacalDoRequest(DACALIOUSBDeviceInterface **indeviceIntf, dacalCmd cmd, 
 			PMLOGEMERG(@"DoCmd timed out\n");
 			return (IOReturn)kIOReturnError;
 		}
-		err = dacalGetDescriptor(indeviceIntf, 0x0409, kUSBStringDesc, cmdGetStatus, &uniBuf, (UInt16)PMBUFSIZE(dacalString), &result);
+		err = dacalGetDescriptor(indeviceIntf, 0x0409, kUSBStringDesc, cmdGetModel, &uniBuf, (UInt16)PMBUFSIZE(dacalString), &result);
 		if (err == kIOReturnNotResponding) {
 			PMLOGEMERG(@"Device not responding");
 			usleep(5000);
@@ -1191,29 +1191,18 @@ DACALCommandMoveToSlot(DACALDeviceRef deviceID, DACALSlotNum newSlot) {
 
 DACALSlotNum
 DACALCommandDVDGetSlot(DACALDeviceRef deviceID, DACALResult *outError) {
-	DACALResult        theErr;
-	CFStringRef        descriptorStr;
-	CFComparisonResult compareResult;
-
 	DACALSlotNum outSlot = 0;
 
-	descriptorStr = DACALCommandRequestCFString(deviceID, cmdGetSlot, &theErr);
-	if (outError)
-		*outError = theErr;
-	if (theErr)
+    dacalString outResult;
+    DACALResult dResult = DACALCommandRequest(deviceID, cmdGetSlot, &outResult);
+    unsigned short value = *(outResult.uniString);
+
+	if (dResult)
 		return (outSlot);
 	DACAL_SHORT_SLEEP
 
-	compareResult = CFStringCompareWithOptions(descriptorStr, dacalNAN, CFRangeMake(0, CFStringGetLength(dacalDC300)), kCFCompareCaseInsensitive);
-	if (compareResult == kCFCompareEqualTo)
-		outSlot   = 0;
-	else
-		outSlot = (DACALSlotNum)CFStringGetIntValue(descriptorStr);
 
-	if (descriptorStr)
-		CFRelease(descriptorStr);
-
-	return (outSlot);
+	return (DACALSlotNum)value;
 }
 
 DACALResult
@@ -2085,14 +2074,12 @@ getUSBDevice(io_object_t usbDevice) {
 		return (nil);
 	}
 
-	if (gDebugLevel > 1) {
-		UInt16 VID, PID, REL;
-		err = (*dev)->GetDeviceVendor(dev, &VID);
-		err = (*dev)->GetDeviceProduct(dev, &PID);
-		err = (*dev)->GetDeviceReleaseNumber(dev, &REL);
-		PMLOGINFO(@"Found device VID 0x%04X (%d), PID 0x%04X (%d), release %d\n", VID, VID, PID, PID, REL);
-	}
-
+    UInt16 VID, PID, REL;
+    err = (*dev)->GetDeviceVendor(dev, &VID);
+    err = (*dev)->GetDeviceProduct(dev, &PID);
+    err = (*dev)->GetDeviceReleaseNumber(dev, &REL);
+    PMLOGINFO(@"Found device VID 0x%04X (%d), PID 0x%04X (%d), release %d\n", VID, VID, PID, PID, REL);
+    
 	return (dev);
 }
 

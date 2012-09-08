@@ -24,6 +24,9 @@
 #import "/Volumes/data/Sources/Projects/PickADisk/Sources/PMUtility/PMUtility/pmCFUtility.h"
 #import "/Volumes/data/Sources/Projects/PickADisk/Sources/PMUtility/PMUtility/pm.h"
 
+#define DC101CString "DC-101"
+#define DC300CString "DC-300"
+#define DC016RWCString "DC-016RW"
 
 typedef IOUSBDeviceInterface320    DACALIOUSBDeviceInterface;
 typedef IOUSBInterfaceInterface300 DACALIOUSBInterfaceInterface;
@@ -84,17 +87,17 @@ typedef enum {
 	undocUnknown7,
 	undocUnknown8,
 	cmdGetModel,    // 9
-	cmdGetUUID,     // 10
-	cmdReset,       // 11
-	cmdMoveToSlot,  // 12
-	cmdReserved1,   // 13
-	cmdCloseDoor,   // 14
-	cmdLEDOn,       // 15
-	cmdLEDOff,      // 16
-	cmdGetStatus,   // 17
-	cmdGetSlot,     // 18
-	cmdMoveToDVD,   // 19
-	cmdEjectDVD     // 20
+	cmdGetUUID,     // 10 0x0a
+	cmdReset,       // 11 0x0b
+	cmdMoveToSlot,  // 12 0x0c
+	cmdReserved1,   // 13 0x0d
+	cmdCloseDoor,   // 14 0x0e
+	cmdLEDOn,       // 15 0x0f
+	cmdLEDOff,      // 16 0x10
+	cmdGetStatus,   // 17 0x11
+	cmdGetSlot,     // 18 0x12
+	cmdMoveToDVD,   // 19 0x13
+	cmdEjectDVD     // 20 0x14
 }                           dacalCmd;
 
 typedef struct {
