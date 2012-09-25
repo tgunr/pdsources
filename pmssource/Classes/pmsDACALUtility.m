@@ -71,8 +71,10 @@ DACALDeviceRef	CFURLCopyCarouselUUID( CFAllocatorRef inAllocator, CFURLRef url )
 	CFUUIDRef		slotUUID = NULL;
 	
 	slotIDString = CFURLCopyXattr( inAllocator, url, kDACALCarouselDocumentXAttrCarousel, (OSStatus*)NULL );
-	if( slotIDString != NULL ) slotUUID = CFUUIDCreateFromString(inAllocator, slotIDString );
-	if( slotIDString != NULL ) CFRelease( slotIDString );
+	if( slotIDString != NULL )
+        slotUUID = CFUUIDCreateFromString(inAllocator, slotIDString );
+	if( slotIDString != NULL )
+        CFRelease( slotIDString );
 	
 	return( (DACALDeviceRef)slotUUID );
 }	
