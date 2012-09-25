@@ -119,6 +119,8 @@
 		75C925CA15F90FDD00703EFC /* VersionCheckController.h in Headers */ = {isa = PBXBuildFile; fileRef = 75C925C715F90FDD00703EFC /* VersionCheckController.h */; };
 		75C925CB15F90FDD00703EFC /* VersionCheckController.m in Sources */ = {isa = PBXBuildFile; fileRef = 75C925C815F90FDD00703EFC /* VersionCheckController.m */; };
 		75C925CC15F90FDD00703EFC /* VersionCheckController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75C925C915F90FDD00703EFC /* VersionCheckController.xib */; };
+		75CAC7AD15FB999200F88750 /* SimpleNodeData.h in Headers */ = {isa = PBXBuildFile; fileRef = 75CAC7AB15FB999200F88750 /* SimpleNodeData.h */; };
+		75CAC7AE15FB999200F88750 /* SimpleNodeData.m in Sources */ = {isa = PBXBuildFile; fileRef = 75CAC7AC15FB999200F88750 /* SimpleNodeData.m */; };
 		75CD34BB149A132600A3F0E9 /* DACALDriver.kext in CopyFiles */ = {isa = PBXBuildFile; fileRef = 75CD34B8149A12EE00A3F0E9 /* DACALDriver.kext */; };
 		75E0D61C1073EF620012897D /* Multi-Folder.icns in Resources */ = {isa = PBXBuildFile; fileRef = 75E0D61B1073EF620012897D /* Multi-Folder.icns */; };
 		75E0D78E1074331A0012897D /* PickADiskDoc.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 75E0D78D1074331A0012897D /* PickADiskDoc.pdf */; };
@@ -431,6 +433,8 @@
 		75C925C715F90FDD00703EFC /* VersionCheckController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VersionCheckController.h; path = Sources/VersionCheck/VersionCheckController.h; sourceTree = "<group>"; };
 		75C925C815F90FDD00703EFC /* VersionCheckController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VersionCheckController.m; path = Sources/VersionCheck/VersionCheckController.m; sourceTree = "<group>"; };
 		75C925C915F90FDD00703EFC /* VersionCheckController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VersionCheckController.xib; path = Sources/VersionCheck/VersionCheckController.xib; sourceTree = "<group>"; };
+		75CAC7AB15FB999200F88750 /* SimpleNodeData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleNodeData.h; sourceTree = "<group>"; };
+		75CAC7AC15FB999200F88750 /* SimpleNodeData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleNodeData.m; sourceTree = "<group>"; };
 		75CD34731499431600A3F0E9 /* CLI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CLI.xcodeproj; path = ../CLI/CLI.xcodeproj; sourceTree = "<group>"; };
 		75CD34B0149A12ED00A3F0E9 /* DACALDriver.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = DACALDriver.xcodeproj; path = ../DACALDriver/DACALDriver.xcodeproj; sourceTree = "<group>"; };
 		75E0D61B1073EF620012897D /* Multi-Folder.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = "Multi-Folder.icns"; path = "../Resources/Multi-Folder.icns"; sourceTree = SOURCE_ROOT; };
@@ -560,6 +564,8 @@
 				5C57B62E0E6635600063190F /* PADIndexNodeData.m */,
 				5C1ECC0D0E4120050091B446 /* PADSearchRequest.h */,
 				5C1ECC0E0E4120050091B446 /* PADSearchRequest.m */,
+				75CAC7AB15FB999200F88750 /* SimpleNodeData.h */,
+				75CAC7AC15FB999200F88750 /* SimpleNodeData.m */,
 			);
 			name = "Index Tree";
 			path = "Sources/Index Tree";
@@ -1194,6 +1200,7 @@
 				75455CCD15F00A1E004703C1 /* BTHIconResources.h in Headers */,
 				75455CCF15F00A1E004703C1 /* ImageAndTextCell.h in Headers */,
 				75C925CA15F90FDD00703EFC /* VersionCheckController.h in Headers */,
+				75CAC7AD15FB999200F88750 /* SimpleNodeData.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1493,6 +1500,7 @@
 				75455CD015F00A1E004703C1 /* ImageAndTextCell.m in Sources */,
 				5AF0D39F409EDF4A44F12ED4 /* PADVersionCheckService.m in Sources */,
 				75C925CB15F90FDD00703EFC /* VersionCheckController.m in Sources */,
+				75CAC7AE15FB999200F88750 /* SimpleNodeData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
