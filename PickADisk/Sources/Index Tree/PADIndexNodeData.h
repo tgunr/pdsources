@@ -8,6 +8,7 @@
 #import <Cocoa/Cocoa.h>
 #import "TreeNode.h"
 #import "SimpleTreeNode.h"
+#import "SimpleNodeData.h"
 
 @class PADSearchRequest;
 

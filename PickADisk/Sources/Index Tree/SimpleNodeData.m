@@ -7,7 +7,9 @@
 //
 
 #import "SimpleNodeData.h"
-
+#import "SimpleTreeNode.h"
+#import "DACALTreeDataSource.h"
+#import "PADSearchRequest.h"
 
 @implementation SimpleNodeData
 
@@ -48,8 +50,10 @@
 		itemAddDate = (NSDate*)CFURLCopyDateSlotAdded( NULL, (CFURLRef)loc, NULL );
 		
 		itemFlavor = (NSString*)CFURLCopyItemFlavor( (CFURLRef)loc, NULL );			// was DACALSlotCopyType( itemDevice, itemSlot, NULL );
-		if( itemFlavor == nil) itemFlavor = PADINDEX_FLAVORVALUE_FILES;
-		if( [itemFlavor compare:@"data"] == NSOrderedSame ) itemFlavor = PADINDEX_FLAVORVALUE_FILES;		// patch for old run slots! please fix.
+		if( itemFlavor == nil)
+            itemFlavor = PADINDEX_FLAVORVALUE_FILES;
+		if( [itemFlavor compare:@"data"] == NSOrderedSame )
+            itemFlavor = PADINDEX_FLAVORVALUE_FILES;		// patch for old run slots! please fix.
 		
 		if( [itemFlavor compare:PADINDEX_FLAVORVALUE_MUSIC] == NSOrderedSame )
 			itemType = kPADTypeDataMuisc;

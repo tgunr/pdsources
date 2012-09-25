@@ -8,6 +8,7 @@
 #import "PADIndexNodeData.h"
 #import "DACALTreeDataSource.h"
 #import "PADSearchRequest.h"
+#import "SimpleNodeData.h"
 
 PADSearchRequest* PADCreateSearchForType( OSType aType );
 PADSearchRequest* PADCreateSearchForType( OSType aType )

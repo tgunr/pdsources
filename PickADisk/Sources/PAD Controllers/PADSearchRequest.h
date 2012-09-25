@@ -10,6 +10,7 @@
 #import "JSServiceManager.h"
 #import "AppController.h"
 #import "SimpleTreeNode.h"
+#import "SimpleNodeData.h"
 
 typedef float		PADSearchRelevance;
 typedef NSNumber*	PADSearchRelevanceRef;
