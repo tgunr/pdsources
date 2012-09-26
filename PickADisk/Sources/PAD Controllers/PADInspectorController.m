@@ -368,7 +368,7 @@ static	PADInspectorController*		PADInspectorController_shared = nil;
 		element = [data itemElement];
 		
         if (element == NULL) {
-            PMLOGERROR(@"No element for node %@", data);
+            PMLOG_ERROR(@"No element for node %@", data);
             workString = @"No Data For Selection";
             [self notifyWithWorkString:workString titleString:windowTitle commentString:@"Try deleting the slot and then adding it back."];
             return;

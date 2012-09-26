@@ -74,7 +74,7 @@
         return;
 	[PADSearchService updateAllSearches];
 	
-	PMLOGDEBUG(@"Finished location: %@", itemLocation);
+	PMLOG_DEBUG(@"Finished location: %@", itemLocation);
 	
 	if( [self isCancelled] )
         return;

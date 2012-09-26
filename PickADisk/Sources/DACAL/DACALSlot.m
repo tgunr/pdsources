@@ -145,7 +145,7 @@
 			slotID = FSCopyXattr( kCFAllocatorDefault, &slotFSRef, kDACALCarouselDocumentXAttrSlotID, NULL );
 			if( slotID != NULL ) {
 				[self setSlotIdentifier: [[[NSString alloc] initWithString:(NSString*)slotID] autorelease]];
-				PMLOGDEBUG(@"%@ has ID: %@", [self title], [self slotIdentifier]);
+				PMLOG_DEBUG(@"%@ has ID: %@", [self title], [self slotIdentifier]);
 				CFRelease( slotID );
 			}
 		}
@@ -406,7 +406,7 @@
             if( [slotArray indexOfObject:workSlot] == NSNotFound )
                 [slotArray addObject:workSlot];
         } else
-            PMLOGWARNING(@"workslot at workNode %@ was nil!", workNode);
+            PMLOG_WARNING(@"workslot at workNode %@ was nil!", workNode);
 		workNode = [nodeEnum nextObject];
 	}
     
@@ -425,7 +425,7 @@
                     sleep( 7.0 );
                 }
         } else {
-            PMLOGERROR(@"Error while trying to move to slot");
+            PMLOG_ERROR(@"Error while trying to move to slot");
             goto BAIL;
         }
         

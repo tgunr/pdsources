@@ -493,7 +493,7 @@ static AppController *sharedAppController;
 		if(theTable != nil)
 			[theTable reloadItem:(id)entry reloadChildren:[[entry nodeData] isExpanded]];
 		if( [[[entry nodeParent] nodeData] isExpanded] ) 
-            PMLOGDEBUG(@"Got Busy: %@ <%@>\n\tBodies: %@", [entry description], entry, [busyBodies description] );
+            PMLOG_DEBUG(@"Got Busy: %@ <%@>\n\tBodies: %@", [entry description], entry, [busyBodies description] );
 		theTable = nil;
 	}
 	

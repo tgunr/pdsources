@@ -467,7 +467,7 @@ DACALResult CarouselEstablishInfoFile(CFUUIDRef boxUUID) {
 			osErr = DACALCreateLibraryFolder(&topFolder);
             osErr = FSFindFolder(kUserDomain, kDACALCarouselsFolderType, TRUE, &userLibraryFolder);
 		} else
-            PMLOGEMERG(@"Error finding user library! - err::%i", osErr );
+            PMLOG_EMERG(@"Error finding user library! - err::%i", osErr );
 	}
     dataURL = CFURLCreateFromFSRef(NULL, &userLibraryFolder);
 
@@ -615,7 +615,7 @@ CFStringRef CFStringCreateFromDacalPipe(CFAllocatorRef inAllocator, CFStringRef 
 	if (doCommand == NULL)
 		goto BAIL;
 
-	PMLOGDEBUG(@"Carousel command: %s", doCommand);
+	PMLOG_DEBUG(@"Carousel command: %s", doCommand);
 
 	utf8Name = (char *)calloc(1, pipeSize);
 
@@ -694,7 +694,7 @@ IOReturn dacalGetDescriptor(DACALIOUSBDeviceInterface **deviceIntf, UInt16 index
 			break;
 		}
 		else if (err == kIOUSBPipeStalled) {
-			PMLOGALERT(@"Received kIOUSBPipeStalled: %x", err);
+			PMLOG_ALERT(@"Received kIOUSBPipeStalled: %x", err);
 //			usleep(3000);
 //			req.bmRequestType = 0x02;
 //			req.bRequest = kUSBRqClearFeature;
@@ -705,7 +705,7 @@ IOReturn dacalGetDescriptor(DACALIOUSBDeviceInterface **deviceIntf, UInt16 index
 //			err = (*deviceIntf)->DeviceRequest(deviceIntf, &req);
 //			*result = req.wLenDone;			
 //			err = (*deviceIntf)->USBDeviceAbortPipeZero(deviceIntf);
-//			PMLOGALERT(@"Aborting default pipe");
+//			PMLOG_ALERT(@"Aborting default pipe");
 		}
 		usleep(50000);
 	}
@@ -794,7 +794,7 @@ IOReturn dacalDoRequest(DACALIOUSBDeviceInterface **indeviceIntf, dacalCmd cmd, 
 
 	waitTime    = time(NULL);
 	if (waitTime == -1) {
-		PMLOGEMERG(@"internal error, could not get time value\n");
+		PMLOG_EMERG(@"internal error, could not get time value\n");
 		return (IOReturn)kIOReturnError;
 	}
 	waitTime += 2;
@@ -802,23 +802,23 @@ IOReturn dacalDoRequest(DACALIOUSBDeviceInterface **indeviceIntf, dacalCmd cmd, 
 		tryagain:
 				PMLOG(PMLogLevelDebug3, @"Trying cmd %d", cmd);
 		if (time(NULL) > waitTime) {
-			PMLOGEMERG(@"DoCmd timed out\n");
+			PMLOG_EMERG(@"DoCmd timed out\n");
 			return (IOReturn)kIOReturnError;
 		}
 		err = dacalGetDescriptor(indeviceIntf, 0x0409, kUSBStringDesc, cmdGetModel, &uniBuf, (UInt16)PMBUFSIZE(dacalString), &result);
 		if (err == kIOReturnNotResponding) {
-			PMLOGEMERG(@"Device not responding");
+			PMLOG_EMERG(@"Device not responding");
 			usleep(5000);
 			goto tryagain;
 		}
 		if (err == kIOUSBPipeStalled) {
-			PMLOGALERT(@"DoCmd reporting stall from device: %x\n", err);
+			PMLOG_ALERT(@"DoCmd reporting stall from device: %x\n", err);
 			// reset stall on endpoint
 			err = dacalGetDescriptor(indeviceIntf, 0x0086, kUSBAnyDesc, 0, &uniBuf, 0, &result);
 			goto tryagain;
 		}
 		if (err) {
-			PMLOGALERT(@"DoCmd reporting error from device: %x\n", err);
+			PMLOG_ALERT(@"DoCmd reporting error from device: %x\n", err);
 			return err;
 		}
 		descriptorStr = CFStringCreateFromDacalString(&uniBuf);
@@ -827,7 +827,7 @@ IOReturn dacalDoRequest(DACALIOUSBDeviceInterface **indeviceIntf, dacalCmd cmd, 
 
 		compareResult = CFStringCompareWithOptions(descriptorStr, dacalERROR, CFRangeMake(0, CFStringGetLength(dacalERROR)), kCFCompareCaseInsensitive);
 		if (compareResult == kCFCompareEqualTo) {
-			PMLOGALERT(@"DoCmd reporting error from device\n");
+			PMLOG_ALERT(@"DoCmd reporting error from device\n");
 			return (IOReturn)kDACALError;
 		}
 
@@ -1982,7 +1982,7 @@ DACALDeviceClose(DACALDeviceRef deviceID) {
 	err = (*theInterface)->USBDeviceClose(theInterface);
 	if (err) {
 		if (err != kIOReturnNoDevice ) {
-			PMLOGALERT(@"Unable to close device: %08x\n", err);
+			PMLOG_ALERT(@"Unable to close device: %08x\n", err);
 			return (err);
 		}
 	}
@@ -2032,7 +2032,7 @@ void
 DACALDeviceNotification(void *refCon, io_service_t service, natural_t messageType, void *messageArgument) {
 	DACALDeviceRef theDevice = (DACALDeviceRef)refCon;
 
-	PMLOGINFO(@"Device:%i Message:%i",(int)theDevice, messageType);
+	PMLOG_INFO(@"Device:%i Message:%i",(int)theDevice, messageType);
 
 	switch (messageType) {
 		case kIOMessageServiceIsTerminated:
@@ -2062,7 +2062,7 @@ getUSBDevice(io_object_t usbDevice) {
 			&score
 	                                       );
 	if ((kIOReturnSuccess != err) || (plugInInterface == nil)) {
-		PMLOGALERT(@"Unable to create plug in interface for USB device: %d", err);
+		PMLOG_ALERT(@"Unable to create plug in interface for USB device: %d", err);
 		return (nil);
 	}
 
@@ -2070,7 +2070,7 @@ getUSBDevice(io_object_t usbDevice) {
 	IODestroyPlugInInterface(plugInInterface);            // done with this
 
 	if (res || !dev) {
-        PMLOGEMERG(@"Unable to create USB device with QueryInterface error: %i\n", stderr);
+        PMLOG_EMERG(@"Unable to create USB device with QueryInterface error: %i\n", stderr);
 		return (nil);
 	}
 
@@ -2078,7 +2078,7 @@ getUSBDevice(io_object_t usbDevice) {
     err = (*dev)->GetDeviceVendor(dev, &VID);
     err = (*dev)->GetDeviceProduct(dev, &PID);
     err = (*dev)->GetDeviceReleaseNumber(dev, &REL);
-    PMLOGINFO(@"Found device VID 0x%04X (%d), PID 0x%04X (%d), release %d\n", VID, VID, PID, PID, REL);
+    PMLOG_INFO(@"Found device VID 0x%04X (%d), PID 0x%04X (%d), release %d\n", VID, VID, PID, PID, REL);
     
 	return (dev);
 }
@@ -2091,17 +2091,17 @@ openUSBDevice(DACALIOUSBDeviceInterface **dev) {
 
 	err = (*dev)->GetNumberOfConfigurations(dev, &numConfig);
 	if (err != kIOReturnSuccess) {
-		PMLOGEMERG(@"Could not number of configurations from device - err: %d", err);
+		PMLOG_EMERG(@"Could not number of configurations from device - err: %d", err);
 		return (UInt8)(-1);
 	}
 	if (numConfig != 1) {
-		PMLOGEMERG(@"This does not look like the right device, it has %d configurations (we want 1)\n", numConfig);
+		PMLOG_EMERG(@"This does not look like the right device, it has %d configurations (we want 1)\n", numConfig);
 		return (UInt8)(-1);
 	}
 
 	err = (*dev)->GetConfigurationDescriptorPtr(dev, 0, &desc);
 	if (err != kIOReturnSuccess) {
-		PMLOGEMERG(@"Could not get configuration descriptor from device - err: %d", err);
+		PMLOG_EMERG(@"Could not get configuration descriptor from device - err: %d", err);
 		return (UInt8)(-1);
 	}
 
@@ -2111,11 +2111,11 @@ openUSBDevice(DACALIOUSBDeviceInterface **dev) {
 
 	err = (*dev)->USBDeviceOpen(dev);
 	if (err == kIOReturnExclusiveAccess) {
-		PMLOGEMERG(@"Exclusive error opening device, we may come back to this later\n");
+		PMLOG_EMERG(@"Exclusive error opening device, we may come back to this later\n");
 		return (UInt8)(-2);
 	}
 	if (err != kIOReturnSuccess) {
-		PMLOGEMERG(@"Could not open device - err: %d", err);
+		PMLOG_EMERG(@"Could not open device - err: %d", err);
 		return (UInt8)(-1);
 	}
 
@@ -2148,13 +2148,13 @@ openUSBInterface(DACALIOUSBInterfaceInterface **intf) {
 
 	ret = (*intf)->USBInterfaceOpen(intf);
 	if (ret != kIOReturnSuccess) {
-		PMLOGEMERG(@"Could not set configuration on device");
+		PMLOG_EMERG(@"Could not set configuration on device");
 		return (UInt8)(-1);
 	}
 
 	ret = (*intf)->GetNumEndpoints(intf, &n);
 	if (ret != kIOReturnSuccess) {
-		PMLOGEMERG(@"Could not get number of endpoints in interface");
+		PMLOG_EMERG(@"Could not get number of endpoints in interface");
 		return (0);
 	}
 
@@ -2163,8 +2163,8 @@ openUSBInterface(DACALIOUSBInterfaceInterface **intf) {
 	for (i = 1; i <= n; i++) {
 		ret = (*intf)->GetPipeProperties(intf, i, &direction, &number, &transferType, &maxPacketSize, &interval);
 		if (ret != kIOReturnSuccess) {
-			PMLOGEMERG(@"Endpoint %d -", n);
-			PMLOGEMERG(@"Could not get endpoint properties");
+			PMLOG_EMERG(@"Endpoint %d -", n);
+			PMLOG_EMERG(@"Could not get endpoint properties");
 			return (0);
 		}
 		PMLOG(PMLogLevelDebug2, @"Endpoint %d: %s %s %d, max packet %d, interval %d\n", i, types[transferType], directionStr[direction], number, maxPacketSize, interval);
@@ -2192,7 +2192,7 @@ getUSBInterfaceInterface(io_service_t usbInterface) {
 	                                       );
 	(void)IOObjectRelease(usbInterface);                // done with the usbInterface object now that I have the plugin
 	if ((kIOReturnSuccess != err) || (plugInInterface == nil)) {
-		PMLOGEMERG(@"Unable to create plug in interface for USB interface");
+		PMLOG_EMERG(@"Unable to create plug in interface for USB interface");
 		return (nil);
 	}
 
@@ -2200,7 +2200,7 @@ getUSBInterfaceInterface(io_service_t usbInterface) {
 	IODestroyPlugInInterface(plugInInterface);            // done with this
 
 	if (res || !intf) {
-		PMLOGEMERG(@"Unable to create interface with QueryInterface %X\n", (unsigned int)res);
+		PMLOG_EMERG(@"Unable to create interface with QueryInterface %X\n", (unsigned int)res);
 		return (nil);
 	}
 	return (intf);
@@ -2215,7 +2215,7 @@ isThisTheInterfaceYoureLookingFor(DACALIOUSBInterfaceInterface **intf) {
 
 	static Boolean foundOnce = false;
 	if (foundOnce) {
-		PMLOGNOTICE(@"Subsequent interface found, we're only intersted in 1 of them\n");
+		PMLOG_NOTICE(@"Subsequent interface found, we're only intersted in 1 of them\n");
 		return (false);
 	}
 	foundOnce = true;
@@ -2227,7 +2227,7 @@ useUSBInterface(DACALIOUSBInterfaceInterface **intf) {
 	IOReturn ret;
 	UInt8    intfNumber;
 	ret = (*intf)->GetInterfaceNumber(intf, &intfNumber);
-	PMLOGNOTICE(@"InterfaceNumber: %d", intfNumber);
+	PMLOG_NOTICE(@"InterfaceNumber: %d", intfNumber);
 }
 
 int
@@ -2240,7 +2240,7 @@ iterateinterfaces(io_iterator_t interfaceIterator) {
 
 	usbInterface = IOIteratorNext(interfaceIterator);
 	if (usbInterface == IO_OBJECT_NULL) {
-		PMLOGEMERG(@"Unable to find an Interface\n");
+		PMLOG_EMERG(@"Unable to find an Interface\n");
 		return (-1);
 	}
 
@@ -2265,7 +2265,7 @@ iterateinterfaces(io_iterator_t interfaceIterator) {
 		usbInterface = IOIteratorNext(interfaceIterator);
 	}
 
-	PMLOGEMERG(@"No interesting interfaces found\n");
+	PMLOG_EMERG(@"No interesting interfaces found\n");
 	IOObjectRelease(usbInterface);
 	return (-1);
 }
@@ -2279,7 +2279,7 @@ useUSBDevice(DACALIOUSBDeviceInterface **dev, UInt8 configuration) {
 
 	err = (*dev)->SetConfiguration(dev, configuration);
 	if (err != kIOReturnSuccess) {
-		PMLOGEMERG(@"Could not set configuration on device - err: &d", err);
+		PMLOG_EMERG(@"Could not set configuration on device - err: &d", err);
 		return;
 	}
 
@@ -2290,7 +2290,7 @@ useUSBDevice(DACALIOUSBDeviceInterface **dev, UInt8 configuration) {
 
 	err = (*dev)->CreateInterfaceIterator(dev, &req, &interfaceIterator);
 	if (err != kIOReturnSuccess) {
-		PMLOGEMERG(@"Could not create interface iterator - err: %d", err);
+		PMLOG_EMERG(@"Could not create interface iterator - err: %d", err);
 		return;
 	}
 
@@ -2366,7 +2366,7 @@ DACALDeviceCreateWithService(io_service_t ioDeviceObj, DACALResult *outErr) {
         if (config > 0)
             useUSBDevice(deviceIntf, config);
         else {
-			PMLOGEMERG(@"ERROR: Zero configuration\n");
+			PMLOG_EMERG(@"ERROR: Zero configuration\n");
             goto BAIL;
         }
         err = (*deviceIntf)->USBDeviceClose(deviceIntf);
@@ -2375,7 +2375,7 @@ DACALDeviceCreateWithService(io_service_t ioDeviceObj, DACALResult *outErr) {
         err = IOCreatePlugInInterfaceForService(ioDeviceObj, kIOUSBDeviceUserClientTypeID, kIOCFPlugInInterfaceID, &ioPlugin, &score);
         if (err || !ioPlugin) {
             IOObjectRelease(ioDeviceObj);
-            PMLOGEMERG(@"unable to create plugin. ret = %08x, iodev = %p\n", err, ioPlugin);
+            PMLOG_EMERG(@"unable to create plugin. ret = %08x, iodev = %p\n", err, ioPlugin);
             if (outErr != NULL)
                 *outErr = err;
             return (thisRef);
@@ -2385,7 +2385,7 @@ DACALDeviceCreateWithService(io_service_t ioDeviceObj, DACALResult *outErr) {
         ioPlugin = NULL;
         
         if (err || !deviceIntf) {
-            PMLOGEMERG(@"unable to create a device interface. ret = %08x, dev = %p\n", err, ioPlugin);
+            PMLOG_EMERG(@"unable to create a device interface. ret = %08x, dev = %p\n", err, ioPlugin);
             if (outErr != NULL)
                 *outErr = err;
             return (thisRef);
@@ -2393,7 +2393,7 @@ DACALDeviceCreateWithService(io_service_t ioDeviceObj, DACALResult *outErr) {
         
         err = (*deviceIntf)->USBDeviceOpen(deviceIntf);
         if (err) {
-            PMLOGEMERG(@"Unable to open device: %08x\n", err);
+            PMLOG_EMERG(@"Unable to open device: %08x\n", err);
             (void)(*deviceIntf)->Release(deviceIntf);
             if (outErr != NULL)
                 *outErr = err;
@@ -2407,7 +2407,7 @@ DACALDeviceCreateWithService(io_service_t ioDeviceObj, DACALResult *outErr) {
         (*deviceIntf)->GetDeviceVendor(deviceIntf, &devVendor);
         (*deviceIntf)->GetDeviceProduct(deviceIntf, &devProduct);
         
-        PMLOGINFO(@"Found device vendor:%x product:%x\n", devVendor, devProduct);
+        PMLOG_INFO(@"Found device vendor:%x product:%x\n", devVendor, devProduct);
         
         thisRef = gDACALBoxes.boxCount++;
         newNode = thisRef + 1;
@@ -2434,7 +2434,7 @@ DACALDeviceCreateWithService(io_service_t ioDeviceObj, DACALResult *outErr) {
             
             if (newID == NULL) {
                 err = kDACALError;
-                PMLOGEMERG(@"Could Not Identify Device %p\n", (void *)ioDeviceObj);
+                PMLOG_EMERG(@"Could Not Identify Device %p\n", (void *)ioDeviceObj);
                 if (outErr != NULL)
                     *outErr = err;
                 return (thisRef);
@@ -2448,7 +2448,7 @@ DACALDeviceCreateWithService(io_service_t ioDeviceObj, DACALResult *outErr) {
             
             if (newModel == NULL) {
                 err = kDACALError;
-                PMLOGALERT(@"Could Not Identify Model %p\n", (void *)ioDeviceObj);
+                PMLOG_ALERT(@"Could Not Identify Model %p\n", (void *)ioDeviceObj);
                 if (outErr != NULL)
                     *outErr = err;
                 return (thisRef);
@@ -2463,14 +2463,14 @@ DACALDeviceCreateWithService(io_service_t ioDeviceObj, DACALResult *outErr) {
             CFRelease(newID);
             CFRelease(newModel);
             if (err) {
-                PMLOGEMERG(@"unable to create a device file. ret = %i, dev = %p\n", err, (void *)ioDeviceObj);
+                PMLOG_EMERG(@"unable to create a device file. ret = %i, dev = %p\n", err, (void *)ioDeviceObj);
                 if (outErr != NULL)
                     *outErr = err;
                 return (thisRef);
             }
         }
         else {
-            PMLOGEMERG(@"unknown device: %@ ,unable to create a device file. ret = %i, dev = %p\n", newModel, err, (void *)ioDeviceObj);
+            PMLOG_EMERG(@"unknown device: %@ ,unable to create a device file. ret = %i, dev = %p\n", newModel, err, (void *)ioDeviceObj);
             CFRelease(newID);
             CFRelease(newModel);
             if (outErr != NULL)
@@ -2561,14 +2561,14 @@ DACALDevicesInitialize(void) {
 	// Find USB Interface
 	err = IOMasterPort(MACH_PORT_NULL, &masterPort);
 	if (err) {
-		PMLOGEMERG(@"could not create master port, err = %08x\n", err);
+		PMLOG_EMERG(@"could not create master port, err = %08x\n", err);
 		return err;
 	}
 	// Looking for USBD device
 	matchingDictionary = IOServiceMatching(kIOUSBDeviceClassName);    // requires <IOKit/usb/IOUSBLib.h>
 	// Specifiy vendor, product and revision
 	if (!matchingDictionary) {
-		PMLOGALERT(@"could not create matching dictionary\n");
+		PMLOG_ALERT(@"could not create matching dictionary\n");
 		return kIOReturnNoDevice;
 	}
 
@@ -2577,7 +2577,7 @@ DACALDevicesInitialize(void) {
 	if (!numberRef) {
 		CFRelease(matchingDictionary);
 		CFRelease(numberRef);
-		PMLOGEMERG(@"could not create CFNumberRef for vendor\n");
+		PMLOG_EMERG(@"could not create CFNumberRef for vendor\n");
 		return kIOReturnNoMemory;
 	}
 	CFDictionaryAddValue(matchingDictionary, CFSTR(kUSBVendorID), numberRef);
@@ -2589,7 +2589,7 @@ DACALDevicesInitialize(void) {
 	if (numberRef == NULL) {
 		CFRelease(matchingDictionary);
 		CFRelease(numberRef);
-		PMLOGEMERG(@"could not create CFNumberRef for product\n");
+		PMLOG_EMERG(@"could not create CFNumberRef for product\n");
 		return kIOReturnNoMemory;
 	}
 	CFDictionaryAddValue(matchingDictionary, CFSTR(kUSBProductID), numberRef);
@@ -2620,7 +2620,7 @@ DACALDevicesInitialize(void) {
 
 	err = IOServiceAddMatchingNotification(gDACALNotifyPort, kIOFirstMatchNotification, matchingDictionary, DACALDevicesAdded, NULL, &gDACALAddedIter);
 	if (err)
-        PMLOGEMERG(@"IOServiceAddMatchingNotification returned err: %x", err);
+        PMLOG_EMERG(@"IOServiceAddMatchingNotification returned err: %x", err);
 
 	DACALDevicesAdded(NULL, gDACALAddedIter);
 
@@ -2651,7 +2651,7 @@ DACALClientNotify(
 	DACALClientRef clientIndex = DACALClientGetIndexForID(noticeClient);
 	DACALClientNotificationCallback *userCallback = DACAL_CLIENT_CALLBACK(clientIndex);
 
-	PMLOGDEBUG(@"DACALClientNotify: Device: %i Message: %@", (int)noticeDevice, noticeMessage );
+	PMLOG_DEBUG(@"DACALClientNotify: Device: %i Message: %@", (int)noticeDevice, noticeMessage );
 
 	if (userCallback != NULL)
 		userCallback(DACAL_CLIENT_USERDATA(clientIndex), noticeDevice, noticeMessage, noticeData);

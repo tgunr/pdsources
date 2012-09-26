@@ -141,7 +141,7 @@
 	NSArray*			saveSelection = nil;
 
 	if( ourSearch != nil ) {
-		PMLOGINFO(@"Our Search: %@", ourSearch);
+		PMLOG_INFO(@"Our Search: %@", ourSearch);
 		saveSelection = [self allSelectedNodes];
 		[super reloadData];
 		[self selectNodes:saveSelection byExtendingSelection:NO];

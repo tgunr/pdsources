@@ -85,11 +85,11 @@ int main (int argc, const char * argv[]) {
 
 #ifdef DEBUG_COMM
 #pragma warning DEBUG_COMM
-    PMLOGPushVerbose(2);
+    PMLOG_PushVerbose(2);
 #endif
 	err = DACALDevicesInitialize();
 #ifdef DEBUG_COMM
-    PMLOGPopVerbose();
+    PMLOG_PopVerbose();
 #endif
 
 	while (true) {

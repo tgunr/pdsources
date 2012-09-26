@@ -15,7 +15,7 @@ void DACALNotification( void* inData, DACALDeviceRef inBox, CFStringRef inMessag
 {
 	DACALDeviceService*	deviceService = (DACALDeviceService*)inData;
 	
-	PMLOGINFO( @"Client Notification: Device: %@ Message: %@", inBox, inMessage );
+	PMLOG_INFO( @"Client Notification: Device: %@ Message: %@", inBox, inMessage );
 	
 	if( CFStringHasPrefix( inMessage, kDACALCarouselNoticeDeviceOpen ) )
 		[deviceService notificationDeviceAttached:inBox];
